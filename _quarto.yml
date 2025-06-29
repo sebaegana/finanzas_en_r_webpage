@@ -1,0 +1,26 @@
+project:
+  type: website
+
+website:
+  title: "Curso: Finanzas en R"
+  navbar:
+    left:
+      - text: "Inicio"
+        href: index.qmd
+      - text: "Clases"
+        menu:
+          - href: clases/clase01.qmd
+            text: "Clase 1: Introducción"
+          - href: clases/clase02.qmd
+            text: "Clase 2: Análisis Exploratorio"
+      - text: "Recursos"
+        href: recursos.qmd
+      - text: "Contacto"
+        href: contacto.qmd
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+
+
