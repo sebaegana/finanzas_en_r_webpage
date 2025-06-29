@@ -1,0 +1,9 @@
+---
+title: "Recursos"
+format: html
+---
+
+# Recursos adicionales
+
+- Libro: [R for Data Science](https://r4ds.had.co.nz/)
+- Cheatsheets: https://posit.co/resources/cheatsheets/

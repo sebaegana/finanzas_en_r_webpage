@@ -1,0 +1,9 @@
+---
+title: "Clases del curso"
+format: html
+---
+
+# Clases disponibles
+
+- [Clase 1: Introducción a R](clases/clase01.qmd)
+- [Clase 2: Análisis exploratorio](clases/clase02.qmd)
