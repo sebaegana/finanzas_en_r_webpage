@@ -1,0 +1,11 @@
+---
+title: Clases
+listing:
+  contents: "*.qmd"
+  sort: "name"
+  type: default
+---
+
+# Clases del curso
+
+Este listado se genera automáticamente con todos los archivos .qmd en esta carpeta.

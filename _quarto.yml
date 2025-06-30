@@ -9,7 +9,7 @@ website:
       - text: "Inicio"
         href: index.qmd
       - text: "Clases"
-        href: clases.qmd
+        file: clases/index.qmd
       - text: "Recursos"
         href: recursos.qmd
       - text: "Contacto"
