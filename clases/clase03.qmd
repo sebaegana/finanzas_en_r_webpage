@@ -1,0 +1,10 @@
+---
+title: "Clase 2: Análisis exploratorio"
+format: html
+---
+
+# Análisis exploratorio de datos
+
+```{r}
+plot(iris$Sepal.Length, iris$Petal.Length)
+```
