@@ -1,0 +1,82 @@
+---
+title: |
+  | \includegraphics[width=5cm]{Imagen1.jpg}  
+  | Finanzas en R
+subtitle: Visualization
+format: pdf
+editor: visual
+author:   
+  - Sebastián Egaña Santibáñez [{{< fa brands inbox >}}](mailto:segana@fen.uchile)
+  - Nicolás Leiva Díaz [{{< fa brands inbox >}}](mailto:nleivad@fen.uchile.cl)
+code-block-bg: true
+code-block-border-left: "#FF0000"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, tinytex.verbose = TRUE, fig.pos = "H")
+
+library(readxl)
+library(tidyverse)
+
+data <- read_excel("data/data_visualization.xlsx")
+
+data <- mutate(data, fecha_nacimiento_2 = as.POSIXct(fecha_nacimiento, format = "%d-%m-%Y"))
+
+```
+
+\-\--
+
+# Enlaces del profesor
+
+[{{< fa brands link >}}](https://segana.netlify.app) https://segana.netlify.app
+
+[{{< fa brands github >}}](https://github.com/sebaegana) https://github.com/sebaegana
+
+[{{< fa brands linkedin >}}](https://www.linkedin.com/in/sebastian-egana-santibanez/) https://www.linkedin.com/in/sebastian-egana-santibanez/
+
+------------------------------------------------------------------------
+
+# Análisis técnico en R
+
+## Sobre la teoría
+
+## Veamos un ejemplo aplicado
+
+```{r}
+# Load required libraries
+library(quantmod)
+library(TTR)
+library(ggplot2)
+
+# Step 3: Data Retrieval and Preparation
+# Define the stock symbol and date range
+stock_symbol <- "AAPL"
+start_date <- as.Date("2020-01-01")
+end_date <- as.Date("2021-01-01")
+
+# Import historical stock prices
+stock_data <- getSymbols(stock_symbol, src = "yahoo", from = start_date, to = end_date, auto.assign = FALSE)
+
+# Extract adjusted close prices
+closing_prices <- Cl(stock_data)
+
+# Step 4: Introduction to Technical Indicators
+# Calculate moving averages
+sma_50 <- SMA(closing_prices, n = 50)
+sma_200 <- SMA(closing_prices, n = 200)
+
+# Calculate RSI
+rsi <- RSI(closing_prices)
+
+# Step 5: Implementing Technical Indicators in R
+# Plotting stock prices and technical indicators
+ggplot() +
+  geom_line(aes(x = index(closing_prices), y = closing_prices), color = "blue") +
+  geom_line(aes(x = index(sma_50), y = sma_50), color = "red") +
+  geom_line(aes(x = index(sma_200), y = sma_200), color = "green") +
+  geom_line(aes(x = index(rsi), y = rsi), color = "orange") +
+  labs(title = paste(stock_symbol, "Stock Prices and Technical Indicators"),
+       x = "Date", y = "Price/Indicator") +
+  theme_minimal()
+```
+

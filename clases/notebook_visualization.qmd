@@ -1,0 +1,211 @@
+---
+title: |
+  | \includegraphics[width=5cm]{Imagen1.jpg}  
+  | Finanzas en R
+subtitle: Visualization
+format: pdf
+editor: visual
+author:   
+  - Sebastián Egaña Santibáñez [{{< fa brands inbox >}}](mailto:segana@fen.uchile)
+  - Nicolás Leiva Díaz [{{< fa brands inbox >}}](mailto:nleivad@fen.uchile.cl)
+code-block-bg: true
+code-block-border-left: "#FF0000"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, tinytex.verbose = TRUE, fig.pos = "H")
+
+library(readxl)
+library(tidyverse)
+
+data <- read_excel("data/data_visualization.xlsx")
+
+data <- mutate(data, fecha_nacimiento_2 = as.POSIXct(fecha_nacimiento, format = "%d-%m-%Y"))
+
+```
+
+\-\--
+
+# Enlaces del profesor
+
+[{{< fa brands link >}}](https://segana.netlify.app) https://segana.netlify.app
+
+[{{< fa brands github >}}](https://github.com/sebaegana) https://github.com/sebaegana
+
+[{{< fa brands linkedin >}}](https://www.linkedin.com/in/sebastian-egana-santibanez/) https://www.linkedin.com/in/sebastian-egana-santibanez/
+
+------------------------------------------------------------------------
+
+# Visualización en R
+
+La principal librería para fines de visualización corresponde a GGPLOT2. Crearemos un gráfico simple utilizando la librería ggplot2[^1].
+
+[^1]: Recordar instalar y cargar la librería
+
+Revisemos el Cheatsheet asociado:
+
+\href{https://github.com/rstudio/cheatsheets/blob/master/data-visualization-2.1.pdf}{Enlace acá}
+
+La construcción de un gráfico utilizando GGPLOT2 se realiza a través de los siguientes elementos:
+
+1.  Un set de datos.
+2.  Un sistema de coordenadas.
+3.  Figuras geométricas (geoms) o representaciones visuales de los datos.
+
+Para cambiar la forma en que se muestran los datos se pueden editar las figuras geométricas (geoms), cambiando color, tamaño y la ubicación de los puntos en x y/o en y.
+
+Inclusive se plantea una plantilla para esto:
+
+```         
+ggplot (data = <DATA> ) +
+ <GEOM_FUNCTION> (mapping = aes( <MAPPINGS> ),
+ stat = <STAT> , position = <POSITION> ) +
+ <COORDINATE_FUNCTION> +
+ <FACET_FUNCTION> +
+ <SCALE_FUNCTION> +
+ <THEME_FUNCTION>
+```
+
+En donde las dos primeras líneas son ogligatoias.
+
+Apliquemos esto a los datos importados. Referencia relevante para esta parte \href{https://www.datanalytics.com/libro_r/elementos-de-un-grafico-en-ggplot2.html}{Enlace acá}
+
+1.  Asignamos el set de datos:
+
+```{r}
+
+library(tidyverse)
+
+p <- ggplot(data)
+
+p
+```
+
+2.  Ahora declaramos el sistema de coordenadas:
+
+```{r}
+p <- ggplot(data) + aes(x = sexo, y = fibe)
+
+p
+```
+
+-   Cabe mencionar, que cada elemento que se agrega dentro de un gráfico en GGPLOT2, se realiza utilizando el signo "+" (cómo ir añadiendo capas).
+
+3.  Declaremos ahora el tipo de figura, Por ejemplo, para un gráfico de barras el sistema de coordenadas solo debe contener el eje x (el eje y viene dado por el conteo de las ocurrencias):
+
+```{r}
+p <- ggplot(data) + aes(x = sexo) + geom_bar()
+
+p
+```
+
+Podemos voltear el gráfico, y agregar diferenciación en base a otra variable:
+
+```{r}
+p <- ggplot(data) + aes(y = sexo) + geom_bar(aes(fill = afectacion))
+
+p
+```
+
+Podríamos graficar de manera separada cada columna, en base a esta página \href{http://www.sthda.com/english/wiki/ggplot2-barplots-quick-start-guide-r-software-and-data-visualization}{Enlace acá}:
+
+```{r}
+p <- ggplot(data) + aes(y = sexo, fill = afectacion) + 
+  geom_bar(position=position_dodge())
+
+p
+
+```
+
+------------------------------------------------------------------------
+
+# Actividad
+
+Repliquemos los gráficos en el siguiente enlace.
+
+\href{https://ggplot2.tidyverse.org/reference/geom_bar.html}{Enlace acá}
+
+------------------------------------------------------------------------
+
+# Reflexiones sobre cómo visualizar
+
+La visualización, es en parte un arte y en parte una ciencia (Wilke, 2019).
+
+La relevancia de la visualización se genera como una aproximación visual resumida a los datos. El problema, es que no todas las visualizaciones son buenas, en otras palabras no todos los gráficos son construidos de manera correcta.
+
+Un buen gráfico no responde necesariamente sobre el ¿cómo se ve?, sino que debe responder a la necesidad de ¿quién lo ve? y ¿por qué lo ve?
+
+## Lo que no se debe hacer y lo que se debe hacer.
+
+Veamos un primer ejemplo:
+
+![Wilke (2019)](imagenes/graph_01.jpg){width="50%" fig-align="center" fig-pos="H"}
+
+¿Qué le parece a usted? ¿es un buen o mal gráfico?
+
+Otro ejemplo:
+
+![Wilke (2019)](imagenes/graph_02.jpg){width="50%" fig-align="center" fig-pos="H"}
+
+## Feo, malo y malísimo (Wilke, 2019).
+
+Un gráfico puede tener tres errores:
+
+-   Feo (Ugly): falla la estética, pudiendo ser claro e informativo.
+
+-   Malo (Bad): problemas de percepción en el gráfico, pudiendo ser poco claro, confuso o engañoso.
+
+-   Malísimo (Wrong): existen errores matemáticos detrás del gráfico.
+
+De manera aplicada:
+
+![Wilke (2019)](imagenes/graph_05.jpg){width="70%" fig-align="center" fig-pos="H"}
+
+Un ejemplo más realista de lo antes mencionado. Este gráfico, ¿está feo, malo o malísimo?
+
+![Evergreen (2019)](imagenes/graph_06.jpg){width="70%" fig-align="center" fig-pos="H"}
+
+## La intencionalidad detrás del gráfico.
+
+Dos maneras distintas de graficar lo mismo: una mejor que otra.
+
+![Evergreen (2019)](imagenes/graph_03.jpg){width="70%" fig-align="center" fig-pos="H"}
+
+![Evergreen (2019)](imagenes/graph_04.jpg){width="50%" fig-align="center" fig-pos="H"}
+
+# La visualización ideal en seis imagénes (Roam, 2016).
+
+1.  Who and what is involved (¿Quién o qué está involucrado?): Se debe iniciar con un resumen visual sobre lo que se hablará.
+
+2.  How many are involved (¿Qué cantidad está involucrada?): Se deben generar medidas cuantitativas de lo hablado. Cambios en los números también son relevantes.
+
+3.  Where the pieces are located (¿Dónde se ubica?): Presentar alguna relación visual entre lo hablado y su ubicación.
+
+4.  When things occur (¿Cuándo ocurre?): Mostrar algo relacionado con la temporalidad o la secuencia de los eventos en las que ocurren las interacciones relevantes.
+
+5.  How things impact each other (¿Cómo las cosas se relacionan?): Generar una visualización que presente la relación causa - efecto que afectan lo mostrado anteriormente.
+
+6.  Why this matters (¿Por qué es importante?): Se debe concluir visualizado anteriormente.
+
+![Evergreen (2019)](imagenes/imagen_61.jpg){width="70%" fig-align="center" fig-pos="H"}
+
+# Storytelling with data
+
+Seis puntos claves:
+
+1. Comprender el contexto
+2. Elegir el gráfico adecuado
+3. Eliminar el caos
+4. Dirija la atención hacía donde le interese
+5. Piense como un diseñador
+6. Cuente una historia
+
+En relación a este enfoque, se puede consutar el siguiente material:
+
+[Página del libro](https://www.storytellingwithdata.com)
+
+# Referencias
+
+-   Wilke, C. O. (2019). Fundamentals of data visualization: a primer on making informative and compelling figures. O'Reilly Media.
+
+-   Evergreen, S. D. (2019). Effective data visualization: The right chart for the right data. SAGE publications.

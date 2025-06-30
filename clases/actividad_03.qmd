@@ -1,0 +1,237 @@
+---
+title: |
+  | \includegraphics[width=5cm]{Imagen1.jpg}  
+  | Finanzas en R
+subtitle: Actividad 3
+format: pdf
+editor: visual
+author:   
+  - Sebastián Egaña Santibáñez   
+  - Nicolás Leiva Díaz
+code-block-bg: true
+code-block-border-left: "#FF0000"
+---
+
+\-\--
+
+# Actividad 3
+
+## R y SQL
+
+Veremos un ejemplo simple de conexión entre R y SQL; en este caso utilizamos SQLite.
+
+### Librerías y conexión
+
+```{r}
+#| warning: false
+
+library(RSQLite)
+library(dplyr)
+```
+
+Se establece la conexión con:
+
+```{r}
+
+con <- dbConnect(SQLite())
+```
+
+## Escritura de tabla y schema
+
+Escribimos una tabla en base al set de prueba `mtcars`
+
+```{r}
+
+dbWriteTable(con, "mtcars_sql", mtcars)
+```
+
+Dos maneras para inspeccionar el schema y las tablas son los siguientes:
+
+```{r}
+tables <- dbListTables(con)
+
+schema <- dbGetQuery(con, "PRAGMA table_info(mtcars_sql)")
+```
+
+El primero nos permite ver las tablas en el schema en donde estamos trabajando y el segundo nos permite inspeccionar las carácteristicas de la tabla especificada. \## Lectura usando SQL
+
+Una primera manera es utilizar la query relacionada con la conexión de SQL que estamos utilizando:
+
+```{r}
+
+data_01 <- dbGetQuery(con, 'SELECT MPG, CYL FROM mtcars_sql WHERE MPG > 30')
+
+data_01
+```
+
+Otra forma es "estorear" la query para después hacer la búsqueda:
+
+```{r}
+
+get_data_02 <- dbSendQuery(con, "SELECT MPG, CYL FROM mtcars_sql WHERE MPG > 30")
+
+data_02 <- dbFetch(get_data_02)
+
+data_02
+```
+
+La otra manera es convertir la tabla de sql a un dataframe en base a dplyr. Después usamos los comandos propios de R para lograr el mismo resultado anterior:
+
+```{r}
+tabla_cars <- tbl(con, 'mtcars_sql')
+
+tabla_cars %>% 
+  select(mpg, cyl) %>% 
+  filter(mpg>30) %>% 
+  arrange(mpg) 
+```
+
+¿Cómo se vería esto en una query? Preguntemosle a R:
+
+```{r}
+tabla_cars %>% 
+  select(mpg, cyl) %>% 
+  filter(mpg>30) %>% 
+  arrange(mpg) %>% 
+  show_query()
+```
+
+## Obtener datos financieros
+
+### Ejemplo 1
+
+```{r}
+#| warning: false
+# Load necessary libraries
+library(quantmod)
+library(DBI)
+library(RSQLite)
+
+# Define a function to fetch financial data
+fetch_financial_data <- function(symbol, start_date, end_date) {
+  # Fetch data using quantmod
+  data <- getSymbols(symbol, from = start_date, to = end_date, auto.assign = FALSE)
+  return(data)
+}
+
+# Define your SQLite database file
+sqlite_file <- "financial_data.db"
+
+# Connect to SQLite database
+conn <- dbConnect(SQLite(), sqlite_file)
+
+# Define the symbol and time frame
+symbol <- "AAPL"
+start_date <- "2020-01-01"
+end_date <- Sys.Date() # Today's date
+
+# Fetch financial data
+financial_data <- fetch_financial_data(symbol, start_date, end_date)
+
+# Convert xts object to data frame
+financial_data_df <- data.frame(date = index(financial_data), coredata(financial_data))
+
+# Write data to SQLite database
+dbWriteTable(conn, "stock_data_01", financial_data_df, overwrite = TRUE)
+
+# Close the database connection
+
+data_financial <- dbGetQuery(conn, 'SELECT * FROM stock_data')
+
+data_financial %>% head()
+```
+Reflexionemos sobre el paso a paso.
+
+### Ejemplo 2
+
+```{r}
+#| warning: false
+# Load necessary libraries
+library(quantmod)
+library(DBI)
+library(RSQLite)
+
+# Define a function to fetch financial data
+fetch_financial_data <- function(symbol, start_date, end_date) {
+  # Fetch data using quantmod
+  data <- getSymbols(symbol, from = start_date, to = end_date, auto.assign = FALSE)
+  return(data)
+}
+
+# Define your SQLite database file
+sqlite_file <- "financial_data.db"
+
+# Connect to SQLite database
+conn <- dbConnect(SQLite(), sqlite_file)
+
+# Define the symbol and time frame
+symbol <- "AAPL"
+start_date <- "2020-01-01"
+end_date <- Sys.Date() # Today's date
+
+# Fetch financial data
+financial_data <- fetch_financial_data(symbol, start_date, end_date)
+
+# Convert xts object to data frame
+financial_data_df <- data.frame(date = index(financial_data), coredata(financial_data))
+
+# Define SQL command to create table
+create_table_sql <- "
+CREATE TABLE IF NOT EXISTS stock_data (
+    date TEXT PRIMARY KEY,
+    open REAL,
+    high REAL,
+    low REAL,
+    close REAL,
+    volume REAL,
+    adjusted REAL
+);
+"
+
+# Execute SQL command to create table
+dbExecute(conn, create_table_sql)
+
+# Prepare data for insertion
+insert_values_sql <- "INSERT OR REPLACE INTO stock_data VALUES (?, ?, ?, ?, ?, ?, ?)"
+
+# Insert data into table row by row
+for (i in 1:nrow(financial_data_df)) {
+  row_values <- unname(as.list(financial_data_df[i, ]))
+  dbExecute(conn, insert_values_sql, params = row_values)
+}
+
+dbWriteTable(conn, "stock_data_02", financial_data_df, overwrite = TRUE)
+
+financial_data_df %>% head()
+```
+
+Veamos de nuevo el schema:
+
+```{r}
+tables <- dbListTables(conn)
+tables
+```
+Hacemos un gráfico simple:
+
+```{r}
+#| warning: false
+# Load necessary libraries
+library(ggplot2)
+
+# Convert xts object to data frame
+financial_data_df <- data.frame(date = index(financial_data), coredata(financial_data))
+
+# Convert date to Date class
+financial_data_df$date <- as.Date(financial_data_df$date)
+
+# Plot line chart
+ggplot(financial_data_df, aes(x = date)) +
+  geom_line(aes(y = AAPL.Close, color = "Close")) +
+  geom_line(aes(y = AAPL.Open, color = "Open")) +
+  geom_line(aes(y = AAPL.High, color = "High")) +
+  geom_line(aes(y = AAPL.Low, color = "Low")) +
+  scale_color_manual(values = c("Close" = "blue", "Open" = "red", "High" = "green", "Low" = "orange")) +
+  labs(x = "Date", y = "Price", title = "Apple Share Prices") +
+  theme_minimal()
+
+```

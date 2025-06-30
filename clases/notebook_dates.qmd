@@ -1,0 +1,242 @@
+---
+title: |
+  | \includegraphics[width=5cm]{Imagen1.jpg}  
+  | Finanzas en R
+subtitle: Notebook 01
+format: pdf
+editor: visual
+author:   
+  - Sebastián Egaña Santibáñez [{{< fa brands inbox >}}](mailto:segana@fen.uchile)
+  - Nicolás Leiva Díaz [{{< fa brands inbox >}}](mailto:nleivad@fen.uchile.cl)
+code-block-bg: true
+code-block-border-left: "#FF0000"
+---
+
+\-\--
+
+# Enlaces del profesor
+
+[{{< fa brands link >}}](https://segana.netlify.app) https://segana.netlify.app
+
+[{{< fa brands github >}}](https://github.com/sebaegana) https://github.com/sebaegana
+
+[{{< fa brands linkedin >}}](https://www.linkedin.com/in/sebastian-egana-santibanez/) https://www.linkedin.com/in/sebastian-egana-santibanez/
+
+***
+
+# Fechas en R
+
+## Current date
+
+Por lo general, siempre debemos partir por obtener la fecha y hora actuales:
+
+```{r}
+#| eval: true
+Sys.timezone()
+Sys.Date()
+Sys.time()
+
+```
+
+### Lubridate
+
+La librería más utilizada para lidiar con fechas en R, corresponde a lubridate [enlace](https://lubridate.tidyverse.org), que es parte de tidyverse.
+
+```{r}
+#| eval: true
+#| warning: false
+#| message: false
+
+library(tidyverse)
+
+now()
+
+```
+
+## String to date
+
+Utilizando los formatos de R por defecto:
+
+```{r}
+#| eval: true
+
+x <- c("2015-07-01", "2015-08-01", "2015-09-01")
+
+as.Date(x)
+
+```
+
+Esto solo funciona debido a que las fechas se encuentra en el formato por defecto. En caso distinto, debemos incorporar el formato de entrada:
+
+```{r}
+#| eval: true
+
+y <- c("07/01/2015", "07/01/2015", "07/01/2015")
+
+as.Date(y, format = "%m/%d/%Y")
+
+```
+
+### Utilizando lubridate
+
+Repliquemos lo anterior:
+
+```{r}
+#| eval: true
+
+library(lubridate)
+ymd(x)
+
+mdy(y)
+
+```
+
+Como ventaja, lubridate debería reconocer de manera automática los separadores normalmente usado en formatos de fecha.
+
+```{r}
+#| eval: true
+
+z <- c("07012015", "07012015", "07012015")
+
+mdy(z)
+
+```
+
+## Crear en base a uniones
+
+```{r}
+#| eval: true
+
+yr <- c("2012", "2013", "2014", "2015")
+mo <- c("1", "5", "7", "2")
+day <- c("02", "22", "15", "28")
+
+ISOdate(year = yr, month = mo, day = day)
+
+as.Date(ISOdate(year = yr, month = mo, day = day))
+```
+
+### ¿Cómo haríamos esto con lubridate?
+
+```{r}
+#| eval: true
+
+ymd(paste0(yr, mo, day))
+
+
+```
+
+### ¿Cuál es el error?
+
+```{r}
+#| eval: true
+
+ymd(paste0(yr, '0',mo, day))
+
+
+```
+
+### ¿Esto es una solución definitiva?
+
+Modifiquemos los vectores de fecha:
+
+```{r}
+yr_01 <- c("2012", "2013", "2014", "2015", "2023")
+mo_01 <- c("1", "5", "7", "2", "12")
+day_01 <- c("02", "22", "15", "28", "15")
+```
+
+Repetimos el código anterior:
+
+```{r}
+#| eval: true
+
+ymd(paste0(yr_01, '0',mo_01, day_01))
+
+
+```
+
+Esto es un caso particular, que por lo general lleva a errores. Añademos una función de leading zeros:
+
+```{r}
+#| eval: true
+library(stringr)
+ymd(paste0(yr_01,str_pad(mo_01, 2, pad = "0"), day_01))
+
+```
+
+Cabe mencionar que `str_pad` permite añadir ya sean 0 a la izquierda, a la derecha, o ambos lados.
+
+¿Dudas?
+
+## Obtener partes de una fecha:
+
+```{r}
+#| eval: true
+x <- c("2015-07-01", "2015-08-01", "2015-09-01")
+
+year(x)
+month(x)
+month(x, label = TRUE)
+month(x, label = TRUE, abbr = FALSE)
+wday(x, label = TRUE, abbr = FALSE)
+
+```
+
+## Modificar fechas
+
+```{r}
+#| eval: true
+x <- ymd(x)
+x
+
+mday(x)
+
+mday(x) <- c(3, 10, 22)
+x
+
+update(x, year = c(2013, 2014, 2015), month = 9)
+
+x + years(1) - days(c(2, 9, 21))
+
+```
+
+## Crear secuencias de fechas
+
+Utilizando la librería básica de fechas:
+
+```{r}
+#| eval: true
+seq(as.Date("2010-1-1"), as.Date("2015-1-1"), by = "years")
+
+seq(as.Date("2015/1/1"), as.Date("2015/12/30"), by = "quarter")
+
+seq(as.Date('2015-09-15'), as.Date('2015-09-30'), by = "2 days")
+
+```
+
+Utilizando lubridate:
+
+```{r}
+#| eval: true
+seq(ymd("2010-1-1"), ymd("2015-1-1"), by = "years")
+
+seq(ymd("2015/1/1"), ymd("2015/12/30"), by = "quarter")
+
+seq(ymd('2015-09-15'), ymd('2015-09-30'), by = "2 days")
+
+```
+
+En el caso de añadir tiempo, los formatos por defecto de R deben considerar que sean tipo POSIXct y no Date (producidos por `as.Date`)
+
+```{r}
+#| eval: true
+seq(as.POSIXct("2015-1-1 0:00"), as.POSIXct("2015-1-1 12:00"), by = "hour")
+```
+
+Con lubridate:
+
+```{r}
+#| eval: true
+seq(ymd_hm("2015-1-1 0:00"), ymd_hm("2015-1-1 12:00"), by = "hour")
+```

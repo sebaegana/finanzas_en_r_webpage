@@ -1,0 +1,411 @@
+---
+title: |
+  | \includegraphics[width=5cm]{Imagen1.jpg}  
+  | Finanzas en R
+subtitle: Notebook 2
+format: pdf
+editor: visual
+author:   
+  - Sebastián Egaña Santibáñez   
+  - Nicolás Leiva Díaz
+code-block-bg: true
+code-block-border-left: "#FF0000"
+---
+
+\-\--
+
+# Enlaces del profesor
+
+[{{< fa brands link >}}](https://segana.netlify.app) https://segana.netlify.app
+
+[{{< fa brands github >}}](https://github.com/sebaegana) https://github.com/sebaegana
+
+[{{< fa brands linkedin >}}](https://www.linkedin.com/in/sebastian-egana-santibanez/) https://www.linkedin.com/in/sebastian-egana-santibanez/
+
+------------------------------------------------------------------------
+
+# Agregación y unión
+
+## Agregación
+
+Corresponde a cuando generamos métricas de un set de datos en base a alguna variable de agrupamiento. En este sentido, la métrica básica corresponde a conteos, pero también podemos generar promedios, máximos, mínimos, etc.
+
+Leemos la data presente en el siguiente repositorio:
+
+[Enlace acá](https://github.com/stringfestdata/advancing-into-analytics-book/tree/main/datasets/star)
+
+Utilizamos el set de datos star.
+
+1.  Cargamos las librerías:
+
+```{r}
+library(tidyverse)
+library(httr)
+library(readxl)
+
+```
+
+2.  Con el siguiente código, podemos leer directamente el archivo:
+
+```{r}
+# Define the URL for the raw Excel file
+url <- "https://raw.githubusercontent.com/stringfestdata/advancing-into-analytics-book/main/datasets/star/star.xlsx"
+
+# Get the data from the URL
+response <- httr::GET(url)
+
+# Ensure the response status is 200 (OK)
+if (response$status_code == 200) {
+    # Read data from the raw binary content
+    temp_file <- tempfile(fileext = ".xlsx")
+    writeBin(httr::content(response, "raw"), temp_file)
+    data <- readxl::read_excel(temp_file)
+    # Optionally, delete the temporary file after reading
+    unlink(temp_file)
+    # Use the data
+    print(head(data))
+} else {
+    print("Failed to download file: HTTP status code is not 200")
+}
+
+
+```
+
+Otro enfoque podría ser descargarlo y leerlo desde alguna carpeta.
+
+Generamos una agrupación por la variables ´classk´
+
+```{r}
+data %>% group_by(classk) %>% summarise(n())
+```
+
+Consideramos el promedio:
+
+```{r}
+data %>% group_by(classk) %>% summarise(mean(tmathssk))
+```
+
+## Uniones
+
+Corresponde a la interacción entre dos tablas por al menos una llave. Traemos el set de datos distrcits:
+
+1.  Leemos el archivo districts:
+
+```{r}
+# Define the URL for the raw CSV file
+url <- "https://raw.githubusercontent.com/stringfestdata/advancing-into-analytics-book/main/datasets/star/districts.csv"
+
+# Get the data from the URL
+response <- httr::GET(url)
+
+# Ensure the response status is 200 (OK)
+if (response$status_code == 200) {
+    # Read data directly from the raw binary content into a CSV format
+    temp_file <- tempfile(fileext = ".csv")
+    writeBin(httr::content(response, "raw"), temp_file)
+    data_01 <- read.csv(temp_file)  # Change to read.csv for CSV files
+    # Optionally, delete the temporary file after reading
+    unlink(temp_file)
+    # Use the data
+    print(head(data_01))
+} else {
+    print("Failed to download file: HTTP status code is not 200")
+}
+
+
+```
+
+2.  Unimos los dos data sets:
+
+```{r}
+data %>% left_join(data_01, by = "schidkn")
+```
+
+Generamos un agrupamiento considerando el join aplicado:
+
+```{r}
+data %>% left_join(data_01, by = "schidkn") %>% group_by(county) %>% summarise(n())
+```
+
+Otra forma de hacer esto:
+
+```{r}
+data_join = data %>% left_join(data_01, by = "schidkn")
+
+data_join %>% group_by(county) %>% summarise(n())
+```
+
+# Tipos de Join
+
+## Uniones: llave primaria y foránea
+
+En SQL, se habla principalmente de llaves en el sentido de columnas que nos permitan unir dos bases. Intentamos realizar un metodo que mantenga la integridad de la tabla a la cual añadiré información.
+
+Una llave primaria corresponde a la columna de la base a la cual yo deseo unir otra columna, usando como punto de interacción una llave foránea.
+
+Consideremos las dos bases, en donde A corresponde a la llave primaria y B corresponde a la base foránea de cada una de las bases:
+
+|  A  |     |  B  |
+|:---:|:---:|:---:|
+|  1  |     |  3  |
+|  2  |     |  4  |
+|  3  |     |  5  |
+|  4  |     |  6  |
+
+¿Qué valores se repiten dentro de cada llave?
+
+Una complejidad de las uniones en SQL, corresponde a los requisitos que se deben cumplir para poder realizar uniones entre bases. Por ejemplo, una particularidad es que la llave primaria no debe tener valores repetidos y esto se repite en programas como RStudio. Por otra parte, Excel al utilizar funciones de manera individual (celda por celda), no posee dicho problema.
+
+Veamos ahora distintos tipos de uniones que pueden generarse.
+
+-   Inner Join: Refiere a la unión en base a intersecciones.
+
+|  A  |     |  B  |
+|:---:|:---:|:---:|
+|  3  |     |  3  |
+|  4  |     |  4  |
+
+-   Outer Join: Refiere a la unión de todas las columnas en A y todas las columnas en B. Las celdas sin correlativo en la otra base, generarán un valor nulo.
+
+|  A   |     |  B   |
+|:----:|:---:|:----:|
+|  1   |     | NULL |
+|  2   |     | NULL |
+|  3   |     |  3   |
+|  4   |     |  4   |
+| NULL |     |  5   |
+| NULL |     |  6   |
+
+Esto tipo de unión, puede tener dos variaciones:
+
+-   Outer Join \> Left Outer Join: Predominan las columnas en A, y las comunes en B.
+
+|  A  |     |  B   |
+|:---:|:---:|:----:|
+|  1  |     | NULL |
+|  2  |     | NULL |
+|  3  |     |  3   |
+|  4  |     |  4   |
+
+En Rstudio solo se conoce como Left Join.
+
+-   Outer Join \> Right Outer Join: Predominan las columnas en B, y las comunes en A.
+
+|  A   |     |  B  |
+|:----:|:---:|:---:|
+|  3   |     |  3  |
+|  4   |     |  4  |
+| NULL |     |  5  |
+| NULL |     |  6  |
+
+En Rstudio solo se conoce como Right Join.
+
+# Aplicación práctica de uniones
+
+## Set de datos
+
+Considere que se tiene un set de datos data_uniones.xlsx, que contiene 4 tablas:
+
+-   Flights: Corresponde a distintos identificadores de vuelos por ruta.
+-   Routes: Rutas de vuelos.
+-   Aircraft: Tipos de aviones.
+-   Airports: Set de datos descriptor de aeropuertos en USA.
+
+# Import - Tidy - Transform
+
+-   ¿Cuáles son las variables de cada set de datos?
+
+Por ejemplo, ¿qué es FuelCostperSeatMile (Cents)? Pero una pregunta más general es, ¿por qué es relevante aprender estos conceptos?
+
+-   ¿Se observa algún error en los datos?
+
+Fijemonos en el formato de la fecha.
+
+-   ¿Posee la estructura correcta el set de datos?
+
+No se ven errores; en las filas están las observaciones y en las columnas las variables. No existen formatos, ni celdas combinadas.
+
+-   ¿Existe identificadores únicos en los set de datos?
+
+Existen múltiples identificadores únicos.
+
+Se debe intentar llegar al análisis relevante del set de datos. En el caso de este set datos, claramente se puede llegar a un set de datos más completo.
+
+-   ¿Cúal es el set de datos que debe mantenerse? Veamos alguna manera de llegar a dicha conclusión.
+
+Por último, se puede pensar en la inclusión de datos a la base de datos, que podrían ser de algún interés. En este caso intentaremos agregar los siguientes datos:
+
+\href{https://en.wikipedia.org/wiki/List_of_airports_in_the_United_States}{Acá}
+
+Hasta este punto, aún no hemos terminado con dicho procedimiento de **batallar con los datos**.
+
+Antes de aplicar la unión de datos, sería bueno poder diagramar la relación que existe entre cada base datos. Acá debemos abordar un contenido relacionado.
+
+## Modelo de datos
+
+Corresponde a una serie de conceptos que pueden utilizarse para describir un conjunto de datos y las operaciones relacionadas para su manipulación.
+
+En la actualidad el modelo de bases de datos más utilizado corresponde al modelo relacional, que se define como el intento de obtener datos de distintas fuentes a través de relaciones o consultas que se basan en llaves (o columnas) que permiten la relación entre las distintas tablas. Esto quiere decir, que no necesariamente se tiene una **base gigante**, sino que se tiene la opción de acceder a bases pequeñas que pueden ir complementando los análisis.
+
+### Modelo Relacional
+
+Las entidades y relaciones se representan en formas de tablas.
+
+-   Las tablas son las relaciones.
+-   Las filas (tuplas) contienen datos sobre cada entidad.
+-   Las columnas corresponden a atributos de las entidades.
+
+Se pretende determinar operaciones a realizar: Unión, intersección, diferencia, producto cartesiano, selección, proyección, reunión, etc.
+
+Por otra parte, existen restricciones de integridad de entidad como también de integridad referencial (relacionado con el tema de llaves que vimos anteriormente).
+
+Por ejemplo:
+
+```{=tex}
+\begin{center}
+\begin{tabular}{|c|c|c|}
+    \hline
+    Entidades & Proveedor & Pieza \\
+    \hline
+    Atributos & Código & Código \\
+    \hline
+    & Nombre & Nombre  \\
+    \hline
+    & Ciudad & Dimensiones \\
+    & & Peso \\
+    \hline
+\end{tabular}
+\end{center}
+```
+En donde:
+
+```{=tex}
+\begin{center}
+\begin{tabular}{|c|c|}
+    \hline
+    Relación & Suministra \\
+    \hline
+    Entidades Participantes & Proveedor - Pieza \\
+    \hline
+    Cardinalidad & Muchos a muchos  \\
+    \hline
+    Atributos & Cantidad \\
+    \hline
+\end{tabular}
+\end{center}
+```
+De manera más especifica, el modelo entidad/relación corresponde a la técnica basada en la identificación de las entidades y de las relaciones que se dan entre ellas, según la realidad que se intenta modelar.
+
+Se debe recordar acá, el concepto de llave del que hablamos la clase pasada. Una llave (o también llamada clave), corresponde a un conjunto de atributos que permite identificar unívocamente a una entidad dentro de un conjunto de entidades.
+
+Por ejemplo para una Facultad el modelo podría ser:
+
+```{=tex}
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c|}
+    \hline
+    Entidades & Asignatura & Alumno & Profesor & Departamento & Aula & Grupo \\
+    Atributos & ID & RUT & RUT & ID & ID & ID \\
+    & Nombre & Nombre & Nombre & Nombre & Capacidad & Tipo  \\
+    & Créditos & Dirección & Categoría & & & \\
+    & Curso & Email & Email & & & \\
+    \hline
+\end{tabular}
+\end{center}
+```
+En donde existen las siguientes relaciones:
+
+```{=tex}
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c|}
+    \hline
+    Relación & Entidades participantes & Cardinalidad & Atributos \\
+    se matricula en & Alumno - Grupo & N:M & Calificación \\
+    enseña & Profesor - Grupo & N:M & \\
+    impartida en & Asignatura - Grupo & 1:N  &\\
+    asignada a & Aula - Grupo & N:M & Día, hora \\
+    pertenece a & Profesor - Departamento & N:1 & \\
+    dirige & Profesor - Departamento & 1:1 & \\
+    \hline
+\end{tabular}
+\end{center}
+```
+Esto también puede ser representado de manera grafica. Veamos el siguiente ejemplo:
+
+```{r, message = FALSE, warning=FALSE}
+library(datamodelr)
+
+file_path <- system.file("samples/example.yml", package = "datamodelr")
+dm <- dm_read_yaml(file_path)
+
+graph <- dm_create_graph(dm, rankdir = "LR")
+
+#dm_render_graph(graph)
+dm_export_graph(graph, 'imagenes/diagrama_01.png')
+```
+
+![Diagrama 01](imagenes/diagrama_01.png){width="50%"}
+
+Veamos esto en relación a los datos que estuvimos revisando; primero debemos ingresar las tablas sobre las que estuvimos trabajando.
+
+```{r, message = FALSE, warning=FALSE}
+library(readxl)
+
+flights_01 <- read_excel("data/data_uniones.xlsx",
+              sheet = "Flights")
+
+routes_01 <- read_excel("data/data_uniones.xlsx",
+                         sheet = "Routes")
+
+airports_01 <- read_excel("data/data_uniones.xlsx",
+                         sheet = "Airports")
+
+aircraft_01 <- read_excel("data/data_uniones.xlsx",
+                         sheet = "Aircraft")
+
+
+dm_f <- dm_from_data_frames(flights_01, routes_01, aircraft_01, airports_01)
+graph <- dm_create_graph(dm_f, rankdir = "BT", col_attr = c("column", "type"))
+#dm_render_graph(graph)
+
+dm_export_graph(graph, 'imagenes/diagrama_02.png')
+
+```
+
+![Diagrama 02](imagenes/diagrama_02.png){width="70%"}
+
+Después debemos generar las relaciones entre cada una de las tablas:
+
+```{r, message = FALSE, warning=FALSE}
+dm_f <- dm_add_references(
+  dm_f,
+  
+  aircraft_01$AircraftID == flights_01$AircraftID,
+  airports_01$AirportID == routes_01$AirportID,
+  flights_01$RouteID == routes_01$RouteID
+)
+graph <- dm_create_graph(dm_f, rankdir = "BT", col_attr = c("column", "type"))
+#dm_render_graph(graph)
+dm_export_graph(graph, 'imagenes/diagrama_03.png')
+
+```
+
+![Diagrama 03](imagenes/diagrama_03.png){width="50%"}
+
+Podemos intentar mejorar un poco el formato de la visualización:
+
+```{r}
+
+graph <- dm_create_graph( 
+  dm_f, 
+  graph_attrs = "rankdir = RL, bgcolor = '#F4F0EF' ", 
+  edge_attrs = "dir = both, arrowtail = crow, arrowhead = odiamond",
+  node_attrs = "fontname = 'Arial'")
+
+#dm_render_graph(graph)
+dm_export_graph(graph, 'imagenes/diagrama_04.png')
+
+
+```
+
+![Diagrama 04](imagenes/diagrama_04.png){width="70%"}

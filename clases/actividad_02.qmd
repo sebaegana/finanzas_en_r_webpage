@@ -1,0 +1,43 @@
+---
+title: |
+  | \includegraphics[width=5cm]{Imagen1.jpg}  
+  | Finanzas en R
+subtitle: Actividad 02
+format: pdf
+editor: visual
+author:   
+  - Sebastián Egaña Santibáñez [{{< fa brands inbox >}}](mailto:segana@fen.uchile)
+  - Nicolás Leiva Díaz [{{< fa brands inbox >}}](mailto:nleivad@fen.uchile.cl)
+code-block-bg: true
+code-block-border-left: "#FF0000"
+---
+
+---
+
+# Enlaces del profesor
+
+[{{< fa brands link >}}](https://segana.netlify.app) https://segana.netlify.app
+
+[{{< fa brands github >}}](https://github.com/sebaegana) https://github.com/sebaegana
+
+[{{< fa brands linkedin >}}](https://www.linkedin.com/in/sebastian-egana-santibanez/) https://www.linkedin.com/in/sebastian-egana-santibanez/
+
+------------------------------------------------------------------------
+
+# Actividad 2
+
+## Introducción
+
+De la tabla entregada, debe calcular lo siguiente:
+
+## Parte 1
+
+1.  Nombres únicos dentro de la base.
+2.  Genere variable días de vacaciones. Explique los supuestos utilizados.
+3.  Suma de los días de vacaciones por cada nombre único.
+4.  Número de veces que cada persona tomó vacaciones dentro de la base de datos.
+
+## Parte 2
+
+1.  ¿Cuántos períodos de vacaciones se tomaron entre el 1 de febrero del 2012 y el 21 de marzo del 2012?
+2.  ¿Cuántas personas tomaron vacaciones en dicho período?

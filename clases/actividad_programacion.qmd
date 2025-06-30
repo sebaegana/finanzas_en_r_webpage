@@ -1,0 +1,51 @@
+---
+title: |
+  | \includegraphics[width=5cm]{Imagen1.jpg}  
+  | Finanzas en R
+subtitle: Programación
+format: pdf
+editor: visual
+author:   
+  - Sebastián Egaña Santibáñez [{{< fa brands inbox >}}](mailto:segana@fen.uchile.cl)
+  - Nicolás Leiva Díaz [{{< fa brands inbox >}}](mailto:nleivad@fen.uchile.cl)
+code-block-bg: true
+code-block-border-left: "#FF0000"
+---
+
+\-\--
+
+# Enlaces del profesor
+
+[{{< fa brands link >}}](https://segana.netlify.app) https://segana.netlify.app
+
+[{{< fa brands github >}}](https://github.com/sebaegana) https://github.com/sebaegana
+
+[{{< fa brands linkedin >}}](https://www.linkedin.com/in/sebastian-egana-santibanez/) https://www.linkedin.com/in/sebastian-egana-santibanez/
+
+------------------------------------------------------------------------
+
+# Actividad intermedia: programación en R
+
+## Instrucciones
+
+1. Usted cuenta con 90 minutos para terminar la actividad
+2. Puede trabajar en pares o de manera individual
+3. La entrega es obligatoria, siendo una actividad formativa
+
+## Actividad 1
+
+Considere los siguientes datasets cesus.csv y census-division.csv.
+
+1. Ordene los datos de las siguientes maneras: región ascendente, división descendiente y población descendiente (se deben combinar ambos datasets). Termine escribiendo sus resultados en tres hojas de excel distintas de un mismo archivo Excel (Xlsx)
+
+2. Elimina el código postal del dataset cominado
+
+3. Cree una nueva columna, llamada densidad, que corresponde a la división de la población en la superficie terreste (land area)
+
+4. Visualice la relación entre la superficie terrestre y la población para todas las observaciones del año 2015
+
+5. Encontrar la población total para cada región
+
+6.Cree una tabla que contenga los estados y población, con la población para cada año, mantiendo la estructura de una sola columna
+
+

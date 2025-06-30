@@ -1,0 +1,45 @@
+---
+title: |
+  | \includegraphics[width=5cm]{Imagen1.jpg}  
+  | Finanzas en R
+subtitle: Actividad 01
+format: pdf
+editor: visual
+author:   
+  - Sebastián Egaña Santibáñez [{{< fa brands inbox >}}](mailto:segana@fen.uchile)
+  - Nicolás Leiva Díaz [{{< fa brands inbox >}}](mailto:nleivad@fen.uchile.cl)
+code-block-bg: true
+code-block-border-left: "#FF0000"
+---
+
+\-\--
+
+# Enlaces del profesor
+
+[{{< fa brands link >}}](https://segana.netlify.app) https://segana.netlify.app
+
+[{{< fa brands github >}}](https://github.com/sebaegana) https://github.com/sebaegana
+
+[{{< fa brands linkedin >}}](https://www.linkedin.com/in/sebastian-egana-santibanez/) https://www.linkedin.com/in/sebastian-egana-santibanez/
+
+------------------------------------------------------------------------
+
+# Actividad 1
+
+## Introducción
+
+La data corresponde a las estadísticas de las mujeres en el Ajedrez, de las distintas federaciones a través del mundo. En la hoja variables se específica el significado de cada una de las columnas.
+
+## Instrucciones
+
+1.  Cargue el archivo entregado en Excel
+2.  Cargue dos dataframes, uno con los datos (hoja data) y otro con el diccionario de la tabla (hoja variables)
+3.  El objetivo general corresponde a realizar una revisión y limpieza del set de datos en base a posibles errores. Para esto, considere la entrega de lo siguiente:
+
+-   Diccionario de variables: Nombre variable, Tipo de variable, explicación.
+-   Estadística descriptiva.
+-   Detalle de modificación de variables en caso de ser necesario.
+-   Estandarización de variables.
+-   Posible creación de variables nuevas.
+
+4.  La entrega debe realizarse con un archivo de texto que explique su trabajo y el código utilizado para esto

@@ -1,0 +1,110 @@
+---
+title: |
+  | \includegraphics[width=5cm]{Imagen1.jpg}  
+  | Finanzas en R
+subtitle: Documentos en R
+format: pdf
+editor: visual
+author:   
+  - Sebastián Egaña Santibáñez [{{< fa brands inbox >}}](mailto:segana@fen.uchile)
+  - Nicolás Leiva Díaz [{{< fa brands inbox >}}](mailto:nleivad@fen.uchile.cl)
+code-block-bg: true
+code-block-border-left: "#FF0000"
+---
+
+\-\--
+
+# Enlaces del profesor
+
+[{{< fa brands link >}}](https://segana.netlify.app) https://segana.netlify.app
+
+[{{< fa brands github >}}](https://github.com/sebaegana) https://github.com/sebaegana
+
+[{{< fa brands linkedin >}}](https://www.linkedin.com/in/sebastian-egana-santibanez/) https://www.linkedin.com/in/sebastian-egana-santibanez/
+
+------------------------------------------------------------------------
+
+# Quarto basics:
+
+Esta es una estructura básica de un documento en Quarto:
+
+```         
+---
+title: "Diamond sizes"
+date: 2022-09-12
+format: html
+---
+```
+
+```         
+#| label: setup
+#| include: false
+
+library(tidyverse)
+
+smaller <- diamonds |> 
+  filter(carat <= 2.5)
+```
+
+We have data about `r nrow(diamonds)` diamonds. Only `r nrow(diamonds) - nrow(smaller)` are larger than 2.5 carats. The distribution of the remainder is shown below:
+
+```         
+#| label: plot-smaller-diamonds
+#| echo: false
+
+smaller |> 
+  ggplot(aes(x = carat)) + 
+  geom_freqpoly(binwidth = 0.01)
+```
+
+Por parte:
+
+1.  YAML en el encabezado, rodeado por ---
+2.  Chunks de código en R rodeados por \`\`\`
+3.  Texto cojn formateos simples
+
+Para generar el documento, debemos utilizar "Render"
+
+El proceso que se genera es el siguiente:
+
+![Porceso de generación de documento](https://r4ds.hadley.nz/images/quarto-flow.png)
+
+Para profundizar más:
+
+-   <https://r4ds.hadley.nz/quarto>
+
+# Otros documentos en R
+
+## Documentos con Rmarkdown
+
+Como guía principal para los documentos en R, podemos ver el siguiente enlace:
+
+-   <https://bookdown.org/yihui/rmarkdown/>
+
+## Diapositivas
+
+Dentro de la comunidad de R, está muy extendido el formato de diapositivas denominado xaringan. Veamos esta página:
+
+-   <https://github.com/yihui/xaringan/wiki>
+
+## Dashboards
+
+La principal librería para utilizar dashboards, corresponde a flexdashboars. Veamos este enlace:
+
+-   <https://pkgs.rstudio.com/flexdashboard/>
+
+## Compartir en internet
+
+Veamos la siguiente diapositiva:
+
+-   <https://rstudio-education.github.io/sharing-short-notice>
+
+### Actividad:
+
+Generamos un dashboard simple, y compartamoslo en internet. Utilice esta página:
+
+-   <https://r-graph-gallery.com/267-reorder-a-variable-in-ggplot2.html>
+
+El formato básico de dicho curso es el siguiente:
+
+-   <https://rstudio.github.io/distill/>

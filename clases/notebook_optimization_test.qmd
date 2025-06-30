@@ -1,0 +1,619 @@
+---
+title: |
+  | \includegraphics[width=5cm]{Imagen1.jpg}  
+  | Finanzas en R
+subtitle: Regresión lineal y aplicaciones
+format: 
+  pdf:
+    keep-tex: true
+    include-in-header:
+      - text: |
+          \usepackage{longtable}
+editor: visual
+author:   
+  - Sebastián Egaña Santibáñez [{{< fa brands inbox >}}](mailto:segana@fen.uchile)
+  - Nicolás Leiva Díaz [{{< fa brands inbox >}}](mailto:nleivad@fen.uchile.cl)
+code-block-bg: true
+code-block-border-left: "#FF0000"
+---
+
+------------------------------------------------------------------------
+
+# Enlaces del profesor
+
+[{{< fa brands link >}}](https://segana.netlify.app) https://segana.netlify.app
+
+[{{< fa brands github >}}](https://github.com/sebaegana) https://github.com/sebaegana
+
+[{{< fa brands linkedin >}}](https://www.linkedin.com/in/sebastian-egana-santibanez/) https://www.linkedin.com/in/sebastian-egana-santibanez/
+
+------------------------------------------------------------------------
+
+# Regresión Lineal
+
+En términos simples, una regresión lineal corresponde al intento matemático y estadístico de analizar como un conjunto de datos se adapta o no a un comportamiento lineal, ya sea esta relación directa o no.
+
+Por ejemplo la oferta en donde el precio depende de la cantidad demandada:
+
+\begin{equation}
+Precio = \alpha + \beta * Cantidad
+\end{equation}
+
+Se asumía que la relación podía ser de la siguiente manera:
+
+\begin{equation}
+Precio = 2 + 2 * Cantidad
+\end{equation}
+
+La regresión lineal, corresponde al intento de estimar los valores del intercepto o constante y de la pendiente utilizando un metodo matemático, en base a una muestra para extrapolar el comportamiento de una población y con esto haciendo uso de principios estadísticos. Por ejemplo, pretendemos saber si la muestra utilizada nos permite confirmar el signo de la pendiente y el valor de la misma.
+
+# Proyección de demanda
+
+Se tiene un proyecto para una empresa de exportación, en donde se pretende realizar una estimación del Tipo de cambio nominal (TCN de ahora en adelante).
+
+-   Pregunta ¿por qué podría ser relevante el TCN para un proyecto como este? ¿Existe otro tipo de proyectos en dónde también podría ser relevante?
+
+Para esto, el especialista econométrico plantea que el TCN posee una relación con variables como el precio del cobre (Pcu) y el dolar index (DXY).
+
+-   ¿Cuál es la razón de pensar en que existe una relación entre el TCN y el PCU? ¿Para el DXY?
+
+Esto corresponde a una parte importante de la modelación; plantear la relación teórica entre las variables.
+
+Se plantea el siguiente modelo:
+
+\begin{equation}
+TCN = \alpha - \beta * Pcu
+\end{equation}
+
+Por otra parte, también podría ser:
+
+\begin{equation}
+TCN = \alpha + \beta * DXY
+\end{equation}
+
+¿Cuál debería ser la relación entre cada variable y el TCN?, esto corresponde a un paso previo de la estimación econométrica.
+
+## Estimación del modelo
+
+Vemos los modelos por separado:
+
+```{r, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(readxl)
+
+ejemplo <- read_excel("ejemplo.xlsx")
+
+data <- ejemplo %>% 
+  mutate(year = substring(fecha, 1, 4),
+         ln_tcn = log(TCN),
+         ln_dxy = log(`DXY Index`),
+         ln_pcu = log(Pcu))
+
+data_subset <- data %>% 
+  filter(year >= 2014)
+
+modelo_01 <- lm(TCN ~ `DXY Index`, data = data_subset)
+
+summary(modelo_01)
+
+modelo_02 <- lm(TCN ~ Pcu, data = data_subset)
+
+summary(modelo_02)
+```
+
+Observamos la relación en un gráfico de dispersión:
+
+```{r,message=FALSE, warning=FALSE}
+plot(data_subset$Pcu, data_subset$TCN, 
+     pch = 16, cex = 1.3, col = "blue", 
+     main = "Relación TCN y Pcu", 
+     xlab = "Pcu", ylab = "TCN")
+
+abline(lm(TCN ~ Pcu, data = data_subset))
+```
+
+¿Cómo interpretaría usted estos valores?
+
+¿Existe alguna particularidad en los valores de la estimación? Los valores asociados a los parámetros estimados son particularmente grandes (especialmente el valor de la constante).
+
+Una solución a esto, muy utilizada en la práctica, es la utilización de los logaritmos de las variables. Esto tiene dos ventajas:
+
+1.  Soluciona problemas de escala.
+2.  Permite la interpretación en porcentajes.
+
+Con la regresión logaritmos:
+
+```{r, message=FALSE, warning=FALSE}
+modelo_03 <- lm(ln_tcn ~ ln_pcu, data = data_subset)
+
+summary(modelo_03)
+
+plot(data_subset$ln_pcu, data_subset$ln_tcn, 
+     pch = 16, cex = 1.3, col = "blue", 
+     main = "Relación TCN y Pcu", 
+     xlab = "Ln Pcu", ylab = "Ln TCN")
+
+abline(lm(ln_tcn ~ ln_pcu, data = data_subset))
+```
+
+## ¿Cómo analizar una regresión?
+
+-   Significancia individual
+
+Por ejemplo para la constante, se evalua la siguiente hipótesis:
+
+Hipótesis Nula o $H_{0}$
+
+\begin{equation}
+\beta_{1} = 0
+\end{equation}
+
+Hipótesis Alternativa o $H_{1}$
+
+\begin{equation}
+\beta_{1} \neq 0
+\end{equation}
+
+Se busca el poder rechazar la hipótesis nula, ¿pero por qué?
+
+Este proceso se puede realizar de dos maneras (hay más):
+
+-   Estadístico calculado
+
+Por ejemplo para el caso de la constante, este valor corresponde a 2,081 según la siguiente fórmula:
+
+\begin{equation}
+t_{calculado} = \frac{Coeficiente}{\text{error estándar del coeficiente}}
+\end{equation}
+
+lo que debe contrastarse con valores de tabla, según el siguiente detalle:
+
+\begin{equation}
+t_{tabla} = t-student_{10\%, n - 1}
+\end{equation}
+
+Este valor de probabilidad se evalua generalmente al 10%, al 5% y al 1%, y se le denomina valor significativo.
+
+-   P-Valor
+
+Corresponde a la probabilidad acumulada por el valor t calculado, considerando el espacio desde el estadístico hacia el final o inicio de la distibución.
+
+Se contrasta contra el valor de significancia. En caso de P-valor sea menor que el nivel de significancia, ya sea (1%, 5% o 10%), se rechaza la hipótesis nula.
+
+-   Significancia global
+
+Se aplica lo mismo, pero considerando el siguiente test:
+
+Hipótesis Nula o $H_{0}$
+
+\begin{equation}
+\beta_{2} = \beta_{3}...\beta_{n} = 0
+\end{equation}
+
+Hipótesis Alternativa o $H_{1}$
+
+\begin{equation}
+\beta_{2} = \beta_{3}...\beta_{n} \neq 0
+\end{equation}
+
+No se considera la constante con una distribución F.
+
+-   Bondad del Ajuste
+
+Se relaciona con el valor del R cuadrado y R cuadrado ajustado. Nos habla del ajuste lineal del modelo. El segundo considera el ajuste por el número de variables independientes.
+
+Veamos esto en relación al último modelo calculado:
+
+```{r}
+
+modelo_03 <- lm(ln_tcn ~ ln_pcu, data = data_subset)
+
+summary(modelo_03)
+
+```
+
+## ¿Cómo aplicamos esto?
+
+Teniendo las estimaciones del tipo de cambio, deberíamos poder generar las estimaciones de las cantidades a vender. Conociendo el precio, podríamos multiplicar todos los factores y obtenemos nuestro valor inicial.
+
+Por ejemplo:
+
+\begin{equation}
+Ventas_{year 1} = TCN_{year 1} * Cantidad_{year 1} = 720 * 1.000 = 720.000
+\end{equation}
+
+-   ¿Ve algún problema en esto?
+
+Desde este punto, solo queda poder aplicar un crecimiento a estas ventas para los otros años a estimar.
+
+Esto podemos explicarlo partiendo desde una pregunta:
+
+-   Tiene dos modelos de estimación de sus ventas: el primero, en base a un modelo econométrico y el segundo en base a una pregunta realizada a sus propios vendedores, sobre cuánto esperan vender ellos. ¿En cuál estimación o proyección confía más?
+
+-   Por lo demás, existe un problema práctico sobre dichos modelos, si lo vemos en su especificación estimamos el siguiente modelo:
+
+\begin{equation}
+TCN = \alpha + \beta * Pcu
+\end{equation}
+
+¿Cuál es la temporalidad de la estimación? ¿Qué implica esto?
+
+# Modelo CAPM
+
+Debemos ahora aplicar los contenidos vistos relacionados con regresión simple. Un caso conocido en finanzas corresponde al modelo CAPM, que relaciona los retornos de un activos o portafolio con los retornos del mercado.
+
+En base a esto, sabemos que la regresión simple posee la siguiente especificación teórica:
+
+$$ y = \alpha + \beta * x $$
+
+n donde $y$ corresponde a la variable dependiente, $x$ corresponde a la variable independiente, $\alpha$ corresponde al intercepto y $\beta$ corresponde a la pendiente.
+
+Dicho ejercicio corresponde al intento de estimar de manera empirica los valores para una ecuación lineal; anteriormente los ejercicios que utilizan ecuaciones de este tipo asumían los valores dados y no ahondaban en el análisis estadístico que hay detrás de su estimación.
+
+En base a esto CAPM en términos estimados corresponde a lo siguiente:
+
+$$
+r_{activo} = \hat{\alpha} + \hat{\beta} * r_{mercado}
+$$
+
+------------------------------------------------------------------------
+
+# Librerías a utilizar
+
+Se especificas a continuación las libreríass que serán utilizados en dicha sesión
+
+```{r, message=FALSE, warning=FALSE}
+library(tidyquant)
+library(tidyverse)
+library(quantmod)
+library(timetk)
+library(broom)
+library(highcharter)
+library(ggpmisc)
+library(knitr)
+library(kableExtra)
+```
+
+# Acciones a utilizar
+
+Para este ejemplo, utilizáremos acciones del mercado de EE.UU.
+
+```{r, message=FALSE, warning=FALSE}
+# Tickers a descargar
+
+symbols <- c("SPY","EFA", "IJS", "EEM","AGG")
+
+prices <-
+  getSymbols(symbols,
+             src = 'yahoo',
+             from = "2012-12-31",
+             to = "2021-12-31",
+             auto.assign = TRUE,
+             warnings = FALSE) %>%
+  map(~Ad(get(.))) %>%
+  reduce(merge) %>%
+  `colnames<-`(symbols)
+```
+
+## Precios mensuales
+
+Por lo general, el modelo CAPM se calcula utilizando ya sea precios semanales o mensuales. En este caso utilizáremos precios mensuales.
+
+```{r, message=FALSE, warning=FALSE}
+# Conversión a precios mensuales
+
+prices_monthly <- to.monthly(prices,
+                             indexAt = "lastof",
+                             OHLC = FALSE)
+head(prices_monthly, 3)
+
+```
+
+## Conversión a retornos
+
+Por lo general los retornos se calculan como la variación porcentual entre dos fechas, en este caso mensuales. Una alternativa es calcularlo utilizando variaciones en logaritmo lo que es muy utilizado por profesionales de economía y finanzas.
+
+Esto se puede cambiar variando el `method` entre `"discrete", "log", "difference"`.
+
+```{r, message=FALSE, warning=FALSE}
+# Cálculo del retorno usando logaritmos
+
+asset_returns_xts <-
+  Return.calculate(prices_monthly,
+                   method = "log") %>%
+  na.omit()
+
+head(asset_returns_xts, 3)
+```
+
+## Modificación y estructuración del data frame
+
+```{r, message=FALSE, warning=FALSE}
+# Generación de data frame desde archivo xts
+
+asset_returns_dplyr_byhand <-
+  prices %>%
+  to.monthly(indexAt = "lastof", OHLC = FALSE) %>%
+  # convert the index to a date
+  data.frame(date = index(.)) %>%
+  # now remove the index because it got converted to row names
+  remove_rownames() %>%
+  gather(asset, prices, -date) %>%
+  group_by(asset) %>%
+  mutate(returns = (log(prices) - log(lag(prices)))) %>%
+  select(-prices) %>%
+  spread(asset, returns) %>%
+  select(date, all_of(symbols)) %>% 
+  na.omit()
+
+```
+
+# Datos en formato long
+
+```{r, message=FALSE, warning=FALSE}
+# Orientación del data frame en formato long
+
+asset_returns_long <-
+  asset_returns_dplyr_byhand %>%
+  gather(asset, returns, -date) %>%
+  group_by(asset)
+
+head(asset_returns_long, 3)
+```
+
+## Pesos de los activos dentro del portafolio
+
+En este caso, calcularémos el modelo CAPM para un portafolio de activos. Para esto, debemos calcular el retorno ponderado del portafolio en base a las distintas ponderaciones de cada activos en el portafolio. Especificamos las ponderaciones:
+
+```{r, message=FALSE, warning=FALSE}
+# Pesos para cálculo de portafolio
+
+w <- c(0.25,
+       0.25,
+       0.20,
+       0.20,
+       0.10)
+```
+
+## Cálculo del retorno del portafolio
+
+```{r, message=FALSE, warning=FALSE}
+# Cálculo del retorno ponderado del portafolio
+
+portfolio_returns_tq_rebalanced_monthly <-
+  asset_returns_long %>%
+  tq_portfolio(assets_col = asset,
+               returns_col = returns,
+               weights = w,
+               col_rename = "returns",
+               rebalance_on = "months")
+```
+
+## Histograma de los retornos
+
+```{r, message=FALSE, warning=FALSE, out.width="50%"}
+# Histograma de los retornos del portafolio
+
+portfolio_returns_tq_rebalanced_monthly %>%
+  ggplot(aes(x = returns)) +
+  geom_histogram(alpha = 0.45, binwidth = .005) +
+  ggtitle("Monthly Returns Since 2013")
+```
+
+## Histograma por activo
+
+```{r, message=FALSE, warning=FALSE, out.width="50%"}
+# Histograma de los retornos por activos
+
+asset_returns_long %>%
+  ggplot(aes(x = returns, fill = asset)) +
+  geom_histogram(alpha = 0.45, binwidth = .01) + 
+  facet_wrap(~asset) +
+  ggtitle("Monthly Returns Since 2013") +
+  theme_update(plot.title = element_text(hjust = 0.5))
+```
+
+## Histograma por activo (variación)
+
+```{r, message=FALSE, warning=FALSE, out.width="40%"}
+# Histograma de los retornos por activos
+
+asset_returns_long %>%
+  ggplot(aes(x = returns)) +
+  geom_density(aes(color = asset), alpha = 1) +
+  geom_histogram(aes(fill = asset), alpha = 0.45, binwidth = .01) +
+  guides(fill = FALSE) +
+  facet_wrap(~asset) +
+  ggtitle("Monthly Returns Since 2013") +
+  xlab("monthly returns") +
+  ylab("distribution") +
+  theme_update(plot.title = element_text(hjust = 0.5)) +
+  guides(scale = "none")
+
+```
+
+## Gráfico de densidad
+
+```{r, message=FALSE, warning=FALSE, out.width="40%"}
+# Densidad
+
+portfolio_density_plot <-
+  asset_returns_long %>%
+  ggplot(aes(x = returns)) +
+  stat_density(geom = "line",
+               alpha = 1,
+               colour = "cornflowerblue")
+
+portfolio_density_plot
+```
+
+## Grafico de densidad con área sombreada
+
+```{r, message=FALSE, warning=FALSE, out.width="40%"}
+shaded_area_data <-
+  ggplot_build(portfolio_density_plot)$data[[1]] %>%
+  filter(x < mean(asset_returns_long$returns))
+
+portfolio_density_plot_shaded <-
+  portfolio_density_plot +
+  geom_area(data = shaded_area_data,
+            aes(x = x, y = y),
+            fill="pink",
+            alpha = 0.5)
+
+portfolio_density_plot_shaded
+
+```
+
+# Retorno de Mercado
+
+El retorno del mercado será aproximado desde el retorno del SPY
+
+```{r message=FALSE, warning=FALSE}
+## CAPM
+
+market_returns_xts <-
+  getSymbols("SPY",
+             src = 'yahoo',
+             from = "2012-12-31",
+             to = "2021-12-31",
+             auto.assign = TRUE,
+             warnings = FALSE) %>%
+  map(~Ad(get(.))) %>%
+  reduce(merge) %>%
+  `colnames<-`("SPY") %>%
+  to.monthly(indexAt = "lastof",
+             OHLC = FALSE) %>%
+  Return.calculate(.,
+                   method = "log") %>%
+  na.omit
+
+market_returns_tidy <-
+  market_returns_xts %>%
+  tk_tbl(preserve_index = TRUE,
+         rename_index = "date") %>%
+  na.omit() %>%
+  select(date, returns = SPY)
+
+```
+
+## Retorno de Mercado
+
+```{r, message=FALSE, warning=FALSE}
+
+portfolio_returns_xts_rebalanced_monthly <-
+  Return.portfolio(asset_returns_xts,
+                   weights = w,
+                   rebalance_on = "months") %>%
+  `colnames<-`("returns")
+
+head(portfolio_returns_xts_rebalanced_monthly, 3)
+
+```
+
+## Calculo de los $\beta$
+
+Desarrollamos el modelo especificado al principio pero considerando cada activo que compone al portafolio
+
+```{r, message=FALSE, warning=FALSE}
+beta_assets <-
+  asset_returns_long %>%
+  nest(-asset) %>%
+  mutate(model =
+           map(data, ~
+                 lm(returns ~ market_returns_tidy$returns,
+                    data = .))) %>%
+  mutate(model = map(model, tidy)) %>%
+  unnest(model) %>%
+  mutate_if(is.numeric, list(~ round(., 4)))
+
+
+beta_assets_show <- beta_assets %>% 
+  select(-data)
+```
+
+```{r}
+beta_assets_show
+```
+
+## Tabla con los coeficientes
+
+```{r, message=FALSE, warning=FALSE}
+knitr::kable(
+  beta_assets_show,
+  format = "latex",          # or omit this if rendering to HTML
+  booktabs = TRUE,
+  digits = 2
+)
+```
+
+# Análisis
+
+Debemos realizar el análisis en base a los valores obtenidos para los coeficientes. Cabe mencionar, que tenemos un mayor interés en encontrar significancia en el parámetro relacionado con la pendiente y no en el relacionado con el intercepto.
+
+Por otra parte, ¿qué significa que el parámetro sea mayor o menor que 1?
+
+## Análisis gráfico
+
+Podemos generar una regresión considerando que corresponde a la línea que atraviesa entre los puntos de ambas variables. Para esto generamos un gráfico de puntos entre X e Y, considerando la relación entre los retornos del portafolio y los retornos del mercado.
+
+```{r, message=FALSE, warning=FALSE, out.width="40%"}
+portfolio_returns_tq_rebalanced_monthly %>%
+  mutate(market_returns =
+           market_returns_tidy$returns) %>%
+  ggplot(aes(x = market_returns,
+             y = returns)) +
+  geom_point(color = "cornflowerblue") +
+  ylab("portfolio returns") +
+  xlab("market returns")
+
+```
+
+## Línea de regresión
+
+Utilizando el gráfico anterior, generamos la línea de regresión:
+
+```{r, message=FALSE, warning=FALSE, out.width="40%"}
+portfolio_returns_tq_rebalanced_monthly %>%
+  mutate(market_returns =
+           market_returns_tidy$returns) %>%
+  ggplot(aes(x = market_returns,
+             y = returns)) +
+  geom_point(color = "cornflowerblue") +
+  geom_smooth(method = "lm",
+              se = FALSE,
+              color = "green") +
+  ylab("portfolio returns") +
+  xlab("market returns")   
+
+```
+
+## Gráfico con los parametros calculados
+
+Podemos también agregar al gráfico la éxpresión de la regresión calculada:
+
+```{r, message=FALSE, warning=FALSE, out.width="40%"}
+data <- portfolio_returns_tq_rebalanced_monthly %>%
+  mutate(market_returns =
+           market_returns_tidy$returns) 
+
+my.formula <- y ~ x
+
+p <- ggplot(data = data, aes(x = market_returns,
+                           y = returns)) +
+  geom_smooth(method = "lm", se=FALSE, color="green", formula = my.formula) +
+  stat_poly_eq(formula = my.formula, 
+               aes(label = paste(..eq.label.., ..rr.label.., sep = "~~~")), 
+               parse = TRUE) +         
+  geom_point(color = "cornflowerblue")
+p 
+
+```
+
+------------------------------------------------------------------------
+
+# Tarea
+
+1.  Calcule y analice la regresión entre los retorno del portafolio y los retornos del mercado. Genere conclusiones sobre la significancia y valores de los parámetros.
+
+2.  ¿Puede ser la pendiente de la regresión negativa?

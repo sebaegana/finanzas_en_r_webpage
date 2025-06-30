@@ -1,0 +1,291 @@
+---
+title: |
+  | \includegraphics[width=5cm]{Imagen1.jpg}  
+  | Finanzas en R
+subtitle: Notebook 3
+format: pdf
+editor: visual
+author:   
+  - Sebastián Egaña Santibáñez   
+  - Nicolás Leiva Díaz
+code-block-bg: true
+code-block-border-left: "#FF0000"
+---
+
+\-\--
+
+# Enlaces del profesor
+
+[{{< fa brands link >}}](https://segana.netlify.app) https://segana.netlify.app
+
+[{{< fa brands github >}}](https://github.com/sebaegana) https://github.com/sebaegana
+
+[{{< fa brands linkedin >}}](https://www.linkedin.com/in/sebastian-egana-santibanez/) https://www.linkedin.com/in/sebastian-egana-santibanez/
+
+------------------------------------------------------------------------
+
+# Precios de activos financieros utilizando Quantmod
+
+Quantmod es una de las librarías financieras más utilizadas para la obtención de precios.
+
+La manera más simple de obtener precios es la siguiente:
+
+```{r}
+#| warning: false
+library(tidyverse)
+library(tidyquant)
+library(quantmod)
+
+getSymbols("AAPL", 
+           src = "yahoo", 
+           from = "2010-01-01", 
+           to = "2010-07-30", 
+           periodicity = "daily")
+
+```
+
+Solo debemos declarar el simbolo (instrumento financiero), el período y la periodicidad del instrumento.
+
+La librería también posee una forma simple de gráficar las series obtenidas:
+
+```{r}
+chartSeries(AAPL, TA=NULL)
+
+```
+
+Otro ejemplo:
+
+```{r}
+chartSeries(AAPL, subset = "last 3 months")
+
+```
+
+Para llevar esto a ggplot, deberíamos aplicar algunas funciones convirtiendo el set datos obtenido en un formato adecuado.
+
+```{r}
+df_aapl_dates <- as_tibble(index(AAPL))
+df_aapl_data <- as_tibble(AAPL)
+
+df_aapl <- df_aapl_dates %>% 
+  bind_cols(df_aapl_data)
+```
+
+Graficamos:
+
+```{r}
+
+g1 <- ggplot(df_aapl) + geom_line(mapping = aes(value, AAPL.Close))
+g1 <- g1 + labs(title = "AAPLE", subtitle = "Año 2010") + 
+  xlab("Fecha") + ylab("")
+g1 <- g1 + theme_bw()
+g1
+```
+
+## Múltiples simbolos
+
+```{r}
+tickers <- c("ORCL","AMD","IBM","NVDA")
+
+getSymbols(tickers, src = "yahoo", 
+           from = "2010-01-01", 
+           to = "2018-07-30", periodicity = "daily")
+
+list <- lapply(tickers, function(x) Cl(get(x)))
+precio.cierre <- do.call(merge,list)
+
+df_all_dates <- as_tibble(index(precio.cierre))
+df_all_data <- as_tibble(precio.cierre)
+
+df_all <- df_all_dates %>% 
+  bind_cols(df_all_data)
+
+```
+
+Graficamos:
+
+```{r}
+
+g1 <- ggplot(df_all) + 
+  geom_line(mapping = aes(value, ORCL.Close), color = 'blue') +
+  geom_line(mapping = aes(value, AMD.Close), color = 'red') +
+  geom_line(mapping = aes(value, IBM.Close), color = 'green') +
+  geom_line(mapping = aes(value, NVDA.Close), color = 'yellow')
+g1 <- g1 + labs(title = "ARCL", subtitle = "2010 al 2018") + xlab("Fecha") + ylab("")
+g1 <- g1 + theme_bw()
+g1
+```
+
+Pero esto no tiene mucho sentido, debido a las diferencias de escala de cada una de las acciones. La medida básica de comparación para acciones corresponde a los retornos.
+
+# Calcular retornos
+
+La fórmula básica para obtener retorno, corresponde a la variación porcentual:
+
+$$ r_t = \frac{p_t - p_{t-1}}{p_{t-1}}$$ en Finanzas también se puede trabajar con una expresión logaritmica:
+
+$$ r_t = ln( \frac{p_t}{p_{t-1}})$$ Que converge al mismo valor cuando el intervalo tiende a cero.
+
+Calculamos de las dos maneras:
+
+```{r}
+retornos_2 <- data.frame(apply(precio.cierre, 2, 
+                               function(x) Delt(x, type = "arithmetic")),
+                       fecha = index(precio.cierre)) %>%
+            rename(orcl = ORCL.Close, 
+                   amd = AMD.Close, 
+                   ibm = IBM.Close, 
+                   nvda = NVDA.Close) %>% 
+            na.omit() 
+```
+
+```{r}
+retornos <- data.frame(apply(precio.cierre, 2, function(x) Delt(x, type = "log")),
+                       fecha = index(precio.cierre)) %>%
+            rename(orcl = ORCL.Close, 
+                   amd = AMD.Close, 
+                   ibm = IBM.Close, 
+                   nvda = NVDA.Close) %>% 
+            na.omit() 
+```
+
+Veamos algunas diferencias entre cada data set (cargamos la librería vtable para esto):
+
+```{r}
+#| warning: false
+library(vtable)
+st(retornos)
+st(retornos_2)
+```
+
+Graficamos:
+
+```{r}
+
+g1 <- ggplot(retornos) + 
+  geom_line(mapping = aes(fecha, orcl), color = 'blue') 
+g1 <- g1 + labs(title = "ARCL", subtitle = "2010 al 2018") + xlab("Fecha") + ylab("")
+g1 <- g1 + theme_bw()
+g1
+```
+
+Podemos también construir un histograma de los retornos:
+
+```{r}
+pl <- ggplot(retornos, aes(x=orcl)) +
+  geom_histogram(bins = 100, col='black', fill='green', alpha=0.4)
+pl
+```
+
+¿Algún comentario sobre la distrubución? Veamos denuevo las medidas de resumen:
+
+```{r}
+library(vtable)
+st(retornos)
+```
+
+## Retorno acumulados
+
+```{r}
+acumulados <- data.frame(apply(retornos[1:4], 2, 
+                               function(x) cumsum(x)), 
+                         fecha = index(precio.cierre[-1]))
+```
+
+```{r}
+library("reshape2")
+reshape <- melt(acumulados, id.vars = "fecha")
+```
+
+```{r}
+g2 <- ggplot(reshape) + geom_line(mapping = aes(fecha,value, color = variable))
+g2 <- g2 + labs(title = "Retornos Acumulados", subtitle = "Oracle, AMD, IBM y Nvidia")
+g2 <- g2 + theme_bw() + xlab("Fecha") + ylab("Retornos Acumulados")
+g2 <- g2 + scale_color_manual("Tickers", values = c("red","blue","green","orange"))
+g2 <- g2 + theme(legend.position = "bottom")
+g2
+```
+
+# Ejemplo aplicado
+
+Una de las principales medidas de riesgo es el Value at risk o VaR. Se define como "cuál sería la pérdida que solo será excedida en p\*100% veces en los próximos k días". En este sentido, nos preguuntamos por la mayor pérdida que se genera con un x% de probabilidad.
+
+Veamos un ejemplo:
+
+```{r}
+library(PerformanceAnalytics)
+library(tidyquant)
+library(tseries)
+library(tidyverse)
+```
+
+Determinamos las acciones:
+
+```{r}
+symbol_name <<- c("AAPL", "GOOG", "AMZN", "F", "A", "TQQQ")  # try to put Your tickers!!
+vahy <<- c(0.2,0.2,0.2,0.2,0.1,0.1)
+FROM <<- "2020-01-01"   # change to Your dates!!!
+TO <<- "2022-12-31"
+```
+
+Generamos una función para obtener los precios:
+
+```{r}
+# preparing one table in common for all the downloaded tickers - You can change 
+for (i in 1:length(symbol_name)) {
+  prac <<- Ad(getSymbols(symbol_name[i], from = FROM, to = TO,auto.assign=FALSE))
+  if (i==1) {
+    price <<-prac
+  } else{
+    price <<- merge(price,prac)
+  }
+}
+rm(prac)    # prac is just temporary variable to remove
+colnames(price) <- symbol_name  #puting the names of the shares
+```
+
+Calculamos los retornos en base a log:
+
+```{r}
+return_a <<- CalculateReturns(price, method="log")
+#hist(return_a$AAPL)
+
+# next cycle imputes the missing data by the variable medians
+for(i in 1:dim(return_a)[2]){
+  return_a[,i][is.na(return_a[,i])] <- median(return_a[,i],na.rm = TRUE)
+}
+
+return2_a <<- return_a[-1,]
+```
+
+Obtenemos el VaR:
+
+```{r}
+Qh <<- VaR(return2_a[,1], p=0.95, method="gaussian")
+Qh
+```
+
+Cambiamos el método:
+
+```{r}
+Qv <<- VaR(return2_a[,1], p=0.95, method="historical")
+Qv
+
+```
+
+Para obtener el monto monetario aplicamos la siguiente formula:
+
+$$ VaR (\text{en pesos}) = V_{PF}(1-exp(-VaR)) $$ Asumamos que tenemos una posición de 2.000.000:
+
+```{r}
+2000000 * (1 - exp(-Qh))
+```
+
+# Referencias:
+
+-   Gabriel Cabrera G., Introducción a las finanzas quantitativas, https://finance-r.netlify.app
+
+-   https://rpubs.com/gazdavladimir/1039600
+
+-   https://www.r-bloggers.com/2022/02/nonparametric-value-at-risk-var/
+
+-   https://www.youtube.com/watch?v=0N7XBk7YA5A&list=PLJqpMAAwcLuus0FqGByq8FC3ukwYcJz7A&index=24&t=151s

@@ -1,0 +1,33 @@
+---
+title: |
+  | \includegraphics[width=5cm]{Imagen1.jpg}  
+  | Finanzas en R
+subtitle: Notebook 1
+format: pdf
+editor: visual
+author:   
+  - Sebastián Egaña Santibáñez   
+  - Nicolás Leiva Díaz
+code-block-bg: true
+code-block-border-left: "#FF0000"
+---
+
+\-\--
+
+## Hello World
+
+# Matematica Financiera
+
+# GGPLOT
+
+# Valor del cliente
+
+Un ejemplo relevante se puede abordar a través del valor del cliente. Esto se puede abordar desde varios enfoques, pero desde el enfoque financiero tenemos la siguiente ecuación:
+
+$$CLV = \sum_{t = 1}^{n} \frac{m_t}{(1+i)^{t}} $$ Donde $m$ corresponde al margen de contribución por cada cliente, $i$ corresponde a la tasa de descuento de cada cliente.
+
+Considerando que existe la posibilidad de que un cliente se mantenga o no, asumiendo margenes constantes:
+
+$$CLV = \sum_{t = 1}^{\infty} \frac{m * r^{t}}{(1+i)^{t}} $$ Asumiendo tasa de retención constante:
+
+$$CLV = m * \left( \frac{r}{1 + i - r}\right) $$
