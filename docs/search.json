@@ -4,14 +4,28 @@
     "href": "recursos.html",
     "title": "Recursos",
     "section": "",
-    "text": "Recursos adicionales\n\nLibro: R for Data Science\nCheatsheets: https://posit.co/resources/cheatsheets/"
+    "text": "Wickham, H., & Grolemund, G. (2016). R for data science: import, tidy, transform, visualize, and model data. ” O’Reilly Media, Inc.”. Enlace acá\nGrolemund, G. (2014). Hands-on programming with R: Write your own functions and simulations. ” O’Reilly Media, Inc.”. Enlace acá\nRegenstein Jr, J. K. (2018). Reproducible finance with R: Code flows and shiny apps for portfolio analysis. CRC Press. Enlace acá\nScheuch, C., Voigt, S., & Weiss, P. (2023). Tidy Finance with R (1st ed.). Chapman and Hall/CRC. https://doi.org/10.1201/b23237. Enlace acá\nXie, Y., Allaire, J. J., & Grolemund, G. (2018). R markdown: The definitive guide. CRC Press. Enlace acá\n\n\n\n\n\nhttps://posit.co/resources/cheatsheets/"
+  },
+  {
+    "objectID": "recursos.html#libros",
+    "href": "recursos.html#libros",
+    "title": "Recursos",
+    "section": "",
+    "text": "Wickham, H., & Grolemund, G. (2016). R for data science: import, tidy, transform, visualize, and model data. ” O’Reilly Media, Inc.”. Enlace acá\nGrolemund, G. (2014). Hands-on programming with R: Write your own functions and simulations. ” O’Reilly Media, Inc.”. Enlace acá\nRegenstein Jr, J. K. (2018). Reproducible finance with R: Code flows and shiny apps for portfolio analysis. CRC Press. Enlace acá\nScheuch, C., Voigt, S., & Weiss, P. (2023). Tidy Finance with R (1st ed.). Chapman and Hall/CRC. https://doi.org/10.1201/b23237. Enlace acá\nXie, Y., Allaire, J. J., & Grolemund, G. (2018). R markdown: The definitive guide. CRC Press. Enlace acá"
+  },
+  {
+    "objectID": "recursos.html#cheatsheets",
+    "href": "recursos.html#cheatsheets",
+    "title": "Recursos",
+    "section": "",
+    "text": "https://posit.co/resources/cheatsheets/"
   },
   {
     "objectID": "contacto.html",
     "href": "contacto.html",
     "title": "Contacto",
     "section": "",
-    "text": "Contacto\nSebastián Egaña Santibáñez\nDocente del curso\n📧 sebastian@example.com\n💼 LinkedIn"
+    "text": "Contacto\nSebastián Egaña Santibáñez\nDocente del curso\n📧 segana@fen.uchile.cl\n💼 LinkedIn 💻Página Web {{&lt; fa brands github &gt;}}Github"
   },
   {
     "objectID": "clases/subida/index.html",
@@ -58,8 +72,8 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "webpage",
+    "title": "Diplomado en Ciencia de Datos para las Finanzas",
     "section": "",
-    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites.\n\n1 + 1\n\n[1] 2"
+    "text": "Este será el repositorio de los distintos materiales utilizados en el curso."
   }
 ]

@@ -1,11 +1,14 @@
 ---
-title: "webpage"
+title: "Diplomado en Ciencia de Datos para las Finanzas"
+subtitle: "Finanzas en R"
+date: last-modified
+date-format: "dd MMMM yyyy"
+lang: es
+format:
+  html:
+    toc: true
+    theme: cosmo
+    number-sections: false
 ---
 
-This is a Quarto website.
-
-To learn more about Quarto websites visit <https://quarto.org/docs/websites>.
-
-```{r}
-1 + 1
-```
+Este será el repositorio de los distintos materiales utilizados en el curso. 
