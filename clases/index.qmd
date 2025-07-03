@@ -2,7 +2,7 @@
 title: "Clases"
 listing:
   contents: "*.qmd"
-  sort: "name"
+  sort: "listing_order"
   type: default
   fields: [listing_title]    # ✅ Only show the title
 ---
