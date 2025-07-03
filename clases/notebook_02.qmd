@@ -1,8 +1,9 @@
 ---
+listing_title: "Notebook 02"
 title: |
   | \includegraphics[width=5cm]{Imagen1.jpg}  
   | Finanzas en R
-subtitle: Notebook 2
+subtitle: Notebook 02
 format: pdf
 editor: visual
 author:   
@@ -12,7 +13,7 @@ code-block-bg: true
 code-block-border-left: "#FF0000"
 ---
 
-\-\--
+---
 
 # Enlaces del profesor
 
@@ -261,7 +262,6 @@ Por otra parte, existen restricciones de integridad de entidad como también de 
 
 Por ejemplo:
 
-```{=tex}
 \begin{center}
 \begin{tabular}{|c|c|c|}
     \hline
@@ -276,10 +276,9 @@ Por ejemplo:
     \hline
 \end{tabular}
 \end{center}
-```
+
 En donde:
 
-```{=tex}
 \begin{center}
 \begin{tabular}{|c|c|}
     \hline
@@ -293,14 +292,13 @@ En donde:
     \hline
 \end{tabular}
 \end{center}
-```
+
 De manera más especifica, el modelo entidad/relación corresponde a la técnica basada en la identificación de las entidades y de las relaciones que se dan entre ellas, según la realidad que se intenta modelar.
 
 Se debe recordar acá, el concepto de llave del que hablamos la clase pasada. Una llave (o también llamada clave), corresponde a un conjunto de atributos que permite identificar unívocamente a una entidad dentro de un conjunto de entidades.
 
 Por ejemplo para una Facultad el modelo podría ser:
 
-```{=tex}
 \begin{center}
 \begin{tabular}{|c|c|c|c|c|c|c|}
     \hline
@@ -312,10 +310,9 @@ Por ejemplo para una Facultad el modelo podría ser:
     \hline
 \end{tabular}
 \end{center}
-```
+
 En donde existen las siguientes relaciones:
 
-```{=tex}
 \begin{center}
 \begin{tabular}{|c|c|c|c|c|c|c|}
     \hline
@@ -329,7 +326,7 @@ En donde existen las siguientes relaciones:
     \hline
 \end{tabular}
 \end{center}
-```
+
 Esto también puede ser representado de manera grafica. Veamos el siguiente ejemplo:
 
 ```{r, message = FALSE, warning=FALSE}

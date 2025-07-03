@@ -1,4 +1,5 @@
 ---
+listing_title: "Clase 01 - Notebook 01"
 title: |
   | \includegraphics[width=5cm]{Imagen1.jpg}  
   | Finanzas en R
@@ -12,7 +13,7 @@ code-block-bg: true
 code-block-border-left: "#FF0000"
 ---
 
-\-\--
+---
 
 # Enlaces del profesor
 
@@ -361,7 +362,7 @@ Corresponde a los utilizados para álgebra booleana, es decir para escribir rela
 
 |  Símbolo  | Tarea ejecutada      |
 |:---------:|----------------------|
-| x \| y    | x o y son verdaderos |
+|  x \| y   | x o y son verdaderos |
 |   x & y   | x y y son verdaderos |
 |    !x     | x no es verdadero    |
 | isTRUE(x) | x es verdadero       |

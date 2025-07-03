@@ -1,8 +1,9 @@
 ---
+listing_title: "Clase 03 - Actividad 03: R y SQL"
 title: |
   | \includegraphics[width=5cm]{Imagen1.jpg}  
   | Finanzas en R
-subtitle: Actividad 3
+subtitle: Actividad 03
 format: pdf
 editor: visual
 author:   
@@ -12,7 +13,7 @@ code-block-bg: true
 code-block-border-left: "#FF0000"
 ---
 
-\-\--
+------------------------------------------------------------------------
 
 # Actividad 3
 
@@ -140,6 +141,7 @@ data_financial <- dbGetQuery(conn, 'SELECT * FROM stock_data')
 
 data_financial %>% head()
 ```
+
 Reflexionemos sobre el paso a paso.
 
 ### Ejemplo 2
@@ -211,6 +213,7 @@ Veamos de nuevo el schema:
 tables <- dbListTables(conn)
 tables
 ```
+
 Hacemos un gráfico simple:
 
 ```{r}

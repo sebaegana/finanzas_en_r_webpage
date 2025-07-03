@@ -1,4 +1,5 @@
 ---
+listing_title: "Clase 02 - Actividad 01"
 title: |
   | \includegraphics[width=5cm]{Imagen1.jpg}  
   | Finanzas en R
@@ -10,8 +11,6 @@ author:
   - Nicolás Leiva Díaz [{{< fa brands inbox >}}](mailto:nleivad@fen.uchile.cl)
 code-block-bg: true
 code-block-border-left: "#FF0000"
-listing_title: "Finanzas en R - Actividad 01"
-
 ---
 
 ---

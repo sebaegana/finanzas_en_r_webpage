@@ -1,4 +1,5 @@
 ---
+listing_title: "Clase 03 - Notebook Visualizaciones"
 title: |
   | \includegraphics[width=5cm]{Imagen1.jpg}  
   | Finanzas en R
@@ -24,7 +25,7 @@ data <- mutate(data, fecha_nacimiento_2 = as.POSIXct(fecha_nacimiento, format = 
 
 ```
 
-\-\--
+---
 
 # Enlaces del profesor
 
@@ -193,12 +194,12 @@ Dos maneras distintas de graficar lo mismo: una mejor que otra.
 
 Seis puntos claves:
 
-1. Comprender el contexto
-2. Elegir el gráfico adecuado
-3. Eliminar el caos
-4. Dirija la atención hacía donde le interese
-5. Piense como un diseñador
-6. Cuente una historia
+1.  Comprender el contexto
+2.  Elegir el gráfico adecuado
+3.  Eliminar el caos
+4.  Dirija la atención hacía donde le interese
+5.  Piense como un diseñador
+6.  Cuente una historia
 
 En relación a este enfoque, se puede consutar el siguiente material:
 

@@ -1,8 +1,9 @@
 ---
+listing_title: "Clase 03 - Notebook Dates"
 title: |
   | \includegraphics[width=5cm]{Imagen1.jpg}  
   | Finanzas en R
-subtitle: Notebook 01
+subtitle: Notebook Dates
 format: pdf
 editor: visual
 author:   
@@ -12,7 +13,7 @@ code-block-bg: true
 code-block-border-left: "#FF0000"
 ---
 
-\-\--
+------------------------------------------------------------------------
 
 # Enlaces del profesor
 
@@ -22,7 +23,7 @@ code-block-border-left: "#FF0000"
 
 [{{< fa brands linkedin >}}](https://www.linkedin.com/in/sebastian-egana-santibanez/) https://www.linkedin.com/in/sebastian-egana-santibanez/
 
-***
+------------------------------------------------------------------------
 
 # Fechas en R
 

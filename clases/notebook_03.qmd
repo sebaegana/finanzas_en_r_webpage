@@ -1,8 +1,9 @@
 ---
+listing_title: "Notebook 03"
 title: |
   | \includegraphics[width=5cm]{Imagen1.jpg}  
   | Finanzas en R
-subtitle: Notebook 3
+subtitle: Notebook 03
 format: pdf
 editor: visual
 author:   
@@ -12,7 +13,7 @@ code-block-bg: true
 code-block-border-left: "#FF0000"
 ---
 
-\-\--
+------------------------------------------------------------------------
 
 # Enlaces del profesor
 

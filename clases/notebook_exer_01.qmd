@@ -1,8 +1,9 @@
 ---
+listing_title: "Clase 01 - Notebook Ejercicio 01"
 title: |
   | \includegraphics[width=5cm]{Imagen1.jpg}  
   | Finanzas en R
-subtitle: Notebook Ejercicios 01
+subtitle: Notebook Ejercicio 01
 format: pdf
 editor: visual
 author:   
@@ -12,7 +13,7 @@ code-block-bg: true
 code-block-border-left: "#FF0000"
 ---
 
-\-\--
+---
 
 # Enlaces del profesor
 
