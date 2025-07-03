@@ -200,7 +200,7 @@
 \makeatletter
 \makeatother
 \makeatletter
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[breakable, sharp corners, frame hidden, boxrule=0pt, borderline west={3pt}{0pt}{shadecolor}, interior hidden, enhanced]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[frame hidden, interior hidden, breakable, enhanced, boxrule=0pt, borderline west={3pt}{0pt}{shadecolor}, sharp corners]}{\end{tcolorbox}}\fi
 \makeatother
 \makeatletter
 \@ifpackageloaded{fontawesome5}{}{\usepackage{fontawesome5}}
@@ -736,9 +736,9 @@ semanales o mensuales. En este caso utilizáremos precios mensuales.
 
 \begin{verbatim}
                 SPY      EFA      IJS      EEM      AGG
-2012-12-31 114.3474 39.29464 33.42038 33.69767 80.24177
-2013-01-31 120.2009 40.75972 35.20889 33.59888 79.74335
-2013-02-28 121.7345 40.23450 35.78302 32.83148 80.21450
+2012-12-31 114.3474 39.29464 33.42036 33.69766 80.24174
+2013-01-31 120.2008 40.75972 35.20888 33.59888 79.74335
+2013-02-28 121.7345 40.23450 35.78304 32.83147 80.21449
 \end{verbatim}
 
 \subsection{Conversión a retornos}\label{conversiuxf3n-a-retornos}
@@ -766,9 +766,9 @@ Esto se puede cambiar variando el \texttt{method} entre
 
 \begin{verbatim}
                   SPY         EFA        IJS          EEM           AGG
-2013-01-31 0.04992353  0.03660622 0.05213270 -0.002935712 -0.0062307631
-2013-02-28 0.01267806 -0.01296957 0.01617512 -0.023104999  0.0058908891
-2013-03-31 0.03726780  0.01296957 0.04025854 -0.010235112  0.0009845944
+2013-01-31 0.04992269  0.03660622 0.05213305 -0.002935486 -0.0062305735
+2013-02-28 0.01267850 -0.01296957 0.01617554 -0.023105348  0.0058907945
+2013-03-31 0.03726786  0.01296957 0.04025802 -0.010234998  0.0009849746
 \end{verbatim}
 
 \subsection{Modificación y estructuración del data
@@ -1003,9 +1003,9 @@ El retorno del mercado será aproximado desde el retorno del SPY
 
 \begin{verbatim}
                  returns
-2013-01-31  0.0308487610
-2013-02-28 -0.0008697659
-2013-03-31  0.0186624889
+2013-01-31  0.0308486829
+2013-02-28 -0.0008696485
+2013-03-31  0.0186624593
 \end{verbatim}
 
 \subsection{\texorpdfstring{Calculo de los
@@ -1044,8 +1044,8 @@ activo que compone al portafolio
 # Groups:   asset [5]
    asset term                        estimate std.error    statistic p.value
    <chr> <chr>                          <dbl>     <dbl>        <dbl>   <dbl>
- 1 SPY   (Intercept)                   0         0            0.590   0.557 
- 2 SPY   market_returns_tidy$returns   1         0      1236401.      0     
+ 1 SPY   (Intercept)                   0         0            0.374   0.709 
+ 2 SPY   market_returns_tidy$returns   1         0      1224335.      0     
  3 EFA   (Intercept)                  -0.0057    0.0021      -2.77    0.0066
  4 EFA   market_returns_tidy$returns   0.879     0.0513      17.1     0     
  5 IJS   (Intercept)                  -0.006     0.0033      -1.81    0.0735
@@ -1053,7 +1053,7 @@ activo que compone al portafolio
  7 EEM   (Intercept)                  -0.0081    0.0035      -2.33    0.0218
  8 EEM   market_returns_tidy$returns   0.844     0.0857       9.85    0     
  9 AGG   (Intercept)                   0.0022    0.0009       2.40    0.0183
-10 AGG   market_returns_tidy$returns  -0.0009    0.0232      -0.0409  0.968 
+10 AGG   market_returns_tidy$returns  -0.0009    0.0232      -0.0408  0.968 
 \end{verbatim}
 
 \subsection{Tabla con los
@@ -1074,8 +1074,8 @@ coeficientes}\label{tabla-con-los-coeficientes}
 \toprule
 asset & term & estimate & std.error & statistic & p.value\\
 \midrule
-SPY & (Intercept) & 0.00 & 0.00 & 0.59 & 0.56\\
-SPY & market\_returns\_tidy\$returns & 1.00 & 0.00 & 1236401.18 & 0.00\\
+SPY & (Intercept) & 0.00 & 0.00 & 0.37 & 0.71\\
+SPY & market\_returns\_tidy\$returns & 1.00 & 0.00 & 1224334.94 & 0.00\\
 EFA & (Intercept) & -0.01 & 0.00 & -2.77 & 0.01\\
 EFA & market\_returns\_tidy\$returns & 0.88 & 0.05 & 17.14 & 0.00\\
 IJS & (Intercept) & -0.01 & 0.00 & -1.81 & 0.07\\

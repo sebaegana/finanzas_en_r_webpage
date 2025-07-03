@@ -2,24 +2,24 @@
   {
     "listing": "/clases/index.html",
     "items": [
+      "/clases/notebook_01.pdf",
+      "/clases/notebook_exer_01.pdf",
       "/clases/actividad_01.pdf",
       "/clases/actividad_02.pdf",
       "/clases/actividad_03.pdf",
-      "/clases/actividad_programacion.pdf",
-      "/clases/notebook_01.pdf",
+      "/clases/notebook_dates.pdf",
+      "/clases/notebook_exer_02.pdf",
+      "/clases/notebook_visualization.pdf",
       "/clases/notebook_02.pdf",
       "/clases/notebook_03.pdf",
-      "/clases/notebook_dates.pdf",
+      "/clases/actividad_programacion.pdf",
       "/clases/notebook_documents.pdf",
-      "/clases/notebook_exer_01.pdf",
-      "/clases/notebook_exer_02.pdf",
       "/clases/notebook_opciones.pdf",
       "/clases/notebook_optimization_test.pdf",
       "/clases/notebook_regresion.pdf",
       "/clases/notebook_shiny_applications_test.pdf",
       "/clases/notebook_simulacion.pdf",
-      "/clases/notebook_technical_analysis_test.pdf",
-      "/clases/notebook_visualization.pdf"
+      "/clases/notebook_technical_analysis_test.pdf"
     ]
   }
 ]
