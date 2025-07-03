@@ -1,4 +1,5 @@
 ---
+listing_title: "Clase 04 - Notebook Opciones"
 title: |
   | \includegraphics[width=5cm]{Imagen1.jpg}  
   | Finanzas en R
@@ -21,7 +22,7 @@ library(cowplot)
 
 ```
 
-\-\--
+---
 
 # Enlaces del profesor
 
@@ -45,19 +46,19 @@ Por otro lado, los vendedores de los contratos de Opciones (o "lanzadores") tien
 
 En base a los anterior, existe dos tipos de opciones:
 
-1. Opciones de Compra (Call Options): Una opción de compra le da al comprador el derecho de comprar un activo a un precio fijo, conocido como precio de ejercicio (strike price). Si el precio del activo subyacente aumenta por encima del precio de ejercicio, el comprador puede ejercer la opción para obtener una ganancia, comprando el activo al precio de ejercicio más bajo y vendiéndolo al precio de mercado actual. Si el precio del activo está por debajo del precio de ejercicio en la fecha de vencimiento, la opción expira sin valor y el comprador solo pierde la prima pagada por la opción.
+1.  Opciones de Compra (Call Options): Una opción de compra le da al comprador el derecho de comprar un activo a un precio fijo, conocido como precio de ejercicio (strike price). Si el precio del activo subyacente aumenta por encima del precio de ejercicio, el comprador puede ejercer la opción para obtener una ganancia, comprando el activo al precio de ejercicio más bajo y vendiéndolo al precio de mercado actual. Si el precio del activo está por debajo del precio de ejercicio en la fecha de vencimiento, la opción expira sin valor y el comprador solo pierde la prima pagada por la opción.
 
-2. Opciones de Venta (Put Options): Una opción de venta da al comprador el derecho de vender un activo a un precio fijo (precio de ejercicio). Esta opción se utiliza generalmente para protegerse contra la caída del precio del activo subyacente. Si el precio del activo cae por debajo del precio de ejercicio, el comprador puede ejercer la opción vendiendo el activo al precio de ejercicio, que será mayor que el precio de mercado actual. Si el precio del activo es mayor que el precio de ejercicio en la fecha de vencimiento, la opción expira sin valor.
+2.  Opciones de Venta (Put Options): Una opción de venta da al comprador el derecho de vender un activo a un precio fijo (precio de ejercicio). Esta opción se utiliza generalmente para protegerse contra la caída del precio del activo subyacente. Si el precio del activo cae por debajo del precio de ejercicio, el comprador puede ejercer la opción vendiendo el activo al precio de ejercicio, que será mayor que el precio de mercado actual. Si el precio del activo es mayor que el precio de ejercicio en la fecha de vencimiento, la opción expira sin valor.
 
 Algunas definiciones:
 
-- Prima: El costo de comprar la opción, que el comprador paga al vendedor.
+-   Prima: El costo de comprar la opción, que el comprador paga al vendedor.
 
-- Fecha de Vencimiento: La última fecha en la que la opción puede ser ejercida.
+-   Fecha de Vencimiento: La última fecha en la que la opción puede ser ejercida.
 
-- Precio de Ejercicio: El precio al cual el comprador de la opción puede comprar o vender el activo subyacente.
+-   Precio de Ejercicio: El precio al cual el comprador de la opción puede comprar o vender el activo subyacente.
 
-- Americana veruss europea: Las opciones americanas pueden ser ejercidas en cualquier momento del tiempo, mientras que las europeas solo al momento de expirar. 
+-   Americana veruss europea: Las opciones americanas pueden ser ejercidas en cualquier momento del tiempo, mientras que las europeas solo al momento de expirar.
 
 Veamos las aplicaciones gráficas:
 

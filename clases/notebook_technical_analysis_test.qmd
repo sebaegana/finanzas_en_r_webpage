@@ -24,7 +24,7 @@ data <- mutate(data, fecha_nacimiento_2 = as.POSIXct(fecha_nacimiento, format = 
 
 ```
 
-\-\--
+---
 
 # Enlaces del profesor
 
@@ -79,4 +79,3 @@ ggplot() +
        x = "Date", y = "Price/Indicator") +
   theme_minimal()
 ```
-
