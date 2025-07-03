@@ -7,9 +7,10 @@ format: html
 
 **Sebastián Egaña Santibáñez**  
 Docente del curso  
-📧 segana@fen.uchile.cl  
-💼 [LinkedIn](https://linkedin.com/in/sebaegana)
-💻[Página Web](https://segana.netlify.app) 
-{{< fa brands github >}}[Github](https://github.com/sebaegana)
+
+- 📧 segana@fen.uchile.cl  
+- 💼 [LinkedIn](https://linkedin.com/in/sebaegana)
+- 💻[Página Web](https://segana.netlify.app) 
+- 🐈[Github](https://github.com/sebaegana)
 
 

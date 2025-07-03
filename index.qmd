@@ -2,7 +2,6 @@
 title: "Diplomado en Ciencia de Datos para las Finanzas"
 subtitle: "Finanzas en R"
 date: last-modified
-date-format: "dd MMMM yyyy"
 lang: es
 format:
   html:
