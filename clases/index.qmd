@@ -4,7 +4,7 @@ listing:
   contents: "*.qmd"
   sort: "name"
   type: default
-  fields: [subtitle]     # ✅ Only show the title
+  fields: [listing_title]    # ✅ Only show the title
 ---
 
 # Clases del curso

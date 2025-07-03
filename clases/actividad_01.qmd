@@ -10,9 +10,11 @@ author:
   - Nicolás Leiva Díaz [{{< fa brands inbox >}}](mailto:nleivad@fen.uchile.cl)
 code-block-bg: true
 code-block-border-left: "#FF0000"
+listing_title: "Finanzas en R - Actividad 01"
+
 ---
 
-\-\--
+---
 
 # Enlaces del profesor
 
