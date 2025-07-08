@@ -4,14 +4,21 @@
     "href": "recursos.html",
     "title": "Recursos",
     "section": "",
-    "text": "Wickham, H., & Grolemund, G. (2016). R for data science: import, tidy, transform, visualize, and model data. ” O’Reilly Media, Inc.”. Enlace acá\nGrolemund, G. (2014). Hands-on programming with R: Write your own functions and simulations. ” O’Reilly Media, Inc.”. Enlace acá\nRegenstein Jr, J. K. (2018). Reproducible finance with R: Code flows and shiny apps for portfolio analysis. CRC Press. Enlace acá\nScheuch, C., Voigt, S., & Weiss, P. (2023). Tidy Finance with R (1st ed.). Chapman and Hall/CRC. https://doi.org/10.1201/b23237. Enlace acá\nXie, Y., Allaire, J. J., & Grolemund, G. (2018). R markdown: The definitive guide. CRC Press. Enlace acá\nBryan, J., & Hester, J. (n.d.). Happy Git and GitHub for the useR.Enlace acá\n\n\n\n\n\nUtilización de Renv: (https://docs.posit.co/ide/user/ide/guide/environments/r/renv.html)\n\n\n\n\n\nhttps://posit.co/resources/cheatsheets/"
+    "text": "Wickham, H., & Grolemund, G. (2016). R for data science: import, tidy, transform, visualize, and model data. ” O’Reilly Media, Inc.”. Enlace acá\nGrolemund, G. (2014). Hands-on programming with R: Write your own functions and simulations. ” O’Reilly Media, Inc.”. Enlace acá\nRegenstein Jr, J. K. (2018). Reproducible finance with R: Code flows and shiny apps for portfolio analysis. CRC Press. Enlace acá\nScheuch, C., Voigt, S., & Weiss, P. (2023). Tidy Finance with R (1st ed.). Chapman and Hall/CRC. https://doi.org/10.1201/b23237. Enlace acá\nXie, Y., Allaire, J. J., & Grolemund, G. (2018). R markdown: The definitive guide. CRC Press. Enlace acá\nBryan, J., & Hester, J. (n.d.). Happy Git and GitHub for the useR. Enlace acá\n\n\n\n\n\nUtilización de Renv: Enlace acá\n\n\n\n\n\nhttps://posit.co/resources/cheatsheets/"
   },
   {
     "objectID": "recursos.html#libros",
     "href": "recursos.html#libros",
     "title": "Recursos",
     "section": "",
-    "text": "Wickham, H., & Grolemund, G. (2016). R for data science: import, tidy, transform, visualize, and model data. ” O’Reilly Media, Inc.”. Enlace acá\nGrolemund, G. (2014). Hands-on programming with R: Write your own functions and simulations. ” O’Reilly Media, Inc.”. Enlace acá\nRegenstein Jr, J. K. (2018). Reproducible finance with R: Code flows and shiny apps for portfolio analysis. CRC Press. Enlace acá\nScheuch, C., Voigt, S., & Weiss, P. (2023). Tidy Finance with R (1st ed.). Chapman and Hall/CRC. https://doi.org/10.1201/b23237. Enlace acá\nXie, Y., Allaire, J. J., & Grolemund, G. (2018). R markdown: The definitive guide. CRC Press. Enlace acá\nBryan, J., & Hester, J. (n.d.). Happy Git and GitHub for the useR.Enlace acá"
+    "text": "Wickham, H., & Grolemund, G. (2016). R for data science: import, tidy, transform, visualize, and model data. ” O’Reilly Media, Inc.”. Enlace acá\nGrolemund, G. (2014). Hands-on programming with R: Write your own functions and simulations. ” O’Reilly Media, Inc.”. Enlace acá\nRegenstein Jr, J. K. (2018). Reproducible finance with R: Code flows and shiny apps for portfolio analysis. CRC Press. Enlace acá\nScheuch, C., Voigt, S., & Weiss, P. (2023). Tidy Finance with R (1st ed.). Chapman and Hall/CRC. https://doi.org/10.1201/b23237. Enlace acá\nXie, Y., Allaire, J. J., & Grolemund, G. (2018). R markdown: The definitive guide. CRC Press. Enlace acá\nBryan, J., & Hester, J. (n.d.). Happy Git and GitHub for the useR. Enlace acá"
+  },
+  {
+    "objectID": "recursos.html#section",
+    "href": "recursos.html#section",
+    "title": "Recursos",
+    "section": "",
+    "text": "Utilización de Renv: Enlace acá"
   },
   {
     "objectID": "recursos.html#cheatsheets",
@@ -75,12 +82,5 @@
     "title": "Diplomado en Ciencia de Datos para las Finanzas",
     "section": "",
     "text": "Este será el repositorio de los distintos materiales utilizados en el curso."
-  },
-  {
-    "objectID": "recursos.html#section",
-    "href": "recursos.html#section",
-    "title": "Recursos",
-    "section": "",
-    "text": "Utilización de Renv: (https://docs.posit.co/ide/user/ide/guide/environments/r/renv.html)"
   }
 ]
