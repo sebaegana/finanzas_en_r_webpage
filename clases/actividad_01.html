@@ -1,13 +1,17 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 
-<meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<head>
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<meta charset="utf-8" />
+<meta name="generator" content="quarto-1.7.32" />
 
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
 
-<title>Clases – Curso Finanzas en R</title>
+<meta name="author" content="Sebastián Egaña Santibáñez " />
+<meta name="author" content="Nicolás Leiva Díaz " />
+
+<title>quarto-input4a8d7ac8d1e23c59 – Curso Finanzas en R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -22,26 +26,7 @@ ul.task-list li input[type="checkbox"] {
 }
 </style>
 
-
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-listing/list.min.js"></script>
-<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-dfb324f25d9b1687192fa8be62ac8f9c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<!-- htmldependencies:E3FAD763 -->
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -69,99 +54,43 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-listing_title',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author","listing-subtitle","listing-image","listing-description"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
-<body class="nav-fixed quarto-light">
+<body>
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="/index.html">
     <span class="navbar-title">Curso Finanzas en R</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+  aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation"
+  onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
+    <a class="nav-link" href="/index.html"> 
 <span class="menu-text">Inicio</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../clases/index.html" aria-current="page"> 
+    <a class="nav-link" href="/clases/index.html"> 
 <span class="menu-text">Clases</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../recursos.html"> 
+    <a class="nav-link" href="/recursos.html"> 
 <span class="menu-text">Recursos</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../contacto.html"> 
+    <a class="nav-link" href="/contacto.html"> 
 <span class="menu-text">Contacto</span></a>
   </li>  
 </ul>
@@ -176,26 +105,29 @@ window.Quarto = {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#clases-del-curso" id="toc-clases-del-curso" class="nav-link active" data-scroll-target="#clases-del-curso">Clases del curso</a></li>
-  </ul>
-</nav>
+        <div id="quarto-toc-target"></div>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Clases</h1>
+<h1 class="title"><div class="line-block"><br />
+Finanzas en R</div></h1>
+<p class="subtitle lead">Actividad 01</p>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Authors</div>
+    <div class="quarto-title-meta-contents">
+             <p>Sebastián Egaña Santibáñez <a href="mailto:segana@fen.uchile"><i class="fa-brands fa-inbox" aria-label="inbox"></i></a> </p>
+             <p>Nicolás Leiva Díaz <a href="mailto:nleivad@fen.uchile.cl"><i class="fa-brands fa-inbox" aria-label="inbox"></i></a> </p>
+          </div>
+  </div>
     
   
     
@@ -205,251 +137,60 @@ window.Quarto = {
 
 </header>
 
-
-<section id="clases-del-curso" class="level1">
-<h1>Clases del curso</h1>
-
-
-
+<nav id="TOC" role="doc-toc">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#enlaces-del-profesor" id="toc-enlaces-del-profesor">Enlaces del profesor</a></li>
+  <li><a href="#actividad-1" id="toc-actividad-1">Actividad 1</a>
+  <ul>
+  <li><a href="#introducción" id="toc-introducción">Introducción</a></li>
+  <li><a href="#instrucciones" id="toc-instrucciones">Instrucciones</a></li>
+  </ul></li>
+  </ul>
+</nav>
+<hr />
+<section id="enlaces-del-profesor" class="level1">
+<h1>Enlaces del profesor</h1>
+<p><a href="https://segana.netlify.app"><i class="fa-brands fa-link" aria-label="link"></i></a> https://segana.netlify.app</p>
+<p><a href="https://github.com/sebaegana"><i class="fa-brands fa-github" aria-label="github"></i></a> https://github.com/sebaegana</p>
+<p><a href="https://www.linkedin.com/in/sebastian-egana-santibanez/"><i class="fa-brands fa-linkedin" aria-label="linkedin"></i></a> https://www.linkedin.com/in/sebastian-egana-santibanez/</p>
+<hr />
+</section>
+<section id="actividad-1" class="level1">
+<h1>Actividad 1</h1>
+<section id="introducción" class="level2">
+<h2>Introducción</h2>
+<p>La data corresponde a las estadísticas de las mujeres en el Ajedrez, de las distintas federaciones a través del mundo. En la hoja variables se específica el significado de cada una de las columnas.</p>
+</section>
+<section id="instrucciones" class="level2">
+<h2>Instrucciones</h2>
+<ol type="1">
+<li>Cargue el archivo entregado en Excel</li>
+<li>Cargue dos dataframes, uno con los datos (hoja data) y otro con el diccionario de la tabla (hoja variables)</li>
+<li>El objetivo general corresponde a realizar una revisión y limpieza del set de datos en base a posibles errores. Para esto, considere la entrega de lo siguiente:</li>
+</ol>
+<ul>
+<li>Diccionario de variables: Nombre variable, Tipo de variable, explicación.</li>
+<li>Estadística descriptiva.</li>
+<li>Detalle de modificación de variables en caso de ser necesario.</li>
+<li>Estandarización de variables.</li>
+<li>Posible creación de variables nuevas.</li>
+</ul>
+<ol start="4" type="1">
+<li>La entrega debe realizarse con un archivo de texto que explique su trabajo y el código utilizado para esto</li>
+</ol>
+<div id="quarto-navigation-envelope" class="hidden">
+<p><span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1zaWRlYmFyLXRpdGxl">Curso Finanzas en R</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXItdGl0bGU=">Curso Finanzas en R</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6SW5pY2lv">Inicio</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6L2luZGV4Lmh0bWw=">/index.html</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6Q2xhc2Vz">Clases</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6L2NsYXNlcy9pbmRleC5odG1s">/clases/index.html</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6UmVjdXJzb3M=">Recursos</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6L3JlY3Vyc29zLmh0bWw=">/recursos.html</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6Q29udGFjdG8=">Contacto</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLWludC1uYXZiYXI6L2NvbnRhY3RvLmh0bWw=">/contacto.html</span></p>
+</div>
+<div id="quarto-meta-markdown" class="hidden">
+<p><span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW1ldGF0aXRsZQ==">| | Finanzas en R – Curso Finanzas en R</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLXR3aXR0ZXJjYXJkdGl0bGU=">| | Finanzas en R – Curso Finanzas en R</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW9nY2FyZHRpdGxl">| | Finanzas en R – Curso Finanzas en R</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW1ldGFzaXRlbmFtZQ==">Curso Finanzas en R</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLXR3aXR0ZXJjYXJkZGVzYw==">Actividad 01</span> <span class="hidden quarto-markdown-envelope-contents" data-render-id="cXVhcnRvLW9nY2FyZGRkZXNj">Actividad 01</span></p>
+</div>
+</section>
 </section>
 
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-file-modified-sort="1767584755685" data-listing-reading-time-sort="1" data-listing-word-count-sort="167">
-<div class="body">
-
-</div>
-<div class="metadata">
-<a href="../clases/actividad_01.pdf" class="no-external">
-<div class="metadata-value listing-listing_title">
-Clase 01 - Notebook Actividad 01
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-listing-file-modified-sort="1767579479131" data-listing-reading-time-sort="3" data-listing-word-count-sort="550">
-<div class="body">
-
-</div>
-<div class="metadata">
-<a href="../clases/notebook_ocr.pdf" class="no-external">
-<div class="metadata-value listing-listing_title">
-Clase 01 - Notebook OCR
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-listing-file-modified-sort="1767578669240" data-listing-reading-time-sort="14" data-listing-word-count-sort="2673">
-<div class="body">
-
-</div>
-<div class="metadata">
-<a href="../clases/notebook_01.pdf" class="no-external">
-<div class="metadata-value listing-listing_title">
-Clase 02 - Notebook 01
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-listing-file-modified-sort="1767578648025" data-listing-reading-time-sort="1" data-listing-word-count-sort="170">
-<div class="body">
-
-</div>
-<div class="metadata">
-<a href="../clases/actividad_programacion.pdf" class="no-external">
-<div class="metadata-value listing-listing_title">
-Clase 02 - Notebook Actividad Programación
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-listing-file-modified-sort="1767578679672" data-listing-reading-time-sort="11" data-listing-word-count-sort="2055">
-<div class="body">
-
-</div>
-<div class="metadata">
-<a href="../clases/notebook_02.pdf" class="no-external">
-<div class="metadata-value listing-listing_title">
-Clase 03 - Notebook 02
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="5" data-listing-file-modified-sort="1767578578620" data-listing-reading-time-sort="4" data-listing-word-count-sort="622">
-<div class="body">
-
-</div>
-<div class="metadata">
-<a href="../clases/actividad_03.pdf" class="no-external">
-<div class="metadata-value listing-listing_title">
-Clase 03 - Notebook Actividad 03
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="6" data-listing-file-modified-sort="1767579591100" data-listing-reading-time-sort="4" data-listing-word-count-sort="770">
-<div class="body">
-
-</div>
-<div class="metadata">
-<a href="../clases/notebook_visualization.pdf" class="no-external">
-<div class="metadata-value listing-listing_title">
-Clase 03 - Notebook Visualizaciones
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="7" data-listing-file-modified-sort="1767579486369" data-listing-reading-time-sort="6" data-listing-word-count-sort="1096">
-<div class="body">
-
-</div>
-<div class="metadata">
-<a href="../clases/notebook_03.pdf" class="no-external">
-<div class="metadata-value listing-listing_title">
-Clase 04 - Notebook 03
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="8" data-listing-file-modified-sort="1767579514332" data-listing-reading-time-sort="11" data-listing-word-count-sort="2057">
-<div class="body">
-
-</div>
-<div class="metadata">
-<a href="../clases/notebook_opciones.pdf" class="no-external">
-<div class="metadata-value listing-listing_title">
-Clase 04 - Notebook Opciones
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="9" data-listing-file-modified-sort="1767579576501" data-listing-reading-time-sort="6" data-listing-word-count-sort="1080">
-<div class="body">
-
-</div>
-<div class="metadata">
-<a href="../clases/notebook_simulacion.pdf" class="no-external">
-<div class="metadata-value listing-listing_title">
-Clase 04 - Notebook Simulaciones
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="10" data-listing-file-modified-sort="1767579549357" data-listing-reading-time-sort="3" data-listing-word-count-sort="470">
-<div class="body">
-
-</div>
-<div class="metadata">
-<a href="../clases/notebook_practices.pdf" class="no-external">
-<div class="metadata-value listing-listing_title">
-Clase 05 - Notebook CICD
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="11" data-listing-file-modified-sort="1751565007849" data-listing-reading-time-sort="14" data-listing-word-count-sort="2722">
-<div class="body">
-
-</div>
-<div class="metadata">
-<a href="../clases/notebook_regresion.pdf" class="no-external">
-<div class="metadata-value listing-listing_title">
-Clase 05 - Notebook Regresión Lineal
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="12" data-listing-file-modified-sort="1767579484132" data-listing-reading-time-sort="2" data-listing-word-count-sort="247">
-<div class="body">
-
-</div>
-<div class="metadata">
-<a href="../clases/notebook_documents.pdf" class="no-external">
-<div class="metadata-value listing-listing_title">
-Clase 07 - Notebook Dcumentos
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="13" data-listing-file-modified-sort="1767578653087" data-listing-reading-time-sort="1" data-listing-word-count-sort="102">
-<div class="body">
-
-</div>
-<div class="metadata">
-<a href="../clases/actividad_02.pdf" class="no-external">
-<div class="metadata-value listing-listing_title">
-Revisar - Clase 01 - Notebook Actividad 02
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="14" data-listing-file-modified-sort="1767579484936" data-listing-reading-time-sort="2" data-listing-word-count-sort="394">
-<div class="body">
-
-</div>
-<div class="metadata">
-<a href="../clases/notebook_dates.pdf" class="no-external">
-<div class="metadata-value listing-listing_title">
-Revisar - Clase 01 - Notebook Dates
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="15" data-listing-file-modified-sort="1767579482904" data-listing-reading-time-sort="4" data-listing-word-count-sort="709">
-<div class="body">
-
-</div>
-<div class="metadata">
-<a href="../clases/notebook_exer_01.pdf" class="no-external">
-<div class="metadata-value listing-listing_title">
-Revisar - Clase 02 - Notebook Ejercicio 01
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="16" data-listing-file-modified-sort="1767579480815" data-listing-reading-time-sort="3" data-listing-word-count-sort="585">
-<div class="body">
-
-</div>
-<div class="metadata">
-<a href="../clases/notebook_exer_02.pdf" class="no-external">
-<div class="metadata-value listing-listing_title">
-Revisar - Clase 03 - Notebook Ejercicio 01
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="17" data-listing-file-modified-sort="1751252414019" data-listing-reading-time-sort="14" data-listing-word-count-sort="2730">
-<div class="body">
-
-</div>
-<div class="metadata">
-<a href="../clases/notebook_optimization_test.pdf" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="18" data-listing-file-modified-sort="1712507668428" data-listing-reading-time-sort="1" data-listing-word-count-sort="98">
-<div class="body">
-
-</div>
-<div class="metadata">
-<a href="../clases/notebook_shiny_applications_test.pdf" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="19" data-listing-file-modified-sort="1751564603090" data-listing-reading-time-sort="1" data-listing-word-count-sort="198">
-<div class="body">
-
-</div>
-<div class="metadata">
-<a href="../clases/notebook_technical_analysis_test.pdf" class="no-external">
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
-<script id="quarto-html-after-body" type="application/javascript">
+</main> <!-- /main -->
+<script id = "quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
     const anchorJS = new window.AnchorJS();
@@ -850,7 +591,6 @@ Revisar - Clase 03 - Notebook Ejercicio 01
   </script>
 </div> <!-- /content -->
 
+</body>
 
-
-
-</body></html>
+</html>
