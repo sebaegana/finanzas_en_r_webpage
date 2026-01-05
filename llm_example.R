@@ -14,9 +14,8 @@ models_ollama(base_url = "http://localhost:11434")
 
 chat <- chat_ollama(
   base_url = "http://localhost:11434",
-  model = "llama2"
+  model = "gemma3"
 )
 
 chat$chat("tell me a joke")
 
-live_console(chat)
