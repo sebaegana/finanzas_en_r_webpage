@@ -1,5 +1,5 @@
 ---
-listing_title: "Clase 03 - Actividad OCR"
+listing_title: "Clase 01 - Notebook OCR"
 title: |
   | \includegraphics[width=5cm]{Imagen1.jpg}  
   | Finanzas en R

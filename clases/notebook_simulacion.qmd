@@ -1,4 +1,5 @@
 ---
+listing_title: "Clase 04 - Notebook Simulaciones"
 title: |
   | \includegraphics[width=5cm]{Imagen1.jpg}  
   | Finanzas en R
@@ -20,7 +21,7 @@ library(tidyverse)
 
 ```
 
-\-\--
+---
 
 # Enlaces del profesor
 
@@ -175,7 +176,6 @@ Después de realizar la debida investigación, usted decide construir una simula
 
 -   Por el lado de los ingresos totales, se considerarán tres escenarios (A, B y C) para el precio y la cantidad, los cuales aparecen descritos en la siguiente tabla:
 
-```{=tex}
 \begin{center}
 \begin{tabular}{lccc}
 Variable & A & B & C \\
@@ -185,10 +185,9 @@ Cantidad & 110 & 100 & 80 \\
 Probabilidad & 1/4 & 1/2 & 1/4
 \end{tabular}
 \end{center}
-```
+
 -   En el caso de los costos totales, los costos fijos son iguales a \$150 y los costos variables unitarios son constantes y son modelados usando una distribución triangular con los siguientes parámetros:
 
-```{=tex}
 \begin{center}
 \begin{tabular}{lc}
 Parámetro & Valores \\
@@ -198,7 +197,7 @@ Valor máximo & 13 \\
 Moda & 11 
 \end{tabular}
 \end{center}
-```
+
 A. ¿Cuál es la probabilidad que el negocio tenga pérdidas?
 
 ```{r}

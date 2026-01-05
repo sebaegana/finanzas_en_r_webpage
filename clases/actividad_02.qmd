@@ -1,5 +1,5 @@
 ---
-listing_title: "Clase 02 - Actividad 02"
+listing_title: "Revisar - Clase 01 - Notebook Actividad 02"
 title: |
   | \includegraphics[width=5cm]{Imagen1.jpg}  
   | Finanzas en R
