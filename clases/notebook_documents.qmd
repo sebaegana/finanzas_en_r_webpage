@@ -1,5 +1,5 @@
 ---
-listing_title: "Clase 07 - Notebook Dcumentos"
+listing_title: "Clase 07 - Notebook Documentos"
 title: |
   | \includegraphics[width=5cm]{Imagen1.jpg}  
   | Finanzas en R
@@ -13,7 +13,7 @@ code-block-bg: true
 code-block-border-left: "#FF0000"
 ---
 
----
+------------------------------------------------------------------------
 
 # Enlaces del profesor
 

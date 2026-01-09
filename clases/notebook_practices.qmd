@@ -1,5 +1,5 @@
 ---
-listing_title: "Clase 05 - Notebook CICD"
+listing_title: "Clase 02 - Notebook CICD"
 title: |
   | \includegraphics[width=5cm]{Imagen1.jpg}  
   | Finanzas en R
@@ -24,6 +24,31 @@ code-block-border-left: "#FF0000"
 [{{< fa brands linkedin >}}](https://www.linkedin.com/in/sebastian-egana-santibanez/) https://www.linkedin.com/in/sebastian-egana-santibanez/
 
 ------------------------------------------------------------------------
+
+#  Instalación de paquetes en R
+
+## ¿Cómo se instalan paquetes en R?
+
+Los paquetes amplían las capacidades de R y se descargan desde CRAN.
+
+```{r, eval=FALSE}
+install.packages("dplyr")
+```
+
+## Cargar un paquete
+
+Instalar un paquete no es lo mismo que cargarlo:
+
+```{r,  eval=FALSE}
+library(dplyr)
+```
+
+Buenas prácticas al instalar paquetes
+
+  - Instala paquetes solo una vez por entorno
+  - Usa library() dentro de scripts o notebooks
+  - En proyectos, utiliza renv para controlar versiones
+  - Evita instalar paquetes dentro de funcione
 
 # Renv
 
@@ -109,6 +134,47 @@ No incluyas renv/library/ en tu repositorio si usas Git (puedes agregarlo a .git
 -   <https://cran.r-project.org/web/packages/tesseract/vignettes/intro.html>
 -   <https://blog.djnavarro.net/posts/2023-06-16_tabulizer/>
 -   <https://crimebythenumbers.com/scrape-table.html>
+
+# Instalación de Git
+
+## ¿Qué es Git?
+
+Git es un sistema de control de versiones que permite:
+
+- Registrar cambios en el código
+- Volver a versiones anteriores
+- Trabajar en equipo sin sobrescribir trabajo
+
+Es la base para trabajar con GitHub y flujos de CI/CD.
+
+---
+
+## Verificar si Git ya está instalado
+
+Antes de instalar, revisa si Git ya está disponible en tu sistema:
+
+```
+git --version
+```
+
+Si aparece un número de versión, Git ya está instalado.
+
+## Instalación según sistema operativo
+
+### Windows
+  
+  1. Descarga Git desde https://git-scm.com/download/win
+  2. Ejecuta el instalador
+  3. Acepta las opciones por defecto
+  4. Reinicia RStudio si estaba abierto
+  
+### macOS
+
+Opción recomendada usando Homebrew:
+
+```
+brew install git
+```
 
 # Connect to Github {{< fa brands github >}}
 
