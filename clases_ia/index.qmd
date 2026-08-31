@@ -1,0 +1,16 @@
+---
+title: "Clases — Finanzas en R con IA"
+listing:
+  contents:
+    - "*.qmd"
+    - "!index.qmd"
+  sort: "listing_title"
+  type: default
+  fields: [listing_title]
+---
+
+# Desarrollo Asistido por IA en Finanzas
+
+Materiales del curso que integran **Claude Code** y **Positron** para acelerar el desarrollo
+de análisis financieros en R. Desde la generación automática de código hasta debugging,
+documentación y buenas prácticas de prompting.

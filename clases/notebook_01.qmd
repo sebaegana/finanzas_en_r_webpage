@@ -59,6 +59,7 @@ print("Hola")
 Cuando se le atribuye un nombre a un elemento dentro de un entorno de programación, a esto se le denomina **variable**. En Python tenemos lo siguiente:
 
 ```{python}
+#| eval: false
 x = 2
 y = 5
 xy = 'Hey'
@@ -68,6 +69,7 @@ xy = 'Hey'
 Consultemos ahora la variable "xy"
 
 ```{python}
+#| eval: false
 xy = 'Hey'
 
 ```
@@ -75,6 +77,7 @@ xy = 'Hey'
 Realicemos un print que combine lo anterior
 
 ```{python}
+#| eval: false
 print(x, y, xy)
 
 ```

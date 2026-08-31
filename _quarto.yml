@@ -10,6 +10,8 @@ website:
         href: index.qmd
       - text: "Clases"
         file: clases/index.qmd
+      - text: "Clases con IA"
+        file: clases_ia/index.qmd
       - text: "Recursos"
         href: recursos.qmd
       - text: "Contacto"
