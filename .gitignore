@@ -1,8 +1,53 @@
+# RStudio
 .Rproj.user
 .Rhistory
 .RData
 .Ruserdata
 
+# Quarto
 /.quarto/
-
 _site/
+**/*.quarto_ipynb
+
+# Logs y temporales
+*.log
+*.tmp
+
+# Datos temporales (excepto assets)
+/retornos.csv
+/data/*.csv
+!/clases_ia/data/*.csv
+
+# Librerías auto-generadas
+site_libs/
+docs/site_libs/
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Archivos de R
+*.rda
+*.Rda
+*.rds
+
+# Caché de Python
+__pycache__/
+*.pyc
+
+# Archivos generados por Quarto (excepto clases_ia/)
+docs/**/*.pdf
+docs/**/*.html
+!docs/clases_ia/**/*.html
+docs/**/*.json
+docs/**/*.png
+docs/**/*.woff
+docs/**/*.css
+docs/**/*.js
+clases/**/*.pdf
+clases/**/*.tex
+clases/**/figure-pdf/**/*.pdf
+clases/**/*_files/**/*
+
+# Base de datos
+*.db
