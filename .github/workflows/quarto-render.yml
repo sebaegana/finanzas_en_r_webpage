@@ -29,11 +29,10 @@ jobs:
       - name: Install Quarto
         uses: quarto-dev/quarto-actions/setup@v2
 
-      - name: Install R Dependencies
-        run: |
-          install.packages("tidyverse")
-          install.packages("ggplot2")
-        shell: Rscript {0}
+      - name: Restore R Dependencies
+        uses: r-lib/actions/setup-renv@v2
+        with:
+          cache-version: 1
 
       - name: Render Quarto Site
         run: quarto render
