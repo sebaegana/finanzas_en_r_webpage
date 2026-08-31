@@ -35,15 +35,12 @@ Thumbs.db
 __pycache__/
 *.pyc
 
-# Archivos generados por Quarto (excepto clases_ia/)
-docs/**/*.pdf
-docs/**/*.html
-!docs/clases_ia/**/*.html
-docs/**/*.json
-docs/**/*.png
-docs/**/*.woff
-docs/**/*.css
-docs/**/*.js
+# Archivos temporales del render local (GitHub Actions generará y pusheará docs/)
+_site/
+*.knit.md
+.Rproj.user/
+
+# PDFs de clases legadas (no necesarios en web)
 clases/**/*.pdf
 clases/**/*.tex
 clases/**/figure-pdf/**/*.pdf

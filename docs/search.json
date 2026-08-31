@@ -1,0 +1,366 @@
+[
+  {
+    "objectID": "recursos.html",
+    "href": "recursos.html",
+    "title": "Recursos",
+    "section": "",
+    "text": "Wickham, H., & Grolemund, G. (2016). R for data science: import, tidy, transform, visualize, and model data. ” O’Reilly Media, Inc.”. Enlace acá\nGrolemund, G. (2014). Hands-on programming with R: Write your own functions and simulations. ” O’Reilly Media, Inc.”. Enlace acá\nRegenstein Jr, J. K. (2018). Reproducible finance with R: Code flows and shiny apps for portfolio analysis. CRC Press. Enlace acá\nScheuch, C., Voigt, S., & Weiss, P. (2023). Tidy Finance with R (1st ed.). Chapman and Hall/CRC. https://doi.org/10.1201/b23237. Enlace acá\nXie, Y., Allaire, J. J., & Grolemund, G. (2018). R markdown: The definitive guide. CRC Press. Enlace acá\nBryan, J., & Hester, J. (n.d.). Happy Git and GitHub for the useR. Enlace acá\n\n\n\n\n\nUtilización de Renv: Enlace acá\n\n\n\n\n\nhttps://posit.co/resources/cheatsheets/"
+  },
+  {
+    "objectID": "recursos.html#libros",
+    "href": "recursos.html#libros",
+    "title": "Recursos",
+    "section": "",
+    "text": "Wickham, H., & Grolemund, G. (2016). R for data science: import, tidy, transform, visualize, and model data. ” O’Reilly Media, Inc.”. Enlace acá\nGrolemund, G. (2014). Hands-on programming with R: Write your own functions and simulations. ” O’Reilly Media, Inc.”. Enlace acá\nRegenstein Jr, J. K. (2018). Reproducible finance with R: Code flows and shiny apps for portfolio analysis. CRC Press. Enlace acá\nScheuch, C., Voigt, S., & Weiss, P. (2023). Tidy Finance with R (1st ed.). Chapman and Hall/CRC. https://doi.org/10.1201/b23237. Enlace acá\nXie, Y., Allaire, J. J., & Grolemund, G. (2018). R markdown: The definitive guide. CRC Press. Enlace acá\nBryan, J., & Hester, J. (n.d.). Happy Git and GitHub for the useR. Enlace acá"
+  },
+  {
+    "objectID": "recursos.html#section",
+    "href": "recursos.html#section",
+    "title": "Recursos",
+    "section": "",
+    "text": "Utilización de Renv: Enlace acá"
+  },
+  {
+    "objectID": "recursos.html#cheatsheets",
+    "href": "recursos.html#cheatsheets",
+    "title": "Recursos",
+    "section": "",
+    "text": "https://posit.co/resources/cheatsheets/"
+  },
+  {
+    "objectID": "contacto.html",
+    "href": "contacto.html",
+    "title": "Contacto",
+    "section": "",
+    "text": "Contacto\nSebastián Egaña Santibáñez\nDocente del curso\n\n📧 segana@fen.uchile.cl\n\n💼 LinkedIn\n💻Página Web\n🐈Github"
+  },
+  {
+    "objectID": "clases_ia/notebook_01.html#nota-importante-windows-vs-macoslinux",
+    "href": "clases_ia/notebook_01.html#nota-importante-windows-vs-macoslinux",
+    "title": "Finanzas en R — Desarrollo Asistido por IA",
+    "section": "⚠️ Nota Importante: Windows vs macOS/Linux",
+    "text": "⚠️ Nota Importante: Windows vs macOS/Linux\nEn este notebook encontrarás comandos de terminal. Positron soporta ambos:\n\nWindows: Usa PowerShell (por defecto en Positron)\nmacOS/Linux: Usa Bash (por defecto)\n\nAlgunos comandos son cross-platform (funcionan igual en ambos): - npm install -g ... ✅ - npx @anthropic-ai/claude-code ... ✅ - mistral-code ... ✅\nOtros solo existen en Bash y necesitan equivalente en PowerShell: - ❌ touch archivo.R → ✅ $null | Out-File archivo.R (PowerShell)\nEn este notebook, cuando haya diferencias, mostraré ambos comandos. Si usas Bash en Windows (Git Bash, WSL), puedes usar los comandos Linux directamente."
+  },
+  {
+    "objectID": "clases_ia/notebook_01.html#en-este-curso",
+    "href": "clases_ia/notebook_01.html#en-este-curso",
+    "title": "Finanzas en R — Desarrollo Asistido por IA",
+    "section": "En este curso",
+    "text": "En este curso\nUsaremos herramientas de IA generativa (Claude Code o Mistral Vibe) dentro de Positron (nuevo IDE para R/Python) para desarrollar análisis financieros reproducibles.\nLa meta: que escribas menos código boilerplate y dediques más tiempo a pensar en finanzas.\nTú eliges la herramienta que mejor se adapte a tu situación: - Con presupuesto → Claude Code (superior en finanzas) - Sin presupuesto → Mistral Vibe (gratis, muy bueno para aprender)"
+  },
+  {
+    "objectID": "clases_ia/notebook_01.html#ventajas-de-positron-frente-a-rstudio",
+    "href": "clases_ia/notebook_01.html#ventajas-de-positron-frente-a-rstudio",
+    "title": "Finanzas en R — Desarrollo Asistido por IA",
+    "section": "Ventajas de Positron frente a RStudio",
+    "text": "Ventajas de Positron frente a RStudio\n\n\n\nAspecto\nRStudio\nPositron\n\n\n\n\nBase\nQt (propietaria)\nVS Code (abierta, extensible)\n\n\nSoporte IA nativo\nNo\nSí (Claude, GitHub Copilot, etc.)\n\n\nIntegración Python\nLimitada\nPrimera clase\n\n\nExtensiones\nPocas\nAcceso a 20k+ extensiones de VS Code\n\n\nPerformance\nBueno\nMuy bueno (más ligero)\n\n\nCurva de aprendizaje\nBaja\nBaja (si usaste VS Code o RStudio)"
+  },
+  {
+    "objectID": "clases_ia/notebook_01.html#instalación-de-positron",
+    "href": "clases_ia/notebook_01.html#instalación-de-positron",
+    "title": "Finanzas en R — Desarrollo Asistido por IA",
+    "section": "Instalación de Positron",
+    "text": "Instalación de Positron\n\nVe a https://positron.posit.co/\nDescarga la versión para tu SO (Windows, macOS, Linux).\nInstala normalmente (en Windows: .exe, en macOS: .dmg).\nAl abrir Positron, detectará automáticamente tu instalación de R (si está en PATH).\n\nVerifica la instalación: - Abre Positron. - Ve a Terminal → New Terminal. - Ejecuta R --version (debería mostrar la versión de R)."
+  },
+  {
+    "objectID": "clases_ia/notebook_01.html#opción-recomendada-claude-code",
+    "href": "clases_ia/notebook_01.html#opción-recomendada-claude-code",
+    "title": "Finanzas en R — Desarrollo Asistido por IA",
+    "section": "✅ Opción Recomendada: Claude Code",
+    "text": "✅ Opción Recomendada: Claude Code\nClaude Code es una herramienta CLI que conecta Positron con Claude (modelo de IA de Anthropic). Te permite interactuar con Claude directamente en la terminal de Positron, pidiendo que genere, explique, depure y documente código R.\nVentajas: - Muy preciso en finanzas y R - Excelente para debugging y explicaciones - Mejor relación costo-beneficio\nCosto: Requiere API key pagada (pero tiene límites gratuitos para empezar)"
+  },
+  {
+    "objectID": "clases_ia/notebook_01.html#si-no-tienes-presupuesto",
+    "href": "clases_ia/notebook_01.html#si-no-tienes-presupuesto",
+    "title": "Finanzas en R — Desarrollo Asistido por IA",
+    "section": "❓ Si no tienes presupuesto",
+    "text": "❓ Si no tienes presupuesto\n\nPrueba Claude Code con plan gratuito: Anthropic ofrece créditos iniciales\nUsa métodos tradicionales: El material en clases/ enseña R sin IA\nAprenderás igual: IA es una acelerador, no es requerido\n\nNo recomendamos alternativas “gratuitas” que resultan siendo pagadas (Mistral, OpenAI, Gemini) o herramientas que están en desarrollo."
+  },
+  {
+    "objectID": "clases_ia/notebook_01.html#instalación-y-configuración",
+    "href": "clases_ia/notebook_01.html#instalación-y-configuración",
+    "title": "Finanzas en R — Desarrollo Asistido por IA",
+    "section": "Instalación y Configuración",
+    "text": "Instalación y Configuración"
+  },
+  {
+    "objectID": "clases_ia/notebook_01.html#instalación",
+    "href": "clases_ia/notebook_01.html#instalación",
+    "title": "Finanzas en R — Desarrollo Asistido por IA",
+    "section": "Instalación",
+    "text": "Instalación\nTodos necesitan Node.js 18+. Luego elige una de las dos opciones.\n\nPaso 0: Instala Node.js (Obligatorio)\n\nDescarga desde https://nodejs.org/ (versión LTS recomendada)\nInstala normalmente\nVerifica en terminal:\nnode --version\nnpm --version\n\n\n\nOpción 1: Claude Code (Si tienes cuenta pagada)\n\nCrea cuenta y obtén API key:\n\nVe a https://console.anthropic.com/\nCrea una cuenta e ingresa tarjeta de crédito\nGenera una clave API (aparece como sk-ant-...)\n\nInstala Claude Code:\nnpm install -g @anthropic-ai/npx @anthropic-ai/claude-code\nConfigura API key (varía por SO):\nWindows (PowerShell):\n$env:ANTHROPIC_API_KEY=\"sk-ant-tu-clave-aqui\"\nmacOS/Linux (Bash):\nexport ANTHROPIC_API_KEY=\"sk-ant-tu-clave-aqui\"\nPara hacerlo permanente, agrega a ~/.bashrc, ~/.zshrc o equivalente de Windows.\nVerifica:\nnpx @anthropic-ai/claude-code --version\n\n\n\nOpción 2: Mistral Vibe (Gratis, sin tarjeta de crédito)\n\nNo necesitas cuenta de pago:\n\nMistral Vibe es completamente gratuito\nModelos abiertos, sin límites de uso\n\nInstala Mistral Vibe:\nnpm install -g @mistralai/mistral-code\nVerifica:\nmistral-code --version\nPrimer uso (no requiere configuración de API):\nmistral-code \"explica qué es R\""
+  },
+  {
+    "objectID": "clases_ia/notebook_01.html#cuál-elegir",
+    "href": "clases_ia/notebook_01.html#cuál-elegir",
+    "title": "Finanzas en R — Desarrollo Asistido por IA",
+    "section": "¿Cuál Elegir?",
+    "text": "¿Cuál Elegir?\n\n\n\nCriterio\nClaude Code\nMistral Vibe\n\n\n\n\nCosto\nPagado\nGratis\n\n\nPrecisión en Finanzas\nMuy alta\nBuena\n\n\nFacilidad de uso\nMuy fácil\nMuy fácil\n\n\nMejor para debugging\n⭐⭐⭐⭐⭐\n⭐⭐⭐\n\n\nMejor para aprender R\n⭐⭐⭐⭐⭐\n⭐⭐⭐⭐\n\n\n\nRecomendación: Si puedes pagar, usa Claude Code. Si no, Mistral Vibe es una excelente alternativa."
+  },
+  {
+    "objectID": "clases_ia/notebook_01.html#troubleshooting-no-funciona-claude-code",
+    "href": "clases_ia/notebook_01.html#troubleshooting-no-funciona-claude-code",
+    "title": "Finanzas en R — Desarrollo Asistido por IA",
+    "section": "🔧 Troubleshooting: ¿No funciona Claude Code?",
+    "text": "🔧 Troubleshooting: ¿No funciona Claude Code?\nError: “El término ‘npx @anthropic-ai/claude-code’ no se reconoce…”\nSoluciones:\n\nUsa npx correctamente:\n\nnpx descarga y ejecuta el paquete automáticamente\nNo necesita estar en PATH\nEjemplo correcto:\n\nnpx @anthropic-ai/claude-code --file archivo.R \"prompt aquí\"\nVerifica que Node.js esté instalado:\nnode --version\nnpm --version\nReinicia PowerShell/Terminal:\n\nCierra la terminal actual\nAbre una NUEVA terminal en Positron (Ctrl+Shift+`)\n\nAsegúrate de tener API key configurada:\n$env:ANTHROPIC_API_KEY=\"sk-ant-tu-clave-aqui\"\nSi nada funciona, usa Mistral Vibe (gratis):\nnpx @mistralai/mistral-code --file archivo.R \"prompt aquí\""
+  },
+  {
+    "objectID": "clases_ia/notebook_01.html#enfoque-tradicional-manual",
+    "href": "clases_ia/notebook_01.html#enfoque-tradicional-manual",
+    "title": "Finanzas en R — Desarrollo Asistido por IA",
+    "section": "Enfoque tradicional (manual)",
+    "text": "Enfoque tradicional (manual)\nEn R, el primer ejercicio es imprimir un saludo. Lo harías así:\n\nprint(\"Hola mundo\")\n\n[1] \"Hola mundo\"\n\n\nLuego, exploras variables:\n\nx &lt;- 2\ny &lt;- 5\nsaludo &lt;- \"Finanzas en R\"\n\nprint(paste(x, y, saludo, sep = \" \"))\n\n[1] \"2 5 Finanzas en R\"\n\n\nTiempo invertido: ~5 minutos. Repetitividad: tienes que recordar la sintaxis print(), paste(), la asignación con &lt;-."
+  },
+  {
+    "objectID": "clases_ia/notebook_01.html#enfoque-asistido-por-ia-dentro-de-claude-code-o-mistral-code",
+    "href": "clases_ia/notebook_01.html#enfoque-asistido-por-ia-dentro-de-claude-code-o-mistral-code",
+    "title": "Finanzas en R — Desarrollo Asistido por IA",
+    "section": "Enfoque asistido por IA (Dentro de Claude Code o Mistral Code)",
+    "text": "Enfoque asistido por IA (Dentro de Claude Code o Mistral Code)\nPasos:\n\nAbre Positron y crea un archivo hello_world.R:\n\nUsa Ctrl+N o File → New File\nGuarda como hello_world.R\n\nAbre Claude Code o Mistral Code en la terminal:\nclaude-code  # o mistral-code (si ya está instalado)\nCopia y pega este prompt directamente en la terminal interactiva:\n\nCrea un script R que imprima \"Hola mundo\" y luego prueba\ncon dos variables x=2, y=5 y una cadena, imprimiendo todo junto.\nEl resultado debería mostrar algo como: 2 5 Finanzas en R\nListo: Claude/Mistral generará el código, lo explica, y tú lo copias al archivo.\nResultado: Claude genera algo como:\n# Imprimir saludo\nprint(\"Hola mundo\")\n\n# Definir variables\nx &lt;- 2\ny &lt;- 5\nsaludo &lt;- \"Finanzas en R\"\n\n# Imprimir junto\nprint(paste(x, y, saludo, sep = \" \"))\nPero además te muestra una explicación:\n\n“Cree un script básico que imprime un saludo. Usé print() para la salida, &lt;- para asignar valores, y paste() para concatenar. El parámetro sep controla el separador entre elementos.”\n\nVentaja: no solo obtienes el código, sino una explicación instantánea. Así aprendes mientras usas."
+  },
+  {
+    "objectID": "clases_ia/notebook_01.html#regla-1-sé-explícito-sobre-el-contexto",
+    "href": "clases_ia/notebook_01.html#regla-1-sé-explícito-sobre-el-contexto",
+    "title": "Finanzas en R — Desarrollo Asistido por IA",
+    "section": "Regla 1: Sé explícito sobre el contexto",
+    "text": "Regla 1: Sé explícito sobre el contexto\n❌ Mal:\nGenera código para analizar datos\n✅ Bien:\nGenera un script R que cargue un CSV de retornos diarios,\ncalcule estadísticas descriptivas (media, desviación estándar, min, max)\ny genere un gráfico con ggplot2"
+  },
+  {
+    "objectID": "clases_ia/notebook_01.html#regla-2-pide-reproducibilidad",
+    "href": "clases_ia/notebook_01.html#regla-2-pide-reproducibilidad",
+    "title": "Finanzas en R — Desarrollo Asistido por IA",
+    "section": "Regla 2: Pide reproducibilidad",
+    "text": "Regla 2: Pide reproducibilidad\n❌ Mal:\nCarga datos de una base de datos\n✅ Bien:\nEscribe un script R que se conecte a SQLite (usa el paquete DBI y RSQLite),\nlea una tabla 'precios' y muestre las primeras 10 filas"
+  },
+  {
+    "objectID": "clases_ia/notebook_01.html#regla-3-especifica-librerías-que-usas",
+    "href": "clases_ia/notebook_01.html#regla-3-especifica-librerías-que-usas",
+    "title": "Finanzas en R — Desarrollo Asistido por IA",
+    "section": "Regla 3: Especifica librerías que usas",
+    "text": "Regla 3: Especifica librerías que usas\n❌ Mal:\nLimpia datos\n✅ Bien:\nUsa tidyverse para limpiar un dataframe:\n- Elimina filas con NAs\n- Convierte fechas a formato Date\n- Filtra observaciones posteriores a 2020"
+  },
+  {
+    "objectID": "clases_ia/notebook_01.html#regla-4-pide-explicaciones-paso-a-paso",
+    "href": "clases_ia/notebook_01.html#regla-4-pide-explicaciones-paso-a-paso",
+    "title": "Finanzas en R — Desarrollo Asistido por IA",
+    "section": "Regla 4: Pide explicaciones paso a paso",
+    "text": "Regla 4: Pide explicaciones paso a paso\nExplica qué hace cada línea de este script, paso a paso:\n[pega aquí el código]"
+  },
+  {
+    "objectID": "clases_ia/notebook_01.html#regla-5-itera-sobre-errores",
+    "href": "clases_ia/notebook_01.html#regla-5-itera-sobre-errores",
+    "title": "Finanzas en R — Desarrollo Asistido por IA",
+    "section": "Regla 5: Itera sobre errores",
+    "text": "Regla 5: Itera sobre errores\nSi el código genera un error, simplemente pega el error:\nEl script me da este error:\n[pega aquí el error]\n\n¿Cuál es el problema y cómo lo arreglo?"
+  },
+  {
+    "objectID": "clases_ia/notebook_01.html#escenario",
+    "href": "clases_ia/notebook_01.html#escenario",
+    "title": "Finanzas en R — Desarrollo Asistido por IA",
+    "section": "Escenario",
+    "text": "Escenario\nTienes un archivo CSV con retornos diarios de una acción (o lo simularemos). Quieres: 1. Cargar los datos. 2. Calcular retornos acumulativos. 3. Generar un gráfico. 4. Calcular estadísticas de riesgo (volatilidad, Sharpe ratio)."
+  },
+  {
+    "objectID": "clases_ia/notebook_01.html#paso-1-crea-el-archivo-de-datos-simulados",
+    "href": "clases_ia/notebook_01.html#paso-1-crea-el-archivo-de-datos-simulados",
+    "title": "Finanzas en R — Desarrollo Asistido por IA",
+    "section": "Paso 1: Crea el archivo de datos simulados",
+    "text": "Paso 1: Crea el archivo de datos simulados\nEn Claude Code o Mistral Code, copia y pega este prompt:\nCrea un script R que simule 252 retornos diarios (1 año) de una acción,\ncon media 0.05% y desviación estándar 1.5%.\nGuarda el resultado en un CSV llamado 'retornos.csv'\ncon columnas 'fecha' (fechas consecutivas desde hoy) y 'retorno'.\nClaude generará algo como:\n\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.2     ✔ tibble    3.3.0\n✔ lubridate 1.9.4     ✔ tidyr     1.3.1\n✔ purrr     1.0.4     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nset.seed(123)\nn_dias &lt;- 252\n\ndatos &lt;- tibble(\n  fecha = seq(Sys.Date(), by = \"day\", length.out = n_dias),\n  retorno = rnorm(n_dias, mean = 0.0005, sd = 0.015)\n)\n\nwrite_csv(datos, \"retornos.csv\")\n\nCopia este código a un nuevo archivo simular_datos.R en Positron y ejecútalo (Ctrl+Enter o Cmd+Enter)."
+  },
+  {
+    "objectID": "clases_ia/notebook_01.html#paso-2-análisis-con-ia",
+    "href": "clases_ia/notebook_01.html#paso-2-análisis-con-ia",
+    "title": "Finanzas en R — Desarrollo Asistido por IA",
+    "section": "Paso 2: Análisis con IA",
+    "text": "Paso 2: Análisis con IA\nEn Claude Code o Mistral Code, copia y pega este prompt:\nLee el archivo retornos.csv,\ncalcula los retornos acumulativos (usa cumprod(1 + retorno) - 1),\ngrafica los retornos acumulativos con ggplot2 en función de la fecha,\ncalcula la media, desviación estándar y el ratio de Sharpe\n(asumir tasa libre de riesgo = 0),\ne imprime estos estadísticos.\nClaude generará:\n\nlibrary(tidyverse)\n\n# Leer datos\ndatos &lt;- read_csv(\"retornos.csv\")\n\nRows: 252 Columns: 2\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\ndbl  (1): retorno\ndate (1): fecha\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\n# Calcular retornos acumulativos\ndatos_acum &lt;- datos %&gt;%\n  mutate(retorno_acumulado = cumprod(1 + retorno) - 1)\n\n# Gráfico\nggplot(datos_acum, aes(x = fecha, y = retorno_acumulado)) +\n  geom_line(color = \"blue\") +\n  labs(title = \"Retorno Acumulado\",\n       x = \"Fecha\",\n       y = \"Retorno Acumulado\") +\n  theme_minimal()\n\n\n\n\n\n\n\n# Estadísticos\nmedia_retorno &lt;- mean(datos$retorno)\nsd_retorno &lt;- sd(datos$retorno)\nsharpe_ratio &lt;- (media_retorno * 252) / (sd_retorno * sqrt(252))\n\ncat(\"Media de retornos:\", media_retorno, \"\\n\")\n\nMedia de retornos: 0.0003168098 \n\ncat(\"Volatilidad anualizada:\", sd_retorno * sqrt(252), \"\\n\")\n\nVolatilidad anualizada: 0.2236562 \n\ncat(\"Sharpe Ratio:\", sharpe_ratio, \"\\n\")\n\nSharpe Ratio: 0.356959"
+  },
+  {
+    "objectID": "clases_ia/notebook_01.html#paso-3-debugging-interactivo",
+    "href": "clases_ia/notebook_01.html#paso-3-debugging-interactivo",
+    "title": "Finanzas en R — Desarrollo Asistido por IA",
+    "section": "Paso 3: Debugging interactivo",
+    "text": "Paso 3: Debugging interactivo\nSi algo falla, simplemente pega el error en Claude Code/Mistral Code:\nEl script da este error:\nError: object 'retorno_acumulado' not found\n\n¿Qué está mal y cómo lo arreglo?"
+  },
+  {
+    "objectID": "clases_ia/notebook_01.html#paso-4-documentación",
+    "href": "clases_ia/notebook_01.html#paso-4-documentación",
+    "title": "Finanzas en R — Desarrollo Asistido por IA",
+    "section": "Paso 4: Documentación",
+    "text": "Paso 4: Documentación\nPide que agregue comentarios:\nAgrega comentarios en español explicando qué hace cada sección del script,\nincluyendo qué paquetes usamos y por qué.\nAquí está el código:\n[pega el código aquí]"
+  },
+  {
+    "objectID": "clases_ia/notebook_01.html#lo-que-claude-code-no-es",
+    "href": "clases_ia/notebook_01.html#lo-que-claude-code-no-es",
+    "title": "Finanzas en R — Desarrollo Asistido por IA",
+    "section": "Lo que Claude Code no es",
+    "text": "Lo que Claude Code no es\n\n❌ No reemplaza tu comprensión de R o finanzas. Usa Claude para acelerar, no para abandonar el aprendizaje.\n❌ No es 100% perfecto. El código generado puede tener bugs. Siempre revisa antes de usar en datos reales.\n❌ No trabaja sin internet (necesita conectarse a Anthropic)."
+  },
+  {
+    "objectID": "clases_ia/notebook_01.html#buenas-prácticas-éticas",
+    "href": "clases_ia/notebook_01.html#buenas-prácticas-éticas",
+    "title": "Finanzas en R — Desarrollo Asistido por IA",
+    "section": "Buenas prácticas éticas",
+    "text": "Buenas prácticas éticas\n\nEntiende el código que usas: si Claude genera algo que no comprendes, pregunta o estudia hasta que lo entiendas.\nVerifica resultados financieros: si estás haciendo un backtest o valuación, valida los números con métodos alternativos.\nCredibilidad en reportes: en un informe profesional, documenta que usaste IA pero que validaste los resultados."
+  },
+  {
+    "objectID": "clases_ia/notebook_01.html#objetivo",
+    "href": "clases_ia/notebook_01.html#objetivo",
+    "title": "Finanzas en R — Desarrollo Asistido por IA",
+    "section": "Objetivo",
+    "text": "Objetivo\nReplicar el flujo de trabajo aprendido con un dataset distinto: usa datos financieros reales (ej: puedes obtenerlos de Yahoo Finance, FRED, o una BD local)."
+  },
+  {
+    "objectID": "clases_ia/notebook_01.html#instrucciones",
+    "href": "clases_ia/notebook_01.html#instrucciones",
+    "title": "Finanzas en R — Desarrollo Asistido por IA",
+    "section": "Instrucciones",
+    "text": "Instrucciones\n\nObtén o simula datos: retornos de 3 acciones (ej: Apple, Google, Microsoft) durante 1 año.\nOpción A (simulado con Claude):\nnpx @anthropic-ai/claude-code \"simula retornos diarios de 3 acciones distintas (252 días) y guarda en un CSV con columnas 'fecha', 'ticker', 'retorno'\"\nOpción B (datos reales): descarga desde https://finance.yahoo.com/\nAnaliza con Claude Code:\n\nCarga los datos.\nCalcula retornos acumulativos por acción.\nGenera gráficos comparativos.\nCalcula correlación entre las 3 acciones.\n\nPídele a Claude que genere un script que haga todo esto de una vez.\nEntrega:\n\nScript R comentado (.R).\nResultado de la correlación (tabla numérica).\nUn gráfico (puede ser PNG exportado de Positron).\nPárrafo breve (3-5 líneas): qué aprendiste de usar Claude Code vs escribir código manual."
+  },
+  {
+    "objectID": "clases_ia/notebook_01.html#rúbrica",
+    "href": "clases_ia/notebook_01.html#rúbrica",
+    "title": "Finanzas en R — Desarrollo Asistido por IA",
+    "section": "Rúbrica",
+    "text": "Rúbrica\n\nScript funciona sin errores: 40%\nUsa tidyverse y ggplot2 (como el resto del curso): 20%\nCálculos financieros correctos: 20%\nDocumentación clara (comentarios, texto explicativo): 20%"
+  },
+  {
+    "objectID": "clases_ia/EVALUACIONES_PROFESOR.html",
+    "href": "clases_ia/EVALUACIONES_PROFESOR.html",
+    "title": "EVALUACIÓN - Clase 01: Desarrollo en R Asistido por IA",
+    "section": "",
+    "text": "⚠️ DOCUMENTO CONFIDENCIAL - SOLO PROFESOR\nEste archivo contiene las preguntas de evaluación para la Clase 01. No compartir con estudiantes.\n\n\n\n\n\nPregunta: Explica en 3-4 líneas por qué usamos herramientas de IA generativa en un curso de finanzas cuantitativas. ¿Cuáles son los tres problemas principales que resuelven?\nRespuesta esperada: - Reducen tiempo de escritura de código boilerplate - Aceleran exploración de datos (prueba múltiples enfoques rápidamente) - Facilitan documentación y comunicación de análisis - (Bonus: Mejoran debugging interactivo)\nRúbrica: - 20 pts: Menciona 3 problemas claros y específicos - 15 pts: Menciona 2-3 problemas pero falta claridad - 10 pts: Menciona 1-2 problemas vagos - 0 pts: No responde o respuesta incorrecta\n\n\n\n\nPregunta: Describe los pasos principales para instalar y configurar Claude Code en Windows PowerShell. ¿Qué es lo más importante después de instalar Node.js?\nRespuesta esperada: 1. Instalar Node.js (v18+) 2. Crear cuenta en console.anthropic.com 3. Generar API key 4. Configurar variable de entorno: $env:ANTHROPIC_API_KEY=\"sk-ant-...\" 5. Verificar con npx @anthropic-ai/claude-code --version\nLo más importante: Configurar la API key (sin ella no funciona)\nRúbrica: - 20 pts: Pasos correctos en orden + identifica API key como crítica - 15 pts: 4 de 5 pasos correctos - 10 pts: 3 de 5 pasos correctos - 5 pts: 2 de 5 pasos correctos - 0 pts: Menos de 2 pasos o incorrectos\n\n\n\n\nPregunta: Reescribe este prompt MALO para que sea EFECTIVO según las 5 reglas de prompting:\nPrompt malo:\nGenera código R para analizar datos financieros\nRespuesta esperada (ejemplo):\nUsa tidyverse para analizar un CSV de retornos diarios de acciones.\nEl script debe:\n- Cargar el archivo 'precios.csv' (columnas: fecha, ticker, precio)\n- Calcular retornos diarios usando (precio_hoy - precio_ayer) / precio_ayer\n- Generar gráfico de serie de tiempo con ggplot2\n- Calcular y imprimir: media, desviación estándar, ratio de Sharpe (asumir Rf=0)\nRúbrica: - 20 pts: Específico + reproducible + menciona librerías + incluye formato entrada/salida - 15 pts: Específico + reproducible + menciona librerías (falta detalles) - 10 pts: Más específico que el original pero falta reproducibilidad - 5 pts: Mejorado pero aún vago - 0 pts: Sin mejora o no intenta\n\n\n\n\nPregunta: Describe paso a paso cómo usarías Claude Code para: 1. Crear un script que simule 252 retornos diarios 2. Ejecutarlo en Positron 3. Manejar un error que aparezca\nRespuesta esperada: 1. Abre Claude Code en terminal 2. Pega prompt para simulación 3. Claude genera código → copias al archivo simular.R 4. Ctrl+Enter en Positron para ejecutar 5. Si hay error: copia el error y pégalo en Claude Code 6. Claude explica el problema y propone solución 7. Editas el código y vuelves a ejecutar\nRúbrica: - 20 pts: 7 pasos claros y correctos - 15 pts: 5-6 pasos correctos - 10 pts: 3-4 pasos correctos - 5 pts: 1-2 pasos - 0 pts: No responde o incorrectos\n\n\n\n\nPregunta: ¿Cuáles son las 3 limitaciones principales de usar IA generativa en análisis financiero? ¿Cómo se mitigan?\nRespuesta esperada: 1. No es 100% preciso: Mitiga revisando código antes de usarlo en datos reales 2. Requiere conexión a internet: Mitiga teniendo alternativas offline (código manual) 3. Requiere comprensión del usuario: Mitiga NO delegando pensamiento financiero a la IA 4. (Bonus): Riesgo de alucinaciones → Validar resultados con métodos alternativos\nRúbrica: - 20 pts: 3 limitaciones claras + 3 mitigaciones prácticas - 15 pts: 3 limitaciones + 2 mitigaciones - 10 pts: 2 limitaciones + 2 mitigaciones - 5 pts: 1-2 limitaciones + 1 mitigación vaga - 0 pts: No responde o respuesta superficial\n\n\n\n\n\n\n\n\nPuntaje\nCalificación\n\n\n\n\n90-100\nA (Excelente)\n\n\n80-89\nB (Bueno)\n\n\n70-79\nC (Satisfactorio)\n\n\n60-69\nD (Mínimo)\n\n\n&lt;60\nF (Insuficiente)\n\n\n\n\n\n\n\n\nLas preguntas evalúan: conceptos, instalación, prácticas, workflow y pensamiento crítico\nAceptar variaciones en las respuestas mientras demuestren comprensión\nPregunta 5 es la más importante (pensamiento crítico)\nLos estudiantes pueden usar el notebook como referencia\nTiempo recomendado: 30-45 minutos\n\n\nGuardado: 2026-08-30 Confidencialidad: Solo profesor - No distribuir"
+  },
+  {
+    "objectID": "clases_ia/EVALUACIONES_PROFESOR.html#preguntas-de-evaluación-5-preguntas---20-puntos-cada-una",
+    "href": "clases_ia/EVALUACIONES_PROFESOR.html#preguntas-de-evaluación-5-preguntas---20-puntos-cada-una",
+    "title": "EVALUACIÓN - Clase 01: Desarrollo en R Asistido por IA",
+    "section": "",
+    "text": "Pregunta: Explica en 3-4 líneas por qué usamos herramientas de IA generativa en un curso de finanzas cuantitativas. ¿Cuáles son los tres problemas principales que resuelven?\nRespuesta esperada: - Reducen tiempo de escritura de código boilerplate - Aceleran exploración de datos (prueba múltiples enfoques rápidamente) - Facilitan documentación y comunicación de análisis - (Bonus: Mejoran debugging interactivo)\nRúbrica: - 20 pts: Menciona 3 problemas claros y específicos - 15 pts: Menciona 2-3 problemas pero falta claridad - 10 pts: Menciona 1-2 problemas vagos - 0 pts: No responde o respuesta incorrecta\n\n\n\n\nPregunta: Describe los pasos principales para instalar y configurar Claude Code en Windows PowerShell. ¿Qué es lo más importante después de instalar Node.js?\nRespuesta esperada: 1. Instalar Node.js (v18+) 2. Crear cuenta en console.anthropic.com 3. Generar API key 4. Configurar variable de entorno: $env:ANTHROPIC_API_KEY=\"sk-ant-...\" 5. Verificar con npx @anthropic-ai/claude-code --version\nLo más importante: Configurar la API key (sin ella no funciona)\nRúbrica: - 20 pts: Pasos correctos en orden + identifica API key como crítica - 15 pts: 4 de 5 pasos correctos - 10 pts: 3 de 5 pasos correctos - 5 pts: 2 de 5 pasos correctos - 0 pts: Menos de 2 pasos o incorrectos\n\n\n\n\nPregunta: Reescribe este prompt MALO para que sea EFECTIVO según las 5 reglas de prompting:\nPrompt malo:\nGenera código R para analizar datos financieros\nRespuesta esperada (ejemplo):\nUsa tidyverse para analizar un CSV de retornos diarios de acciones.\nEl script debe:\n- Cargar el archivo 'precios.csv' (columnas: fecha, ticker, precio)\n- Calcular retornos diarios usando (precio_hoy - precio_ayer) / precio_ayer\n- Generar gráfico de serie de tiempo con ggplot2\n- Calcular y imprimir: media, desviación estándar, ratio de Sharpe (asumir Rf=0)\nRúbrica: - 20 pts: Específico + reproducible + menciona librerías + incluye formato entrada/salida - 15 pts: Específico + reproducible + menciona librerías (falta detalles) - 10 pts: Más específico que el original pero falta reproducibilidad - 5 pts: Mejorado pero aún vago - 0 pts: Sin mejora o no intenta\n\n\n\n\nPregunta: Describe paso a paso cómo usarías Claude Code para: 1. Crear un script que simule 252 retornos diarios 2. Ejecutarlo en Positron 3. Manejar un error que aparezca\nRespuesta esperada: 1. Abre Claude Code en terminal 2. Pega prompt para simulación 3. Claude genera código → copias al archivo simular.R 4. Ctrl+Enter en Positron para ejecutar 5. Si hay error: copia el error y pégalo en Claude Code 6. Claude explica el problema y propone solución 7. Editas el código y vuelves a ejecutar\nRúbrica: - 20 pts: 7 pasos claros y correctos - 15 pts: 5-6 pasos correctos - 10 pts: 3-4 pasos correctos - 5 pts: 1-2 pasos - 0 pts: No responde o incorrectos\n\n\n\n\nPregunta: ¿Cuáles son las 3 limitaciones principales de usar IA generativa en análisis financiero? ¿Cómo se mitigan?\nRespuesta esperada: 1. No es 100% preciso: Mitiga revisando código antes de usarlo en datos reales 2. Requiere conexión a internet: Mitiga teniendo alternativas offline (código manual) 3. Requiere comprensión del usuario: Mitiga NO delegando pensamiento financiero a la IA 4. (Bonus): Riesgo de alucinaciones → Validar resultados con métodos alternativos\nRúbrica: - 20 pts: 3 limitaciones claras + 3 mitigaciones prácticas - 15 pts: 3 limitaciones + 2 mitigaciones - 10 pts: 2 limitaciones + 2 mitigaciones - 5 pts: 1-2 limitaciones + 1 mitigación vaga - 0 pts: No responde o respuesta superficial"
+  },
+  {
+    "objectID": "clases_ia/EVALUACIONES_PROFESOR.html#puntaje-total-100-puntos",
+    "href": "clases_ia/EVALUACIONES_PROFESOR.html#puntaje-total-100-puntos",
+    "title": "EVALUACIÓN - Clase 01: Desarrollo en R Asistido por IA",
+    "section": "",
+    "text": "Puntaje\nCalificación\n\n\n\n\n90-100\nA (Excelente)\n\n\n80-89\nB (Bueno)\n\n\n70-79\nC (Satisfactorio)\n\n\n60-69\nD (Mínimo)\n\n\n&lt;60\nF (Insuficiente)"
+  },
+  {
+    "objectID": "clases_ia/EVALUACIONES_PROFESOR.html#notas-del-profesor",
+    "href": "clases_ia/EVALUACIONES_PROFESOR.html#notas-del-profesor",
+    "title": "EVALUACIÓN - Clase 01: Desarrollo en R Asistido por IA",
+    "section": "",
+    "text": "Las preguntas evalúan: conceptos, instalación, prácticas, workflow y pensamiento crítico\nAceptar variaciones en las respuestas mientras demuestren comprensión\nPregunta 5 es la más importante (pensamiento crítico)\nLos estudiantes pueden usar el notebook como referencia\nTiempo recomendado: 30-45 minutos\n\n\nGuardado: 2026-08-30 Confidencialidad: Solo profesor - No distribuir"
+  },
+  {
+    "objectID": "clases/subida/index.html",
+    "href": "clases/subida/index.html",
+    "title": "Untitled",
+    "section": "",
+    "text": "── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ ggplot2   3.5.2     ✔ stringr   1.5.1\n✔ lubridate 1.9.4     ✔ tibble    3.3.0\n✔ purrr     1.0.4     ✔ tidyr     1.3.1\n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\n\n\n# Reorder following the value of another column:\ndata %&gt;%\n  mutate(name = fct_reorder(name, val)) %&gt;%\n  ggplot( aes(x=name, y=val)) +\n  geom_bar(stat=\"identity\", fill=\"#f68060\", alpha=.6, width=.4) +\n  coord_flip() +\n  xlab(\"\") +\n  theme_bw()"
+  },
+  {
+    "objectID": "clases/subida/index.html#column",
+    "href": "clases/subida/index.html#column",
+    "title": "Untitled",
+    "section": "",
+    "text": "── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ ggplot2   3.5.2     ✔ stringr   1.5.1\n✔ lubridate 1.9.4     ✔ tibble    3.3.0\n✔ purrr     1.0.4     ✔ tidyr     1.3.1\n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\n\n\n# Reorder following the value of another column:\ndata %&gt;%\n  mutate(name = fct_reorder(name, val)) %&gt;%\n  ggplot( aes(x=name, y=val)) +\n  geom_bar(stat=\"identity\", fill=\"#f68060\", alpha=.6, width=.4) +\n  coord_flip() +\n  xlab(\"\") +\n  theme_bw()"
+  },
+  {
+    "objectID": "clases/subida/index.html#column-1",
+    "href": "clases/subida/index.html#column-1",
+    "title": "Untitled",
+    "section": "Column",
+    "text": "Column\n\nChart B\n\n# Reverse side\ndata %&gt;%\n  mutate(name = fct_reorder(name, desc(val))) %&gt;%\n  ggplot( aes(x=name, y=val)) +\n  geom_bar(stat=\"identity\", fill=\"#f68060\", alpha=.6, width=.4) +\n  coord_flip() +\n  xlab(\"\") +\n  theme_bw()\n\n\n\n\n\n\n\n\n\n\nChart C\n\n# Using median\nmpg %&gt;%\n  mutate(class = fct_reorder(class, hwy, .fun='median')) %&gt;%\n  ggplot( aes(x=reorder(class, hwy), y=hwy, fill=class)) + \n  geom_boxplot() +\n  xlab(\"class\") +\n  theme(legend.position=\"none\") +\n  xlab(\"\")\n\n\n\n\n\n\n\n\n\n\nChart D\n\n# Using number of observation per group\nmpg %&gt;%\n  mutate(class = fct_reorder(class, hwy, .fun='length' )) %&gt;%\n  ggplot( aes(x=class, y=hwy, fill=class)) + \n  geom_boxplot() +\n  xlab(\"class\") +\n  theme(legend.position=\"none\") +\n  xlab(\"\") +\n  xlab(\"\")"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site\n\n1 + 1 + 1\n\n[1] 3"
+  },
+  {
+    "objectID": "clases/index.html",
+    "href": "clases/index.html",
+    "title": "Clases",
+    "section": "",
+    "text": "Clases del curso\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nClase 01 - Notebook 01\n\n\n\n\n\n\n\n\n\n\n\nClase 01 - Notebook Actividad 01\n\n\n\n\n\n\n\n\n\n\n\nClase 01 - Notebook OCR\n\n\n\n\n\n\n\n\n\n\n\nClase 02 - Notebook Actividad Programación\n\n\n\n\n\n\n\n\n\n\n\nClase 02 - Notebook CICD\n\n\n\n\n\n\n\n\n\n\n\nClase 03 - Notebook 02\n\n\n\n\n\n\n\n\n\n\n\nClase 03 - Notebook Actividad 03\n\n\n\n\n\n\n\n\n\n\n\nClase 03 - Notebook Visualizaciones\n\n\n\n\n\n\n\n\n\n\n\nClase 04 - Notebook 03\n\n\n\n\n\n\n\n\n\n\n\nClase 04 - Notebook Opciones\n\n\n\n\n\n\n\n\n\n\n\nClase 04 - Notebook Simulaciones\n\n\n\n\n\n\n\n\n\n\n\nClase 05 - Notebook Regresión Lineal\n\n\n\n\n\n\n\n\n\n\n\nClase 07 - Notebook Documentos\n\n\n\n\n\n\n\n\n\n\n\nRevisar - Clase 01 - Notebook Actividad 02\n\n\n\n\n\n\n\n\n\n\n\nRevisar - Clase 01 - Notebook Dates\n\n\n\n\n\n\n\n\n\n\n\nRevisar - Clase 02 - Notebook Ejercicio 01\n\n\n\n\n\n\n\n\n\n\n\nRevisar - Clase 03 - Notebook Ejercicio 01\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "clases.html",
+    "href": "clases.html",
+    "title": "Clases del curso",
+    "section": "",
+    "text": "Clases disponibles\n\nClase 1: Introducción a R\nClase 2: Análisis exploratorio"
+  },
+  {
+    "objectID": "clases_ia/index.html",
+    "href": "clases_ia/index.html",
+    "title": "Clases — Finanzas en R con IA",
+    "section": "",
+    "text": "Desarrollo Asistido por IA en Finanzas\nMateriales del curso que integran Claude Code y Positron para acelerar el desarrollo de análisis financieros en R. Desde la generación automática de código hasta debugging, documentación y buenas prácticas de prompting.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nClase 01 - Desarrollo en R asistido por IA\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "clases_ia/RESPUESTAS_PROFESOR.html",
+    "href": "clases_ia/RESPUESTAS_PROFESOR.html",
+    "title": "RESPUESTAS Y RÚBRICA - Clase 01",
+    "section": "",
+    "text": "⚠️ CONFIDENCIAL - SOLO PROFESOR\n\n\n\nPregunta: Explica en 3-4 líneas por qué usamos herramientas de IA generativa en un curso de finanzas cuantitativas. ¿Cuáles son los tres problemas principales que resuelven?\nRespuesta esperada: - Reducen tiempo de escritura de código boilerplate - Aceleran exploración de datos (prueba múltiples enfoques rápidamente) - Facilitan documentación y comunicación de análisis - (Bonus: Mejoran debugging interactivo)\nRúbrica: - 20 pts: Menciona 3 problemas claros y específicos - 15 pts: Menciona 2-3 problemas pero falta claridad - 10 pts: Menciona 1-2 problemas vagos - 0 pts: No responde o respuesta incorrecta\n\n\n\n\nPregunta: Describe los pasos principales para instalar y configurar Claude Code en Windows PowerShell. ¿Qué es lo más importante después de instalar Node.js?\nRespuesta esperada: 1. Instalar Node.js (v18+) 2. Crear cuenta en console.anthropic.com 3. Generar API key 4. Configurar variable de entorno: $env:ANTHROPIC_API_KEY=\"sk-ant-...\" 5. Verificar con npx @anthropic-ai/claude-code --version\nLo más importante: Configurar la API key (sin ella no funciona)\nRúbrica: - 20 pts: Pasos correctos en orden + identifica API key como crítica - 15 pts: 4 de 5 pasos correctos - 10 pts: 3 de 5 pasos correctos - 5 pts: 2 de 5 pasos correctos - 0 pts: Menos de 2 pasos o incorrectos\n\n\n\n\nPregunta: Reescribe este prompt MALO para que sea EFECTIVO según las 5 reglas de prompting:\nGenera código R para analizar datos financieros\nRespuesta esperada (ejemplo):\nUsa tidyverse para analizar un CSV de retornos diarios de acciones.\nEl script debe:\n- Cargar el archivo 'precios.csv' (columnas: fecha, ticker, precio)\n- Calcular retornos diarios usando (precio_hoy - precio_ayer) / precio_ayer\n- Generar gráfico de serie de tiempo con ggplot2\n- Calcular y imprimir: media, desviación estándar, ratio de Sharpe (asumir Rf=0)\nRúbrica: - 20 pts: Específico + reproducible + menciona librerías + incluye formato entrada/salida - 15 pts: Específico + reproducible + menciona librerías (falta detalles) - 10 pts: Más específico que el original pero falta reproducibilidad - 5 pts: Mejorado pero aún vago - 0 pts: Sin mejora o no intenta\nNota: Aceptar variaciones siempre que demuestre aplicación de las 5 reglas (contexto, reproducibilidad, librerías, explicación, iteración)\n\n\n\n\nPregunta: Describe paso a paso cómo usarías Claude Code para: 1. Crear un script que simule 252 retornos diarios 2. Ejecutarlo en Positron 3. Manejar un error que aparezca\nRespuesta esperada: 1. Abre Claude Code en terminal 2. Pega prompt para simulación 3. Claude genera código → copias al archivo simular.R 4. Ctrl+Enter en Positron para ejecutar 5. Si hay error: copia el error y pégalo en Claude Code 6. Claude explica el problema y propone solución 7. Editas el código y vuelves a ejecutar\nRúbrica: - 20 pts: 7 pasos claros y correctos - 15 pts: 5-6 pasos correctos - 10 pts: 3-4 pasos correctos - 5 pts: 1-2 pasos - 0 pts: No responde o incorrectos\nCriterios de evaluación: - Debe incluir: generar → copiar → ejecutar → error → consultar → corregir - Aceptar variaciones en el orden/formato siempre que el flujo sea correcto\n\n\n\n\nPregunta: ¿Cuáles son las 3 limitaciones principales de usar IA generativa en análisis financiero? ¿Cómo se mitigan?\nRespuesta esperada: 1. No es 100% preciso: Mitiga revisando código antes de usarlo en datos reales 2. Requiere conexión a internet: Mitiga teniendo alternativas offline (código manual) 3. Requiere comprensión del usuario: Mitiga NO delegando pensamiento financiero a la IA 4. (Bonus): Riesgo de alucinaciones → Validar resultados con métodos alternativos\nRúbrica: - 20 pts: 3 limitaciones claras + 3 mitigaciones prácticas - 15 pts: 3 limitaciones + 2 mitigaciones - 10 pts: 2 limitaciones + 2 mitigaciones - 5 pts: 1-2 limitaciones + 1 mitigación vaga - 0 pts: No responde o respuesta superficial\nNota: Esta es la pregunta más importante - evalúa pensamiento crítico. Aceptar respuestas creativas siempre que demuestren comprensión.\n\n\n\n\n\n\n\nPuntaje\nCalificación\n\n\n\n\n90-100\nA (Excelente)\n\n\n80-89\nB (Bueno)\n\n\n70-79\nC (Satisfactorio)\n\n\n60-69\nD (Mínimo)\n\n\n&lt;60\nF (Insuficiente)\n\n\n\n\n\n\n\n\n\n\nTiempo recomendado: 30-45 minutos\nLos estudiantes pueden usar el notebook como referencia\nAceptar respuestas en español\n\n\n\n\n\nClaridad: La respuesta debe ser comprensible\nExactitud: Debe demostrar comprensión correcta del concepto\nCompletitud: Debe abordar todos los puntos de la pregunta\nVariación: Aceptar respuestas diferentes siempre que sean correctas\n\n\n\n\n\nPreguntas 1-2: Respuestas más estructuradas (menos variación)\nPregunta 3: Muchas variaciones válidas (cualquier mejora es aceptable)\nPregunta 4: Orden flexible, solo importa el flujo correcto\nPregunta 5: Muy flexible (múltiples respuestas válidas posibles)\n\n\n\n\n\nSi el estudiante confunde Positron con RStudio: aceptar si explica correctamente\nSi usa vibe o mistral-code en lugar de Claude Code: válido (alternativa correcta)\nSi el prompt de la Pregunta 3 es diferente pero más específico/reproducible: válido\n\n\nDocumento guardado: 2026-08-30 Confidencialidad: Solo profesor - No distribuir a estudiantes Distribución: Mantener localmente, no subir a la web"
+  },
+  {
+    "objectID": "clases_ia/RESPUESTAS_PROFESOR.html#pregunta-1-conceptos-fundamentales-20-puntos",
+    "href": "clases_ia/RESPUESTAS_PROFESOR.html#pregunta-1-conceptos-fundamentales-20-puntos",
+    "title": "RESPUESTAS Y RÚBRICA - Clase 01",
+    "section": "",
+    "text": "Pregunta: Explica en 3-4 líneas por qué usamos herramientas de IA generativa en un curso de finanzas cuantitativas. ¿Cuáles son los tres problemas principales que resuelven?\nRespuesta esperada: - Reducen tiempo de escritura de código boilerplate - Aceleran exploración de datos (prueba múltiples enfoques rápidamente) - Facilitan documentación y comunicación de análisis - (Bonus: Mejoran debugging interactivo)\nRúbrica: - 20 pts: Menciona 3 problemas claros y específicos - 15 pts: Menciona 2-3 problemas pero falta claridad - 10 pts: Menciona 1-2 problemas vagos - 0 pts: No responde o respuesta incorrecta"
+  },
+  {
+    "objectID": "clases_ia/RESPUESTAS_PROFESOR.html#pregunta-2-herramientas-y-configuración-20-puntos",
+    "href": "clases_ia/RESPUESTAS_PROFESOR.html#pregunta-2-herramientas-y-configuración-20-puntos",
+    "title": "RESPUESTAS Y RÚBRICA - Clase 01",
+    "section": "",
+    "text": "Pregunta: Describe los pasos principales para instalar y configurar Claude Code en Windows PowerShell. ¿Qué es lo más importante después de instalar Node.js?\nRespuesta esperada: 1. Instalar Node.js (v18+) 2. Crear cuenta en console.anthropic.com 3. Generar API key 4. Configurar variable de entorno: $env:ANTHROPIC_API_KEY=\"sk-ant-...\" 5. Verificar con npx @anthropic-ai/claude-code --version\nLo más importante: Configurar la API key (sin ella no funciona)\nRúbrica: - 20 pts: Pasos correctos en orden + identifica API key como crítica - 15 pts: 4 de 5 pasos correctos - 10 pts: 3 de 5 pasos correctos - 5 pts: 2 de 5 pasos correctos - 0 pts: Menos de 2 pasos o incorrectos"
+  },
+  {
+    "objectID": "clases_ia/RESPUESTAS_PROFESOR.html#pregunta-3-prompting-efectivo-20-puntos",
+    "href": "clases_ia/RESPUESTAS_PROFESOR.html#pregunta-3-prompting-efectivo-20-puntos",
+    "title": "RESPUESTAS Y RÚBRICA - Clase 01",
+    "section": "",
+    "text": "Pregunta: Reescribe este prompt MALO para que sea EFECTIVO según las 5 reglas de prompting:\nGenera código R para analizar datos financieros\nRespuesta esperada (ejemplo):\nUsa tidyverse para analizar un CSV de retornos diarios de acciones.\nEl script debe:\n- Cargar el archivo 'precios.csv' (columnas: fecha, ticker, precio)\n- Calcular retornos diarios usando (precio_hoy - precio_ayer) / precio_ayer\n- Generar gráfico de serie de tiempo con ggplot2\n- Calcular y imprimir: media, desviación estándar, ratio de Sharpe (asumir Rf=0)\nRúbrica: - 20 pts: Específico + reproducible + menciona librerías + incluye formato entrada/salida - 15 pts: Específico + reproducible + menciona librerías (falta detalles) - 10 pts: Más específico que el original pero falta reproducibilidad - 5 pts: Mejorado pero aún vago - 0 pts: Sin mejora o no intenta\nNota: Aceptar variaciones siempre que demuestre aplicación de las 5 reglas (contexto, reproducibilidad, librerías, explicación, iteración)"
+  },
+  {
+    "objectID": "clases_ia/RESPUESTAS_PROFESOR.html#pregunta-4-flujo-de-trabajo-práctico-20-puntos",
+    "href": "clases_ia/RESPUESTAS_PROFESOR.html#pregunta-4-flujo-de-trabajo-práctico-20-puntos",
+    "title": "RESPUESTAS Y RÚBRICA - Clase 01",
+    "section": "",
+    "text": "Pregunta: Describe paso a paso cómo usarías Claude Code para: 1. Crear un script que simule 252 retornos diarios 2. Ejecutarlo en Positron 3. Manejar un error que aparezca\nRespuesta esperada: 1. Abre Claude Code en terminal 2. Pega prompt para simulación 3. Claude genera código → copias al archivo simular.R 4. Ctrl+Enter en Positron para ejecutar 5. Si hay error: copia el error y pégalo en Claude Code 6. Claude explica el problema y propone solución 7. Editas el código y vuelves a ejecutar\nRúbrica: - 20 pts: 7 pasos claros y correctos - 15 pts: 5-6 pasos correctos - 10 pts: 3-4 pasos correctos - 5 pts: 1-2 pasos - 0 pts: No responde o incorrectos\nCriterios de evaluación: - Debe incluir: generar → copiar → ejecutar → error → consultar → corregir - Aceptar variaciones en el orden/formato siempre que el flujo sea correcto"
+  },
+  {
+    "objectID": "clases_ia/RESPUESTAS_PROFESOR.html#pregunta-5-análisis-crítico-20-puntos",
+    "href": "clases_ia/RESPUESTAS_PROFESOR.html#pregunta-5-análisis-crítico-20-puntos",
+    "title": "RESPUESTAS Y RÚBRICA - Clase 01",
+    "section": "",
+    "text": "Pregunta: ¿Cuáles son las 3 limitaciones principales de usar IA generativa en análisis financiero? ¿Cómo se mitigan?\nRespuesta esperada: 1. No es 100% preciso: Mitiga revisando código antes de usarlo en datos reales 2. Requiere conexión a internet: Mitiga teniendo alternativas offline (código manual) 3. Requiere comprensión del usuario: Mitiga NO delegando pensamiento financiero a la IA 4. (Bonus): Riesgo de alucinaciones → Validar resultados con métodos alternativos\nRúbrica: - 20 pts: 3 limitaciones claras + 3 mitigaciones prácticas - 15 pts: 3 limitaciones + 2 mitigaciones - 10 pts: 2 limitaciones + 2 mitigaciones - 5 pts: 1-2 limitaciones + 1 mitigación vaga - 0 pts: No responde o respuesta superficial\nNota: Esta es la pregunta más importante - evalúa pensamiento crítico. Aceptar respuestas creativas siempre que demuestren comprensión."
+  },
+  {
+    "objectID": "clases_ia/RESPUESTAS_PROFESOR.html#escala-de-calificaciones",
+    "href": "clases_ia/RESPUESTAS_PROFESOR.html#escala-de-calificaciones",
+    "title": "RESPUESTAS Y RÚBRICA - Clase 01",
+    "section": "",
+    "text": "Puntaje\nCalificación\n\n\n\n\n90-100\nA (Excelente)\n\n\n80-89\nB (Bueno)\n\n\n70-79\nC (Satisfactorio)\n\n\n60-69\nD (Mínimo)\n\n\n&lt;60\nF (Insuficiente)"
+  },
+  {
+    "objectID": "clases_ia/RESPUESTAS_PROFESOR.html#notas-generales-de-evaluación",
+    "href": "clases_ia/RESPUESTAS_PROFESOR.html#notas-generales-de-evaluación",
+    "title": "RESPUESTAS Y RÚBRICA - Clase 01",
+    "section": "",
+    "text": "Tiempo recomendado: 30-45 minutos\nLos estudiantes pueden usar el notebook como referencia\nAceptar respuestas en español\n\n\n\n\n\nClaridad: La respuesta debe ser comprensible\nExactitud: Debe demostrar comprensión correcta del concepto\nCompletitud: Debe abordar todos los puntos de la pregunta\nVariación: Aceptar respuestas diferentes siempre que sean correctas\n\n\n\n\n\nPreguntas 1-2: Respuestas más estructuradas (menos variación)\nPregunta 3: Muchas variaciones válidas (cualquier mejora es aceptable)\nPregunta 4: Orden flexible, solo importa el flujo correcto\nPregunta 5: Muy flexible (múltiples respuestas válidas posibles)\n\n\n\n\n\nSi el estudiante confunde Positron con RStudio: aceptar si explica correctamente\nSi usa vibe o mistral-code en lugar de Claude Code: válido (alternativa correcta)\nSi el prompt de la Pregunta 3 es diferente pero más específico/reproducible: válido\n\n\nDocumento guardado: 2026-08-30 Confidencialidad: Solo profesor - No distribuir a estudiantes Distribución: Mantener localmente, no subir a la web"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Diplomado en Ciencia de Datos para las Finanzas",
+    "section": "",
+    "text": "Este será el repositorio de los distintos materiales utilizados en el curso."
+  }
+]
