@@ -39,6 +39,10 @@ jobs:
         with:
           cache-version: 1
 
+      - name: Verify and Restore Dependencies
+        run: |
+          Rscript -e "renv::restore()"
+
       - name: Install TinyTeX
         run: quarto install tinytex
 
