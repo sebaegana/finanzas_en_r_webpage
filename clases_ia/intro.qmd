@@ -1,0 +1,134 @@
+---
+title: "Introducción a Finanzas en R"
+subtitle: "Presentación del curso"
+author: "Sebastián Egaña Santibáñez"
+date: "2026-01-09"
+---
+
+## Presentación del Curso
+
+**Docente:** Sebastián Egaña Santibáñez
+- Email: segana@fen.uchile.cl
+- Página Web: https://segana.netlify.app
+
+**Ayudante:** Nicolas Leiva
+- Email: nleivad@fen.uchile.cl
+
+---
+
+## ¿Qué veremos en esta clase?
+
+### Temario
+- Introducción a lenguajes de programación
+- Instalación de R y RStudio
+
+---
+
+## ¿Qué es R?
+
+### Definición (Wikipedia)
+
+R es un **entorno y lenguaje de programación** con un enfoque al análisis estadístico. R nació como una reimplementación de software libre del lenguaje S, adicionado con soporte para ámbito estático.
+
+Se trata de uno de los lenguajes de programación más utilizados en:
+- Investigación científica
+- Aprendizaje automático (Machine Learning)
+- Minería de datos
+- Investigación biomédica
+- Bioinformática
+- Matemáticas financieras
+
+---
+
+## Lenguajes e Interfaz Gráficas (GUI)
+
+### Instalación y Plataformas
+
+Por lo general, se debe instalar el lenguaje de programación y el GUI por separado:
+
+**Opción 1: R + RStudio (Recomendado)**
+- Instala R desde: https://cran.r-project.org
+- Instala RStudio desde: https://posit.co
+
+**Opción 2: Visual Studio Code**
+- Correr R desde Visual Studio Code
+
+**Opción 3: Google Colab**
+- Correr R a través de Colab: https://colab.to/r
+
+---
+
+## Análisis de Datos en el Contexto de R
+
+### El ciclo del análisis de datos
+
+El análisis de datos es un proceso iterativo que involucra:
+
+1. **Recolección**: Obtener datos de diversas fuentes
+2. **Limpieza**: Procesar y validar los datos
+3. **Exploración**: Entender patrones y relaciones
+4. **Modelado**: Aplicar técnicas estadísticas
+5. **Visualización**: Comunicar resultados
+6. **Interpretación**: Extraer conclusiones
+
+---
+
+## Sobre las Ciencias de Datos
+
+### Definición
+
+Existe una relación entre las **ciencias de datos** y la **estadística**, pero esto viene dado por la dinámica relacionadas con datos.
+
+Las **ciencias de datos** engloban el "conjunto de principios, definiciones de problemas, algoritmos y procesos para extraer patrones no obvios y útiles de grandes conjuntos de datos" (Kelleher & Tierney, 2021).
+
+### Diferencia con Estadística
+
+La ciencia de datos:
+- Va más allá del análisis estadístico puro
+- Integra programación, análisis de datos e ingeniería
+- Se enfoca en patrones accionables
+- Requiere trabajo en equipo e interdisciplinario
+
+---
+
+## Lo que Implica Dedicarse a Ciencias de Datos
+
+### Principios Fundamentales
+
+Dedicarse a la ciencia de datos implica moverse en la dinámica de desarrollo continuo:
+
+1. **Escalabilidad**: Los desarrollos no pueden depender de personas
+2. **Valor organizacional**: Los desarrollos son parte de los activos de las empresas
+3. **Colaboración**: Se debe permitir siempre el trabajo en equipo
+4. **Visión integral**: Considerar también la visión inter-equipos
+
+### DevOps en Ciencias de Datos
+
+Esto implica implementar **CI/CD** (Continuous Integration / Continuous Delivery / Continuous Deployment) en la dinámica de desarrollo.
+
+---
+
+## ¿Por qué R en Finanzas?
+
+### Ventajas de R para Análisis Financiero
+
+- **Librerías especializadas**: `QuantLib`, `tidyquant`, `xts`, `zoo`
+- **Análisis estadístico**: Regresiones, series de tiempo, modelos predictivos
+- **Visualización**: `ggplot2`, `plotly` para dashboards interactivos
+- **Integración**: Fácil conexión con bases de datos y APIs financieras
+- **Comunidad**: Amplio ecosistema de paquetes financieros
+- **Reproducibilidad**: Código documenta el análisis completo
+
+---
+
+## Próximos Pasos
+
+En las siguientes clases:
+
+1. Instalación y configuración del entorno
+2. Conceptos básicos de programación en R
+3. Estructuras de datos y manipulación
+4. Análisis de datos financieros
+5. Visualización y reportes
+
+**¡Bienvenidos al curso de Finanzas en R!**
