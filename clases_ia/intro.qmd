@@ -1,34 +1,53 @@
 ---
-title: "Introducción a Finanzas en R"
-subtitle: "Presentación del curso"
-author: "Sebastián Egaña Santibáñez"
-date: "2026-01-09"
+listing_title: "Intro - Presentación del Curso"
+title: |
+  Introducción a Finanzas en R
+subtitle: "Presentación del curso y fundamentos"
+author:
+  - Sebastián Egaña Santibáñez (segana@fen.uchile.cl)
+  - Nicolás Leiva Díaz (nleivad@fen.uchile.cl)
+date: last-modified
+lang: es
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    theme: cosmo
+    number-sections: false
+    code-block-bg: true
+    code-block-border-left: "#FF0000"
 ---
 
-## Presentación del Curso
+# Enlaces del Profesor
 
-**Docente:** Sebastián Egaña Santibáñez
-- Email: segana@fen.uchile.cl
-- Página Web: https://segana.netlify.app
+🔗 [https://segana.netlify.app](https://segana.netlify.app)
 
-**Ayudante:** Nicolas Leiva
-- Email: nleivad@fen.uchile.cl
+🐙 [https://github.com/sebaegana](https://github.com/sebaegana)
+
+💼 [https://www.linkedin.com/in/sebastian-egana-santibanez/](https://www.linkedin.com/in/sebastian-egana-santibanez/)
 
 ---
 
-## ¿Qué veremos en esta clase?
+# ¿Qué veremos en esta clase?
 
-### Temario
+## Temario
 - Introducción a lenguajes de programación
-- Instalación de R y RStudio
+- ¿Qué es R?
+- Instalación de R y Positron (nuevo IDE)
+- Análisis de datos y ciencias de datos
+- Fundamentos de DevOps en finanzas
+- Por qué IA en este curso
+- Bibliografía y recursos
 
 ---
 
-## ¿Qué es R?
+# ¿Qué es R?
 
-### Definición (Wikipedia)
+## Definición (Wikipedia)
 
-R es un **entorno y lenguaje de programación** con un enfoque al análisis estadístico. R nació como una reimplementación de software libre del lenguaje S, adicionado con soporte para ámbito estático.
+**R es un entorno y lenguaje de programación** con un enfoque al análisis estadístico.
+
+R nació como una reimplementación de software libre del lenguaje S, adicionado con soporte para ámbito estático.
 
 Se trata de uno de los lenguajes de programación más utilizados en:
 - Investigación científica
@@ -36,225 +55,339 @@ Se trata de uno de los lenguajes de programación más utilizados en:
 - Minería de datos
 - Investigación biomédica
 - Bioinformática
-- Matemáticas financieras
+- **Matemáticas financieras** 📊
+
+A esto contribuye la posibilidad de cargar diferentes bibliotecas o paquetes con funcionalidades de cálculo y graficación.
+
+**Referencia:** https://es.wikipedia.org/wiki/R_(lenguaje_de_programación)
 
 ---
 
-## Lenguajes e Interfaz Gráficas (GUI)
+# Lenguajes e Interfaz Gráfica (GUI)
 
-### Instalación y Plataformas
+## Instalación y Plataformas
 
-Por lo general, se debe instalar el lenguaje de programación y el GUI por separado:
+Por lo general, se debe instalar el lenguaje de programación y el GUI por separado.
 
-**Opción 1: R + RStudio (Recomendado)**
-- Instala R desde: https://cran.r-project.org
-- Instala RStudio desde: https://posit.co
+### Opción 1: R + Positron (⭐ RECOMENDADO)
 
-**Opción 2: Visual Studio Code**
-- Correr R desde Visual Studio Code
+**Positron** es el nuevo IDE de Posit Software, sucesor de RStudio.
 
-**Opción 3: Google Colab**
-- Correr R a través de Colab: https://colab.to/r
+```
+Paso 1: Instalar R
+→ https://cran.r-project.org
+
+Paso 2: Instalar Positron (nuevo IDE)
+→ https://posit.co/download/positron/
+```
+
+### Opción 2: R + Visual Studio Code
+
+Correr R desde **Visual Studio Code** (VS Code) con extensiones específicas.
+
+### Opción 3: Google Colab
+
+Correr R a través de **Google Colab** (sin instalar nada localmente)
+→ https://colab.to/r
 
 ---
 
-## Análisis de Datos en el Contexto de R
+## ¿Por qué Positron en lugar de RStudio?
 
-### El ciclo del análisis de datos
+| Aspecto | RStudio | Positron |
+|---------|---------|----------|
+| **Base** | Qt (propietaria) | VS Code (abierta, extensible) |
+| **Soporte IA nativo** | No | Sí (Claude, GitHub Copilot) |
+| **Integración Python** | Limitada | Primera clase |
+| **Extensiones** | Pocas | 20k+ extensiones de VS Code |
+| **Performance** | Bueno | Muy bueno |
+| **Costo** | Libre/Pagado | Libre |
+
+**Conclusión:** Positron es el presente y futuro del desarrollo en R.
+
+---
+
+# Análisis de Datos en el Contexto de R
+
+## El Ciclo del Análisis de Datos
 
 El análisis de datos es un proceso iterativo que involucra:
 
-1. **Recolección**: Obtener datos de diversas fuentes
-2. **Limpieza**: Procesar y validar los datos
-3. **Exploración**: Entender patrones y relaciones
-4. **Modelado**: Aplicar técnicas estadísticas
-5. **Visualización**: Comunicar resultados
-6. **Interpretación**: Extraer conclusiones
+```
+1. RECOLECCIÓN
+   ↓
+2. LIMPIEZA Y VALIDACIÓN
+   ↓
+3. EXPLORACIÓN (EDA)
+   ↓
+4. MODELADO Y ANÁLISIS
+   ↓
+5. VISUALIZACIÓN
+   ↓
+6. COMUNICACIÓN E INSIGHTS
+```
+
+En **finanzas**, este ciclo es especialmente crítico porque los datos impactan decisiones de inversión.
 
 ---
 
-## Sobre las Ciencias de Datos
+# Sobre las Ciencias de Datos
 
-### Definición
+## Definición
 
-Existe una relación entre las **ciencias de datos** y la **estadística**, pero esto viene dado por la dinámica relacionadas con datos.
+Existe una relación entre las **ciencias de datos** y la **estadística**, pero esto viene dado por la dinámica relacionada con datos.
 
-Las **ciencias de datos** engloban el "conjunto de principios, definiciones de problemas, algoritmos y procesos para extraer patrones no obvios y útiles de grandes conjuntos de datos" (Kelleher & Tierney, 2021).
+Las **ciencias de datos** engloban:
+
+> "El conjunto de principios, definiciones de problemas, algoritmos y procesos para extraer patrones no obvios y útiles de grandes conjuntos de datos"
+>
+> — Kelleher & Tierney (2021)
 
 ### Diferencia con Estadística
 
 La ciencia de datos:
 - Va más allá del análisis estadístico puro
 - Integra programación, análisis de datos e ingeniería
-- Se enfoca en patrones accionables
+- Se enfoca en patrones **accionables**
 - Requiere trabajo en equipo e interdisciplinario
+- Incluye aspectos de **operacionalización** (despliegue en producción)
 
 ---
 
-## Lo que Implica Dedicarse a Ciencias de Datos
+# Lo que Implica Dedicarse a Ciencias de Datos
 
-### Principios Fundamentales
+## Principios Fundamentales
 
 Dedicarse a la ciencia de datos implica moverse en la dinámica de desarrollo continuo:
 
-1. **Escalabilidad**: Los desarrollos no pueden depender de personas
+1. **Escalabilidad**: Los desarrollos no pueden depender de personas específicas
 2. **Valor organizacional**: Los desarrollos son parte de los activos de las empresas
 3. **Colaboración**: Se debe permitir siempre el trabajo en equipo
-4. **Visión integral**: Considerar también la visión inter-equipos
-
-### DevOps en Ciencias de Datos
-
-Esto implica implementar **CI/CD** (Continuous Integration / Continuous Delivery / Continuous Deployment) en la dinámica de desarrollo.
+4. **Visión inter-equipos**: Considerar cómo tu código se integra con otros sistemas
 
 ---
 
-## ¿Por qué R en Finanzas?
+# CI/CD en Ciencias de Datos
 
-### Ventajas de R para Análisis Financiero
+## ¿Qué es CI/CD?
 
-- **Librerías especializadas**: `QuantLib`, `tidyquant`, `xts`, `zoo`
-- **Análisis estadístico**: Regresiones, series de tiempo, modelos predictivos
-- **Visualización**: `ggplot2`, `plotly` para dashboards interactivos
-- **Integración**: Fácil conexión con bases de datos y APIs financieras
-- **Comunidad**: Amplio ecosistema de paquetes financieros
-- **Reproducibilidad**: Código documenta el análisis completo
+**CI/CD** son prácticas esenciales en desarrollo moderno:
 
----
+- **CI (Continuous Integration)**: Integrar código constantemente
+- **CD (Continuous Delivery)**: Entrega continua de cambios
+- **CD (Continuous Deployment)**: Despliegue automático en producción
 
----
+### Aplicación en Finanzas
 
-## ¿Por qué IA en este Curso?
+En un análisis financiero moderno:
 
-### La Revolución de los LLMs en Desarrollo
+```
+Desarrollo Local
+    ↓
+Control de Versiones (Git)
+    ↓
+Tests Automáticos
+    ↓
+Validación de Datos
+    ↓
+Integración en Producción
+    ↓
+Monitoreo Continuo
+```
 
-Los **Modelos de Lenguaje de Gran Escala (LLMs)** han transformado la forma en que desarrollamos código:
+### ¿Por qué importa en finanzas?
 
-- **Generación automática de código**: Escribir scripts más rápidamente
-- **Debugging asistido**: Identificar y corregir errores de forma inteligente
-- **Documentación automática**: Generar comentarios y explicaciones
-- **Aprendizaje acelerado**: Aprender patrones y mejores prácticas
-- **Productividad**: Enfocarse en lógica, no en sintaxis
-
-### La Nueva Realidad
-
-En 2024, **ignorar las herramientas de IA es quedarse atrás**. Como profesionales en finanzas y ciencias de datos, debemos:
-
-1. **Entender cómo usarlas efectivamente**
-2. **Aplicarlas estratégicamente** en nuestros flujos de trabajo
-3. **Mantener el pensamiento crítico** y validar resultados
-4. **Desarrollar habilidades complementarias** que las máquinas no tienen
-
----
-
-## Herramientas de IA que Usaremos
-
-### Claude Code
-
-**Claude Code** es un IDE inteligente que integra Claude 3.5 Sonnet:
-
-- **Generación de código**: Escribe funciones describiendo qué quieres
-- **Análisis de archivos**: Entiende tu código y propone mejoras
-- **Debugging en contexto**: Identifica bugs mientras escribes
-- **Terminal integrada**: Ejecuta comandos con sugerencias
-
-**Ventaja**: Acelera el aprendizaje de R sin bloqueos sintácticos
-
-### Positron
-
-**Positron** es el nuevo IDE de Posit para la era moderna:
-
-- **Multi-lenguaje**: R, Python, Quarto en un ambiente
-- **Debugging visual**: Inspecciona variables e integración con IA
-- **Visualización mejorada**: Gráficos interactivos
-- **Notebooks y scripts**: Ambos formatos simultáneamente
-
-**Ventaja**: Combina R y Python, prepara para workflows modernos
-
-### GitHub Copilot (Codex)
-
-**GitHub Copilot** utiliza **Codex** (OpenAI) para:
-
-- **Autocompletado inteligente**: Sugiere líneas completas de código
-- **Generación de tests**: Crea pruebas unitarias automáticamente
-- **Documentación de funciones**: Propone docstrings basados en código
-- **Conversión entre lenguajes**: Adapta código de un lenguaje a otro
-
-**Ventaja**: Disponible en RStudio y VS Code
-
-### Mistral Vibe
-
-**Mistral Vibe** enfatiza:
-
-- **Eficiencia**: Modelos ligeros y rápidos
-- **Privacidad**: Opciones de self-hosted disponibles
-- **Versatilidad**: Excelente en múltiples idiomas y contextos
-- **Costo-efectividad**: Alternativa económica
-
-**Ventaja**: Privacidad y control, ideal para datos financieros sensibles
+- **Trazabilidad**: Saber exactamente qué versión de código está en producción
+- **Auditoría**: Cumplimiento regulatorio (FINMA, BCCh, etc.)
+- **Confiabilidad**: Reducir errores en decisiones de inversión
+- **Velocidad**: Iterar rápidamente en estrategias
 
 ---
 
-## Cómo Integraremos IA en el Curso
+# Ecosistema de Herramientas
+
+## El Ciclo Completo de Desarrollo
+
+```
+┌─────────────────────────────────────────────────┐
+│         CICLO COMPLETO EN FINANZAS              │
+├─────────────────────────────────────────────────┤
+│                                                 │
+│  Desarrollo → Estructuración → Documentación   │
+│      ↑                             ↓            │
+│      │         ML Ops              ↓            │
+│      └── Integración/Entrega ← Despliegue      │
+│           Versionamiento ← Monitoreo           │
+│                                                 │
+└─────────────────────────────────────────────────┘
+```
+
+### Componentes Clave
+
+1. **Desarrollo**: Código en R/Python
+2. **Estructuración**: Organizaciónn y limpieza de datos
+3. **Documentación**: Notebooks, reportes, comentarios
+4. **Integración/Entrega**: CI/CD pipelines
+5. **Versionamiento**: Git y GitHub
+6. **Despliegue**: A servidor o cloud
+7. **Monitoreo**: Alertas y métricas
+8. **ML Ops**: Gestión de modelos en producción
+
+---
+
+# ¿Por qué IA en este Curso?
+
+## La Revolución de los LLMs
+
+Los **Modelos de Lenguaje de Gran Escala (LLMs)** han transformado el desarrollo de software:
+
+- **Generación automática de código**: describe qué quieres, obtienes código en segundos
+- **Debugging inteligente**: "¿por qué falla esto?" → explicaciones + soluciones
+- **Documentación automática**: pide explicaciones y comentarios
+- **Iteración ágil**: prueba ideas financieras sin reescribir desde cero
+
+## En Este Curso Usaremos
+
+### Claude Code (Recomendado)
+- Superior para análisis financiero
+- Requiere cuenta pagada
+- IDE inteligente integrado
+
+### Mistral Vibe (Alternativa Gratuita)
+- Excelente para aprender
+- Sin tarjeta de crédito necesaria
+- Buena privacidad
+
+### GitHub Copilot
+- Autocompletado en Positron
+- Generación rápida de código
+- Disponible en versión free y pagada
+
+---
+
+## Cómo Integraremos IA
 
 ### Enfoque Pedagógico
 
-No se trata simplemente de usar IA para "ir más rápido":
-
-1. **Conceptos primero**: Entiendes el qué y el por qué
-2. **Herramienta después**: IA te ayuda a implementar
-3. **Validación crítica**: Siempre verificas el código generado
-4. **Mejora continua**: Cada error es una oportunidad
-
-### Estructura de las Lecciones
+No se trata simplemente de usar IA para "ir más rápido". Integraremos IA de forma estratégica:
 
 ```
-Concepto Teórico → Demostración Manual → Con IA Asistida
-                          ↓
-                    Validación → Análisis Financiero Real
+1. CONCEPTO TEÓRICO
+   ¿Qué queremos lograr?
+   ↓
+2. DEMOSTRACIÓN MANUAL
+   Cómo funciona sin IA
+   ↓
+3. CON IA ASISTIDA
+   Usando herramientas inteligentes
+   ↓
+4. VALIDACIÓN CRÍTICA
+   ¿Es correcto? ¿Podemos mejorar?
+   ↓
+5. ANÁLISIS FINANCIERO REAL
+   Aplicación práctica en finanzas
 ```
 
 ---
 
 ## Mejores Prácticas con IA en Finanzas
 
-### ✓ LO QUE SÍ HACEMOS
+### ✅ LO QUE SÍ HACEMOS
 
 - ✅ Usar IA para tareas repetitivas (manipulación de datos)
-- ✅ Validar SIEMPRE los resultados antes de usar en decisiones
+- ✅ Validar **SIEMPRE** los resultados antes de usarlos
 - ✅ Documentar nuestros prompts y decisiones
 - ✅ Usar IA como **colaborador**, no como **tomador de decisiones**
+- ✅ Mantener pensamiento crítico
 
-### ✗ LO QUE NO HACEMOS
+### ❌ LO QUE NO HACEMOS
 
 - ❌ Copiar-pegar código sin entenderlo
 - ❌ Confiar ciegamente en resultados de IA
-- ❌ Usar IA para decisiones financieras sin validación
+- ❌ Usar IA para decisiones financieras sin validación humana
 - ❌ Compartir datos sensibles sin considerar privacidad
+- ❌ Delegar el pensamiento crítico a máquinas
 
 ---
 
-## Conclusión
+# Bibliografía Recomendada
 
-Este curso se trata de:
+## Libros Fundamentales
 
-- **Dominar herramientas modernas** que definen la industria
-- **Desarrollar juicio crítico** para usar IA responsablemente
-- **Prepararte para el futuro** donde IA es estándar
-- **Aplicar conocimiento** a problemas financieros reales
+1. **Wickham, H., & Grolemund, G. (2016).**
+   *R for Data Science: Import, Tidy, Transform, Visualize, and Model Data*
+   O'Reilly Media, Inc.
+   → [Enlace](https://r4ds.had.co.nz/)
 
-**La IA no reemplaza a los buenos analistas. Los buenos analistas que usan IA reemplazan a los que no.**
+2. **Grolemund, G. (2014).**
+   *Hands-on Programming with R: Write Your Own Functions and Simulations*
+   O'Reilly Media, Inc.
+   → [Enlace](https://rstudio-education.github.io/hopr/)
+
+3. **Regenstein Jr, J. K. (2018).**
+   *Reproducible Finance with R: Code Flows and Shiny Apps for Portfolio Analysis*
+   CRC Press
+
+4. **Scheuch, C., Voigt, S., & Weiss, P. (2023).**
+   *Tidy Finance with R (1st ed.)*
+   Chapman and Hall/CRC
+   → [https://doi.org/10.1201/b23237](https://doi.org/10.1201/b23237)
+
+5. **Xie, Y., Allaire, J. J., & Grolemund, G. (2018).**
+   *R Markdown: The Definitive Guide*
+   CRC Press
+   → [Enlace](https://bookdown.org/yihui/rmarkdown/)
 
 ---
 
-## Próximos Pasos
+# Próximos Pasos
+
+## Estructura del Curso
 
 En las siguientes clases:
 
-1. Instalación de R, RStudio y Positron
-2. Configuración de Claude Code y GitHub Copilot
-3. Primeros scripts en R con asistencia IA
-4. Estructuras de datos y manipulación
-5. Análisis de datos financieros con IA
-6. Visualización y reportes automatizados
+1. **Instalación y Configuración**
+   - R, Positron, Claude Code o Mistral Vibe
 
-**¡Bienvenidos al curso de Finanzas en R con IA!**
+2. **Conceptos Básicos de Programación**
+   - Sintaxis, variables, tipos de datos
+
+3. **Estructuras de Datos**
+   - Vectores, listas, data frames
+
+4. **Manipulación de Datos**
+   - Tidyverse, dplyr, tidyr
+
+5. **Análisis Financiero**
+   - Series de tiempo, retornos, riesgo
+
+6. **Visualización**
+   - ggplot2, plotly, dashboards
+
+7. **Reportes Reproducibles**
+   - Quarto, R Markdown
+
+8. **Despliegue en Producción**
+   - CI/CD, APIs, Shiny Apps
+
+---
+
+# Conclusión
+
+## Tu Rol en Este Curso
+
+Este curso no se trata solo de aprender R. Se trata de:
+
+- **Dominar herramientas modernas** que definen la industria hoy
+- **Desarrollar juicio crítico** para usar IA responsablemente
+- **Prepararte para el futuro** donde IA es estándar, no excepción
+- **Aplicar conocimiento** a problemas financieros reales
+- **Seguir mejores prácticas** de desarrollo en equipos
+
+## Mentalidad Clave
+
+> *"La IA no reemplaza a los buenos analistas. Los buenos analistas que usan IA reemplazan a los que no."*
+
+---
+
+# ¡Bienvenidos al Curso de Finanzas en R con IA!
