@@ -7,7 +7,9 @@
 # Quarto
 /.quarto/
 _site/
+_freeze/
 **/*.quarto_ipynb
+*.html
 
 # Logs y temporales
 *.log
