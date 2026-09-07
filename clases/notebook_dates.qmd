@@ -1,10 +1,9 @@
 ---
 listing_title: "Revisar - Clase 01 - Notebook Dates"
 title: |
-  | \includegraphics[width=5cm]{Imagen1.jpg}  
-  | Finanzas en R
+  Finanzas en R - Notebook Dates
 subtitle: Notebook Dates
-format: pdf
+format: html
 editor: visual
 author:   
   - Sebastián Egaña Santibáñez [{{< fa brands inbox >}}](mailto:segana@fen.uchile)
