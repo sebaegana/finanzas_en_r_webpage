@@ -1,5 +1,5 @@
 ---
-listing_title: "Clase 01 - Desarrollo en R asistido por IA"
+listing_title: "03 - Clase 01 - Desarrollo Asistido por IA"
 title: |
   Finanzas en R — Desarrollo Asistido por IA
 subtitle: "Positron, Claude Code y flujo de trabajo moderno"
@@ -16,7 +16,20 @@ format:
     number-sections: false
     code-block-bg: true
     code-block-border-left: "#FF0000"
+  pdf:
+    documentclass: report
+    fontsize: 11pt
+    geometry: margin=1in
 ---
+
+## 📥 Descargas
+
+```{=html}
+<div style="margin-bottom: 20px; display: flex; gap: 10px;">
+  <a href="notebook_01.pdf" class="btn btn-primary" role="button" style="padding: 8px 16px; border-radius: 4px; background-color: #0d6efd; color: white; text-decoration: none;">📄 Descargar PDF</a>
+  <a href="notebook_01.qmd" class="btn btn-secondary" role="button" style="padding: 8px 16px; border-radius: 4px; background-color: #6c757d; color: white; text-decoration: none;">💾 Descargar Fuente</a>
+</div>
+```
 
 ---
 

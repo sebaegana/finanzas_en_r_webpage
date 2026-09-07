@@ -1,5 +1,5 @@
 ---
-listing_title: "Intro - Presentación del Curso"
+listing_title: "01 - Introducción a Finanzas en R"
 title: |
   Introducción a Finanzas en R
 subtitle: "Presentación del curso y fundamentos"
@@ -16,6 +16,21 @@ format:
     number-sections: false
     code-block-bg: true
     code-block-border-left: "#FF0000"
+  pdf:
+    documentclass: report
+    fontsize: 11pt
+    geometry: margin=1in
+---
+
+## 📥 Descargas
+
+```{=html}
+<div style="margin-bottom: 20px; display: flex; gap: 10px;">
+  <a href="intro.pdf" class="btn btn-primary" role="button" style="padding: 8px 16px; border-radius: 4px; background-color: #0d6efd; color: white; text-decoration: none;">📄 Descargar PDF</a>
+  <a href="intro.qmd" class="btn btn-secondary" role="button" style="padding: 8px 16px; border-radius: 4px; background-color: #6c757d; color: white; text-decoration: none;">💾 Descargar Fuente</a>
+</div>
+```
+
 ---
 
 # Enlaces del Profesor
