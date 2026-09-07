@@ -121,14 +121,140 @@ Esto implica implementar **CI/CD** (Continuous Integration / Continuous Delivery
 
 ---
 
+---
+
+## ¿Por qué IA en este Curso?
+
+### La Revolución de los LLMs en Desarrollo
+
+Los **Modelos de Lenguaje de Gran Escala (LLMs)** han transformado la forma en que desarrollamos código:
+
+- **Generación automática de código**: Escribir scripts más rápidamente
+- **Debugging asistido**: Identificar y corregir errores de forma inteligente
+- **Documentación automática**: Generar comentarios y explicaciones
+- **Aprendizaje acelerado**: Aprender patrones y mejores prácticas
+- **Productividad**: Enfocarse en lógica, no en sintaxis
+
+### La Nueva Realidad
+
+En 2024, **ignorar las herramientas de IA es quedarse atrás**. Como profesionales en finanzas y ciencias de datos, debemos:
+
+1. **Entender cómo usarlas efectivamente**
+2. **Aplicarlas estratégicamente** en nuestros flujos de trabajo
+3. **Mantener el pensamiento crítico** y validar resultados
+4. **Desarrollar habilidades complementarias** que las máquinas no tienen
+
+---
+
+## Herramientas de IA que Usaremos
+
+### Claude Code
+
+**Claude Code** es un IDE inteligente que integra Claude 3.5 Sonnet:
+
+- **Generación de código**: Escribe funciones describiendo qué quieres
+- **Análisis de archivos**: Entiende tu código y propone mejoras
+- **Debugging en contexto**: Identifica bugs mientras escribes
+- **Terminal integrada**: Ejecuta comandos con sugerencias
+
+**Ventaja**: Acelera el aprendizaje de R sin bloqueos sintácticos
+
+### Positron
+
+**Positron** es el nuevo IDE de Posit para la era moderna:
+
+- **Multi-lenguaje**: R, Python, Quarto en un ambiente
+- **Debugging visual**: Inspecciona variables e integración con IA
+- **Visualización mejorada**: Gráficos interactivos
+- **Notebooks y scripts**: Ambos formatos simultáneamente
+
+**Ventaja**: Combina R y Python, prepara para workflows modernos
+
+### GitHub Copilot (Codex)
+
+**GitHub Copilot** utiliza **Codex** (OpenAI) para:
+
+- **Autocompletado inteligente**: Sugiere líneas completas de código
+- **Generación de tests**: Crea pruebas unitarias automáticamente
+- **Documentación de funciones**: Propone docstrings basados en código
+- **Conversión entre lenguajes**: Adapta código de un lenguaje a otro
+
+**Ventaja**: Disponible en RStudio y VS Code
+
+### Mistral Vibe
+
+**Mistral Vibe** enfatiza:
+
+- **Eficiencia**: Modelos ligeros y rápidos
+- **Privacidad**: Opciones de self-hosted disponibles
+- **Versatilidad**: Excelente en múltiples idiomas y contextos
+- **Costo-efectividad**: Alternativa económica
+
+**Ventaja**: Privacidad y control, ideal para datos financieros sensibles
+
+---
+
+## Cómo Integraremos IA en el Curso
+
+### Enfoque Pedagógico
+
+No se trata simplemente de usar IA para "ir más rápido":
+
+1. **Conceptos primero**: Entiendes el qué y el por qué
+2. **Herramienta después**: IA te ayuda a implementar
+3. **Validación crítica**: Siempre verificas el código generado
+4. **Mejora continua**: Cada error es una oportunidad
+
+### Estructura de las Lecciones
+
+```
+Concepto Teórico → Demostración Manual → Con IA Asistida
+                          ↓
+                    Validación → Análisis Financiero Real
+```
+
+---
+
+## Mejores Prácticas con IA en Finanzas
+
+### ✓ LO QUE SÍ HACEMOS
+
+- ✅ Usar IA para tareas repetitivas (manipulación de datos)
+- ✅ Validar SIEMPRE los resultados antes de usar en decisiones
+- ✅ Documentar nuestros prompts y decisiones
+- ✅ Usar IA como **colaborador**, no como **tomador de decisiones**
+
+### ✗ LO QUE NO HACEMOS
+
+- ❌ Copiar-pegar código sin entenderlo
+- ❌ Confiar ciegamente en resultados de IA
+- ❌ Usar IA para decisiones financieras sin validación
+- ❌ Compartir datos sensibles sin considerar privacidad
+
+---
+
+## Conclusión
+
+Este curso se trata de:
+
+- **Dominar herramientas modernas** que definen la industria
+- **Desarrollar juicio crítico** para usar IA responsablemente
+- **Prepararte para el futuro** donde IA es estándar
+- **Aplicar conocimiento** a problemas financieros reales
+
+**La IA no reemplaza a los buenos analistas. Los buenos analistas que usan IA reemplazan a los que no.**
+
+---
+
 ## Próximos Pasos
 
 En las siguientes clases:
 
-1. Instalación y configuración del entorno
-2. Conceptos básicos de programación en R
-3. Estructuras de datos y manipulación
-4. Análisis de datos financieros
-5. Visualización y reportes
+1. Instalación de R, RStudio y Positron
+2. Configuración de Claude Code y GitHub Copilot
+3. Primeros scripts en R con asistencia IA
+4. Estructuras de datos y manipulación
+5. Análisis de datos financieros con IA
+6. Visualización y reportes automatizados
 
-**¡Bienvenidos al curso de Finanzas en R!**
+**¡Bienvenidos al curso de Finanzas en R con IA!**
