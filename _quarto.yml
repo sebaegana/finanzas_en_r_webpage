@@ -2,6 +2,7 @@ project:
   type: website
   output-dir: docs
 
+# Finanzas en R - Course Website
 website:
   title: "Curso Finanzas en R"
   navbar:
