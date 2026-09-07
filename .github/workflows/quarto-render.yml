@@ -3,11 +3,6 @@ name: Render Quarto Site
 on:
   push:
     branches: [main]
-    paths:
-      - '**.qmd'
-      - '**.md'
-      - '_quarto.yml'
-      - '.github/workflows/quarto-render.yml'
 
 permissions:
   contents: write
