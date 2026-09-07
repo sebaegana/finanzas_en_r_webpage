@@ -431,9 +431,6 @@ erDiagram
 
 Después debemos generar las relaciones entre cada una de las tablas:
 
-```{r, message = FALSE, warning=FALSE}
-```
-
 ```{mermaid}
 erDiagram
     "aircraft_01" ||--o{ "flights_01" : "AircraftID"
@@ -476,8 +473,6 @@ erDiagram
 ```
 
 Podemos intentar mejorar un poco el formato de la visualización:
-
-```
 
 ```{mermaid}
 %%{init: {'er': {'fontSize': 16}, 'theme': 'default'}}}%%
