@@ -361,6 +361,7 @@ title: "Análisis de Portafolio"
 # Retornos Diarios
 
 ```{r}
+#| eval: false
 prices %>%
   mutate(returns = log(price/lag(price))) %>%
   head(10)
