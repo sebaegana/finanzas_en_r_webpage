@@ -5,6 +5,7 @@ project:
 # Finanzas en R - Course Website
 website:
   title: "Curso Finanzas en R"
+  site-url: https://sebaegana.github.io/finanzas_en_r_webpage/
   navbar:
     left:
       - text: "Inicio"
