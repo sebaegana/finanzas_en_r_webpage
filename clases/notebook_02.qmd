@@ -329,19 +329,48 @@ En donde existen las siguientes relaciones:
 
 Esto también puede ser representado de manera grafica. Veamos el siguiente ejemplo:
 
-```{r, message = FALSE, warning=FALSE}
-library(datamodelr)
+```{mermaid}
+erDiagram
+    "Order Line" ||--|| "Order" : contains
+    "Order" ||--|| "Person" : "placed by"
+    "Order" ||--|| "Item" : contains
 
-file_path <- system.file("samples/example.yml", package = "datamodelr")
-dm <- dm_read_yaml(file_path)
+    "Order Line" {
+        int Order_ID
+        int Line_number
+        int Order_item
+        int Quantity
+        decimal Price
+    }
 
-graph <- dm_create_graph(dm, rankdir = "LR")
+    "Order" {
+        int Order_ID
+        string Customer
+        string Sales_person
+        date Order_date
+        date Requested_ship_date
+        string Status
+    }
 
-#dm_render_graph(graph)
-dm_export_graph(graph, 'imagenes/diagrama_01.svg')
+    "Person" {
+        int Person_ID
+        string Name
+        string E_mail
+        string Street
+        string Street_number
+        string City
+        string ZIP
+    }
+
+    "Item" {
+        int Item_ID
+        string Item_Name
+        string Description
+        string Category
+        string Size
+        string Color
+    }
 ```
-
-![Diagrama 01](imagenes/diagrama_01.svg){width="50%"}
 
 Veamos esto en relación a los datos que estuvimos revisando; primero debemos ingresar las tablas sobre las que estuvimos trabajando.
 
@@ -361,48 +390,133 @@ aircraft_01 <- read_excel("data/data_uniones.xlsx",
                          sheet = "Aircraft")
 
 
-dm_f <- dm_from_data_frames(flights_01, routes_01, aircraft_01, airports_01)
-graph <- dm_create_graph(dm_f, rankdir = "BT", col_attr = c("column", "type"))
-#dm_render_graph(graph)
-
-dm_export_graph(graph, 'imagenes/diagrama_02.svg')
-
 ```
 
-![Diagrama 02](imagenes/diagrama_02.svg){width="70%"}
+```{mermaid}
+erDiagram
+    "aircraft_01" {
+        numeric AircraftID
+        character AircraftType
+        numeric SeatCapacity
+        numeric FuelCostperSeatMile
+    }
+
+    "airports_01" {
+        character AirportID
+        character AirportName
+        numeric Gates
+    }
+
+    "flights_01" {
+        character FlightID
+        character Date
+        character RouteID
+        numeric DepartureDelay
+        numeric AircraftID
+        numeric ScheduledDeparture
+        numeric AvgTicketPrice
+        numeric TotalFare
+        character FlightMonth
+        character FlightYear
+    }
+
+    "routes_01" {
+        character RouteID
+        character DepAirport
+        character AirportID
+        numeric Distance
+        numeric ListPrice
+    }
+```
 
 Después debemos generar las relaciones entre cada una de las tablas:
 
 ```{r, message = FALSE, warning=FALSE}
-dm_f <- dm_add_references(
-  dm_f,
-  
-  aircraft_01$AircraftID == flights_01$AircraftID,
-  airports_01$AirportID == routes_01$AirportID,
-  flights_01$RouteID == routes_01$RouteID
-)
-graph <- dm_create_graph(dm_f, rankdir = "BT", col_attr = c("column", "type"))
-#dm_render_graph(graph)
-dm_export_graph(graph, 'imagenes/diagrama_03.svg')
-
 ```
 
-![Diagrama 03](imagenes/diagrama_03.svg){width="50%"}
+```{mermaid}
+erDiagram
+    "aircraft_01" ||--o{ "flights_01" : "AircraftID"
+    "airports_01" ||--o{ "routes_01" : "AirportID"
+    "routes_01" ||--o{ "flights_01" : "RouteID"
+
+    "aircraft_01" {
+        numeric AircraftID PK
+        character AircraftType
+        numeric SeatCapacity
+        numeric FuelCostperSeatMile
+    }
+
+    "airports_01" {
+        character AirportID PK
+        character AirportName
+        numeric Gates
+    }
+
+    "flights_01" {
+        character FlightID PK
+        character Date
+        character RouteID FK
+        numeric DepartureDelay
+        numeric AircraftID FK
+        numeric ScheduledDeparture
+        numeric AvgTicketPrice
+        numeric TotalFare
+        character FlightMonth
+        character FlightYear
+    }
+
+    "routes_01" {
+        character RouteID PK
+        character DepAirport
+        character AirportID FK
+        numeric Distance
+        numeric ListPrice
+    }
+```
 
 Podemos intentar mejorar un poco el formato de la visualización:
 
-```{r}
-
-graph <- dm_create_graph( 
-  dm_f, 
-  graph_attrs = "rankdir = RL, bgcolor = '#F4F0EF' ", 
-  edge_attrs = "dir = both, arrowtail = crow, arrowhead = odiamond",
-  node_attrs = "fontname = 'Arial'")
-
-#dm_render_graph(graph)
-dm_export_graph(graph, 'imagenes/diagrama_04.svg')
-
-
 ```
 
-![Diagrama 04](imagenes/diagrama_04.svg){width="70%"}
+```{mermaid}
+%%{init: {'er': {'fontSize': 16}, 'theme': 'default'}}}%%
+erDiagram
+    "aircraft_01" ||--o{ "flights_01" : "AircraftID"
+    "airports_01" ||--o{ "routes_01" : "AirportID"
+    "routes_01" ||--o{ "flights_01" : "RouteID"
+
+    "aircraft_01" {
+        numeric AircraftID PK
+        character AircraftType
+        numeric SeatCapacity
+        numeric "FuelCostperSeatMile (Cents)"
+    }
+
+    "airports_01" {
+        character AirportID PK "~ Primary Key"
+        character AirportName
+        character "Gates (number available)"
+    }
+
+    "flights_01" {
+        character FlightID PK
+        character Date
+        character RouteID FK
+        numeric DepartureDelay
+        numeric AircraftID FK
+        numeric ScheduledDeparture
+        numeric AvgTicketPrice
+        numeric TotalFare
+        character FlightMonth
+        character FlightYear
+    }
+
+    "routes_01" {
+        character RouteID PK
+        character DepAirport
+        character AirportID FK
+        numeric Distance
+        numeric ListPrice
+    }
+```
