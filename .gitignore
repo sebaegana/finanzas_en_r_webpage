@@ -24,6 +24,8 @@ _freeze/
 
 # Librerías auto-generadas (except in docs which should be tracked)
 site_libs/
+!docs/site_libs/
+!docs/**/site_libs/
 
 # Sistema operativo
 .DS_Store
