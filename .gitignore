@@ -9,7 +9,9 @@
 _site/
 _freeze/
 **/*.quarto_ipynb
+# Ignore HTML files except in docs (generated output)
 *.html
+!docs/**/*.html
 
 # Logs y temporales
 *.log
@@ -20,9 +22,8 @@ _freeze/
 /data/*.csv
 !/clases_ia/data/*.csv
 
-# Librerías auto-generadas
+# Librerías auto-generadas (except in docs which should be tracked)
 site_libs/
-docs/site_libs/
 
 # Sistema operativo
 .DS_Store
