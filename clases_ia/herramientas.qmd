@@ -31,7 +31,7 @@ Este documento presenta el **stack tecnológico completo** que usaremos en el cu
 │                      │                  │               │
 │  • R                 │  • Positron ⭐   │  • Claude ⭐  │
 │                      │  • VS Code       │  • Mistral    │
-│                      │  • RStudio ❌    │  • Copilot    │
+│                      │  • RStudio ❌    │  • Mistral    │
 ├──────────────────────┼──────────────────┼───────────────┤
 │  CONTROL DE VERSIÓN  │  DOCUMENTACIÓN   │  VISUALIZACIÓN│
 │                      │                  │               │
@@ -48,6 +48,56 @@ Este documento presenta el **stack tecnológico completo** que usaremos en el cu
 
 ⭐ = RECOMENDADO / ❌ = OBSOLETO
 ```
+
+---
+
+# Checklist Inicial: Software Requerido
+
+Antes de comenzar el curso, instala lo siguiente según tu situación:
+
+## 📋 Opción 1: Setup Mínimo (Gratis)
+
+```
+☐ R (desde https://cran.r-project.org)
+☐ Positron (desde https://posit.co/download/positron/)
+☐ Git (desde https://git-scm.com/)
+☐ Quarto (instalado automáticamente con Positron)
+☐ Cuenta en GitHub (gratis)
+```
+
+**Tiempo de instalación:** ~30 min
+**Costo:** Gratis
+
+## 📋 Opción 2: Setup Completo (Recomendado)
+
+Incluye TODO de Opción 1 más:
+
+```
+☐ Crear cuenta en Claude.ai (gratis)
+☐ Activar Claude Code (gratis con 2M tokens/mes)
+  → O: Crear cuenta en Mistral (gratis, sin tarjeta)
+☐ Opcional: VS Code (alternativa a Positron)
+```
+
+**Tiempo de instalación:** ~45 min
+**Costo:** Gratis o $20/mes (Claude Pro)
+
+## 📋 Alternativas por Plataforma
+
+### Windows
+- ✅ Usar Positron (instalador directo)
+- ✅ Usar Git Bash (integrado con Git)
+- ✅ Alternativa: WSL2 + Linux setup
+
+### macOS
+- ✅ Usar Homebrew: `brew install r`
+- ✅ Descargar Positron.dmg
+- ✅ Git viene preinstalado
+
+### Linux
+- ✅ `sudo apt install r-base git`
+- ✅ Descargar Positron AppImage
+- ✅ Terminal nativa (Bash)
 
 ---
 
@@ -94,7 +144,7 @@ sudo apt-get install r-base
 ### ✅ Descripción
 **Positron** es el nuevo IDE de Posit Software, sucesor moderno de RStudio. Está construido sobre **VS Code**, lo que significa:
 - Acceso a 20k+ extensiones
-- Soporte nativo para IA (Claude, Copilot)
+- Soporte nativo para IA (Claude Code)
 - Excelente integración R
 - Performance superior
 
@@ -247,36 +297,6 @@ Descargar desde: https://mistral.ai/vibe/
 **BUENA ALTERNATIVA** - 7/10 (si no tienes presupuesto)
 
 ---
-
-## GitHub Copilot
-
-### ✅ Descripción
-**GitHub Copilot** es el autocompletado inteligente de OpenAI. Se integra directamente en tu editor.
-
-### 🎯 Casos de Uso
-```r
-# Escribes el inicio y Copilot completa:
-df %>%
-  filter(price > 100) %>%
-  summarize(  # <- Copilot sugiere el resto
-```
-
-### ✨ Ventajas
-- ✅ Funciona en Positron, VS Code, RStudio
-- ✅ Rápido para boilerplate
-- ✅ Bueno para principiantes
-
-### ⚠️ Limitaciones
-- Autocompletado, no conversación
-- Menos bueno en lógica compleja
-- No entiende contexto global del proyecto
-
-### 💰 Costo
-- **Free**: Estudiantes y open source
-- **Pro**: $10/mes
-
-### ⭐ Nivel de Recomendación
-**COMPLEMENTARIO** - 6/10 (es bonus, no reemplazo)
 
 ---
 
@@ -783,7 +803,7 @@ Tiempo de aprendizaje: 12+ semanas
 |---|---|---|---|---|
 | **R** | Lenguaje | Gratis | ⭐⭐⭐⭐⭐ | Python |
 | **Positron** | IDE | Gratis | ⭐⭐⭐⭐⭐ | VS Code / RStudio |
-| **Claude Code** | IA | $20/mes | ⭐⭐⭐⭐⭐ | Mistral / Copilot |
+| **Claude Code** | IA | $20/mes | ⭐⭐⭐⭐⭐ | Mistral Vibe |
 | **Git+GitHub** | Control | Gratis | ⭐⭐⭐⭐⭐ | GitLab / Bitbucket |
 | **Quarto** | Docs | Gratis | ⭐⭐⭐⭐ | R Markdown |
 | **ggplot2** | Viz | Gratis | ⭐⭐⭐⭐⭐ | Plotly (interactivo) |

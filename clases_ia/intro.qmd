@@ -97,7 +97,7 @@ Correr R a través de **Google Colab** (sin instalar nada localmente)
 | Aspecto | RStudio | Positron |
 |---------|---------|----------|
 | **Base** | Qt (propietaria) | VS Code (abierta, extensible) |
-| **Soporte IA nativo** | No | Sí (Claude, GitHub Copilot) |
+| **Soporte IA nativo** | No | Sí (Claude Code) |
 | **Integración Python** | Limitada | Primera clase |
 | **Extensiones** | Pocas | 20k+ extensiones de VS Code |
 | **Performance** | Bueno | Muy bueno |
@@ -257,11 +257,6 @@ Los **Modelos de Lenguaje de Gran Escala (LLMs)** han transformado el desarrollo
 - Excelente para aprender
 - Sin tarjeta de crédito necesaria
 - Buena privacidad
-
-### GitHub Copilot
-- Autocompletado en Positron
-- Generación rápida de código
-- Disponible en versión free y pagada
 
 ---
 
