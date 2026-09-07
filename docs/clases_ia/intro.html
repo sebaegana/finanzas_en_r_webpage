@@ -6,8 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Sebastián Egaña Santibáñez">
+<meta name="dcterms.date" content="2026-01-09">
 
-<title>Clases – Curso Finanzas en R</title>
+<title>Introducción a Finanzas en R – Curso Finanzas en R</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -36,8 +38,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-listing/list.min.js"></script>
-<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -75,65 +75,7 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-listing_title',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author","listing-subtitle","listing-image","listing-description"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -159,7 +101,7 @@ window.Quarto = {
 <span class="menu-text">Inicio</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="../clases/index.html" aria-current="page"> 
+    <a class="nav-link" href="../clases/index.html"> 
 <span class="menu-text">Clases</span></a>
   </li>  
   <li class="nav-item">
@@ -190,7 +132,38 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#clases-del-curso" id="toc-clases-del-curso" class="nav-link active" data-scroll-target="#clases-del-curso">Clases del curso</a></li>
+  <li><a href="#presentación-del-curso" id="toc-presentación-del-curso" class="nav-link active" data-scroll-target="#presentación-del-curso">Presentación del Curso</a></li>
+  <li><a href="#qué-veremos-en-esta-clase" id="toc-qué-veremos-en-esta-clase" class="nav-link" data-scroll-target="#qué-veremos-en-esta-clase">¿Qué veremos en esta clase?</a>
+  <ul class="collapse">
+  <li><a href="#temario" id="toc-temario" class="nav-link" data-scroll-target="#temario">Temario</a></li>
+  </ul></li>
+  <li><a href="#qué-es-r" id="toc-qué-es-r" class="nav-link" data-scroll-target="#qué-es-r">¿Qué es R?</a>
+  <ul class="collapse">
+  <li><a href="#definición-wikipedia" id="toc-definición-wikipedia" class="nav-link" data-scroll-target="#definición-wikipedia">Definición (Wikipedia)</a></li>
+  </ul></li>
+  <li><a href="#lenguajes-e-interfaz-gráficas-gui" id="toc-lenguajes-e-interfaz-gráficas-gui" class="nav-link" data-scroll-target="#lenguajes-e-interfaz-gráficas-gui">Lenguajes e Interfaz Gráficas (GUI)</a>
+  <ul class="collapse">
+  <li><a href="#instalación-y-plataformas" id="toc-instalación-y-plataformas" class="nav-link" data-scroll-target="#instalación-y-plataformas">Instalación y Plataformas</a></li>
+  </ul></li>
+  <li><a href="#análisis-de-datos-en-el-contexto-de-r" id="toc-análisis-de-datos-en-el-contexto-de-r" class="nav-link" data-scroll-target="#análisis-de-datos-en-el-contexto-de-r">Análisis de Datos en el Contexto de R</a>
+  <ul class="collapse">
+  <li><a href="#el-ciclo-del-análisis-de-datos" id="toc-el-ciclo-del-análisis-de-datos" class="nav-link" data-scroll-target="#el-ciclo-del-análisis-de-datos">El ciclo del análisis de datos</a></li>
+  </ul></li>
+  <li><a href="#sobre-las-ciencias-de-datos" id="toc-sobre-las-ciencias-de-datos" class="nav-link" data-scroll-target="#sobre-las-ciencias-de-datos">Sobre las Ciencias de Datos</a>
+  <ul class="collapse">
+  <li><a href="#definición" id="toc-definición" class="nav-link" data-scroll-target="#definición">Definición</a></li>
+  <li><a href="#diferencia-con-estadística" id="toc-diferencia-con-estadística" class="nav-link" data-scroll-target="#diferencia-con-estadística">Diferencia con Estadística</a></li>
+  </ul></li>
+  <li><a href="#lo-que-implica-dedicarse-a-ciencias-de-datos" id="toc-lo-que-implica-dedicarse-a-ciencias-de-datos" class="nav-link" data-scroll-target="#lo-que-implica-dedicarse-a-ciencias-de-datos">Lo que Implica Dedicarse a Ciencias de Datos</a>
+  <ul class="collapse">
+  <li><a href="#principios-fundamentales" id="toc-principios-fundamentales" class="nav-link" data-scroll-target="#principios-fundamentales">Principios Fundamentales</a></li>
+  <li><a href="#devops-en-ciencias-de-datos" id="toc-devops-en-ciencias-de-datos" class="nav-link" data-scroll-target="#devops-en-ciencias-de-datos">DevOps en Ciencias de Datos</a></li>
+  </ul></li>
+  <li><a href="#por-qué-r-en-finanzas" id="toc-por-qué-r-en-finanzas" class="nav-link" data-scroll-target="#por-qué-r-en-finanzas">¿Por qué R en Finanzas?</a>
+  <ul class="collapse">
+  <li><a href="#ventajas-de-r-para-análisis-financiero" id="toc-ventajas-de-r-para-análisis-financiero" class="nav-link" data-scroll-target="#ventajas-de-r-para-análisis-financiero">Ventajas de R para Análisis Financiero</a></li>
+  </ul></li>
+  <li><a href="#próximos-pasos" id="toc-próximos-pasos" class="nav-link" data-scroll-target="#próximos-pasos">Próximos Pasos</a></li>
   </ul>
 </nav>
     </div>
@@ -199,14 +172,27 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Clases</h1>
+<h1 class="title">Introducción a Finanzas en R</h1>
+<p class="subtitle lead">Presentación del curso</p>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Sebastián Egaña Santibáñez </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">January 9, 2026</p>
+    </div>
+  </div>
   
     
   </div>
@@ -216,237 +202,121 @@ window.Quarto = {
 </header>
 
 
-<section id="clases-del-curso" class="level1">
-<h1>Clases del curso</h1>
-
+<section id="presentación-del-curso" class="level2">
+<h2 class="anchored" data-anchor-id="presentación-del-curso">Presentación del Curso</h2>
+<p><strong>Docente:</strong> Sebastián Egaña Santibáñez - Email: segana@fen.uchile.cl - Página Web: https://segana.netlify.app</p>
+<p><strong>Ayudante:</strong> Nicolas Leiva - Email: nleivad@fen.uchile.cl</p>
+<hr>
+</section>
+<section id="qué-veremos-en-esta-clase" class="level2">
+<h2 class="anchored" data-anchor-id="qué-veremos-en-esta-clase">¿Qué veremos en esta clase?</h2>
+<section id="temario" class="level3">
+<h3 class="anchored" data-anchor-id="temario">Temario</h3>
+<ul>
+<li>Introducción a lenguajes de programación</li>
+<li>Instalación de R y RStudio</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="qué-es-r" class="level2">
+<h2 class="anchored" data-anchor-id="qué-es-r">¿Qué es R?</h2>
+<section id="definición-wikipedia" class="level3">
+<h3 class="anchored" data-anchor-id="definición-wikipedia">Definición (Wikipedia)</h3>
+<p>R es un <strong>entorno y lenguaje de programación</strong> con un enfoque al análisis estadístico. R nació como una reimplementación de software libre del lenguaje S, adicionado con soporte para ámbito estático.</p>
+<p>Se trata de uno de los lenguajes de programación más utilizados en: - Investigación científica - Aprendizaje automático (Machine Learning) - Minería de datos - Investigación biomédica - Bioinformática - Matemáticas financieras</p>
+<hr>
+</section>
+</section>
+<section id="lenguajes-e-interfaz-gráficas-gui" class="level2">
+<h2 class="anchored" data-anchor-id="lenguajes-e-interfaz-gráficas-gui">Lenguajes e Interfaz Gráficas (GUI)</h2>
+<section id="instalación-y-plataformas" class="level3">
+<h3 class="anchored" data-anchor-id="instalación-y-plataformas">Instalación y Plataformas</h3>
+<p>Por lo general, se debe instalar el lenguaje de programación y el GUI por separado:</p>
+<p><strong>Opción 1: R + RStudio (Recomendado)</strong> - Instala R desde: https://cran.r-project.org - Instala RStudio desde: https://posit.co</p>
+<p><strong>Opción 2: Visual Studio Code</strong> - Correr R desde Visual Studio Code</p>
+<p><strong>Opción 3: Google Colab</strong> - Correr R a través de Colab: https://colab.to/r</p>
+<hr>
+</section>
+</section>
+<section id="análisis-de-datos-en-el-contexto-de-r" class="level2">
+<h2 class="anchored" data-anchor-id="análisis-de-datos-en-el-contexto-de-r">Análisis de Datos en el Contexto de R</h2>
+<section id="el-ciclo-del-análisis-de-datos" class="level3">
+<h3 class="anchored" data-anchor-id="el-ciclo-del-análisis-de-datos">El ciclo del análisis de datos</h3>
+<p>El análisis de datos es un proceso iterativo que involucra:</p>
+<ol type="1">
+<li><strong>Recolección</strong>: Obtener datos de diversas fuentes</li>
+<li><strong>Limpieza</strong>: Procesar y validar los datos</li>
+<li><strong>Exploración</strong>: Entender patrones y relaciones</li>
+<li><strong>Modelado</strong>: Aplicar técnicas estadísticas</li>
+<li><strong>Visualización</strong>: Comunicar resultados</li>
+<li><strong>Interpretación</strong>: Extraer conclusiones</li>
+</ol>
+<hr>
+</section>
+</section>
+<section id="sobre-las-ciencias-de-datos" class="level2">
+<h2 class="anchored" data-anchor-id="sobre-las-ciencias-de-datos">Sobre las Ciencias de Datos</h2>
+<section id="definición" class="level3">
+<h3 class="anchored" data-anchor-id="definición">Definición</h3>
+<p>Existe una relación entre las <strong>ciencias de datos</strong> y la <strong>estadística</strong>, pero esto viene dado por la dinámica relacionadas con datos.</p>
+<p>Las <strong>ciencias de datos</strong> engloban el “conjunto de principios, definiciones de problemas, algoritmos y procesos para extraer patrones no obvios y útiles de grandes conjuntos de datos” (Kelleher &amp; Tierney, 2021).</p>
+</section>
+<section id="diferencia-con-estadística" class="level3">
+<h3 class="anchored" data-anchor-id="diferencia-con-estadística">Diferencia con Estadística</h3>
+<p>La ciencia de datos: - Va más allá del análisis estadístico puro - Integra programación, análisis de datos e ingeniería - Se enfoca en patrones accionables - Requiere trabajo en equipo e interdisciplinario</p>
+<hr>
+</section>
+</section>
+<section id="lo-que-implica-dedicarse-a-ciencias-de-datos" class="level2">
+<h2 class="anchored" data-anchor-id="lo-que-implica-dedicarse-a-ciencias-de-datos">Lo que Implica Dedicarse a Ciencias de Datos</h2>
+<section id="principios-fundamentales" class="level3">
+<h3 class="anchored" data-anchor-id="principios-fundamentales">Principios Fundamentales</h3>
+<p>Dedicarse a la ciencia de datos implica moverse en la dinámica de desarrollo continuo:</p>
+<ol type="1">
+<li><strong>Escalabilidad</strong>: Los desarrollos no pueden depender de personas</li>
+<li><strong>Valor organizacional</strong>: Los desarrollos son parte de los activos de las empresas</li>
+<li><strong>Colaboración</strong>: Se debe permitir siempre el trabajo en equipo</li>
+<li><strong>Visión integral</strong>: Considerar también la visión inter-equipos</li>
+</ol>
+</section>
+<section id="devops-en-ciencias-de-datos" class="level3">
+<h3 class="anchored" data-anchor-id="devops-en-ciencias-de-datos">DevOps en Ciencias de Datos</h3>
+<p>Esto implica implementar <strong>CI/CD</strong> (Continuous Integration / Continuous Delivery / Continuous Deployment) en la dinámica de desarrollo.</p>
+<hr>
+</section>
+</section>
+<section id="por-qué-r-en-finanzas" class="level2">
+<h2 class="anchored" data-anchor-id="por-qué-r-en-finanzas">¿Por qué R en Finanzas?</h2>
+<section id="ventajas-de-r-para-análisis-financiero" class="level3">
+<h3 class="anchored" data-anchor-id="ventajas-de-r-para-análisis-financiero">Ventajas de R para Análisis Financiero</h3>
+<ul>
+<li><strong>Librerías especializadas</strong>: <code>QuantLib</code>, <code>tidyquant</code>, <code>xts</code>, <code>zoo</code></li>
+<li><strong>Análisis estadístico</strong>: Regresiones, series de tiempo, modelos predictivos</li>
+<li><strong>Visualización</strong>: <code>ggplot2</code>, <code>plotly</code> para dashboards interactivos</li>
+<li><strong>Integración</strong>: Fácil conexión con bases de datos y APIs financieras</li>
+<li><strong>Comunidad</strong>: Amplio ecosistema de paquetes financieros</li>
+<li><strong>Reproducibilidad</strong>: Código documenta el análisis completo</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="próximos-pasos" class="level2">
+<h2 class="anchored" data-anchor-id="próximos-pasos">Próximos Pasos</h2>
+<p>En las siguientes clases:</p>
+<ol type="1">
+<li>Instalación y configuración del entorno</li>
+<li>Conceptos básicos de programación en R</li>
+<li>Estructuras de datos y manipulación</li>
+<li>Análisis de datos financieros</li>
+<li>Visualización y reportes</li>
+</ol>
+<p><strong>¡Bienvenidos al curso de Finanzas en R!</strong></p>
 
 
 </section>
 
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-file-modified-sort="1788755752748" data-listing-reading-time-sort="14" data-listing-word-count-sort="2679">
-<div class="body">
-
-</div>
-<div class="metadata">
-<a href="../clases/notebook_01.pdf" class="no-external">
-<div class="metadata-value listing-listing_title">
-Clase 01 - Notebook 01
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-listing-file-modified-sort="1788755752722" data-listing-reading-time-sort="1" data-listing-word-count-sort="167">
-<div class="body">
-
-</div>
-<div class="metadata">
-<a href="../clases/actividad_01.pdf" class="no-external">
-<div class="metadata-value listing-listing_title">
-Clase 01 - Notebook Actividad 01
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-listing-file-modified-sort="1788755752748" data-listing-reading-time-sort="3" data-listing-word-count-sort="550">
-<div class="body">
-
-</div>
-<div class="metadata">
-<a href="../clases/notebook_ocr.pdf" class="no-external">
-<div class="metadata-value listing-listing_title">
-Clase 01 - Notebook OCR
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-listing-file-modified-sort="1788755752722" data-listing-reading-time-sort="1" data-listing-word-count-sort="170">
-<div class="body">
-
-</div>
-<div class="metadata">
-<a href="../clases/actividad_programacion.pdf" class="no-external">
-<div class="metadata-value listing-listing_title">
-Clase 02 - Notebook Actividad Programación
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-listing-file-modified-sort="1788755752748" data-listing-reading-time-sort="4" data-listing-word-count-sort="653">
-<div class="body">
-
-</div>
-<div class="metadata">
-<a href="../clases/notebook_practices.pdf" class="no-external">
-<div class="metadata-value listing-listing_title">
-Clase 02 - Notebook CICD
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="5" data-listing-file-modified-sort="1788755752748" data-listing-reading-time-sort="16" data-listing-word-count-sort="3005">
-<div class="body">
-
-</div>
-<div class="metadata">
-<a href="../clases/notebook_02.pdf" class="no-external">
-<div class="metadata-value listing-listing_title">
-Clase 03 - Notebook 02
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="6" data-listing-file-modified-sort="1788755752722" data-listing-reading-time-sort="4" data-listing-word-count-sort="622">
-<div class="body">
-
-</div>
-<div class="metadata">
-<a href="../clases/actividad_03.pdf" class="no-external">
-<div class="metadata-value listing-listing_title">
-Clase 03 - Notebook Actividad 03
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="7" data-listing-file-modified-sort="1788755752748" data-listing-reading-time-sort="4" data-listing-word-count-sort="770">
-<div class="body">
-
-</div>
-<div class="metadata">
-<a href="../clases/notebook_visualization.pdf" class="no-external">
-<div class="metadata-value listing-listing_title">
-Clase 03 - Notebook Visualizaciones
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="8" data-listing-file-modified-sort="1788755752748" data-listing-reading-time-sort="6" data-listing-word-count-sort="1096">
-<div class="body">
-
-</div>
-<div class="metadata">
-<a href="../clases/notebook_03.pdf" class="no-external">
-<div class="metadata-value listing-listing_title">
-Clase 04 - Notebook 03
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="9" data-listing-file-modified-sort="1788755752748" data-listing-reading-time-sort="11" data-listing-word-count-sort="2057">
-<div class="body">
-
-</div>
-<div class="metadata">
-<a href="../clases/notebook_opciones.pdf" class="no-external">
-<div class="metadata-value listing-listing_title">
-Clase 04 - Notebook Opciones
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="10" data-listing-file-modified-sort="1788755752748" data-listing-reading-time-sort="6" data-listing-word-count-sort="1080">
-<div class="body">
-
-</div>
-<div class="metadata">
-<a href="../clases/notebook_simulacion.pdf" class="no-external">
-<div class="metadata-value listing-listing_title">
-Clase 04 - Notebook Simulaciones
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="11" data-listing-file-modified-sort="1788755752748" data-listing-reading-time-sort="14" data-listing-word-count-sort="2722">
-<div class="body">
-
-</div>
-<div class="metadata">
-<a href="../clases/notebook_regresion.pdf" class="no-external">
-<div class="metadata-value listing-listing_title">
-Clase 05 - Notebook Regresión Lineal
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="12" data-listing-file-modified-sort="1788755752748" data-listing-reading-time-sort="2" data-listing-word-count-sort="247">
-<div class="body">
-
-</div>
-<div class="metadata">
-<a href="../clases/notebook_documents.pdf" class="no-external">
-<div class="metadata-value listing-listing_title">
-Clase 07 - Notebook Documentos
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="13" data-listing-file-modified-sort="1788755752722" data-listing-reading-time-sort="1" data-listing-word-count-sort="102">
-<div class="body">
-
-</div>
-<div class="metadata">
-<a href="../clases/actividad_02.pdf" class="no-external">
-<div class="metadata-value listing-listing_title">
-Revisar - Clase 01 - Notebook Actividad 02
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="14" data-listing-file-modified-sort="1788755752748" data-listing-reading-time-sort="4" data-listing-word-count-sort="709">
-<div class="body">
-
-</div>
-<div class="metadata">
-<a href="../clases/notebook_exer_01.pdf" class="no-external">
-<div class="metadata-value listing-listing_title">
-Revisar - Clase 02 - Notebook Ejercicio 01
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="15" data-listing-file-modified-sort="1788755752748" data-listing-reading-time-sort="3" data-listing-word-count-sort="585">
-<div class="body">
-
-</div>
-<div class="metadata">
-<a href="../clases/notebook_exer_02.pdf" class="no-external">
-<div class="metadata-value listing-listing_title">
-Revisar - Clase 03 - Notebook Ejercicio 01
-</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="16" data-listing-file-modified-sort="1788755752748" data-listing-reading-time-sort="14" data-listing-word-count-sort="2730">
-<div class="body">
-
-</div>
-<div class="metadata">
-<a href="../clases/notebook_optimization_test.pdf" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="17" data-listing-file-modified-sort="1788755752748" data-listing-reading-time-sort="1" data-listing-word-count-sort="98">
-<div class="body">
-
-</div>
-<div class="metadata">
-<a href="../clases/notebook_shiny_applications_test.pdf" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="18" data-listing-file-modified-sort="1788755752748" data-listing-reading-time-sort="1" data-listing-word-count-sort="198">
-<div class="body">
-
-</div>
-<div class="metadata">
-<a href="../clases/notebook_technical_analysis_test.pdf" class="no-external">
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

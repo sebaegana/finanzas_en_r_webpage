@@ -210,11 +210,81 @@
     "text": "Rúbrica\n\nScript funciona sin errores: 40%\nUsa tidyverse y ggplot2 (como el resto del curso): 20%\nCálculos financieros correctos: 20%\nDocumentación clara (comentarios, texto explicativo): 20%"
   },
   {
-    "objectID": "clases_ia/index.html",
-    "href": "clases_ia/index.html",
-    "title": "Clases — Finanzas en R con IA",
+    "objectID": "clases_ia/intro.html",
+    "href": "clases_ia/intro.html",
+    "title": "Introducción a Finanzas en R",
     "section": "",
-    "text": "Desarrollo Asistido por IA en Finanzas\nMateriales del curso que integran Claude Code y Positron para acelerar el desarrollo de análisis financieros en R. Desde la generación automática de código hasta debugging, documentación y buenas prácticas de prompting.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nClase 01 - Desarrollo en R asistido por IA\n\n\n\n\n\nNo matching items"
+    "text": "Docente: Sebastián Egaña Santibáñez - Email: segana@fen.uchile.cl - Página Web: https://segana.netlify.app\nAyudante: Nicolas Leiva - Email: nleivad@fen.uchile.cl"
+  },
+  {
+    "objectID": "clases_ia/intro.html#presentación-del-curso",
+    "href": "clases_ia/intro.html#presentación-del-curso",
+    "title": "Introducción a Finanzas en R",
+    "section": "",
+    "text": "Docente: Sebastián Egaña Santibáñez - Email: segana@fen.uchile.cl - Página Web: https://segana.netlify.app\nAyudante: Nicolas Leiva - Email: nleivad@fen.uchile.cl"
+  },
+  {
+    "objectID": "clases_ia/intro.html#qué-veremos-en-esta-clase",
+    "href": "clases_ia/intro.html#qué-veremos-en-esta-clase",
+    "title": "Introducción a Finanzas en R",
+    "section": "¿Qué veremos en esta clase?",
+    "text": "¿Qué veremos en esta clase?\n\nTemario\n\nIntroducción a lenguajes de programación\nInstalación de R y RStudio"
+  },
+  {
+    "objectID": "clases_ia/intro.html#qué-es-r",
+    "href": "clases_ia/intro.html#qué-es-r",
+    "title": "Introducción a Finanzas en R",
+    "section": "¿Qué es R?",
+    "text": "¿Qué es R?\n\nDefinición (Wikipedia)\nR es un entorno y lenguaje de programación con un enfoque al análisis estadístico. R nació como una reimplementación de software libre del lenguaje S, adicionado con soporte para ámbito estático.\nSe trata de uno de los lenguajes de programación más utilizados en: - Investigación científica - Aprendizaje automático (Machine Learning) - Minería de datos - Investigación biomédica - Bioinformática - Matemáticas financieras"
+  },
+  {
+    "objectID": "clases_ia/intro.html#lenguajes-e-interfaz-gráficas-gui",
+    "href": "clases_ia/intro.html#lenguajes-e-interfaz-gráficas-gui",
+    "title": "Introducción a Finanzas en R",
+    "section": "Lenguajes e Interfaz Gráficas (GUI)",
+    "text": "Lenguajes e Interfaz Gráficas (GUI)\n\nInstalación y Plataformas\nPor lo general, se debe instalar el lenguaje de programación y el GUI por separado:\nOpción 1: R + RStudio (Recomendado) - Instala R desde: https://cran.r-project.org - Instala RStudio desde: https://posit.co\nOpción 2: Visual Studio Code - Correr R desde Visual Studio Code\nOpción 3: Google Colab - Correr R a través de Colab: https://colab.to/r"
+  },
+  {
+    "objectID": "clases_ia/intro.html#análisis-de-datos-en-el-contexto-de-r",
+    "href": "clases_ia/intro.html#análisis-de-datos-en-el-contexto-de-r",
+    "title": "Introducción a Finanzas en R",
+    "section": "Análisis de Datos en el Contexto de R",
+    "text": "Análisis de Datos en el Contexto de R\n\nEl ciclo del análisis de datos\nEl análisis de datos es un proceso iterativo que involucra:\n\nRecolección: Obtener datos de diversas fuentes\nLimpieza: Procesar y validar los datos\nExploración: Entender patrones y relaciones\nModelado: Aplicar técnicas estadísticas\nVisualización: Comunicar resultados\nInterpretación: Extraer conclusiones"
+  },
+  {
+    "objectID": "clases_ia/intro.html#sobre-las-ciencias-de-datos",
+    "href": "clases_ia/intro.html#sobre-las-ciencias-de-datos",
+    "title": "Introducción a Finanzas en R",
+    "section": "Sobre las Ciencias de Datos",
+    "text": "Sobre las Ciencias de Datos\n\nDefinición\nExiste una relación entre las ciencias de datos y la estadística, pero esto viene dado por la dinámica relacionadas con datos.\nLas ciencias de datos engloban el “conjunto de principios, definiciones de problemas, algoritmos y procesos para extraer patrones no obvios y útiles de grandes conjuntos de datos” (Kelleher & Tierney, 2021).\n\n\nDiferencia con Estadística\nLa ciencia de datos: - Va más allá del análisis estadístico puro - Integra programación, análisis de datos e ingeniería - Se enfoca en patrones accionables - Requiere trabajo en equipo e interdisciplinario"
+  },
+  {
+    "objectID": "clases_ia/intro.html#lo-que-implica-dedicarse-a-ciencias-de-datos",
+    "href": "clases_ia/intro.html#lo-que-implica-dedicarse-a-ciencias-de-datos",
+    "title": "Introducción a Finanzas en R",
+    "section": "Lo que Implica Dedicarse a Ciencias de Datos",
+    "text": "Lo que Implica Dedicarse a Ciencias de Datos\n\nPrincipios Fundamentales\nDedicarse a la ciencia de datos implica moverse en la dinámica de desarrollo continuo:\n\nEscalabilidad: Los desarrollos no pueden depender de personas\nValor organizacional: Los desarrollos son parte de los activos de las empresas\nColaboración: Se debe permitir siempre el trabajo en equipo\nVisión integral: Considerar también la visión inter-equipos\n\n\n\nDevOps en Ciencias de Datos\nEsto implica implementar CI/CD (Continuous Integration / Continuous Delivery / Continuous Deployment) en la dinámica de desarrollo."
+  },
+  {
+    "objectID": "clases_ia/intro.html#por-qué-r-en-finanzas",
+    "href": "clases_ia/intro.html#por-qué-r-en-finanzas",
+    "title": "Introducción a Finanzas en R",
+    "section": "¿Por qué R en Finanzas?",
+    "text": "¿Por qué R en Finanzas?\n\nVentajas de R para Análisis Financiero\n\nLibrerías especializadas: QuantLib, tidyquant, xts, zoo\nAnálisis estadístico: Regresiones, series de tiempo, modelos predictivos\nVisualización: ggplot2, plotly para dashboards interactivos\nIntegración: Fácil conexión con bases de datos y APIs financieras\nComunidad: Amplio ecosistema de paquetes financieros\nReproducibilidad: Código documenta el análisis completo"
+  },
+  {
+    "objectID": "clases_ia/intro.html#próximos-pasos",
+    "href": "clases_ia/intro.html#próximos-pasos",
+    "title": "Introducción a Finanzas en R",
+    "section": "Próximos Pasos",
+    "text": "Próximos Pasos\nEn las siguientes clases:\n\nInstalación y configuración del entorno\nConceptos básicos de programación en R\nEstructuras de datos y manipulación\nAnálisis de datos financieros\nVisualización y reportes\n\n¡Bienvenidos al curso de Finanzas en R!"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Diplomado en Ciencia de Datos para las Finanzas",
+    "section": "",
+    "text": "Este será el repositorio de los distintos materiales utilizados en el curso."
   },
   {
     "objectID": "recursos.html",
@@ -245,11 +315,11 @@
     "text": "https://posit.co/resources/cheatsheets/"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Diplomado en Ciencia de Datos para las Finanzas",
+    "objectID": "clases_ia/index.html",
+    "href": "clases_ia/index.html",
+    "title": "Clases — Finanzas en R con IA",
     "section": "",
-    "text": "Este será el repositorio de los distintos materiales utilizados en el curso."
+    "text": "Desarrollo Asistido por IA en Finanzas\nMateriales del curso que integran Claude Code y Positron para acelerar el desarrollo de análisis financieros en R. Desde la generación automática de código hasta debugging, documentación y buenas prácticas de prompting.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nClase 01 - Desarrollo en R asistido por IA\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "clases_ia/RESPUESTAS_PROFESOR.html",
