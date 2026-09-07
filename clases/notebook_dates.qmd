@@ -4,6 +4,7 @@ title: |
   Finanzas en R - Notebook Dates
 subtitle: Notebook Dates
 format: html
+draft: true
 editor: visual
 author:   
   - Sebastián Egaña Santibáñez [{{< fa brands inbox >}}](mailto:segana@fen.uchile)
