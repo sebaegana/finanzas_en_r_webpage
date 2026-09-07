@@ -43,7 +43,10 @@ jobs:
           Rscript -e "install.packages('reticulate')"
 
       - name: Install TinyTeX
-        run: quarto install tinytex
+        run: |
+          for i in {1..3}; do
+            quarto install tinytex && break || sleep 10
+          done
 
       - name: Render Quarto Site
         run: quarto render
