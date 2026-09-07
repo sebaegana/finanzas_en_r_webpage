@@ -338,10 +338,10 @@ dm <- dm_read_yaml(file_path)
 graph <- dm_create_graph(dm, rankdir = "LR")
 
 #dm_render_graph(graph)
-dm_export_graph(graph, 'imagenes/diagrama_01.png')
+dm_export_graph(graph, 'imagenes/diagrama_01.svg')
 ```
 
-![Diagrama 01](imagenes/diagrama_01.png){width="50%"}
+![Diagrama 01](imagenes/diagrama_01.svg){width="50%"}
 
 Veamos esto en relación a los datos que estuvimos revisando; primero debemos ingresar las tablas sobre las que estuvimos trabajando.
 
@@ -365,11 +365,11 @@ dm_f <- dm_from_data_frames(flights_01, routes_01, aircraft_01, airports_01)
 graph <- dm_create_graph(dm_f, rankdir = "BT", col_attr = c("column", "type"))
 #dm_render_graph(graph)
 
-dm_export_graph(graph, 'imagenes/diagrama_02.png')
+dm_export_graph(graph, 'imagenes/diagrama_02.svg')
 
 ```
 
-![Diagrama 02](imagenes/diagrama_02.png){width="70%"}
+![Diagrama 02](imagenes/diagrama_02.svg){width="70%"}
 
 Después debemos generar las relaciones entre cada una de las tablas:
 
@@ -383,11 +383,11 @@ dm_f <- dm_add_references(
 )
 graph <- dm_create_graph(dm_f, rankdir = "BT", col_attr = c("column", "type"))
 #dm_render_graph(graph)
-dm_export_graph(graph, 'imagenes/diagrama_03.png')
+dm_export_graph(graph, 'imagenes/diagrama_03.svg')
 
 ```
 
-![Diagrama 03](imagenes/diagrama_03.png){width="50%"}
+![Diagrama 03](imagenes/diagrama_03.svg){width="50%"}
 
 Podemos intentar mejorar un poco el formato de la visualización:
 
@@ -400,9 +400,9 @@ graph <- dm_create_graph(
   node_attrs = "fontname = 'Arial'")
 
 #dm_render_graph(graph)
-dm_export_graph(graph, 'imagenes/diagrama_04.png')
+dm_export_graph(graph, 'imagenes/diagrama_04.svg')
 
 
 ```
 
-![Diagrama 04](imagenes/diagrama_04.png){width="70%"}
+![Diagrama 04](imagenes/diagrama_04.svg){width="70%"}
