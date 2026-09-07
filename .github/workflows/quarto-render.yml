@@ -43,6 +43,10 @@ jobs:
         run: |
           Rscript -e "renv::restore()"
 
+      - name: Install Additional Packages
+        run: |
+          Rscript -e "install.packages('reticulate')"
+
       - name: Install TinyTeX
         run: quarto install tinytex
 
