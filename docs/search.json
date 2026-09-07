@@ -21,6 +21,20 @@
     "text": "Contacto\nSebastián Egaña Santibáñez\nDocente del curso\n\n📧 segana@fen.uchile.cl\n\n💼 LinkedIn\n💻Página Web\n🐈Github"
   },
   {
+    "objectID": "clases_ia/notebook_01.html",
+    "href": "clases_ia/notebook_01.html",
+    "title": "Finanzas en R — Desarrollo Asistido por IA",
+    "section": "",
+    "text": "📄 Descargar PDF\n  💾 Descargar Fuente"
+  },
+  {
+    "objectID": "clases_ia/notebook_01.html#descargas",
+    "href": "clases_ia/notebook_01.html#descargas",
+    "title": "Finanzas en R — Desarrollo Asistido por IA",
+    "section": "",
+    "text": "📄 Descargar PDF\n  💾 Descargar Fuente"
+  },
+  {
     "objectID": "clases_ia/notebook_01.html#nota-importante-windows-vs-macoslinux",
     "href": "clases_ia/notebook_01.html#nota-importante-windows-vs-macoslinux",
     "title": "Finanzas en R — Desarrollo Asistido por IA",
@@ -210,74 +224,249 @@
     "text": "Rúbrica\n\nScript funciona sin errores: 40%\nUsa tidyverse y ggplot2 (como el resto del curso): 20%\nCálculos financieros correctos: 20%\nDocumentación clara (comentarios, texto explicativo): 20%"
   },
   {
-    "objectID": "clases_ia/intro.html",
-    "href": "clases_ia/intro.html",
-    "title": "Introducción a Finanzas en R",
+    "objectID": "clases_ia/herramientas.html",
+    "href": "clases_ia/herramientas.html",
+    "title": "Stack Tecnológico del Curso",
     "section": "",
-    "text": "Docente: Sebastián Egaña Santibáñez - Email: segana@fen.uchile.cl - Página Web: https://segana.netlify.app\nAyudante: Nicolas Leiva - Email: nleivad@fen.uchile.cl"
+    "text": "📄 Descargar PDF\n  💾 Descargar Fuente"
   },
   {
-    "objectID": "clases_ia/intro.html#presentación-del-curso",
-    "href": "clases_ia/intro.html#presentación-del-curso",
-    "title": "Introducción a Finanzas en R",
+    "objectID": "clases_ia/herramientas.html#descargas",
+    "href": "clases_ia/herramientas.html#descargas",
+    "title": "Stack Tecnológico del Curso",
     "section": "",
-    "text": "Docente: Sebastián Egaña Santibáñez - Email: segana@fen.uchile.cl - Página Web: https://segana.netlify.app\nAyudante: Nicolas Leiva - Email: nleivad@fen.uchile.cl"
+    "text": "📄 Descargar PDF\n  💾 Descargar Fuente"
   },
   {
-    "objectID": "clases_ia/intro.html#qué-veremos-en-esta-clase",
-    "href": "clases_ia/intro.html#qué-veremos-en-esta-clase",
-    "title": "Introducción a Finanzas en R",
-    "section": "¿Qué veremos en esta clase?",
-    "text": "¿Qué veremos en esta clase?\n\nTemario\n\nIntroducción a lenguajes de programación\nInstalación de R y RStudio"
+    "objectID": "clases_ia/herramientas.html#categorías-de-herramientas",
+    "href": "clases_ia/herramientas.html#categorías-de-herramientas",
+    "title": "Stack Tecnológico del Curso",
+    "section": "Categorías de Herramientas",
+    "text": "Categorías de Herramientas\n┌─────────────────────────────────────────────────────────┐\n│        STACK TECNOLÓGICO - FINANZAS EN R CON IA         │\n├──────────────────────┬──────────────────┬───────────────┤\n│  LENGUAJE            │  IDE & EDITOR    │  IA ASISTIDA  │\n│                      │                  │               │\n│  • R                 │  • Positron ⭐   │  • Claude ⭐  │\n│                      │  • VS Code       │  • Mistral    │\n│                      │  • RStudio ❌    │  • Mistral    │\n├──────────────────────┼──────────────────┼───────────────┤\n│  CONTROL DE VERSIÓN  │  DOCUMENTACIÓN   │  VISUALIZACIÓN│\n│                      │                  │               │\n│  • Git               │  • Quarto ⭐     │  • ggplot2 ⭐ │\n│  • GitHub            │  • R Markdown    │  • plotly     │\n│                      │  • Jupyter       │  • Shiny      │\n├──────────────────────┼──────────────────┼───────────────┤\n│  MANIPULACIÓN DATOS  │  DATOS FINANC.   │  DEPLOY       │\n│                      │                  │               │\n│  • dplyr ⭐          │  • tidyquant     │  • GitHub Pages│\n│  • tidyr             │  • QuantLib      │  • Shiny Server│\n│  • data.table        │  • xts/zoo       │  • Docker      │\n└──────────────────────┴──────────────────┴───────────────┘\n\n⭐ = RECOMENDADO / ❌ = OBSOLETO"
   },
   {
-    "objectID": "clases_ia/intro.html#qué-es-r",
-    "href": "clases_ia/intro.html#qué-es-r",
-    "title": "Introducción a Finanzas en R",
-    "section": "¿Qué es R?",
-    "text": "¿Qué es R?\n\nDefinición (Wikipedia)\nR es un entorno y lenguaje de programación con un enfoque al análisis estadístico. R nació como una reimplementación de software libre del lenguaje S, adicionado con soporte para ámbito estático.\nSe trata de uno de los lenguajes de programación más utilizados en: - Investigación científica - Aprendizaje automático (Machine Learning) - Minería de datos - Investigación biomédica - Bioinformática - Matemáticas financieras"
+    "objectID": "clases_ia/herramientas.html#opción-1-setup-mínimo-gratis",
+    "href": "clases_ia/herramientas.html#opción-1-setup-mínimo-gratis",
+    "title": "Stack Tecnológico del Curso",
+    "section": "📋 Opción 1: Setup Mínimo (Gratis)",
+    "text": "📋 Opción 1: Setup Mínimo (Gratis)\n☐ R (desde https://cran.r-project.org)\n☐ Positron (desde https://posit.co/download/positron/)\n☐ Git (desde https://git-scm.com/)\n☐ Quarto (instalado automáticamente con Positron)\n☐ Cuenta en GitHub (gratis)\nTiempo de instalación: ~30 min Costo: Gratis"
   },
   {
-    "objectID": "clases_ia/intro.html#lenguajes-e-interfaz-gráficas-gui",
-    "href": "clases_ia/intro.html#lenguajes-e-interfaz-gráficas-gui",
-    "title": "Introducción a Finanzas en R",
-    "section": "Lenguajes e Interfaz Gráficas (GUI)",
-    "text": "Lenguajes e Interfaz Gráficas (GUI)\n\nInstalación y Plataformas\nPor lo general, se debe instalar el lenguaje de programación y el GUI por separado:\nOpción 1: R + RStudio (Recomendado) - Instala R desde: https://cran.r-project.org - Instala RStudio desde: https://posit.co\nOpción 2: Visual Studio Code - Correr R desde Visual Studio Code\nOpción 3: Google Colab - Correr R a través de Colab: https://colab.to/r"
+    "objectID": "clases_ia/herramientas.html#opción-2-setup-completo-recomendado",
+    "href": "clases_ia/herramientas.html#opción-2-setup-completo-recomendado",
+    "title": "Stack Tecnológico del Curso",
+    "section": "📋 Opción 2: Setup Completo (Recomendado)",
+    "text": "📋 Opción 2: Setup Completo (Recomendado)\nIncluye TODO de Opción 1 más:\n☐ Crear cuenta en Claude.ai (gratis)\n☐ Activar Claude Code (gratis con 2M tokens/mes)\n  → O: Crear cuenta en Mistral (gratis, sin tarjeta)\n☐ Opcional: VS Code (alternativa a Positron)\nTiempo de instalación: ~45 min Costo: Gratis o $20/mes (Claude Pro)"
   },
   {
-    "objectID": "clases_ia/intro.html#análisis-de-datos-en-el-contexto-de-r",
-    "href": "clases_ia/intro.html#análisis-de-datos-en-el-contexto-de-r",
-    "title": "Introducción a Finanzas en R",
-    "section": "Análisis de Datos en el Contexto de R",
-    "text": "Análisis de Datos en el Contexto de R\n\nEl ciclo del análisis de datos\nEl análisis de datos es un proceso iterativo que involucra:\n\nRecolección: Obtener datos de diversas fuentes\nLimpieza: Procesar y validar los datos\nExploración: Entender patrones y relaciones\nModelado: Aplicar técnicas estadísticas\nVisualización: Comunicar resultados\nInterpretación: Extraer conclusiones"
+    "objectID": "clases_ia/herramientas.html#alternativas-por-plataforma",
+    "href": "clases_ia/herramientas.html#alternativas-por-plataforma",
+    "title": "Stack Tecnológico del Curso",
+    "section": "📋 Alternativas por Plataforma",
+    "text": "📋 Alternativas por Plataforma\n\nWindows\n\n✅ Usar Positron (instalador directo)\n✅ Usar Git Bash (integrado con Git)\n✅ Alternativa: WSL2 + Linux setup\n\n\n\nmacOS\n\n✅ Usar Homebrew: brew install r\n✅ Descargar Positron.dmg\n✅ Git viene preinstalado\n\n\n\nLinux\n\n✅ sudo apt install r-base git\n✅ Descargar Positron AppImage\n✅ Terminal nativa (Bash)"
   },
   {
-    "objectID": "clases_ia/intro.html#sobre-las-ciencias-de-datos",
-    "href": "clases_ia/intro.html#sobre-las-ciencias-de-datos",
-    "title": "Introducción a Finanzas en R",
-    "section": "Sobre las Ciencias de Datos",
-    "text": "Sobre las Ciencias de Datos\n\nDefinición\nExiste una relación entre las ciencias de datos y la estadística, pero esto viene dado por la dinámica relacionadas con datos.\nLas ciencias de datos engloban el “conjunto de principios, definiciones de problemas, algoritmos y procesos para extraer patrones no obvios y útiles de grandes conjuntos de datos” (Kelleher & Tierney, 2021).\n\n\nDiferencia con Estadística\nLa ciencia de datos: - Va más allá del análisis estadístico puro - Integra programación, análisis de datos e ingeniería - Se enfoca en patrones accionables - Requiere trabajo en equipo e interdisciplinario"
+    "objectID": "clases_ia/herramientas.html#r-base",
+    "href": "clases_ia/herramientas.html#r-base",
+    "title": "Stack Tecnológico del Curso",
+    "section": "R (Base)",
+    "text": "R (Base)\n\n✅ Descripción\nR es el lenguaje principal del curso. Es un lenguaje especializado en análisis estadístico y ciencias de datos.\n\n\n📥 Instalación\n# En Windows\nDescargar desde: https://cran.r-project.org\n\n# En macOS\nbrew install r\n\n# En Linux\nsudo apt-get install r-base\n\n\n📚 Librerías Clave\n\ntidyverse: Manipulación y visualización de datos\nggplot2: Visualización avanzada\ndplyr/tidyr: Transformación de datos\ndata.table: Operaciones eficientes con datos grandes\ntidyquant: Datos financieros\nrmarkdown/quarto: Reportes dinámicos\n\n\n\n💰 Costo\nGratis (Open Source)\n\n\n⭐ Nivel de Recomendación\nIMPRESCINDIBLE - 10/10"
   },
   {
-    "objectID": "clases_ia/intro.html#lo-que-implica-dedicarse-a-ciencias-de-datos",
-    "href": "clases_ia/intro.html#lo-que-implica-dedicarse-a-ciencias-de-datos",
-    "title": "Introducción a Finanzas en R",
-    "section": "Lo que Implica Dedicarse a Ciencias de Datos",
-    "text": "Lo que Implica Dedicarse a Ciencias de Datos\n\nPrincipios Fundamentales\nDedicarse a la ciencia de datos implica moverse en la dinámica de desarrollo continuo:\n\nEscalabilidad: Los desarrollos no pueden depender de personas\nValor organizacional: Los desarrollos son parte de los activos de las empresas\nColaboración: Se debe permitir siempre el trabajo en equipo\nVisión integral: Considerar también la visión inter-equipos\n\n\n\nDevOps en Ciencias de Datos\nEsto implica implementar CI/CD (Continuous Integration / Continuous Delivery / Continuous Deployment) en la dinámica de desarrollo."
+    "objectID": "clases_ia/herramientas.html#positron-recomendado",
+    "href": "clases_ia/herramientas.html#positron-recomendado",
+    "title": "Stack Tecnológico del Curso",
+    "section": "Positron (⭐ RECOMENDADO)",
+    "text": "Positron (⭐ RECOMENDADO)\n\n✅ Descripción\nPositron es el nuevo IDE de Posit Software, sucesor moderno de RStudio. Está construido sobre VS Code, lo que significa: - Acceso a 20k+ extensiones - Soporte nativo para IA (Claude Code) - Excelente integración R - Performance superior\n\n\n📥 Instalación\nDescargar desde: https://posit.co/download/positron/\n\n# O via package manager (cuando esté disponible)\nbrew install positron  # macOS\n\n\n✨ Ventajas Clave\n\n\n\nAspecto\nPositron\nRStudio\nVS Code\n\n\n\n\nIA Nativa\n✅\n❌\n✅ (ext)\n\n\nR\n✅✅\n✅\n✅ (ext)\n\n\nExtensiones\n20k+\nPocas\n50k+\n\n\nPerformance\nMuy bueno\nBueno\nExcelente\n\n\nCurva aprendizaje\nMedia\nBaja\nMedia\n\n\n\n\n\n💰 Costo\nGratis\n\n\n⭐ Nivel de Recomendación\nIMPRESCINDIBLE - 10/10"
   },
   {
-    "objectID": "clases_ia/intro.html#por-qué-r-en-finanzas",
-    "href": "clases_ia/intro.html#por-qué-r-en-finanzas",
-    "title": "Introducción a Finanzas en R",
-    "section": "¿Por qué R en Finanzas?",
-    "text": "¿Por qué R en Finanzas?\n\nVentajas de R para Análisis Financiero\n\nLibrerías especializadas: QuantLib, tidyquant, xts, zoo\nAnálisis estadístico: Regresiones, series de tiempo, modelos predictivos\nVisualización: ggplot2, plotly para dashboards interactivos\nIntegración: Fácil conexión con bases de datos y APIs financieras\nComunidad: Amplio ecosistema de paquetes financieros\nReproducibilidad: Código documenta el análisis completo"
+    "objectID": "clases_ia/herramientas.html#visual-studio-code-alternativa",
+    "href": "clases_ia/herramientas.html#visual-studio-code-alternativa",
+    "title": "Stack Tecnológico del Curso",
+    "section": "Visual Studio Code (Alternativa)",
+    "text": "Visual Studio Code (Alternativa)\n\n✅ Descripción\nVS Code es un editor ligero y potente. Aunque no está optimizado para R, con extensiones se puede usar.\n\n\n📥 Instalación\nDescargar desde: https://code.visualstudio.com/\n\n# O via package manager\nbrew install visual-studio-code  # macOS\n\n\n🔧 Extensiones Necesarias\n\nR (Posit)\nPython (Microsoft)\nGitHub Copilot (Microsoft)\nQuarto (Quarto)\nGitLens (Eric Amodio)\n\n\n\n💰 Costo\nGratis\n\n\n⭐ Nivel de Recomendación\nALTERNATIVA - 7/10 (si prefieres algo más ligero)"
   },
   {
-    "objectID": "clases_ia/intro.html#próximos-pasos",
-    "href": "clases_ia/intro.html#próximos-pasos",
-    "title": "Introducción a Finanzas en R",
-    "section": "Próximos Pasos",
-    "text": "Próximos Pasos\nEn las siguientes clases:\n\nInstalación y configuración del entorno\nConceptos básicos de programación en R\nEstructuras de datos y manipulación\nAnálisis de datos financieros\nVisualización y reportes\n\n¡Bienvenidos al curso de Finanzas en R!"
+    "objectID": "clases_ia/herramientas.html#rstudio-no-recomendado",
+    "href": "clases_ia/herramientas.html#rstudio-no-recomendado",
+    "title": "Stack Tecnológico del Curso",
+    "section": "RStudio (❌ NO RECOMENDADO)",
+    "text": "RStudio (❌ NO RECOMENDADO)\n\n⚠️ Aviso Importante\nRStudio clásico ya no es recomendado para este curso porque: - Positron es el futuro oficial de Posit - RStudio no tiene soporte nativo para IA - Positron es más ligero y rápido - Mejor integración con Python\n\n\n💰 Costo\nGratis (versión de escritorio)\n\n\n⭐ Nivel de Recomendación\nNO RECOMENDADO - 2/10"
+  },
+  {
+    "objectID": "clases_ia/herramientas.html#claude-code-recomendado",
+    "href": "clases_ia/herramientas.html#claude-code-recomendado",
+    "title": "Stack Tecnológico del Curso",
+    "section": "Claude Code (⭐ RECOMENDADO)",
+    "text": "Claude Code (⭐ RECOMENDADO)\n\n✅ Descripción\nClaude Code es un IDE inteligente que integra Claude 3.5 Sonnet directamente en tu flujo de trabajo.\n\n\n🎯 Casos de Uso\n# Claude entiende tu código y puede:\n# 1. Generar código completo\n  \"Crea una función que calcule Sharpe ratio\"\n\n# 2. Debuggear\n  \"¿Por qué falla este código?\"\n\n# 3. Explicar\n  \"Explica línea por línea este análisis\"\n\n# 4. Refactorizar\n  \"Optimiza esta función para datos grandes\"\n\n# 5. Documentar\n  \"Agrega comentarios explicativos\"\n\n\n🔧 Características\n\nAcceso al código completo del proyecto\nEjecución de comandos en terminal\nHistorial de cambios\nManejo de archivos\n\n\n\n💰 Costo\n\nGratis: 2 millones tokens/mes (modelo limitado)\nPro: $20/mes (Claude 3.5 Sonnet, ilimitado)\n\n\n\n📝 Setup\n1. Visita: https://claude.ai/code\n2. Conecta tu carpeta del proyecto\n3. Comienza a usar Claude en tu IDE\n\n\n⭐ Nivel de Recomendación\nMUY RECOMENDADO - 10/10 (mejor para finanzas)"
+  },
+  {
+    "objectID": "clases_ia/herramientas.html#mistral-vibe-alternativa-gratuita",
+    "href": "clases_ia/herramientas.html#mistral-vibe-alternativa-gratuita",
+    "title": "Stack Tecnológico del Curso",
+    "section": "Mistral Vibe (Alternativa Gratuita)",
+    "text": "Mistral Vibe (Alternativa Gratuita)\n\n✅ Descripción\nMistral Vibe es la solución de Mistral AI para desarrollo asistido. Similar a Claude Code pero gratuita.\n\n\n🎯 Casos de Uso\nSimilar a Claude Code, pero con algunas limitaciones en precisión.\n\n\n✨ Ventajas\n\n✅ Completamente gratis\n✅ Sin tarjeta de crédito\n✅ Excelente para aprender\n✅ Buena privacidad\n\n\n\n⚠️ Limitaciones\n\nNo es tan preciso como Claude en finanzas\nMenor contexto de código\nComunidad más pequeña\n\n\n\n💰 Costo\nTotalmente Gratis\n\n\n📝 Setup\nDescargar desde: https://mistral.ai/vibe/\n\n\n⭐ Nivel de Recomendación\nBUENA ALTERNATIVA - 7/10 (si no tienes presupuesto)"
+  },
+  {
+    "objectID": "clases_ia/herramientas.html#git-github",
+    "href": "clases_ia/herramientas.html#git-github",
+    "title": "Stack Tecnológico del Curso",
+    "section": "Git + GitHub",
+    "text": "Git + GitHub\n\n✅ Descripción\nGit es el sistema de control de versión estándar. GitHub es la plataforma más popular para alojar repositorios.\n\n\n🔧 Instalación\n# Windows\nDescargar desde: https://git-scm.com/\n\n# macOS\nbrew install git\n\n# Linux\nsudo apt-get install git\n\n\n📝 Configuración Inicial\ngit config --global user.name \"Tu Nombre\"\ngit config --global user.email \"tu@email.com\"\n\n\n📚 Flujo Básico\n# Crear/clonar repositorio\ngit clone &lt;url&gt;\ncd &lt;proyecto&gt;\n\n# Hacer cambios\n# Editar archivos...\n\n# Preparar cambios\ngit add .\n\n# Guardar con mensaje\ngit commit -m \"feat: descripción del cambio\"\n\n# Subir a GitHub\ngit push origin main\n\n\n✨ Ventajas en Finanzas\n\nAuditoría: Historial completo de cambios\nColaboración: Trabajo en equipo sincronizado\nReproducibilidad: Volver a versiones anteriores\nBackup: Tu código está en la nube\n\n\n\n💰 Costo\nGratis (para repositorios públicos y privados)\n\n\n⭐ Nivel de Recomendación\nIMPRESCINDIBLE - 10/10"
+  },
+  {
+    "objectID": "clases_ia/herramientas.html#quarto-recomendado",
+    "href": "clases_ia/herramientas.html#quarto-recomendado",
+    "title": "Stack Tecnológico del Curso",
+    "section": "Quarto (⭐ RECOMENDADO)",
+    "text": "Quarto (⭐ RECOMENDADO)\n\n✅ Descripción\nQuarto es el sistema moderno para crear documentos dinámicos. Combina código R con narrativa.\n\n\n📝 Formatos Soportados\n\n.qmd → HTML (web)\n.qmd → PDF (documentos)\n.qmd → Word (reportes)\n.qmd → Presentaciones\n.qmd → Sitios web\n\n\n\n🎯 Ejemplo\n---\ntitle: \"Análisis de Portafolio\"\n---\n\n# Retornos Diarios\n\n\n::: {.cell}\n\n```{.r .cell-code}\nprices %&gt;%\n  mutate(returns = log(price/lag(price))) %&gt;%\n  head(10)\n:::\nEl código se ejecuta automáticamente y genera gráficos.\n\n### ✨ Ventajas\n- ✅ Una fuente de verdad (código + análisis)\n- ✅ Reproducible al 100%\n- ✅ Profesional (para clientes/reportes)\n- ✅ Fácil de mantener\n\n### 💰 Costo\n**Gratis** (Open Source)\n\n### 📝 Instalación\n```r\n# En R\ninstall.packages(\"quarto\")\n\n# O descargar desde:\nhttps://quarto.org/\n\n\n⭐ Nivel de Recomendación\nMUY RECOMENDADO - 9/10"
+  },
+  {
+    "objectID": "clases_ia/herramientas.html#r-markdown-alternativa",
+    "href": "clases_ia/herramientas.html#r-markdown-alternativa",
+    "title": "Stack Tecnológico del Curso",
+    "section": "R Markdown (Alternativa)",
+    "text": "R Markdown (Alternativa)\n\n✅ Descripción\nR Markdown fue el precursor de Quarto. Sigue siendo funcional pero está siendo reemplazado.\n\n\n💰 Costo\nGratis (Open Source)\n\n\n⭐ Nivel de Recomendación\nLEGADO - 5/10 (usa Quarto en su lugar)"
+  },
+  {
+    "objectID": "clases_ia/herramientas.html#ggplot2-recomendado",
+    "href": "clases_ia/herramientas.html#ggplot2-recomendado",
+    "title": "Stack Tecnológico del Curso",
+    "section": "ggplot2 (⭐ RECOMENDADO)",
+    "text": "ggplot2 (⭐ RECOMENDADO)\n\n✅ Descripción\nggplot2 es el sistema de visualización más poderoso en R. Basado en la “Gramática de los Gráficos”.\n\n\n🎯 Ejemplo\nlibrary(ggplot2)\n\ndf %&gt;%\n  ggplot(aes(x = date, y = returns)) +\n  geom_line() +\n  geom_smooth(method = \"loess\") +\n  theme_minimal() +\n  labs(title = \"Retornos Diarios\",\n       y = \"Retorno (%)\")\n\n\n✨ Ventajas\n\n✅ Altamente personalizable\n✅ Muchos temas disponibles\n✅ Puedes construir gráficos complejos\n✅ Integra bien con Quarto\n\n\n\n💰 Costo\nGratis (Open Source)\n\n\n⭐ Nivel de Recomendación\nIMPRESCINDIBLE - 10/10"
+  },
+  {
+    "objectID": "clases_ia/herramientas.html#plotly-interactivo",
+    "href": "clases_ia/herramientas.html#plotly-interactivo",
+    "title": "Stack Tecnológico del Curso",
+    "section": "Plotly (Interactivo)",
+    "text": "Plotly (Interactivo)\n\n✅ Descripción\nPlotly genera gráficos interactivos. Perfecto para dashboards y reportes web.\n\n\n🎯 Ejemplo\nlibrary(plotly)\n\ndf %&gt;%\n  plot_ly(x = ~date, y = ~returns) %&gt;%\n  add_trace(type = \"scatter\", mode = \"lines\")\n\n\n✨ Ventajas\n\n✅ Interactivo (zoom, hover, etc.)\n✅ Exportable a HTML\n✅ Funciona en Quarto\n✅ Profesional para presentaciones\n\n\n\n💰 Costo\nGratis (Open Source)\n\n\n⭐ Nivel de Recomendación\nRECOMENDADO - 8/10 (para reportes finales)"
+  },
+  {
+    "objectID": "clases_ia/herramientas.html#shiny-aplicaciones-web",
+    "href": "clases_ia/herramientas.html#shiny-aplicaciones-web",
+    "title": "Stack Tecnológico del Curso",
+    "section": "Shiny (Aplicaciones Web)",
+    "text": "Shiny (Aplicaciones Web)\n\n✅ Descripción\nShiny permite crear aplicaciones web interactivas sin HTML/CSS/JavaScript.\n\n\n🎯 Caso de Uso Financiero\nlibrary(shiny)\n\nui &lt;- fluidPage(\n  sliderInput(\"risk\", \"Riesgo:\", 0, 100),\n  plotOutput(\"plot\")\n)\n\nserver &lt;- function(input, output) {\n  output$plot &lt;- renderPlot({\n    # Generar gráfico según slider\n  })\n}\n\nshinyApp(ui, server)\n\n\n✨ Ventajas\n\n✅ Web apps sin frontend experience\n✅ Interactividad en tiempo real\n✅ Desplegable en Shiny Server o Posit Connect\n\n\n\n💰 Costo\n\nGratis: Desarrollo local\nPagado: Hosting en Shiny Server (~$13/mes)\n\n\n\n⭐ Nivel de Recomendación\nAVANZADO - 7/10 (para proyectos finales)"
+  },
+  {
+    "objectID": "clases_ia/herramientas.html#dplyr-recomendado",
+    "href": "clases_ia/herramientas.html#dplyr-recomendado",
+    "title": "Stack Tecnológico del Curso",
+    "section": "dplyr (⭐ RECOMENDADO)",
+    "text": "dplyr (⭐ RECOMENDADO)\n\n✅ Descripción\ndplyr es el verbo (paquete) más importante de tidyverse. Permite manipular datos de forma intuitiva.\n\n\n🎯 Verbos Principales\nlibrary(dplyr)\n\ndf %&gt;%\n  select(date, price, volume) %&gt;%    # Seleccionar columnas\n  filter(price &gt; 100) %&gt;%             # Filtrar filas\n  mutate(returns = price/lag(price)-1) %&gt;%  # Crear columnas\n  group_by(year(date)) %&gt;%            # Agrupar\n  summarize(avg_return = mean(returns))    # Resumir\n\n\n💰 Costo\nGratis (Open Source)\n\n\n⭐ Nivel de Recomendación\nIMPRESCINDIBLE - 10/10"
+  },
+  {
+    "objectID": "clases_ia/herramientas.html#tidyr-estructura",
+    "href": "clases_ia/herramientas.html#tidyr-estructura",
+    "title": "Stack Tecnológico del Curso",
+    "section": "tidyr (Estructura)",
+    "text": "tidyr (Estructura)\n\n✅ Descripción\ntidyr organiza tus datos en formato “tidy” (largo vs ancho).\n\n\n🎯 Funciones Clave\nlibrary(tidyr)\n\n# Datos ancho → largo\ndf %&gt;% pivot_longer(cols = -date, names_to = \"asset\")\n\n# Datos largo → ancho\ndf %&gt;% pivot_wider(names_from = asset, values_from = price)\n\n\n💰 Costo\nGratis (Open Source)\n\n\n⭐ Nivel de Recomendación\nMUY RECOMENDADO - 9/10"
+  },
+  {
+    "objectID": "clases_ia/herramientas.html#data.table-rendimiento",
+    "href": "clases_ia/herramientas.html#data.table-rendimiento",
+    "title": "Stack Tecnológico del Curso",
+    "section": "data.table (Rendimiento)",
+    "text": "data.table (Rendimiento)\n\n✅ Descripción\ndata.table es más rápido que dplyr para datos muy grandes (millones de filas).\n\n\n🎯 Ejemplo\nlibrary(data.table)\n\ndt &lt;- as.data.table(df)\ndt[price &gt; 100, .(date, price, returns)]\n\n\n✨ Ventajas\n\n✅ 10-100x más rápido que data.frame\n✅ Sintaxis compacta\n✅ Ideal para big data\n\n\n\n⚠️ Limitaciones\n\nCurva de aprendizaje más empinada\nSintaxis menos legible\n\n\n\n💰 Costo\nGratis (Open Source)\n\n\n⭐ Nivel de Recomendación\nPARA AVANZADOS - 6/10 (cuando dplyr es lento)"
+  },
+  {
+    "objectID": "clases_ia/herramientas.html#tidyquant-recomendado",
+    "href": "clases_ia/herramientas.html#tidyquant-recomendado",
+    "title": "Stack Tecnológico del Curso",
+    "section": "tidyquant (⭐ RECOMENDADO)",
+    "text": "tidyquant (⭐ RECOMENDADO)\n\n✅ Descripción\ntidyquant conecta R con fuentes financieras (Yahoo Finance, etc.) y proporciona funciones de análisis financiero.\n\n\n🎯 Ejemplo\nlibrary(tidyquant)\n\n# Descargar datos\ntq_get(\"AAPL\", get = \"stock.prices\", from = \"2020-01-01\")\n\n# Calcular retornos\ndf %&gt;%\n  tq_transmute(select = close, mutate_fun = periodReturn, period = \"daily\")\n\n# Ratios\ndf %&gt;% tq_performance(Ra = returns, performance_fun = SharpeRatio)\n\n\n💰 Costo\nGratis (Open Source)\n\n\n⭐ Nivel de Recomendación\nIMPRESCINDIBLE - 10/10"
+  },
+  {
+    "objectID": "clases_ia/herramientas.html#quantlib-valuación",
+    "href": "clases_ia/herramientas.html#quantlib-valuación",
+    "title": "Stack Tecnológico del Curso",
+    "section": "QuantLib (Valuación)",
+    "text": "QuantLib (Valuación)\n\n✅ Descripción\nQuantLib es una librería C++ para finanzas cuantitativas. En R se accede via RQuantLib.\n\n\n🎯 Casos\n\nValuación de derivados\nModelos de tasa de interés\nGestión de riesgo\n\n\n\n💰 Costo\nGratis (Open Source)\n\n\n⭐ Nivel de Recomendación\nPARA AVANZADOS - 7/10"
+  },
+  {
+    "objectID": "clases_ia/herramientas.html#xtszoo-series-de-tiempo",
+    "href": "clases_ia/herramientas.html#xtszoo-series-de-tiempo",
+    "title": "Stack Tecnológico del Curso",
+    "section": "xts/zoo (Series de Tiempo)",
+    "text": "xts/zoo (Series de Tiempo)\n\n✅ Descripción\nxts (eXtensible Time Series) y zoo manejan datos de series de tiempo indexados por fecha.\n\n\n🎯 Ejemplo\nlibrary(xts)\n\n# Crear serie de tiempo\nts_data &lt;- xts(prices, order.by = dates)\n\n# Operaciones\nts_data[\"2023-01\"]  # Datos de enero 2023\nlag(ts_data, 1)     # Rezago de 1 período\n\n\n💰 Costo\nGratis (Open Source)\n\n\n⭐ Nivel de Recomendación\nRECOMENDADO - 8/10"
+  },
+  {
+    "objectID": "clases_ia/herramientas.html#github-pages",
+    "href": "clases_ia/herramientas.html#github-pages",
+    "title": "Stack Tecnológico del Curso",
+    "section": "GitHub Pages",
+    "text": "GitHub Pages\n\n✅ Descripción\nGitHub Pages aloja sitios web estáticos GRATIS. Perfecto para reportes Quarto.\n\n\n🎯 Workflow\nQuarto (.qmd) → HTML → Git Push → GitHub Pages\n\n\n💰 Costo\nTotalmente Gratis (con repo público)\n\n\n⭐ Nivel de Recomendación\nMUY RECOMENDADO - 9/10 (es lo que usamos en el curso)"
+  },
+  {
+    "objectID": "clases_ia/herramientas.html#shiny-server",
+    "href": "clases_ia/herramientas.html#shiny-server",
+    "title": "Stack Tecnológico del Curso",
+    "section": "Shiny Server",
+    "text": "Shiny Server\n\n✅ Descripción\nShiny Server aloja aplicaciones Shiny en la nube.\n\n\n💰 Costo\n\nFree: Limitado (comunidad)\nStandard: $13/mes\nPremium: $39/mes\n\n\n\n⭐ Nivel de Recomendación\nPARA PRODUCCIÓN - 7/10"
+  },
+  {
+    "objectID": "clases_ia/herramientas.html#docker-containerización",
+    "href": "clases_ia/herramientas.html#docker-containerización",
+    "title": "Stack Tecnológico del Curso",
+    "section": "Docker (Containerización)",
+    "text": "Docker (Containerización)\n\n✅ Descripción\nDocker empaqueta tu aplicación con todas sus dependencias.\n\n\n🎯 Caso de Uso\n# Crear imagen con R + paquetes + tu código\ndocker build -t mi-app .\n\n# Correr en cualquier servidor\ndocker run mi-app\n\n\n💰 Costo\nGratis (Open Source)\n\n\n⭐ Nivel de Recomendación\nPARA DEVOPS - 5/10 (avanzado)"
+  },
+  {
+    "objectID": "clases_ia/herramientas.html#para-principiantes",
+    "href": "clases_ia/herramientas.html#para-principiantes",
+    "title": "Stack Tecnológico del Curso",
+    "section": "🎯 Para Principiantes",
+    "text": "🎯 Para Principiantes\nMÍNIMO VIABLE\n┌─────────────────────────────┐\n│ Positron                    │\n│ + R (Base)                  │\n│ + tidyverse (dplyr/ggplot2) │\n│ + Quarto                    │\n│ + Git + GitHub              │\n└─────────────────────────────┘\n\nCosto: GRATIS\nTiempo de aprendizaje: 4 semanas"
+  },
+  {
+    "objectID": "clases_ia/herramientas.html#para-intermedios",
+    "href": "clases_ia/herramientas.html#para-intermedios",
+    "title": "Stack Tecnológico del Curso",
+    "section": "🚀 Para Intermedios",
+    "text": "🚀 Para Intermedios\nSTACK COMPLETO\n┌──────────────────────────────┐\n│ Positron + Claude Code       │\n│ + R + Python                 │\n│ + tidyverse + tidyquant      │\n│ + Quarto + Plotly            │\n│ + Git + GitHub + GitHub Pages│\n│ + (Opcional: Shiny)          │\n└──────────────────────────────┘\n\nCosto: $20/mes (Claude Pro)\nTiempo de aprendizaje: 8 semanas"
+  },
+  {
+    "objectID": "clases_ia/herramientas.html#para-producción-profesionales",
+    "href": "clases_ia/herramientas.html#para-producción-profesionales",
+    "title": "Stack Tecnológico del Curso",
+    "section": "💼 Para Producción (Profesionales)",
+    "text": "💼 Para Producción (Profesionales)\nFULL STACK\n┌──────────────────────────────────┐\n│ Positron + Claude Code           │\n│ + R + Python                     │\n│ + tidyverse + tidyquant          │\n│ + Quarto + Plotly + Shiny        │\n│ + Git + GitHub + GitHub Actions  │\n│ + Shiny Server (deploy)          │\n│ + Docker (containerización)      │\n│ + QuantLib (valuación)           │\n│ + data.table (big data)          │\n└──────────────────────────────────┘\n\nCosto: $20-100/mes (según hosting)\nTiempo de aprendizaje: 12+ semanas"
+  },
+  {
+    "objectID": "clases_ia/herramientas.html#semana-1-fundaciones",
+    "href": "clases_ia/herramientas.html#semana-1-fundaciones",
+    "title": "Stack Tecnológico del Curso",
+    "section": "Semana 1: Fundaciones",
+    "text": "Semana 1: Fundaciones\n\n✅ Instalar R desde https://cran.r-project.org\n✅ Instalar Positron desde https://posit.co/download/positron/\n✅ Crear cuenta en GitHub\n✅ Instalar Git en tu computadora"
+  },
+  {
+    "objectID": "clases_ia/herramientas.html#semana-2-configuración-ia",
+    "href": "clases_ia/herramientas.html#semana-2-configuración-ia",
+    "title": "Stack Tecnológico del Curso",
+    "section": "Semana 2: Configuración IA",
+    "text": "Semana 2: Configuración IA\n\n✅ Crear cuenta en Claude.ai y activar Claude Code\n✅ Conectar tu proyecto a Claude Code\n✅ Probar primeros comandos con IA"
+  },
+  {
+    "objectID": "clases_ia/herramientas.html#semana-3-primeros-análisis",
+    "href": "clases_ia/herramientas.html#semana-3-primeros-análisis",
+    "title": "Stack Tecnológico del Curso",
+    "section": "Semana 3: Primeros Análisis",
+    "text": "Semana 3: Primeros Análisis\n\n✅ Aprender dplyr (filtrar, agrupar, resumir)\n✅ Crear gráficos con ggplot2\n✅ Hacer push a GitHub"
+  },
+  {
+    "objectID": "clases_ia/herramientas.html#semana-4-reportes",
+    "href": "clases_ia/herramientas.html#semana-4-reportes",
+    "title": "Stack Tecnológico del Curso",
+    "section": "Semana 4: Reportes",
+    "text": "Semana 4: Reportes\n\n✅ Crear documento Quarto\n✅ Combinar código + narrativa\n✅ Publicar en GitHub Pages"
+  },
+  {
+    "objectID": "clases_ia/index.html",
+    "href": "clases_ia/index.html",
+    "title": "Clases — Finanzas en R con IA",
+    "section": "",
+    "text": "Desarrollo Asistido por IA en Finanzas\nMateriales del curso que integran Claude Code y Positron para acelerar el desarrollo de análisis financieros en R. Desde la generación automática de código hasta debugging, documentación y buenas prácticas de prompting.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n01 - Introducción a Finanzas en R\n\n\n\n\n\n\n\n\n\n\n\n02 - Stack Tecnológico\n\n\n\n\n\n\n\n\n\n\n\n03 - Clase 01 - Desarrollo Asistido por IA\n\n\n\n\n\n\n\n\n\n\n\n04 - Trabajo del Curso\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "index.html",
@@ -315,11 +504,186 @@
     "text": "https://posit.co/resources/cheatsheets/"
   },
   {
-    "objectID": "clases_ia/index.html",
-    "href": "clases_ia/index.html",
-    "title": "Clases — Finanzas en R con IA",
+    "objectID": "clases_ia/trabajo.html",
+    "href": "clases_ia/trabajo.html",
+    "title": "Finanzas en R",
     "section": "",
-    "text": "Desarrollo Asistido por IA en Finanzas\nMateriales del curso que integran Claude Code y Positron para acelerar el desarrollo de análisis financieros en R. Desde la generación automática de código hasta debugging, documentación y buenas prácticas de prompting.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nClase 01 - Desarrollo en R asistido por IA\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "📄 Descargar PDF\n  💾 Descargar Fuente"
+  },
+  {
+    "objectID": "clases_ia/trabajo.html#descargas",
+    "href": "clases_ia/trabajo.html#descargas",
+    "title": "Finanzas en R",
+    "section": "",
+    "text": "📄 Descargar PDF\n  💾 Descargar Fuente"
+  },
+  {
+    "objectID": "clases_ia/trabajo.html#alcance",
+    "href": "clases_ia/trabajo.html#alcance",
+    "title": "Finanzas en R",
+    "section": "Alcance",
+    "text": "Alcance\nDebe desarrollar un proyecto que solucione un problema de negocio financiero en base a código y herramientas en R, ya sea real o hipotético. En cualquiera de las dos situaciones debe realizar una descripción detallada del problema."
+  },
+  {
+    "objectID": "clases_ia/trabajo.html#explicación",
+    "href": "clases_ia/trabajo.html#explicación",
+    "title": "Finanzas en R",
+    "section": "Explicación",
+    "text": "Explicación\nComo analista, se generan soluciones a problemas de negocios, y no “el cálculo de” o “el dato de”. En este sentido, en el contexto de las organizaciones el trabajo debe estar orientado a proveer soluciones de negocio de largo plazo.\n\nknitr::include_graphics(\"trabajo/data-science-explore.png\")\n\n\n\n\n\n\n\n\nEn donde la comunicación corresponde a la solución al problema de negocios.\nMás en el detalle, debemos tener la siguiente visión dentro de nuestros desarrollos:\n\nknitr::include_graphics(\"trabajo/ml_ops_cycle.png\")\n\n\n\n\n\n\n\n\nConsidere las siguientes explicaciones para el desarrollo de su modelo:\n\nCollect data: corresponde a los procesos de extracción de datos, considerando toda las distintas fuentes utilizadas.\nUnderstand and clean data: se relaciona con los procesos de limpieza y transformación de datos del proceso.\n\nPD: ambos procesos anteriores pueden considerar la unión de tablas.\n\nTrain and evaluate model: proceso relacionado con el entrenamiento del modelo y evaluación de métricas relevantes para el modelo.\nVersion model: en caso de existir versiones del modelo\nDeploy model: despliegue y entrega del modelo\nMonitor model: revisión constante de métricas del modelo, como también de la operatividad del mismo\n\nVeamos el siguiente ejemplo para el punto 1 y 2, para un modelo que no considera modelamiento avanzado:"
+  },
+  {
+    "objectID": "clases_ia/trabajo.html#entregables",
+    "href": "clases_ia/trabajo.html#entregables",
+    "title": "Finanzas en R",
+    "section": "Entregables",
+    "text": "Entregables\nDentro de su trabajo, debe considerar los siguientes entregables:\n\nDescripción de la solución: debe explicar qué soluciona, a quiénes impacta (clientes, usuarios, etc.), cómo espera solucionar el problema, periodicidad del desarrollo y alcance (qué considera y qué no considera)\nPlanificación del trabajo: considere el desarrollo de un pequeño descriptor, como también alguna herramientas para visualizar la planificación (carta Gantt)\nMVP: desarrolle un producto mínimo viable para su solución. Esto incluye el código relacionado\nDocumentación: considere la necesidad de dejar constancia del trabajo desarrollado para su proyecto. Considere la utilización de alguna herramientas para generar diagramas como Bizagi o Visio. Como referencia se pueden utilizar las Model card de Vetiver, las cuales deben ser complementadas con los apartados de limpieza y transformación de datos\nDespliegue: describa cómo espera llevar a producción su solución\nMonitoreo: describa cómo espera realizar el monitoreo de su modelo"
+  },
+  {
+    "objectID": "clases_ia/trabajo.html#formatos-de-entrega",
+    "href": "clases_ia/trabajo.html#formatos-de-entrega",
+    "title": "Finanzas en R",
+    "section": "Formatos de entrega",
+    "text": "Formatos de entrega\nSe generará un repositorio en Github por parte de cada alumno, en donde deben compartir sus entregas diferenciadas de la siguiente manera:\n\nEntrega 01\nEntrega 02\nEntrega 03\n\nCada carpeta debe contener los archivos utilizados para cada entrega que permitan la correcta generación y aplicación del proyecto.\n⚠️ Se debe enviar un correo confirmando la subida de los archivos.\n⚠️ Es importante tener la consideración sobre la configuración privada del repositorio en caso de ser necesario. En base a la documentación de Github:\n\nPublic repositories: accesibles a todos en internet\nPrivate repositories: solo accesibles a ti y a quienes compartas acceso\n\n⚠️ El repositorio deberá cumplir con la utilización correcta de la librería renv"
+  },
+  {
+    "objectID": "clases_ia/trabajo.html#fechas-de-entrega",
+    "href": "clases_ia/trabajo.html#fechas-de-entrega",
+    "title": "Finanzas en R",
+    "section": "Fechas de entrega",
+    "text": "Fechas de entrega\n\nParte 1\nConsidera los puntos 1 y 2 Fecha: 18 de enero\n\n\nParte 2\nConsidera el punto 3 Fecha: 25 de enero\n\n\nParte 3\nConsidera todos los puntos anteriores Fecha: 2 de febrero\n⚠️ Para todas las fechas, se considera como horario límite las 23:59 de cada día."
+  },
+  {
+    "objectID": "clases_ia/intro.html",
+    "href": "clases_ia/intro.html",
+    "title": "Introducción a Finanzas en R",
+    "section": "",
+    "text": "📄 Descargar PDF\n  💾 Descargar Fuente"
+  },
+  {
+    "objectID": "clases_ia/intro.html#descargas",
+    "href": "clases_ia/intro.html#descargas",
+    "title": "Introducción a Finanzas en R",
+    "section": "",
+    "text": "📄 Descargar PDF\n  💾 Descargar Fuente"
+  },
+  {
+    "objectID": "clases_ia/intro.html#temario",
+    "href": "clases_ia/intro.html#temario",
+    "title": "Introducción a Finanzas en R",
+    "section": "Temario",
+    "text": "Temario\n\nIntroducción a lenguajes de programación\n¿Qué es R?\nInstalación de R y Positron (nuevo IDE)\nAnálisis de datos y ciencias de datos\nFundamentos de DevOps en finanzas\nPor qué IA en este curso\nBibliografía y recursos"
+  },
+  {
+    "objectID": "clases_ia/intro.html#definición-wikipedia",
+    "href": "clases_ia/intro.html#definición-wikipedia",
+    "title": "Introducción a Finanzas en R",
+    "section": "Definición (Wikipedia)",
+    "text": "Definición (Wikipedia)\nR es un entorno y lenguaje de programación con un enfoque al análisis estadístico.\nR nació como una reimplementación de software libre del lenguaje S, adicionado con soporte para ámbito estático.\nSe trata de uno de los lenguajes de programación más utilizados en: - Investigación científica - Aprendizaje automático (Machine Learning) - Minería de datos - Investigación biomédica - Bioinformática - Matemáticas financieras 📊\nA esto contribuye la posibilidad de cargar diferentes bibliotecas o paquetes con funcionalidades de cálculo y graficación.\nReferencia: https://es.wikipedia.org/wiki/R_(lenguaje_de_programación)"
+  },
+  {
+    "objectID": "clases_ia/intro.html#instalación-y-plataformas",
+    "href": "clases_ia/intro.html#instalación-y-plataformas",
+    "title": "Introducción a Finanzas en R",
+    "section": "Instalación y Plataformas",
+    "text": "Instalación y Plataformas\nPor lo general, se debe instalar el lenguaje de programación y el GUI por separado.\n\nOpción 1: R + Positron (⭐ RECOMENDADO)\nPositron es el nuevo IDE de Posit Software, sucesor de RStudio.\nPaso 1: Instalar R\n→ https://cran.r-project.org\n\nPaso 2: Instalar Positron (nuevo IDE)\n→ https://posit.co/download/positron/\n\n\nOpción 2: R + Visual Studio Code\nCorrer R desde Visual Studio Code (VS Code) con extensiones específicas.\n\n\nOpción 3: Google Colab\nCorrer R a través de Google Colab (sin instalar nada localmente) → https://colab.to/r"
+  },
+  {
+    "objectID": "clases_ia/intro.html#por-qué-positron-en-lugar-de-rstudio",
+    "href": "clases_ia/intro.html#por-qué-positron-en-lugar-de-rstudio",
+    "title": "Introducción a Finanzas en R",
+    "section": "¿Por qué Positron en lugar de RStudio?",
+    "text": "¿Por qué Positron en lugar de RStudio?\n\n\n\nAspecto\nRStudio\nPositron\n\n\n\n\nBase\nQt (propietaria)\nVS Code (abierta, extensible)\n\n\nSoporte IA nativo\nNo\nSí (Claude Code)\n\n\nIntegración Python\nLimitada\nPrimera clase\n\n\nExtensiones\nPocas\n20k+ extensiones de VS Code\n\n\nPerformance\nBueno\nMuy bueno\n\n\nCosto\nLibre/Pagado\nLibre\n\n\n\nConclusión: Positron es el presente y futuro del desarrollo en R."
+  },
+  {
+    "objectID": "clases_ia/intro.html#el-ciclo-del-análisis-de-datos",
+    "href": "clases_ia/intro.html#el-ciclo-del-análisis-de-datos",
+    "title": "Introducción a Finanzas en R",
+    "section": "El Ciclo del Análisis de Datos",
+    "text": "El Ciclo del Análisis de Datos\nEl análisis de datos es un proceso iterativo que involucra:\n1. RECOLECCIÓN\n   ↓\n2. LIMPIEZA Y VALIDACIÓN\n   ↓\n3. EXPLORACIÓN (EDA)\n   ↓\n4. MODELADO Y ANÁLISIS\n   ↓\n5. VISUALIZACIÓN\n   ↓\n6. COMUNICACIÓN E INSIGHTS\nEn finanzas, este ciclo es especialmente crítico porque los datos impactan decisiones de inversión."
+  },
+  {
+    "objectID": "clases_ia/intro.html#definición",
+    "href": "clases_ia/intro.html#definición",
+    "title": "Introducción a Finanzas en R",
+    "section": "Definición",
+    "text": "Definición\nExiste una relación entre las ciencias de datos y la estadística, pero esto viene dado por la dinámica relacionada con datos.\nLas ciencias de datos engloban:\n\n“El conjunto de principios, definiciones de problemas, algoritmos y procesos para extraer patrones no obvios y útiles de grandes conjuntos de datos”\n— Kelleher & Tierney (2021)\n\n\nDiferencia con Estadística\nLa ciencia de datos: - Va más allá del análisis estadístico puro - Integra programación, análisis de datos e ingeniería - Se enfoca en patrones accionables - Requiere trabajo en equipo e interdisciplinario - Incluye aspectos de operacionalización (despliegue en producción)"
+  },
+  {
+    "objectID": "clases_ia/intro.html#principios-fundamentales",
+    "href": "clases_ia/intro.html#principios-fundamentales",
+    "title": "Introducción a Finanzas en R",
+    "section": "Principios Fundamentales",
+    "text": "Principios Fundamentales\nDedicarse a la ciencia de datos implica moverse en la dinámica de desarrollo continuo:\n\nEscalabilidad: Los desarrollos no pueden depender de personas específicas\nValor organizacional: Los desarrollos son parte de los activos de las empresas\nColaboración: Se debe permitir siempre el trabajo en equipo\nVisión inter-equipos: Considerar cómo tu código se integra con otros sistemas"
+  },
+  {
+    "objectID": "clases_ia/intro.html#qué-es-cicd",
+    "href": "clases_ia/intro.html#qué-es-cicd",
+    "title": "Introducción a Finanzas en R",
+    "section": "¿Qué es CI/CD?",
+    "text": "¿Qué es CI/CD?\nCI/CD son prácticas esenciales en desarrollo moderno:\n\nCI (Continuous Integration): Integrar código constantemente\nCD (Continuous Delivery): Entrega continua de cambios\nCD (Continuous Deployment): Despliegue automático en producción\n\n\nAplicación en Finanzas\nEn un análisis financiero moderno:\nDesarrollo Local\n    ↓\nControl de Versiones (Git)\n    ↓\nTests Automáticos\n    ↓\nValidación de Datos\n    ↓\nIntegración en Producción\n    ↓\nMonitoreo Continuo\n\n\n¿Por qué importa en finanzas?\n\nTrazabilidad: Saber exactamente qué versión de código está en producción\nAuditoría: Cumplimiento regulatorio (FINMA, BCCh, etc.)\nConfiabilidad: Reducir errores en decisiones de inversión\nVelocidad: Iterar rápidamente en estrategias"
+  },
+  {
+    "objectID": "clases_ia/intro.html#el-ciclo-completo-de-desarrollo",
+    "href": "clases_ia/intro.html#el-ciclo-completo-de-desarrollo",
+    "title": "Introducción a Finanzas en R",
+    "section": "El Ciclo Completo de Desarrollo",
+    "text": "El Ciclo Completo de Desarrollo\n┌─────────────────────────────────────────────────┐\n│         CICLO COMPLETO EN FINANZAS              │\n├─────────────────────────────────────────────────┤\n│                                                 │\n│  Desarrollo → Estructuración → Documentación   │\n│      ↑                             ↓            │\n│      │         ML Ops              ↓            │\n│      └── Integración/Entrega ← Despliegue      │\n│           Versionamiento ← Monitoreo           │\n│                                                 │\n└─────────────────────────────────────────────────┘\n\nComponentes Clave\n\nDesarrollo: Código en R/Python\nEstructuración: Organizaciónn y limpieza de datos\nDocumentación: Notebooks, reportes, comentarios\nIntegración/Entrega: CI/CD pipelines\nVersionamiento: Git y GitHub\nDespliegue: A servidor o cloud\nMonitoreo: Alertas y métricas\nML Ops: Gestión de modelos en producción"
+  },
+  {
+    "objectID": "clases_ia/intro.html#la-revolución-de-los-llms",
+    "href": "clases_ia/intro.html#la-revolución-de-los-llms",
+    "title": "Introducción a Finanzas en R",
+    "section": "La Revolución de los LLMs",
+    "text": "La Revolución de los LLMs\nLos Modelos de Lenguaje de Gran Escala (LLMs) han transformado el desarrollo de software:\n\nGeneración automática de código: describe qué quieres, obtienes código en segundos\nDebugging inteligente: “¿por qué falla esto?” → explicaciones + soluciones\nDocumentación automática: pide explicaciones y comentarios\nIteración ágil: prueba ideas financieras sin reescribir desde cero"
+  },
+  {
+    "objectID": "clases_ia/intro.html#en-este-curso-usaremos",
+    "href": "clases_ia/intro.html#en-este-curso-usaremos",
+    "title": "Introducción a Finanzas en R",
+    "section": "En Este Curso Usaremos",
+    "text": "En Este Curso Usaremos\n\nClaude Code (Recomendado)\n\nSuperior para análisis financiero\nRequiere cuenta pagada\nIDE inteligente integrado\n\n\n\nMistral Vibe (Alternativa Gratuita)\n\nExcelente para aprender\nSin tarjeta de crédito necesaria\nBuena privacidad"
+  },
+  {
+    "objectID": "clases_ia/intro.html#cómo-integraremos-ia",
+    "href": "clases_ia/intro.html#cómo-integraremos-ia",
+    "title": "Introducción a Finanzas en R",
+    "section": "Cómo Integraremos IA",
+    "text": "Cómo Integraremos IA\n\nEnfoque Pedagógico\nNo se trata simplemente de usar IA para “ir más rápido”. Integraremos IA de forma estratégica:\n1. CONCEPTO TEÓRICO\n   ¿Qué queremos lograr?\n   ↓\n2. DEMOSTRACIÓN MANUAL\n   Cómo funciona sin IA\n   ↓\n3. CON IA ASISTIDA\n   Usando herramientas inteligentes\n   ↓\n4. VALIDACIÓN CRÍTICA\n   ¿Es correcto? ¿Podemos mejorar?\n   ↓\n5. ANÁLISIS FINANCIERO REAL\n   Aplicación práctica en finanzas"
+  },
+  {
+    "objectID": "clases_ia/intro.html#mejores-prácticas-con-ia-en-finanzas",
+    "href": "clases_ia/intro.html#mejores-prácticas-con-ia-en-finanzas",
+    "title": "Introducción a Finanzas en R",
+    "section": "Mejores Prácticas con IA en Finanzas",
+    "text": "Mejores Prácticas con IA en Finanzas\n\n✅ LO QUE SÍ HACEMOS\n\n✅ Usar IA para tareas repetitivas (manipulación de datos)\n✅ Validar SIEMPRE los resultados antes de usarlos\n✅ Documentar nuestros prompts y decisiones\n✅ Usar IA como colaborador, no como tomador de decisiones\n✅ Mantener pensamiento crítico\n\n\n\n❌ LO QUE NO HACEMOS\n\n❌ Copiar-pegar código sin entenderlo\n❌ Confiar ciegamente en resultados de IA\n❌ Usar IA para decisiones financieras sin validación humana\n❌ Compartir datos sensibles sin considerar privacidad\n❌ Delegar el pensamiento crítico a máquinas"
+  },
+  {
+    "objectID": "clases_ia/intro.html#libros-fundamentales",
+    "href": "clases_ia/intro.html#libros-fundamentales",
+    "title": "Introducción a Finanzas en R",
+    "section": "Libros Fundamentales",
+    "text": "Libros Fundamentales\n\nWickham, H., & Grolemund, G. (2016). R for Data Science: Import, Tidy, Transform, Visualize, and Model Data O’Reilly Media, Inc. → Enlace\nGrolemund, G. (2014). Hands-on Programming with R: Write Your Own Functions and Simulations O’Reilly Media, Inc. → Enlace\nRegenstein Jr, J. K. (2018). Reproducible Finance with R: Code Flows and Shiny Apps for Portfolio Analysis CRC Press\nScheuch, C., Voigt, S., & Weiss, P. (2023). Tidy Finance with R (1st ed.) Chapman and Hall/CRC → https://doi.org/10.1201/b23237\nXie, Y., Allaire, J. J., & Grolemund, G. (2018). R Markdown: The Definitive Guide CRC Press → Enlace"
+  },
+  {
+    "objectID": "clases_ia/intro.html#estructura-del-curso",
+    "href": "clases_ia/intro.html#estructura-del-curso",
+    "title": "Introducción a Finanzas en R",
+    "section": "Estructura del Curso",
+    "text": "Estructura del Curso\nEn las siguientes clases:\n\nInstalación y Configuración\n\nR, Positron, Claude Code o Mistral Vibe\n\nConceptos Básicos de Programación\n\nSintaxis, variables, tipos de datos\n\nEstructuras de Datos\n\nVectores, listas, data frames\n\nManipulación de Datos\n\nTidyverse, dplyr, tidyr\n\nAnálisis Financiero\n\nSeries de tiempo, retornos, riesgo\n\nVisualización\n\nggplot2, plotly, dashboards\n\nReportes Reproducibles\n\nQuarto, R Markdown\n\nDespliegue en Producción\n\nCI/CD, APIs, Shiny Apps"
+  },
+  {
+    "objectID": "clases_ia/intro.html#tu-rol-en-este-curso",
+    "href": "clases_ia/intro.html#tu-rol-en-este-curso",
+    "title": "Introducción a Finanzas en R",
+    "section": "Tu Rol en Este Curso",
+    "text": "Tu Rol en Este Curso\nEste curso no se trata solo de aprender R. Se trata de:\n\nDominar herramientas modernas que definen la industria hoy\nDesarrollar juicio crítico para usar IA responsablemente\nPrepararte para el futuro donde IA es estándar, no excepción\nAplicar conocimiento a problemas financieros reales\nSeguir mejores prácticas de desarrollo en equipos"
+  },
+  {
+    "objectID": "clases_ia/intro.html#mentalidad-clave",
+    "href": "clases_ia/intro.html#mentalidad-clave",
+    "title": "Introducción a Finanzas en R",
+    "section": "Mentalidad Clave",
+    "text": "Mentalidad Clave\n\n“La IA no reemplaza a los buenos analistas. Los buenos analistas que usan IA reemplazan a los que no.”"
   },
   {
     "objectID": "clases_ia/RESPUESTAS_PROFESOR.html",

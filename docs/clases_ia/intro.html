@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Sebastián Egaña Santibáñez">
-<meta name="dcterms.date" content="2026-01-09">
+<meta name="author" content="Sebastián Egaña Santibáñez (segana@fen.uchile.cl)">
+<meta name="author" content="Nicolás Leiva Díaz (nleivad@fen.uchile.cl)">
 
 <title>Introducción a Finanzas en R – Curso Finanzas en R</title>
 <style>
@@ -47,7 +47,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-3e9b1289f5f353c49b617ce48ad2bc38.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-36d6930034064a961a85a06e6a330a4a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -62,17 +62,17 @@ ul.task-list li input[type="checkbox"] {
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
     "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
   }
 }</script>
 
@@ -90,8 +90,8 @@ ul.task-list li input[type="checkbox"] {
     <span class="navbar-title">Curso Finanzas en R</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
@@ -129,10 +129,11 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
+    <h2 id="toc-title">En esta página</h2>
    
-  <ul>
-  <li><a href="#presentación-del-curso" id="toc-presentación-del-curso" class="nav-link active" data-scroll-target="#presentación-del-curso">Presentación del Curso</a></li>
+  <ul class="collapse">
+  <li><a href="#descargas" id="toc-descargas" class="nav-link active" data-scroll-target="#descargas">📥 Descargas</a></li>
+  <li><a href="#enlaces-del-profesor" id="toc-enlaces-del-profesor" class="nav-link" data-scroll-target="#enlaces-del-profesor">Enlaces del Profesor</a></li>
   <li><a href="#qué-veremos-en-esta-clase" id="toc-qué-veremos-en-esta-clase" class="nav-link" data-scroll-target="#qué-veremos-en-esta-clase">¿Qué veremos en esta clase?</a>
   <ul class="collapse">
   <li><a href="#temario" id="toc-temario" class="nav-link" data-scroll-target="#temario">Temario</a></li>
@@ -141,39 +142,62 @@ ul.task-list li input[type="checkbox"] {
   <ul class="collapse">
   <li><a href="#definición-wikipedia" id="toc-definición-wikipedia" class="nav-link" data-scroll-target="#definición-wikipedia">Definición (Wikipedia)</a></li>
   </ul></li>
-  <li><a href="#lenguajes-e-interfaz-gráficas-gui" id="toc-lenguajes-e-interfaz-gráficas-gui" class="nav-link" data-scroll-target="#lenguajes-e-interfaz-gráficas-gui">Lenguajes e Interfaz Gráficas (GUI)</a>
+  <li><a href="#lenguajes-e-interfaz-gráfica-gui" id="toc-lenguajes-e-interfaz-gráfica-gui" class="nav-link" data-scroll-target="#lenguajes-e-interfaz-gráfica-gui">Lenguajes e Interfaz Gráfica (GUI)</a>
   <ul class="collapse">
   <li><a href="#instalación-y-plataformas" id="toc-instalación-y-plataformas" class="nav-link" data-scroll-target="#instalación-y-plataformas">Instalación y Plataformas</a></li>
+  <li><a href="#por-qué-positron-en-lugar-de-rstudio" id="toc-por-qué-positron-en-lugar-de-rstudio" class="nav-link" data-scroll-target="#por-qué-positron-en-lugar-de-rstudio">¿Por qué Positron en lugar de RStudio?</a></li>
   </ul></li>
   <li><a href="#análisis-de-datos-en-el-contexto-de-r" id="toc-análisis-de-datos-en-el-contexto-de-r" class="nav-link" data-scroll-target="#análisis-de-datos-en-el-contexto-de-r">Análisis de Datos en el Contexto de R</a>
   <ul class="collapse">
-  <li><a href="#el-ciclo-del-análisis-de-datos" id="toc-el-ciclo-del-análisis-de-datos" class="nav-link" data-scroll-target="#el-ciclo-del-análisis-de-datos">El ciclo del análisis de datos</a></li>
+  <li><a href="#el-ciclo-del-análisis-de-datos" id="toc-el-ciclo-del-análisis-de-datos" class="nav-link" data-scroll-target="#el-ciclo-del-análisis-de-datos">El Ciclo del Análisis de Datos</a></li>
   </ul></li>
   <li><a href="#sobre-las-ciencias-de-datos" id="toc-sobre-las-ciencias-de-datos" class="nav-link" data-scroll-target="#sobre-las-ciencias-de-datos">Sobre las Ciencias de Datos</a>
   <ul class="collapse">
   <li><a href="#definición" id="toc-definición" class="nav-link" data-scroll-target="#definición">Definición</a></li>
-  <li><a href="#diferencia-con-estadística" id="toc-diferencia-con-estadística" class="nav-link" data-scroll-target="#diferencia-con-estadística">Diferencia con Estadística</a></li>
   </ul></li>
   <li><a href="#lo-que-implica-dedicarse-a-ciencias-de-datos" id="toc-lo-que-implica-dedicarse-a-ciencias-de-datos" class="nav-link" data-scroll-target="#lo-que-implica-dedicarse-a-ciencias-de-datos">Lo que Implica Dedicarse a Ciencias de Datos</a>
   <ul class="collapse">
   <li><a href="#principios-fundamentales" id="toc-principios-fundamentales" class="nav-link" data-scroll-target="#principios-fundamentales">Principios Fundamentales</a></li>
-  <li><a href="#devops-en-ciencias-de-datos" id="toc-devops-en-ciencias-de-datos" class="nav-link" data-scroll-target="#devops-en-ciencias-de-datos">DevOps en Ciencias de Datos</a></li>
   </ul></li>
-  <li><a href="#por-qué-r-en-finanzas" id="toc-por-qué-r-en-finanzas" class="nav-link" data-scroll-target="#por-qué-r-en-finanzas">¿Por qué R en Finanzas?</a>
+  <li><a href="#cicd-en-ciencias-de-datos" id="toc-cicd-en-ciencias-de-datos" class="nav-link" data-scroll-target="#cicd-en-ciencias-de-datos">CI/CD en Ciencias de Datos</a>
   <ul class="collapse">
-  <li><a href="#ventajas-de-r-para-análisis-financiero" id="toc-ventajas-de-r-para-análisis-financiero" class="nav-link" data-scroll-target="#ventajas-de-r-para-análisis-financiero">Ventajas de R para Análisis Financiero</a></li>
+  <li><a href="#qué-es-cicd" id="toc-qué-es-cicd" class="nav-link" data-scroll-target="#qué-es-cicd">¿Qué es CI/CD?</a></li>
   </ul></li>
-  <li><a href="#próximos-pasos" id="toc-próximos-pasos" class="nav-link" data-scroll-target="#próximos-pasos">Próximos Pasos</a></li>
+  <li><a href="#ecosistema-de-herramientas" id="toc-ecosistema-de-herramientas" class="nav-link" data-scroll-target="#ecosistema-de-herramientas">Ecosistema de Herramientas</a>
+  <ul class="collapse">
+  <li><a href="#el-ciclo-completo-de-desarrollo" id="toc-el-ciclo-completo-de-desarrollo" class="nav-link" data-scroll-target="#el-ciclo-completo-de-desarrollo">El Ciclo Completo de Desarrollo</a></li>
+  </ul></li>
+  <li><a href="#por-qué-ia-en-este-curso" id="toc-por-qué-ia-en-este-curso" class="nav-link" data-scroll-target="#por-qué-ia-en-este-curso">¿Por qué IA en este Curso?</a>
+  <ul class="collapse">
+  <li><a href="#la-revolución-de-los-llms" id="toc-la-revolución-de-los-llms" class="nav-link" data-scroll-target="#la-revolución-de-los-llms">La Revolución de los LLMs</a></li>
+  <li><a href="#en-este-curso-usaremos" id="toc-en-este-curso-usaremos" class="nav-link" data-scroll-target="#en-este-curso-usaremos">En Este Curso Usaremos</a></li>
+  <li><a href="#cómo-integraremos-ia" id="toc-cómo-integraremos-ia" class="nav-link" data-scroll-target="#cómo-integraremos-ia">Cómo Integraremos IA</a></li>
+  <li><a href="#mejores-prácticas-con-ia-en-finanzas" id="toc-mejores-prácticas-con-ia-en-finanzas" class="nav-link" data-scroll-target="#mejores-prácticas-con-ia-en-finanzas">Mejores Prácticas con IA en Finanzas</a></li>
+  </ul></li>
+  <li><a href="#bibliografía-recomendada" id="toc-bibliografía-recomendada" class="nav-link" data-scroll-target="#bibliografía-recomendada">Bibliografía Recomendada</a>
+  <ul class="collapse">
+  <li><a href="#libros-fundamentales" id="toc-libros-fundamentales" class="nav-link" data-scroll-target="#libros-fundamentales">Libros Fundamentales</a></li>
+  </ul></li>
+  <li><a href="#próximos-pasos" id="toc-próximos-pasos" class="nav-link" data-scroll-target="#próximos-pasos">Próximos Pasos</a>
+  <ul class="collapse">
+  <li><a href="#estructura-del-curso" id="toc-estructura-del-curso" class="nav-link" data-scroll-target="#estructura-del-curso">Estructura del Curso</a></li>
+  </ul></li>
+  <li><a href="#conclusión" id="toc-conclusión" class="nav-link" data-scroll-target="#conclusión">Conclusión</a>
+  <ul class="collapse">
+  <li><a href="#tu-rol-en-este-curso" id="toc-tu-rol-en-este-curso" class="nav-link" data-scroll-target="#tu-rol-en-este-curso">Tu Rol en Este Curso</a></li>
+  <li><a href="#mentalidad-clave" id="toc-mentalidad-clave" class="nav-link" data-scroll-target="#mentalidad-clave">Mentalidad Clave</a></li>
+  </ul></li>
+  <li><a href="#bienvenidos-al-curso-de-finanzas-en-r-con-ia" id="toc-bienvenidos-al-curso-de-finanzas-en-r-con-ia" class="nav-link" data-scroll-target="#bienvenidos-al-curso-de-finanzas-en-r-con-ia">¡Bienvenidos al Curso de Finanzas en R con IA!</a></li>
   </ul>
-</nav>
+<div class="quarto-alternate-formats"><h2>Otros formatos</h2><ul><li><a href="intro.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Introducción a Finanzas en R</h1>
-<p class="subtitle lead">Presentación del curso</p>
+<h1 class="title"><p>Introducción a Finanzas en R</p></h1>
+<p class="subtitle lead">Presentación del curso y fundamentos</p>
 </div>
 
 
@@ -181,16 +205,17 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-title-meta">
 
     <div>
-    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-heading">Autores/as</div>
     <div class="quarto-title-meta-contents">
-             <p>Sebastián Egaña Santibáñez </p>
+             <p>Sebastián Egaña Santibáñez (segana@fen.uchile.cl) </p>
+             <p>Nicolás Leiva Díaz (nleivad@fen.uchile.cl) </p>
           </div>
   </div>
     
     <div>
-    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-heading">Fecha de publicación</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">January 9, 2026</p>
+      <p class="date">7 de septiembre de 2026</p>
     </div>
   </div>
   
@@ -202,116 +227,397 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="presentación-del-curso" class="level2">
-<h2 class="anchored" data-anchor-id="presentación-del-curso">Presentación del Curso</h2>
-<p><strong>Docente:</strong> Sebastián Egaña Santibáñez - Email: segana@fen.uchile.cl - Página Web: https://segana.netlify.app</p>
-<p><strong>Ayudante:</strong> Nicolas Leiva - Email: nleivad@fen.uchile.cl</p>
+<section id="descargas" class="level2">
+<h2 class="anchored" data-anchor-id="descargas">📥 Descargas</h2>
+<div style="margin-bottom: 20px; display: flex; gap: 10px;">
+  <a href="intro.pdf" class="btn btn-primary" role="button" style="padding: 8px 16px; border-radius: 4px; background-color: #0d6efd; color: white; text-decoration: none;">📄 Descargar PDF</a>
+  <a href="../clases_ia/intro.html" class="btn btn-secondary" role="button" style="padding: 8px 16px; border-radius: 4px; background-color: #6c757d; color: white; text-decoration: none;">💾 Descargar Fuente</a>
+</div>
 <hr>
 </section>
-<section id="qué-veremos-en-esta-clase" class="level2">
-<h2 class="anchored" data-anchor-id="qué-veremos-en-esta-clase">¿Qué veremos en esta clase?</h2>
-<section id="temario" class="level3">
-<h3 class="anchored" data-anchor-id="temario">Temario</h3>
+<section id="enlaces-del-profesor" class="level1">
+<h1>Enlaces del Profesor</h1>
+<p>🔗 <a href="https://segana.netlify.app">https://segana.netlify.app</a></p>
+<p>🐙 <a href="https://github.com/sebaegana">https://github.com/sebaegana</a></p>
+<p>💼 <a href="https://www.linkedin.com/in/sebastian-egana-santibanez/">https://www.linkedin.com/in/sebastian-egana-santibanez/</a></p>
+<hr>
+</section>
+<section id="qué-veremos-en-esta-clase" class="level1">
+<h1>¿Qué veremos en esta clase?</h1>
+<section id="temario" class="level2">
+<h2 class="anchored" data-anchor-id="temario">Temario</h2>
 <ul>
 <li>Introducción a lenguajes de programación</li>
-<li>Instalación de R y RStudio</li>
+<li>¿Qué es R?</li>
+<li>Instalación de R y Positron (nuevo IDE)</li>
+<li>Análisis de datos y ciencias de datos</li>
+<li>Fundamentos de DevOps en finanzas</li>
+<li>Por qué IA en este curso</li>
+<li>Bibliografía y recursos</li>
 </ul>
 <hr>
 </section>
 </section>
-<section id="qué-es-r" class="level2">
-<h2 class="anchored" data-anchor-id="qué-es-r">¿Qué es R?</h2>
-<section id="definición-wikipedia" class="level3">
-<h3 class="anchored" data-anchor-id="definición-wikipedia">Definición (Wikipedia)</h3>
-<p>R es un <strong>entorno y lenguaje de programación</strong> con un enfoque al análisis estadístico. R nació como una reimplementación de software libre del lenguaje S, adicionado con soporte para ámbito estático.</p>
-<p>Se trata de uno de los lenguajes de programación más utilizados en: - Investigación científica - Aprendizaje automático (Machine Learning) - Minería de datos - Investigación biomédica - Bioinformática - Matemáticas financieras</p>
+<section id="qué-es-r" class="level1">
+<h1>¿Qué es R?</h1>
+<section id="definición-wikipedia" class="level2">
+<h2 class="anchored" data-anchor-id="definición-wikipedia">Definición (Wikipedia)</h2>
+<p><strong>R es un entorno y lenguaje de programación</strong> con un enfoque al análisis estadístico.</p>
+<p>R nació como una reimplementación de software libre del lenguaje S, adicionado con soporte para ámbito estático.</p>
+<p>Se trata de uno de los lenguajes de programación más utilizados en: - Investigación científica - Aprendizaje automático (Machine Learning) - Minería de datos - Investigación biomédica - Bioinformática - <strong>Matemáticas financieras</strong> 📊</p>
+<p>A esto contribuye la posibilidad de cargar diferentes bibliotecas o paquetes con funcionalidades de cálculo y graficación.</p>
+<p><strong>Referencia:</strong> https://es.wikipedia.org/wiki/R_(lenguaje_de_programación)</p>
 <hr>
 </section>
 </section>
-<section id="lenguajes-e-interfaz-gráficas-gui" class="level2">
-<h2 class="anchored" data-anchor-id="lenguajes-e-interfaz-gráficas-gui">Lenguajes e Interfaz Gráficas (GUI)</h2>
-<section id="instalación-y-plataformas" class="level3">
-<h3 class="anchored" data-anchor-id="instalación-y-plataformas">Instalación y Plataformas</h3>
-<p>Por lo general, se debe instalar el lenguaje de programación y el GUI por separado:</p>
-<p><strong>Opción 1: R + RStudio (Recomendado)</strong> - Instala R desde: https://cran.r-project.org - Instala RStudio desde: https://posit.co</p>
-<p><strong>Opción 2: Visual Studio Code</strong> - Correr R desde Visual Studio Code</p>
-<p><strong>Opción 3: Google Colab</strong> - Correr R a través de Colab: https://colab.to/r</p>
+<section id="lenguajes-e-interfaz-gráfica-gui" class="level1">
+<h1>Lenguajes e Interfaz Gráfica (GUI)</h1>
+<section id="instalación-y-plataformas" class="level2">
+<h2 class="anchored" data-anchor-id="instalación-y-plataformas">Instalación y Plataformas</h2>
+<p>Por lo general, se debe instalar el lenguaje de programación y el GUI por separado.</p>
+<section id="opción-1-r-positron-recomendado" class="level3">
+<h3 class="anchored" data-anchor-id="opción-1-r-positron-recomendado">Opción 1: R + Positron (⭐ RECOMENDADO)</h3>
+<p><strong>Positron</strong> es el nuevo IDE de Posit Software, sucesor de RStudio.</p>
+<pre><code>Paso 1: Instalar R
+→ https://cran.r-project.org
+
+Paso 2: Instalar Positron (nuevo IDE)
+→ https://posit.co/download/positron/</code></pre>
+</section>
+<section id="opción-2-r-visual-studio-code" class="level3">
+<h3 class="anchored" data-anchor-id="opción-2-r-visual-studio-code">Opción 2: R + Visual Studio Code</h3>
+<p>Correr R desde <strong>Visual Studio Code</strong> (VS Code) con extensiones específicas.</p>
+</section>
+<section id="opción-3-google-colab" class="level3">
+<h3 class="anchored" data-anchor-id="opción-3-google-colab">Opción 3: Google Colab</h3>
+<p>Correr R a través de <strong>Google Colab</strong> (sin instalar nada localmente) → https://colab.to/r</p>
 <hr>
 </section>
 </section>
-<section id="análisis-de-datos-en-el-contexto-de-r" class="level2">
-<h2 class="anchored" data-anchor-id="análisis-de-datos-en-el-contexto-de-r">Análisis de Datos en el Contexto de R</h2>
-<section id="el-ciclo-del-análisis-de-datos" class="level3">
-<h3 class="anchored" data-anchor-id="el-ciclo-del-análisis-de-datos">El ciclo del análisis de datos</h3>
+<section id="por-qué-positron-en-lugar-de-rstudio" class="level2">
+<h2 class="anchored" data-anchor-id="por-qué-positron-en-lugar-de-rstudio">¿Por qué Positron en lugar de RStudio?</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Aspecto</th>
+<th>RStudio</th>
+<th>Positron</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Base</strong></td>
+<td>Qt (propietaria)</td>
+<td>VS Code (abierta, extensible)</td>
+</tr>
+<tr class="even">
+<td><strong>Soporte IA nativo</strong></td>
+<td>No</td>
+<td>Sí (Claude Code)</td>
+</tr>
+<tr class="odd">
+<td><strong>Integración Python</strong></td>
+<td>Limitada</td>
+<td>Primera clase</td>
+</tr>
+<tr class="even">
+<td><strong>Extensiones</strong></td>
+<td>Pocas</td>
+<td>20k+ extensiones de VS Code</td>
+</tr>
+<tr class="odd">
+<td><strong>Performance</strong></td>
+<td>Bueno</td>
+<td>Muy bueno</td>
+</tr>
+<tr class="even">
+<td><strong>Costo</strong></td>
+<td>Libre/Pagado</td>
+<td>Libre</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Conclusión:</strong> Positron es el presente y futuro del desarrollo en R.</p>
+<hr>
+</section>
+</section>
+<section id="análisis-de-datos-en-el-contexto-de-r" class="level1">
+<h1>Análisis de Datos en el Contexto de R</h1>
+<section id="el-ciclo-del-análisis-de-datos" class="level2">
+<h2 class="anchored" data-anchor-id="el-ciclo-del-análisis-de-datos">El Ciclo del Análisis de Datos</h2>
 <p>El análisis de datos es un proceso iterativo que involucra:</p>
-<ol type="1">
-<li><strong>Recolección</strong>: Obtener datos de diversas fuentes</li>
-<li><strong>Limpieza</strong>: Procesar y validar los datos</li>
-<li><strong>Exploración</strong>: Entender patrones y relaciones</li>
-<li><strong>Modelado</strong>: Aplicar técnicas estadísticas</li>
-<li><strong>Visualización</strong>: Comunicar resultados</li>
-<li><strong>Interpretación</strong>: Extraer conclusiones</li>
-</ol>
+<pre><code>1. RECOLECCIÓN
+   ↓
+2. LIMPIEZA Y VALIDACIÓN
+   ↓
+3. EXPLORACIÓN (EDA)
+   ↓
+4. MODELADO Y ANÁLISIS
+   ↓
+5. VISUALIZACIÓN
+   ↓
+6. COMUNICACIÓN E INSIGHTS</code></pre>
+<p>En <strong>finanzas</strong>, este ciclo es especialmente crítico porque los datos impactan decisiones de inversión.</p>
 <hr>
 </section>
 </section>
-<section id="sobre-las-ciencias-de-datos" class="level2">
-<h2 class="anchored" data-anchor-id="sobre-las-ciencias-de-datos">Sobre las Ciencias de Datos</h2>
-<section id="definición" class="level3">
-<h3 class="anchored" data-anchor-id="definición">Definición</h3>
-<p>Existe una relación entre las <strong>ciencias de datos</strong> y la <strong>estadística</strong>, pero esto viene dado por la dinámica relacionadas con datos.</p>
-<p>Las <strong>ciencias de datos</strong> engloban el “conjunto de principios, definiciones de problemas, algoritmos y procesos para extraer patrones no obvios y útiles de grandes conjuntos de datos” (Kelleher &amp; Tierney, 2021).</p>
-</section>
+<section id="sobre-las-ciencias-de-datos" class="level1">
+<h1>Sobre las Ciencias de Datos</h1>
+<section id="definición" class="level2">
+<h2 class="anchored" data-anchor-id="definición">Definición</h2>
+<p>Existe una relación entre las <strong>ciencias de datos</strong> y la <strong>estadística</strong>, pero esto viene dado por la dinámica relacionada con datos.</p>
+<p>Las <strong>ciencias de datos</strong> engloban:</p>
+<blockquote class="blockquote">
+<p>“El conjunto de principios, definiciones de problemas, algoritmos y procesos para extraer patrones no obvios y útiles de grandes conjuntos de datos”</p>
+<p>— Kelleher &amp; Tierney (2021)</p>
+</blockquote>
 <section id="diferencia-con-estadística" class="level3">
 <h3 class="anchored" data-anchor-id="diferencia-con-estadística">Diferencia con Estadística</h3>
-<p>La ciencia de datos: - Va más allá del análisis estadístico puro - Integra programación, análisis de datos e ingeniería - Se enfoca en patrones accionables - Requiere trabajo en equipo e interdisciplinario</p>
+<p>La ciencia de datos: - Va más allá del análisis estadístico puro - Integra programación, análisis de datos e ingeniería - Se enfoca en patrones <strong>accionables</strong> - Requiere trabajo en equipo e interdisciplinario - Incluye aspectos de <strong>operacionalización</strong> (despliegue en producción)</p>
 <hr>
 </section>
 </section>
-<section id="lo-que-implica-dedicarse-a-ciencias-de-datos" class="level2">
-<h2 class="anchored" data-anchor-id="lo-que-implica-dedicarse-a-ciencias-de-datos">Lo que Implica Dedicarse a Ciencias de Datos</h2>
-<section id="principios-fundamentales" class="level3">
-<h3 class="anchored" data-anchor-id="principios-fundamentales">Principios Fundamentales</h3>
+</section>
+<section id="lo-que-implica-dedicarse-a-ciencias-de-datos" class="level1">
+<h1>Lo que Implica Dedicarse a Ciencias de Datos</h1>
+<section id="principios-fundamentales" class="level2">
+<h2 class="anchored" data-anchor-id="principios-fundamentales">Principios Fundamentales</h2>
 <p>Dedicarse a la ciencia de datos implica moverse en la dinámica de desarrollo continuo:</p>
 <ol type="1">
-<li><strong>Escalabilidad</strong>: Los desarrollos no pueden depender de personas</li>
+<li><strong>Escalabilidad</strong>: Los desarrollos no pueden depender de personas específicas</li>
 <li><strong>Valor organizacional</strong>: Los desarrollos son parte de los activos de las empresas</li>
 <li><strong>Colaboración</strong>: Se debe permitir siempre el trabajo en equipo</li>
-<li><strong>Visión integral</strong>: Considerar también la visión inter-equipos</li>
+<li><strong>Visión inter-equipos</strong>: Considerar cómo tu código se integra con otros sistemas</li>
 </ol>
-</section>
-<section id="devops-en-ciencias-de-datos" class="level3">
-<h3 class="anchored" data-anchor-id="devops-en-ciencias-de-datos">DevOps en Ciencias de Datos</h3>
-<p>Esto implica implementar <strong>CI/CD</strong> (Continuous Integration / Continuous Delivery / Continuous Deployment) en la dinámica de desarrollo.</p>
 <hr>
 </section>
 </section>
-<section id="por-qué-r-en-finanzas" class="level2">
-<h2 class="anchored" data-anchor-id="por-qué-r-en-finanzas">¿Por qué R en Finanzas?</h2>
-<section id="ventajas-de-r-para-análisis-financiero" class="level3">
-<h3 class="anchored" data-anchor-id="ventajas-de-r-para-análisis-financiero">Ventajas de R para Análisis Financiero</h3>
+<section id="cicd-en-ciencias-de-datos" class="level1">
+<h1>CI/CD en Ciencias de Datos</h1>
+<section id="qué-es-cicd" class="level2">
+<h2 class="anchored" data-anchor-id="qué-es-cicd">¿Qué es CI/CD?</h2>
+<p><strong>CI/CD</strong> son prácticas esenciales en desarrollo moderno:</p>
 <ul>
-<li><strong>Librerías especializadas</strong>: <code>QuantLib</code>, <code>tidyquant</code>, <code>xts</code>, <code>zoo</code></li>
-<li><strong>Análisis estadístico</strong>: Regresiones, series de tiempo, modelos predictivos</li>
-<li><strong>Visualización</strong>: <code>ggplot2</code>, <code>plotly</code> para dashboards interactivos</li>
-<li><strong>Integración</strong>: Fácil conexión con bases de datos y APIs financieras</li>
-<li><strong>Comunidad</strong>: Amplio ecosistema de paquetes financieros</li>
-<li><strong>Reproducibilidad</strong>: Código documenta el análisis completo</li>
+<li><strong>CI (Continuous Integration)</strong>: Integrar código constantemente</li>
+<li><strong>CD (Continuous Delivery)</strong>: Entrega continua de cambios</li>
+<li><strong>CD (Continuous Deployment)</strong>: Despliegue automático en producción</li>
+</ul>
+<section id="aplicación-en-finanzas" class="level3">
+<h3 class="anchored" data-anchor-id="aplicación-en-finanzas">Aplicación en Finanzas</h3>
+<p>En un análisis financiero moderno:</p>
+<pre><code>Desarrollo Local
+    ↓
+Control de Versiones (Git)
+    ↓
+Tests Automáticos
+    ↓
+Validación de Datos
+    ↓
+Integración en Producción
+    ↓
+Monitoreo Continuo</code></pre>
+</section>
+<section id="por-qué-importa-en-finanzas" class="level3">
+<h3 class="anchored" data-anchor-id="por-qué-importa-en-finanzas">¿Por qué importa en finanzas?</h3>
+<ul>
+<li><strong>Trazabilidad</strong>: Saber exactamente qué versión de código está en producción</li>
+<li><strong>Auditoría</strong>: Cumplimiento regulatorio (FINMA, BCCh, etc.)</li>
+<li><strong>Confiabilidad</strong>: Reducir errores en decisiones de inversión</li>
+<li><strong>Velocidad</strong>: Iterar rápidamente en estrategias</li>
 </ul>
 <hr>
 </section>
 </section>
-<section id="próximos-pasos" class="level2">
-<h2 class="anchored" data-anchor-id="próximos-pasos">Próximos Pasos</h2>
+</section>
+<section id="ecosistema-de-herramientas" class="level1">
+<h1>Ecosistema de Herramientas</h1>
+<section id="el-ciclo-completo-de-desarrollo" class="level2">
+<h2 class="anchored" data-anchor-id="el-ciclo-completo-de-desarrollo">El Ciclo Completo de Desarrollo</h2>
+<pre><code>┌─────────────────────────────────────────────────┐
+│         CICLO COMPLETO EN FINANZAS              │
+├─────────────────────────────────────────────────┤
+│                                                 │
+│  Desarrollo → Estructuración → Documentación   │
+│      ↑                             ↓            │
+│      │         ML Ops              ↓            │
+│      └── Integración/Entrega ← Despliegue      │
+│           Versionamiento ← Monitoreo           │
+│                                                 │
+└─────────────────────────────────────────────────┘</code></pre>
+<section id="componentes-clave" class="level3">
+<h3 class="anchored" data-anchor-id="componentes-clave">Componentes Clave</h3>
+<ol type="1">
+<li><strong>Desarrollo</strong>: Código en R/Python</li>
+<li><strong>Estructuración</strong>: Organizaciónn y limpieza de datos</li>
+<li><strong>Documentación</strong>: Notebooks, reportes, comentarios</li>
+<li><strong>Integración/Entrega</strong>: CI/CD pipelines</li>
+<li><strong>Versionamiento</strong>: Git y GitHub</li>
+<li><strong>Despliegue</strong>: A servidor o cloud</li>
+<li><strong>Monitoreo</strong>: Alertas y métricas</li>
+<li><strong>ML Ops</strong>: Gestión de modelos en producción</li>
+</ol>
+<hr>
+</section>
+</section>
+</section>
+<section id="por-qué-ia-en-este-curso" class="level1">
+<h1>¿Por qué IA en este Curso?</h1>
+<section id="la-revolución-de-los-llms" class="level2">
+<h2 class="anchored" data-anchor-id="la-revolución-de-los-llms">La Revolución de los LLMs</h2>
+<p>Los <strong>Modelos de Lenguaje de Gran Escala (LLMs)</strong> han transformado el desarrollo de software:</p>
+<ul>
+<li><strong>Generación automática de código</strong>: describe qué quieres, obtienes código en segundos</li>
+<li><strong>Debugging inteligente</strong>: “¿por qué falla esto?” → explicaciones + soluciones</li>
+<li><strong>Documentación automática</strong>: pide explicaciones y comentarios</li>
+<li><strong>Iteración ágil</strong>: prueba ideas financieras sin reescribir desde cero</li>
+</ul>
+</section>
+<section id="en-este-curso-usaremos" class="level2">
+<h2 class="anchored" data-anchor-id="en-este-curso-usaremos">En Este Curso Usaremos</h2>
+<section id="claude-code-recomendado" class="level3">
+<h3 class="anchored" data-anchor-id="claude-code-recomendado">Claude Code (Recomendado)</h3>
+<ul>
+<li>Superior para análisis financiero</li>
+<li>Requiere cuenta pagada</li>
+<li>IDE inteligente integrado</li>
+</ul>
+</section>
+<section id="mistral-vibe-alternativa-gratuita" class="level3">
+<h3 class="anchored" data-anchor-id="mistral-vibe-alternativa-gratuita">Mistral Vibe (Alternativa Gratuita)</h3>
+<ul>
+<li>Excelente para aprender</li>
+<li>Sin tarjeta de crédito necesaria</li>
+<li>Buena privacidad</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="cómo-integraremos-ia" class="level2">
+<h2 class="anchored" data-anchor-id="cómo-integraremos-ia">Cómo Integraremos IA</h2>
+<section id="enfoque-pedagógico" class="level3">
+<h3 class="anchored" data-anchor-id="enfoque-pedagógico">Enfoque Pedagógico</h3>
+<p>No se trata simplemente de usar IA para “ir más rápido”. Integraremos IA de forma estratégica:</p>
+<pre><code>1. CONCEPTO TEÓRICO
+   ¿Qué queremos lograr?
+   ↓
+2. DEMOSTRACIÓN MANUAL
+   Cómo funciona sin IA
+   ↓
+3. CON IA ASISTIDA
+   Usando herramientas inteligentes
+   ↓
+4. VALIDACIÓN CRÍTICA
+   ¿Es correcto? ¿Podemos mejorar?
+   ↓
+5. ANÁLISIS FINANCIERO REAL
+   Aplicación práctica en finanzas</code></pre>
+<hr>
+</section>
+</section>
+<section id="mejores-prácticas-con-ia-en-finanzas" class="level2">
+<h2 class="anchored" data-anchor-id="mejores-prácticas-con-ia-en-finanzas">Mejores Prácticas con IA en Finanzas</h2>
+<section id="lo-que-sí-hacemos" class="level3">
+<h3 class="anchored" data-anchor-id="lo-que-sí-hacemos">✅ LO QUE SÍ HACEMOS</h3>
+<ul>
+<li>✅ Usar IA para tareas repetitivas (manipulación de datos)</li>
+<li>✅ Validar <strong>SIEMPRE</strong> los resultados antes de usarlos</li>
+<li>✅ Documentar nuestros prompts y decisiones</li>
+<li>✅ Usar IA como <strong>colaborador</strong>, no como <strong>tomador de decisiones</strong></li>
+<li>✅ Mantener pensamiento crítico</li>
+</ul>
+</section>
+<section id="lo-que-no-hacemos" class="level3">
+<h3 class="anchored" data-anchor-id="lo-que-no-hacemos">❌ LO QUE NO HACEMOS</h3>
+<ul>
+<li>❌ Copiar-pegar código sin entenderlo</li>
+<li>❌ Confiar ciegamente en resultados de IA</li>
+<li>❌ Usar IA para decisiones financieras sin validación humana</li>
+<li>❌ Compartir datos sensibles sin considerar privacidad</li>
+<li>❌ Delegar el pensamiento crítico a máquinas</li>
+</ul>
+<hr>
+</section>
+</section>
+</section>
+<section id="bibliografía-recomendada" class="level1">
+<h1>Bibliografía Recomendada</h1>
+<section id="libros-fundamentales" class="level2">
+<h2 class="anchored" data-anchor-id="libros-fundamentales">Libros Fundamentales</h2>
+<ol type="1">
+<li><p><strong>Wickham, H., &amp; Grolemund, G. (2016).</strong> <em>R for Data Science: Import, Tidy, Transform, Visualize, and Model Data</em> O’Reilly Media, Inc. → <a href="https://r4ds.had.co.nz/">Enlace</a></p></li>
+<li><p><strong>Grolemund, G. (2014).</strong> <em>Hands-on Programming with R: Write Your Own Functions and Simulations</em> O’Reilly Media, Inc. → <a href="https://rstudio-education.github.io/hopr/">Enlace</a></p></li>
+<li><p><strong>Regenstein Jr, J. K. (2018).</strong> <em>Reproducible Finance with R: Code Flows and Shiny Apps for Portfolio Analysis</em> CRC Press</p></li>
+<li><p><strong>Scheuch, C., Voigt, S., &amp; Weiss, P. (2023).</strong> <em>Tidy Finance with R (1st ed.)</em> Chapman and Hall/CRC → <a href="https://doi.org/10.1201/b23237">https://doi.org/10.1201/b23237</a></p></li>
+<li><p><strong>Xie, Y., Allaire, J. J., &amp; Grolemund, G. (2018).</strong> <em>R Markdown: The Definitive Guide</em> CRC Press → <a href="https://bookdown.org/yihui/rmarkdown/">Enlace</a></p></li>
+</ol>
+<hr>
+</section>
+</section>
+<section id="próximos-pasos" class="level1">
+<h1>Próximos Pasos</h1>
+<section id="estructura-del-curso" class="level2">
+<h2 class="anchored" data-anchor-id="estructura-del-curso">Estructura del Curso</h2>
 <p>En las siguientes clases:</p>
 <ol type="1">
-<li>Instalación y configuración del entorno</li>
-<li>Conceptos básicos de programación en R</li>
-<li>Estructuras de datos y manipulación</li>
-<li>Análisis de datos financieros</li>
-<li>Visualización y reportes</li>
+<li><strong>Instalación y Configuración</strong>
+<ul>
+<li>R, Positron, Claude Code o Mistral Vibe</li>
+</ul></li>
+<li><strong>Conceptos Básicos de Programación</strong>
+<ul>
+<li>Sintaxis, variables, tipos de datos</li>
+</ul></li>
+<li><strong>Estructuras de Datos</strong>
+<ul>
+<li>Vectores, listas, data frames</li>
+</ul></li>
+<li><strong>Manipulación de Datos</strong>
+<ul>
+<li>Tidyverse, dplyr, tidyr</li>
+</ul></li>
+<li><strong>Análisis Financiero</strong>
+<ul>
+<li>Series de tiempo, retornos, riesgo</li>
+</ul></li>
+<li><strong>Visualización</strong>
+<ul>
+<li>ggplot2, plotly, dashboards</li>
+</ul></li>
+<li><strong>Reportes Reproducibles</strong>
+<ul>
+<li>Quarto, R Markdown</li>
+</ul></li>
+<li><strong>Despliegue en Producción</strong>
+<ul>
+<li>CI/CD, APIs, Shiny Apps</li>
+</ul></li>
 </ol>
-<p><strong>¡Bienvenidos al curso de Finanzas en R!</strong></p>
+<hr>
+</section>
+</section>
+<section id="conclusión" class="level1">
+<h1>Conclusión</h1>
+<section id="tu-rol-en-este-curso" class="level2">
+<h2 class="anchored" data-anchor-id="tu-rol-en-este-curso">Tu Rol en Este Curso</h2>
+<p>Este curso no se trata solo de aprender R. Se trata de:</p>
+<ul>
+<li><strong>Dominar herramientas modernas</strong> que definen la industria hoy</li>
+<li><strong>Desarrollar juicio crítico</strong> para usar IA responsablemente</li>
+<li><strong>Prepararte para el futuro</strong> donde IA es estándar, no excepción</li>
+<li><strong>Aplicar conocimiento</strong> a problemas financieros reales</li>
+<li><strong>Seguir mejores prácticas</strong> de desarrollo en equipos</li>
+</ul>
+</section>
+<section id="mentalidad-clave" class="level2">
+<h2 class="anchored" data-anchor-id="mentalidad-clave">Mentalidad Clave</h2>
+<blockquote class="blockquote">
+<p><em>“La IA no reemplaza a los buenos analistas. Los buenos analistas que usan IA reemplazan a los que no.”</em></p>
+</blockquote>
+<hr>
+</section>
+</section>
+<section id="bienvenidos-al-curso-de-finanzas-en-r-con-ia" class="level1">
+<h1>¡Bienvenidos al Curso de Finanzas en R con IA!</h1>
 
 
 </section>
@@ -342,12 +648,12 @@ ul.task-list li input[type="checkbox"] {
       // flash "checked"
       button.classList.add('code-copy-button-checked');
       var currentTitle = button.getAttribute("title");
-      button.setAttribute("title", "Copied!");
+      button.setAttribute("title", "Copiado");
       let tooltip;
       if (window.bootstrap) {
         button.setAttribute("data-bs-toggle", "tooltip");
         button.setAttribute("data-bs-placement", "left");
-        button.setAttribute("data-bs-title", "Copied!");
+        button.setAttribute("data-bs-title", "Copiado");
         tooltip = new bootstrap.Tooltip(button, 
           { trigger: "manual", 
             customClass: "code-copy-button-tooltip",
