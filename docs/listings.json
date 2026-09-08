@@ -1,5 +1,14 @@
 [
   {
+    "listing": "/clases_ia/index.html",
+    "items": [
+      "/clases_ia/01_intro.html",
+      "/clases_ia/02_herramientas.html",
+      "/clases_ia/03_clase_01.html",
+      "/clases_ia/04_trabajo.html"
+    ]
+  },
+  {
     "listing": "/clases/index.html",
     "items": [
       "/clases/notebook_01.pdf",
@@ -21,15 +30,6 @@
       "/clases/notebook_optimization_test.pdf",
       "/clases/notebook_shiny_applications_test.pdf",
       "/clases/notebook_technical_analysis_test.pdf"
-    ]
-  },
-  {
-    "listing": "/clases_ia/index.html",
-    "items": [
-      "/clases_ia/intro.html",
-      "/clases_ia/herramientas.html",
-      "/clases_ia/notebook_01.html",
-      "/clases_ia/trabajo.html"
     ]
   }
 ]
