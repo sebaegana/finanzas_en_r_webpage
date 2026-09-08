@@ -144,15 +144,6 @@ explique, depure y documente código R.
 
 **Costo**: Requiere API key pagada (pero tiene límites gratuitos para empezar)
 
-## ❓ Si no tienes presupuesto
-
-1. **Prueba Claude Code con plan gratuito**: Anthropic ofrece créditos iniciales
-2. **Usa métodos tradicionales**: El material en `clases/` enseña R sin IA
-3. **Aprenderás igual**: IA es una acelerador, no es requerido
-
-**No recomendamos** alternativas "gratuitas" que resultan siendo pagadas (Mistral, OpenAI, Gemini)
-o herramientas que están en desarrollo.
-
 ---
 
 ## Instalación y Configuración
