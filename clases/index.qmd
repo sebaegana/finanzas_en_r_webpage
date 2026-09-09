@@ -2,11 +2,11 @@
 title: "Clases"
 listing:
   contents:
-    - "*.qmd"
-    - "!index.qmd"
+    - "*.html"
+    - "!index.html"
   sort: "listing_title"
   type: default
-  fields: [listing_title]    # ✅ Only show the title
+  fields: [listing_title]
 ---
 
 # Clases del curso
