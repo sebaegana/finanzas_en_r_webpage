@@ -51,8 +51,8 @@ jobs:
       - name: Render Quarto Site
         run: |
           # Render all files except clases folder to keep it frozen
-          find . -maxdepth 1 -name "*.qmd" -type f | xargs quarto render
-          find ./clases_ia -name "*.qmd" -type f | xargs quarto render
+          find . -maxdepth 1 -name "*.qmd" -type f -exec quarto render {} \;
+          find ./clases_ia -name "*.qmd" -type f -exec quarto render {} \;
           # Also render clases/index.qmd to maintain the listing page
           quarto render clases/index.qmd
 
