@@ -466,14 +466,14 @@
     "href": "clases_ia/actividad_01_con_ia.html",
     "title": "Actividad 01 — Limpieza y Exploración de Datos",
     "section": "",
-    "text": "📄 Descargar PDF\n  💾 Descargar Fuente"
+    "text": "📄 Descargar PDF\n    💾 Descargar Fuente\n  \n\n  \n    📊 Datos para la Actividad:\n    \n      Descargar actividad_01.xlsx (datos + diccionario de variables)\n      Ver Actividad 01 Original (especificaciones completas)"
   },
   {
-    "objectID": "clases_ia/actividad_01_con_ia.html#descargas",
-    "href": "clases_ia/actividad_01_con_ia.html#descargas",
+    "objectID": "clases_ia/actividad_01_con_ia.html#descargas-y-enlaces",
+    "href": "clases_ia/actividad_01_con_ia.html#descargas-y-enlaces",
     "title": "Actividad 01 — Limpieza y Exploración de Datos",
     "section": "",
-    "text": "📄 Descargar PDF\n  💾 Descargar Fuente"
+    "text": "📄 Descargar PDF\n    💾 Descargar Fuente\n  \n\n  \n    📊 Datos para la Actividad:\n    \n      Descargar actividad_01.xlsx (datos + diccionario de variables)\n      Ver Actividad 01 Original (especificaciones completas)"
   },
   {
     "objectID": "clases_ia/actividad_01_con_ia.html#paso-1-cargar-librerías-y-datos",
@@ -672,69 +672,6 @@
     "text": "📄 Descargar PDF\n  💾 Descargar Fuente"
   },
   {
-    "objectID": "clases_ia/notebook_01.html#nota-importante-windows-vs-macoslinux",
-    "href": "clases_ia/notebook_01.html#nota-importante-windows-vs-macoslinux",
-    "title": "Finanzas en R — Desarrollo Asistido por IA",
-    "section": "⚠️ Nota Importante: Windows vs macOS/Linux",
-    "text": "⚠️ Nota Importante: Windows vs macOS/Linux\nEn este notebook encontrarás comandos de terminal. Positron soporta ambos:\n\nWindows: Usa PowerShell (por defecto en Positron)\nmacOS/Linux: Usa Bash (por defecto)\n\nAlgunos comandos son cross-platform (funcionan igual en ambos): - npm install -g ... ✅ - npx @anthropic-ai/claude-code ... ✅ - mistral-code ... ✅\nOtros solo existen en Bash y necesitan equivalente en PowerShell: - ❌ touch archivo.R → ✅ $null | Out-File archivo.R (PowerShell)\nEn este notebook, cuando haya diferencias, mostraré ambos comandos. Si usas Bash en Windows (Git Bash, WSL), puedes usar los comandos Linux directamente."
-  },
-  {
-    "objectID": "clases_ia/notebook_01.html#en-este-curso",
-    "href": "clases_ia/notebook_01.html#en-este-curso",
-    "title": "Finanzas en R — Desarrollo Asistido por IA",
-    "section": "En este curso",
-    "text": "En este curso\nUsaremos herramientas de IA generativa (Claude Code o Mistral Vibe) dentro de Positron (nuevo IDE para R/Python) para desarrollar análisis financieros reproducibles.\nLa meta: que escribas menos código boilerplate y dediques más tiempo a pensar en finanzas.\nTú eliges la herramienta que mejor se adapte a tu situación: - Con presupuesto → Claude Code (superior en finanzas) - Sin presupuesto → Mistral Vibe (gratis, muy bueno para aprender)"
-  },
-  {
-    "objectID": "clases_ia/notebook_01.html#ventajas-de-positron-frente-a-rstudio",
-    "href": "clases_ia/notebook_01.html#ventajas-de-positron-frente-a-rstudio",
-    "title": "Finanzas en R — Desarrollo Asistido por IA",
-    "section": "Ventajas de Positron frente a RStudio",
-    "text": "Ventajas de Positron frente a RStudio\n\n\n\nAspecto\nRStudio\nPositron\n\n\n\n\nBase\nQt (propietaria)\nVS Code (abierta, extensible)\n\n\nSoporte IA nativo\nNo\nSí (Claude, GitHub Copilot, etc.)\n\n\nIntegración Python\nLimitada\nPrimera clase\n\n\nExtensiones\nPocas\nAcceso a 20k+ extensiones de VS Code\n\n\nPerformance\nBueno\nMuy bueno (más ligero)\n\n\nCurva de aprendizaje\nBaja\nBaja (si usaste VS Code o RStudio)"
-  },
-  {
-    "objectID": "clases_ia/notebook_01.html#instalación-de-positron",
-    "href": "clases_ia/notebook_01.html#instalación-de-positron",
-    "title": "Finanzas en R — Desarrollo Asistido por IA",
-    "section": "Instalación de Positron",
-    "text": "Instalación de Positron\n\nVe a https://positron.posit.co/\nDescarga la versión para tu SO (Windows, macOS, Linux).\nInstala normalmente (en Windows: .exe, en macOS: .dmg).\nAl abrir Positron, detectará automáticamente tu instalación de R (si está en PATH).\n\nVerifica la instalación: - Abre Positron. - Ve a Terminal → New Terminal. - Ejecuta R --version (debería mostrar la versión de R)."
-  },
-  {
-    "objectID": "clases_ia/notebook_01.html#opción-recomendada-claude-code",
-    "href": "clases_ia/notebook_01.html#opción-recomendada-claude-code",
-    "title": "Finanzas en R — Desarrollo Asistido por IA",
-    "section": "✅ Opción Recomendada: Claude Code",
-    "text": "✅ Opción Recomendada: Claude Code\nClaude Code es una herramienta CLI que conecta Positron con Claude (modelo de IA de Anthropic). Te permite interactuar con Claude directamente en la terminal de Positron, pidiendo que genere, explique, depure y documente código R.\nVentajas: - Muy preciso en finanzas y R - Excelente para debugging y explicaciones - Mejor relación costo-beneficio\nCosto: Requiere API key pagada (pero tiene límites gratuitos para empezar)"
-  },
-  {
-    "objectID": "clases_ia/notebook_01.html#instalación-y-configuración",
-    "href": "clases_ia/notebook_01.html#instalación-y-configuración",
-    "title": "Finanzas en R — Desarrollo Asistido por IA",
-    "section": "Instalación y Configuración",
-    "text": "Instalación y Configuración"
-  },
-  {
-    "objectID": "clases_ia/notebook_01.html#instalación",
-    "href": "clases_ia/notebook_01.html#instalación",
-    "title": "Finanzas en R — Desarrollo Asistido por IA",
-    "section": "Instalación",
-    "text": "Instalación\nTodos necesitan Node.js 18+. Luego elige una de las dos opciones.\n\nPaso 0: Instala Node.js (Obligatorio)\n\nDescarga desde https://nodejs.org/ (versión LTS recomendada)\nInstala normalmente\nVerifica en terminal:\nnode --version\nnpm --version\n\n\n\nOpción 1: Claude Code (Si tienes cuenta pagada)\n\nCrea cuenta y obtén API key:\n\nVe a https://console.anthropic.com/\nCrea una cuenta e ingresa tarjeta de crédito\nGenera una clave API (aparece como sk-ant-...)\n\nInstala Claude Code:\nnpm install -g @anthropic-ai/npx @anthropic-ai/claude-code\nConfigura API key (varía por SO):\nWindows (PowerShell):\n$env:ANTHROPIC_API_KEY=\"sk-ant-tu-clave-aqui\"\nmacOS/Linux (Bash):\nexport ANTHROPIC_API_KEY=\"sk-ant-tu-clave-aqui\"\nPara hacerlo permanente, agrega a ~/.bashrc, ~/.zshrc o equivalente de Windows.\nVerifica:\nnpx @anthropic-ai/claude-code --version\n\n\n\nOpción 2: Mistral Vibe (Gratis, sin tarjeta de crédito)\n\nNo necesitas cuenta de pago:\n\nMistral Vibe es completamente gratuito\nModelos abiertos, sin límites de uso\n\nInstala Mistral Vibe:\nnpm install -g @mistralai/mistral-code\nVerifica:\nmistral-code --version\nPrimer uso (no requiere configuración de API):\nmistral-code \"explica qué es R\""
-  },
-  {
-    "objectID": "clases_ia/notebook_01.html#cuál-elegir",
-    "href": "clases_ia/notebook_01.html#cuál-elegir",
-    "title": "Finanzas en R — Desarrollo Asistido por IA",
-    "section": "¿Cuál Elegir?",
-    "text": "¿Cuál Elegir?\n\n\n\nCriterio\nClaude Code\nMistral Vibe\n\n\n\n\nCosto\nPagado\nGratis\n\n\nPrecisión en Finanzas\nMuy alta\nBuena\n\n\nFacilidad de uso\nMuy fácil\nMuy fácil\n\n\nMejor para debugging\n⭐⭐⭐⭐⭐\n⭐⭐⭐\n\n\nMejor para aprender R\n⭐⭐⭐⭐⭐\n⭐⭐⭐⭐\n\n\n\nRecomendación: Si puedes pagar, usa Claude Code. Si no, Mistral Vibe es una excelente alternativa."
-  },
-  {
-    "objectID": "clases_ia/notebook_01.html#troubleshooting-no-funciona-claude-code",
-    "href": "clases_ia/notebook_01.html#troubleshooting-no-funciona-claude-code",
-    "title": "Finanzas en R — Desarrollo Asistido por IA",
-    "section": "🔧 Troubleshooting: ¿No funciona Claude Code?",
-    "text": "🔧 Troubleshooting: ¿No funciona Claude Code?\nError: “El término ‘npx @anthropic-ai/claude-code’ no se reconoce…”\nSoluciones:\n\nUsa npx correctamente:\n\nnpx descarga y ejecuta el paquete automáticamente\nNo necesita estar en PATH\nEjemplo correcto:\n\nnpx @anthropic-ai/claude-code --file archivo.R \"prompt aquí\"\nVerifica que Node.js esté instalado:\nnode --version\nnpm --version\nReinicia PowerShell/Terminal:\n\nCierra la terminal actual\nAbre una NUEVA terminal en Positron (Ctrl+Shift+`)\n\nAsegúrate de tener API key configurada:\n$env:ANTHROPIC_API_KEY=\"sk-ant-tu-clave-aqui\"\nSi nada funciona, usa Mistral Vibe (gratis):\nnpx @mistralai/mistral-code --file archivo.R \"prompt aquí\""
-  },
-  {
     "objectID": "clases_ia/notebook_01.html#enfoque-tradicional-manual",
     "href": "clases_ia/notebook_01.html#enfoque-tradicional-manual",
     "title": "Finanzas en R — Desarrollo Asistido por IA",
@@ -742,11 +679,11 @@
     "text": "Enfoque tradicional (manual)\nEn R, el primer ejercicio es imprimir un saludo. Lo harías así:\n\nprint(\"Hola mundo\")\n\n[1] \"Hola mundo\"\n\n\nLuego, exploras variables:\n\nx &lt;- 2\ny &lt;- 5\nsaludo &lt;- \"Finanzas en R\"\n\nprint(paste(x, y, saludo, sep = \" \"))\n\n[1] \"2 5 Finanzas en R\"\n\n\nTiempo invertido: ~5 minutos. Repetitividad: tienes que recordar la sintaxis print(), paste(), la asignación con &lt;-."
   },
   {
-    "objectID": "clases_ia/notebook_01.html#enfoque-asistido-por-ia-dentro-de-claude-code-o-mistral-code",
-    "href": "clases_ia/notebook_01.html#enfoque-asistido-por-ia-dentro-de-claude-code-o-mistral-code",
+    "objectID": "clases_ia/notebook_01.html#enfoque-asistido-por-ia",
+    "href": "clases_ia/notebook_01.html#enfoque-asistido-por-ia",
     "title": "Finanzas en R — Desarrollo Asistido por IA",
-    "section": "Enfoque asistido por IA (Dentro de Claude Code o Mistral Code)",
-    "text": "Enfoque asistido por IA (Dentro de Claude Code o Mistral Code)\nPasos:\n\nAbre Positron y crea un archivo hello_world.R:\n\nUsa Ctrl+N o File → New File\nGuarda como hello_world.R\n\nAbre Claude Code o Mistral Code en la terminal:\nclaude-code  # o mistral-code (si ya está instalado)\nCopia y pega este prompt directamente en la terminal interactiva:\n\nCrea un script R que imprima \"Hola mundo\" y luego prueba\ncon dos variables x=2, y=5 y una cadena, imprimiendo todo junto.\nEl resultado debería mostrar algo como: 2 5 Finanzas en R\nListo: Claude/Mistral generará el código, lo explica, y tú lo copias al archivo.\nResultado: Claude genera algo como:\n# Imprimir saludo\nprint(\"Hola mundo\")\n\n# Definir variables\nx &lt;- 2\ny &lt;- 5\nsaludo &lt;- \"Finanzas en R\"\n\n# Imprimir junto\nprint(paste(x, y, saludo, sep = \" \"))\nPero además te muestra una explicación:\n\n“Cree un script básico que imprime un saludo. Usé print() para la salida, &lt;- para asignar valores, y paste() para concatenar. El parámetro sep controla el separador entre elementos.”\n\nVentaja: no solo obtienes el código, sino una explicación instantánea. Así aprendes mientras usas."
+    "section": "Enfoque asistido por IA",
+    "text": "Enfoque asistido por IA\nPasos:\n\nAbre Positron y crea un archivo hello_world.R:\n\nUsa Ctrl+N o File → New File\nGuarda como hello_world.R\n\nAbre Claude Code en la terminal:\nclaude-code  # (si ya está instalado)\nCopia y pega este prompt directamente en la terminal interactiva:\n\nCrea un script R que imprima \"Hola mundo\" y luego prueba\ncon dos variables x=2, y=5 y una cadena, imprimiendo todo junto.\nEl resultado debería mostrar algo como: 2 5 Finanzas en R\nListo: Claude generará el código, lo explica, y tú lo copias al archivo.\nResultado: Claude genera:\n# Imprimir saludo\nprint(\"Hola mundo\")\n\n# Definir variables\nx &lt;- 2\ny &lt;- 5\nsaludo &lt;- \"Finanzas en R\"\n\n# Imprimir junto\nprint(paste(x, y, saludo, sep = \" \"))\nPero además te muestra una explicación:\n\n“Cree un script básico que imprime un saludo. Usé print() para la salida, &lt;- para asignar valores, y paste() para concatenar. El parámetro sep controla el separador entre elementos.”\n\nVentaja: no solo obtienes el código, sino una explicación instantánea. Así aprendes mientras usas."
   },
   {
     "objectID": "clases_ia/notebook_01.html#regla-1-sé-explícito-sobre-el-contexto",
@@ -908,12 +845,5 @@
     "title": "Diplomado en Ciencia de Datos para las Finanzas",
     "section": "",
     "text": "Este será el repositorio de los distintos materiales utilizados en el curso."
-  },
-  {
-    "objectID": "clases_ia/notebook_01.html#enfoque-asistido-por-ia",
-    "href": "clases_ia/notebook_01.html#enfoque-asistido-por-ia",
-    "title": "Finanzas en R — Desarrollo Asistido por IA",
-    "section": "Enfoque asistido por IA",
-    "text": "Enfoque asistido por IA\nPasos:\n\nAbre Positron y crea un archivo hello_world.R:\n\nUsa Ctrl+N o File → New File\nGuarda como hello_world.R\n\nAbre Claude Code en la terminal:\nclaude-code  # (si ya está instalado)\nCopia y pega este prompt directamente en la terminal interactiva:\n\nCrea un script R que imprima \"Hola mundo\" y luego prueba\ncon dos variables x=2, y=5 y una cadena, imprimiendo todo junto.\nEl resultado debería mostrar algo como: 2 5 Finanzas en R\nListo: Claude generará el código, lo explica, y tú lo copias al archivo.\nResultado: Claude genera:\n# Imprimir saludo\nprint(\"Hola mundo\")\n\n# Definir variables\nx &lt;- 2\ny &lt;- 5\nsaludo &lt;- \"Finanzas en R\"\n\n# Imprimir junto\nprint(paste(x, y, saludo, sep = \" \"))\nPero además te muestra una explicación:\n\n“Cree un script básico que imprime un saludo. Usé print() para la salida, &lt;- para asignar valores, y paste() para concatenar. El parámetro sep controla el separador entre elementos.”\n\nVentaja: no solo obtienes el código, sino una explicación instantánea. Así aprendes mientras usas."
   }
 ]
