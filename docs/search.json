@@ -70,13 +70,6 @@
     "text": "✅ Opción Recomendada: Claude Code\nClaude Code es una herramienta CLI que conecta Positron con Claude (modelo de IA de Anthropic). Te permite interactuar con Claude directamente en la terminal de Positron, pidiendo que genere, explique, depure y documente código R.\nVentajas: - Muy preciso en finanzas y R - Excelente para debugging y explicaciones - Mejor relación costo-beneficio\nCosto: Requiere API key pagada (pero tiene límites gratuitos para empezar)"
   },
   {
-    "objectID": "clases_ia/notebook_01.html#si-no-tienes-presupuesto",
-    "href": "clases_ia/notebook_01.html#si-no-tienes-presupuesto",
-    "title": "Finanzas en R — Desarrollo Asistido por IA",
-    "section": "❓ Si no tienes presupuesto",
-    "text": "❓ Si no tienes presupuesto\n\nPrueba Claude Code con plan gratuito: Anthropic ofrece créditos iniciales\nUsa métodos tradicionales: El material en clases/ enseña R sin IA\nAprenderás igual: IA es una acelerador, no es requerido\n\nNo recomendamos alternativas “gratuitas” que resultan siendo pagadas (Mistral, OpenAI, Gemini) o herramientas que están en desarrollo."
-  },
-  {
     "objectID": "clases_ia/notebook_01.html#instalación-y-configuración",
     "href": "clases_ia/notebook_01.html#instalación-y-configuración",
     "title": "Finanzas en R — Desarrollo Asistido por IA",
@@ -508,7 +501,6 @@
     "href": "clases_ia/trabajo.html",
     "title": "Finanzas en R",
     "section": "",
-<<<<<<< Updated upstream
     "text": "📄 Descargar PDF\n  💾 Descargar Fuente"
   },
   {
@@ -685,9 +677,6 @@
     "title": "Introducción a Finanzas en R",
     "section": "Mentalidad Clave",
     "text": "Mentalidad Clave\n\n“La IA no reemplaza a los buenos analistas. Los buenos analistas que usan IA reemplazan a los que no.”"
-=======
-    "text": "Desarrollo Asistido por IA en Finanzas\nMateriales del curso que integran Claude Code y Positron para acelerar el desarrollo de análisis financieros en R. Desde la generación automática de código hasta debugging, documentación y buenas prácticas de prompting.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n01 - Introducción a Finanzas en R\n\n\n\n\n\n\n\n\n\n\n\n02 - Stack Tecnológico\n\n\n\n\n\n\n\n\n\n\n\n03 - Clase 01 - Desarrollo Asistido por IA\n\n\n\n\n\n\n\n\n\n\n\n04 - Trabajo del Curso\n\n\n\n\n\nNo matching items"
->>>>>>> Stashed changes
   },
   {
     "objectID": "clases_ia/RESPUESTAS_PROFESOR.html",
@@ -800,145 +789,5 @@
     "title": "About",
     "section": "",
     "text": "About this site\n\n1 + 1 + 1\n\n[1] 3"
-  },
-  {
-    "objectID": "clases_ia/intro.html#descargas",
-    "href": "clases_ia/intro.html#descargas",
-    "title": "Introducción a Finanzas en R",
-    "section": "",
-    "text": "📄 Descargar PDF\n  💾 Descargar Fuente"
-  },
-  {
-    "objectID": "clases_ia/intro.html#temario",
-    "href": "clases_ia/intro.html#temario",
-    "title": "Introducción a Finanzas en R",
-    "section": "Temario",
-    "text": "Temario\n\nIntroducción a lenguajes de programación\n¿Qué es R?\nInstalación de R y Positron (nuevo IDE)\nAnálisis de datos y ciencias de datos\nFundamentos de DevOps en finanzas\nPor qué IA en este curso\nBibliografía y recursos"
-  },
-  {
-    "objectID": "clases_ia/intro.html#definición-wikipedia",
-    "href": "clases_ia/intro.html#definición-wikipedia",
-    "title": "Introducción a Finanzas en R",
-    "section": "Definición (Wikipedia)",
-    "text": "Definición (Wikipedia)\nR es un entorno y lenguaje de programación con un enfoque al análisis estadístico.\nR nació como una reimplementación de software libre del lenguaje S, adicionado con soporte para ámbito estático.\nSe trata de uno de los lenguajes de programación más utilizados en: - Investigación científica - Aprendizaje automático (Machine Learning) - Minería de datos - Investigación biomédica - Bioinformática - Matemáticas financieras 📊\nA esto contribuye la posibilidad de cargar diferentes bibliotecas o paquetes con funcionalidades de cálculo y graficación.\nReferencia: https://es.wikipedia.org/wiki/R_(lenguaje_de_programación)"
-  },
-  {
-    "objectID": "clases_ia/intro.html#instalación-y-plataformas",
-    "href": "clases_ia/intro.html#instalación-y-plataformas",
-    "title": "Introducción a Finanzas en R",
-    "section": "Instalación y Plataformas",
-    "text": "Instalación y Plataformas\nPor lo general, se debe instalar el lenguaje de programación y el GUI por separado.\n\nOpción 1: R + Positron (⭐ RECOMENDADO)\nPositron es el nuevo IDE de Posit Software, sucesor de RStudio.\nPaso 1: Instalar R\n→ https://cran.r-project.org\n\nPaso 2: Instalar Positron (nuevo IDE)\n→ https://posit.co/download/positron/\n\n\nOpción 2: R + Visual Studio Code\nCorrer R desde Visual Studio Code (VS Code) con extensiones específicas.\n\n\nOpción 3: Google Colab\nCorrer R a través de Google Colab (sin instalar nada localmente) → https://colab.to/r"
-  },
-  {
-    "objectID": "clases_ia/intro.html#por-qué-positron-en-lugar-de-rstudio",
-    "href": "clases_ia/intro.html#por-qué-positron-en-lugar-de-rstudio",
-    "title": "Introducción a Finanzas en R",
-    "section": "¿Por qué Positron en lugar de RStudio?",
-    "text": "¿Por qué Positron en lugar de RStudio?\n\n\n\nAspecto\nRStudio\nPositron\n\n\n\n\nBase\nQt (propietaria)\nVS Code (abierta, extensible)\n\n\nSoporte IA nativo\nNo\nSí (Claude Code)\n\n\nIntegración Python\nLimitada\nPrimera clase\n\n\nExtensiones\nPocas\n20k+ extensiones de VS Code\n\n\nPerformance\nBueno\nMuy bueno\n\n\nCosto\nLibre/Pagado\nLibre\n\n\n\nConclusión: Positron es el presente y futuro del desarrollo en R."
-  },
-  {
-    "objectID": "clases_ia/intro.html#el-ciclo-del-análisis-de-datos",
-    "href": "clases_ia/intro.html#el-ciclo-del-análisis-de-datos",
-    "title": "Introducción a Finanzas en R",
-    "section": "El Ciclo del Análisis de Datos",
-    "text": "El Ciclo del Análisis de Datos\nEl análisis de datos es un proceso iterativo que involucra:\n1. RECOLECCIÓN\n   ↓\n2. LIMPIEZA Y VALIDACIÓN\n   ↓\n3. EXPLORACIÓN (EDA)\n   ↓\n4. MODELADO Y ANÁLISIS\n   ↓\n5. VISUALIZACIÓN\n   ↓\n6. COMUNICACIÓN E INSIGHTS\nEn finanzas, este ciclo es especialmente crítico porque los datos impactan decisiones de inversión."
-  },
-  {
-    "objectID": "clases_ia/intro.html#definición",
-    "href": "clases_ia/intro.html#definición",
-    "title": "Introducción a Finanzas en R",
-    "section": "Definición",
-    "text": "Definición\nExiste una relación entre las ciencias de datos y la estadística, pero esto viene dado por la dinámica relacionada con datos.\nLas ciencias de datos engloban:\n\n“El conjunto de principios, definiciones de problemas, algoritmos y procesos para extraer patrones no obvios y útiles de grandes conjuntos de datos”\n— Kelleher & Tierney (2021)\n\n\nDiferencia con Estadística\nLa ciencia de datos: - Va más allá del análisis estadístico puro - Integra programación, análisis de datos e ingeniería - Se enfoca en patrones accionables - Requiere trabajo en equipo e interdisciplinario - Incluye aspectos de operacionalización (despliegue en producción)"
-  },
-  {
-    "objectID": "clases_ia/intro.html#principios-fundamentales",
-    "href": "clases_ia/intro.html#principios-fundamentales",
-    "title": "Introducción a Finanzas en R",
-    "section": "Principios Fundamentales",
-    "text": "Principios Fundamentales\nDedicarse a la ciencia de datos implica moverse en la dinámica de desarrollo continuo:\n\nEscalabilidad: Los desarrollos no pueden depender de personas específicas\nValor organizacional: Los desarrollos son parte de los activos de las empresas\nColaboración: Se debe permitir siempre el trabajo en equipo\nVisión inter-equipos: Considerar cómo tu código se integra con otros sistemas"
-  },
-  {
-    "objectID": "clases_ia/intro.html#qué-es-cicd",
-    "href": "clases_ia/intro.html#qué-es-cicd",
-    "title": "Introducción a Finanzas en R",
-    "section": "¿Qué es CI/CD?",
-    "text": "¿Qué es CI/CD?\nCI/CD son prácticas esenciales en desarrollo moderno:\n\nCI (Continuous Integration): Integrar código constantemente\nCD (Continuous Delivery): Entrega continua de cambios\nCD (Continuous Deployment): Despliegue automático en producción\n\n\nAplicación en Finanzas\nEn un análisis financiero moderno:\nDesarrollo Local\n    ↓\nControl de Versiones (Git)\n    ↓\nTests Automáticos\n    ↓\nValidación de Datos\n    ↓\nIntegración en Producción\n    ↓\nMonitoreo Continuo\n\n\n¿Por qué importa en finanzas?\n\nTrazabilidad: Saber exactamente qué versión de código está en producción\nAuditoría: Cumplimiento regulatorio (FINMA, BCCh, etc.)\nConfiabilidad: Reducir errores en decisiones de inversión\nVelocidad: Iterar rápidamente en estrategias"
-  },
-  {
-    "objectID": "clases_ia/intro.html#el-ciclo-completo-de-desarrollo",
-    "href": "clases_ia/intro.html#el-ciclo-completo-de-desarrollo",
-    "title": "Introducción a Finanzas en R",
-    "section": "El Ciclo Completo de Desarrollo",
-    "text": "El Ciclo Completo de Desarrollo\n┌─────────────────────────────────────────────────┐\n│         CICLO COMPLETO EN FINANZAS              │\n├─────────────────────────────────────────────────┤\n│                                                 │\n│  Desarrollo → Estructuración → Documentación   │\n│      ↑                             ↓            │\n│      │         ML Ops              ↓            │\n│      └── Integración/Entrega ← Despliegue      │\n│           Versionamiento ← Monitoreo           │\n│                                                 │\n└─────────────────────────────────────────────────┘\n\nComponentes Clave\n\nDesarrollo: Código en R/Python\nEstructuración: Organizaciónn y limpieza de datos\nDocumentación: Notebooks, reportes, comentarios\nIntegración/Entrega: CI/CD pipelines\nVersionamiento: Git y GitHub\nDespliegue: A servidor o cloud\nMonitoreo: Alertas y métricas\nML Ops: Gestión de modelos en producción"
-  },
-  {
-    "objectID": "clases_ia/intro.html#la-revolución-de-los-llms",
-    "href": "clases_ia/intro.html#la-revolución-de-los-llms",
-    "title": "Introducción a Finanzas en R",
-    "section": "La Revolución de los LLMs",
-    "text": "La Revolución de los LLMs\nLos Modelos de Lenguaje de Gran Escala (LLMs) han transformado el desarrollo de software:\n\nGeneración automática de código: describe qué quieres, obtienes código en segundos\nDebugging inteligente: “¿por qué falla esto?” → explicaciones + soluciones\nDocumentación automática: pide explicaciones y comentarios\nIteración ágil: prueba ideas financieras sin reescribir desde cero"
-  },
-  {
-    "objectID": "clases_ia/intro.html#en-este-curso-usaremos",
-    "href": "clases_ia/intro.html#en-este-curso-usaremos",
-    "title": "Introducción a Finanzas en R",
-    "section": "En Este Curso Usaremos",
-    "text": "En Este Curso Usaremos\n\nClaude Code (Recomendado)\n\nSuperior para análisis financiero\nRequiere cuenta pagada\nIDE inteligente integrado\n\n\n\nMistral Vibe (Alternativa Gratuita)\n\nExcelente para aprender\nSin tarjeta de crédito necesaria\nBuena privacidad"
-  },
-  {
-    "objectID": "clases_ia/intro.html#cómo-integraremos-ia",
-    "href": "clases_ia/intro.html#cómo-integraremos-ia",
-    "title": "Introducción a Finanzas en R",
-    "section": "Cómo Integraremos IA",
-    "text": "Cómo Integraremos IA\n\nEnfoque Pedagógico\nNo se trata simplemente de usar IA para “ir más rápido”. Integraremos IA de forma estratégica:\n1. CONCEPTO TEÓRICO\n   ¿Qué queremos lograr?\n   ↓\n2. DEMOSTRACIÓN MANUAL\n   Cómo funciona sin IA\n   ↓\n3. CON IA ASISTIDA\n   Usando herramientas inteligentes\n   ↓\n4. VALIDACIÓN CRÍTICA\n   ¿Es correcto? ¿Podemos mejorar?\n   ↓\n5. ANÁLISIS FINANCIERO REAL\n   Aplicación práctica en finanzas"
-  },
-  {
-    "objectID": "clases_ia/intro.html#mejores-prácticas-con-ia-en-finanzas",
-    "href": "clases_ia/intro.html#mejores-prácticas-con-ia-en-finanzas",
-    "title": "Introducción a Finanzas en R",
-    "section": "Mejores Prácticas con IA en Finanzas",
-    "text": "Mejores Prácticas con IA en Finanzas\n\n✅ LO QUE SÍ HACEMOS\n\n✅ Usar IA para tareas repetitivas (manipulación de datos)\n✅ Validar SIEMPRE los resultados antes de usarlos\n✅ Documentar nuestros prompts y decisiones\n✅ Usar IA como colaborador, no como tomador de decisiones\n✅ Mantener pensamiento crítico\n\n\n\n❌ LO QUE NO HACEMOS\n\n❌ Copiar-pegar código sin entenderlo\n❌ Confiar ciegamente en resultados de IA\n❌ Usar IA para decisiones financieras sin validación humana\n❌ Compartir datos sensibles sin considerar privacidad\n❌ Delegar el pensamiento crítico a máquinas"
-  },
-  {
-    "objectID": "clases_ia/intro.html#libros-fundamentales",
-    "href": "clases_ia/intro.html#libros-fundamentales",
-    "title": "Introducción a Finanzas en R",
-    "section": "Libros Fundamentales",
-    "text": "Libros Fundamentales\n\nWickham, H., & Grolemund, G. (2016). R for Data Science: Import, Tidy, Transform, Visualize, and Model Data O’Reilly Media, Inc. → Enlace\nGrolemund, G. (2014). Hands-on Programming with R: Write Your Own Functions and Simulations O’Reilly Media, Inc. → Enlace\nRegenstein Jr, J. K. (2018). Reproducible Finance with R: Code Flows and Shiny Apps for Portfolio Analysis CRC Press\nScheuch, C., Voigt, S., & Weiss, P. (2023). Tidy Finance with R (1st ed.) Chapman and Hall/CRC → https://doi.org/10.1201/b23237\nXie, Y., Allaire, J. J., & Grolemund, G. (2018). R Markdown: The Definitive Guide CRC Press → Enlace"
-  },
-  {
-    "objectID": "clases_ia/intro.html#estructura-del-curso",
-    "href": "clases_ia/intro.html#estructura-del-curso",
-    "title": "Introducción a Finanzas en R",
-    "section": "Estructura del Curso",
-    "text": "Estructura del Curso\nEn las siguientes clases:\n\nInstalación y Configuración\n\nR, Positron, Claude Code o Mistral Vibe\n\nConceptos Básicos de Programación\n\nSintaxis, variables, tipos de datos\n\nEstructuras de Datos\n\nVectores, listas, data frames\n\nManipulación de Datos\n\nTidyverse, dplyr, tidyr\n\nAnálisis Financiero\n\nSeries de tiempo, retornos, riesgo\n\nVisualización\n\nggplot2, plotly, dashboards\n\nReportes Reproducibles\n\nQuarto, R Markdown\n\nDespliegue en Producción\n\nCI/CD, APIs, Shiny Apps"
-  },
-  {
-    "objectID": "clases_ia/intro.html#tu-rol-en-este-curso",
-    "href": "clases_ia/intro.html#tu-rol-en-este-curso",
-    "title": "Introducción a Finanzas en R",
-    "section": "Tu Rol en Este Curso",
-    "text": "Tu Rol en Este Curso\nEste curso no se trata solo de aprender R. Se trata de:\n\nDominar herramientas modernas que definen la industria hoy\nDesarrollar juicio crítico para usar IA responsablemente\nPrepararte para el futuro donde IA es estándar, no excepción\nAplicar conocimiento a problemas financieros reales\nSeguir mejores prácticas de desarrollo en equipos"
-  },
-  {
-    "objectID": "clases_ia/intro.html#mentalidad-clave",
-    "href": "clases_ia/intro.html#mentalidad-clave",
-    "title": "Introducción a Finanzas en R",
-    "section": "Mentalidad Clave",
-    "text": "Mentalidad Clave\n\n“La IA no reemplaza a los buenos analistas. Los buenos analistas que usan IA reemplazan a los que no.”"
-  },
-  {
-    "objectID": "clases_ia/notebook_01.html",
-    "href": "clases_ia/notebook_01.html",
-    "title": "Finanzas en R — Desarrollo Asistido por IA",
-    "section": "",
-    "text": "📄 Descargar PDF\n  💾 Descargar Fuente"
-  },
-  {
-    "objectID": "clases_ia/notebook_01.html#descargas",
-    "href": "clases_ia/notebook_01.html#descargas",
-    "title": "Finanzas en R — Desarrollo Asistido por IA",
-    "section": "",
-    "text": "📄 Descargar PDF\n  💾 Descargar Fuente"
   }
 ]
