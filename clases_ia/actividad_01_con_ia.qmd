@@ -1,5 +1,5 @@
 ---
-listing_title: "02 - Actividad 01 - Limpieza de Datos (Manual vs IA)"
+listing_title: "05 - Actividad 01 - Limpieza de Datos (Manual vs IA)"
 title: |
   Limpieza y Exploración de Datos
 subtitle: "Actividad 01: Comparación Manual vs Asistido con IA"
