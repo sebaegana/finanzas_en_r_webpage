@@ -9,7 +9,7 @@
 <meta name="author" content="Sebastián Egaña Santibáñez (segana@fen.uchile.cl)">
 <meta name="author" content="Nicolás Leiva Díaz (nleivad@fen.uchile.cl)">
 
-<title>Limpieza y Exploración de Datos – Curso Finanzas en R</title>
+<title>Actividad 01 — Limpieza y Exploración de Datos – Curso Finanzas en R</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -217,8 +217,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><p>Limpieza y Exploración de Datos</p></h1>
-<p class="subtitle lead">Actividad 01: Comparación Manual vs Asistido con IA</p>
+<h1 class="title"><p>Actividad 01 — Limpieza y Exploración de Datos</p></h1>
+<p class="subtitle lead">Comparación: Enfoque Manual vs Desarrollo Asistido con Claude Code</p>
 </div>
 
 
@@ -258,31 +258,34 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="introducción-la-actividad-de-limpieza-de-datos" class="level1">
 <h1>Introducción: La Actividad de Limpieza de Datos</h1>
-<p><strong>Contexto</strong>: Tienes un dataset sobre estadísticas de mujeres en ajedrez de diferentes federaciones mundiales. Tu tarea es:</p>
+<p><strong>Contexto</strong>: Recibes un archivo Excel con estadísticas de mujeres en ajedrez de federaciones mundiales.</p>
+<p>La actividad tradicional (Actividad 01 original) requiere:</p>
 <ol type="1">
-<li>✅ Cargar datos desde Excel</li>
-<li>✅ Crear un diccionario de variables</li>
+<li>✅ Cargar datos desde Excel (hoja “data”)</li>
+<li>✅ Cargar diccionario de variables (hoja “variables”)</li>
+<li>✅ Crear un diccionario de variables completo</li>
 <li>✅ Realizar estadística descriptiva</li>
 <li>✅ Limpiar y estandarizar variables</li>
 <li>✅ Crear nuevas variables si es necesario</li>
-<li>✅ Entregar un reporte con explicaciones</li>
+<li>✅ Entregar un reporte con explicaciones y código</li>
 </ol>
-<p><strong>Pregunta pedagógica</strong>: ¿Cómo acelerar este flujo sin sacrificar calidad?</p>
+<p><strong>Pregunta pedagógica</strong>: ¿Cómo acelerar este flujo sin sacrificar calidad, usando IA?</p>
+<p>Este documento muestra la comparación directa: <strong>enfoque manual vs asistido con Claude Code</strong>.</p>
 <hr>
 </section>
 <section id="enfoque-1-manual-tradicional" class="level1">
 <h1>Enfoque 1: Manual (Tradicional)</h1>
 <section id="paso-1-cargar-librerías-y-datos" class="level2">
 <h2 class="anchored" data-anchor-id="paso-1-cargar-librerías-y-datos">Paso 1: Cargar librerías y datos</h2>
-<p>Sin IA, escribirías el código manualmente:</p>
+<p>Sin IA, escribirías el código manualmente. El profesor te entrega un archivo Excel con dos hojas: - <strong>“data”</strong>: los datos de mujeres en ajedrez - <strong>“variables”</strong>: diccionario que explica cada columna</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cargar librerías</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(skimr)</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Cargar datos</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"chess_women.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"data"</span>)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>variables_dict <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"chess_women.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"variables"</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"[archivo Excel entregado]"</span>, <span class="at">sheet =</span> <span class="st">"data"</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>variables_dict <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"[archivo Excel entregado]"</span>, <span class="at">sheet =</span> <span class="st">"variables"</span>)</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Ver estructura</span></span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(data)</span>
@@ -378,8 +381,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(skimr)</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. CARGAR DATOS</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"chess_women.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"data"</span>)</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>variables_dict <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"chess_women.xlsx"</span>, <span class="at">sheet =</span> <span class="st">"variables"</span>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"[archivo Excel entregado]"</span>, <span class="at">sheet =</span> <span class="st">"data"</span>)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>variables_dict <span class="ot">&lt;-</span> <span class="fu">read_excel</span>(<span class="st">"[archivo Excel entregado]"</span>, <span class="at">sheet =</span> <span class="st">"variables"</span>)</span>
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. DICCIONARIO DE VARIABLES</span></span>
 <span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>var_dict_formatted <span class="ot">&lt;-</span> variables_dict <span class="sc">%&gt;%</span></span>
@@ -547,11 +550,11 @@ rating_category, con conteos en color y etiquetas claras"</code></pre>
 <h2 class="anchored" data-anchor-id="instrucciones-con-ia">Instrucciones (Con IA)</h2>
 <section id="opción-a-maximalista-recomendada-para-aprender" class="level3">
 <h3 class="anchored" data-anchor-id="opción-a-maximalista-recomendada-para-aprender">Opción A: Maximalista (Recomendada para aprender)</h3>
-<p><strong>Paso 1: Prepara tu workspace</strong> - Abre Positron - Crea un proyecto nuevo - Descarga el dataset <code>chess_women.xlsx</code></p>
+<p><strong>Paso 1: Prepara tu workspace</strong> - Abre Positron - Crea un proyecto nuevo - Ubica el archivo Excel entregado (con hojas “data” y “variables”)</p>
 <p><strong>Paso 2: Usa Claude Code para exploración inicial</strong></p>
-<p>Abre Claude Code en Positron y pide:</p>
+<p>Abre Claude Code en Positron y pide (reemplaza <code>archivo.xlsx</code> con el nombre del archivo):</p>
 <blockquote class="blockquote">
-<p>“Carga chess_women.xlsx y dame un resumen inicial: - Dimensiones del dataset - Tipos de datos - Valores faltantes por columna - Top 5 filas”</p>
+<p>“Carga el archivo Excel (hojas ‘data’ y ‘variables’) y dame un resumen inicial: - Dimensiones del dataset - Tipos de datos - Valores faltantes por columna - Top 5 filas”</p>
 </blockquote>
 <p><strong>Paso 3: Itera sobre la limpieza</strong></p>
 <blockquote class="blockquote">
@@ -582,7 +585,7 @@ rating_category, con conteos en color y etiquetas claras"</code></pre>
 <h3 class="anchored" data-anchor-id="opción-c-minimalista-enfoque-prompt-driven">Opción C: Minimalista (Enfoque “Prompt-Driven”)</h3>
 <p>Pídele a Claude Code <strong>todo el flujo</strong> en un único prompt largo:</p>
 <blockquote class="blockquote">
-<p>“Necesito un análisis completo de chess_women.xlsx: 1. Carga ambas hojas 2. Crea diccionario de variables 3. Estadística descriptiva (mean, sd, missing) 4. Estandarización de nombres y tipos 5. Variables nuevas: elite (rating &gt;= 2200), years_active 6. Visualizaciones: 3-5 gráficos clave 7. Resumen por país/región 8. Exporta reporte HTML completo”</p>
+<p>“Necesito un análisis completo de [archivo Excel entregado]: 1. Carga ambas hojas 2. Crea diccionario de variables 3. Estadística descriptiva (mean, sd, missing) 4. Estandarización de nombres y tipos 5. Variables nuevas: elite (rating &gt;= 2200), years_active 6. Visualizaciones: 3-5 gráficos clave 7. Resumen por país/región 8. Exporta reporte HTML completo”</p>
 </blockquote>
 <p><strong>Nota</strong>: Claude Code puede generar 300+ líneas de código pulido en <strong>~1 minuto</strong>.</p>
 <hr>
@@ -663,7 +666,7 @@ rating_category, con conteos en color y etiquetas claras"</code></pre>
 <p>Debes entregar:</p>
 <ol type="1">
 <li><strong>Script R</strong> (<code>actividad_01_limpieza.R</code> o <code>.qmd</code>) con código comentado</li>
-<li><strong>Dataset limpio</strong> (<code>chess_women_clean.csv</code>)</li>
+<li><strong>Dataset limpio</strong> (archivo CSV con datos procesados)</li>
 <li><strong>Reporte HTML o PDF</strong> con:
 <ul>
 <li>Diccionario de variables (tabla formateada)</li>

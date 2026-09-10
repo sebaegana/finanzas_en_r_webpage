@@ -464,119 +464,119 @@
   {
     "objectID": "clases_ia/actividad_01_con_ia.html",
     "href": "clases_ia/actividad_01_con_ia.html",
-    "title": "Limpieza y Exploración de Datos",
+    "title": "Actividad 01 — Limpieza y Exploración de Datos",
     "section": "",
     "text": "📄 Descargar PDF\n  💾 Descargar Fuente"
   },
   {
     "objectID": "clases_ia/actividad_01_con_ia.html#descargas",
     "href": "clases_ia/actividad_01_con_ia.html#descargas",
-    "title": "Limpieza y Exploración de Datos",
+    "title": "Actividad 01 — Limpieza y Exploración de Datos",
     "section": "",
     "text": "📄 Descargar PDF\n  💾 Descargar Fuente"
   },
   {
     "objectID": "clases_ia/actividad_01_con_ia.html#paso-1-cargar-librerías-y-datos",
     "href": "clases_ia/actividad_01_con_ia.html#paso-1-cargar-librerías-y-datos",
-    "title": "Limpieza y Exploración de Datos",
+    "title": "Actividad 01 — Limpieza y Exploración de Datos",
     "section": "Paso 1: Cargar librerías y datos",
-    "text": "Paso 1: Cargar librerías y datos\nSin IA, escribirías el código manualmente:\n# Cargar librerías\nlibrary(readxl)\nlibrary(tidyverse)\nlibrary(skimr)\n\n# Cargar datos\ndata &lt;- read_excel(\"chess_women.xlsx\", sheet = \"data\")\nvariables_dict &lt;- read_excel(\"chess_women.xlsx\", sheet = \"variables\")\n\n# Ver estructura\nhead(data)\nstr(data)\nTiempo invertido: ~5 minutos (recordar sintaxis, buscar ayuda si olvidas argumentos)."
+    "text": "Paso 1: Cargar librerías y datos\nSin IA, escribirías el código manualmente. El profesor te entrega un archivo Excel con dos hojas: - “data”: los datos de mujeres en ajedrez - “variables”: diccionario que explica cada columna\n# Cargar librerías\nlibrary(readxl)\nlibrary(tidyverse)\nlibrary(skimr)\n\n# Cargar datos\ndata &lt;- read_excel(\"[archivo Excel entregado]\", sheet = \"data\")\nvariables_dict &lt;- read_excel(\"[archivo Excel entregado]\", sheet = \"variables\")\n\n# Ver estructura\nhead(data)\nstr(data)\nTiempo invertido: ~5 minutos (recordar sintaxis, buscar ayuda si olvidas argumentos)."
   },
   {
     "objectID": "clases_ia/actividad_01_con_ia.html#paso-2-exploración-manual",
     "href": "clases_ia/actividad_01_con_ia.html#paso-2-exploración-manual",
-    "title": "Limpieza y Exploración de Datos",
+    "title": "Actividad 01 — Limpieza y Exploración de Datos",
     "section": "Paso 2: Exploración Manual",
     "text": "Paso 2: Exploración Manual\n# Diccionario manual\nprint(variables_dict)\n\n# Estadística descriptiva manual\nsummary(data)\nskim(data)\n\n# Buscar valores faltantes\ndata %&gt;%\n  summarise(across(everything(), ~sum(is.na(.))))\n\n# Visualizar distribuciones\ndata %&gt;%\n  pivot_longer(everything()) %&gt;%\n  ggplot(aes(x = value)) +\n  geom_histogram() +\n  facet_wrap(~name, scales = \"free\")\nTiempo invertido: ~15 minutos (prueba y error, ajustes visuales)."
   },
   {
     "objectID": "clases_ia/actividad_01_con_ia.html#paso-3-limpieza-y-transformación-manual",
     "href": "clases_ia/actividad_01_con_ia.html#paso-3-limpieza-y-transformación-manual",
-    "title": "Limpieza y Exploración de Datos",
+    "title": "Actividad 01 — Limpieza y Exploración de Datos",
     "section": "Paso 3: Limpieza y Transformación Manual",
     "text": "Paso 3: Limpieza y Transformación Manual\n# Estandarizar nombres\ndata_clean &lt;- data %&gt;%\n  rename_all(tolower) %&gt;%\n  rename_all(~gsub(\" \", \"_\", .))\n\n# Detectar y manejar valores atípicos\ndata_clean &lt;- data_clean %&gt;%\n  mutate(\n    ranking = as.numeric(ranking),\n    age = as.numeric(age),\n    rating = as.numeric(rating)\n  )\n\n# Crear nuevas variables\ndata_clean &lt;- data_clean %&gt;%\n  mutate(\n    rating_category = case_when(\n      rating &gt;= 2300 ~ \"Grandmaster\",\n      rating &gt;= 2200 ~ \"Master\",\n      rating &gt;= 2000 ~ \"Expert\",\n      TRUE ~ \"Other\"\n    ),\n    age_group = cut(age, breaks = c(0, 20, 30, 40, 50, 100),\n                    labels = c(\"&lt;20\", \"20-30\", \"30-40\", \"40-50\", \"50+\"))\n  )\nTiempo invertido: ~20 minutos (ajustes iterativos, decisiones ad-hoc)."
   },
   {
     "objectID": "clases_ia/actividad_01_con_ia.html#paso-4-generar-reporte-manual",
     "href": "clases_ia/actividad_01_con_ia.html#paso-4-generar-reporte-manual",
-    "title": "Limpieza y Exploración de Datos",
+    "title": "Actividad 01 — Limpieza y Exploración de Datos",
     "section": "Paso 4: Generar Reporte Manual",
     "text": "Paso 4: Generar Reporte Manual\n# Crear resumen\nresumen &lt;- data_clean %&gt;%\n  group_by(rating_category, age_group) %&gt;%\n  summarise(\n    n = n(),\n    mean_rating = mean(rating, na.rm = TRUE),\n    sd_rating = sd(rating, na.rm = TRUE)\n  )\n\n# Guardar en archivo\nwrite.csv(resumen, \"resumen_limpieza.csv\")\nTiempo total aproximado: 50-60 minutos (incluyendo debugging, consultas, retoques)."
   },
   {
     "objectID": "clases_ia/actividad_01_con_ia.html#estrategia-describe-qué-necesitas-en-lenguaje-natural",
     "href": "clases_ia/actividad_01_con_ia.html#estrategia-describe-qué-necesitas-en-lenguaje-natural",
-    "title": "Limpieza y Exploración de Datos",
+    "title": "Actividad 01 — Limpieza y Exploración de Datos",
     "section": "Estrategia: Describe qué necesitas en lenguaje natural",
     "text": "Estrategia: Describe qué necesitas en lenguaje natural\nEn lugar de escribir código línea por línea, describes la tarea a Claude Code:\nPrompt al asistente:\n\n“Necesito limpiar un dataset de ajedrez desde Excel. - Carga dos hojas: ‘data’ y ‘variables’ - Crea un reporte que incluya: 1. Diccionario de variables (nombre, tipo, descripción) 2. Estadística descriptiva completa 3. Detección de valores faltantes y atípicos 4. Estandarización de nombres de columnas 5. Nuevas variables: categoría de rating (GM, Master, Expert, Otros) y grupos de edad 6. Visualizaciones de distribuciones - Exporta todo a un archivo de reporte HTML”"
   },
   {
     "objectID": "clases_ia/actividad_01_con_ia.html#lo-que-claude-code-genera-automáticamente",
     "href": "clases_ia/actividad_01_con_ia.html#lo-que-claude-code-genera-automáticamente",
-    "title": "Limpieza y Exploración de Datos",
+    "title": "Actividad 01 — Limpieza y Exploración de Datos",
     "section": "Lo que Claude Code genera automáticamente",
-    "text": "Lo que Claude Code genera automáticamente\nClaude Code crearía un script completo optimizado:\nlibrary(readxl)\nlibrary(tidyverse)\nlibrary(skimr)\n\n# 1. CARGAR DATOS\ndata &lt;- read_excel(\"chess_women.xlsx\", sheet = \"data\")\nvariables_dict &lt;- read_excel(\"chess_women.xlsx\", sheet = \"variables\")\n\n# 2. DICCIONARIO DE VARIABLES\nvar_dict_formatted &lt;- variables_dict %&gt;%\n  rename(\n    \"Variable\" = starts_with(\"nombre\") | starts_with(\"Nombre\"),\n    \"Tipo\" = starts_with(\"tipo\") | starts_with(\"Tipo\"),\n    \"Descripción\" = starts_with(\"descr\") | starts_with(\"Descr\")\n  )\n\n# 3. ESTADÍSTICA DESCRIPTIVA\nskim_stats &lt;- skim(data)\nsummary_stats &lt;- data %&gt;%\n  summarise(across(where(is.numeric),\n    list(\n      n = ~n(),\n      mean = ~mean(., na.rm = TRUE),\n      sd = ~sd(., na.rm = TRUE),\n      min = ~min(., na.rm = TRUE),\n      q25 = ~quantile(., 0.25, na.rm = TRUE),\n      median = ~median(., na.rm = TRUE),\n      q75 = ~quantile(., 0.75, na.rm = TRUE),\n      max = ~max(., na.rm = TRUE),\n      missing = ~sum(is.na(.))\n    ),\n    .names = \"{.col}_{.fn}\"\n  ))\n\n# 4. VALORES FALTANTES\nmissing_report &lt;- data %&gt;%\n  summarise(across(everything(),\n    ~paste(sum(is.na(.)), \"de\", n(), \"valores faltantes\")))\n\n# 5. LIMPIEZA Y ESTANDARIZACIÓN\ndata_clean &lt;- data %&gt;%\n  rename_all(tolower) %&gt;%\n  rename_all(~gsub(\" \", \"_\", .)) %&gt;%\n  mutate(across(where(is.character), str_trim))\n\n# 6. NUEVAS VARIABLES\ndata_clean &lt;- data_clean %&gt;%\n  mutate(\n    rating_numeric = as.numeric(rating),\n    age_numeric = as.numeric(age),\n    rating_category = case_when(\n      rating_numeric &gt;= 2300 ~ \"Grandmaster\",\n      rating_numeric &gt;= 2200 ~ \"Master\",\n      rating_numeric &gt;= 2000 ~ \"Expert\",\n      TRUE ~ \"Otro\"\n    ),\n    age_group = cut(age_numeric,\n      breaks = c(0, 20, 30, 40, 50, 100),\n      labels = c(\"&lt;20\", \"20-30\", \"30-40\", \"40-50\", \"50+\"))\n  )\n\n# 7. VISUALIZACIONES\nplot_rating_dist &lt;- data_clean %&gt;%\n  ggplot(aes(x = rating_numeric)) +\n  geom_histogram(binwidth = 50, fill = \"#FF0000\", alpha = 0.7) +\n  labs(title = \"Distribución de Ratings\",\n       x = \"Rating\", y = \"Frecuencia\") +\n  theme_minimal()\n\nplot_age_dist &lt;- data_clean %&gt;%\n  ggplot(aes(x = age_numeric)) +\n  geom_histogram(binwidth = 5, fill = \"#0066CC\", alpha = 0.7) +\n  labs(title = \"Distribución de Edades\",\n       x = \"Edad\", y = \"Frecuencia\") +\n  theme_minimal()\n\n# 8. RESUMEN POR CATEGORÍAS\nsummary_by_category &lt;- data_clean %&gt;%\n  group_by(rating_category, age_group) %&gt;%\n  summarise(\n    n = n(),\n    mean_rating = mean(rating_numeric, na.rm = TRUE),\n    sd_rating = sd(rating_numeric, na.rm = TRUE),\n    mean_age = mean(age_numeric, na.rm = TRUE),\n    .groups = 'drop'\n  )\n\n# 9. EXPORTAR RESULTADOS\nwrite.csv(summary_by_category, \"resumen_limpieza.csv\", row.names = FALSE)"
+    "text": "Lo que Claude Code genera automáticamente\nClaude Code crearía un script completo optimizado:\nlibrary(readxl)\nlibrary(tidyverse)\nlibrary(skimr)\n\n# 1. CARGAR DATOS\ndata &lt;- read_excel(\"[archivo Excel entregado]\", sheet = \"data\")\nvariables_dict &lt;- read_excel(\"[archivo Excel entregado]\", sheet = \"variables\")\n\n# 2. DICCIONARIO DE VARIABLES\nvar_dict_formatted &lt;- variables_dict %&gt;%\n  rename(\n    \"Variable\" = starts_with(\"nombre\") | starts_with(\"Nombre\"),\n    \"Tipo\" = starts_with(\"tipo\") | starts_with(\"Tipo\"),\n    \"Descripción\" = starts_with(\"descr\") | starts_with(\"Descr\")\n  )\n\n# 3. ESTADÍSTICA DESCRIPTIVA\nskim_stats &lt;- skim(data)\nsummary_stats &lt;- data %&gt;%\n  summarise(across(where(is.numeric),\n    list(\n      n = ~n(),\n      mean = ~mean(., na.rm = TRUE),\n      sd = ~sd(., na.rm = TRUE),\n      min = ~min(., na.rm = TRUE),\n      q25 = ~quantile(., 0.25, na.rm = TRUE),\n      median = ~median(., na.rm = TRUE),\n      q75 = ~quantile(., 0.75, na.rm = TRUE),\n      max = ~max(., na.rm = TRUE),\n      missing = ~sum(is.na(.))\n    ),\n    .names = \"{.col}_{.fn}\"\n  ))\n\n# 4. VALORES FALTANTES\nmissing_report &lt;- data %&gt;%\n  summarise(across(everything(),\n    ~paste(sum(is.na(.)), \"de\", n(), \"valores faltantes\")))\n\n# 5. LIMPIEZA Y ESTANDARIZACIÓN\ndata_clean &lt;- data %&gt;%\n  rename_all(tolower) %&gt;%\n  rename_all(~gsub(\" \", \"_\", .)) %&gt;%\n  mutate(across(where(is.character), str_trim))\n\n# 6. NUEVAS VARIABLES\ndata_clean &lt;- data_clean %&gt;%\n  mutate(\n    rating_numeric = as.numeric(rating),\n    age_numeric = as.numeric(age),\n    rating_category = case_when(\n      rating_numeric &gt;= 2300 ~ \"Grandmaster\",\n      rating_numeric &gt;= 2200 ~ \"Master\",\n      rating_numeric &gt;= 2000 ~ \"Expert\",\n      TRUE ~ \"Otro\"\n    ),\n    age_group = cut(age_numeric,\n      breaks = c(0, 20, 30, 40, 50, 100),\n      labels = c(\"&lt;20\", \"20-30\", \"30-40\", \"40-50\", \"50+\"))\n  )\n\n# 7. VISUALIZACIONES\nplot_rating_dist &lt;- data_clean %&gt;%\n  ggplot(aes(x = rating_numeric)) +\n  geom_histogram(binwidth = 50, fill = \"#FF0000\", alpha = 0.7) +\n  labs(title = \"Distribución de Ratings\",\n       x = \"Rating\", y = \"Frecuencia\") +\n  theme_minimal()\n\nplot_age_dist &lt;- data_clean %&gt;%\n  ggplot(aes(x = age_numeric)) +\n  geom_histogram(binwidth = 5, fill = \"#0066CC\", alpha = 0.7) +\n  labs(title = \"Distribución de Edades\",\n       x = \"Edad\", y = \"Frecuencia\") +\n  theme_minimal()\n\n# 8. RESUMEN POR CATEGORÍAS\nsummary_by_category &lt;- data_clean %&gt;%\n  group_by(rating_category, age_group) %&gt;%\n  summarise(\n    n = n(),\n    mean_rating = mean(rating_numeric, na.rm = TRUE),\n    sd_rating = sd(rating_numeric, na.rm = TRUE),\n    mean_age = mean(age_numeric, na.rm = TRUE),\n    .groups = 'drop'\n  )\n\n# 9. EXPORTAR RESULTADOS\nwrite.csv(summary_by_category, \"resumen_limpieza.csv\", row.names = FALSE)"
   },
   {
     "objectID": "clases_ia/actividad_01_con_ia.html#ventajas-del-enfoque-asistido",
     "href": "clases_ia/actividad_01_con_ia.html#ventajas-del-enfoque-asistido",
-    "title": "Limpieza y Exploración de Datos",
+    "title": "Actividad 01 — Limpieza y Exploración de Datos",
     "section": "Ventajas del Enfoque Asistido",
     "text": "Ventajas del Enfoque Asistido\n\n\n\n\n\n\n\n\nAspecto\nManual\nCon IA\n\n\n\n\nTiempo de código\n50-60 min\n5-10 min\n\n\nBoilerplate\nCompleto (cargas, librerías)\nGenerado automáticamente\n\n\nCobertura\nA menudo incompleta (olvidas casos)\nExhaustiva\n\n\nDocumentación\nManual, lleva tiempo\nGenerada con explicaciones\n\n\nIteraciones\nReescribir cada cambio\nPedir cambios en lenguaje natural\n\n\nDebugging\nLees mensajes de error solo\nAsistente explica y propone soluciones"
   },
   {
     "objectID": "clases_ia/actividad_01_con_ia.html#escenario-quiero-visualizar-age_group-vs-rating_category",
     "href": "clases_ia/actividad_01_con_ia.html#escenario-quiero-visualizar-age_group-vs-rating_category",
-    "title": "Limpieza y Exploración de Datos",
+    "title": "Actividad 01 — Limpieza y Exploración de Datos",
     "section": "Escenario: “Quiero visualizar age_group vs rating_category”",
     "text": "Escenario: “Quiero visualizar age_group vs rating_category”\n\nManual (Sin IA)\n# Buscas en Google, Stack Overflow, recuerdas sintaxis de ggplot\n# Pruebas varios geoms (bar, tile, violin)\n# Ajustas colores, temas, etiquetas\n\ndata_clean %&gt;%\n  ggplot(aes(x = age_group, y = rating_category, fill = n())) +\n  geom_tile() +\n  # ... (10 minutos de ajustes)\nTiempo: ~15 minutos\n\n\nCon IA\nPrompt: \"Dame un gráfico de tiles que muestre age_group vs\nrating_category, con conteos en color y etiquetas claras\"\nClaude Code genera el código optimizado en segundos. Solo ajustas si necesitas.\nTiempo: ~2 minutos (incluido ajuste)"
   },
   {
     "objectID": "clases_ia/actividad_01_con_ia.html#instrucciones-con-ia",
     "href": "clases_ia/actividad_01_con_ia.html#instrucciones-con-ia",
-    "title": "Limpieza y Exploración de Datos",
+    "title": "Actividad 01 — Limpieza y Exploración de Datos",
     "section": "Instrucciones (Con IA)",
-    "text": "Instrucciones (Con IA)\n\nOpción A: Maximalista (Recomendada para aprender)\nPaso 1: Prepara tu workspace - Abre Positron - Crea un proyecto nuevo - Descarga el dataset chess_women.xlsx\nPaso 2: Usa Claude Code para exploración inicial\nAbre Claude Code en Positron y pide:\n\n“Carga chess_women.xlsx y dame un resumen inicial: - Dimensiones del dataset - Tipos de datos - Valores faltantes por columna - Top 5 filas”\n\nPaso 3: Itera sobre la limpieza\n\n“Ahora estandariza los nombres de columnas (tolower, sin espacios), convierte campos numéricos si es necesario, y crea estas variables: - rating_elite: TRUE si rating &gt;= 2200 - years_active: diferencia entre max y min de año”\n\nPaso 4: Visualiza resultados\n\n“Crea 3 gráficos: 1. Distribución de ratings (histogram) 2. Rating por país (top 10) 3. Correlación entre edad y rating”\n\nPaso 5: Genera reporte\n\n“Exporta a un archivo HTML con: - Tabla de diccionario de variables - Resumen estadístico por país - Los 3 gráficos anteriores”\n\n\n\n\nOpción B: Enfoque Híbrido (Equilibrado)\nSi prefieres un balance entre escribir código y usar IA:\n\nCarga datos manualmente en R\nUsa Claude Code para la estandarización compleja\nVisualiza usando ggplot2 (escribes el esquema básico, IA refina)\nGenera reporte en Quarto (mezcla de código propio + IA)\n\n\n\n\nOpción C: Minimalista (Enfoque “Prompt-Driven”)\nPídele a Claude Code todo el flujo en un único prompt largo:\n\n“Necesito un análisis completo de chess_women.xlsx: 1. Carga ambas hojas 2. Crea diccionario de variables 3. Estadística descriptiva (mean, sd, missing) 4. Estandarización de nombres y tipos 5. Variables nuevas: elite (rating &gt;= 2200), years_active 6. Visualizaciones: 3-5 gráficos clave 7. Resumen por país/región 8. Exporta reporte HTML completo”\n\nNota: Claude Code puede generar 300+ líneas de código pulido en ~1 minuto."
+    "text": "Instrucciones (Con IA)\n\nOpción A: Maximalista (Recomendada para aprender)\nPaso 1: Prepara tu workspace - Abre Positron - Crea un proyecto nuevo - Ubica el archivo Excel entregado (con hojas “data” y “variables”)\nPaso 2: Usa Claude Code para exploración inicial\nAbre Claude Code en Positron y pide (reemplaza archivo.xlsx con el nombre del archivo):\n\n“Carga el archivo Excel (hojas ‘data’ y ‘variables’) y dame un resumen inicial: - Dimensiones del dataset - Tipos de datos - Valores faltantes por columna - Top 5 filas”\n\nPaso 3: Itera sobre la limpieza\n\n“Ahora estandariza los nombres de columnas (tolower, sin espacios), convierte campos numéricos si es necesario, y crea estas variables: - rating_elite: TRUE si rating &gt;= 2200 - years_active: diferencia entre max y min de año”\n\nPaso 4: Visualiza resultados\n\n“Crea 3 gráficos: 1. Distribución de ratings (histogram) 2. Rating por país (top 10) 3. Correlación entre edad y rating”\n\nPaso 5: Genera reporte\n\n“Exporta a un archivo HTML con: - Tabla de diccionario de variables - Resumen estadístico por país - Los 3 gráficos anteriores”\n\n\n\n\nOpción B: Enfoque Híbrido (Equilibrado)\nSi prefieres un balance entre escribir código y usar IA:\n\nCarga datos manualmente en R\nUsa Claude Code para la estandarización compleja\nVisualiza usando ggplot2 (escribes el esquema básico, IA refina)\nGenera reporte en Quarto (mezcla de código propio + IA)\n\n\n\n\nOpción C: Minimalista (Enfoque “Prompt-Driven”)\nPídele a Claude Code todo el flujo en un único prompt largo:\n\n“Necesito un análisis completo de [archivo Excel entregado]: 1. Carga ambas hojas 2. Crea diccionario de variables 3. Estadística descriptiva (mean, sd, missing) 4. Estandarización de nombres y tipos 5. Variables nuevas: elite (rating &gt;= 2200), years_active 6. Visualizaciones: 3-5 gráficos clave 7. Resumen por país/región 8. Exporta reporte HTML completo”\n\nNota: Claude Code puede generar 300+ líneas de código pulido en ~1 minuto."
   },
   {
     "objectID": "clases_ia/actividad_01_con_ia.html#rúbrica-de-evaluación",
     "href": "clases_ia/actividad_01_con_ia.html#rúbrica-de-evaluación",
-    "title": "Limpieza y Exploración de Datos",
+    "title": "Actividad 01 — Limpieza y Exploración de Datos",
     "section": "Rúbrica de Evaluación",
     "text": "Rúbrica de Evaluación\n\n\n\n\n\n\n\n\n\nCriterio\nExcelente\nBueno\nAceptable\n\n\n\n\nCarga de datos\nAmbas hojas cargadas, validadas\nCargadas correctamente\nCargadas con warning\n\n\nDiccionario de variables\nCompleto, tipos correctos, descripciones claras\nCompleto, tipos ok\nIncompleto\n\n\nEstadística descriptiva\nCompleta (mean, sd, quantiles, missing)\nCubiertos principales\nSolo summary()\n\n\nLimpieza y estandarización\nNombres normalizados, tipos correctos, sin inconsistencias\nNombres limpios, tipos mayormente ok\nParcial\n\n\nVariables nuevas\n2+ variables útiles, bien justificadas\n1 variable clara\nNinguna o trivial\n\n\nVisualizaciones\n3+ gráficos informativos, leyendas claras\n2 gráficos ok\n1 gráfico o pobre\n\n\nDocumentación/Reporte\nReporte HTML/PDF claro, código comentado\nReporte básico, algunas notas\nMínimo o ausente\n\n\nUso de IA\nAprovecha Claude Code bien, itera claramente\nUsa IA para partes, código propio para otras\nMínimo uso de IA"
   },
   {
     "objectID": "clases_ia/actividad_01_con_ia.html#entrega",
     "href": "clases_ia/actividad_01_con_ia.html#entrega",
-    "title": "Limpieza y Exploración de Datos",
+    "title": "Actividad 01 — Limpieza y Exploración de Datos",
     "section": "Entrega",
-    "text": "Entrega\nDebes entregar:\n\nScript R (actividad_01_limpieza.R o .qmd) con código comentado\nDataset limpio (chess_women_clean.csv)\nReporte HTML o PDF con:\n\nDiccionario de variables (tabla formateada)\nResumen estadístico (por país, por edad, por rating)\nMínimo 3 visualizaciones\nExplicación de decisiones de limpieza"
+    "text": "Entrega\nDebes entregar:\n\nScript R (actividad_01_limpieza.R o .qmd) con código comentado\nDataset limpio (archivo CSV con datos procesados)\nReporte HTML o PDF con:\n\nDiccionario de variables (tabla formateada)\nResumen estadístico (por país, por edad, por rating)\nMínimo 3 visualizaciones\nExplicación de decisiones de limpieza"
   },
   {
     "objectID": "clases_ia/actividad_01_con_ia.html#ejemplo-de-lo-que-genera-claude-code-real",
     "href": "clases_ia/actividad_01_con_ia.html#ejemplo-de-lo-que-genera-claude-code-real",
-    "title": "Limpieza y Exploración de Datos",
+    "title": "Actividad 01 — Limpieza y Exploración de Datos",
     "section": "Ejemplo de Lo Que Genera Claude Code (Real)",
     "text": "Ejemplo de Lo Que Genera Claude Code (Real)\nPrompt enviado:\n\"Dataset de ajedrez, quiero age_group (20-30, 30-40, 40-50, 50+)\ny contar jugadoras por grupo\"\nCódigo generado (segundos después):\ndata_clean &lt;- data_clean %&gt;%\n  mutate(age_group = case_when(\n    age &gt;= 20 & age &lt; 30 ~ \"20-30\",\n    age &gt;= 30 & age &lt; 40 ~ \"30-40\",\n    age &gt;= 40 & age &lt; 50 ~ \"40-50\",\n    age &gt;= 50 ~ \"50+\",\n    TRUE ~ NA_character_\n  ))\n\ncount_by_age &lt;- data_clean %&gt;%\n  group_by(age_group) %&gt;%\n  summarise(n = n(), .groups = 'drop') %&gt;%\n  arrange(desc(n))\n\nprint(count_by_age)\nSin IA: Escribirías esto mismo en ~5 minutos. Con IA: 10 segundos, listo."
   },
   {
     "objectID": "clases_ia/actividad_01_con_ia.html#usa-ia-para",
     "href": "clases_ia/actividad_01_con_ia.html#usa-ia-para",
-    "title": "Limpieza y Exploración de Datos",
+    "title": "Actividad 01 — Limpieza y Exploración de Datos",
     "section": "✅ Usa IA para:",
     "text": "✅ Usa IA para:\n\n✅ Boilerplate: cargas, librerías, transformaciones estándar\n✅ Exploración: prueba múltiples enfoques rápidamente\n✅ Debugging: “¿por qué falla este argumento?”\n✅ Documentación: genera comentarios y explicaciones\n✅ Refactorización: “limpia este código”"
   },
   {
     "objectID": "clases_ia/actividad_01_con_ia.html#no-uses-ia-para",
     "href": "clases_ia/actividad_01_con_ia.html#no-uses-ia-para",
-    "title": "Limpieza y Exploración de Datos",
+    "title": "Actividad 01 — Limpieza y Exploración de Datos",
     "section": "❌ NO uses IA para:",
     "text": "❌ NO uses IA para:\n\n❌ Decisiones financieras: tú eliges qué variable crear, IA genera código\n❌ Validación: verifica resultados siempre (no confíes ciegamente)\n❌ Comprensión: entiende el código generado antes de usarlo\n❌ Pensar: IA acelera la ejecución, no la estrategia"
   },
   {
     "objectID": "clases_ia/actividad_01_con_ia.html#la-mentalidad-correcta",
     "href": "clases_ia/actividad_01_con_ia.html#la-mentalidad-correcta",
-    "title": "Limpieza y Exploración de Datos",
+    "title": "Actividad 01 — Limpieza y Exploración de Datos",
     "section": "La Mentalidad Correcta",
     "text": "La Mentalidad Correcta\n\n“IA es como un copiloto competente: genera código, pero TÚ diriges el análisis.”"
   },
@@ -655,7 +655,7 @@
     "href": "clases_ia/index.html",
     "title": "Clases — Finanzas en R con IA",
     "section": "",
-    "text": "Desarrollo Asistido por IA en Finanzas\nMateriales del curso que integran Claude Code y Positron para acelerar el desarrollo de análisis financieros en R. Desde la generación automática de código hasta debugging, documentación y buenas prácticas de prompting.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n01 - Introducción a Finanzas en R\n\n\n\n\n\n\n\n\n\n\n\n02 - Stack Tecnológico\n\n\n\n\n\n\n\n\n\n\n\n03 - Clase 01 - Desarrollo Asistido por IA\n\n\n\n\n\n\n\n\n\n\n\n04 - Trabajo del Curso\n\n\n\n\n\n\n\n\n\n\n\n05 - Actividad 01 - Limpieza de Datos (Manual vs IA)\n\n\n\n\n\nNo matching items"
+    "text": "Desarrollo Asistido por IA en Finanzas\nMateriales del curso que integran Claude Code y Positron para acelerar el desarrollo de análisis financieros en R. Desde la generación automática de código hasta debugging, documentación y buenas prácticas de prompting.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n01 - Introducción a Finanzas en R\n\n\n\n\n\n\n\n\n\n\n\n02 - Stack Tecnológico\n\n\n\n\n\n\n\n\n\n\n\n03 - Clase 01 - Desarrollo Asistido por IA\n\n\n\n\n\n\n\n\n\n\n\n04 - Trabajo del Curso\n\n\n\n\n\n\n\n\n\n\n\n05 - Actividad 01 - Limpieza de Datos (Manual vs IA-Asistido)\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "clases_ia/notebook_01.html",
@@ -802,14 +802,14 @@
     "href": "clases_ia/notebook_01.html#paso-2-análisis-con-ia",
     "title": "Finanzas en R — Desarrollo Asistido por IA",
     "section": "Paso 2: Análisis con IA",
-    "text": "Paso 2: Análisis con IA\nEn Claude Code o Mistral Code, copia y pega este prompt:\nLee el archivo retornos.csv,\ncalcula los retornos acumulativos (usa cumprod(1 + retorno) - 1),\ngrafica los retornos acumulativos con ggplot2 en función de la fecha,\ncalcula la media, desviación estándar y el ratio de Sharpe\n(asumir tasa libre de riesgo = 0),\ne imprime estos estadísticos.\nClaude generará:\n\nlibrary(tidyverse)\n\n# Leer datos\ndatos &lt;- read_csv(\"retornos.csv\")\n\nRows: 252 Columns: 2\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\ndbl  (1): retorno\ndate (1): fecha\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\n# Calcular retornos acumulativos\ndatos_acum &lt;- datos %&gt;%\n  mutate(retorno_acumulado = cumprod(1 + retorno) - 1)\n\n# Gráfico\nggplot(datos_acum, aes(x = fecha, y = retorno_acumulado)) +\n  geom_line(color = \"blue\") +\n  labs(title = \"Retorno Acumulado\",\n       x = \"Fecha\",\n       y = \"Retorno Acumulado\") +\n  theme_minimal()\n\n\n\n\n\n\n\n# Estadísticos\nmedia_retorno &lt;- mean(datos$retorno)\nsd_retorno &lt;- sd(datos$retorno)\nsharpe_ratio &lt;- (media_retorno * 252) / (sd_retorno * sqrt(252))\n\ncat(\"Media de retornos:\", media_retorno, \"\\n\")\n\nMedia de retornos: 0.0003168098 \n\ncat(\"Volatilidad anualizada:\", sd_retorno * sqrt(252), \"\\n\")\n\nVolatilidad anualizada: 0.2236562 \n\ncat(\"Sharpe Ratio:\", sharpe_ratio, \"\\n\")\n\nSharpe Ratio: 0.356959"
+    "text": "Paso 2: Análisis con IA\nEn Claude Code, copia y pega este prompt:\nLee el archivo retornos.csv,\ncalcula los retornos acumulativos (usa cumprod(1 + retorno) - 1),\ngrafica los retornos acumulativos con ggplot2 en función de la fecha,\ncalcula la media, desviación estándar y el ratio de Sharpe\n(asumir tasa libre de riesgo = 0),\ne imprime estos estadísticos.\nClaude generará:\n\nlibrary(tidyverse)\n\n# Leer datos\ndatos &lt;- read_csv(\"retornos.csv\")\n\nRows: 252 Columns: 2\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\ndbl  (1): retorno\ndate (1): fecha\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\n# Calcular retornos acumulativos\ndatos_acum &lt;- datos %&gt;%\n  mutate(retorno_acumulado = cumprod(1 + retorno) - 1)\n\n# Gráfico\nggplot(datos_acum, aes(x = fecha, y = retorno_acumulado)) +\n  geom_line(color = \"blue\") +\n  labs(title = \"Retorno Acumulado\",\n       x = \"Fecha\",\n       y = \"Retorno Acumulado\") +\n  theme_minimal()\n\n\n\n\n\n\n\n# Estadísticos\nmedia_retorno &lt;- mean(datos$retorno)\nsd_retorno &lt;- sd(datos$retorno)\nsharpe_ratio &lt;- (media_retorno * 252) / (sd_retorno * sqrt(252))\n\ncat(\"Media de retornos:\", media_retorno, \"\\n\")\n\nMedia de retornos: 0.0003168098 \n\ncat(\"Volatilidad anualizada:\", sd_retorno * sqrt(252), \"\\n\")\n\nVolatilidad anualizada: 0.2236562 \n\ncat(\"Sharpe Ratio:\", sharpe_ratio, \"\\n\")\n\nSharpe Ratio: 0.356959"
   },
   {
     "objectID": "clases_ia/notebook_01.html#paso-3-debugging-interactivo",
     "href": "clases_ia/notebook_01.html#paso-3-debugging-interactivo",
     "title": "Finanzas en R — Desarrollo Asistido por IA",
     "section": "Paso 3: Debugging interactivo",
-    "text": "Paso 3: Debugging interactivo\nSi algo falla, simplemente pega el error en Claude Code/Mistral Code:\nEl script da este error:\nError: object 'retorno_acumulado' not found\n\n¿Qué está mal y cómo lo arreglo?"
+    "text": "Paso 3: Debugging interactivo\nSi algo falla, simplemente pega el error en Claude Code:\nEl script da este error:\nError: object 'retorno_acumulado' not found\n\n¿Qué está mal y cómo lo arreglo?"
   },
   {
     "objectID": "clases_ia/notebook_01.html#paso-4-documentación",
@@ -844,7 +844,7 @@
     "href": "clases_ia/notebook_01.html#instrucciones",
     "title": "Finanzas en R — Desarrollo Asistido por IA",
     "section": "Instrucciones",
-    "text": "Instrucciones\n\nObtén o simula datos: retornos de 3 acciones (ej: Apple, Google, Microsoft) durante 1 año.\nOpción A (simulado con Claude):\nnpx @anthropic-ai/claude-code \"simula retornos diarios de 3 acciones distintas (252 días) y guarda en un CSV con columnas 'fecha', 'ticker', 'retorno'\"\nOpción B (datos reales): descarga desde https://finance.yahoo.com/\nAnaliza con Claude Code:\n\nCarga los datos.\nCalcula retornos acumulativos por acción.\nGenera gráficos comparativos.\nCalcula correlación entre las 3 acciones.\n\nPídele a Claude que genere un script que haga todo esto de una vez.\nEntrega:\n\nScript R comentado (.R).\nResultado de la correlación (tabla numérica).\nUn gráfico (puede ser PNG exportado de Positron).\nPárrafo breve (3-5 líneas): qué aprendiste de usar Claude Code vs escribir código manual."
+    "text": "Instrucciones\n\nObtén o simula datos: retornos de 3 acciones (ej: Apple, Google, Microsoft) durante 1 año.\nOpción A (simulado con Claude):\nclaude-code \"simula retornos diarios de 3 acciones distintas (252 días) y guarda en un CSV con columnas 'fecha', 'ticker', 'retorno'\"\nOpción B (datos reales): descarga desde https://finance.yahoo.com/\nAnaliza con Claude Code:\n\nCarga los datos.\nCalcula retornos acumulativos por acción.\nGenera gráficos comparativos.\nCalcula correlación entre las 3 acciones.\n\nPídele a Claude que genere un script que haga todo esto de una vez.\nEntrega:\n\nScript R comentado (.R).\nResultado de la correlación (tabla numérica).\nUn gráfico (puede ser PNG exportado de Positron).\nPárrafo breve (3-5 líneas): qué aprendiste de usar Claude Code vs escribir código manual."
   },
   {
     "objectID": "clases_ia/notebook_01.html#rúbrica",
@@ -908,5 +908,12 @@
     "title": "Diplomado en Ciencia de Datos para las Finanzas",
     "section": "",
     "text": "Este será el repositorio de los distintos materiales utilizados en el curso."
+  },
+  {
+    "objectID": "clases_ia/notebook_01.html#enfoque-asistido-por-ia",
+    "href": "clases_ia/notebook_01.html#enfoque-asistido-por-ia",
+    "title": "Finanzas en R — Desarrollo Asistido por IA",
+    "section": "Enfoque asistido por IA",
+    "text": "Enfoque asistido por IA\nPasos:\n\nAbre Positron y crea un archivo hello_world.R:\n\nUsa Ctrl+N o File → New File\nGuarda como hello_world.R\n\nAbre Claude Code en la terminal:\nclaude-code  # (si ya está instalado)\nCopia y pega este prompt directamente en la terminal interactiva:\n\nCrea un script R que imprima \"Hola mundo\" y luego prueba\ncon dos variables x=2, y=5 y una cadena, imprimiendo todo junto.\nEl resultado debería mostrar algo como: 2 5 Finanzas en R\nListo: Claude generará el código, lo explica, y tú lo copias al archivo.\nResultado: Claude genera:\n# Imprimir saludo\nprint(\"Hola mundo\")\n\n# Definir variables\nx &lt;- 2\ny &lt;- 5\nsaludo &lt;- \"Finanzas en R\"\n\n# Imprimir junto\nprint(paste(x, y, saludo, sep = \" \"))\nPero además te muestra una explicación:\n\n“Cree un script básico que imprime un saludo. Usé print() para la salida, &lt;- para asignar valores, y paste() para concatenar. El parámetro sep controla el separador entre elementos.”\n\nVentaja: no solo obtienes el código, sino una explicación instantánea. Así aprendes mientras usas."
   }
 ]
