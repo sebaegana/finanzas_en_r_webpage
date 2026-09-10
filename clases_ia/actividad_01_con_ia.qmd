@@ -1,8 +1,8 @@
 ---
-listing_title: "05 - Actividad 01 - Limpieza de Datos (Manual vs IA)"
+listing_title: "05 - Actividad 01 - Limpieza de Datos (Manual vs IA-Asistido)"
 title: |
-  Limpieza y Exploración de Datos
-subtitle: "Actividad 01: Comparación Manual vs Asistido con IA"
+  Actividad 01 — Limpieza y Exploración de Datos
+subtitle: "Comparación: Enfoque Manual vs Desarrollo Asistido con Claude Code"
 author:
   - Sebastián Egaña Santibáñez (segana@fen.uchile.cl)
   - Nicolás Leiva Díaz (nleivad@fen.uchile.cl)
@@ -35,17 +35,21 @@ format:
 
 # Introducción: La Actividad de Limpieza de Datos
 
-**Contexto**: Tienes un dataset sobre estadísticas de mujeres en ajedrez de diferentes federaciones mundiales.
-Tu tarea es:
+**Contexto**: Recibes un archivo Excel con estadísticas de mujeres en ajedrez de federaciones mundiales.
 
-1. ✅ Cargar datos desde Excel
-2. ✅ Crear un diccionario de variables
-3. ✅ Realizar estadística descriptiva
-4. ✅ Limpiar y estandarizar variables
-5. ✅ Crear nuevas variables si es necesario
-6. ✅ Entregar un reporte con explicaciones
+La actividad tradicional (Actividad 01 original) requiere:
 
-**Pregunta pedagógica**: ¿Cómo acelerar este flujo sin sacrificar calidad?
+1. ✅ Cargar datos desde Excel (hoja "data")
+2. ✅ Cargar diccionario de variables (hoja "variables")
+3. ✅ Crear un diccionario de variables completo
+4. ✅ Realizar estadística descriptiva
+5. ✅ Limpiar y estandarizar variables
+6. ✅ Crear nuevas variables si es necesario
+7. ✅ Entregar un reporte con explicaciones y código
+
+**Pregunta pedagógica**: ¿Cómo acelerar este flujo sin sacrificar calidad, usando IA?
+
+Este documento muestra la comparación directa: **enfoque manual vs asistido con Claude Code**.
 
 ---
 
@@ -53,7 +57,9 @@ Tu tarea es:
 
 ## Paso 1: Cargar librerías y datos
 
-Sin IA, escribirías el código manualmente:
+Sin IA, escribirías el código manualmente. El profesor te entrega un archivo Excel con dos hojas:
+- **"data"**: los datos de mujeres en ajedrez
+- **"variables"**: diccionario que explica cada columna
 
 ```r
 # Cargar librerías
@@ -62,8 +68,8 @@ library(tidyverse)
 library(skimr)
 
 # Cargar datos
-data <- read_excel("chess_women.xlsx", sheet = "data")
-variables_dict <- read_excel("chess_women.xlsx", sheet = "variables")
+data <- read_excel("[archivo Excel entregado]", sheet = "data")
+variables_dict <- read_excel("[archivo Excel entregado]", sheet = "variables")
 
 # Ver estructura
 head(data)
@@ -185,8 +191,8 @@ library(tidyverse)
 library(skimr)
 
 # 1. CARGAR DATOS
-data <- read_excel("chess_women.xlsx", sheet = "data")
-variables_dict <- read_excel("chess_women.xlsx", sheet = "variables")
+data <- read_excel("[archivo Excel entregado]", sheet = "data")
+variables_dict <- read_excel("[archivo Excel entregado]", sheet = "variables")
 
 # 2. DICCIONARIO DE VARIABLES
 var_dict_formatted <- variables_dict %>%
@@ -325,13 +331,13 @@ Claude Code genera el código optimizado **en segundos**. Solo ajustas si necesi
 **Paso 1: Prepara tu workspace**
 - Abre Positron
 - Crea un proyecto nuevo
-- Descarga el dataset `chess_women.xlsx`
+- Ubica el archivo Excel entregado (con hojas "data" y "variables")
 
 **Paso 2: Usa Claude Code para exploración inicial**
 
-Abre Claude Code en Positron y pide:
+Abre Claude Code en Positron y pide (reemplaza `archivo.xlsx` con el nombre del archivo):
 
-> "Carga chess_women.xlsx y dame un resumen inicial:
+> "Carga el archivo Excel (hojas 'data' y 'variables') y dame un resumen inicial:
 >  - Dimensiones del dataset
 >  - Tipos de datos
 >  - Valores faltantes por columna
@@ -376,7 +382,7 @@ Si prefieres un balance entre escribir código y usar IA:
 
 Pídele a Claude Code **todo el flujo** en un único prompt largo:
 
-> "Necesito un análisis completo de chess_women.xlsx:
+> "Necesito un análisis completo de [archivo Excel entregado]:
 > 1. Carga ambas hojas
 > 2. Crea diccionario de variables
 > 3. Estadística descriptiva (mean, sd, missing)
@@ -410,7 +416,7 @@ Pídele a Claude Code **todo el flujo** en un único prompt largo:
 Debes entregar:
 
 1. **Script R** (`actividad_01_limpieza.R` o `.qmd`) con código comentado
-2. **Dataset limpio** (`chess_women_clean.csv`)
+2. **Dataset limpio** (archivo CSV con datos procesados)
 3. **Reporte HTML o PDF** con:
    - Diccionario de variables (tabla formateada)
    - Resumen estadístico (por país, por edad, por rating)
