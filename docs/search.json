@@ -1,0 +1,849 @@
+[
+  {
+    "objectID": "recursos.html",
+    "href": "recursos.html",
+    "title": "Recursos",
+    "section": "",
+    "text": "Wickham, H., & Grolemund, G. (2016). R for data science: import, tidy, transform, visualize, and model data. ” O’Reilly Media, Inc.”. Enlace acá\nGrolemund, G. (2014). Hands-on programming with R: Write your own functions and simulations. ” O’Reilly Media, Inc.”. Enlace acá\nRegenstein Jr, J. K. (2018). Reproducible finance with R: Code flows and shiny apps for portfolio analysis. CRC Press. Enlace acá\nScheuch, C., Voigt, S., & Weiss, P. (2023). Tidy Finance with R (1st ed.). Chapman and Hall/CRC. https://doi.org/10.1201/b23237. Enlace acá\nXie, Y., Allaire, J. J., & Grolemund, G. (2018). R markdown: The definitive guide. CRC Press. Enlace acá\nBryan, J., & Hester, J. (n.d.). Happy Git and GitHub for the useR. Enlace acá\n\n\n\n\n\nUtilización de Renv: Enlace acá\n\n\n\n\n\nhttps://posit.co/resources/cheatsheets/"
+  },
+  {
+    "objectID": "recursos.html#libros",
+    "href": "recursos.html#libros",
+    "title": "Recursos",
+    "section": "",
+    "text": "Wickham, H., & Grolemund, G. (2016). R for data science: import, tidy, transform, visualize, and model data. ” O’Reilly Media, Inc.”. Enlace acá\nGrolemund, G. (2014). Hands-on programming with R: Write your own functions and simulations. ” O’Reilly Media, Inc.”. Enlace acá\nRegenstein Jr, J. K. (2018). Reproducible finance with R: Code flows and shiny apps for portfolio analysis. CRC Press. Enlace acá\nScheuch, C., Voigt, S., & Weiss, P. (2023). Tidy Finance with R (1st ed.). Chapman and Hall/CRC. https://doi.org/10.1201/b23237. Enlace acá\nXie, Y., Allaire, J. J., & Grolemund, G. (2018). R markdown: The definitive guide. CRC Press. Enlace acá\nBryan, J., & Hester, J. (n.d.). Happy Git and GitHub for the useR. Enlace acá"
+  },
+  {
+    "objectID": "recursos.html#section",
+    "href": "recursos.html#section",
+    "title": "Recursos",
+    "section": "",
+    "text": "Utilización de Renv: Enlace acá"
+  },
+  {
+    "objectID": "recursos.html#cheatsheets",
+    "href": "recursos.html#cheatsheets",
+    "title": "Recursos",
+    "section": "",
+    "text": "https://posit.co/resources/cheatsheets/"
+  },
+  {
+    "objectID": "contacto.html",
+    "href": "contacto.html",
+    "title": "Contacto",
+    "section": "",
+    "text": "Contacto\nSebastián Egaña Santibáñez\nDocente del curso\n\n📧 segana@fen.uchile.cl\n\n💼 LinkedIn\n💻Página Web\n🐈Github"
+  },
+  {
+    "objectID": "clases_ia/RESPUESTAS_PROFESOR.html",
+    "href": "clases_ia/RESPUESTAS_PROFESOR.html",
+    "title": "RESPUESTAS Y RÚBRICA - Clase 01",
+    "section": "",
+    "text": "⚠️ CONFIDENCIAL - SOLO PROFESOR\n\n\n\nPregunta: Explica en 3-4 líneas por qué usamos herramientas de IA generativa en un curso de finanzas cuantitativas. ¿Cuáles son los tres problemas principales que resuelven?\nRespuesta esperada: - Reducen tiempo de escritura de código boilerplate - Aceleran exploración de datos (prueba múltiples enfoques rápidamente) - Facilitan documentación y comunicación de análisis - (Bonus: Mejoran debugging interactivo)\nRúbrica: - 20 pts: Menciona 3 problemas claros y específicos - 15 pts: Menciona 2-3 problemas pero falta claridad - 10 pts: Menciona 1-2 problemas vagos - 0 pts: No responde o respuesta incorrecta\n\n\n\n\nPregunta: Describe los pasos principales para instalar y configurar Claude Code en Windows PowerShell. ¿Qué es lo más importante después de instalar Node.js?\nRespuesta esperada: 1. Instalar Node.js (v18+) 2. Crear cuenta en console.anthropic.com 3. Generar API key 4. Configurar variable de entorno: $env:ANTHROPIC_API_KEY=\"sk-ant-...\" 5. Verificar con npx @anthropic-ai/claude-code --version\nLo más importante: Configurar la API key (sin ella no funciona)\nRúbrica: - 20 pts: Pasos correctos en orden + identifica API key como crítica - 15 pts: 4 de 5 pasos correctos - 10 pts: 3 de 5 pasos correctos - 5 pts: 2 de 5 pasos correctos - 0 pts: Menos de 2 pasos o incorrectos\n\n\n\n\nPregunta: Reescribe este prompt MALO para que sea EFECTIVO según las 5 reglas de prompting:\nGenera código R para analizar datos financieros\nRespuesta esperada (ejemplo):\nUsa tidyverse para analizar un CSV de retornos diarios de acciones.\nEl script debe:\n- Cargar el archivo 'precios.csv' (columnas: fecha, ticker, precio)\n- Calcular retornos diarios usando (precio_hoy - precio_ayer) / precio_ayer\n- Generar gráfico de serie de tiempo con ggplot2\n- Calcular y imprimir: media, desviación estándar, ratio de Sharpe (asumir Rf=0)\nRúbrica: - 20 pts: Específico + reproducible + menciona librerías + incluye formato entrada/salida - 15 pts: Específico + reproducible + menciona librerías (falta detalles) - 10 pts: Más específico que el original pero falta reproducibilidad - 5 pts: Mejorado pero aún vago - 0 pts: Sin mejora o no intenta\nNota: Aceptar variaciones siempre que demuestre aplicación de las 5 reglas (contexto, reproducibilidad, librerías, explicación, iteración)\n\n\n\n\nPregunta: Describe paso a paso cómo usarías Claude Code para: 1. Crear un script que simule 252 retornos diarios 2. Ejecutarlo en Positron 3. Manejar un error que aparezca\nRespuesta esperada: 1. Abre Claude Code en terminal 2. Pega prompt para simulación 3. Claude genera código → copias al archivo simular.R 4. Ctrl+Enter en Positron para ejecutar 5. Si hay error: copia el error y pégalo en Claude Code 6. Claude explica el problema y propone solución 7. Editas el código y vuelves a ejecutar\nRúbrica: - 20 pts: 7 pasos claros y correctos - 15 pts: 5-6 pasos correctos - 10 pts: 3-4 pasos correctos - 5 pts: 1-2 pasos - 0 pts: No responde o incorrectos\nCriterios de evaluación: - Debe incluir: generar → copiar → ejecutar → error → consultar → corregir - Aceptar variaciones en el orden/formato siempre que el flujo sea correcto\n\n\n\n\nPregunta: ¿Cuáles son las 3 limitaciones principales de usar IA generativa en análisis financiero? ¿Cómo se mitigan?\nRespuesta esperada: 1. No es 100% preciso: Mitiga revisando código antes de usarlo en datos reales 2. Requiere conexión a internet: Mitiga teniendo alternativas offline (código manual) 3. Requiere comprensión del usuario: Mitiga NO delegando pensamiento financiero a la IA 4. (Bonus): Riesgo de alucinaciones → Validar resultados con métodos alternativos\nRúbrica: - 20 pts: 3 limitaciones claras + 3 mitigaciones prácticas - 15 pts: 3 limitaciones + 2 mitigaciones - 10 pts: 2 limitaciones + 2 mitigaciones - 5 pts: 1-2 limitaciones + 1 mitigación vaga - 0 pts: No responde o respuesta superficial\nNota: Esta es la pregunta más importante - evalúa pensamiento crítico. Aceptar respuestas creativas siempre que demuestren comprensión.\n\n\n\n\n\n\n\nPuntaje\nCalificación\n\n\n\n\n90-100\nA (Excelente)\n\n\n80-89\nB (Bueno)\n\n\n70-79\nC (Satisfactorio)\n\n\n60-69\nD (Mínimo)\n\n\n&lt;60\nF (Insuficiente)\n\n\n\n\n\n\n\n\n\n\nTiempo recomendado: 30-45 minutos\nLos estudiantes pueden usar el notebook como referencia\nAceptar respuestas en español\n\n\n\n\n\nClaridad: La respuesta debe ser comprensible\nExactitud: Debe demostrar comprensión correcta del concepto\nCompletitud: Debe abordar todos los puntos de la pregunta\nVariación: Aceptar respuestas diferentes siempre que sean correctas\n\n\n\n\n\nPreguntas 1-2: Respuestas más estructuradas (menos variación)\nPregunta 3: Muchas variaciones válidas (cualquier mejora es aceptable)\nPregunta 4: Orden flexible, solo importa el flujo correcto\nPregunta 5: Muy flexible (múltiples respuestas válidas posibles)\n\n\n\n\n\nSi el estudiante confunde Positron con RStudio: aceptar si explica correctamente\nSi usa vibe o mistral-code en lugar de Claude Code: válido (alternativa correcta)\nSi el prompt de la Pregunta 3 es diferente pero más específico/reproducible: válido\n\n\nDocumento guardado: 2026-08-30 Confidencialidad: Solo profesor - No distribuir a estudiantes Distribución: Mantener localmente, no subir a la web"
+  },
+  {
+    "objectID": "clases_ia/RESPUESTAS_PROFESOR.html#pregunta-1-conceptos-fundamentales-20-puntos",
+    "href": "clases_ia/RESPUESTAS_PROFESOR.html#pregunta-1-conceptos-fundamentales-20-puntos",
+    "title": "RESPUESTAS Y RÚBRICA - Clase 01",
+    "section": "",
+    "text": "Pregunta: Explica en 3-4 líneas por qué usamos herramientas de IA generativa en un curso de finanzas cuantitativas. ¿Cuáles son los tres problemas principales que resuelven?\nRespuesta esperada: - Reducen tiempo de escritura de código boilerplate - Aceleran exploración de datos (prueba múltiples enfoques rápidamente) - Facilitan documentación y comunicación de análisis - (Bonus: Mejoran debugging interactivo)\nRúbrica: - 20 pts: Menciona 3 problemas claros y específicos - 15 pts: Menciona 2-3 problemas pero falta claridad - 10 pts: Menciona 1-2 problemas vagos - 0 pts: No responde o respuesta incorrecta"
+  },
+  {
+    "objectID": "clases_ia/RESPUESTAS_PROFESOR.html#pregunta-2-herramientas-y-configuración-20-puntos",
+    "href": "clases_ia/RESPUESTAS_PROFESOR.html#pregunta-2-herramientas-y-configuración-20-puntos",
+    "title": "RESPUESTAS Y RÚBRICA - Clase 01",
+    "section": "",
+    "text": "Pregunta: Describe los pasos principales para instalar y configurar Claude Code en Windows PowerShell. ¿Qué es lo más importante después de instalar Node.js?\nRespuesta esperada: 1. Instalar Node.js (v18+) 2. Crear cuenta en console.anthropic.com 3. Generar API key 4. Configurar variable de entorno: $env:ANTHROPIC_API_KEY=\"sk-ant-...\" 5. Verificar con npx @anthropic-ai/claude-code --version\nLo más importante: Configurar la API key (sin ella no funciona)\nRúbrica: - 20 pts: Pasos correctos en orden + identifica API key como crítica - 15 pts: 4 de 5 pasos correctos - 10 pts: 3 de 5 pasos correctos - 5 pts: 2 de 5 pasos correctos - 0 pts: Menos de 2 pasos o incorrectos"
+  },
+  {
+    "objectID": "clases_ia/RESPUESTAS_PROFESOR.html#pregunta-3-prompting-efectivo-20-puntos",
+    "href": "clases_ia/RESPUESTAS_PROFESOR.html#pregunta-3-prompting-efectivo-20-puntos",
+    "title": "RESPUESTAS Y RÚBRICA - Clase 01",
+    "section": "",
+    "text": "Pregunta: Reescribe este prompt MALO para que sea EFECTIVO según las 5 reglas de prompting:\nGenera código R para analizar datos financieros\nRespuesta esperada (ejemplo):\nUsa tidyverse para analizar un CSV de retornos diarios de acciones.\nEl script debe:\n- Cargar el archivo 'precios.csv' (columnas: fecha, ticker, precio)\n- Calcular retornos diarios usando (precio_hoy - precio_ayer) / precio_ayer\n- Generar gráfico de serie de tiempo con ggplot2\n- Calcular y imprimir: media, desviación estándar, ratio de Sharpe (asumir Rf=0)\nRúbrica: - 20 pts: Específico + reproducible + menciona librerías + incluye formato entrada/salida - 15 pts: Específico + reproducible + menciona librerías (falta detalles) - 10 pts: Más específico que el original pero falta reproducibilidad - 5 pts: Mejorado pero aún vago - 0 pts: Sin mejora o no intenta\nNota: Aceptar variaciones siempre que demuestre aplicación de las 5 reglas (contexto, reproducibilidad, librerías, explicación, iteración)"
+  },
+  {
+    "objectID": "clases_ia/RESPUESTAS_PROFESOR.html#pregunta-4-flujo-de-trabajo-práctico-20-puntos",
+    "href": "clases_ia/RESPUESTAS_PROFESOR.html#pregunta-4-flujo-de-trabajo-práctico-20-puntos",
+    "title": "RESPUESTAS Y RÚBRICA - Clase 01",
+    "section": "",
+    "text": "Pregunta: Describe paso a paso cómo usarías Claude Code para: 1. Crear un script que simule 252 retornos diarios 2. Ejecutarlo en Positron 3. Manejar un error que aparezca\nRespuesta esperada: 1. Abre Claude Code en terminal 2. Pega prompt para simulación 3. Claude genera código → copias al archivo simular.R 4. Ctrl+Enter en Positron para ejecutar 5. Si hay error: copia el error y pégalo en Claude Code 6. Claude explica el problema y propone solución 7. Editas el código y vuelves a ejecutar\nRúbrica: - 20 pts: 7 pasos claros y correctos - 15 pts: 5-6 pasos correctos - 10 pts: 3-4 pasos correctos - 5 pts: 1-2 pasos - 0 pts: No responde o incorrectos\nCriterios de evaluación: - Debe incluir: generar → copiar → ejecutar → error → consultar → corregir - Aceptar variaciones en el orden/formato siempre que el flujo sea correcto"
+  },
+  {
+    "objectID": "clases_ia/RESPUESTAS_PROFESOR.html#pregunta-5-análisis-crítico-20-puntos",
+    "href": "clases_ia/RESPUESTAS_PROFESOR.html#pregunta-5-análisis-crítico-20-puntos",
+    "title": "RESPUESTAS Y RÚBRICA - Clase 01",
+    "section": "",
+    "text": "Pregunta: ¿Cuáles son las 3 limitaciones principales de usar IA generativa en análisis financiero? ¿Cómo se mitigan?\nRespuesta esperada: 1. No es 100% preciso: Mitiga revisando código antes de usarlo en datos reales 2. Requiere conexión a internet: Mitiga teniendo alternativas offline (código manual) 3. Requiere comprensión del usuario: Mitiga NO delegando pensamiento financiero a la IA 4. (Bonus): Riesgo de alucinaciones → Validar resultados con métodos alternativos\nRúbrica: - 20 pts: 3 limitaciones claras + 3 mitigaciones prácticas - 15 pts: 3 limitaciones + 2 mitigaciones - 10 pts: 2 limitaciones + 2 mitigaciones - 5 pts: 1-2 limitaciones + 1 mitigación vaga - 0 pts: No responde o respuesta superficial\nNota: Esta es la pregunta más importante - evalúa pensamiento crítico. Aceptar respuestas creativas siempre que demuestren comprensión."
+  },
+  {
+    "objectID": "clases_ia/RESPUESTAS_PROFESOR.html#escala-de-calificaciones",
+    "href": "clases_ia/RESPUESTAS_PROFESOR.html#escala-de-calificaciones",
+    "title": "RESPUESTAS Y RÚBRICA - Clase 01",
+    "section": "",
+    "text": "Puntaje\nCalificación\n\n\n\n\n90-100\nA (Excelente)\n\n\n80-89\nB (Bueno)\n\n\n70-79\nC (Satisfactorio)\n\n\n60-69\nD (Mínimo)\n\n\n&lt;60\nF (Insuficiente)"
+  },
+  {
+    "objectID": "clases_ia/RESPUESTAS_PROFESOR.html#notas-generales-de-evaluación",
+    "href": "clases_ia/RESPUESTAS_PROFESOR.html#notas-generales-de-evaluación",
+    "title": "RESPUESTAS Y RÚBRICA - Clase 01",
+    "section": "",
+    "text": "Tiempo recomendado: 30-45 minutos\nLos estudiantes pueden usar el notebook como referencia\nAceptar respuestas en español\n\n\n\n\n\nClaridad: La respuesta debe ser comprensible\nExactitud: Debe demostrar comprensión correcta del concepto\nCompletitud: Debe abordar todos los puntos de la pregunta\nVariación: Aceptar respuestas diferentes siempre que sean correctas\n\n\n\n\n\nPreguntas 1-2: Respuestas más estructuradas (menos variación)\nPregunta 3: Muchas variaciones válidas (cualquier mejora es aceptable)\nPregunta 4: Orden flexible, solo importa el flujo correcto\nPregunta 5: Muy flexible (múltiples respuestas válidas posibles)\n\n\n\n\n\nSi el estudiante confunde Positron con RStudio: aceptar si explica correctamente\nSi usa vibe o mistral-code en lugar de Claude Code: válido (alternativa correcta)\nSi el prompt de la Pregunta 3 es diferente pero más específico/reproducible: válido\n\n\nDocumento guardado: 2026-08-30 Confidencialidad: Solo profesor - No distribuir a estudiantes Distribución: Mantener localmente, no subir a la web"
+  },
+  {
+    "objectID": "clases_ia/intro.html",
+    "href": "clases_ia/intro.html",
+    "title": "Introducción a Finanzas en R",
+    "section": "",
+    "text": "📄 Descargar PDF\n  💾 Descargar Fuente"
+  },
+  {
+    "objectID": "clases_ia/intro.html#descargas",
+    "href": "clases_ia/intro.html#descargas",
+    "title": "Introducción a Finanzas en R",
+    "section": "",
+    "text": "📄 Descargar PDF\n  💾 Descargar Fuente"
+  },
+  {
+    "objectID": "clases_ia/intro.html#temario",
+    "href": "clases_ia/intro.html#temario",
+    "title": "Introducción a Finanzas en R",
+    "section": "Temario",
+    "text": "Temario\n\nIntroducción a lenguajes de programación\n¿Qué es R?\nInstalación de R y Positron (nuevo IDE)\nAnálisis de datos y ciencias de datos\nFundamentos de DevOps en finanzas\nPor qué IA en este curso\nBibliografía y recursos"
+  },
+  {
+    "objectID": "clases_ia/intro.html#definición-wikipedia",
+    "href": "clases_ia/intro.html#definición-wikipedia",
+    "title": "Introducción a Finanzas en R",
+    "section": "Definición (Wikipedia)",
+    "text": "Definición (Wikipedia)\nR es un entorno y lenguaje de programación con un enfoque al análisis estadístico.\nR nació como una reimplementación de software libre del lenguaje S, adicionado con soporte para ámbito estático.\nSe trata de uno de los lenguajes de programación más utilizados en: - Investigación científica - Aprendizaje automático (Machine Learning) - Minería de datos - Investigación biomédica - Bioinformática - Matemáticas financieras 📊\nA esto contribuye la posibilidad de cargar diferentes bibliotecas o paquetes con funcionalidades de cálculo y graficación.\nReferencia: https://es.wikipedia.org/wiki/R_(lenguaje_de_programación)"
+  },
+  {
+    "objectID": "clases_ia/intro.html#instalación-y-plataformas",
+    "href": "clases_ia/intro.html#instalación-y-plataformas",
+    "title": "Introducción a Finanzas en R",
+    "section": "Instalación y Plataformas",
+    "text": "Instalación y Plataformas\nPor lo general, se debe instalar el lenguaje de programación y el GUI por separado.\n\nOpción 1: R + Positron (⭐ RECOMENDADO)\nPositron es el nuevo IDE de Posit Software, sucesor de RStudio.\nPaso 1: Instalar R\n→ https://cran.r-project.org\n\nPaso 2: Instalar Positron (nuevo IDE)\n→ https://posit.co/download/positron/\n\n\nOpción 2: R + Visual Studio Code\nCorrer R desde Visual Studio Code (VS Code) con extensiones específicas.\n\n\nOpción 3: Google Colab\nCorrer R a través de Google Colab (sin instalar nada localmente) → https://colab.to/r"
+  },
+  {
+    "objectID": "clases_ia/intro.html#por-qué-positron-en-lugar-de-rstudio",
+    "href": "clases_ia/intro.html#por-qué-positron-en-lugar-de-rstudio",
+    "title": "Introducción a Finanzas en R",
+    "section": "¿Por qué Positron en lugar de RStudio?",
+    "text": "¿Por qué Positron en lugar de RStudio?\n\n\n\nAspecto\nRStudio\nPositron\n\n\n\n\nBase\nQt (propietaria)\nVS Code (abierta, extensible)\n\n\nSoporte IA nativo\nNo\nSí (Claude Code)\n\n\nIntegración Python\nLimitada\nPrimera clase\n\n\nExtensiones\nPocas\n20k+ extensiones de VS Code\n\n\nPerformance\nBueno\nMuy bueno\n\n\nCosto\nLibre/Pagado\nLibre\n\n\n\nConclusión: Positron es el presente y futuro del desarrollo en R."
+  },
+  {
+    "objectID": "clases_ia/intro.html#el-ciclo-del-análisis-de-datos",
+    "href": "clases_ia/intro.html#el-ciclo-del-análisis-de-datos",
+    "title": "Introducción a Finanzas en R",
+    "section": "El Ciclo del Análisis de Datos",
+    "text": "El Ciclo del Análisis de Datos\nEl análisis de datos es un proceso iterativo que involucra:\n1. RECOLECCIÓN\n   ↓\n2. LIMPIEZA Y VALIDACIÓN\n   ↓\n3. EXPLORACIÓN (EDA)\n   ↓\n4. MODELADO Y ANÁLISIS\n   ↓\n5. VISUALIZACIÓN\n   ↓\n6. COMUNICACIÓN E INSIGHTS\nEn finanzas, este ciclo es especialmente crítico porque los datos impactan decisiones de inversión."
+  },
+  {
+    "objectID": "clases_ia/intro.html#definición",
+    "href": "clases_ia/intro.html#definición",
+    "title": "Introducción a Finanzas en R",
+    "section": "Definición",
+    "text": "Definición\nExiste una relación entre las ciencias de datos y la estadística, pero esto viene dado por la dinámica relacionada con datos.\nLas ciencias de datos engloban:\n\n“El conjunto de principios, definiciones de problemas, algoritmos y procesos para extraer patrones no obvios y útiles de grandes conjuntos de datos”\n— Kelleher & Tierney (2021)\n\n\nDiferencia con Estadística\nLa ciencia de datos: - Va más allá del análisis estadístico puro - Integra programación, análisis de datos e ingeniería - Se enfoca en patrones accionables - Requiere trabajo en equipo e interdisciplinario - Incluye aspectos de operacionalización (despliegue en producción)"
+  },
+  {
+    "objectID": "clases_ia/intro.html#principios-fundamentales",
+    "href": "clases_ia/intro.html#principios-fundamentales",
+    "title": "Introducción a Finanzas en R",
+    "section": "Principios Fundamentales",
+    "text": "Principios Fundamentales\nDedicarse a la ciencia de datos implica moverse en la dinámica de desarrollo continuo:\n\nEscalabilidad: Los desarrollos no pueden depender de personas específicas\nValor organizacional: Los desarrollos son parte de los activos de las empresas\nColaboración: Se debe permitir siempre el trabajo en equipo\nVisión inter-equipos: Considerar cómo tu código se integra con otros sistemas"
+  },
+  {
+    "objectID": "clases_ia/intro.html#qué-es-cicd",
+    "href": "clases_ia/intro.html#qué-es-cicd",
+    "title": "Introducción a Finanzas en R",
+    "section": "¿Qué es CI/CD?",
+    "text": "¿Qué es CI/CD?\nCI/CD son prácticas esenciales en desarrollo moderno:\n\nCI (Continuous Integration): Integrar código constantemente\nCD (Continuous Delivery): Entrega continua de cambios\nCD (Continuous Deployment): Despliegue automático en producción\n\n\nAplicación en Finanzas\nEn un análisis financiero moderno:\nDesarrollo Local\n    ↓\nControl de Versiones (Git)\n    ↓\nTests Automáticos\n    ↓\nValidación de Datos\n    ↓\nIntegración en Producción\n    ↓\nMonitoreo Continuo\n\n\n¿Por qué importa en finanzas?\n\nTrazabilidad: Saber exactamente qué versión de código está en producción\nAuditoría: Cumplimiento regulatorio (FINMA, BCCh, etc.)\nConfiabilidad: Reducir errores en decisiones de inversión\nVelocidad: Iterar rápidamente en estrategias"
+  },
+  {
+    "objectID": "clases_ia/intro.html#el-ciclo-completo-de-desarrollo",
+    "href": "clases_ia/intro.html#el-ciclo-completo-de-desarrollo",
+    "title": "Introducción a Finanzas en R",
+    "section": "El Ciclo Completo de Desarrollo",
+    "text": "El Ciclo Completo de Desarrollo\n┌─────────────────────────────────────────────────┐\n│         CICLO COMPLETO EN FINANZAS              │\n├─────────────────────────────────────────────────┤\n│                                                 │\n│  Desarrollo → Estructuración → Documentación   │\n│      ↑                             ↓            │\n│      │         ML Ops              ↓            │\n│      └── Integración/Entrega ← Despliegue      │\n│           Versionamiento ← Monitoreo           │\n│                                                 │\n└─────────────────────────────────────────────────┘\n\nComponentes Clave\n\nDesarrollo: Código en R/Python\nEstructuración: Organizaciónn y limpieza de datos\nDocumentación: Notebooks, reportes, comentarios\nIntegración/Entrega: CI/CD pipelines\nVersionamiento: Git y GitHub\nDespliegue: A servidor o cloud\nMonitoreo: Alertas y métricas\nML Ops: Gestión de modelos en producción"
+  },
+  {
+    "objectID": "clases_ia/intro.html#la-revolución-de-los-llms",
+    "href": "clases_ia/intro.html#la-revolución-de-los-llms",
+    "title": "Introducción a Finanzas en R",
+    "section": "La Revolución de los LLMs",
+    "text": "La Revolución de los LLMs\nLos Modelos de Lenguaje de Gran Escala (LLMs) han transformado el desarrollo de software:\n\nGeneración automática de código: describe qué quieres, obtienes código en segundos\nDebugging inteligente: “¿por qué falla esto?” → explicaciones + soluciones\nDocumentación automática: pide explicaciones y comentarios\nIteración ágil: prueba ideas financieras sin reescribir desde cero"
+  },
+  {
+    "objectID": "clases_ia/intro.html#en-este-curso-usaremos",
+    "href": "clases_ia/intro.html#en-este-curso-usaremos",
+    "title": "Introducción a Finanzas en R",
+    "section": "En Este Curso Usaremos",
+    "text": "En Este Curso Usaremos\n\nClaude Code (Recomendado)\n\nSuperior para análisis financiero\nRequiere cuenta pagada\nIDE inteligente integrado\n\n\n\nMistral Vibe (Alternativa Gratuita)\n\nExcelente para aprender\nSin tarjeta de crédito necesaria\nBuena privacidad"
+  },
+  {
+    "objectID": "clases_ia/intro.html#cómo-integraremos-ia",
+    "href": "clases_ia/intro.html#cómo-integraremos-ia",
+    "title": "Introducción a Finanzas en R",
+    "section": "Cómo Integraremos IA",
+    "text": "Cómo Integraremos IA\n\nEnfoque Pedagógico\nNo se trata simplemente de usar IA para “ir más rápido”. Integraremos IA de forma estratégica:\n1. CONCEPTO TEÓRICO\n   ¿Qué queremos lograr?\n   ↓\n2. DEMOSTRACIÓN MANUAL\n   Cómo funciona sin IA\n   ↓\n3. CON IA ASISTIDA\n   Usando herramientas inteligentes\n   ↓\n4. VALIDACIÓN CRÍTICA\n   ¿Es correcto? ¿Podemos mejorar?\n   ↓\n5. ANÁLISIS FINANCIERO REAL\n   Aplicación práctica en finanzas"
+  },
+  {
+    "objectID": "clases_ia/intro.html#mejores-prácticas-con-ia-en-finanzas",
+    "href": "clases_ia/intro.html#mejores-prácticas-con-ia-en-finanzas",
+    "title": "Introducción a Finanzas en R",
+    "section": "Mejores Prácticas con IA en Finanzas",
+    "text": "Mejores Prácticas con IA en Finanzas\n\n✅ LO QUE SÍ HACEMOS\n\n✅ Usar IA para tareas repetitivas (manipulación de datos)\n✅ Validar SIEMPRE los resultados antes de usarlos\n✅ Documentar nuestros prompts y decisiones\n✅ Usar IA como colaborador, no como tomador de decisiones\n✅ Mantener pensamiento crítico\n\n\n\n❌ LO QUE NO HACEMOS\n\n❌ Copiar-pegar código sin entenderlo\n❌ Confiar ciegamente en resultados de IA\n❌ Usar IA para decisiones financieras sin validación humana\n❌ Compartir datos sensibles sin considerar privacidad\n❌ Delegar el pensamiento crítico a máquinas"
+  },
+  {
+    "objectID": "clases_ia/intro.html#libros-fundamentales",
+    "href": "clases_ia/intro.html#libros-fundamentales",
+    "title": "Introducción a Finanzas en R",
+    "section": "Libros Fundamentales",
+    "text": "Libros Fundamentales\n\nWickham, H., & Grolemund, G. (2016). R for Data Science: Import, Tidy, Transform, Visualize, and Model Data O’Reilly Media, Inc. → Enlace\nGrolemund, G. (2014). Hands-on Programming with R: Write Your Own Functions and Simulations O’Reilly Media, Inc. → Enlace\nRegenstein Jr, J. K. (2018). Reproducible Finance with R: Code Flows and Shiny Apps for Portfolio Analysis CRC Press\nScheuch, C., Voigt, S., & Weiss, P. (2023). Tidy Finance with R (1st ed.) Chapman and Hall/CRC → https://doi.org/10.1201/b23237\nXie, Y., Allaire, J. J., & Grolemund, G. (2018). R Markdown: The Definitive Guide CRC Press → Enlace"
+  },
+  {
+    "objectID": "clases_ia/intro.html#estructura-del-curso",
+    "href": "clases_ia/intro.html#estructura-del-curso",
+    "title": "Introducción a Finanzas en R",
+    "section": "Estructura del Curso",
+    "text": "Estructura del Curso\nEn las siguientes clases:\n\nInstalación y Configuración\n\nR, Positron, Claude Code o Mistral Vibe\n\nConceptos Básicos de Programación\n\nSintaxis, variables, tipos de datos\n\nEstructuras de Datos\n\nVectores, listas, data frames\n\nManipulación de Datos\n\nTidyverse, dplyr, tidyr\n\nAnálisis Financiero\n\nSeries de tiempo, retornos, riesgo\n\nVisualización\n\nggplot2, plotly, dashboards\n\nReportes Reproducibles\n\nQuarto, R Markdown\n\nDespliegue en Producción\n\nCI/CD, APIs, Shiny Apps"
+  },
+  {
+    "objectID": "clases_ia/intro.html#tu-rol-en-este-curso",
+    "href": "clases_ia/intro.html#tu-rol-en-este-curso",
+    "title": "Introducción a Finanzas en R",
+    "section": "Tu Rol en Este Curso",
+    "text": "Tu Rol en Este Curso\nEste curso no se trata solo de aprender R. Se trata de:\n\nDominar herramientas modernas que definen la industria hoy\nDesarrollar juicio crítico para usar IA responsablemente\nPrepararte para el futuro donde IA es estándar, no excepción\nAplicar conocimiento a problemas financieros reales\nSeguir mejores prácticas de desarrollo en equipos"
+  },
+  {
+    "objectID": "clases_ia/intro.html#mentalidad-clave",
+    "href": "clases_ia/intro.html#mentalidad-clave",
+    "title": "Introducción a Finanzas en R",
+    "section": "Mentalidad Clave",
+    "text": "Mentalidad Clave\n\n“La IA no reemplaza a los buenos analistas. Los buenos analistas que usan IA reemplazan a los que no.”"
+  },
+  {
+    "objectID": "clases_ia/herramientas.html",
+    "href": "clases_ia/herramientas.html",
+    "title": "Stack Tecnológico del Curso",
+    "section": "",
+    "text": "📄 Descargar PDF\n  💾 Descargar Fuente"
+  },
+  {
+    "objectID": "clases_ia/herramientas.html#descargas",
+    "href": "clases_ia/herramientas.html#descargas",
+    "title": "Stack Tecnológico del Curso",
+    "section": "",
+    "text": "📄 Descargar PDF\n  💾 Descargar Fuente"
+  },
+  {
+    "objectID": "clases_ia/herramientas.html#categorías-de-herramientas",
+    "href": "clases_ia/herramientas.html#categorías-de-herramientas",
+    "title": "Stack Tecnológico del Curso",
+    "section": "Categorías de Herramientas",
+    "text": "Categorías de Herramientas\n┌─────────────────────────────────────────────────────────┐\n│        STACK TECNOLÓGICO - FINANZAS EN R CON IA         │\n├──────────────────────┬──────────────────┬───────────────┤\n│  LENGUAJE            │  IDE & EDITOR    │  IA ASISTIDA  │\n│                      │                  │               │\n│  • R                 │  • Positron ⭐   │  • Claude ⭐  │\n│                      │  • VS Code       │  • Mistral    │\n│                      │  • RStudio ❌    │  • Mistral    │\n├──────────────────────┼──────────────────┼───────────────┤\n│  CONTROL DE VERSIÓN  │  DOCUMENTACIÓN   │  VISUALIZACIÓN│\n│                      │                  │               │\n│  • Git               │  • Quarto ⭐     │  • ggplot2 ⭐ │\n│  • GitHub            │  • R Markdown    │  • plotly     │\n│                      │  • Jupyter       │  • Shiny      │\n├──────────────────────┼──────────────────┼───────────────┤\n│  MANIPULACIÓN DATOS  │  DATOS FINANC.   │  DEPLOY       │\n│                      │                  │               │\n│  • dplyr ⭐          │  • tidyquant     │  • GitHub Pages│\n│  • tidyr             │  • QuantLib      │  • Shiny Server│\n│  • data.table        │  • xts/zoo       │  • Docker      │\n└──────────────────────┴──────────────────┴───────────────┘\n\n⭐ = RECOMENDADO / ❌ = OBSOLETO"
+  },
+  {
+    "objectID": "clases_ia/herramientas.html#opción-1-setup-mínimo-gratis",
+    "href": "clases_ia/herramientas.html#opción-1-setup-mínimo-gratis",
+    "title": "Stack Tecnológico del Curso",
+    "section": "📋 Opción 1: Setup Mínimo (Gratis)",
+    "text": "📋 Opción 1: Setup Mínimo (Gratis)\n☐ R (desde https://cran.r-project.org)\n☐ Positron (desde https://posit.co/download/positron/)\n☐ Git (desde https://git-scm.com/)\n☐ Quarto (instalado automáticamente con Positron)\n☐ Cuenta en GitHub (gratis)\nTiempo de instalación: ~30 min Costo: Gratis"
+  },
+  {
+    "objectID": "clases_ia/herramientas.html#opción-2-setup-completo-recomendado",
+    "href": "clases_ia/herramientas.html#opción-2-setup-completo-recomendado",
+    "title": "Stack Tecnológico del Curso",
+    "section": "📋 Opción 2: Setup Completo (Recomendado)",
+    "text": "📋 Opción 2: Setup Completo (Recomendado)\nIncluye TODO de Opción 1 más:\n☐ Crear cuenta en Claude.ai (gratis)\n☐ Activar Claude Code (gratis con 2M tokens/mes)\n  → O: Crear cuenta en Mistral (gratis, sin tarjeta)\n☐ Opcional: VS Code (alternativa a Positron)\nTiempo de instalación: ~45 min Costo: Gratis o $20/mes (Claude Pro)"
+  },
+  {
+    "objectID": "clases_ia/herramientas.html#alternativas-por-plataforma",
+    "href": "clases_ia/herramientas.html#alternativas-por-plataforma",
+    "title": "Stack Tecnológico del Curso",
+    "section": "📋 Alternativas por Plataforma",
+    "text": "📋 Alternativas por Plataforma\n\nWindows\n\n✅ Usar Positron (instalador directo)\n✅ Usar Git Bash (integrado con Git)\n✅ Alternativa: WSL2 + Linux setup\n\n\n\nmacOS\n\n✅ Usar Homebrew: brew install r\n✅ Descargar Positron.dmg\n✅ Git viene preinstalado\n\n\n\nLinux\n\n✅ sudo apt install r-base git\n✅ Descargar Positron AppImage\n✅ Terminal nativa (Bash)"
+  },
+  {
+    "objectID": "clases_ia/herramientas.html#r-base",
+    "href": "clases_ia/herramientas.html#r-base",
+    "title": "Stack Tecnológico del Curso",
+    "section": "R (Base)",
+    "text": "R (Base)\n\n✅ Descripción\nR es el lenguaje principal del curso. Es un lenguaje especializado en análisis estadístico y ciencias de datos.\n\n\n📥 Instalación\n# En Windows\nDescargar desde: https://cran.r-project.org\n\n# En macOS\nbrew install r\n\n# En Linux\nsudo apt-get install r-base\n\n\n📚 Librerías Clave\n\ntidyverse: Manipulación y visualización de datos\nggplot2: Visualización avanzada\ndplyr/tidyr: Transformación de datos\ndata.table: Operaciones eficientes con datos grandes\ntidyquant: Datos financieros\nrmarkdown/quarto: Reportes dinámicos\n\n\n\n💰 Costo\nGratis (Open Source)\n\n\n⭐ Nivel de Recomendación\nIMPRESCINDIBLE - 10/10"
+  },
+  {
+    "objectID": "clases_ia/herramientas.html#positron-recomendado",
+    "href": "clases_ia/herramientas.html#positron-recomendado",
+    "title": "Stack Tecnológico del Curso",
+    "section": "Positron (⭐ RECOMENDADO)",
+    "text": "Positron (⭐ RECOMENDADO)\n\n✅ Descripción\nPositron es el nuevo IDE de Posit Software, sucesor moderno de RStudio. Está construido sobre VS Code, lo que significa: - Acceso a 20k+ extensiones - Soporte nativo para IA (Claude Code) - Excelente integración R - Performance superior\n\n\n📥 Instalación\nDescargar desde: https://posit.co/download/positron/\n\n# O via package manager (cuando esté disponible)\nbrew install positron  # macOS\n\n\n✨ Ventajas Clave\n\n\n\nAspecto\nPositron\nRStudio\nVS Code\n\n\n\n\nIA Nativa\n✅\n❌\n✅ (ext)\n\n\nR\n✅✅\n✅\n✅ (ext)\n\n\nExtensiones\n20k+\nPocas\n50k+\n\n\nPerformance\nMuy bueno\nBueno\nExcelente\n\n\nCurva aprendizaje\nMedia\nBaja\nMedia\n\n\n\n\n\n💰 Costo\nGratis\n\n\n⭐ Nivel de Recomendación\nIMPRESCINDIBLE - 10/10"
+  },
+  {
+    "objectID": "clases_ia/herramientas.html#visual-studio-code-alternativa",
+    "href": "clases_ia/herramientas.html#visual-studio-code-alternativa",
+    "title": "Stack Tecnológico del Curso",
+    "section": "Visual Studio Code (Alternativa)",
+    "text": "Visual Studio Code (Alternativa)\n\n✅ Descripción\nVS Code es un editor ligero y potente. Aunque no está optimizado para R, con extensiones se puede usar.\n\n\n📥 Instalación\nDescargar desde: https://code.visualstudio.com/\n\n# O via package manager\nbrew install visual-studio-code  # macOS\n\n\n🔧 Extensiones Necesarias\n\nR (Posit)\nPython (Microsoft)\nGitHub Copilot (Microsoft)\nQuarto (Quarto)\nGitLens (Eric Amodio)\n\n\n\n💰 Costo\nGratis\n\n\n⭐ Nivel de Recomendación\nALTERNATIVA - 7/10 (si prefieres algo más ligero)"
+  },
+  {
+    "objectID": "clases_ia/herramientas.html#rstudio-no-recomendado",
+    "href": "clases_ia/herramientas.html#rstudio-no-recomendado",
+    "title": "Stack Tecnológico del Curso",
+    "section": "RStudio (❌ NO RECOMENDADO)",
+    "text": "RStudio (❌ NO RECOMENDADO)\n\n⚠️ Aviso Importante\nRStudio clásico ya no es recomendado para este curso porque: - Positron es el futuro oficial de Posit - RStudio no tiene soporte nativo para IA - Positron es más ligero y rápido - Mejor integración con Python\n\n\n💰 Costo\nGratis (versión de escritorio)\n\n\n⭐ Nivel de Recomendación\nNO RECOMENDADO - 2/10"
+  },
+  {
+    "objectID": "clases_ia/herramientas.html#claude-code-recomendado",
+    "href": "clases_ia/herramientas.html#claude-code-recomendado",
+    "title": "Stack Tecnológico del Curso",
+    "section": "Claude Code (⭐ RECOMENDADO)",
+    "text": "Claude Code (⭐ RECOMENDADO)\n\n✅ Descripción\nClaude Code es un IDE inteligente que integra Claude 3.5 Sonnet directamente en tu flujo de trabajo.\n\n\n🎯 Casos de Uso\n# Claude entiende tu código y puede:\n# 1. Generar código completo\n  \"Crea una función que calcule Sharpe ratio\"\n\n# 2. Debuggear\n  \"¿Por qué falla este código?\"\n\n# 3. Explicar\n  \"Explica línea por línea este análisis\"\n\n# 4. Refactorizar\n  \"Optimiza esta función para datos grandes\"\n\n# 5. Documentar\n  \"Agrega comentarios explicativos\"\n\n\n🔧 Características\n\nAcceso al código completo del proyecto\nEjecución de comandos en terminal\nHistorial de cambios\nManejo de archivos\n\n\n\n💰 Costo\n\nGratis: 2 millones tokens/mes (modelo limitado)\nPro: $20/mes (Claude 3.5 Sonnet, ilimitado)\n\n\n\n📝 Setup\n1. Visita: https://claude.ai/code\n2. Conecta tu carpeta del proyecto\n3. Comienza a usar Claude en tu IDE\n\n\n⭐ Nivel de Recomendación\nMUY RECOMENDADO - 10/10 (mejor para finanzas)"
+  },
+  {
+    "objectID": "clases_ia/herramientas.html#mistral-vibe-alternativa-gratuita",
+    "href": "clases_ia/herramientas.html#mistral-vibe-alternativa-gratuita",
+    "title": "Stack Tecnológico del Curso",
+    "section": "Mistral Vibe (Alternativa Gratuita)",
+    "text": "Mistral Vibe (Alternativa Gratuita)\n\n✅ Descripción\nMistral Vibe es la solución de Mistral AI para desarrollo asistido. Similar a Claude Code pero gratuita.\n\n\n🎯 Casos de Uso\nSimilar a Claude Code, pero con algunas limitaciones en precisión.\n\n\n✨ Ventajas\n\n✅ Completamente gratis\n✅ Sin tarjeta de crédito\n✅ Excelente para aprender\n✅ Buena privacidad\n\n\n\n⚠️ Limitaciones\n\nNo es tan preciso como Claude en finanzas\nMenor contexto de código\nComunidad más pequeña\n\n\n\n💰 Costo\nTotalmente Gratis\n\n\n📝 Setup\nDescargar desde: https://mistral.ai/vibe/\n\n\n⭐ Nivel de Recomendación\nBUENA ALTERNATIVA - 7/10 (si no tienes presupuesto)"
+  },
+  {
+    "objectID": "clases_ia/herramientas.html#git-github",
+    "href": "clases_ia/herramientas.html#git-github",
+    "title": "Stack Tecnológico del Curso",
+    "section": "Git + GitHub",
+    "text": "Git + GitHub\n\n✅ Descripción\nGit es el sistema de control de versión estándar. GitHub es la plataforma más popular para alojar repositorios.\n\n\n🔧 Instalación\n# Windows\nDescargar desde: https://git-scm.com/\n\n# macOS\nbrew install git\n\n# Linux\nsudo apt-get install git\n\n\n📝 Configuración Inicial\ngit config --global user.name \"Tu Nombre\"\ngit config --global user.email \"tu@email.com\"\n\n\n📚 Flujo Básico\n# Crear/clonar repositorio\ngit clone &lt;url&gt;\ncd &lt;proyecto&gt;\n\n# Hacer cambios\n# Editar archivos...\n\n# Preparar cambios\ngit add .\n\n# Guardar con mensaje\ngit commit -m \"feat: descripción del cambio\"\n\n# Subir a GitHub\ngit push origin main\n\n\n✨ Ventajas en Finanzas\n\nAuditoría: Historial completo de cambios\nColaboración: Trabajo en equipo sincronizado\nReproducibilidad: Volver a versiones anteriores\nBackup: Tu código está en la nube\n\n\n\n💰 Costo\nGratis (para repositorios públicos y privados)\n\n\n⭐ Nivel de Recomendación\nIMPRESCINDIBLE - 10/10"
+  },
+  {
+    "objectID": "clases_ia/herramientas.html#quarto-recomendado",
+    "href": "clases_ia/herramientas.html#quarto-recomendado",
+    "title": "Stack Tecnológico del Curso",
+    "section": "Quarto (⭐ RECOMENDADO)",
+    "text": "Quarto (⭐ RECOMENDADO)\n\n✅ Descripción\nQuarto es el sistema moderno para crear documentos dinámicos. Combina código R con narrativa.\n\n\n📝 Formatos Soportados\n\n.qmd → HTML (web)\n.qmd → PDF (documentos)\n.qmd → Word (reportes)\n.qmd → Presentaciones\n.qmd → Sitios web\n\n\n\n🎯 Ejemplo\n---\ntitle: \"Análisis de Portafolio\"\n---\n\n# Retornos Diarios\n\n\n::: {.cell}\n\n```{.r .cell-code}\nprices %&gt;%\n  mutate(returns = log(price/lag(price))) %&gt;%\n  head(10)\n:::\nEl código se ejecuta automáticamente y genera gráficos.\n\n### ✨ Ventajas\n- ✅ Una fuente de verdad (código + análisis)\n- ✅ Reproducible al 100%\n- ✅ Profesional (para clientes/reportes)\n- ✅ Fácil de mantener\n\n### 💰 Costo\n**Gratis** (Open Source)\n\n### 📝 Instalación\n```r\n# En R\ninstall.packages(\"quarto\")\n\n# O descargar desde:\nhttps://quarto.org/\n\n\n⭐ Nivel de Recomendación\nMUY RECOMENDADO - 9/10"
+  },
+  {
+    "objectID": "clases_ia/herramientas.html#r-markdown-alternativa",
+    "href": "clases_ia/herramientas.html#r-markdown-alternativa",
+    "title": "Stack Tecnológico del Curso",
+    "section": "R Markdown (Alternativa)",
+    "text": "R Markdown (Alternativa)\n\n✅ Descripción\nR Markdown fue el precursor de Quarto. Sigue siendo funcional pero está siendo reemplazado.\n\n\n💰 Costo\nGratis (Open Source)\n\n\n⭐ Nivel de Recomendación\nLEGADO - 5/10 (usa Quarto en su lugar)"
+  },
+  {
+    "objectID": "clases_ia/herramientas.html#ggplot2-recomendado",
+    "href": "clases_ia/herramientas.html#ggplot2-recomendado",
+    "title": "Stack Tecnológico del Curso",
+    "section": "ggplot2 (⭐ RECOMENDADO)",
+    "text": "ggplot2 (⭐ RECOMENDADO)\n\n✅ Descripción\nggplot2 es el sistema de visualización más poderoso en R. Basado en la “Gramática de los Gráficos”.\n\n\n🎯 Ejemplo\nlibrary(ggplot2)\n\ndf %&gt;%\n  ggplot(aes(x = date, y = returns)) +\n  geom_line() +\n  geom_smooth(method = \"loess\") +\n  theme_minimal() +\n  labs(title = \"Retornos Diarios\",\n       y = \"Retorno (%)\")\n\n\n✨ Ventajas\n\n✅ Altamente personalizable\n✅ Muchos temas disponibles\n✅ Puedes construir gráficos complejos\n✅ Integra bien con Quarto\n\n\n\n💰 Costo\nGratis (Open Source)\n\n\n⭐ Nivel de Recomendación\nIMPRESCINDIBLE - 10/10"
+  },
+  {
+    "objectID": "clases_ia/herramientas.html#plotly-interactivo",
+    "href": "clases_ia/herramientas.html#plotly-interactivo",
+    "title": "Stack Tecnológico del Curso",
+    "section": "Plotly (Interactivo)",
+    "text": "Plotly (Interactivo)\n\n✅ Descripción\nPlotly genera gráficos interactivos. Perfecto para dashboards y reportes web.\n\n\n🎯 Ejemplo\nlibrary(plotly)\n\ndf %&gt;%\n  plot_ly(x = ~date, y = ~returns) %&gt;%\n  add_trace(type = \"scatter\", mode = \"lines\")\n\n\n✨ Ventajas\n\n✅ Interactivo (zoom, hover, etc.)\n✅ Exportable a HTML\n✅ Funciona en Quarto\n✅ Profesional para presentaciones\n\n\n\n💰 Costo\nGratis (Open Source)\n\n\n⭐ Nivel de Recomendación\nRECOMENDADO - 8/10 (para reportes finales)"
+  },
+  {
+    "objectID": "clases_ia/herramientas.html#shiny-aplicaciones-web",
+    "href": "clases_ia/herramientas.html#shiny-aplicaciones-web",
+    "title": "Stack Tecnológico del Curso",
+    "section": "Shiny (Aplicaciones Web)",
+    "text": "Shiny (Aplicaciones Web)\n\n✅ Descripción\nShiny permite crear aplicaciones web interactivas sin HTML/CSS/JavaScript.\n\n\n🎯 Caso de Uso Financiero\nlibrary(shiny)\n\nui &lt;- fluidPage(\n  sliderInput(\"risk\", \"Riesgo:\", 0, 100),\n  plotOutput(\"plot\")\n)\n\nserver &lt;- function(input, output) {\n  output$plot &lt;- renderPlot({\n    # Generar gráfico según slider\n  })\n}\n\nshinyApp(ui, server)\n\n\n✨ Ventajas\n\n✅ Web apps sin frontend experience\n✅ Interactividad en tiempo real\n✅ Desplegable en Shiny Server o Posit Connect\n\n\n\n💰 Costo\n\nGratis: Desarrollo local\nPagado: Hosting en Shiny Server (~$13/mes)\n\n\n\n⭐ Nivel de Recomendación\nAVANZADO - 7/10 (para proyectos finales)"
+  },
+  {
+    "objectID": "clases_ia/herramientas.html#dplyr-recomendado",
+    "href": "clases_ia/herramientas.html#dplyr-recomendado",
+    "title": "Stack Tecnológico del Curso",
+    "section": "dplyr (⭐ RECOMENDADO)",
+    "text": "dplyr (⭐ RECOMENDADO)\n\n✅ Descripción\ndplyr es el verbo (paquete) más importante de tidyverse. Permite manipular datos de forma intuitiva.\n\n\n🎯 Verbos Principales\nlibrary(dplyr)\n\ndf %&gt;%\n  select(date, price, volume) %&gt;%    # Seleccionar columnas\n  filter(price &gt; 100) %&gt;%             # Filtrar filas\n  mutate(returns = price/lag(price)-1) %&gt;%  # Crear columnas\n  group_by(year(date)) %&gt;%            # Agrupar\n  summarize(avg_return = mean(returns))    # Resumir\n\n\n💰 Costo\nGratis (Open Source)\n\n\n⭐ Nivel de Recomendación\nIMPRESCINDIBLE - 10/10"
+  },
+  {
+    "objectID": "clases_ia/herramientas.html#tidyr-estructura",
+    "href": "clases_ia/herramientas.html#tidyr-estructura",
+    "title": "Stack Tecnológico del Curso",
+    "section": "tidyr (Estructura)",
+    "text": "tidyr (Estructura)\n\n✅ Descripción\ntidyr organiza tus datos en formato “tidy” (largo vs ancho).\n\n\n🎯 Funciones Clave\nlibrary(tidyr)\n\n# Datos ancho → largo\ndf %&gt;% pivot_longer(cols = -date, names_to = \"asset\")\n\n# Datos largo → ancho\ndf %&gt;% pivot_wider(names_from = asset, values_from = price)\n\n\n💰 Costo\nGratis (Open Source)\n\n\n⭐ Nivel de Recomendación\nMUY RECOMENDADO - 9/10"
+  },
+  {
+    "objectID": "clases_ia/herramientas.html#data.table-rendimiento",
+    "href": "clases_ia/herramientas.html#data.table-rendimiento",
+    "title": "Stack Tecnológico del Curso",
+    "section": "data.table (Rendimiento)",
+    "text": "data.table (Rendimiento)\n\n✅ Descripción\ndata.table es más rápido que dplyr para datos muy grandes (millones de filas).\n\n\n🎯 Ejemplo\nlibrary(data.table)\n\ndt &lt;- as.data.table(df)\ndt[price &gt; 100, .(date, price, returns)]\n\n\n✨ Ventajas\n\n✅ 10-100x más rápido que data.frame\n✅ Sintaxis compacta\n✅ Ideal para big data\n\n\n\n⚠️ Limitaciones\n\nCurva de aprendizaje más empinada\nSintaxis menos legible\n\n\n\n💰 Costo\nGratis (Open Source)\n\n\n⭐ Nivel de Recomendación\nPARA AVANZADOS - 6/10 (cuando dplyr es lento)"
+  },
+  {
+    "objectID": "clases_ia/herramientas.html#tidyquant-recomendado",
+    "href": "clases_ia/herramientas.html#tidyquant-recomendado",
+    "title": "Stack Tecnológico del Curso",
+    "section": "tidyquant (⭐ RECOMENDADO)",
+    "text": "tidyquant (⭐ RECOMENDADO)\n\n✅ Descripción\ntidyquant conecta R con fuentes financieras (Yahoo Finance, etc.) y proporciona funciones de análisis financiero.\n\n\n🎯 Ejemplo\nlibrary(tidyquant)\n\n# Descargar datos\ntq_get(\"AAPL\", get = \"stock.prices\", from = \"2020-01-01\")\n\n# Calcular retornos\ndf %&gt;%\n  tq_transmute(select = close, mutate_fun = periodReturn, period = \"daily\")\n\n# Ratios\ndf %&gt;% tq_performance(Ra = returns, performance_fun = SharpeRatio)\n\n\n💰 Costo\nGratis (Open Source)\n\n\n⭐ Nivel de Recomendación\nIMPRESCINDIBLE - 10/10"
+  },
+  {
+    "objectID": "clases_ia/herramientas.html#quantlib-valuación",
+    "href": "clases_ia/herramientas.html#quantlib-valuación",
+    "title": "Stack Tecnológico del Curso",
+    "section": "QuantLib (Valuación)",
+    "text": "QuantLib (Valuación)\n\n✅ Descripción\nQuantLib es una librería C++ para finanzas cuantitativas. En R se accede via RQuantLib.\n\n\n🎯 Casos\n\nValuación de derivados\nModelos de tasa de interés\nGestión de riesgo\n\n\n\n💰 Costo\nGratis (Open Source)\n\n\n⭐ Nivel de Recomendación\nPARA AVANZADOS - 7/10"
+  },
+  {
+    "objectID": "clases_ia/herramientas.html#xtszoo-series-de-tiempo",
+    "href": "clases_ia/herramientas.html#xtszoo-series-de-tiempo",
+    "title": "Stack Tecnológico del Curso",
+    "section": "xts/zoo (Series de Tiempo)",
+    "text": "xts/zoo (Series de Tiempo)\n\n✅ Descripción\nxts (eXtensible Time Series) y zoo manejan datos de series de tiempo indexados por fecha.\n\n\n🎯 Ejemplo\nlibrary(xts)\n\n# Crear serie de tiempo\nts_data &lt;- xts(prices, order.by = dates)\n\n# Operaciones\nts_data[\"2023-01\"]  # Datos de enero 2023\nlag(ts_data, 1)     # Rezago de 1 período\n\n\n💰 Costo\nGratis (Open Source)\n\n\n⭐ Nivel de Recomendación\nRECOMENDADO - 8/10"
+  },
+  {
+    "objectID": "clases_ia/herramientas.html#github-pages",
+    "href": "clases_ia/herramientas.html#github-pages",
+    "title": "Stack Tecnológico del Curso",
+    "section": "GitHub Pages",
+    "text": "GitHub Pages\n\n✅ Descripción\nGitHub Pages aloja sitios web estáticos GRATIS. Perfecto para reportes Quarto.\n\n\n🎯 Workflow\nQuarto (.qmd) → HTML → Git Push → GitHub Pages\n\n\n💰 Costo\nTotalmente Gratis (con repo público)\n\n\n⭐ Nivel de Recomendación\nMUY RECOMENDADO - 9/10 (es lo que usamos en el curso)"
+  },
+  {
+    "objectID": "clases_ia/herramientas.html#shiny-server",
+    "href": "clases_ia/herramientas.html#shiny-server",
+    "title": "Stack Tecnológico del Curso",
+    "section": "Shiny Server",
+    "text": "Shiny Server\n\n✅ Descripción\nShiny Server aloja aplicaciones Shiny en la nube.\n\n\n💰 Costo\n\nFree: Limitado (comunidad)\nStandard: $13/mes\nPremium: $39/mes\n\n\n\n⭐ Nivel de Recomendación\nPARA PRODUCCIÓN - 7/10"
+  },
+  {
+    "objectID": "clases_ia/herramientas.html#docker-containerización",
+    "href": "clases_ia/herramientas.html#docker-containerización",
+    "title": "Stack Tecnológico del Curso",
+    "section": "Docker (Containerización)",
+    "text": "Docker (Containerización)\n\n✅ Descripción\nDocker empaqueta tu aplicación con todas sus dependencias.\n\n\n🎯 Caso de Uso\n# Crear imagen con R + paquetes + tu código\ndocker build -t mi-app .\n\n# Correr en cualquier servidor\ndocker run mi-app\n\n\n💰 Costo\nGratis (Open Source)\n\n\n⭐ Nivel de Recomendación\nPARA DEVOPS - 5/10 (avanzado)"
+  },
+  {
+    "objectID": "clases_ia/herramientas.html#para-principiantes",
+    "href": "clases_ia/herramientas.html#para-principiantes",
+    "title": "Stack Tecnológico del Curso",
+    "section": "🎯 Para Principiantes",
+    "text": "🎯 Para Principiantes\nMÍNIMO VIABLE\n┌─────────────────────────────┐\n│ Positron                    │\n│ + R (Base)                  │\n│ + tidyverse (dplyr/ggplot2) │\n│ + Quarto                    │\n│ + Git + GitHub              │\n└─────────────────────────────┘\n\nCosto: GRATIS\nTiempo de aprendizaje: 4 semanas"
+  },
+  {
+    "objectID": "clases_ia/herramientas.html#para-intermedios",
+    "href": "clases_ia/herramientas.html#para-intermedios",
+    "title": "Stack Tecnológico del Curso",
+    "section": "🚀 Para Intermedios",
+    "text": "🚀 Para Intermedios\nSTACK COMPLETO\n┌──────────────────────────────┐\n│ Positron + Claude Code       │\n│ + R + Python                 │\n│ + tidyverse + tidyquant      │\n│ + Quarto + Plotly            │\n│ + Git + GitHub + GitHub Pages│\n│ + (Opcional: Shiny)          │\n└──────────────────────────────┘\n\nCosto: $20/mes (Claude Pro)\nTiempo de aprendizaje: 8 semanas"
+  },
+  {
+    "objectID": "clases_ia/herramientas.html#para-producción-profesionales",
+    "href": "clases_ia/herramientas.html#para-producción-profesionales",
+    "title": "Stack Tecnológico del Curso",
+    "section": "💼 Para Producción (Profesionales)",
+    "text": "💼 Para Producción (Profesionales)\nFULL STACK\n┌──────────────────────────────────┐\n│ Positron + Claude Code           │\n│ + R + Python                     │\n│ + tidyverse + tidyquant          │\n│ + Quarto + Plotly + Shiny        │\n│ + Git + GitHub + GitHub Actions  │\n│ + Shiny Server (deploy)          │\n│ + Docker (containerización)      │\n│ + QuantLib (valuación)           │\n│ + data.table (big data)          │\n└──────────────────────────────────┘\n\nCosto: $20-100/mes (según hosting)\nTiempo de aprendizaje: 12+ semanas"
+  },
+  {
+    "objectID": "clases_ia/herramientas.html#semana-1-fundaciones",
+    "href": "clases_ia/herramientas.html#semana-1-fundaciones",
+    "title": "Stack Tecnológico del Curso",
+    "section": "Semana 1: Fundaciones",
+    "text": "Semana 1: Fundaciones\n\n✅ Instalar R desde https://cran.r-project.org\n✅ Instalar Positron desde https://posit.co/download/positron/\n✅ Crear cuenta en GitHub\n✅ Instalar Git en tu computadora"
+  },
+  {
+    "objectID": "clases_ia/herramientas.html#semana-2-configuración-ia",
+    "href": "clases_ia/herramientas.html#semana-2-configuración-ia",
+    "title": "Stack Tecnológico del Curso",
+    "section": "Semana 2: Configuración IA",
+    "text": "Semana 2: Configuración IA\n\n✅ Crear cuenta en Claude.ai y activar Claude Code\n✅ Conectar tu proyecto a Claude Code\n✅ Probar primeros comandos con IA"
+  },
+  {
+    "objectID": "clases_ia/herramientas.html#semana-3-primeros-análisis",
+    "href": "clases_ia/herramientas.html#semana-3-primeros-análisis",
+    "title": "Stack Tecnológico del Curso",
+    "section": "Semana 3: Primeros Análisis",
+    "text": "Semana 3: Primeros Análisis\n\n✅ Aprender dplyr (filtrar, agrupar, resumir)\n✅ Crear gráficos con ggplot2\n✅ Hacer push a GitHub"
+  },
+  {
+    "objectID": "clases_ia/herramientas.html#semana-4-reportes",
+    "href": "clases_ia/herramientas.html#semana-4-reportes",
+    "title": "Stack Tecnológico del Curso",
+    "section": "Semana 4: Reportes",
+    "text": "Semana 4: Reportes\n\n✅ Crear documento Quarto\n✅ Combinar código + narrativa\n✅ Publicar en GitHub Pages"
+  },
+  {
+    "objectID": "clases_ia/actividad_01_con_ia.html",
+    "href": "clases_ia/actividad_01_con_ia.html",
+    "title": "Actividad 01 — Limpieza y Exploración de Datos",
+    "section": "",
+    "text": "📄 Descargar PDF\n    💾 Descargar Fuente\n  \n\n  \n    📊 Datos para la Actividad:\n    \n      Descargar actividad_01.xlsx (datos + diccionario de variables)\n      Ver Actividad 01 Original (especificaciones completas)"
+  },
+  {
+    "objectID": "clases_ia/actividad_01_con_ia.html#descargas-y-enlaces",
+    "href": "clases_ia/actividad_01_con_ia.html#descargas-y-enlaces",
+    "title": "Actividad 01 — Limpieza y Exploración de Datos",
+    "section": "",
+    "text": "📄 Descargar PDF\n    💾 Descargar Fuente\n  \n\n  \n    📊 Datos para la Actividad:\n    \n      Descargar actividad_01.xlsx (datos + diccionario de variables)\n      Ver Actividad 01 Original (especificaciones completas)"
+  },
+  {
+    "objectID": "clases_ia/actividad_01_con_ia.html#paso-1-cargar-librerías-y-datos",
+    "href": "clases_ia/actividad_01_con_ia.html#paso-1-cargar-librerías-y-datos",
+    "title": "Actividad 01 — Limpieza y Exploración de Datos",
+    "section": "Paso 1: Cargar librerías y datos",
+    "text": "Paso 1: Cargar librerías y datos\nSin IA, escribirías el código manualmente. El profesor te entrega un archivo Excel con dos hojas: - “data”: los datos de mujeres en ajedrez - “variables”: diccionario que explica cada columna\n# Cargar librerías\nlibrary(readxl)\nlibrary(tidyverse)\nlibrary(skimr)\n\n# Cargar datos\ndata &lt;- read_excel(\"[archivo Excel entregado]\", sheet = \"data\")\nvariables_dict &lt;- read_excel(\"[archivo Excel entregado]\", sheet = \"variables\")\n\n# Ver estructura\nhead(data)\nstr(data)\nTiempo invertido: ~5 minutos (recordar sintaxis, buscar ayuda si olvidas argumentos)."
+  },
+  {
+    "objectID": "clases_ia/actividad_01_con_ia.html#paso-2-exploración-manual",
+    "href": "clases_ia/actividad_01_con_ia.html#paso-2-exploración-manual",
+    "title": "Actividad 01 — Limpieza y Exploración de Datos",
+    "section": "Paso 2: Exploración Manual",
+    "text": "Paso 2: Exploración Manual\n# Diccionario manual\nprint(variables_dict)\n\n# Estadística descriptiva manual\nsummary(data)\nskim(data)\n\n# Buscar valores faltantes\ndata %&gt;%\n  summarise(across(everything(), ~sum(is.na(.))))\n\n# Visualizar distribuciones\ndata %&gt;%\n  pivot_longer(everything()) %&gt;%\n  ggplot(aes(x = value)) +\n  geom_histogram() +\n  facet_wrap(~name, scales = \"free\")\nTiempo invertido: ~15 minutos (prueba y error, ajustes visuales)."
+  },
+  {
+    "objectID": "clases_ia/actividad_01_con_ia.html#paso-3-limpieza-y-transformación-manual",
+    "href": "clases_ia/actividad_01_con_ia.html#paso-3-limpieza-y-transformación-manual",
+    "title": "Actividad 01 — Limpieza y Exploración de Datos",
+    "section": "Paso 3: Limpieza y Transformación Manual",
+    "text": "Paso 3: Limpieza y Transformación Manual\n# Estandarizar nombres\ndata_clean &lt;- data %&gt;%\n  rename_all(tolower) %&gt;%\n  rename_all(~gsub(\" \", \"_\", .))\n\n# Detectar y manejar valores atípicos\ndata_clean &lt;- data_clean %&gt;%\n  mutate(\n    ranking = as.numeric(ranking),\n    age = as.numeric(age),\n    rating = as.numeric(rating)\n  )\n\n# Crear nuevas variables\ndata_clean &lt;- data_clean %&gt;%\n  mutate(\n    rating_category = case_when(\n      rating &gt;= 2300 ~ \"Grandmaster\",\n      rating &gt;= 2200 ~ \"Master\",\n      rating &gt;= 2000 ~ \"Expert\",\n      TRUE ~ \"Other\"\n    ),\n    age_group = cut(age, breaks = c(0, 20, 30, 40, 50, 100),\n                    labels = c(\"&lt;20\", \"20-30\", \"30-40\", \"40-50\", \"50+\"))\n  )\nTiempo invertido: ~20 minutos (ajustes iterativos, decisiones ad-hoc)."
+  },
+  {
+    "objectID": "clases_ia/actividad_01_con_ia.html#paso-4-generar-reporte-manual",
+    "href": "clases_ia/actividad_01_con_ia.html#paso-4-generar-reporte-manual",
+    "title": "Actividad 01 — Limpieza y Exploración de Datos",
+    "section": "Paso 4: Generar Reporte Manual",
+    "text": "Paso 4: Generar Reporte Manual\n# Crear resumen\nresumen &lt;- data_clean %&gt;%\n  group_by(rating_category, age_group) %&gt;%\n  summarise(\n    n = n(),\n    mean_rating = mean(rating, na.rm = TRUE),\n    sd_rating = sd(rating, na.rm = TRUE)\n  )\n\n# Guardar en archivo\nwrite.csv(resumen, \"resumen_limpieza.csv\")\nTiempo total aproximado: 50-60 minutos (incluyendo debugging, consultas, retoques)."
+  },
+  {
+    "objectID": "clases_ia/actividad_01_con_ia.html#estrategia-describe-qué-necesitas-en-lenguaje-natural",
+    "href": "clases_ia/actividad_01_con_ia.html#estrategia-describe-qué-necesitas-en-lenguaje-natural",
+    "title": "Actividad 01 — Limpieza y Exploración de Datos",
+    "section": "Estrategia: Describe qué necesitas en lenguaje natural",
+    "text": "Estrategia: Describe qué necesitas en lenguaje natural\nEn lugar de escribir código línea por línea, describes la tarea a Claude Code:\nPrompt al asistente:\n\n“Necesito limpiar un dataset de ajedrez desde Excel. - Carga dos hojas: ‘data’ y ‘variables’ - Crea un reporte que incluya: 1. Diccionario de variables (nombre, tipo, descripción) 2. Estadística descriptiva completa 3. Detección de valores faltantes y atípicos 4. Estandarización de nombres de columnas 5. Nuevas variables: categoría de rating (GM, Master, Expert, Otros) y grupos de edad 6. Visualizaciones de distribuciones - Exporta todo a un archivo de reporte HTML”"
+  },
+  {
+    "objectID": "clases_ia/actividad_01_con_ia.html#lo-que-claude-code-genera-automáticamente",
+    "href": "clases_ia/actividad_01_con_ia.html#lo-que-claude-code-genera-automáticamente",
+    "title": "Actividad 01 — Limpieza y Exploración de Datos",
+    "section": "Lo que Claude Code genera automáticamente",
+    "text": "Lo que Claude Code genera automáticamente\nClaude Code crearía un script completo optimizado:\nlibrary(readxl)\nlibrary(tidyverse)\nlibrary(skimr)\n\n# 1. CARGAR DATOS\ndata &lt;- read_excel(\"[archivo Excel entregado]\", sheet = \"data\")\nvariables_dict &lt;- read_excel(\"[archivo Excel entregado]\", sheet = \"variables\")\n\n# 2. DICCIONARIO DE VARIABLES\nvar_dict_formatted &lt;- variables_dict %&gt;%\n  rename(\n    \"Variable\" = starts_with(\"nombre\") | starts_with(\"Nombre\"),\n    \"Tipo\" = starts_with(\"tipo\") | starts_with(\"Tipo\"),\n    \"Descripción\" = starts_with(\"descr\") | starts_with(\"Descr\")\n  )\n\n# 3. ESTADÍSTICA DESCRIPTIVA\nskim_stats &lt;- skim(data)\nsummary_stats &lt;- data %&gt;%\n  summarise(across(where(is.numeric),\n    list(\n      n = ~n(),\n      mean = ~mean(., na.rm = TRUE),\n      sd = ~sd(., na.rm = TRUE),\n      min = ~min(., na.rm = TRUE),\n      q25 = ~quantile(., 0.25, na.rm = TRUE),\n      median = ~median(., na.rm = TRUE),\n      q75 = ~quantile(., 0.75, na.rm = TRUE),\n      max = ~max(., na.rm = TRUE),\n      missing = ~sum(is.na(.))\n    ),\n    .names = \"{.col}_{.fn}\"\n  ))\n\n# 4. VALORES FALTANTES\nmissing_report &lt;- data %&gt;%\n  summarise(across(everything(),\n    ~paste(sum(is.na(.)), \"de\", n(), \"valores faltantes\")))\n\n# 5. LIMPIEZA Y ESTANDARIZACIÓN\ndata_clean &lt;- data %&gt;%\n  rename_all(tolower) %&gt;%\n  rename_all(~gsub(\" \", \"_\", .)) %&gt;%\n  mutate(across(where(is.character), str_trim))\n\n# 6. NUEVAS VARIABLES\ndata_clean &lt;- data_clean %&gt;%\n  mutate(\n    rating_numeric = as.numeric(rating),\n    age_numeric = as.numeric(age),\n    rating_category = case_when(\n      rating_numeric &gt;= 2300 ~ \"Grandmaster\",\n      rating_numeric &gt;= 2200 ~ \"Master\",\n      rating_numeric &gt;= 2000 ~ \"Expert\",\n      TRUE ~ \"Otro\"\n    ),\n    age_group = cut(age_numeric,\n      breaks = c(0, 20, 30, 40, 50, 100),\n      labels = c(\"&lt;20\", \"20-30\", \"30-40\", \"40-50\", \"50+\"))\n  )\n\n# 7. VISUALIZACIONES\nplot_rating_dist &lt;- data_clean %&gt;%\n  ggplot(aes(x = rating_numeric)) +\n  geom_histogram(binwidth = 50, fill = \"#FF0000\", alpha = 0.7) +\n  labs(title = \"Distribución de Ratings\",\n       x = \"Rating\", y = \"Frecuencia\") +\n  theme_minimal()\n\nplot_age_dist &lt;- data_clean %&gt;%\n  ggplot(aes(x = age_numeric)) +\n  geom_histogram(binwidth = 5, fill = \"#0066CC\", alpha = 0.7) +\n  labs(title = \"Distribución de Edades\",\n       x = \"Edad\", y = \"Frecuencia\") +\n  theme_minimal()\n\n# 8. RESUMEN POR CATEGORÍAS\nsummary_by_category &lt;- data_clean %&gt;%\n  group_by(rating_category, age_group) %&gt;%\n  summarise(\n    n = n(),\n    mean_rating = mean(rating_numeric, na.rm = TRUE),\n    sd_rating = sd(rating_numeric, na.rm = TRUE),\n    mean_age = mean(age_numeric, na.rm = TRUE),\n    .groups = 'drop'\n  )\n\n# 9. EXPORTAR RESULTADOS\nwrite.csv(summary_by_category, \"resumen_limpieza.csv\", row.names = FALSE)"
+  },
+  {
+    "objectID": "clases_ia/actividad_01_con_ia.html#ventajas-del-enfoque-asistido",
+    "href": "clases_ia/actividad_01_con_ia.html#ventajas-del-enfoque-asistido",
+    "title": "Actividad 01 — Limpieza y Exploración de Datos",
+    "section": "Ventajas del Enfoque Asistido",
+    "text": "Ventajas del Enfoque Asistido\n\n\n\n\n\n\n\n\nAspecto\nManual\nCon IA\n\n\n\n\nTiempo de código\n50-60 min\n5-10 min\n\n\nBoilerplate\nCompleto (cargas, librerías)\nGenerado automáticamente\n\n\nCobertura\nA menudo incompleta (olvidas casos)\nExhaustiva\n\n\nDocumentación\nManual, lleva tiempo\nGenerada con explicaciones\n\n\nIteraciones\nReescribir cada cambio\nPedir cambios en lenguaje natural\n\n\nDebugging\nLees mensajes de error solo\nAsistente explica y propone soluciones"
+  },
+  {
+    "objectID": "clases_ia/actividad_01_con_ia.html#escenario-quiero-visualizar-age_group-vs-rating_category",
+    "href": "clases_ia/actividad_01_con_ia.html#escenario-quiero-visualizar-age_group-vs-rating_category",
+    "title": "Actividad 01 — Limpieza y Exploración de Datos",
+    "section": "Escenario: “Quiero visualizar age_group vs rating_category”",
+    "text": "Escenario: “Quiero visualizar age_group vs rating_category”\n\nManual (Sin IA)\n# Buscas en Google, Stack Overflow, recuerdas sintaxis de ggplot\n# Pruebas varios geoms (bar, tile, violin)\n# Ajustas colores, temas, etiquetas\n\ndata_clean %&gt;%\n  ggplot(aes(x = age_group, y = rating_category, fill = n())) +\n  geom_tile() +\n  # ... (10 minutos de ajustes)\nTiempo: ~15 minutos\n\n\nCon IA\nPrompt: \"Dame un gráfico de tiles que muestre age_group vs\nrating_category, con conteos en color y etiquetas claras\"\nClaude Code genera el código optimizado en segundos. Solo ajustas si necesitas.\nTiempo: ~2 minutos (incluido ajuste)"
+  },
+  {
+    "objectID": "clases_ia/actividad_01_con_ia.html#instrucciones-con-ia",
+    "href": "clases_ia/actividad_01_con_ia.html#instrucciones-con-ia",
+    "title": "Actividad 01 — Limpieza y Exploración de Datos",
+    "section": "Instrucciones (Con IA)",
+    "text": "Instrucciones (Con IA)\n\nOpción A: Maximalista (Recomendada para aprender)\nPaso 1: Prepara tu workspace - Abre Positron - Crea un proyecto nuevo - Ubica el archivo Excel entregado (con hojas “data” y “variables”)\nPaso 2: Usa Claude Code para exploración inicial\nAbre Claude Code en Positron y pide (reemplaza archivo.xlsx con el nombre del archivo):\n\n“Carga el archivo Excel (hojas ‘data’ y ‘variables’) y dame un resumen inicial: - Dimensiones del dataset - Tipos de datos - Valores faltantes por columna - Top 5 filas”\n\nPaso 3: Itera sobre la limpieza\n\n“Ahora estandariza los nombres de columnas (tolower, sin espacios), convierte campos numéricos si es necesario, y crea estas variables: - rating_elite: TRUE si rating &gt;= 2200 - years_active: diferencia entre max y min de año”\n\nPaso 4: Visualiza resultados\n\n“Crea 3 gráficos: 1. Distribución de ratings (histogram) 2. Rating por país (top 10) 3. Correlación entre edad y rating”\n\nPaso 5: Genera reporte\n\n“Exporta a un archivo HTML con: - Tabla de diccionario de variables - Resumen estadístico por país - Los 3 gráficos anteriores”\n\n\n\n\nOpción B: Enfoque Híbrido (Equilibrado)\nSi prefieres un balance entre escribir código y usar IA:\n\nCarga datos manualmente en R\nUsa Claude Code para la estandarización compleja\nVisualiza usando ggplot2 (escribes el esquema básico, IA refina)\nGenera reporte en Quarto (mezcla de código propio + IA)\n\n\n\n\nOpción C: Minimalista (Enfoque “Prompt-Driven”)\nPídele a Claude Code todo el flujo en un único prompt largo:\n\n“Necesito un análisis completo de [archivo Excel entregado]: 1. Carga ambas hojas 2. Crea diccionario de variables 3. Estadística descriptiva (mean, sd, missing) 4. Estandarización de nombres y tipos 5. Variables nuevas: elite (rating &gt;= 2200), years_active 6. Visualizaciones: 3-5 gráficos clave 7. Resumen por país/región 8. Exporta reporte HTML completo”\n\nNota: Claude Code puede generar 300+ líneas de código pulido en ~1 minuto."
+  },
+  {
+    "objectID": "clases_ia/actividad_01_con_ia.html#rúbrica-de-evaluación",
+    "href": "clases_ia/actividad_01_con_ia.html#rúbrica-de-evaluación",
+    "title": "Actividad 01 — Limpieza y Exploración de Datos",
+    "section": "Rúbrica de Evaluación",
+    "text": "Rúbrica de Evaluación\n\n\n\n\n\n\n\n\n\nCriterio\nExcelente\nBueno\nAceptable\n\n\n\n\nCarga de datos\nAmbas hojas cargadas, validadas\nCargadas correctamente\nCargadas con warning\n\n\nDiccionario de variables\nCompleto, tipos correctos, descripciones claras\nCompleto, tipos ok\nIncompleto\n\n\nEstadística descriptiva\nCompleta (mean, sd, quantiles, missing)\nCubiertos principales\nSolo summary()\n\n\nLimpieza y estandarización\nNombres normalizados, tipos correctos, sin inconsistencias\nNombres limpios, tipos mayormente ok\nParcial\n\n\nVariables nuevas\n2+ variables útiles, bien justificadas\n1 variable clara\nNinguna o trivial\n\n\nVisualizaciones\n3+ gráficos informativos, leyendas claras\n2 gráficos ok\n1 gráfico o pobre\n\n\nDocumentación/Reporte\nReporte HTML/PDF claro, código comentado\nReporte básico, algunas notas\nMínimo o ausente\n\n\nUso de IA\nAprovecha Claude Code bien, itera claramente\nUsa IA para partes, código propio para otras\nMínimo uso de IA"
+  },
+  {
+    "objectID": "clases_ia/actividad_01_con_ia.html#entrega",
+    "href": "clases_ia/actividad_01_con_ia.html#entrega",
+    "title": "Actividad 01 — Limpieza y Exploración de Datos",
+    "section": "Entrega",
+    "text": "Entrega\nDebes entregar:\n\nScript R (actividad_01_limpieza.R o .qmd) con código comentado\nDataset limpio (archivo CSV con datos procesados)\nReporte HTML o PDF con:\n\nDiccionario de variables (tabla formateada)\nResumen estadístico (por país, por edad, por rating)\nMínimo 3 visualizaciones\nExplicación de decisiones de limpieza"
+  },
+  {
+    "objectID": "clases_ia/actividad_01_con_ia.html#ejemplo-de-lo-que-genera-claude-code-real",
+    "href": "clases_ia/actividad_01_con_ia.html#ejemplo-de-lo-que-genera-claude-code-real",
+    "title": "Actividad 01 — Limpieza y Exploración de Datos",
+    "section": "Ejemplo de Lo Que Genera Claude Code (Real)",
+    "text": "Ejemplo de Lo Que Genera Claude Code (Real)\nPrompt enviado:\n\"Dataset de ajedrez, quiero age_group (20-30, 30-40, 40-50, 50+)\ny contar jugadoras por grupo\"\nCódigo generado (segundos después):\ndata_clean &lt;- data_clean %&gt;%\n  mutate(age_group = case_when(\n    age &gt;= 20 & age &lt; 30 ~ \"20-30\",\n    age &gt;= 30 & age &lt; 40 ~ \"30-40\",\n    age &gt;= 40 & age &lt; 50 ~ \"40-50\",\n    age &gt;= 50 ~ \"50+\",\n    TRUE ~ NA_character_\n  ))\n\ncount_by_age &lt;- data_clean %&gt;%\n  group_by(age_group) %&gt;%\n  summarise(n = n(), .groups = 'drop') %&gt;%\n  arrange(desc(n))\n\nprint(count_by_age)\nSin IA: Escribirías esto mismo en ~5 minutos. Con IA: 10 segundos, listo."
+  },
+  {
+    "objectID": "clases_ia/actividad_01_con_ia.html#usa-ia-para",
+    "href": "clases_ia/actividad_01_con_ia.html#usa-ia-para",
+    "title": "Actividad 01 — Limpieza y Exploración de Datos",
+    "section": "✅ Usa IA para:",
+    "text": "✅ Usa IA para:\n\n✅ Boilerplate: cargas, librerías, transformaciones estándar\n✅ Exploración: prueba múltiples enfoques rápidamente\n✅ Debugging: “¿por qué falla este argumento?”\n✅ Documentación: genera comentarios y explicaciones\n✅ Refactorización: “limpia este código”"
+  },
+  {
+    "objectID": "clases_ia/actividad_01_con_ia.html#no-uses-ia-para",
+    "href": "clases_ia/actividad_01_con_ia.html#no-uses-ia-para",
+    "title": "Actividad 01 — Limpieza y Exploración de Datos",
+    "section": "❌ NO uses IA para:",
+    "text": "❌ NO uses IA para:\n\n❌ Decisiones financieras: tú eliges qué variable crear, IA genera código\n❌ Validación: verifica resultados siempre (no confíes ciegamente)\n❌ Comprensión: entiende el código generado antes de usarlo\n❌ Pensar: IA acelera la ejecución, no la estrategia"
+  },
+  {
+    "objectID": "clases_ia/actividad_01_con_ia.html#la-mentalidad-correcta",
+    "href": "clases_ia/actividad_01_con_ia.html#la-mentalidad-correcta",
+    "title": "Actividad 01 — Limpieza y Exploración de Datos",
+    "section": "La Mentalidad Correcta",
+    "text": "La Mentalidad Correcta\n\n“IA es como un copiloto competente: genera código, pero TÚ diriges el análisis.”"
+  },
+  {
+    "objectID": "clases/subida/index.html",
+    "href": "clases/subida/index.html",
+    "title": "Untitled",
+    "section": "",
+    "text": "── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ ggplot2   3.5.2     ✔ stringr   1.5.1\n✔ lubridate 1.9.4     ✔ tibble    3.3.0\n✔ purrr     1.0.4     ✔ tidyr     1.3.1\n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\n\n\n# Reorder following the value of another column:\ndata %&gt;%\n  mutate(name = fct_reorder(name, val)) %&gt;%\n  ggplot( aes(x=name, y=val)) +\n  geom_bar(stat=\"identity\", fill=\"#f68060\", alpha=.6, width=.4) +\n  coord_flip() +\n  xlab(\"\") +\n  theme_bw()"
+  },
+  {
+    "objectID": "clases/subida/index.html#column",
+    "href": "clases/subida/index.html#column",
+    "title": "Untitled",
+    "section": "",
+    "text": "── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ ggplot2   3.5.2     ✔ stringr   1.5.1\n✔ lubridate 1.9.4     ✔ tibble    3.3.0\n✔ purrr     1.0.4     ✔ tidyr     1.3.1\n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\n\n\n# Reorder following the value of another column:\ndata %&gt;%\n  mutate(name = fct_reorder(name, val)) %&gt;%\n  ggplot( aes(x=name, y=val)) +\n  geom_bar(stat=\"identity\", fill=\"#f68060\", alpha=.6, width=.4) +\n  coord_flip() +\n  xlab(\"\") +\n  theme_bw()"
+  },
+  {
+    "objectID": "clases/subida/index.html#column-1",
+    "href": "clases/subida/index.html#column-1",
+    "title": "Untitled",
+    "section": "Column",
+    "text": "Column\n\nChart B\n\n# Reverse side\ndata %&gt;%\n  mutate(name = fct_reorder(name, desc(val))) %&gt;%\n  ggplot( aes(x=name, y=val)) +\n  geom_bar(stat=\"identity\", fill=\"#f68060\", alpha=.6, width=.4) +\n  coord_flip() +\n  xlab(\"\") +\n  theme_bw()\n\n\n\n\n\n\n\n\n\n\nChart C\n\n# Using median\nmpg %&gt;%\n  mutate(class = fct_reorder(class, hwy, .fun='median')) %&gt;%\n  ggplot( aes(x=reorder(class, hwy), y=hwy, fill=class)) + \n  geom_boxplot() +\n  xlab(\"class\") +\n  theme(legend.position=\"none\") +\n  xlab(\"\")\n\n\n\n\n\n\n\n\n\n\nChart D\n\n# Using number of observation per group\nmpg %&gt;%\n  mutate(class = fct_reorder(class, hwy, .fun='length' )) %&gt;%\n  ggplot( aes(x=class, y=hwy, fill=class)) + \n  geom_boxplot() +\n  xlab(\"class\") +\n  theme(legend.position=\"none\") +\n  xlab(\"\") +\n  xlab(\"\")"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site\n\n1 + 1 + 1\n\n[1] 3"
+  },
+  {
+    "objectID": "clases/index.html",
+    "href": "clases/index.html",
+    "title": "Clases",
+    "section": "",
+    "text": "Clases del curso\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "clases.html",
+    "href": "clases.html",
+    "title": "Clases del curso",
+    "section": "",
+    "text": "Clases disponibles\n\nClase 1: Introducción a R\nClase 2: Análisis exploratorio"
+  },
+  {
+    "objectID": "clases_ia/EVALUACIONES_PROFESOR.html",
+    "href": "clases_ia/EVALUACIONES_PROFESOR.html",
+    "title": "EVALUACIÓN - Clase 01: Desarrollo en R Asistido por IA",
+    "section": "",
+    "text": "⚠️ DOCUMENTO CONFIDENCIAL - SOLO PROFESOR\nEste archivo contiene las preguntas de evaluación para la Clase 01. No compartir con estudiantes.\n\n\n\n\n\nPregunta: Explica en 3-4 líneas por qué usamos herramientas de IA generativa en un curso de finanzas cuantitativas. ¿Cuáles son los tres problemas principales que resuelven?\nRespuesta esperada: - Reducen tiempo de escritura de código boilerplate - Aceleran exploración de datos (prueba múltiples enfoques rápidamente) - Facilitan documentación y comunicación de análisis - (Bonus: Mejoran debugging interactivo)\nRúbrica: - 20 pts: Menciona 3 problemas claros y específicos - 15 pts: Menciona 2-3 problemas pero falta claridad - 10 pts: Menciona 1-2 problemas vagos - 0 pts: No responde o respuesta incorrecta\n\n\n\n\nPregunta: Describe los pasos principales para instalar y configurar Claude Code en Windows PowerShell. ¿Qué es lo más importante después de instalar Node.js?\nRespuesta esperada: 1. Instalar Node.js (v18+) 2. Crear cuenta en console.anthropic.com 3. Generar API key 4. Configurar variable de entorno: $env:ANTHROPIC_API_KEY=\"sk-ant-...\" 5. Verificar con npx @anthropic-ai/claude-code --version\nLo más importante: Configurar la API key (sin ella no funciona)\nRúbrica: - 20 pts: Pasos correctos en orden + identifica API key como crítica - 15 pts: 4 de 5 pasos correctos - 10 pts: 3 de 5 pasos correctos - 5 pts: 2 de 5 pasos correctos - 0 pts: Menos de 2 pasos o incorrectos\n\n\n\n\nPregunta: Reescribe este prompt MALO para que sea EFECTIVO según las 5 reglas de prompting:\nPrompt malo:\nGenera código R para analizar datos financieros\nRespuesta esperada (ejemplo):\nUsa tidyverse para analizar un CSV de retornos diarios de acciones.\nEl script debe:\n- Cargar el archivo 'precios.csv' (columnas: fecha, ticker, precio)\n- Calcular retornos diarios usando (precio_hoy - precio_ayer) / precio_ayer\n- Generar gráfico de serie de tiempo con ggplot2\n- Calcular y imprimir: media, desviación estándar, ratio de Sharpe (asumir Rf=0)\nRúbrica: - 20 pts: Específico + reproducible + menciona librerías + incluye formato entrada/salida - 15 pts: Específico + reproducible + menciona librerías (falta detalles) - 10 pts: Más específico que el original pero falta reproducibilidad - 5 pts: Mejorado pero aún vago - 0 pts: Sin mejora o no intenta\n\n\n\n\nPregunta: Describe paso a paso cómo usarías Claude Code para: 1. Crear un script que simule 252 retornos diarios 2. Ejecutarlo en Positron 3. Manejar un error que aparezca\nRespuesta esperada: 1. Abre Claude Code en terminal 2. Pega prompt para simulación 3. Claude genera código → copias al archivo simular.R 4. Ctrl+Enter en Positron para ejecutar 5. Si hay error: copia el error y pégalo en Claude Code 6. Claude explica el problema y propone solución 7. Editas el código y vuelves a ejecutar\nRúbrica: - 20 pts: 7 pasos claros y correctos - 15 pts: 5-6 pasos correctos - 10 pts: 3-4 pasos correctos - 5 pts: 1-2 pasos - 0 pts: No responde o incorrectos\n\n\n\n\nPregunta: ¿Cuáles son las 3 limitaciones principales de usar IA generativa en análisis financiero? ¿Cómo se mitigan?\nRespuesta esperada: 1. No es 100% preciso: Mitiga revisando código antes de usarlo en datos reales 2. Requiere conexión a internet: Mitiga teniendo alternativas offline (código manual) 3. Requiere comprensión del usuario: Mitiga NO delegando pensamiento financiero a la IA 4. (Bonus): Riesgo de alucinaciones → Validar resultados con métodos alternativos\nRúbrica: - 20 pts: 3 limitaciones claras + 3 mitigaciones prácticas - 15 pts: 3 limitaciones + 2 mitigaciones - 10 pts: 2 limitaciones + 2 mitigaciones - 5 pts: 1-2 limitaciones + 1 mitigación vaga - 0 pts: No responde o respuesta superficial\n\n\n\n\n\n\n\n\nPuntaje\nCalificación\n\n\n\n\n90-100\nA (Excelente)\n\n\n80-89\nB (Bueno)\n\n\n70-79\nC (Satisfactorio)\n\n\n60-69\nD (Mínimo)\n\n\n&lt;60\nF (Insuficiente)\n\n\n\n\n\n\n\n\nLas preguntas evalúan: conceptos, instalación, prácticas, workflow y pensamiento crítico\nAceptar variaciones en las respuestas mientras demuestren comprensión\nPregunta 5 es la más importante (pensamiento crítico)\nLos estudiantes pueden usar el notebook como referencia\nTiempo recomendado: 30-45 minutos\n\n\nGuardado: 2026-08-30 Confidencialidad: Solo profesor - No distribuir"
+  },
+  {
+    "objectID": "clases_ia/EVALUACIONES_PROFESOR.html#preguntas-de-evaluación-5-preguntas---20-puntos-cada-una",
+    "href": "clases_ia/EVALUACIONES_PROFESOR.html#preguntas-de-evaluación-5-preguntas---20-puntos-cada-una",
+    "title": "EVALUACIÓN - Clase 01: Desarrollo en R Asistido por IA",
+    "section": "",
+    "text": "Pregunta: Explica en 3-4 líneas por qué usamos herramientas de IA generativa en un curso de finanzas cuantitativas. ¿Cuáles son los tres problemas principales que resuelven?\nRespuesta esperada: - Reducen tiempo de escritura de código boilerplate - Aceleran exploración de datos (prueba múltiples enfoques rápidamente) - Facilitan documentación y comunicación de análisis - (Bonus: Mejoran debugging interactivo)\nRúbrica: - 20 pts: Menciona 3 problemas claros y específicos - 15 pts: Menciona 2-3 problemas pero falta claridad - 10 pts: Menciona 1-2 problemas vagos - 0 pts: No responde o respuesta incorrecta\n\n\n\n\nPregunta: Describe los pasos principales para instalar y configurar Claude Code en Windows PowerShell. ¿Qué es lo más importante después de instalar Node.js?\nRespuesta esperada: 1. Instalar Node.js (v18+) 2. Crear cuenta en console.anthropic.com 3. Generar API key 4. Configurar variable de entorno: $env:ANTHROPIC_API_KEY=\"sk-ant-...\" 5. Verificar con npx @anthropic-ai/claude-code --version\nLo más importante: Configurar la API key (sin ella no funciona)\nRúbrica: - 20 pts: Pasos correctos en orden + identifica API key como crítica - 15 pts: 4 de 5 pasos correctos - 10 pts: 3 de 5 pasos correctos - 5 pts: 2 de 5 pasos correctos - 0 pts: Menos de 2 pasos o incorrectos\n\n\n\n\nPregunta: Reescribe este prompt MALO para que sea EFECTIVO según las 5 reglas de prompting:\nPrompt malo:\nGenera código R para analizar datos financieros\nRespuesta esperada (ejemplo):\nUsa tidyverse para analizar un CSV de retornos diarios de acciones.\nEl script debe:\n- Cargar el archivo 'precios.csv' (columnas: fecha, ticker, precio)\n- Calcular retornos diarios usando (precio_hoy - precio_ayer) / precio_ayer\n- Generar gráfico de serie de tiempo con ggplot2\n- Calcular y imprimir: media, desviación estándar, ratio de Sharpe (asumir Rf=0)\nRúbrica: - 20 pts: Específico + reproducible + menciona librerías + incluye formato entrada/salida - 15 pts: Específico + reproducible + menciona librerías (falta detalles) - 10 pts: Más específico que el original pero falta reproducibilidad - 5 pts: Mejorado pero aún vago - 0 pts: Sin mejora o no intenta\n\n\n\n\nPregunta: Describe paso a paso cómo usarías Claude Code para: 1. Crear un script que simule 252 retornos diarios 2. Ejecutarlo en Positron 3. Manejar un error que aparezca\nRespuesta esperada: 1. Abre Claude Code en terminal 2. Pega prompt para simulación 3. Claude genera código → copias al archivo simular.R 4. Ctrl+Enter en Positron para ejecutar 5. Si hay error: copia el error y pégalo en Claude Code 6. Claude explica el problema y propone solución 7. Editas el código y vuelves a ejecutar\nRúbrica: - 20 pts: 7 pasos claros y correctos - 15 pts: 5-6 pasos correctos - 10 pts: 3-4 pasos correctos - 5 pts: 1-2 pasos - 0 pts: No responde o incorrectos\n\n\n\n\nPregunta: ¿Cuáles son las 3 limitaciones principales de usar IA generativa en análisis financiero? ¿Cómo se mitigan?\nRespuesta esperada: 1. No es 100% preciso: Mitiga revisando código antes de usarlo en datos reales 2. Requiere conexión a internet: Mitiga teniendo alternativas offline (código manual) 3. Requiere comprensión del usuario: Mitiga NO delegando pensamiento financiero a la IA 4. (Bonus): Riesgo de alucinaciones → Validar resultados con métodos alternativos\nRúbrica: - 20 pts: 3 limitaciones claras + 3 mitigaciones prácticas - 15 pts: 3 limitaciones + 2 mitigaciones - 10 pts: 2 limitaciones + 2 mitigaciones - 5 pts: 1-2 limitaciones + 1 mitigación vaga - 0 pts: No responde o respuesta superficial"
+  },
+  {
+    "objectID": "clases_ia/EVALUACIONES_PROFESOR.html#puntaje-total-100-puntos",
+    "href": "clases_ia/EVALUACIONES_PROFESOR.html#puntaje-total-100-puntos",
+    "title": "EVALUACIÓN - Clase 01: Desarrollo en R Asistido por IA",
+    "section": "",
+    "text": "Puntaje\nCalificación\n\n\n\n\n90-100\nA (Excelente)\n\n\n80-89\nB (Bueno)\n\n\n70-79\nC (Satisfactorio)\n\n\n60-69\nD (Mínimo)\n\n\n&lt;60\nF (Insuficiente)"
+  },
+  {
+    "objectID": "clases_ia/EVALUACIONES_PROFESOR.html#notas-del-profesor",
+    "href": "clases_ia/EVALUACIONES_PROFESOR.html#notas-del-profesor",
+    "title": "EVALUACIÓN - Clase 01: Desarrollo en R Asistido por IA",
+    "section": "",
+    "text": "Las preguntas evalúan: conceptos, instalación, prácticas, workflow y pensamiento crítico\nAceptar variaciones en las respuestas mientras demuestren comprensión\nPregunta 5 es la más importante (pensamiento crítico)\nLos estudiantes pueden usar el notebook como referencia\nTiempo recomendado: 30-45 minutos\n\n\nGuardado: 2026-08-30 Confidencialidad: Solo profesor - No distribuir"
+  },
+  {
+    "objectID": "clases_ia/index.html",
+    "href": "clases_ia/index.html",
+    "title": "Clases — Finanzas en R con IA",
+    "section": "",
+    "text": "Desarrollo Asistido por IA en Finanzas\nMateriales del curso que integran Claude Code y Positron para acelerar el desarrollo de análisis financieros en R. Desde la generación automática de código hasta debugging, documentación y buenas prácticas de prompting.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n01 - Introducción a Finanzas en R\n\n\n\n\n\n\n\n\n\n\n\n02 - Stack Tecnológico\n\n\n\n\n\n\n\n\n\n\n\n03 - Clase 01 - Desarrollo Asistido por IA\n\n\n\n\n\n\n\n\n\n\n\n04 - Trabajo del Curso\n\n\n\n\n\n\n\n\n\n\n\n05 - Actividad 01 - Limpieza de Datos (Manual vs IA-Asistido)\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "clases_ia/notebook_01.html",
+    "href": "clases_ia/notebook_01.html",
+    "title": "Finanzas en R — Desarrollo Asistido por IA",
+    "section": "",
+    "text": "📄 Descargar PDF\n  💾 Descargar Fuente"
+  },
+  {
+    "objectID": "clases_ia/notebook_01.html#descargas",
+    "href": "clases_ia/notebook_01.html#descargas",
+    "title": "Finanzas en R — Desarrollo Asistido por IA",
+    "section": "",
+    "text": "📄 Descargar PDF\n  💾 Descargar Fuente"
+  },
+  {
+    "objectID": "clases_ia/notebook_01.html#enfoque-tradicional-manual",
+    "href": "clases_ia/notebook_01.html#enfoque-tradicional-manual",
+    "title": "Finanzas en R — Desarrollo Asistido por IA",
+    "section": "Enfoque tradicional (manual)",
+    "text": "Enfoque tradicional (manual)\nEn R, el primer ejercicio es imprimir un saludo. Lo harías así:\n\nprint(\"Hola mundo\")\n\n[1] \"Hola mundo\"\n\n\nLuego, exploras variables:\n\nx &lt;- 2\ny &lt;- 5\nsaludo &lt;- \"Finanzas en R\"\n\nprint(paste(x, y, saludo, sep = \" \"))\n\n[1] \"2 5 Finanzas en R\"\n\n\nTiempo invertido: ~5 minutos. Repetitividad: tienes que recordar la sintaxis print(), paste(), la asignación con &lt;-."
+  },
+  {
+    "objectID": "clases_ia/notebook_01.html#enfoque-asistido-por-ia",
+    "href": "clases_ia/notebook_01.html#enfoque-asistido-por-ia",
+    "title": "Finanzas en R — Desarrollo Asistido por IA",
+    "section": "Enfoque asistido por IA",
+    "text": "Enfoque asistido por IA\nPasos:\n\nAbre Positron y crea un archivo hello_world.R:\n\nUsa Ctrl+N o File → New File\nGuarda como hello_world.R\n\nAbre Claude Code en la terminal:\nclaude-code  # (si ya está instalado)\nCopia y pega este prompt directamente en la terminal interactiva:\n\nCrea un script R que imprima \"Hola mundo\" y luego prueba\ncon dos variables x=2, y=5 y una cadena, imprimiendo todo junto.\nEl resultado debería mostrar algo como: 2 5 Finanzas en R\nListo: Claude generará el código, lo explica, y tú lo copias al archivo.\nResultado: Claude genera:\n# Imprimir saludo\nprint(\"Hola mundo\")\n\n# Definir variables\nx &lt;- 2\ny &lt;- 5\nsaludo &lt;- \"Finanzas en R\"\n\n# Imprimir junto\nprint(paste(x, y, saludo, sep = \" \"))\nPero además te muestra una explicación:\n\n“Cree un script básico que imprime un saludo. Usé print() para la salida, &lt;- para asignar valores, y paste() para concatenar. El parámetro sep controla el separador entre elementos.”\n\nVentaja: no solo obtienes el código, sino una explicación instantánea. Así aprendes mientras usas."
+  },
+  {
+    "objectID": "clases_ia/notebook_01.html#regla-1-sé-explícito-sobre-el-contexto",
+    "href": "clases_ia/notebook_01.html#regla-1-sé-explícito-sobre-el-contexto",
+    "title": "Finanzas en R — Desarrollo Asistido por IA",
+    "section": "Regla 1: Sé explícito sobre el contexto",
+    "text": "Regla 1: Sé explícito sobre el contexto\n❌ Mal:\nGenera código para analizar datos\n✅ Bien:\nGenera un script R que cargue un CSV de retornos diarios,\ncalcule estadísticas descriptivas (media, desviación estándar, min, max)\ny genere un gráfico con ggplot2"
+  },
+  {
+    "objectID": "clases_ia/notebook_01.html#regla-2-pide-reproducibilidad",
+    "href": "clases_ia/notebook_01.html#regla-2-pide-reproducibilidad",
+    "title": "Finanzas en R — Desarrollo Asistido por IA",
+    "section": "Regla 2: Pide reproducibilidad",
+    "text": "Regla 2: Pide reproducibilidad\n❌ Mal:\nCarga datos de una base de datos\n✅ Bien:\nEscribe un script R que se conecte a SQLite (usa el paquete DBI y RSQLite),\nlea una tabla 'precios' y muestre las primeras 10 filas"
+  },
+  {
+    "objectID": "clases_ia/notebook_01.html#regla-3-especifica-librerías-que-usas",
+    "href": "clases_ia/notebook_01.html#regla-3-especifica-librerías-que-usas",
+    "title": "Finanzas en R — Desarrollo Asistido por IA",
+    "section": "Regla 3: Especifica librerías que usas",
+    "text": "Regla 3: Especifica librerías que usas\n❌ Mal:\nLimpia datos\n✅ Bien:\nUsa tidyverse para limpiar un dataframe:\n- Elimina filas con NAs\n- Convierte fechas a formato Date\n- Filtra observaciones posteriores a 2020"
+  },
+  {
+    "objectID": "clases_ia/notebook_01.html#regla-4-pide-explicaciones-paso-a-paso",
+    "href": "clases_ia/notebook_01.html#regla-4-pide-explicaciones-paso-a-paso",
+    "title": "Finanzas en R — Desarrollo Asistido por IA",
+    "section": "Regla 4: Pide explicaciones paso a paso",
+    "text": "Regla 4: Pide explicaciones paso a paso\nExplica qué hace cada línea de este script, paso a paso:\n[pega aquí el código]"
+  },
+  {
+    "objectID": "clases_ia/notebook_01.html#regla-5-itera-sobre-errores",
+    "href": "clases_ia/notebook_01.html#regla-5-itera-sobre-errores",
+    "title": "Finanzas en R — Desarrollo Asistido por IA",
+    "section": "Regla 5: Itera sobre errores",
+    "text": "Regla 5: Itera sobre errores\nSi el código genera un error, simplemente pega el error:\nEl script me da este error:\n[pega aquí el error]\n\n¿Cuál es el problema y cómo lo arreglo?"
+  },
+  {
+    "objectID": "clases_ia/notebook_01.html#escenario",
+    "href": "clases_ia/notebook_01.html#escenario",
+    "title": "Finanzas en R — Desarrollo Asistido por IA",
+    "section": "Escenario",
+    "text": "Escenario\nTienes un archivo CSV con retornos diarios de una acción (o lo simularemos). Quieres: 1. Cargar los datos. 2. Calcular retornos acumulativos. 3. Generar un gráfico. 4. Calcular estadísticas de riesgo (volatilidad, Sharpe ratio)."
+  },
+  {
+    "objectID": "clases_ia/notebook_01.html#paso-1-crea-el-archivo-de-datos-simulados",
+    "href": "clases_ia/notebook_01.html#paso-1-crea-el-archivo-de-datos-simulados",
+    "title": "Finanzas en R — Desarrollo Asistido por IA",
+    "section": "Paso 1: Crea el archivo de datos simulados",
+    "text": "Paso 1: Crea el archivo de datos simulados\nEn Claude Code o Mistral Code, copia y pega este prompt:\nCrea un script R que simule 252 retornos diarios (1 año) de una acción,\ncon media 0.05% y desviación estándar 1.5%.\nGuarda el resultado en un CSV llamado 'retornos.csv'\ncon columnas 'fecha' (fechas consecutivas desde hoy) y 'retorno'.\nClaude generará algo como:\n\nlibrary(tidyverse)\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.2     ✔ tibble    3.3.0\n✔ lubridate 1.9.4     ✔ tidyr     1.3.1\n✔ purrr     1.0.4     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors\n\nset.seed(123)\nn_dias &lt;- 252\n\ndatos &lt;- tibble(\n  fecha = seq(Sys.Date(), by = \"day\", length.out = n_dias),\n  retorno = rnorm(n_dias, mean = 0.0005, sd = 0.015)\n)\n\nwrite_csv(datos, \"retornos.csv\")\n\nCopia este código a un nuevo archivo simular_datos.R en Positron y ejecútalo (Ctrl+Enter o Cmd+Enter)."
+  },
+  {
+    "objectID": "clases_ia/notebook_01.html#paso-2-análisis-con-ia",
+    "href": "clases_ia/notebook_01.html#paso-2-análisis-con-ia",
+    "title": "Finanzas en R — Desarrollo Asistido por IA",
+    "section": "Paso 2: Análisis con IA",
+    "text": "Paso 2: Análisis con IA\nEn Claude Code, copia y pega este prompt:\nLee el archivo retornos.csv,\ncalcula los retornos acumulativos (usa cumprod(1 + retorno) - 1),\ngrafica los retornos acumulativos con ggplot2 en función de la fecha,\ncalcula la media, desviación estándar y el ratio de Sharpe\n(asumir tasa libre de riesgo = 0),\ne imprime estos estadísticos.\nClaude generará:\n\nlibrary(tidyverse)\n\n# Leer datos\ndatos &lt;- read_csv(\"retornos.csv\")\n\nRows: 252 Columns: 2\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\ndbl  (1): retorno\ndate (1): fecha\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\n# Calcular retornos acumulativos\ndatos_acum &lt;- datos %&gt;%\n  mutate(retorno_acumulado = cumprod(1 + retorno) - 1)\n\n# Gráfico\nggplot(datos_acum, aes(x = fecha, y = retorno_acumulado)) +\n  geom_line(color = \"blue\") +\n  labs(title = \"Retorno Acumulado\",\n       x = \"Fecha\",\n       y = \"Retorno Acumulado\") +\n  theme_minimal()\n\n\n\n\n\n\n\n# Estadísticos\nmedia_retorno &lt;- mean(datos$retorno)\nsd_retorno &lt;- sd(datos$retorno)\nsharpe_ratio &lt;- (media_retorno * 252) / (sd_retorno * sqrt(252))\n\ncat(\"Media de retornos:\", media_retorno, \"\\n\")\n\nMedia de retornos: 0.0003168098 \n\ncat(\"Volatilidad anualizada:\", sd_retorno * sqrt(252), \"\\n\")\n\nVolatilidad anualizada: 0.2236562 \n\ncat(\"Sharpe Ratio:\", sharpe_ratio, \"\\n\")\n\nSharpe Ratio: 0.356959"
+  },
+  {
+    "objectID": "clases_ia/notebook_01.html#paso-3-debugging-interactivo",
+    "href": "clases_ia/notebook_01.html#paso-3-debugging-interactivo",
+    "title": "Finanzas en R — Desarrollo Asistido por IA",
+    "section": "Paso 3: Debugging interactivo",
+    "text": "Paso 3: Debugging interactivo\nSi algo falla, simplemente pega el error en Claude Code:\nEl script da este error:\nError: object 'retorno_acumulado' not found\n\n¿Qué está mal y cómo lo arreglo?"
+  },
+  {
+    "objectID": "clases_ia/notebook_01.html#paso-4-documentación",
+    "href": "clases_ia/notebook_01.html#paso-4-documentación",
+    "title": "Finanzas en R — Desarrollo Asistido por IA",
+    "section": "Paso 4: Documentación",
+    "text": "Paso 4: Documentación\nPide que agregue comentarios:\nAgrega comentarios en español explicando qué hace cada sección del script,\nincluyendo qué paquetes usamos y por qué.\nAquí está el código:\n[pega el código aquí]"
+  },
+  {
+    "objectID": "clases_ia/notebook_01.html#lo-que-claude-code-no-es",
+    "href": "clases_ia/notebook_01.html#lo-que-claude-code-no-es",
+    "title": "Finanzas en R — Desarrollo Asistido por IA",
+    "section": "Lo que Claude Code no es",
+    "text": "Lo que Claude Code no es\n\n❌ No reemplaza tu comprensión de R o finanzas. Usa Claude para acelerar, no para abandonar el aprendizaje.\n❌ No es 100% perfecto. El código generado puede tener bugs. Siempre revisa antes de usar en datos reales.\n❌ No trabaja sin internet (necesita conectarse a Anthropic)."
+  },
+  {
+    "objectID": "clases_ia/notebook_01.html#buenas-prácticas-éticas",
+    "href": "clases_ia/notebook_01.html#buenas-prácticas-éticas",
+    "title": "Finanzas en R — Desarrollo Asistido por IA",
+    "section": "Buenas prácticas éticas",
+    "text": "Buenas prácticas éticas\n\nEntiende el código que usas: si Claude genera algo que no comprendes, pregunta o estudia hasta que lo entiendas.\nVerifica resultados financieros: si estás haciendo un backtest o valuación, valida los números con métodos alternativos.\nCredibilidad en reportes: en un informe profesional, documenta que usaste IA pero que validaste los resultados."
+  },
+  {
+    "objectID": "clases_ia/notebook_01.html#objetivo",
+    "href": "clases_ia/notebook_01.html#objetivo",
+    "title": "Finanzas en R — Desarrollo Asistido por IA",
+    "section": "Objetivo",
+    "text": "Objetivo\nReplicar el flujo de trabajo aprendido con un dataset distinto: usa datos financieros reales (ej: puedes obtenerlos de Yahoo Finance, FRED, o una BD local)."
+  },
+  {
+    "objectID": "clases_ia/notebook_01.html#instrucciones",
+    "href": "clases_ia/notebook_01.html#instrucciones",
+    "title": "Finanzas en R — Desarrollo Asistido por IA",
+    "section": "Instrucciones",
+    "text": "Instrucciones\n\nObtén o simula datos: retornos de 3 acciones (ej: Apple, Google, Microsoft) durante 1 año.\nOpción A (simulado con Claude):\nclaude-code \"simula retornos diarios de 3 acciones distintas (252 días) y guarda en un CSV con columnas 'fecha', 'ticker', 'retorno'\"\nOpción B (datos reales): descarga desde https://finance.yahoo.com/\nAnaliza con Claude Code:\n\nCarga los datos.\nCalcula retornos acumulativos por acción.\nGenera gráficos comparativos.\nCalcula correlación entre las 3 acciones.\n\nPídele a Claude que genere un script que haga todo esto de una vez.\nEntrega:\n\nScript R comentado (.R).\nResultado de la correlación (tabla numérica).\nUn gráfico (puede ser PNG exportado de Positron).\nPárrafo breve (3-5 líneas): qué aprendiste de usar Claude Code vs escribir código manual."
+  },
+  {
+    "objectID": "clases_ia/notebook_01.html#rúbrica",
+    "href": "clases_ia/notebook_01.html#rúbrica",
+    "title": "Finanzas en R — Desarrollo Asistido por IA",
+    "section": "Rúbrica",
+    "text": "Rúbrica\n\nScript funciona sin errores: 40%\nUsa tidyverse y ggplot2 (como el resto del curso): 20%\nCálculos financieros correctos: 20%\nDocumentación clara (comentarios, texto explicativo): 20%"
+  },
+  {
+    "objectID": "clases_ia/trabajo.html",
+    "href": "clases_ia/trabajo.html",
+    "title": "Finanzas en R",
+    "section": "",
+    "text": "📄 Descargar PDF\n  💾 Descargar Fuente"
+  },
+  {
+    "objectID": "clases_ia/trabajo.html#descargas",
+    "href": "clases_ia/trabajo.html#descargas",
+    "title": "Finanzas en R",
+    "section": "",
+    "text": "📄 Descargar PDF\n  💾 Descargar Fuente"
+  },
+  {
+    "objectID": "clases_ia/trabajo.html#alcance",
+    "href": "clases_ia/trabajo.html#alcance",
+    "title": "Finanzas en R",
+    "section": "Alcance",
+    "text": "Alcance\nDebe desarrollar un proyecto que solucione un problema de negocio financiero en base a código y herramientas en R, ya sea real o hipotético. En cualquiera de las dos situaciones debe realizar una descripción detallada del problema."
+  },
+  {
+    "objectID": "clases_ia/trabajo.html#explicación",
+    "href": "clases_ia/trabajo.html#explicación",
+    "title": "Finanzas en R",
+    "section": "Explicación",
+    "text": "Explicación\nComo analista, se generan soluciones a problemas de negocios, y no “el cálculo de” o “el dato de”. En este sentido, en el contexto de las organizaciones el trabajo debe estar orientado a proveer soluciones de negocio de largo plazo.\n\nknitr::include_graphics(\"trabajo/data-science-explore.png\")\n\n\n\n\n\n\n\n\nEn donde la comunicación corresponde a la solución al problema de negocios.\nMás en el detalle, debemos tener la siguiente visión dentro de nuestros desarrollos:\n\nknitr::include_graphics(\"trabajo/ml_ops_cycle.png\")\n\n\n\n\n\n\n\n\nConsidere las siguientes explicaciones para el desarrollo de su modelo:\n\nCollect data: corresponde a los procesos de extracción de datos, considerando toda las distintas fuentes utilizadas.\nUnderstand and clean data: se relaciona con los procesos de limpieza y transformación de datos del proceso.\n\nPD: ambos procesos anteriores pueden considerar la unión de tablas.\n\nTrain and evaluate model: proceso relacionado con el entrenamiento del modelo y evaluación de métricas relevantes para el modelo.\nVersion model: en caso de existir versiones del modelo\nDeploy model: despliegue y entrega del modelo\nMonitor model: revisión constante de métricas del modelo, como también de la operatividad del mismo\n\nVeamos el siguiente ejemplo para el punto 1 y 2, para un modelo que no considera modelamiento avanzado:"
+  },
+  {
+    "objectID": "clases_ia/trabajo.html#entregables",
+    "href": "clases_ia/trabajo.html#entregables",
+    "title": "Finanzas en R",
+    "section": "Entregables",
+    "text": "Entregables\nDentro de su trabajo, debe considerar los siguientes entregables:\n\nDescripción de la solución: debe explicar qué soluciona, a quiénes impacta (clientes, usuarios, etc.), cómo espera solucionar el problema, periodicidad del desarrollo y alcance (qué considera y qué no considera)\nPlanificación del trabajo: considere el desarrollo de un pequeño descriptor, como también alguna herramientas para visualizar la planificación (carta Gantt)\nMVP: desarrolle un producto mínimo viable para su solución. Esto incluye el código relacionado\nDocumentación: considere la necesidad de dejar constancia del trabajo desarrollado para su proyecto. Considere la utilización de alguna herramientas para generar diagramas como Bizagi o Visio. Como referencia se pueden utilizar las Model card de Vetiver, las cuales deben ser complementadas con los apartados de limpieza y transformación de datos\nDespliegue: describa cómo espera llevar a producción su solución\nMonitoreo: describa cómo espera realizar el monitoreo de su modelo"
+  },
+  {
+    "objectID": "clases_ia/trabajo.html#formatos-de-entrega",
+    "href": "clases_ia/trabajo.html#formatos-de-entrega",
+    "title": "Finanzas en R",
+    "section": "Formatos de entrega",
+    "text": "Formatos de entrega\nSe generará un repositorio en Github por parte de cada alumno, en donde deben compartir sus entregas diferenciadas de la siguiente manera:\n\nEntrega 01\nEntrega 02\nEntrega 03\n\nCada carpeta debe contener los archivos utilizados para cada entrega que permitan la correcta generación y aplicación del proyecto.\n⚠️ Se debe enviar un correo confirmando la subida de los archivos.\n⚠️ Es importante tener la consideración sobre la configuración privada del repositorio en caso de ser necesario. En base a la documentación de Github:\n\nPublic repositories: accesibles a todos en internet\nPrivate repositories: solo accesibles a ti y a quienes compartas acceso\n\n⚠️ El repositorio deberá cumplir con la utilización correcta de la librería renv"
+  },
+  {
+    "objectID": "clases_ia/trabajo.html#fechas-de-entrega",
+    "href": "clases_ia/trabajo.html#fechas-de-entrega",
+    "title": "Finanzas en R",
+    "section": "Fechas de entrega",
+    "text": "Fechas de entrega\n\nParte 1\nConsidera los puntos 1 y 2 Fecha: 18 de enero\n\n\nParte 2\nConsidera el punto 3 Fecha: 25 de enero\n\n\nParte 3\nConsidera todos los puntos anteriores Fecha: 2 de febrero\n⚠️ Para todas las fechas, se considera como horario límite las 23:59 de cada día."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Diplomado en Ciencia de Datos para las Finanzas",
+    "section": "",
+    "text": "Este será el repositorio de los distintos materiales utilizados en el curso."
+  }
+]
