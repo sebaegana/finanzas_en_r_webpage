@@ -256,10 +256,25 @@ window.Quarto = {
   </ul></li>
   <li><a href="#enfoque-con-claude-code" id="toc-enfoque-con-claude-code" class="nav-link" data-scroll-target="#enfoque-con-claude-code">Enfoque con Claude Code</a></li>
   </ul></li>
-  <li><a href="#parte-5-servicing-publicar-como-página-interactiva" id="toc-parte-5-servicing-publicar-como-página-interactiva" class="nav-link" data-scroll-target="#parte-5-servicing-publicar-como-página-interactiva">Parte 5 — Servicing: Publicar como Página Interactiva</a>
+  <li><a href="#parte-5-servicing-publicar-como-página-interactiva-en-github-pages" id="toc-parte-5-servicing-publicar-como-página-interactiva-en-github-pages" class="nav-link" data-scroll-target="#parte-5-servicing-publicar-como-página-interactiva-en-github-pages">Parte 5 — Servicing: Publicar como Página Interactiva en GitHub Pages</a>
   <ul class="collapse">
-  <li><a href="#por-qué-servir-importa" id="toc-por-qué-servir-importa" class="nav-link" data-scroll-target="#por-qué-servir-importa">Por qué servir importa</a></li>
-  <li><a href="#bloque-observable-js-ojs" id="toc-bloque-observable-js-ojs" class="nav-link" data-scroll-target="#bloque-observable-js-ojs">Bloque Observable JS (ojs)</a></li>
+  <li><a href="#por-qué-servir-importa" id="toc-por-qué-servir-importa" class="nav-link" data-scroll-target="#por-qué-servir-importa">¿Por qué servir importa?</a></li>
+  <li><a href="#el-flujo-completo-quarto-github-pages" id="toc-el-flujo-completo-quarto-github-pages" class="nav-link" data-scroll-target="#el-flujo-completo-quarto-github-pages">El flujo completo (Quarto → GitHub Pages)</a>
+  <ul class="collapse">
+  <li><a href="#paso-1-crear-archivo-quarto-con-observable-js" id="toc-paso-1-crear-archivo-quarto-con-observable-js" class="nav-link" data-scroll-target="#paso-1-crear-archivo-quarto-con-observable-js">Paso 1: Crear archivo Quarto con Observable JS</a></li>
+  <li><a href="#paso-2-renderizar-localmente" id="toc-paso-2-renderizar-localmente" class="nav-link" data-scroll-target="#paso-2-renderizar-localmente">Paso 2: Renderizar localmente</a></li>
+  <li><a href="#paso-3-publicar-en-github-pages-automático" id="toc-paso-3-publicar-en-github-pages-automático" class="nav-link" data-scroll-target="#paso-3-publicar-en-github-pages-automático">Paso 3: Publicar en GitHub Pages (automático)</a></li>
+  <li><a href="#paso-4-acceder-a-la-página" id="toc-paso-4-acceder-a-la-página" class="nav-link" data-scroll-target="#paso-4-acceder-a-la-página">Paso 4: Acceder a la página</a></li>
+  </ul></li>
+  <li><a href="#cómo-construir-la-página-observable-js" id="toc-cómo-construir-la-página-observable-js" class="nav-link" data-scroll-target="#cómo-construir-la-página-observable-js">¿Cómo construir la página Observable JS?</a>
+  <ul class="collapse">
+  <li><a href="#estructura-básica" id="toc-estructura-básica" class="nav-link" data-scroll-target="#estructura-básica">Estructura básica:</a></li>
+  <li><a href="#recursos-observable-js" id="toc-recursos-observable-js" class="nav-link" data-scroll-target="#recursos-observable-js">Recursos Observable JS:</a></li>
+  </ul></li>
+  <li><a href="#enfoque-manual-vs-con-ia" id="toc-enfoque-manual-vs-con-ia" class="nav-link" data-scroll-target="#enfoque-manual-vs-con-ia">Enfoque manual vs con IA</a></li>
+  <li><a href="#checklist-para-servicing-listo-para-producción" id="toc-checklist-para-servicing-listo-para-producción" class="nav-link" data-scroll-target="#checklist-para-servicing-listo-para-producción">Checklist para “Servicing” listo para producción</a></li>
+  <li><a href="#ejemplo-real-este-sitio" id="toc-ejemplo-real-este-sitio" class="nav-link" data-scroll-target="#ejemplo-real-este-sitio">Ejemplo real: Este sitio</a></li>
+  <li><a href="#próximo-paso" id="toc-próximo-paso" class="nav-link" data-scroll-target="#próximo-paso">Próximo paso</a></li>
   </ul></li>
   <li><a href="#tabla-de-ventajas-manual-vs-ia" id="toc-tabla-de-ventajas-manual-vs-ia" class="nav-link" data-scroll-target="#tabla-de-ventajas-manual-vs-ia">Tabla de Ventajas: Manual vs IA</a></li>
   <li><a href="#actividad-para-estudiantes" id="toc-actividad-para-estudiantes" class="nav-link" data-scroll-target="#actividad-para-estudiantes">Actividad para Estudiantes</a>
@@ -732,44 +747,32 @@ window.Quarto = {
 <hr>
 </section>
 </section>
-<section id="parte-5-servicing-publicar-como-página-interactiva" class="level1">
-<h1>Parte 5 — Servicing: Publicar como Página Interactiva</h1>
+<section id="parte-5-servicing-publicar-como-página-interactiva-en-github-pages" class="level1">
+<h1>Parte 5 — Servicing: Publicar como Página Interactiva en GitHub Pages</h1>
 <section id="por-qué-servir-importa" class="level2">
-<h2 class="anchored" data-anchor-id="por-qué-servir-importa">Por qué servir importa</h2>
-<p>Hasta aquí tienes un análisis que funciona en tu máquina. <strong>Servicing</strong> = llevar ese análisis a una página web interactiva en GitHub Pages.</p>
+<h2 class="anchored" data-anchor-id="por-qué-servir-importa">¿Por qué servir importa?</h2>
+<p>Hasta aquí tienes un análisis que funciona en tu máquina. <strong>Servicing</strong> = convertir ese análisis en una <strong>página web interactiva</strong> que otros puedan usar sin ejecutar código.</p>
+<p>No necesitas servidor costoso: GitHub Pages + Quarto + Observable JS = gratis + automático.</p>
+<hr>
 </section>
-<section id="bloque-observable-js-ojs" class="level2">
-<h2 class="anchored" data-anchor-id="bloque-observable-js-ojs">Bloque Observable JS (ojs)</h2>
+<section id="el-flujo-completo-quarto-github-pages" class="level2">
+<h2 class="anchored" data-anchor-id="el-flujo-completo-quarto-github-pages">El flujo completo (Quarto → GitHub Pages)</h2>
+<section id="paso-1-crear-archivo-quarto-con-observable-js" class="level3">
+<h3 class="anchored" data-anchor-id="paso-1-crear-archivo-quarto-con-observable-js">Paso 1: Crear archivo Quarto con Observable JS</h3>
+<p>Tu archivo <code>actividad_02_portafolios.qmd</code> ya tiene un bloque <code>{ojs}</code> (Observable JS):</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13" data-startfrom="491" data-source-offset="-15"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 490;"><span id="cb13-491"><a href="#cb13-491" aria-hidden="true" tabindex="-1"></a>portafolio_data <span class="op">=</span> <span class="fu">FileAttachment</span>(<span class="st">"data/portafolio_retornos.csv"</span>)<span class="op">.</span><span class="fu">csv</span>()</span>
-<span id="cb13-492"><a href="#cb13-492" aria-hidden="true" tabindex="-1"></a>retornos_matrix <span class="op">=</span> portafolio_data<span class="op">.</span><span class="fu">map</span>(d <span class="kw">=&gt;</span> [d<span class="op">.</span><span class="at">SPY</span><span class="op">,</span> d<span class="op">.</span><span class="at">EFA</span><span class="op">,</span> d<span class="op">.</span><span class="at">IJS</span><span class="op">,</span> d<span class="op">.</span><span class="at">EEM</span><span class="op">,</span> d<span class="op">.</span><span class="at">AGG</span>])</span>
-<span id="cb13-493"><a href="#cb13-493" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-494"><a href="#cb13-494" aria-hidden="true" tabindex="-1"></a><span class="co">// Medias anualizadas</span></span>
-<span id="cb13-495"><a href="#cb13-495" aria-hidden="true" tabindex="-1"></a>retornos_esperados <span class="op">=</span> [</span>
-<span id="cb13-496"><a href="#cb13-496" aria-hidden="true" tabindex="-1"></a>  d3<span class="op">.</span><span class="fu">mean</span>(retornos_matrix<span class="op">,</span> d <span class="kw">=&gt;</span> d[<span class="dv">0</span>]) <span class="op">*</span> <span class="dv">12</span><span class="op">,</span></span>
-<span id="cb13-497"><a href="#cb13-497" aria-hidden="true" tabindex="-1"></a>  d3<span class="op">.</span><span class="fu">mean</span>(retornos_matrix<span class="op">,</span> d <span class="kw">=&gt;</span> d[<span class="dv">1</span>]) <span class="op">*</span> <span class="dv">12</span><span class="op">,</span></span>
-<span id="cb13-498"><a href="#cb13-498" aria-hidden="true" tabindex="-1"></a>  d3<span class="op">.</span><span class="fu">mean</span>(retornos_matrix<span class="op">,</span> d <span class="kw">=&gt;</span> d[<span class="dv">2</span>]) <span class="op">*</span> <span class="dv">12</span><span class="op">,</span></span>
-<span id="cb13-499"><a href="#cb13-499" aria-hidden="true" tabindex="-1"></a>  d3<span class="op">.</span><span class="fu">mean</span>(retornos_matrix<span class="op">,</span> d <span class="kw">=&gt;</span> d[<span class="dv">3</span>]) <span class="op">*</span> <span class="dv">12</span><span class="op">,</span></span>
-<span id="cb13-500"><a href="#cb13-500" aria-hidden="true" tabindex="-1"></a>  d3<span class="op">.</span><span class="fu">mean</span>(retornos_matrix<span class="op">,</span> d <span class="kw">=&gt;</span> d[<span class="dv">4</span>]) <span class="op">*</span> <span class="dv">12</span></span>
-<span id="cb13-501"><a href="#cb13-501" aria-hidden="true" tabindex="-1"></a>]</span>
-<span id="cb13-502"><a href="#cb13-502" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-503"><a href="#cb13-503" aria-hidden="true" tabindex="-1"></a><span class="co">// Sliders para ajustar pesos</span></span>
-<span id="cb13-504"><a href="#cb13-504" aria-hidden="true" tabindex="-1"></a>peso_spy <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">100</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="dv">20</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"SPY (%)"</span>})</span>
-<span id="cb13-505"><a href="#cb13-505" aria-hidden="true" tabindex="-1"></a>peso_efa <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">100</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="dv">25</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"EFA (%)"</span>})</span>
-<span id="cb13-506"><a href="#cb13-506" aria-hidden="true" tabindex="-1"></a>peso_ijs <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">100</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="dv">20</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"IJS (%)"</span>})</span>
-<span id="cb13-507"><a href="#cb13-507" aria-hidden="true" tabindex="-1"></a>peso_eem <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">100</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="dv">20</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"EEM (%)"</span>})</span>
-<span id="cb13-508"><a href="#cb13-508" aria-hidden="true" tabindex="-1"></a>peso_agg <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">100</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="dv">15</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"AGG (%)"</span>})</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13" data-startfrom="500" data-source-offset="-73"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 499;"><span id="cb13-500"><a href="#cb13-500" aria-hidden="true" tabindex="-1"></a>portafolio_data <span class="op">=</span> <span class="fu">FileAttachment</span>(<span class="st">"data/portafolio_retornos.csv"</span>)<span class="op">.</span><span class="fu">csv</span>()</span>
+<span id="cb13-501"><a href="#cb13-501" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-502"><a href="#cb13-502" aria-hidden="true" tabindex="-1"></a><span class="co">// Crea 5 sliders (0-100%) para ajustar pesos de cada activo</span></span>
+<span id="cb13-503"><a href="#cb13-503" aria-hidden="true" tabindex="-1"></a>peso_spy <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">100</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="dv">20</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"SPY (%)"</span>})</span>
+<span id="cb13-504"><a href="#cb13-504" aria-hidden="true" tabindex="-1"></a>peso_efa <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">100</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="dv">25</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"EFA (%)"</span>})</span>
+<span id="cb13-505"><a href="#cb13-505" aria-hidden="true" tabindex="-1"></a><span class="co">// ... etc</span></span>
+<span id="cb13-506"><a href="#cb13-506" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-507"><a href="#cb13-507" aria-hidden="true" tabindex="-1"></a><span class="co">// Calcula dinámicamente: retorno/volatilidad/Sharpe cuando mueves sliders</span></span>
+<span id="cb13-508"><a href="#cb13-508" aria-hidden="true" tabindex="-1"></a>retorno_portfolio <span class="op">=</span> <span class="fu">sum</span>(pesos <span class="op">*</span> retornos_esperados)</span>
 <span id="cb13-509"><a href="#cb13-509" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-510"><a href="#cb13-510" aria-hidden="true" tabindex="-1"></a><span class="co">// Normalizar y calcular</span></span>
-<span id="cb13-511"><a href="#cb13-511" aria-hidden="true" tabindex="-1"></a>w_manual <span class="op">=</span> [peso_spy<span class="op">,</span> peso_efa<span class="op">,</span> peso_ijs<span class="op">,</span> peso_eem<span class="op">,</span> peso_agg]<span class="op">.</span><span class="fu">map</span>(x <span class="kw">=&gt;</span> x <span class="op">/</span> <span class="dv">100</span>)</span>
-<span id="cb13-512"><a href="#cb13-512" aria-hidden="true" tabindex="-1"></a>retorno_manual <span class="op">=</span> d3<span class="op">.</span><span class="fu">sum</span>(w_manual<span class="op">.</span><span class="fu">map</span>((w<span class="op">,</span> i) <span class="kw">=&gt;</span> w <span class="op">*</span> retornos_esperados[i]))</span>
-<span id="cb13-513"><a href="#cb13-513" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-514"><a href="#cb13-514" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`</span></span>
-<span id="cb13-515"><a href="#cb13-515" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;div style="border: 1px solid #ccc; padding: 10px; margin-top: 10px;"&gt;</span></span>
-<span id="cb13-516"><a href="#cb13-516" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;h3&gt;Portafolio Personalizado&lt;/h3&gt;</span></span>
-<span id="cb13-517"><a href="#cb13-517" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;p&gt;&lt;strong&gt;Retorno Esperado:&lt;/strong&gt; </span><span class="sc">${</span>(retorno_manual <span class="op">*</span> <span class="dv">100</span>)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)<span class="sc">}</span><span class="vs">% anual&lt;/p&gt;</span></span>
-<span id="cb13-518"><a href="#cb13-518" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/div&gt;</span></span>
-<span id="cb13-519"><a href="#cb13-519" aria-hidden="true" tabindex="-1"></a><span class="vs">`</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb13-510"><a href="#cb13-510" aria-hidden="true" tabindex="-1"></a><span class="co">// Muestra resultado en una caja HTML</span></span>
+<span id="cb13-511"><a href="#cb13-511" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;p&gt;Retorno Esperado: </span><span class="sc">${</span>(retorno_portfolio <span class="op">*</span> <span class="dv">100</span>)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)<span class="sc">}</span><span class="vs">% anual&lt;/p&gt;`</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-1-1" data-nodetype="declaration">
@@ -800,55 +803,162 @@ window.Quarto = {
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-1-5" data-nodetype="declaration">
-
-</div>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<div id="ojs-cell-1-6" data-nodetype="declaration">
-
-</div>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<div id="ojs-cell-1-7" data-nodetype="declaration">
-
-</div>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<div id="ojs-cell-1-8" data-nodetype="declaration">
-
-</div>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<div id="ojs-cell-1-9" data-nodetype="declaration">
-
-</div>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<div id="ojs-cell-1-10" data-nodetype="declaration">
-
-</div>
-</div>
-</div>
-<div class="cell-output cell-output-display">
-<div>
-<div id="ojs-cell-1-11" data-nodetype="expression">
+<div id="ojs-cell-1-5" data-nodetype="expression">
 
 </div>
 </div>
 </div>
 </div>
-<p><strong>Tiempo</strong>: ~20 minutos (sintaxis Observable) o ~3 minutos con IA.</p>
+<p><strong>Ventajas del enfoque:</strong> - ✅ Sin servidor Shiny ni backend - ✅ Solo HTML estático + JavaScript del cliente (rápido, seguro) - ✅ Funciona offline (excepto cargar CSV) - ✅ Responsive (móvil, tablet, desktop)</p>
+</section>
+<section id="paso-2-renderizar-localmente" class="level3">
+<h3 class="anchored" data-anchor-id="paso-2-renderizar-localmente">Paso 2: Renderizar localmente</h3>
+<p>En tu terminal:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Renderiza el .qmd a HTML</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render clases_ia/actividad_02_portafolios.qmd <span class="at">--to</span> html</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Resultado: docs/clases_ia/actividad_02_portafolios.html (con Observable JS)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="paso-3-publicar-en-github-pages-automático" class="level3">
+<h3 class="anchored" data-anchor-id="paso-3-publicar-en-github-pages-automático">Paso 3: Publicar en GitHub Pages (automático)</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Commit + push</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add clases_ia/actividad_02_portafolios.qmd</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add docs/clases_ia/actividad_02_portafolios.html</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"feat: Add interactive portfolio servicing page"</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push origin develop</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="co"># → Merge a main (después de PR)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="paso-4-acceder-a-la-página" class="level3">
+<h3 class="anchored" data-anchor-id="paso-4-acceder-a-la-página">Paso 4: Acceder a la página</h3>
+<p>La configuración de <code>_quarto.yml</code> ya apunta a GitHub Pages:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">project</span><span class="kw">:</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">output-dir</span><span class="kw">:</span><span class="at"> docs</span><span class="co">  # Quarto renderiza aquí</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">website</span><span class="kw">:</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">site-url</span><span class="kw">:</span><span class="at"> https://sebaegana.github.io/finanzas_en_r_webpage/</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p>GitHub Pages automáticamente sirve archivos en <code>docs/</code> → tu página vive en:</p>
+<pre><code>https://sebaegana.github.io/finanzas_en_r_webpage/
+  clases_ia/
+    actividad_02_portafolios.html  ← Acá</code></pre>
+<hr>
+</section>
+</section>
+<section id="cómo-construir-la-página-observable-js" class="level2">
+<h2 class="anchored" data-anchor-id="cómo-construir-la-página-observable-js">¿Cómo construir la página Observable JS?</h2>
+<section id="estructura-básica" class="level3">
+<h3 class="anchored" data-anchor-id="estructura-básica">Estructura básica:</h3>
+<div class="quarto-ojs-syntax-error">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18" data-startfrom="567" data-syntax-error-position="384" data-source-offset="9"><pre class="sourceCode numberSource numberLines java code-with-copy"><code class="sourceCode java" style="counter-reset: source-line 566;"><span id="cb18-567"><a href="#cb18-567"></a>```<span class="op">{</span>ojs<span class="op">}</span></span>
+<span id="cb18-568"><a href="#cb18-568"></a><span class="co">// 1. Cargar datos</span></span>
+<span id="cb18-569"><a href="#cb18-569"></a>datos <span class="op">=</span> <span class="fu">FileAttachment</span><span class="op">(</span><span class="st">"data/portafolio_retornos.csv"</span><span class="op">).</span><span class="fu">csv</span><span class="op">()</span></span>
+<span id="cb18-570"><a href="#cb18-570"></a></span>
+<span id="cb18-571"><a href="#cb18-571"></a><span class="co">// 2. Crear controles interactivos (sliders, botones, dropdowns)</span></span>
+<span id="cb18-572"><a href="#cb18-572"></a>slider_spy <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span><span class="op">([</span><span class="dv">0</span><span class="op">,</span> <span class="dv">100</span><span class="op">],</span> <span class="op">{</span>label<span class="op">:</span> <span class="st">"SPY (%)"</span><span class="op">})</span></span>
+<span id="cb18-573"><a href="#cb18-573"></a>slider_efa <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span><span class="op">([</span><span class="dv">0</span><span class="op">,</span> <span class="dv">100</span><span class="op">],</span> <span class="op">{</span>label<span class="op">:</span> <span class="st">"EFA (%)"</span><span class="op">})</span></span>
+<span id="cb18-574"><a href="#cb18-574"></a></span>
+<span id="cb18-575"><a href="#cb18-575"></a><span class="co">// 3. Definir lógica reactiva (recalcula automáticamente cuando cambien sliders)</span></span>
+<span id="cb18-576"><a href="#cb18-576"></a>pesos <span class="op">=</span> <span class="op">[</span>slider_spy<span class="op">,</span> slider_efa<span class="op">,</span> <span class="kw">...</span><span class="op">]</span>  <span class="co">// Reactivo: actualiza cuando muevas sliders</span></span>
+<span id="cb18-577"><a href="#cb18-577"></a>retorno <span class="op">=</span> <span class="fu">suma</span><span class="op">(</span>pesos <span class="op">*</span> retornos_historicos<span class="op">)</span></span>
+<span id="cb18-578"><a href="#cb18-578"></a>sharpe <span class="op">=</span> <span class="op">(</span>retorno <span class="op">-</span> tasa_libre<span class="op">)</span> <span class="op">/</span> volatilidad</span>
+<span id="cb18-579"><a href="#cb18-579"></a></span>
+<span id="cb18-580"><a href="#cb18-580"></a><span class="co">// 4. Mostrar resultados</span></span>
+<span id="cb18-581"><a href="#cb18-581"></a>html`</span>
+<span id="cb18-582"><a href="#cb18-582"></a><span class="op">&lt;</span>div<span class="op">&gt;</span></span>
+<span id="cb18-583"><a href="#cb18-583"></a>  <span class="op">&lt;</span>p<span class="op">&gt;</span>Retorno<span class="op">:</span> $<span class="op">{</span>retorno<span class="op">.</span><span class="fu">toFixed</span><span class="op">(</span><span class="dv">2</span><span class="op">)}%&lt;/</span>p<span class="op">&gt;</span></span>
+<span id="cb18-584"><a href="#cb18-584"></a>  <span class="op">&lt;</span>p<span class="op">&gt;</span>Sharpe<span class="op">:</span> $<span class="op">{</span>sharpe<span class="op">.</span><span class="fu">toFixed</span><span class="op">(</span><span class="dv">2</span><span class="op">)}&lt;/</span>p<span class="op">&gt;</span></span>
+<span id="cb18-585"><a href="#cb18-585"></a><span class="op">&lt;/</span>div<span class="op">&gt;</span></span>
+<span id="cb18-586"><a href="#cb18-586"></a>`</span>
+<span id="cb18-587"><a href="#cb18-587"></a>```</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<div class="callout callout-style-default callout-important callout-empty-content callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Importante</span>OJS Syntax Error (line 576, column 37)Unexpected token
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="recursos-observable-js" class="level3">
+<h3 class="anchored" data-anchor-id="recursos-observable-js">Recursos Observable JS:</h3>
+<ul>
+<li>📖 <a href="https://observablehq.com/explore">Observable Help</a></li>
+<li>🎯 <a href="https://quarto.org/docs/interactive/ojs/">Quarto + OJS Tutorial</a></li>
+<li>💡 <a href="https://d3js.org">D3.js para gráficos</a></li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="enfoque-manual-vs-con-ia" class="level2">
+<h2 class="anchored" data-anchor-id="enfoque-manual-vs-con-ia">Enfoque manual vs con IA</h2>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Paso</th>
+<th>Manual</th>
+<th>Con IA</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Diseñar estructura</td>
+<td>15 min</td>
+<td>2 min (describir qué quieres)</td>
+</tr>
+<tr class="even">
+<td>Escribir Observable JS</td>
+<td>30 min</td>
+<td>5 min (pedir código)</td>
+</tr>
+<tr class="odd">
+<td>Renderizar + publicar</td>
+<td>5 min</td>
+<td>2 min</td>
+</tr>
+<tr class="even">
+<td><strong>Total</strong></td>
+<td>~50 min</td>
+<td>~9 min</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="checklist-para-servicing-listo-para-producción" class="level2">
+<h2 class="anchored" data-anchor-id="checklist-para-servicing-listo-para-producción">Checklist para “Servicing” listo para producción</h2>
+<ul class="task-list">
+<li><label><input type="checkbox">Archivo <code>.qmd</code> con bloque <code>{ojs}</code> incluido</label></li>
+<li><label><input type="checkbox">Datos CSV en <code>clases_ia/data/</code> accesibles</label></li>
+<li><label><input type="checkbox"><code>quarto render</code> genera HTML sin errores</label></li>
+<li><label><input type="checkbox">Sliders/controles funcionan interactivos en el navegador</label></li>
+<li><label><input type="checkbox">Página responsive (prueba en móvil)</label></li>
+<li><label><input type="checkbox">Fecha de última actualización visible (<code>date: last-modified</code>)</label></li>
+<li><label><input type="checkbox">Link a la página en <code>README</code> o tabla de materiales</label></li>
+</ul>
+<hr>
+</section>
+<section id="ejemplo-real-este-sitio" class="level2">
+<h2 class="anchored" data-anchor-id="ejemplo-real-este-sitio">Ejemplo real: Este sitio</h2>
+<p>El archivo <code>clases_ia/actividad_02_portafolios.qmd</code> (que estás leyendo) es exactamente eso:</p>
+<ol type="1">
+<li>Fuente: <code>.qmd</code> con bloques <code>{ojs}</code></li>
+<li>Renderiza: <code>quarto render</code> → <code>docs/clases_ia/actividad_02_portafolios.html</code></li>
+<li>Publica: GitHub Pages sirve automáticamente</li>
+<li>Resultado: Página interactiva en vivo</li>
+</ol>
+<p><strong>Tiempo total publicación: 3 minutos</strong> (render + push + GitHub Pages auto-deploy)</p>
+<hr>
+</section>
+<section id="próximo-paso" class="level2">
+<h2 class="anchored" data-anchor-id="próximo-paso">Próximo paso</h2>
+<p>Después de terminar tu análisis (Partes 1-4), <strong>agrega un bloque <code>{ojs}</code></strong> en Parte 5 con: - Sliders para ajustar pesos del portafolio - Cálculo dinámico de retorno/volatilidad/Sharpe - Overlay gráfico de la frontera de Markowitz (opcional: usa Plotly o Observable Plot)</p>
+<p>Luego: <code>quarto render</code> + <code>git push</code> = <strong>página interactiva viva en 5 minutos</strong>.</p>
 <hr>
 </section>
 </section>
@@ -1034,7 +1144,7 @@ window.Quarto = {
 
 </main> <!-- /main -->
 <script type="ojs-module-contents">
-eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6Ii8vIENhcmdhIGRhdG9zXG5wb3J0YWZvbGlvX2RhdGEgPSBGaWxlQXR0YWNobWVudChcImRhdGEvcG9ydGFmb2xpb19yZXRvcm5vcy5jc3ZcIikuY3N2KClcbnJldG9ybm9zX21hdHJpeCA9IHBvcnRhZm9saW9fZGF0YS5tYXAoZCA9PiBbZC5TUFksIGQuRUZBLCBkLklKUywgZC5FRU0sIGQuQUdHXSlcblxuLy8gTWVkaWFzIGFudWFsaXphZGFzXG5yZXRvcm5vc19lc3BlcmFkb3MgPSBbXG4gIGQzLm1lYW4ocmV0b3Jub3NfbWF0cml4LCBkID0+IGRbMF0pICogMTIsXG4gIGQzLm1lYW4ocmV0b3Jub3NfbWF0cml4LCBkID0+IGRbMV0pICogMTIsXG4gIGQzLm1lYW4ocmV0b3Jub3NfbWF0cml4LCBkID0+IGRbMl0pICogMTIsXG4gIGQzLm1lYW4ocmV0b3Jub3NfbWF0cml4LCBkID0+IGRbM10pICogMTIsXG4gIGQzLm1lYW4ocmV0b3Jub3NfbWF0cml4LCBkID0+IGRbNF0pICogMTJcbl1cblxuLy8gU2xpZGVycyBwYXJhIGFqdXN0YXIgcGVzb3NcbnBlc29fc3B5ID0gSW5wdXRzLnJhbmdlKFswLCAxMDBdLCB7dmFsdWU6IDIwLCBzdGVwOiAxLCBsYWJlbDogXCJTUFkgKCUpXCJ9KVxucGVzb19lZmEgPSBJbnB1dHMucmFuZ2UoWzAsIDEwMF0sIHt2YWx1ZTogMjUsIHN0ZXA6IDEsIGxhYmVsOiBcIkVGQSAoJSlcIn0pXG5wZXNvX2lqcyA9IElucHV0cy5yYW5nZShbMCwgMTAwXSwge3ZhbHVlOiAyMCwgc3RlcDogMSwgbGFiZWw6IFwiSUpTICglKVwifSlcbnBlc29fZWVtID0gSW5wdXRzLnJhbmdlKFswLCAxMDBdLCB7dmFsdWU6IDIwLCBzdGVwOiAxLCBsYWJlbDogXCJFRU0gKCUpXCJ9KVxucGVzb19hZ2cgPSBJbnB1dHMucmFuZ2UoWzAsIDEwMF0sIHt2YWx1ZTogMTUsIHN0ZXA6IDEsIGxhYmVsOiBcIkFHRyAoJSlcIn0pXG5cbi8vIE5vcm1hbGl6YXIgeSBjYWxjdWxhclxud19tYW51YWwgPSBbcGVzb19zcHksIHBlc29fZWZhLCBwZXNvX2lqcywgcGVzb19lZW0sIHBlc29fYWdnXS5tYXAoeCA9PiB4IC8gMTAwKVxucmV0b3Jub19tYW51YWwgPSBkMy5zdW0od19tYW51YWwubWFwKCh3LCBpKSA9PiB3ICogcmV0b3Jub3NfZXNwZXJhZG9zW2ldKSlcblxuaHRtbGBcbjxkaXYgc3R5bGU9XCJib3JkZXI6IDFweCBzb2xpZCAjY2NjOyBwYWRkaW5nOiAxMHB4OyBtYXJnaW4tdG9wOiAxMHB4O1wiPlxuICA8aDM+UG9ydGFmb2xpbyBQZXJzb25hbGl6YWRvPC9oMz5cbiAgPHA+PHN0cm9uZz5SZXRvcm5vIEVzcGVyYWRvOjwvc3Ryb25nPiAkeyhyZXRvcm5vX21hbnVhbCAqIDEwMCkudG9GaXhlZCgyKX0lIGFudWFsPC9wPlxuPC9kaXY+XG5gXG4ifV19
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6Ii8vIFBhcnRlIDU6IE9ic2VydmFibGUgSlMgZW1iZWJpZG8gZW4gZWwgLnFtZFxyXG4vLyBDYXJnYSBkYXRvcyBkZXNkZSBDU1ZcclxucG9ydGFmb2xpb19kYXRhID0gRmlsZUF0dGFjaG1lbnQoXCJkYXRhL3BvcnRhZm9saW9fcmV0b3Jub3MuY3N2XCIpLmNzdigpXHJcblxyXG4vLyBDcmVhIDUgc2xpZGVycyAoMC0xMDAlKSBwYXJhIGFqdXN0YXIgcGVzb3MgZGUgY2FkYSBhY3Rpdm9cclxucGVzb19zcHkgPSBJbnB1dHMucmFuZ2UoWzAsIDEwMF0sIHt2YWx1ZTogMjAsIHN0ZXA6IDEsIGxhYmVsOiBcIlNQWSAoJSlcIn0pXHJcbnBlc29fZWZhID0gSW5wdXRzLnJhbmdlKFswLCAxMDBdLCB7dmFsdWU6IDI1LCBzdGVwOiAxLCBsYWJlbDogXCJFRkEgKCUpXCJ9KVxyXG4vLyAuLi4gZXRjXHJcblxyXG4vLyBDYWxjdWxhIGRpbsOhbWljYW1lbnRlOiByZXRvcm5vL3ZvbGF0aWxpZGFkL1NoYXJwZSBjdWFuZG8gbXVldmVzIHNsaWRlcnNcclxucmV0b3Jub19wb3J0Zm9saW8gPSBzdW0ocGVzb3MgKiByZXRvcm5vc19lc3BlcmFkb3MpXHJcblxyXG4vLyBNdWVzdHJhIHJlc3VsdGFkbyBlbiB1bmEgY2FqYSBIVE1MXHJcbmh0bWxgPHA+UmV0b3JubyBFc3BlcmFkbzogJHsocmV0b3Jub19wb3J0Zm9saW8gKiAxMDApLnRvRml4ZWQoMil9JSBhbnVhbDwvcD5gXHJcbiJ9XX0=
 </script>
 <script type="module">
 if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
