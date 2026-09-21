@@ -920,8 +920,8 @@
     "objectID": "clases_ia/actividad_02_portafolios.html#por-qué-servir-importa",
     "href": "clases_ia/actividad_02_portafolios.html#por-qué-servir-importa",
     "title": "Actividad 02 — Construcción de Portafolios Óptimos",
-    "section": "Por qué servir importa",
-    "text": "Por qué servir importa\nHasta aquí tienes un análisis que funciona en tu máquina. Servicing = llevar ese análisis a una página web interactiva en GitHub Pages."
+    "section": "¿Por qué servir importa?",
+    "text": "¿Por qué servir importa?\nHasta aquí tienes un análisis que funciona en tu máquina. Servicing = convertir ese análisis en una página web interactiva que otros puedan usar sin ejecutar código.\nNo necesitas servidor costoso: GitHub Pages + Quarto + Observable JS = gratis + automático."
   },
   {
     "objectID": "clases_ia/actividad_02_portafolios.html#enfoque-manual-construir-observable-js-en-quarto",
@@ -1027,5 +1027,47 @@
     "title": "Actividad 02 — Construcción de Portafolios Óptimos",
     "section": "Bloque Observable JS (ojs)",
     "text": "Bloque Observable JS (ojs)\n\nportafolio_data = FileAttachment(\"data/portafolio_retornos.csv\").csv()\nretornos_matrix = portafolio_data.map(d =&gt; [d.SPY, d.EFA, d.IJS, d.EEM, d.AGG])\n\n// Medias anualizadas\nretornos_esperados = [\n  d3.mean(retornos_matrix, d =&gt; d[0]) * 12,\n  d3.mean(retornos_matrix, d =&gt; d[1]) * 12,\n  d3.mean(retornos_matrix, d =&gt; d[2]) * 12,\n  d3.mean(retornos_matrix, d =&gt; d[3]) * 12,\n  d3.mean(retornos_matrix, d =&gt; d[4]) * 12\n]\n\n// Sliders para ajustar pesos\npeso_spy = Inputs.range([0, 100], {value: 20, step: 1, label: \"SPY (%)\"})\npeso_efa = Inputs.range([0, 100], {value: 25, step: 1, label: \"EFA (%)\"})\npeso_ijs = Inputs.range([0, 100], {value: 20, step: 1, label: \"IJS (%)\"})\npeso_eem = Inputs.range([0, 100], {value: 20, step: 1, label: \"EEM (%)\"})\npeso_agg = Inputs.range([0, 100], {value: 15, step: 1, label: \"AGG (%)\"})\n\n// Normalizar y calcular\nw_manual = [peso_spy, peso_efa, peso_ijs, peso_eem, peso_agg].map(x =&gt; x / 100)\nretorno_manual = d3.sum(w_manual.map((w, i) =&gt; w * retornos_esperados[i]))\n\nhtml`\n&lt;div style=\"border: 1px solid #ccc; padding: 10px; margin-top: 10px;\"&gt;\n  &lt;h3&gt;Portafolio Personalizado&lt;/h3&gt;\n  &lt;p&gt;&lt;strong&gt;Retorno Esperado:&lt;/strong&gt; ${(retorno_manual * 100).toFixed(2)}% anual&lt;/p&gt;\n&lt;/div&gt;\n`\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nTiempo: ~20 minutos (sintaxis Observable) o ~3 minutos con IA."
+  },
+  {
+    "objectID": "clases_ia/actividad_02_portafolios.html#el-flujo-completo-quarto-github-pages",
+    "href": "clases_ia/actividad_02_portafolios.html#el-flujo-completo-quarto-github-pages",
+    "title": "Actividad 02 — Construcción de Portafolios Óptimos",
+    "section": "El flujo completo (Quarto → GitHub Pages)",
+    "text": "El flujo completo (Quarto → GitHub Pages)\n\nPaso 1: Crear archivo Quarto con Observable JS\nTu archivo actividad_02_portafolios.qmd ya tiene un bloque {ojs} (Observable JS):\n\nportafolio_data = FileAttachment(\"data/portafolio_retornos.csv\").csv()\n\n// Crea 5 sliders (0-100%) para ajustar pesos de cada activo\npeso_spy = Inputs.range([0, 100], {value: 20, step: 1, label: \"SPY (%)\"})\npeso_efa = Inputs.range([0, 100], {value: 25, step: 1, label: \"EFA (%)\"})\n// ... etc\n\n// Calcula dinámicamente: retorno/volatilidad/Sharpe cuando mueves sliders\nretorno_portfolio = sum(pesos * retornos_esperados)\n\n// Muestra resultado en una caja HTML\nhtml`&lt;p&gt;Retorno Esperado: ${(retorno_portfolio * 100).toFixed(2)}% anual&lt;/p&gt;`\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nVentajas del enfoque: - ✅ Sin servidor Shiny ni backend - ✅ Solo HTML estático + JavaScript del cliente (rápido, seguro) - ✅ Funciona offline (excepto cargar CSV) - ✅ Responsive (móvil, tablet, desktop)\n\n\nPaso 2: Renderizar localmente\nEn tu terminal:\n# Renderiza el .qmd a HTML\nquarto render clases_ia/actividad_02_portafolios.qmd --to html\n\n# Resultado: docs/clases_ia/actividad_02_portafolios.html (con Observable JS)\n\n\nPaso 3: Publicar en GitHub Pages (automático)\n# Commit + push\ngit add clases_ia/actividad_02_portafolios.qmd\ngit add docs/clases_ia/actividad_02_portafolios.html\ngit commit -m \"feat: Add interactive portfolio servicing page\"\ngit push origin develop\n# → Merge a main (después de PR)\n\n\nPaso 4: Acceder a la página\nLa configuración de _quarto.yml ya apunta a GitHub Pages:\nproject:\n  output-dir: docs  # Quarto renderiza aquí\nwebsite:\n  site-url: https://sebaegana.github.io/finanzas_en_r_webpage/\nGitHub Pages automáticamente sirve archivos en docs/ → tu página vive en:\nhttps://sebaegana.github.io/finanzas_en_r_webpage/\n  clases_ia/\n    actividad_02_portafolios.html  ← Acá"
+  },
+  {
+    "objectID": "clases_ia/actividad_02_portafolios.html#cómo-construir-la-página-observable-js",
+    "href": "clases_ia/actividad_02_portafolios.html#cómo-construir-la-página-observable-js",
+    "title": "Actividad 02 — Construcción de Portafolios Óptimos",
+    "section": "¿Cómo construir la página Observable JS?",
+    "text": "¿Cómo construir la página Observable JS?\n\nEstructura básica:\n\n```{ojs}\n// 1. Cargar datos\ndatos = FileAttachment(\"data/portafolio_retornos.csv\").csv()\n\n// 2. Crear controles interactivos (sliders, botones, dropdowns)\nslider_spy = Inputs.range([0, 100], {label: \"SPY (%)\"})\nslider_efa = Inputs.range([0, 100], {label: \"EFA (%)\"})\n\n// 3. Definir lógica reactiva (recalcula automáticamente cuando cambien sliders)\npesos = [slider_spy, slider_efa, ...]  // Reactivo: actualiza cuando muevas sliders\nretorno = suma(pesos * retornos_historicos)\nsharpe = (retorno - tasa_libre) / volatilidad\n\n// 4. Mostrar resultados\nhtml`\n&lt;div&gt;\n  &lt;p&gt;Retorno: ${retorno.toFixed(2)}%&lt;/p&gt;\n  &lt;p&gt;Sharpe: ${sharpe.toFixed(2)}&lt;/p&gt;\n&lt;/div&gt;\n`\n```\n\n\n\n\n\n\n\nImportanteOJS Syntax Error (line 576, column 37)Unexpected token\n\n\n\n\n\n\n\n\n\n\nRecursos Observable JS:\n\n📖 Observable Help\n🎯 Quarto + OJS Tutorial\n💡 D3.js para gráficos"
+  },
+  {
+    "objectID": "clases_ia/actividad_02_portafolios.html#enfoque-manual-vs-con-ia",
+    "href": "clases_ia/actividad_02_portafolios.html#enfoque-manual-vs-con-ia",
+    "title": "Actividad 02 — Construcción de Portafolios Óptimos",
+    "section": "Enfoque manual vs con IA",
+    "text": "Enfoque manual vs con IA\n\n\n\nPaso\nManual\nCon IA\n\n\n\n\nDiseñar estructura\n15 min\n2 min (describir qué quieres)\n\n\nEscribir Observable JS\n30 min\n5 min (pedir código)\n\n\nRenderizar + publicar\n5 min\n2 min\n\n\nTotal\n~50 min\n~9 min"
+  },
+  {
+    "objectID": "clases_ia/actividad_02_portafolios.html#checklist-para-servicing-listo-para-producción",
+    "href": "clases_ia/actividad_02_portafolios.html#checklist-para-servicing-listo-para-producción",
+    "title": "Actividad 02 — Construcción de Portafolios Óptimos",
+    "section": "Checklist para “Servicing” listo para producción",
+    "text": "Checklist para “Servicing” listo para producción\n\nArchivo .qmd con bloque {ojs} incluido\nDatos CSV en clases_ia/data/ accesibles\nquarto render genera HTML sin errores\nSliders/controles funcionan interactivos en el navegador\nPágina responsive (prueba en móvil)\nFecha de última actualización visible (date: last-modified)\nLink a la página en README o tabla de materiales"
+  },
+  {
+    "objectID": "clases_ia/actividad_02_portafolios.html#ejemplo-real-este-sitio",
+    "href": "clases_ia/actividad_02_portafolios.html#ejemplo-real-este-sitio",
+    "title": "Actividad 02 — Construcción de Portafolios Óptimos",
+    "section": "Ejemplo real: Este sitio",
+    "text": "Ejemplo real: Este sitio\nEl archivo clases_ia/actividad_02_portafolios.qmd (que estás leyendo) es exactamente eso:\n\nFuente: .qmd con bloques {ojs}\nRenderiza: quarto render → docs/clases_ia/actividad_02_portafolios.html\nPublica: GitHub Pages sirve automáticamente\nResultado: Página interactiva en vivo\n\nTiempo total publicación: 3 minutos (render + push + GitHub Pages auto-deploy)"
+  },
+  {
+    "objectID": "clases_ia/actividad_02_portafolios.html#próximo-paso",
+    "href": "clases_ia/actividad_02_portafolios.html#próximo-paso",
+    "title": "Actividad 02 — Construcción de Portafolios Óptimos",
+    "section": "Próximo paso",
+    "text": "Próximo paso\nDespués de terminar tu análisis (Partes 1-4), agrega un bloque {ojs} en Parte 5 con: - Sliders para ajustar pesos del portafolio - Cálculo dinámico de retorno/volatilidad/Sharpe - Overlay gráfico de la frontera de Markowitz (opcional: usa Plotly o Observable Plot)\nLuego: quarto render + git push = página interactiva viva en 5 minutos."
   }
 ]
