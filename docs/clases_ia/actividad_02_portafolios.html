@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -14,10 +14,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -76,10 +79,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-349e9611d7ce437f8276b20f376ddbca.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-36d6930034064a961a85a06e6a330a4a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -111,7 +114,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -780,47 +783,47 @@ window.Quarto = {
 <section id="enfoque-manual-construir-observable-js-en-quarto" class="level2">
 <h2 class="anchored" data-anchor-id="enfoque-manual-construir-observable-js-en-quarto">Enfoque Manual: Construir Observable JS en Quarto</h2>
 <div class="quarto-ojs-syntax-error">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12" data-startfrom="541" data-syntax-error-position="284" data-source-offset="9"><pre class="sourceCode numberSource numberLines java code-with-copy"><code class="sourceCode java" style="counter-reset: source-line 540;"><span id="cb12-541"><a href="#cb12-541"></a>```<span class="op">{</span>ojs<span class="op">}</span></span>
-<span id="cb12-542"><a href="#cb12-542"></a><span class="co">// Carga de datos (CSV precalculado)</span></span>
-<span id="cb12-543"><a href="#cb12-543"></a>portafolio_data <span class="op">=</span> <span class="fu">FileAttachment</span><span class="op">(</span><span class="st">"data/portafolio_retornos.csv"</span><span class="op">).</span><span class="fu">csv</span><span class="op">()</span></span>
-<span id="cb12-544"><a href="#cb12-544"></a></span>
-<span id="cb12-545"><a href="#cb12-545"></a><span class="co">// Transformar en matriz de retornos</span></span>
-<span id="cb12-546"><a href="#cb12-546"></a>retornos_matrix <span class="op">=</span> portafolio_data<span class="op">.</span><span class="fu">map</span><span class="op">(</span>d <span class="op">=&gt;</span> <span class="op">[</span>d<span class="op">.</span><span class="fu">SPY</span><span class="op">,</span> d<span class="op">.</span><span class="fu">EFA</span><span class="op">,</span> d<span class="op">.</span><span class="fu">IJS</span><span class="op">,</span> d<span class="op">.</span><span class="fu">EEM</span><span class="op">,</span> d<span class="op">.</span><span class="fu">AGG</span><span class="op">])</span></span>
-<span id="cb12-547"><a href="#cb12-547"></a></span>
-<span id="cb12-548"><a href="#cb12-548"></a><span class="co">// Calcular matriz de covarianza (librería math)</span></span>
-<span id="cb12-549"><a href="#cb12-549"></a><span class="kw">import</span> <span class="im">{default as math} from "https://cdnjs</span><span class="op">.</span><span class="im">cloudflare</span><span class="op">.</span><span class="im">com/ajax/libs/mathjs/12</span><span class="op">.</span><span class="im">0</span><span class="op">.</span><span class="im">0/math</span><span class="op">.</span><span class="im">min</span><span class="op">.</span><span class="im">js"</span></span>
-<span id="cb12-550"><a href="#cb12-550"></a></span>
-<span id="cb12-551"><a href="#cb12-551"></a><span class="co">// Medias y covarianza</span></span>
-<span id="cb12-552"><a href="#cb12-552"></a>retornos_esperados <span class="op">=</span> <span class="op">[</span></span>
-<span id="cb12-553"><a href="#cb12-553"></a>  d3<span class="op">.</span><span class="fu">mean</span><span class="op">(</span>retornos_matrix<span class="op">,</span> d <span class="op">=&gt;</span> d<span class="op">[</span><span class="dv">0</span><span class="op">])</span> <span class="op">*</span> <span class="dv">12</span><span class="op">,</span>  <span class="co">// SPY</span></span>
-<span id="cb12-554"><a href="#cb12-554"></a>  d3<span class="op">.</span><span class="fu">mean</span><span class="op">(</span>retornos_matrix<span class="op">,</span> d <span class="op">=&gt;</span> d<span class="op">[</span><span class="dv">1</span><span class="op">])</span> <span class="op">*</span> <span class="dv">12</span><span class="op">,</span>  <span class="co">// EFA</span></span>
-<span id="cb12-555"><a href="#cb12-555"></a>  d3<span class="op">.</span><span class="fu">mean</span><span class="op">(</span>retornos_matrix<span class="op">,</span> d <span class="op">=&gt;</span> d<span class="op">[</span><span class="dv">2</span><span class="op">])</span> <span class="op">*</span> <span class="dv">12</span><span class="op">,</span>  <span class="co">// IJS</span></span>
-<span id="cb12-556"><a href="#cb12-556"></a>  d3<span class="op">.</span><span class="fu">mean</span><span class="op">(</span>retornos_matrix<span class="op">,</span> d <span class="op">=&gt;</span> d<span class="op">[</span><span class="dv">3</span><span class="op">])</span> <span class="op">*</span> <span class="dv">12</span><span class="op">,</span>  <span class="co">// EEM</span></span>
-<span id="cb12-557"><a href="#cb12-557"></a>  d3<span class="op">.</span><span class="fu">mean</span><span class="op">(</span>retornos_matrix<span class="op">,</span> d <span class="op">=&gt;</span> d<span class="op">[</span><span class="dv">4</span><span class="op">])</span> <span class="op">*</span> <span class="dv">12</span>   <span class="co">// AGG</span></span>
-<span id="cb12-558"><a href="#cb12-558"></a><span class="op">]</span></span>
-<span id="cb12-559"><a href="#cb12-559"></a></span>
-<span id="cb12-560"><a href="#cb12-560"></a><span class="co">// Sliders para ajustar pesos manualmente</span></span>
-<span id="cb12-561"><a href="#cb12-561"></a>peso_spy <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span><span class="op">([</span><span class="dv">0</span><span class="op">,</span> <span class="dv">100</span><span class="op">],</span> <span class="op">{</span>value<span class="op">:</span> <span class="dv">20</span><span class="op">,</span> step<span class="op">:</span> <span class="dv">1</span><span class="op">,</span> label<span class="op">:</span> <span class="st">"SPY (%)"</span><span class="op">})</span></span>
-<span id="cb12-562"><a href="#cb12-562"></a>peso_efa <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span><span class="op">([</span><span class="dv">0</span><span class="op">,</span> <span class="dv">100</span><span class="op">],</span> <span class="op">{</span>value<span class="op">:</span> <span class="dv">25</span><span class="op">,</span> step<span class="op">:</span> <span class="dv">1</span><span class="op">,</span> label<span class="op">:</span> <span class="st">"EFA (%)"</span><span class="op">})</span></span>
-<span id="cb12-563"><a href="#cb12-563"></a>peso_ijs <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span><span class="op">([</span><span class="dv">0</span><span class="op">,</span> <span class="dv">100</span><span class="op">],</span> <span class="op">{</span>value<span class="op">:</span> <span class="dv">20</span><span class="op">,</span> step<span class="op">:</span> <span class="dv">1</span><span class="op">,</span> label<span class="op">:</span> <span class="st">"IJS (%)"</span><span class="op">})</span></span>
-<span id="cb12-564"><a href="#cb12-564"></a>peso_eem <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span><span class="op">([</span><span class="dv">0</span><span class="op">,</span> <span class="dv">100</span><span class="op">],</span> <span class="op">{</span>value<span class="op">:</span> <span class="dv">20</span><span class="op">,</span> step<span class="op">:</span> <span class="dv">1</span><span class="op">,</span> label<span class="op">:</span> <span class="st">"EEM (%)"</span><span class="op">})</span></span>
-<span id="cb12-565"><a href="#cb12-565"></a>peso_agg <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span><span class="op">([</span><span class="dv">0</span><span class="op">,</span> <span class="dv">100</span><span class="op">],</span> <span class="op">{</span>value<span class="op">:</span> <span class="dv">15</span><span class="op">,</span> step<span class="op">:</span> <span class="dv">1</span><span class="op">,</span> label<span class="op">:</span> <span class="st">"AGG (%)"</span><span class="op">})</span></span>
-<span id="cb12-566"><a href="#cb12-566"></a></span>
-<span id="cb12-567"><a href="#cb12-567"></a><span class="co">// Normalizar y calcular retorno/volatilidad del portafolio ajustado</span></span>
-<span id="cb12-568"><a href="#cb12-568"></a>w_manual <span class="op">=</span> <span class="op">[</span>peso_spy<span class="op">,</span> peso_efa<span class="op">,</span> peso_ijs<span class="op">,</span> peso_eem<span class="op">,</span> peso_agg<span class="op">].</span><span class="fu">map</span><span class="op">(</span>x <span class="op">=&gt;</span> x <span class="op">/</span> <span class="dv">100</span><span class="op">)</span></span>
-<span id="cb12-569"><a href="#cb12-569"></a>retorno_manual <span class="op">=</span> d3<span class="op">.</span><span class="fu">sum</span><span class="op">(</span>w_manual<span class="op">.</span><span class="fu">map</span><span class="op">((</span>w<span class="op">,</span> i<span class="op">)</span> <span class="op">=&gt;</span> w <span class="op">*</span> retornos_esperados<span class="op">[</span>i<span class="op">]))</span></span>
-<span id="cb12-570"><a href="#cb12-570"></a><span class="co">// ... cálculo de volatilidad similar</span></span>
-<span id="cb12-571"><a href="#cb12-571"></a></span>
-<span id="cb12-572"><a href="#cb12-572"></a><span class="co">// Mostrar resultado</span></span>
-<span id="cb12-573"><a href="#cb12-573"></a>html`</span>
-<span id="cb12-574"><a href="#cb12-574"></a><span class="op">&lt;</span>div style<span class="op">=</span><span class="st">"border: 1px solid #ccc; padding: 10px; margin-top: 10px;"</span><span class="op">&gt;</span></span>
-<span id="cb12-575"><a href="#cb12-575"></a>  <span class="op">&lt;</span>h3<span class="op">&gt;</span>Portafolio Personalizado<span class="op">&lt;/</span>h3<span class="op">&gt;</span></span>
-<span id="cb12-576"><a href="#cb12-576"></a>  <span class="op">&lt;</span>p<span class="op">&gt;&lt;</span>strong<span class="op">&gt;</span>Retorno Esperado<span class="op">:&lt;/</span>strong<span class="op">&gt;</span> $<span class="op">{(</span>retorno_manual <span class="op">*</span> <span class="dv">100</span><span class="op">).</span><span class="fu">toFixed</span><span class="op">(</span><span class="dv">2</span><span class="op">)}%</span> anual<span class="op">&lt;/</span>p<span class="op">&gt;</span></span>
-<span id="cb12-577"><a href="#cb12-577"></a>  <span class="op">&lt;</span>p<span class="op">&gt;&lt;</span>strong<span class="op">&gt;</span>Volatilidad<span class="op">:&lt;/</span>strong<span class="op">&gt;</span> $<span class="op">{(</span>vol_manual <span class="op">*</span> <span class="dv">100</span><span class="op">).</span><span class="fu">toFixed</span><span class="op">(</span><span class="dv">2</span><span class="op">)}%</span> anual<span class="op">&lt;/</span>p<span class="op">&gt;</span></span>
-<span id="cb12-578"><a href="#cb12-578"></a>  <span class="op">&lt;</span>p<span class="op">&gt;&lt;</span>strong<span class="op">&gt;</span>Sharpe Ratio<span class="op">:&lt;/</span>strong<span class="op">&gt;</span> $<span class="op">{((</span>retorno_manual <span class="op">-</span> <span class="fl">0.02</span><span class="op">)</span> <span class="op">/</span> vol_manual<span class="op">).</span><span class="fu">toFixed</span><span class="op">(</span><span class="dv">2</span><span class="op">)}&lt;/</span>p<span class="op">&gt;</span></span>
-<span id="cb12-579"><a href="#cb12-579"></a><span class="op">&lt;/</span>div<span class="op">&gt;</span></span>
-<span id="cb12-580"><a href="#cb12-580"></a>`</span>
-<span id="cb12-581"><a href="#cb12-581"></a>```</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12" data-startfrom="541" data-syntax-error-position="284" data-source-offset="9"><pre class="sourceCode numberSource numberLines java code-with-copy"><code class="sourceCode java" style="counter-reset: source-line 540;"><span id="cb12-541"><a href="#cb12-541" aria-label="541"></a>```<span class="op">{</span>ojs<span class="op">}</span></span>
+<span id="cb12-542"><a href="#cb12-542" aria-label="542"></a><span class="co">// Carga de datos (CSV precalculado)</span></span>
+<span id="cb12-543"><a href="#cb12-543" aria-label="543"></a>portafolio_data <span class="op">=</span> <span class="fu">FileAttachment</span><span class="op">(</span><span class="st">"data/portafolio_retornos.csv"</span><span class="op">).</span><span class="fu">csv</span><span class="op">()</span></span>
+<span id="cb12-544"><a href="#cb12-544" aria-label="544"></a></span>
+<span id="cb12-545"><a href="#cb12-545" aria-label="545"></a><span class="co">// Transformar en matriz de retornos</span></span>
+<span id="cb12-546"><a href="#cb12-546" aria-label="546"></a>retornos_matrix <span class="op">=</span> portafolio_data<span class="op">.</span><span class="fu">map</span><span class="op">(</span>d <span class="op">=&gt;</span> <span class="op">[</span>d<span class="op">.</span><span class="fu">SPY</span><span class="op">,</span> d<span class="op">.</span><span class="fu">EFA</span><span class="op">,</span> d<span class="op">.</span><span class="fu">IJS</span><span class="op">,</span> d<span class="op">.</span><span class="fu">EEM</span><span class="op">,</span> d<span class="op">.</span><span class="fu">AGG</span><span class="op">])</span></span>
+<span id="cb12-547"><a href="#cb12-547" aria-label="547"></a></span>
+<span id="cb12-548"><a href="#cb12-548" aria-label="548"></a><span class="co">// Calcular matriz de covarianza (librería math)</span></span>
+<span id="cb12-549"><a href="#cb12-549" aria-label="549"></a><span class="kw">import</span> <span class="im">{default as math} from "https://cdnjs</span><span class="op">.</span><span class="im">cloudflare</span><span class="op">.</span><span class="im">com/ajax/libs/mathjs/12</span><span class="op">.</span><span class="im">0</span><span class="op">.</span><span class="im">0/math</span><span class="op">.</span><span class="im">min</span><span class="op">.</span><span class="im">js"</span></span>
+<span id="cb12-550"><a href="#cb12-550" aria-label="550"></a></span>
+<span id="cb12-551"><a href="#cb12-551" aria-label="551"></a><span class="co">// Medias y covarianza</span></span>
+<span id="cb12-552"><a href="#cb12-552" aria-label="552"></a>retornos_esperados <span class="op">=</span> <span class="op">[</span></span>
+<span id="cb12-553"><a href="#cb12-553" aria-label="553"></a>  d3<span class="op">.</span><span class="fu">mean</span><span class="op">(</span>retornos_matrix<span class="op">,</span> d <span class="op">=&gt;</span> d<span class="op">[</span><span class="dv">0</span><span class="op">])</span> <span class="op">*</span> <span class="dv">12</span><span class="op">,</span>  <span class="co">// SPY</span></span>
+<span id="cb12-554"><a href="#cb12-554" aria-label="554"></a>  d3<span class="op">.</span><span class="fu">mean</span><span class="op">(</span>retornos_matrix<span class="op">,</span> d <span class="op">=&gt;</span> d<span class="op">[</span><span class="dv">1</span><span class="op">])</span> <span class="op">*</span> <span class="dv">12</span><span class="op">,</span>  <span class="co">// EFA</span></span>
+<span id="cb12-555"><a href="#cb12-555" aria-label="555"></a>  d3<span class="op">.</span><span class="fu">mean</span><span class="op">(</span>retornos_matrix<span class="op">,</span> d <span class="op">=&gt;</span> d<span class="op">[</span><span class="dv">2</span><span class="op">])</span> <span class="op">*</span> <span class="dv">12</span><span class="op">,</span>  <span class="co">// IJS</span></span>
+<span id="cb12-556"><a href="#cb12-556" aria-label="556"></a>  d3<span class="op">.</span><span class="fu">mean</span><span class="op">(</span>retornos_matrix<span class="op">,</span> d <span class="op">=&gt;</span> d<span class="op">[</span><span class="dv">3</span><span class="op">])</span> <span class="op">*</span> <span class="dv">12</span><span class="op">,</span>  <span class="co">// EEM</span></span>
+<span id="cb12-557"><a href="#cb12-557" aria-label="557"></a>  d3<span class="op">.</span><span class="fu">mean</span><span class="op">(</span>retornos_matrix<span class="op">,</span> d <span class="op">=&gt;</span> d<span class="op">[</span><span class="dv">4</span><span class="op">])</span> <span class="op">*</span> <span class="dv">12</span>   <span class="co">// AGG</span></span>
+<span id="cb12-558"><a href="#cb12-558" aria-label="558"></a><span class="op">]</span></span>
+<span id="cb12-559"><a href="#cb12-559" aria-label="559"></a></span>
+<span id="cb12-560"><a href="#cb12-560" aria-label="560"></a><span class="co">// Sliders para ajustar pesos manualmente</span></span>
+<span id="cb12-561"><a href="#cb12-561" aria-label="561"></a>peso_spy <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span><span class="op">([</span><span class="dv">0</span><span class="op">,</span> <span class="dv">100</span><span class="op">],</span> <span class="op">{</span>value<span class="op">:</span> <span class="dv">20</span><span class="op">,</span> step<span class="op">:</span> <span class="dv">1</span><span class="op">,</span> label<span class="op">:</span> <span class="st">"SPY (%)"</span><span class="op">})</span></span>
+<span id="cb12-562"><a href="#cb12-562" aria-label="562"></a>peso_efa <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span><span class="op">([</span><span class="dv">0</span><span class="op">,</span> <span class="dv">100</span><span class="op">],</span> <span class="op">{</span>value<span class="op">:</span> <span class="dv">25</span><span class="op">,</span> step<span class="op">:</span> <span class="dv">1</span><span class="op">,</span> label<span class="op">:</span> <span class="st">"EFA (%)"</span><span class="op">})</span></span>
+<span id="cb12-563"><a href="#cb12-563" aria-label="563"></a>peso_ijs <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span><span class="op">([</span><span class="dv">0</span><span class="op">,</span> <span class="dv">100</span><span class="op">],</span> <span class="op">{</span>value<span class="op">:</span> <span class="dv">20</span><span class="op">,</span> step<span class="op">:</span> <span class="dv">1</span><span class="op">,</span> label<span class="op">:</span> <span class="st">"IJS (%)"</span><span class="op">})</span></span>
+<span id="cb12-564"><a href="#cb12-564" aria-label="564"></a>peso_eem <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span><span class="op">([</span><span class="dv">0</span><span class="op">,</span> <span class="dv">100</span><span class="op">],</span> <span class="op">{</span>value<span class="op">:</span> <span class="dv">20</span><span class="op">,</span> step<span class="op">:</span> <span class="dv">1</span><span class="op">,</span> label<span class="op">:</span> <span class="st">"EEM (%)"</span><span class="op">})</span></span>
+<span id="cb12-565"><a href="#cb12-565" aria-label="565"></a>peso_agg <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span><span class="op">([</span><span class="dv">0</span><span class="op">,</span> <span class="dv">100</span><span class="op">],</span> <span class="op">{</span>value<span class="op">:</span> <span class="dv">15</span><span class="op">,</span> step<span class="op">:</span> <span class="dv">1</span><span class="op">,</span> label<span class="op">:</span> <span class="st">"AGG (%)"</span><span class="op">})</span></span>
+<span id="cb12-566"><a href="#cb12-566" aria-label="566"></a></span>
+<span id="cb12-567"><a href="#cb12-567" aria-label="567"></a><span class="co">// Normalizar y calcular retorno/volatilidad del portafolio ajustado</span></span>
+<span id="cb12-568"><a href="#cb12-568" aria-label="568"></a>w_manual <span class="op">=</span> <span class="op">[</span>peso_spy<span class="op">,</span> peso_efa<span class="op">,</span> peso_ijs<span class="op">,</span> peso_eem<span class="op">,</span> peso_agg<span class="op">].</span><span class="fu">map</span><span class="op">(</span>x <span class="op">=&gt;</span> x <span class="op">/</span> <span class="dv">100</span><span class="op">)</span></span>
+<span id="cb12-569"><a href="#cb12-569" aria-label="569"></a>retorno_manual <span class="op">=</span> d3<span class="op">.</span><span class="fu">sum</span><span class="op">(</span>w_manual<span class="op">.</span><span class="fu">map</span><span class="op">((</span>w<span class="op">,</span> i<span class="op">)</span> <span class="op">=&gt;</span> w <span class="op">*</span> retornos_esperados<span class="op">[</span>i<span class="op">]))</span></span>
+<span id="cb12-570"><a href="#cb12-570" aria-label="570"></a><span class="co">// ... cálculo de volatilidad similar</span></span>
+<span id="cb12-571"><a href="#cb12-571" aria-label="571"></a></span>
+<span id="cb12-572"><a href="#cb12-572" aria-label="572"></a><span class="co">// Mostrar resultado</span></span>
+<span id="cb12-573"><a href="#cb12-573" aria-label="573"></a>html`</span>
+<span id="cb12-574"><a href="#cb12-574" aria-label="574"></a><span class="op">&lt;</span>div style<span class="op">=</span><span class="st">"border: 1px solid #ccc; padding: 10px; margin-top: 10px;"</span><span class="op">&gt;</span></span>
+<span id="cb12-575"><a href="#cb12-575" aria-label="575"></a>  <span class="op">&lt;</span>h3<span class="op">&gt;</span>Portafolio Personalizado<span class="op">&lt;/</span>h3<span class="op">&gt;</span></span>
+<span id="cb12-576"><a href="#cb12-576" aria-label="576"></a>  <span class="op">&lt;</span>p<span class="op">&gt;&lt;</span>strong<span class="op">&gt;</span>Retorno Esperado<span class="op">:&lt;/</span>strong<span class="op">&gt;</span> $<span class="op">{(</span>retorno_manual <span class="op">*</span> <span class="dv">100</span><span class="op">).</span><span class="fu">toFixed</span><span class="op">(</span><span class="dv">2</span><span class="op">)}%</span> anual<span class="op">&lt;/</span>p<span class="op">&gt;</span></span>
+<span id="cb12-577"><a href="#cb12-577" aria-label="577"></a>  <span class="op">&lt;</span>p<span class="op">&gt;&lt;</span>strong<span class="op">&gt;</span>Volatilidad<span class="op">:&lt;/</span>strong<span class="op">&gt;</span> $<span class="op">{(</span>vol_manual <span class="op">*</span> <span class="dv">100</span><span class="op">).</span><span class="fu">toFixed</span><span class="op">(</span><span class="dv">2</span><span class="op">)}%</span> anual<span class="op">&lt;/</span>p<span class="op">&gt;</span></span>
+<span id="cb12-578"><a href="#cb12-578" aria-label="578"></a>  <span class="op">&lt;</span>p<span class="op">&gt;&lt;</span>strong<span class="op">&gt;</span>Sharpe Ratio<span class="op">:&lt;/</span>strong<span class="op">&gt;</span> $<span class="op">{((</span>retorno_manual <span class="op">-</span> <span class="fl">0.02</span><span class="op">)</span> <span class="op">/</span> vol_manual<span class="op">).</span><span class="fu">toFixed</span><span class="op">(</span><span class="dv">2</span><span class="op">)}&lt;/</span>p<span class="op">&gt;</span></span>
+<span id="cb12-579"><a href="#cb12-579" aria-label="579"></a><span class="op">&lt;/</span>div<span class="op">&gt;</span></span>
+<span id="cb12-580"><a href="#cb12-580" aria-label="580"></a>`</span>
+<span id="cb12-581"><a href="#cb12-581" aria-label="581"></a>```</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
 <div class="callout callout-style-default callout-important callout-empty-content callout-titled">
 <div class="callout-header d-flex align-content-center">
