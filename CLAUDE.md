@@ -85,15 +85,16 @@ Donde:
 - `MM` = número de unidad temática (01, 02, 03, ...)
 - `[Nombre Descriptivo]` = título corto
 
-### Orden Actual (2026-09-10)
+### Orden Actual (2026-09-21)
 
 | Num | Tipo | Archivo | Descripción |
 |-----|------|---------|-------------|
 | 01 | Intro | `herramientas.qmd` | Herramientas y setup |
 | 02 | Intro | `intro.qmd` | IA en finanzas cuantitativas |
 | 03 | Clase | `notebook_01.qmd` | Clase 01 - Desarrollo asistido |
-| 04 | — | — | [DISPONIBLE] |
+| 04 | Trabajo | `trabajo.qmd` | Proyecto del curso |
 | 05 | Actividad | `actividad_01_con_ia.qmd` | Actividad 01 - Limpieza de datos |
+| 06 | Actividad | `actividad_02_portafolios.qmd` | Actividad 02 - Portafolios: EDA → Modelos → Servicing |
 
 ### Estructura de Contenido para Clases_IA
 
@@ -245,11 +246,11 @@ grep -h "listing_title" clases_ia/*.qmd | sort
 ## 🚀 Próximos Materiales Planeados
 
 ```
-06 - Actividad 02 - Agregaciones y Joins con IA
 07 - Clase 02 - Regresión y Modelado Financiero
-08 - Actividad 03 - Simulación Monte Carlo
+08 - Actividad 03 - Agregaciones y Joins con IA (Data Wrangling)
 09 - Guía 01 - Buenas Prácticas de Prompting
 10 - Taller 01 - Debugging Interactivo en Positron
 ```
 
 *(Esta lista es aproximada y puede cambiar según necesidades pedagógicas)*
+*(06 ya fue completado con Actividad 02 - Portafolios)*
