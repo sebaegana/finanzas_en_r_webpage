@@ -761,7 +761,7 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="paso-1-crear-archivo-quarto-con-observable-js">Paso 1: Crear archivo Quarto con Observable JS</h3>
 <p>Tu archivo <code>actividad_02_portafolios.qmd</code> ya tiene un bloque <code>{ojs}</code> (Observable JS):</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13" data-startfrom="500" data-source-offset="-73"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 499;"><span id="cb13-500"><a href="#cb13-500" aria-hidden="true" tabindex="-1"></a>portafolio_data <span class="op">=</span> <span class="fu">FileAttachment</span>(<span class="st">"data/portafolio_retornos.csv"</span>)<span class="op">.</span><span class="fu">csv</span>()</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13" data-startfrom="500" data-source-offset="-71"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 499;"><span id="cb13-500"><a href="#cb13-500" aria-hidden="true" tabindex="-1"></a>portafolio_data <span class="op">=</span> <span class="fu">FileAttachment</span>(<span class="st">"data/portafolio_retornos.csv"</span>)<span class="op">.</span><span class="fu">csv</span>()</span>
 <span id="cb13-501"><a href="#cb13-501" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb13-502"><a href="#cb13-502" aria-hidden="true" tabindex="-1"></a><span class="co">// Crea 5 sliders (0-100%) para ajustar pesos de cada activo</span></span>
 <span id="cb13-503"><a href="#cb13-503" aria-hidden="true" tabindex="-1"></a>peso_spy <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">100</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="dv">20</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"SPY (%)"</span>})</span>
@@ -847,27 +847,27 @@ window.Quarto = {
 <section id="estructura-básica" class="level3">
 <h3 class="anchored" data-anchor-id="estructura-básica">Estructura básica:</h3>
 <div class="quarto-ojs-syntax-error">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18" data-startfrom="567" data-syntax-error-position="384" data-source-offset="9"><pre class="sourceCode numberSource numberLines java code-with-copy"><code class="sourceCode java" style="counter-reset: source-line 566;"><span id="cb18-567"><a href="#cb18-567"></a>```<span class="op">{</span>ojs<span class="op">}</span></span>
-<span id="cb18-568"><a href="#cb18-568"></a><span class="co">// 1. Cargar datos</span></span>
-<span id="cb18-569"><a href="#cb18-569"></a>datos <span class="op">=</span> <span class="fu">FileAttachment</span><span class="op">(</span><span class="st">"data/portafolio_retornos.csv"</span><span class="op">).</span><span class="fu">csv</span><span class="op">()</span></span>
-<span id="cb18-570"><a href="#cb18-570"></a></span>
-<span id="cb18-571"><a href="#cb18-571"></a><span class="co">// 2. Crear controles interactivos (sliders, botones, dropdowns)</span></span>
-<span id="cb18-572"><a href="#cb18-572"></a>slider_spy <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span><span class="op">([</span><span class="dv">0</span><span class="op">,</span> <span class="dv">100</span><span class="op">],</span> <span class="op">{</span>label<span class="op">:</span> <span class="st">"SPY (%)"</span><span class="op">})</span></span>
-<span id="cb18-573"><a href="#cb18-573"></a>slider_efa <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span><span class="op">([</span><span class="dv">0</span><span class="op">,</span> <span class="dv">100</span><span class="op">],</span> <span class="op">{</span>label<span class="op">:</span> <span class="st">"EFA (%)"</span><span class="op">})</span></span>
-<span id="cb18-574"><a href="#cb18-574"></a></span>
-<span id="cb18-575"><a href="#cb18-575"></a><span class="co">// 3. Definir lógica reactiva (recalcula automáticamente cuando cambien sliders)</span></span>
-<span id="cb18-576"><a href="#cb18-576"></a>pesos <span class="op">=</span> <span class="op">[</span>slider_spy<span class="op">,</span> slider_efa<span class="op">,</span> <span class="kw">...</span><span class="op">]</span>  <span class="co">// Reactivo: actualiza cuando muevas sliders</span></span>
-<span id="cb18-577"><a href="#cb18-577"></a>retorno <span class="op">=</span> <span class="fu">suma</span><span class="op">(</span>pesos <span class="op">*</span> retornos_historicos<span class="op">)</span></span>
-<span id="cb18-578"><a href="#cb18-578"></a>sharpe <span class="op">=</span> <span class="op">(</span>retorno <span class="op">-</span> tasa_libre<span class="op">)</span> <span class="op">/</span> volatilidad</span>
-<span id="cb18-579"><a href="#cb18-579"></a></span>
-<span id="cb18-580"><a href="#cb18-580"></a><span class="co">// 4. Mostrar resultados</span></span>
-<span id="cb18-581"><a href="#cb18-581"></a>html`</span>
-<span id="cb18-582"><a href="#cb18-582"></a><span class="op">&lt;</span>div<span class="op">&gt;</span></span>
-<span id="cb18-583"><a href="#cb18-583"></a>  <span class="op">&lt;</span>p<span class="op">&gt;</span>Retorno<span class="op">:</span> $<span class="op">{</span>retorno<span class="op">.</span><span class="fu">toFixed</span><span class="op">(</span><span class="dv">2</span><span class="op">)}%&lt;/</span>p<span class="op">&gt;</span></span>
-<span id="cb18-584"><a href="#cb18-584"></a>  <span class="op">&lt;</span>p<span class="op">&gt;</span>Sharpe<span class="op">:</span> $<span class="op">{</span>sharpe<span class="op">.</span><span class="fu">toFixed</span><span class="op">(</span><span class="dv">2</span><span class="op">)}&lt;/</span>p<span class="op">&gt;</span></span>
-<span id="cb18-585"><a href="#cb18-585"></a><span class="op">&lt;/</span>div<span class="op">&gt;</span></span>
-<span id="cb18-586"><a href="#cb18-586"></a>`</span>
-<span id="cb18-587"><a href="#cb18-587"></a>```</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18" data-startfrom="567" data-syntax-error-position="376" data-source-offset="9"><pre class="sourceCode numberSource numberLines java code-with-copy"><code class="sourceCode java" style="counter-reset: source-line 566;"><span id="cb18-567"><a href="#cb18-567" aria-label="567"></a>```<span class="op">{</span>ojs<span class="op">}</span></span>
+<span id="cb18-568"><a href="#cb18-568" aria-label="568"></a><span class="co">// 1. Cargar datos</span></span>
+<span id="cb18-569"><a href="#cb18-569" aria-label="569"></a>datos <span class="op">=</span> <span class="fu">FileAttachment</span><span class="op">(</span><span class="st">"data/portafolio_retornos.csv"</span><span class="op">).</span><span class="fu">csv</span><span class="op">()</span></span>
+<span id="cb18-570"><a href="#cb18-570" aria-label="570"></a></span>
+<span id="cb18-571"><a href="#cb18-571" aria-label="571"></a><span class="co">// 2. Crear controles interactivos (sliders, botones, dropdowns)</span></span>
+<span id="cb18-572"><a href="#cb18-572" aria-label="572"></a>slider_spy <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span><span class="op">([</span><span class="dv">0</span><span class="op">,</span> <span class="dv">100</span><span class="op">],</span> <span class="op">{</span>label<span class="op">:</span> <span class="st">"SPY (%)"</span><span class="op">})</span></span>
+<span id="cb18-573"><a href="#cb18-573" aria-label="573"></a>slider_efa <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span><span class="op">([</span><span class="dv">0</span><span class="op">,</span> <span class="dv">100</span><span class="op">],</span> <span class="op">{</span>label<span class="op">:</span> <span class="st">"EFA (%)"</span><span class="op">})</span></span>
+<span id="cb18-574"><a href="#cb18-574" aria-label="574"></a></span>
+<span id="cb18-575"><a href="#cb18-575" aria-label="575"></a><span class="co">// 3. Definir lógica reactiva (recalcula automáticamente cuando cambien sliders)</span></span>
+<span id="cb18-576"><a href="#cb18-576" aria-label="576"></a>pesos <span class="op">=</span> <span class="op">[</span>slider_spy<span class="op">,</span> slider_efa<span class="op">,</span> <span class="kw">...</span><span class="op">]</span>  <span class="co">// Reactivo: actualiza cuando muevas sliders</span></span>
+<span id="cb18-577"><a href="#cb18-577" aria-label="577"></a>retorno <span class="op">=</span> <span class="fu">suma</span><span class="op">(</span>pesos <span class="op">*</span> retornos_historicos<span class="op">)</span></span>
+<span id="cb18-578"><a href="#cb18-578" aria-label="578"></a>sharpe <span class="op">=</span> <span class="op">(</span>retorno <span class="op">-</span> tasa_libre<span class="op">)</span> <span class="op">/</span> volatilidad</span>
+<span id="cb18-579"><a href="#cb18-579" aria-label="579"></a></span>
+<span id="cb18-580"><a href="#cb18-580" aria-label="580"></a><span class="co">// 4. Mostrar resultados</span></span>
+<span id="cb18-581"><a href="#cb18-581" aria-label="581"></a>html`</span>
+<span id="cb18-582"><a href="#cb18-582" aria-label="582"></a><span class="op">&lt;</span>div<span class="op">&gt;</span></span>
+<span id="cb18-583"><a href="#cb18-583" aria-label="583"></a>  <span class="op">&lt;</span>p<span class="op">&gt;</span>Retorno<span class="op">:</span> $<span class="op">{</span>retorno<span class="op">.</span><span class="fu">toFixed</span><span class="op">(</span><span class="dv">2</span><span class="op">)}%&lt;/</span>p<span class="op">&gt;</span></span>
+<span id="cb18-584"><a href="#cb18-584" aria-label="584"></a>  <span class="op">&lt;</span>p<span class="op">&gt;</span>Sharpe<span class="op">:</span> $<span class="op">{</span>sharpe<span class="op">.</span><span class="fu">toFixed</span><span class="op">(</span><span class="dv">2</span><span class="op">)}&lt;/</span>p<span class="op">&gt;</span></span>
+<span id="cb18-585"><a href="#cb18-585" aria-label="585"></a><span class="op">&lt;/</span>div<span class="op">&gt;</span></span>
+<span id="cb18-586"><a href="#cb18-586" aria-label="586"></a>`</span>
+<span id="cb18-587"><a href="#cb18-587" aria-label="587"></a>```</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-error">
 <div class="callout callout-style-default callout-important callout-empty-content callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -1144,7 +1144,7 @@ window.Quarto = {
 
 </main> <!-- /main -->
 <script type="ojs-module-contents">
-eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6Ii8vIFBhcnRlIDU6IE9ic2VydmFibGUgSlMgZW1iZWJpZG8gZW4gZWwgLnFtZFxyXG4vLyBDYXJnYSBkYXRvcyBkZXNkZSBDU1ZcclxucG9ydGFmb2xpb19kYXRhID0gRmlsZUF0dGFjaG1lbnQoXCJkYXRhL3BvcnRhZm9saW9fcmV0b3Jub3MuY3N2XCIpLmNzdigpXHJcblxyXG4vLyBDcmVhIDUgc2xpZGVycyAoMC0xMDAlKSBwYXJhIGFqdXN0YXIgcGVzb3MgZGUgY2FkYSBhY3Rpdm9cclxucGVzb19zcHkgPSBJbnB1dHMucmFuZ2UoWzAsIDEwMF0sIHt2YWx1ZTogMjAsIHN0ZXA6IDEsIGxhYmVsOiBcIlNQWSAoJSlcIn0pXHJcbnBlc29fZWZhID0gSW5wdXRzLnJhbmdlKFswLCAxMDBdLCB7dmFsdWU6IDI1LCBzdGVwOiAxLCBsYWJlbDogXCJFRkEgKCUpXCJ9KVxyXG4vLyAuLi4gZXRjXHJcblxyXG4vLyBDYWxjdWxhIGRpbsOhbWljYW1lbnRlOiByZXRvcm5vL3ZvbGF0aWxpZGFkL1NoYXJwZSBjdWFuZG8gbXVldmVzIHNsaWRlcnNcclxucmV0b3Jub19wb3J0Zm9saW8gPSBzdW0ocGVzb3MgKiByZXRvcm5vc19lc3BlcmFkb3MpXHJcblxyXG4vLyBNdWVzdHJhIHJlc3VsdGFkbyBlbiB1bmEgY2FqYSBIVE1MXHJcbmh0bWxgPHA+UmV0b3JubyBFc3BlcmFkbzogJHsocmV0b3Jub19wb3J0Zm9saW8gKiAxMDApLnRvRml4ZWQoMil9JSBhbnVhbDwvcD5gXHJcbiJ9XX0=
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6Ii8vIFBhcnRlIDU6IE9ic2VydmFibGUgSlMgZW1iZWJpZG8gZW4gZWwgLnFtZFxuLy8gQ2FyZ2EgZGF0b3MgZGVzZGUgQ1NWXG5wb3J0YWZvbGlvX2RhdGEgPSBGaWxlQXR0YWNobWVudChcImRhdGEvcG9ydGFmb2xpb19yZXRvcm5vcy5jc3ZcIikuY3N2KClcblxuLy8gQ3JlYSA1IHNsaWRlcnMgKDAtMTAwJSkgcGFyYSBhanVzdGFyIHBlc29zIGRlIGNhZGEgYWN0aXZvXG5wZXNvX3NweSA9IElucHV0cy5yYW5nZShbMCwgMTAwXSwge3ZhbHVlOiAyMCwgc3RlcDogMSwgbGFiZWw6IFwiU1BZICglKVwifSlcbnBlc29fZWZhID0gSW5wdXRzLnJhbmdlKFswLCAxMDBdLCB7dmFsdWU6IDI1LCBzdGVwOiAxLCBsYWJlbDogXCJFRkEgKCUpXCJ9KVxuLy8gLi4uIGV0Y1xuXG4vLyBDYWxjdWxhIGRpbsOhbWljYW1lbnRlOiByZXRvcm5vL3ZvbGF0aWxpZGFkL1NoYXJwZSBjdWFuZG8gbXVldmVzIHNsaWRlcnNcbnJldG9ybm9fcG9ydGZvbGlvID0gc3VtKHBlc29zICogcmV0b3Jub3NfZXNwZXJhZG9zKVxuXG4vLyBNdWVzdHJhIHJlc3VsdGFkbyBlbiB1bmEgY2FqYSBIVE1MXG5odG1sYDxwPlJldG9ybm8gRXNwZXJhZG86ICR7KHJldG9ybm9fcG9ydGZvbGlvICogMTAwKS50b0ZpeGVkKDIpfSUgYW51YWw8L3A+YFxuIn1dfQ==
 </script>
 <script type="module">
 if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
