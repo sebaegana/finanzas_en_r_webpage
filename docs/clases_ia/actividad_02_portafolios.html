@@ -1,0 +1,1524 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Sebastián Egaña Santibáñez (segana@fen.uchile.cl)">
+<meta name="author" content="Nicolás Leiva Díaz (nleivad@fen.uchile.cl)">
+
+<title>Actividad 02 — Construcción de Portafolios – Curso Finanzas en R</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-349e9611d7ce437f8276b20f376ddbca.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+<script type="module" src="../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+<link href="../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Curso Finanzas en R</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../clases/index.html"> 
+<span class="menu-text">Clases</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../clases_ia/index.html"> 
+<span class="menu-text">Clases con IA</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../recursos.html"> 
+<span class="menu-text">Recursos</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../contacto.html"> 
+<span class="menu-text">Contacto</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#descargas-y-enlaces" id="toc-descargas-y-enlaces" class="nav-link active" data-scroll-target="#descargas-y-enlaces">📥 Descargas y Enlaces</a></li>
+  <li><a href="#enlaces-del-profesor" id="toc-enlaces-del-profesor" class="nav-link" data-scroll-target="#enlaces-del-profesor">Enlaces del profesor</a></li>
+  <li><a href="#introducción-el-problema" id="toc-introducción-el-problema" class="nav-link" data-scroll-target="#introducción-el-problema">Introducción: El Problema</a></li>
+  <li><a href="#parte-1-eda-explorando-los-datos-y-correlaciones" id="toc-parte-1-eda-explorando-los-datos-y-correlaciones" class="nav-link" data-scroll-target="#parte-1-eda-explorando-los-datos-y-correlaciones">Parte 1 — EDA: Explorando los Datos y Correlaciones</a>
+  <ul class="collapse">
+  <li><a href="#enfoque-manual-tradicional" id="toc-enfoque-manual-tradicional" class="nav-link" data-scroll-target="#enfoque-manual-tradicional">Enfoque Manual (Tradicional)</a>
+  <ul class="collapse">
+  <li><a href="#paso-1-cargar-librerías-y-datos" id="toc-paso-1-cargar-librerías-y-datos" class="nav-link" data-scroll-target="#paso-1-cargar-librerías-y-datos">Paso 1: Cargar librerías y datos</a></li>
+  <li><a href="#paso-2-estadística-descriptiva-por-activo" id="toc-paso-2-estadística-descriptiva-por-activo" class="nav-link" data-scroll-target="#paso-2-estadística-descriptiva-por-activo">Paso 2: Estadística descriptiva por activo</a></li>
+  <li><a href="#paso-3-visualizaciones-individuales" id="toc-paso-3-visualizaciones-individuales" class="nav-link" data-scroll-target="#paso-3-visualizaciones-individuales">Paso 3: Visualizaciones individuales</a></li>
+  <li><a href="#paso-4-matriz-de-correlación-y-covarianza" id="toc-paso-4-matriz-de-correlación-y-covarianza" class="nav-link" data-scroll-target="#paso-4-matriz-de-correlación-y-covarianza">Paso 4: Matriz de correlación y covarianza</a></li>
+  </ul></li>
+  <li><a href="#enfoque-asistido-con-claude-code" id="toc-enfoque-asistido-con-claude-code" class="nav-link" data-scroll-target="#enfoque-asistido-con-claude-code">Enfoque Asistido con Claude Code</a>
+  <ul class="collapse">
+  <li><a href="#prompt-que-envías" id="toc-prompt-que-envías" class="nav-link" data-scroll-target="#prompt-que-envías">Prompt que envías:</a></li>
+  <li><a href="#lo-que-claude-code-genera-en-segundos" id="toc-lo-que-claude-code-genera-en-segundos" class="nav-link" data-scroll-target="#lo-que-claude-code-genera-en-segundos">Lo que Claude Code genera (en segundos):</a></li>
+  </ul></li>
+  <li><a href="#comparación-manual-vs-ia-parte-1" id="toc-comparación-manual-vs-ia-parte-1" class="nav-link" data-scroll-target="#comparación-manual-vs-ia-parte-1">Comparación: Manual vs IA (Parte 1)</a></li>
+  </ul></li>
+  <li><a href="#parte-2-modelos-simulación-de-portafolios-monte-carlo" id="toc-parte-2-modelos-simulación-de-portafolios-monte-carlo" class="nav-link" data-scroll-target="#parte-2-modelos-simulación-de-portafolios-monte-carlo">Parte 2 — Modelos: Simulación de Portafolios (Monte Carlo)</a>
+  <ul class="collapse">
+  <li><a href="#enfoque-manual" id="toc-enfoque-manual" class="nav-link" data-scroll-target="#enfoque-manual">Enfoque Manual</a>
+  <ul class="collapse">
+  <li><a href="#paso-1-preparar-datos-y-matriz-de-covarianza" id="toc-paso-1-preparar-datos-y-matriz-de-covarianza" class="nav-link" data-scroll-target="#paso-1-preparar-datos-y-matriz-de-covarianza">Paso 1: Preparar datos y matriz de covarianza</a></li>
+  <li><a href="#paso-2-simular-miles-de-portafolios-aleatorios" id="toc-paso-2-simular-miles-de-portafolios-aleatorios" class="nav-link" data-scroll-target="#paso-2-simular-miles-de-portafolios-aleatorios">Paso 2: Simular miles de portafolios aleatorios</a></li>
+  <li><a href="#paso-3-visualizar-la-nube-de-portafolios" id="toc-paso-3-visualizar-la-nube-de-portafolios" class="nav-link" data-scroll-target="#paso-3-visualizar-la-nube-de-portafolios">Paso 3: Visualizar la nube de portafolios</a></li>
+  </ul></li>
+  <li><a href="#enfoque-asistido-con-claude-code-1" id="toc-enfoque-asistido-con-claude-code-1" class="nav-link" data-scroll-target="#enfoque-asistido-con-claude-code-1">Enfoque Asistido con Claude Code</a>
+  <ul class="collapse">
+  <li><a href="#prompt" id="toc-prompt" class="nav-link" data-scroll-target="#prompt">Prompt:</a></li>
+  <li><a href="#resultado-segundos" id="toc-resultado-segundos" class="nav-link" data-scroll-target="#resultado-segundos">Resultado (segundos):</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#parte-3-modelos-optimización-de-markowitz-y-comparación" id="toc-parte-3-modelos-optimización-de-markowitz-y-comparación" class="nav-link" data-scroll-target="#parte-3-modelos-optimización-de-markowitz-y-comparación">Parte 3 — Modelos: Optimización de Markowitz y Comparación</a>
+  <ul class="collapse">
+  <li><a href="#enfoque-manual-1" id="toc-enfoque-manual-1" class="nav-link" data-scroll-target="#enfoque-manual-1">Enfoque Manual</a>
+  <ul class="collapse">
+  <li><a href="#paso-1-teoría-breve" id="toc-paso-1-teoría-breve" class="nav-link" data-scroll-target="#paso-1-teoría-breve">Paso 1: Teoría breve</a></li>
+  <li><a href="#paso-2-instalar-y-usar-quadprog" id="toc-paso-2-instalar-y-usar-quadprog" class="nav-link" data-scroll-target="#paso-2-instalar-y-usar-quadprog">Paso 2: Instalar y usar <code>quadprog</code></a></li>
+  </ul></li>
+  <li><a href="#enfoque-asistido-con-claude-code-2" id="toc-enfoque-asistido-con-claude-code-2" class="nav-link" data-scroll-target="#enfoque-asistido-con-claude-code-2">Enfoque Asistido con Claude Code</a>
+  <ul class="collapse">
+  <li><a href="#prompt-simplificado" id="toc-prompt-simplificado" class="nav-link" data-scroll-target="#prompt-simplificado">Prompt simplificado:</a></li>
+  <li><a href="#lo-que-genera-minutos-no-manual" id="toc-lo-que-genera-minutos-no-manual" class="nav-link" data-scroll-target="#lo-que-genera-minutos-no-manual">Lo que genera (minutos, no manual):</a></li>
+  </ul></li>
+  <li><a href="#comparación-visual" id="toc-comparación-visual" class="nav-link" data-scroll-target="#comparación-visual">Comparación Visual</a></li>
+  </ul></li>
+  <li><a href="#parte-4-servicing-publicar-como-página-interactiva" id="toc-parte-4-servicing-publicar-como-página-interactiva" class="nav-link" data-scroll-target="#parte-4-servicing-publicar-como-página-interactiva">Parte 4 — Servicing: Publicar como Página Interactiva</a>
+  <ul class="collapse">
+  <li><a href="#por-qué-servir-importa" id="toc-por-qué-servir-importa" class="nav-link" data-scroll-target="#por-qué-servir-importa">Por qué servir importa</a></li>
+  <li><a href="#enfoque-manual-construir-observable-js-en-quarto" id="toc-enfoque-manual-construir-observable-js-en-quarto" class="nav-link" data-scroll-target="#enfoque-manual-construir-observable-js-en-quarto">Enfoque Manual: Construir Observable JS en Quarto</a></li>
+  <li><a href="#enfoque-asistido-con-claude-code-3" id="toc-enfoque-asistido-con-claude-code-3" class="nav-link" data-scroll-target="#enfoque-asistido-con-claude-code-3">Enfoque Asistido con Claude Code</a>
+  <ul class="collapse">
+  <li><a href="#prompt-1" id="toc-prompt-1" class="nav-link" data-scroll-target="#prompt-1">Prompt:</a></li>
+  <li><a href="#resultado-minutos" id="toc-resultado-minutos" class="nav-link" data-scroll-target="#resultado-minutos">Resultado (minutos):</a></li>
+  </ul></li>
+  <li><a href="#flujo-de-publicación" id="toc-flujo-de-publicación" class="nav-link" data-scroll-target="#flujo-de-publicación">Flujo de Publicación</a></li>
+  </ul></li>
+  <li><a href="#tabla-de-ventajas-manual-vs-ia" id="toc-tabla-de-ventajas-manual-vs-ia" class="nav-link" data-scroll-target="#tabla-de-ventajas-manual-vs-ia">Tabla de Ventajas: Manual vs IA</a></li>
+  <li><a href="#actividad-para-estudiantes-tu-turno" id="toc-actividad-para-estudiantes-tu-turno" class="nav-link" data-scroll-target="#actividad-para-estudiantes-tu-turno">Actividad para Estudiantes: Tu Turno</a>
+  <ul class="collapse">
+  <li><a href="#instrucciones-generales" id="toc-instrucciones-generales" class="nav-link" data-scroll-target="#instrucciones-generales">Instrucciones Generales</a>
+  <ul class="collapse">
+  <li><a href="#opción-a-maximalista-recomendada-para-aprender" id="toc-opción-a-maximalista-recomendada-para-aprender" class="nav-link" data-scroll-target="#opción-a-maximalista-recomendada-para-aprender">Opción A: Maximalista (Recomendada para Aprender)</a></li>
+  <li><a href="#opción-b-híbrida-equilibrada" id="toc-opción-b-híbrida-equilibrada" class="nav-link" data-scroll-target="#opción-b-híbrida-equilibrada">Opción B: Híbrida (Equilibrada)</a></li>
+  <li><a href="#opción-c-minimalista-prompt-driven" id="toc-opción-c-minimalista-prompt-driven" class="nav-link" data-scroll-target="#opción-c-minimalista-prompt-driven">Opción C: Minimalista (Prompt-Driven)</a></li>
+  </ul></li>
+  <li><a href="#rúbrica-de-evaluación" id="toc-rúbrica-de-evaluación" class="nav-link" data-scroll-target="#rúbrica-de-evaluación">Rúbrica de Evaluación</a></li>
+  <li><a href="#entrega" id="toc-entrega" class="nav-link" data-scroll-target="#entrega">Entrega</a></li>
+  </ul></li>
+  <li><a href="#reflexión-final-ia-como-herramienta-no-reemplazo" id="toc-reflexión-final-ia-como-herramienta-no-reemplazo" class="nav-link" data-scroll-target="#reflexión-final-ia-como-herramienta-no-reemplazo">Reflexión Final: IA como Herramienta, No Reemplazo</a>
+  <ul class="collapse">
+  <li><a href="#usa-ia-para" id="toc-usa-ia-para" class="nav-link" data-scroll-target="#usa-ia-para">✅ Usa IA para:</a></li>
+  <li><a href="#no-uses-ia-para" id="toc-no-uses-ia-para" class="nav-link" data-scroll-target="#no-uses-ia-para">❌ NO uses IA para:</a></li>
+  <li><a href="#la-mentalidad-correcta" id="toc-la-mentalidad-correcta" class="nav-link" data-scroll-target="#la-mentalidad-correcta">La Mentalidad Correcta</a></li>
+  </ul></li>
+  <li><a href="#recursos-adicionales" id="toc-recursos-adicionales" class="nav-link" data-scroll-target="#recursos-adicionales">Recursos Adicionales</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Otros formatos</h2><ul><li><a href="actividad_02_portafolios.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><p>Actividad 02 — Construcción de Portafolios</p></h1>
+<p class="subtitle lead">Enfoque Incremental: EDA → Simulación vs Markowitz → Servicing (Manual vs Desarrollo Asistido con IA)</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autores/as</div>
+    <div class="quarto-title-meta-contents">
+             <p>Sebastián Egaña Santibáñez (segana@fen.uchile.cl) </p>
+             <p>Nicolás Leiva Díaz (nleivad@fen.uchile.cl) </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de publicación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">21 de septiembre de 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="descargas-y-enlaces" class="level2">
+<h2 class="anchored" data-anchor-id="descargas-y-enlaces">📥 Descargas y Enlaces</h2>
+<div style="margin-bottom: 20px;">
+  <div style="margin-bottom: 12px; display: flex; gap: 10px; flex-wrap: wrap;">
+    <a href="actividad_02_portafolios.pdf" class="btn btn-primary" role="button" style="padding: 8px 16px; border-radius: 4px; background-color: #0d6efd; color: white; text-decoration: none;">📄 Descargar PDF</a>
+    <a href="../clases_ia/actividad_02_portafolios.html" class="btn btn-secondary" role="button" style="padding: 8px 16px; border-radius: 4px; background-color: #6c757d; color: white; text-decoration: none;">💾 Descargar Fuente</a>
+  </div>
+
+  <div style="margin-top: 15px; padding: 12px; background: #f0f8ff; border-left: 4px solid #0d6efd; border-radius: 4px;">
+    <strong>📊 Datos para la Actividad:</strong>
+    <ul style="margin: 8px 0; padding-left: 20px;">
+      <li><a href="data/portafolio_retornos.csv" style="color: #0d6efd; text-decoration: underline;">Descargar portafolio_retornos.csv</a> (retornos mensuales log 2012-2021, 5 activos)</li>
+    </ul>
+  </div>
+</div>
+<hr>
+</section>
+<section id="enlaces-del-profesor" class="level1">
+<h1>Enlaces del profesor</h1>
+<p>🔗 <a href="https://segana.netlify.app">https://segana.netlify.app</a></p>
+<p>🐙 <a href="https://github.com/sebaegana">https://github.com/sebaegana</a></p>
+<p>💼 <a href="https://www.linkedin.com/in/sebastian-egana-santibanez/">https://www.linkedin.com/in/sebastian-egana-santibanez/</a></p>
+<hr>
+</section>
+<section id="introducción-el-problema" class="level1">
+<h1>Introducción: El Problema</h1>
+<p><strong>Contexto</strong>: Tienes acceso a 5 activos financieros: SPY (S&amp;P 500), EFA (mercados desarrollados), IJS (small-cap), EEM (mercados emergentes), AGG (bonos). Deseas construir un portafolio que maximice el retorno relativo al riesgo, pero <strong>no sabes qué pesos asignar</strong> a cada uno.</p>
+<p><strong>Pregunta central</strong>: - ¿Cómo <em>encontrar</em> los pesos óptimos? - ¿Es mejor simular miles de combinaciones (fuerza bruta) o resolver un problema de optimización exacto? - ¿Cómo <em>publicar</em> ese resultado para que otros lo usen?</p>
+<p><strong>Tu rol</strong>: seguir un pipeline de datos completo: 1. <strong>Parte 1 — EDA</strong>: entender los datos y correlaciones entre activos 2. <strong>Parte 2 — Simulación</strong>: aproximar la frontera eficiente generando miles de portafolios aleatorios 3. <strong>Parte 3 — Markowitz</strong>: resolver exactamente y comparar con la simulación 4. <strong>Parte 4 — Servicing</strong>: publicar el resultado como una página interactiva en este sitio</p>
+<p>En cada parte, verás dos enfoques: <strong>Manual</strong> (escribes cada línea de código, ~50-60 min total) y <strong>Asistido con Claude Code</strong> (~10-15 min).</p>
+<hr>
+</section>
+<section id="parte-1-eda-explorando-los-datos-y-correlaciones" class="level1">
+<h1>Parte 1 — EDA: Explorando los Datos y Correlaciones</h1>
+<section id="enfoque-manual-tradicional" class="level2">
+<h2 class="anchored" data-anchor-id="enfoque-manual-tradicional">Enfoque Manual (Tradicional)</h2>
+<p>Sin IA, siguiendo la estructura clásica:</p>
+<section id="paso-1-cargar-librerías-y-datos" class="level3">
+<h3 class="anchored" data-anchor-id="paso-1-cargar-librerías-y-datos">Paso 1: Cargar librerías y datos</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Librerías</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(skimr)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(corrplot)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Cargar datos</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>portafolio_retornos <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/portafolio_retornos.csv"</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Verificar estructura</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(portafolio_retornos)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(portafolio_retornos)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Tiempo invertido</strong>: ~3 minutos.</p>
+</section>
+<section id="paso-2-estadística-descriptiva-por-activo" class="level3">
+<h3 class="anchored" data-anchor-id="paso-2-estadística-descriptiva-por-activo">Paso 2: Estadística descriptiva por activo</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Resumen general</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(portafolio_retornos <span class="sc">|&gt;</span> <span class="fu">select</span>(<span class="sc">-</span>fecha))</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Usando skimr para más detalle</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">skim</span>(portafolio_retornos <span class="sc">|&gt;</span> <span class="fu">select</span>(<span class="sc">-</span>fecha))</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Estadísticas clave por activo (media, sd, min, max)</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>stats_por_activo <span class="ot">&lt;-</span> portafolio_retornos <span class="sc">|&gt;</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>fecha) <span class="sc">|&gt;</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">everything</span>(),</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">list</span>(</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">media =</span> <span class="sc">~</span><span class="fu">mean</span>(., <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">sd =</span> <span class="sc">~</span><span class="fu">sd</span>(., <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>      <span class="at">min =</span> <span class="sc">~</span><span class="fu">min</span>(., <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>      <span class="at">max =</span> <span class="sc">~</span><span class="fu">max</span>(., <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">n =</span> <span class="sc">~</span><span class="fu">n</span>()</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">.names =</span> <span class="st">"{.col}_{.fn}"</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>  ))</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(stats_por_activo)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Tiempo invertido</strong>: ~10 minutos (ajustes, interpretación).</p>
+</section>
+<section id="paso-3-visualizaciones-individuales" class="level3">
+<h3 class="anchored" data-anchor-id="paso-3-visualizaciones-individuales">Paso 3: Visualizaciones individuales</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Histogramas y densidades de retornos</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>portafolio_retornos <span class="sc">|&gt;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>fecha) <span class="sc">|&gt;</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="fu">everything</span>(), <span class="at">names_to =</span> <span class="st">"activo"</span>, <span class="at">values_to =</span> <span class="st">"retorno"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> retorno, <span class="at">fill =</span> activo)) <span class="sc">+</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">alpha =</span> <span class="fl">0.45</span>, <span class="at">binwidth =</span> <span class="fl">0.01</span>) <span class="sc">+</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>activo, <span class="at">scales =</span> <span class="st">"free"</span>) <span class="sc">+</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribución de Retornos Mensuales (2012-2021)"</span>,</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Retorno"</span>, <span class="at">y =</span> <span class="st">"Frecuencia"</span>)</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Gráfico de series temporales</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>portafolio_retornos <span class="sc">|&gt;</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">fecha =</span> <span class="fu">as.Date</span>(fecha)) <span class="sc">|&gt;</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span>fecha, <span class="at">names_to =</span> <span class="st">"activo"</span>, <span class="at">values_to =</span> <span class="st">"retorno"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> fecha, <span class="at">y =</span> retorno, <span class="at">color =</span> activo)) <span class="sc">+</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>activo, <span class="at">scales =</span> <span class="st">"free_y"</span>) <span class="sc">+</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Retornos Mensuales en el Tiempo"</span>,</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Fecha"</span>, <span class="at">y =</span> <span class="st">"Retorno"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Tiempo invertido</strong>: ~12 minutos (ajustes de colores, temas).</p>
+</section>
+<section id="paso-4-matriz-de-correlación-y-covarianza" class="level3">
+<h3 class="anchored" data-anchor-id="paso-4-matriz-de-correlación-y-covarianza">Paso 4: Matriz de correlación y covarianza</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Matriz de correlación</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>retornos_matrix <span class="ot">&lt;-</span> portafolio_retornos <span class="sc">|&gt;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>fecha) <span class="sc">|&gt;</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.matrix</span>()</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>correlacion <span class="ot">&lt;-</span> <span class="fu">cor</span>(retornos_matrix)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualizar con corrplot</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="fu">corrplot</span>(correlacion, <span class="at">method =</span> <span class="st">"circle"</span>, <span class="at">type =</span> <span class="st">"upper"</span>,</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">title =</span> <span class="st">"Matriz de Correlaciones entre Activos"</span>,</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>         <span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">0</span>))</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Matriz de covarianza</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>covarianza <span class="ot">&lt;-</span> <span class="fu">cov</span>(retornos_matrix)</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">"Matriz de Covarianza:"</span>)</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">round</span>(covarianza, <span class="dv">6</span>))</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Tabla formateada</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>correlacion_df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(correlacion) <span class="sc">|&gt;</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rownames_to_column</span>(<span class="st">"activo1"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span>activo1, <span class="at">names_to =</span> <span class="st">"activo2"</span>, <span class="at">values_to =</span> <span class="st">"corr"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(activo1 <span class="sc">&lt;</span> activo2) <span class="sc">|&gt;</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(<span class="fu">abs</span>(corr)))</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a><span class="fu">kable</span>(correlacion_df, <span class="at">digits =</span> <span class="dv">3</span>, <span class="at">caption =</span> <span class="st">"Correlaciones entre Activos"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Tiempo invertido</strong>: ~15 minutos (cálculos, gráficos, interpretación).</p>
+<p><strong>Total Parte 1 Manual</strong>: ~40 minutos.</p>
+<hr>
+</section>
+</section>
+<section id="enfoque-asistido-con-claude-code" class="level2">
+<h2 class="anchored" data-anchor-id="enfoque-asistido-con-claude-code">Enfoque Asistido con Claude Code</h2>
+<section id="prompt-que-envías" class="level3">
+<h3 class="anchored" data-anchor-id="prompt-que-envías">Prompt que envías:</h3>
+<blockquote class="blockquote">
+<p>“Necesito un EDA completo de un portafolio de 5 activos (SPY, EFA, IJS, EEM, AGG) desde un CSV: 1. Cargar datos <code>portafolio_retornos.csv</code> 2. Estadística descriptiva (media, sd, quantiles, valores faltantes) 3. Gráficos: histogramas de retornos por activo, series temporales 4. Matriz de correlación y covarianza con visualización 5. Interpretación: ¿qué tan correlacionados están?, ¿potencial de diversificación?”</p>
+</blockquote>
+</section>
+<section id="lo-que-claude-code-genera-en-segundos" class="level3">
+<h3 class="anchored" data-anchor-id="lo-que-claude-code-genera-en-segundos">Lo que Claude Code genera (en segundos):</h3>
+<p>Un script completo optimizado con <code>tidyverse</code> + <code>corrplot</code> + <code>ggplot2</code>, incluyendo:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo de lo que genera el asistente</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(corrplot)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>portafolio_retornos <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/portafolio_retornos.csv"</span>)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Tabla resumen</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>summary_stats <span class="ot">&lt;-</span> portafolio_retornos <span class="sc">|&gt;</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>fecha) <span class="sc">|&gt;</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), <span class="fu">list</span>(</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">media =</span> mean, <span class="at">sd =</span> sd, <span class="at">min =</span> min, <span class="at">q25 =</span> <span class="sc">~</span><span class="fu">quantile</span>(., <span class="fl">0.25</span>),</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">q50 =</span> median, <span class="at">q75 =</span> <span class="sc">~</span><span class="fu">quantile</span>(., <span class="fl">0.75</span>), <span class="at">max =</span> max</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  ), <span class="at">.names =</span> <span class="st">"{.col}_{.fn}"</span>))</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Matriz de correlación</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>corr_matrix <span class="ot">&lt;-</span> <span class="fu">cor</span>(portafolio_retornos <span class="sc">|&gt;</span> <span class="fu">select</span>(<span class="sc">-</span>fecha))</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="fu">corrplot</span>(corr_matrix, <span class="at">method =</span> <span class="st">"circle"</span>, <span class="at">title =</span> <span class="st">"Correlaciones"</span>)</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Series temporales</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>portafolio_retornos <span class="sc">|&gt;</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="sc">-</span>fecha) <span class="sc">|&gt;</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="fu">as.Date</span>(fecha), <span class="at">y =</span> value, <span class="at">color =</span> name)) <span class="sc">+</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>name, <span class="at">scales =</span> <span class="st">"free_y"</span>) <span class="sc">+</span></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Tiempo total</strong>: ~5 minutos (incluyendo lectura del código y ajuste de rutas).</p>
+<hr>
+</section>
+</section>
+<section id="comparación-manual-vs-ia-parte-1" class="level2">
+<h2 class="anchored" data-anchor-id="comparación-manual-vs-ia-parte-1">Comparación: Manual vs IA (Parte 1)</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 36%">
+<col style="width: 32%">
+<col style="width: 32%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Aspecto</th>
+<th>Manual</th>
+<th>Con IA</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Tiempo</strong></td>
+<td>~40 min</td>
+<td>~5 min</td>
+</tr>
+<tr class="even">
+<td><strong>Cobertura</strong></td>
+<td>Buena, pero a menudo falta una visualización</td>
+<td>Exhaustiva (siempre incluye gráficos, tablas)</td>
+</tr>
+<tr class="odd">
+<td><strong>Debugging</strong></td>
+<td>“¿por qué este plot no cabe?”</td>
+<td>IA explica y propone ajustes</td>
+</tr>
+<tr class="even">
+<td><strong>Código limpio</strong></td>
+<td>Crece iterativamente (experimenta)</td>
+<td>Listo para producción</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+</section>
+<section id="parte-2-modelos-simulación-de-portafolios-monte-carlo" class="level1">
+<h1>Parte 2 — Modelos: Simulación de Portafolios (Monte Carlo)</h1>
+<section id="enfoque-manual" class="level2">
+<h2 class="anchored" data-anchor-id="enfoque-manual">Enfoque Manual</h2>
+<section id="paso-1-preparar-datos-y-matriz-de-covarianza" class="level3">
+<h3 class="anchored" data-anchor-id="paso-1-preparar-datos-y-matriz-de-covarianza">Paso 1: Preparar datos y matriz de covarianza</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Descargar o cargar (ya hecho en Parte 1)</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>portafolio_retornos <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/portafolio_retornos.csv"</span>)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Extraer matriz de retornos</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>retornos_matrix <span class="ot">&lt;-</span> portafolio_retornos <span class="sc">|&gt;</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>fecha) <span class="sc">|&gt;</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.matrix</span>()</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Calcular parámetros</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>retornos_esperados <span class="ot">&lt;-</span> <span class="fu">colMeans</span>(retornos_matrix)</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>cov_matrix <span class="ot">&lt;-</span> <span class="fu">cov</span>(retornos_matrix)</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>sd_activos <span class="ot">&lt;-</span> <span class="fu">apply</span>(retornos_matrix, <span class="dv">2</span>, sd)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Tiempo</strong>: ~5 minutos.</p>
+</section>
+<section id="paso-2-simular-miles-de-portafolios-aleatorios" class="level3">
+<h3 class="anchored" data-anchor-id="paso-2-simular-miles-de-portafolios-aleatorios">Paso 2: Simular miles de portafolios aleatorios</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Parámetros de simulación</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>n_sims <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>n_activos <span class="ot">&lt;-</span> <span class="fu">ncol</span>(retornos_matrix)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>tasa_libre_riesgo <span class="ot">&lt;-</span> <span class="fl">0.02</span> <span class="sc">/</span> <span class="dv">12</span>  <span class="co"># tasa anual / 12 meses</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Matriz para guardar resultados</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>resultados_sim <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="cn">NA</span>, <span class="at">nrow =</span> n_sims, <span class="at">ncol =</span> <span class="dv">4</span>)</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(resultados_sim) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"retorno"</span>, <span class="st">"volatilidad"</span>, <span class="st">"sharpe"</span>, <span class="st">"mejor_sharpe"</span>)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Matriz para guardar pesos</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>pesos_optimos <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="cn">NA</span>, <span class="at">nrow =</span> n_sims, <span class="at">ncol =</span> n_activos)</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulación</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n_sims) {</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Generar pesos aleatorios long-only</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>  w <span class="ot">&lt;-</span> <span class="fu">runif</span>(n_activos)</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>  w <span class="ot">&lt;-</span> w <span class="sc">/</span> <span class="fu">sum</span>(w)  <span class="co"># Normalizar a que sumen 1</span></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Retorno esperado del portafolio</span></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>  ret_port <span class="ot">&lt;-</span> <span class="fu">sum</span>(w <span class="sc">*</span> retornos_esperados)</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Volatilidad del portafolio</span></span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>  var_port <span class="ot">&lt;-</span> <span class="fu">t</span>(w) <span class="sc">%*%</span> cov_matrix <span class="sc">%*%</span> w</span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>  vol_port <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(var_port)</span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Sharpe ratio</span></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>  sharpe <span class="ot">&lt;-</span> (ret_port <span class="sc">-</span> tasa_libre_riesgo) <span class="sc">/</span> vol_port</span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Guardar resultados</span></span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>  resultados_sim[i, <span class="dv">1</span>] <span class="ot">&lt;-</span> ret_port <span class="sc">*</span> <span class="dv">12</span>  <span class="co"># Anualizar</span></span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>  resultados_sim[i, <span class="dv">2</span>] <span class="ot">&lt;-</span> vol_port <span class="sc">*</span> <span class="fu">sqrt</span>(<span class="dv">12</span>)  <span class="co"># Anualizar</span></span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>  resultados_sim[i, <span class="dv">3</span>] <span class="ot">&lt;-</span> sharpe</span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>  pesos_optimos[i, ] <span class="ot">&lt;-</span> w</span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a><span class="co"># Convertir a data frame</span></span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a>sim_df <span class="ot">&lt;-</span> <span class="fu">as.data.frame</span>(resultados_sim)</span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(sim_df) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"retorno_anual"</span>, <span class="st">"volatilidad_anual"</span>, <span class="st">"sharpe_ratio"</span>)</span>
+<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a><span class="co"># Identificar mejor Sharpe</span></span>
+<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a>idx_mejor <span class="ot">&lt;-</span> <span class="fu">which.max</span>(sim_df<span class="sc">$</span>sharpe_ratio)</span>
+<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a>mejor_sharpe_sim <span class="ot">&lt;-</span> sim_df[idx_mejor, ]</span>
+<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a>mejor_pesos_sim <span class="ot">&lt;-</span> pesos_optimos[idx_mejor, ]</span>
+<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"Mejor portafolio simulado (máx Sharpe):</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(mejor_sharpe_sim)</span>
+<span id="cb7-49"><a href="#cb7-49" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">Pesos:</span><span class="sc">\n</span><span class="st">"</span>)</span>
+<span id="cb7-50"><a href="#cb7-50" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">setNames</span>(mejor_pesos_sim, <span class="fu">colnames</span>(retornos_matrix)))</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Tiempo</strong>: ~15 minutos (loop, debugging de dimensiones).</p>
+</section>
+<section id="paso-3-visualizar-la-nube-de-portafolios" class="level3">
+<h3 class="anchored" data-anchor-id="paso-3-visualizar-la-nube-de-portafolios">Paso 3: Visualizar la nube de portafolios</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Nube de puntos retorno vs volatilidad</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>sim_df <span class="sc">|&gt;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> volatilidad_anual, <span class="at">y =</span> retorno_anual, <span class="at">color =</span> sharpe_ratio)) <span class="sc">+</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.5</span>, <span class="at">size =</span> <span class="fl">1.5</span>) <span class="sc">+</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_viridis_c</span>(<span class="at">direction =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> <span class="fu">data.frame</span>(</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">volatilidad_anual =</span> mejor_sharpe_sim<span class="sc">$</span>volatilidad_anual,</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">retorno_anual =</span> mejor_sharpe_sim<span class="sc">$</span>retorno_anual,</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">sharpe_ratio =</span> mejor_sharpe_sim<span class="sc">$</span>sharpe_ratio</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  ), <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">size =</span> <span class="dv">4</span>, <span class="at">shape =</span> <span class="dv">21</span>, <span class="at">fill =</span> <span class="cn">NA</span>, <span class="at">stroke =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Frontera Eficiente Simulada (10,000 portafolios)"</span>,</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Volatilidad Anual (%)"</span>,</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Retorno Anual Esperado (%)"</span>,</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">color =</span> <span class="st">"Sharpe Ratio"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Tiempo</strong>: ~10 minutos (ajustes de escala, colores).</p>
+<p><strong>Total Parte 2 Manual</strong>: ~30 minutos.</p>
+<hr>
+</section>
+</section>
+<section id="enfoque-asistido-con-claude-code-1" class="level2">
+<h2 class="anchored" data-anchor-id="enfoque-asistido-con-claude-code-1">Enfoque Asistido con Claude Code</h2>
+<section id="prompt" class="level3">
+<h3 class="anchored" data-anchor-id="prompt">Prompt:</h3>
+<blockquote class="blockquote">
+<p>“Simula 10,000 portafolios long-only con pesos aleatorios usando los datos cargados. Calcula para cada uno: retorno esperado (anualizado), volatilidad (anualizada), y Sharpe ratio (tasa libre = 2% anual). Identifica el mejor portafolio por Sharpe y visualiza la nube coloreada por Sharpe. Marca el mejor portafolio con un punto rojo grande en el gráfico.”</p>
+</blockquote>
+</section>
+<section id="resultado-segundos" class="level3">
+<h3 class="anchored" data-anchor-id="resultado-segundos">Resultado (segundos):</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>n_sims <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>w_matrix <span class="ot">&lt;-</span> <span class="fu">t</span>(<span class="fu">replicate</span>(n_sims, {</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  w <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="fu">ncol</span>(retornos_matrix))</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  w <span class="sc">/</span> <span class="fu">sum</span>(w)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>}))</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>sim_results <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="at">retorno =</span> (w_matrix <span class="sc">%*%</span> retornos_esperados <span class="sc">*</span> <span class="dv">12</span>),</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  <span class="at">vol =</span> <span class="fu">apply</span>(w_matrix, <span class="dv">1</span>, <span class="cf">function</span>(w) <span class="fu">sqrt</span>(<span class="fu">t</span>(w) <span class="sc">%*%</span> cov_matrix <span class="sc">%*%</span> w) <span class="sc">*</span> <span class="fu">sqrt</span>(<span class="dv">12</span>)),</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="at">sharpe =</span> <span class="cn">NA</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>sim_results<span class="sc">$</span>sharpe <span class="ot">&lt;-</span> (sim_results<span class="sc">$</span>retorno <span class="sc">-</span> <span class="fl">0.02</span>) <span class="sc">/</span> sim_results<span class="sc">$</span>vol</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>best_idx <span class="ot">&lt;-</span> <span class="fu">which.max</span>(sim_results<span class="sc">$</span>sharpe)</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(sim_results, <span class="fu">aes</span>(<span class="at">x =</span> vol, <span class="at">y =</span> retorno, <span class="at">color =</span> sharpe)) <span class="sc">+</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">alpha =</span> <span class="fl">0.4</span>) <span class="sc">+</span></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> sim_results[best_idx, ], <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">size =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_viridis_c</span>() <span class="sc">+</span></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Tiempo</strong>: ~3 minutos.</p>
+<hr>
+</section>
+</section>
+</section>
+<section id="parte-3-modelos-optimización-de-markowitz-y-comparación" class="level1">
+<h1>Parte 3 — Modelos: Optimización de Markowitz y Comparación</h1>
+<section id="enfoque-manual-1" class="level2">
+<h2 class="anchored" data-anchor-id="enfoque-manual-1">Enfoque Manual</h2>
+<section id="paso-1-teoría-breve" class="level3">
+<h3 class="anchored" data-anchor-id="paso-1-teoría-breve">Paso 1: Teoría breve</h3>
+<p>La frontera eficiente de Markowitz resuelve:</p>
+<p><span class="math display">\[\min_w \left[ w^T \Sigma w \right]\]</span></p>
+<p>sujeto a: - <span class="math inline">\(w^T r = r_p\)</span> (retorno objetivo) - <span class="math inline">\(\sum w_i = 1\)</span> (pesos suman 1) - <span class="math inline">\(w_i \geq 0\)</span> (long-only, sin venta corta)</p>
+<p>donde <span class="math inline">\(\Sigma\)</span> es la matriz de covarianza y <span class="math inline">\(r\)</span> es el vector de retornos esperados.</p>
+</section>
+<section id="paso-2-instalar-y-usar-quadprog" class="level3">
+<h3 class="anchored" data-anchor-id="paso-2-instalar-y-usar-quadprog">Paso 2: Instalar y usar <code>quadprog</code></h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Instalar si no está (comentar después)</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("quadprog")</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quadprog)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Parámetros ya calculados en Parte 2</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>retornos_esperados  <span class="co"># vector de medias</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>cov_matrix          <span class="co"># matriz de covarianza</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Función para calcular frontera eficiente</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>calcular_frontera <span class="ot">&lt;-</span> <span class="cf">function</span>(retornos_esperados, cov_matrix,</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>                              r_min, r_max, <span class="at">n_puntos =</span> <span class="dv">50</span>) {</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>  resultados_frontier <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="cn">NA</span>, <span class="at">nrow =</span> n_puntos, <span class="at">ncol =</span> <span class="dv">3</span>)</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">colnames</span>(resultados_frontier) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"retorno_objetivo"</span>, <span class="st">"volatilidad"</span>, <span class="st">"pesos"</span>)</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>  retornos_objetivo <span class="ot">&lt;-</span> <span class="fu">seq</span>(r_min, r_max, <span class="at">length.out =</span> n_puntos)</span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>n_puntos) {</span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>    r_obj <span class="ot">&lt;-</span> retornos_objetivo[i]</span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Formulación para quadprog: solve.QP(H, f, A, b0)</span></span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Minimiza: (1/2) * x^T H x + f^T x</span></span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Sujeto a: A^T x &gt;= b0</span></span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>    H <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">*</span> cov_matrix</span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>    f <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="dv">0</span>, <span class="fu">length</span>(retornos_esperados))</span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Restricciones:</span></span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 1) sum(w) = 1  -&gt; w1 + w2 + ... + wn = 1</span></span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 2) w^T * r = r_obj</span></span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>    <span class="co"># 3) w_i &gt;= 0</span></span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Matriz A y vector b0 para restricciones de igualdad (convertidas a desigualdad)</span></span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a>    A <span class="ot">&lt;-</span> <span class="fu">cbind</span>(</span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a>      <span class="fu">rep</span>(<span class="dv">1</span>, <span class="fu">length</span>(retornos_esperados)),      <span class="co"># sum(w) = 1</span></span>
+<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a>      retornos_esperados                        <span class="co"># w^T * r = r_obj</span></span>
+<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Esto es complicado en quadprog, usamos solución alternativa...</span></span>
+<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(resultados_frontier)</span>
+<span id="cb10-43"><a href="#cb10-43" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Nota</strong>: <code>quadprog</code> es poderosa pero tiene una sintaxis tediosa para restricciones mixtas (igualdad + desigualdad). Con IA, esto se simplifica.</p>
+<p><strong>Tiempo</strong>: ~20 minutos (frustración, búsqueda en documentación).</p>
+<hr>
+</section>
+</section>
+<section id="enfoque-asistido-con-claude-code-2" class="level2">
+<h2 class="anchored" data-anchor-id="enfoque-asistido-con-claude-code-2">Enfoque Asistido con Claude Code</h2>
+<section id="prompt-simplificado" class="level3">
+<h3 class="anchored" data-anchor-id="prompt-simplificado">Prompt simplificado:</h3>
+<blockquote class="blockquote">
+<p>“Optimiza la frontera eficiente de Markowitz usando los datos de <code>portafolio_retornos.csv</code>: - Long-only (pesos entre 0 y 1, suman 1) - Calcula 50 puntos en la frontera barriendo retornos de 8% a 20% anual - Para cada punto, resuelve: minimizar varianza sujeto a retorno objetivo - Resultado: tabla con (retorno, volatilidad, pesos de cada activo) y gráfico overlay con la nube de simulación de la Parte 2 para comparar”</p>
+</blockquote>
+</section>
+<section id="lo-que-genera-minutos-no-manual" class="level3">
+<h3 class="anchored" data-anchor-id="lo-que-genera-minutos-no-manual">Lo que genera (minutos, no manual):</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quadprog)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Función helper: optimizar para un retorno objetivo</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>optimizar_portafolio <span class="ot">&lt;-</span> <span class="cf">function</span>(w, cov_matrix, retornos_esperados, r_target) {</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Usar optimize package</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  resultado <span class="ot">&lt;-</span> <span class="fu">optim</span>(</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">par =</span> w,</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">fn =</span> <span class="cf">function</span>(x) <span class="fu">as.numeric</span>(<span class="fu">t</span>(x) <span class="sc">%*%</span> cov_matrix <span class="sc">%*%</span> x),</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">method =</span> <span class="st">"SLSQP"</span>,</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">ui =</span> <span class="fu">rbind</span>(<span class="sc">-</span><span class="fu">diag</span>(<span class="fu">length</span>(x)), <span class="fu">diag</span>(<span class="fu">length</span>(x)), <span class="sc">-</span>retornos_esperados, retornos_esperados),</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">ci =</span> <span class="fu">c</span>(<span class="fu">rep</span>(<span class="dv">0</span>, <span class="fu">length</span>(x)), <span class="fu">rep</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="fu">length</span>(x)), <span class="sc">-</span>r_target, r_target)</span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(resultado<span class="sc">$</span>par)</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Frontera eficiente</span></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>frontera <span class="ot">&lt;-</span> <span class="fu">expand.grid</span>(</span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">retorno_objetivo =</span> <span class="fu">seq</span>(<span class="fl">0.08</span>, <span class="fl">0.20</span>, <span class="at">length.out =</span> <span class="dv">50</span>)</span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>) <span class="sc">|&gt;</span></span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rowwise</span>() <span class="sc">|&gt;</span></span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">pesos =</span> <span class="fu">list</span>(<span class="fu">optimizar_portafolio</span>(...)),</span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">volatilidad =</span> <span class="fu">sqrt</span>(<span class="fu">t</span>(pesos) <span class="sc">%*%</span> cov_matrix <span class="sc">%*%</span> pesos) <span class="sc">*</span> <span class="fu">sqrt</span>(<span class="dv">12</span>)</span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Gráfico combinado</span></span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> sim_df, <span class="fu">aes</span>(<span class="at">x =</span> volatilidad_anual, <span class="at">y =</span> retorno_anual,</span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>                                <span class="at">color =</span> <span class="st">"Simulada"</span>), <span class="at">alpha =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> frontera, <span class="fu">aes</span>(<span class="at">x =</span> volatilidad, <span class="at">y =</span> retorno_objetivo <span class="sc">*</span> <span class="dv">12</span>,</span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a>                                 <span class="at">color =</span> <span class="st">"Markowitz"</span>), <span class="at">size =</span> <span class="fl">1.2</span>, <span class="at">color =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p><strong>Tiempo</strong>: ~5 minutos (entender el resultado, no escribir).</p>
+<hr>
+</section>
+</section>
+<section id="comparación-visual" class="level2">
+<h2 class="anchored" data-anchor-id="comparación-visual">Comparación Visual</h2>
+<p>El gráfico overlay muestra: - <strong>Nube (Parte 2)</strong>: puntos simulados, esparcidos - <strong>Curva roja (Parte 3)</strong>: frontera exacta de Markowitz, tocando el borde superior de la nube</p>
+<p><strong>Conclusión</strong>: Markowitz encuentra el envolvente superior; la simulación es una aproximación visual.</p>
+<hr>
+</section>
+</section>
+<section id="parte-4-servicing-publicar-como-página-interactiva" class="level1">
+<h1>Parte 4 — Servicing: Publicar como Página Interactiva</h1>
+<section id="por-qué-servir-importa" class="level2">
+<h2 class="anchored" data-anchor-id="por-qué-servir-importa">Por qué servir importa</h2>
+<p>Hasta aquí tienes: 1. Un análisis que escribiste <em>una vez</em> 2. Código que funciona, pero solo en tu máquina</p>
+<p><strong>Problema</strong>: ¿cómo comparten estudiantes / colegas el resultado sin re-ejecutar el código?</p>
+<p><strong>Solución</strong>: publicar como una <strong>página HTML interactiva</strong> en este sitio (GitHub Pages), con: - Gráficos interactivos (hover muestra valores exactos) - Sliders para ajustar restricciones en tiempo real - Responsivo en móviles - Actualización automática si suben nuevos datos</p>
+<hr>
+</section>
+<section id="enfoque-manual-construir-observable-js-en-quarto" class="level2">
+<h2 class="anchored" data-anchor-id="enfoque-manual-construir-observable-js-en-quarto">Enfoque Manual: Construir Observable JS en Quarto</h2>
+<div class="quarto-ojs-syntax-error">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12" data-startfrom="551" data-syntax-error-position="284" data-source-offset="9"><pre class="sourceCode numberSource numberLines java code-with-copy"><code class="sourceCode java" style="counter-reset: source-line 550;"><span id="cb12-551"><a href="#cb12-551"></a>```<span class="op">{</span>ojs<span class="op">}</span></span>
+<span id="cb12-552"><a href="#cb12-552"></a><span class="co">// Carga de datos (CSV precalculado)</span></span>
+<span id="cb12-553"><a href="#cb12-553"></a>portafolio_data <span class="op">=</span> <span class="fu">FileAttachment</span><span class="op">(</span><span class="st">"data/portafolio_retornos.csv"</span><span class="op">).</span><span class="fu">csv</span><span class="op">()</span></span>
+<span id="cb12-554"><a href="#cb12-554"></a></span>
+<span id="cb12-555"><a href="#cb12-555"></a><span class="co">// Transformar en matriz de retornos</span></span>
+<span id="cb12-556"><a href="#cb12-556"></a>retornos_matrix <span class="op">=</span> portafolio_data<span class="op">.</span><span class="fu">map</span><span class="op">(</span>d <span class="op">=&gt;</span> <span class="op">[</span>d<span class="op">.</span><span class="fu">SPY</span><span class="op">,</span> d<span class="op">.</span><span class="fu">EFA</span><span class="op">,</span> d<span class="op">.</span><span class="fu">IJS</span><span class="op">,</span> d<span class="op">.</span><span class="fu">EEM</span><span class="op">,</span> d<span class="op">.</span><span class="fu">AGG</span><span class="op">])</span></span>
+<span id="cb12-557"><a href="#cb12-557"></a></span>
+<span id="cb12-558"><a href="#cb12-558"></a><span class="co">// Calcular matriz de covarianza (librería math)</span></span>
+<span id="cb12-559"><a href="#cb12-559"></a><span class="kw">import</span> <span class="im">{default as math} from "https://cdnjs</span><span class="op">.</span><span class="im">cloudflare</span><span class="op">.</span><span class="im">com/ajax/libs/mathjs/12</span><span class="op">.</span><span class="im">0</span><span class="op">.</span><span class="im">0/math</span><span class="op">.</span><span class="im">min</span><span class="op">.</span><span class="im">js"</span></span>
+<span id="cb12-560"><a href="#cb12-560"></a></span>
+<span id="cb12-561"><a href="#cb12-561"></a><span class="co">// Medias y covarianza</span></span>
+<span id="cb12-562"><a href="#cb12-562"></a>retornos_esperados <span class="op">=</span> <span class="op">[</span></span>
+<span id="cb12-563"><a href="#cb12-563"></a>  d3<span class="op">.</span><span class="fu">mean</span><span class="op">(</span>retornos_matrix<span class="op">,</span> d <span class="op">=&gt;</span> d<span class="op">[</span><span class="dv">0</span><span class="op">])</span> <span class="op">*</span> <span class="dv">12</span><span class="op">,</span>  <span class="co">// SPY</span></span>
+<span id="cb12-564"><a href="#cb12-564"></a>  d3<span class="op">.</span><span class="fu">mean</span><span class="op">(</span>retornos_matrix<span class="op">,</span> d <span class="op">=&gt;</span> d<span class="op">[</span><span class="dv">1</span><span class="op">])</span> <span class="op">*</span> <span class="dv">12</span><span class="op">,</span>  <span class="co">// EFA</span></span>
+<span id="cb12-565"><a href="#cb12-565"></a>  d3<span class="op">.</span><span class="fu">mean</span><span class="op">(</span>retornos_matrix<span class="op">,</span> d <span class="op">=&gt;</span> d<span class="op">[</span><span class="dv">2</span><span class="op">])</span> <span class="op">*</span> <span class="dv">12</span><span class="op">,</span>  <span class="co">// IJS</span></span>
+<span id="cb12-566"><a href="#cb12-566"></a>  d3<span class="op">.</span><span class="fu">mean</span><span class="op">(</span>retornos_matrix<span class="op">,</span> d <span class="op">=&gt;</span> d<span class="op">[</span><span class="dv">3</span><span class="op">])</span> <span class="op">*</span> <span class="dv">12</span><span class="op">,</span>  <span class="co">// EEM</span></span>
+<span id="cb12-567"><a href="#cb12-567"></a>  d3<span class="op">.</span><span class="fu">mean</span><span class="op">(</span>retornos_matrix<span class="op">,</span> d <span class="op">=&gt;</span> d<span class="op">[</span><span class="dv">4</span><span class="op">])</span> <span class="op">*</span> <span class="dv">12</span>   <span class="co">// AGG</span></span>
+<span id="cb12-568"><a href="#cb12-568"></a><span class="op">]</span></span>
+<span id="cb12-569"><a href="#cb12-569"></a></span>
+<span id="cb12-570"><a href="#cb12-570"></a><span class="co">// Sliders para ajustar pesos manualmente</span></span>
+<span id="cb12-571"><a href="#cb12-571"></a>peso_spy <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span><span class="op">([</span><span class="dv">0</span><span class="op">,</span> <span class="dv">100</span><span class="op">],</span> <span class="op">{</span>value<span class="op">:</span> <span class="dv">20</span><span class="op">,</span> step<span class="op">:</span> <span class="dv">1</span><span class="op">,</span> label<span class="op">:</span> <span class="st">"SPY (%)"</span><span class="op">})</span></span>
+<span id="cb12-572"><a href="#cb12-572"></a>peso_efa <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span><span class="op">([</span><span class="dv">0</span><span class="op">,</span> <span class="dv">100</span><span class="op">],</span> <span class="op">{</span>value<span class="op">:</span> <span class="dv">25</span><span class="op">,</span> step<span class="op">:</span> <span class="dv">1</span><span class="op">,</span> label<span class="op">:</span> <span class="st">"EFA (%)"</span><span class="op">})</span></span>
+<span id="cb12-573"><a href="#cb12-573"></a>peso_ijs <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span><span class="op">([</span><span class="dv">0</span><span class="op">,</span> <span class="dv">100</span><span class="op">],</span> <span class="op">{</span>value<span class="op">:</span> <span class="dv">20</span><span class="op">,</span> step<span class="op">:</span> <span class="dv">1</span><span class="op">,</span> label<span class="op">:</span> <span class="st">"IJS (%)"</span><span class="op">})</span></span>
+<span id="cb12-574"><a href="#cb12-574"></a>peso_eem <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span><span class="op">([</span><span class="dv">0</span><span class="op">,</span> <span class="dv">100</span><span class="op">],</span> <span class="op">{</span>value<span class="op">:</span> <span class="dv">20</span><span class="op">,</span> step<span class="op">:</span> <span class="dv">1</span><span class="op">,</span> label<span class="op">:</span> <span class="st">"EEM (%)"</span><span class="op">})</span></span>
+<span id="cb12-575"><a href="#cb12-575"></a>peso_agg <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span><span class="op">([</span><span class="dv">0</span><span class="op">,</span> <span class="dv">100</span><span class="op">],</span> <span class="op">{</span>value<span class="op">:</span> <span class="dv">15</span><span class="op">,</span> step<span class="op">:</span> <span class="dv">1</span><span class="op">,</span> label<span class="op">:</span> <span class="st">"AGG (%)"</span><span class="op">})</span></span>
+<span id="cb12-576"><a href="#cb12-576"></a></span>
+<span id="cb12-577"><a href="#cb12-577"></a><span class="co">// Normalizar y calcular retorno/volatilidad del portafolio ajustado</span></span>
+<span id="cb12-578"><a href="#cb12-578"></a>w_manual <span class="op">=</span> <span class="op">[</span>peso_spy<span class="op">,</span> peso_efa<span class="op">,</span> peso_ijs<span class="op">,</span> peso_eem<span class="op">,</span> peso_agg<span class="op">].</span><span class="fu">map</span><span class="op">(</span>x <span class="op">=&gt;</span> x <span class="op">/</span> <span class="dv">100</span><span class="op">)</span></span>
+<span id="cb12-579"><a href="#cb12-579"></a>retorno_manual <span class="op">=</span> d3<span class="op">.</span><span class="fu">sum</span><span class="op">(</span>w_manual<span class="op">.</span><span class="fu">map</span><span class="op">((</span>w<span class="op">,</span> i<span class="op">)</span> <span class="op">=&gt;</span> w <span class="op">*</span> retornos_esperados<span class="op">[</span>i<span class="op">]))</span></span>
+<span id="cb12-580"><a href="#cb12-580"></a><span class="co">// ... cálculo de volatilidad similar</span></span>
+<span id="cb12-581"><a href="#cb12-581"></a></span>
+<span id="cb12-582"><a href="#cb12-582"></a><span class="co">// Mostrar resultado</span></span>
+<span id="cb12-583"><a href="#cb12-583"></a>html`</span>
+<span id="cb12-584"><a href="#cb12-584"></a><span class="op">&lt;</span>div style<span class="op">=</span><span class="st">"border: 1px solid #ccc; padding: 10px; margin-top: 10px;"</span><span class="op">&gt;</span></span>
+<span id="cb12-585"><a href="#cb12-585"></a>  <span class="op">&lt;</span>h3<span class="op">&gt;</span>Portafolio Personalizado<span class="op">&lt;/</span>h3<span class="op">&gt;</span></span>
+<span id="cb12-586"><a href="#cb12-586"></a>  <span class="op">&lt;</span>p<span class="op">&gt;&lt;</span>strong<span class="op">&gt;</span>Retorno Esperado<span class="op">:&lt;/</span>strong<span class="op">&gt;</span> $<span class="op">{(</span>retorno_manual <span class="op">*</span> <span class="dv">100</span><span class="op">).</span><span class="fu">toFixed</span><span class="op">(</span><span class="dv">2</span><span class="op">)}%</span> anual<span class="op">&lt;/</span>p<span class="op">&gt;</span></span>
+<span id="cb12-587"><a href="#cb12-587"></a>  <span class="op">&lt;</span>p<span class="op">&gt;&lt;</span>strong<span class="op">&gt;</span>Volatilidad<span class="op">:&lt;/</span>strong<span class="op">&gt;</span> $<span class="op">{(</span>vol_manual <span class="op">*</span> <span class="dv">100</span><span class="op">).</span><span class="fu">toFixed</span><span class="op">(</span><span class="dv">2</span><span class="op">)}%</span> anual<span class="op">&lt;/</span>p<span class="op">&gt;</span></span>
+<span id="cb12-588"><a href="#cb12-588"></a>  <span class="op">&lt;</span>p<span class="op">&gt;&lt;</span>strong<span class="op">&gt;</span>Sharpe Ratio<span class="op">:&lt;/</span>strong<span class="op">&gt;</span> $<span class="op">{((</span>retorno_manual <span class="op">-</span> <span class="fl">0.02</span><span class="op">)</span> <span class="op">/</span> vol_manual<span class="op">).</span><span class="fu">toFixed</span><span class="op">(</span><span class="dv">2</span><span class="op">)}&lt;/</span>p<span class="op">&gt;</span></span>
+<span id="cb12-589"><a href="#cb12-589"></a><span class="op">&lt;/</span>div<span class="op">&gt;</span></span>
+<span id="cb12-590"><a href="#cb12-590"></a>`</span>
+<span id="cb12-591"><a href="#cb12-591"></a>```</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-error">
+<div class="callout callout-style-default callout-important callout-empty-content callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Importante</span>OJS Syntax Error (line 559, column 9)Unexpected keyword ‘default’
+</div>
+</div>
+<div class="callout-body-container callout-body">
+
+</div>
+</div>
+</div>
+</div>
+<p><strong>Tiempo</strong>: ~25 minutos (sintaxis de Observable, debugging).</p>
+<hr>
+</section>
+<section id="enfoque-asistido-con-claude-code-3" class="level2">
+<h2 class="anchored" data-anchor-id="enfoque-asistido-con-claude-code-3">Enfoque Asistido con Claude Code</h2>
+<section id="prompt-1" class="level3">
+<h3 class="anchored" data-anchor-id="prompt-1">Prompt:</h3>
+<blockquote class="blockquote">
+<p>“Crea un bloque Observable JS (ojs) embebido en Quarto que: 1. Carga el CSV de retornos 2. Muestra 5 sliders (0-100%) para ajustar pesos de cada activo 3. Calcula dinámicamente: retorno esperado, volatilidad y Sharpe ratio 4. Normaliza pesos para que sumen 100% 5. Muestra resultado en una caja formateada Sin necesidad de servidor, solo HTML estático.”</p>
+</blockquote>
+</section>
+<section id="resultado-minutos" class="level3">
+<h3 class="anchored" data-anchor-id="resultado-minutos">Resultado (minutos):</h3>
+<p>Código observable JS listo, con buena estructura, sin errores de sintaxis. Claude maneja D3.js + math.js automáticamente.</p>
+<p><strong>Tiempo</strong>: ~5 minutos.</p>
+<hr>
+</section>
+</section>
+<section id="flujo-de-publicación" class="level2">
+<h2 class="anchored" data-anchor-id="flujo-de-publicación">Flujo de Publicación</h2>
+<ol type="1">
+<li>Crear archivo <code>.qmd</code> con las 4 partes + bloque <code>ojs</code></li>
+<li><code>quarto render actividad_02_portafolios.qmd --to html</code></li>
+<li>El archivo <code>docs/clases_ia/actividad_02_portafolios.html</code> se genera automáticamente</li>
+<li><code>git add</code> + <code>git commit</code> + <code>git push</code></li>
+<li>GitHub Pages actualiza el sitio en ~30 segundos</li>
+<li>Link: <code>https://sebaegana.github.io/finanzas_en_r_webpage/clases_ia/actividad_02_portafolios.html</code></li>
+</ol>
+<hr>
+</section>
+</section>
+<section id="tabla-de-ventajas-manual-vs-ia" class="level1">
+<h1>Tabla de Ventajas: Manual vs IA</h1>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 36%">
+<col style="width: 32%">
+<col style="width: 32%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Aspecto</th>
+<th>Manual</th>
+<th>Con IA</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Tiempo total (4 partes)</strong></td>
+<td>~105 min</td>
+<td>~20 min</td>
+</tr>
+<tr class="even">
+<td><strong>Parte 1 (EDA)</strong></td>
+<td>40 min</td>
+<td>5 min</td>
+</tr>
+<tr class="odd">
+<td><strong>Parte 2 (Simulación)</strong></td>
+<td>30 min</td>
+<td>3 min</td>
+</tr>
+<tr class="even">
+<td><strong>Parte 3 (Markowitz)</strong></td>
+<td>20 min</td>
+<td>5 min</td>
+</tr>
+<tr class="odd">
+<td><strong>Parte 4 (Servicing)</strong></td>
+<td>25 min</td>
+<td>5 min</td>
+</tr>
+<tr class="even">
+<td><strong>Boilerplate</strong></td>
+<td>Completo, repetitivo</td>
+<td>Generado sin pensar</td>
+</tr>
+<tr class="odd">
+<td><strong>Debugging</strong></td>
+<td>“¿por qué <code>quadprog</code> no funciona?”</td>
+<td>IA explica la solución</td>
+</tr>
+<tr class="even">
+<td><strong>Documentación</strong></td>
+<td>Manual, lleva tiempo</td>
+<td>Generada con comentarios</td>
+</tr>
+<tr class="odd">
+<td><strong>Iteraciones</strong></td>
+<td>Reescribir partes</td>
+<td>Pedir cambios en natural</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="actividad-para-estudiantes-tu-turno" class="level1">
+<h1>Actividad para Estudiantes: Tu Turno</h1>
+<section id="instrucciones-generales" class="level2">
+<h2 class="anchored" data-anchor-id="instrucciones-generales">Instrucciones Generales</h2>
+<p>Elige UNA de las 3 opciones abajo. Todas conducen al mismo resultado: un análisis completo + página publicada.</p>
+<section id="opción-a-maximalista-recomendada-para-aprender" class="level3">
+<h3 class="anchored" data-anchor-id="opción-a-maximalista-recomendada-para-aprender">Opción A: Maximalista (Recomendada para Aprender)</h3>
+<p>Sigue las 4 partes de esta actividad <strong>escribiendo código</strong>, usando Claude Code solo para debugging o sugerencias puntuales.</p>
+<p><strong>Pasos</strong>: 1. Abre Positron 2. Crea un proyecto nuevo <code>mi_portafolio_actividad</code> 3. <strong>Parte 1</strong>: Carga los datos, crea estadística descriptiva (mean, sd, histogramas, matriz de correlación) 4. <strong>Parte 2</strong>: Simula 10,000 portafolios aleatorios long-only, calcula retorno/volatilidad/Sharpe, grafica nube 5. <strong>Parte 3</strong>: Optimiza frontera de Markowitz con <code>quadprog</code> (long-only), overlay con la nube de simulación 6. <strong>Parte 4</strong>: Crea un bloque <code>ojs</code> con sliders interactivos para ajustar pesos y ver el Sharpe ratio en vivo 7. Publica como archivo <code>.qmd</code> en tu portafolio / GitHub</p>
+<p><strong>Entregas</strong>: script R, gráficos, página publicada.</p>
+<hr>
+</section>
+<section id="opción-b-híbrida-equilibrada" class="level3">
+<h3 class="anchored" data-anchor-id="opción-b-híbrida-equilibrada">Opción B: Híbrida (Equilibrada)</h3>
+<p>Combina código propio + Claude Code para acelerar sin perder aprendizaje.</p>
+<ol type="1">
+<li><strong>Parte 1</strong>: Escribes el EDA (10 min)</li>
+<li><strong>Parte 2</strong>: Pides a Claude Code que simule (2 min lectura)</li>
+<li><strong>Parte 3</strong>: Escribes la optimización con ayuda de Claude (15 min)</li>
+<li><strong>Parte 4</strong>: Claude Code genera el <code>ojs</code> (5 min ajustes)</li>
+</ol>
+<hr>
+</section>
+<section id="opción-c-minimalista-prompt-driven" class="level3">
+<h3 class="anchored" data-anchor-id="opción-c-minimalista-prompt-driven">Opción C: Minimalista (Prompt-Driven)</h3>
+<p>Pídele a Claude Code el <strong>flujo completo</strong> en 1-2 prompts:</p>
+<blockquote class="blockquote">
+<p>“Análisis completo de portafolio: 1. EDA de portafolio_retornos.csv 2. Simular 10,000 portafolios long-only 3. Optimizar Markowitz (frontera eficiente) 4. Gráfico overlay 5. Bloque ojs con sliders interactivos para ajustar pesos Todo en un único .qmd”</p>
+</blockquote>
+<p>Claude Code genera <strong>~600 líneas de código profesional</strong> en ~2 minutos. Tu rol: revisar, entender, y <strong>interpretar los resultados</strong>.</p>
+<hr>
+</section>
+</section>
+<section id="rúbrica-de-evaluación" class="level2">
+<h2 class="anchored" data-anchor-id="rúbrica-de-evaluación">Rúbrica de Evaluación</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 28%">
+<col style="width: 17%">
+<col style="width: 28%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Criterio</th>
+<th>Excelente</th>
+<th>Bueno</th>
+<th>Aceptable</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Carga de datos</strong></td>
+<td>CSV cargado, validado, sin NA</td>
+<td>Cargado correctamente</td>
+<td>Cargado con warning</td>
+</tr>
+<tr class="even">
+<td><strong>EDA</strong></td>
+<td>Stats (media, sd, skew), 3+ gráficos, matriz de corr. clara</td>
+<td>2 gráficos, correlación</td>
+<td>Solo <code>summary()</code></td>
+</tr>
+<tr class="odd">
+<td><strong>Simulación</strong></td>
+<td>≥5.000 portafolios, pesos long-only correctos, Sharpe calcula bien</td>
+<td>1.000-5.000 portafolios, correcto</td>
+<td>&lt;1.000 o errores</td>
+</tr>
+<tr class="even">
+<td><strong>Markowitz</strong></td>
+<td>Frontera exacta (50+ puntos), long-only (w&gt;=0, sum=1), overlay claro</td>
+<td>20-50 puntos, mostly correct</td>
+<td>Incompleto o con errores</td>
+</tr>
+<tr class="odd">
+<td><strong>Comparación</strong></td>
+<td>Nube vs curva overlay visibles, explica por qué Markowitz toca borde</td>
+<td>Overlay presente</td>
+<td>Ausente</td>
+</tr>
+<tr class="even">
+<td><strong>Servicing (ojs)</strong></td>
+<td>Sliders funcionales, calcula dinámicamente, responsive</td>
+<td>Sliders básicos, funciona</td>
+<td>Ausente o no funciona</td>
+</tr>
+<tr class="odd">
+<td><strong>Interpretación</strong></td>
+<td>Explica correlaciones, elección de pesos, cuándo simular vs optimizar</td>
+<td>Menciona resultados clave</td>
+<td>Mínima</td>
+</tr>
+<tr class="even">
+<td><strong>Uso de IA</strong></td>
+<td>Usa Claude Code estratégicamente (debugging, boilerplate, iteración)</td>
+<td>Usa parcialmente</td>
+<td>Mínimo o nulo</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="entrega" class="level2">
+<h2 class="anchored" data-anchor-id="entrega">Entrega</h2>
+<p>Debes entregar:</p>
+<ol type="1">
+<li><strong>Script R o .qmd</strong> con código comentado (4 partes completas)</li>
+<li><strong>Dataset limpio</strong> (CSV con retornos procesados si hiciste cambios)</li>
+<li><strong>Reporte HTML o PDF</strong> con:
+<ul>
+<li>Tabla de EDA (media, sd, correlaciones)</li>
+<li>Nube de simulación (gráfico retorno vs volatilidad)</li>
+<li>Frontera de Markowitz overlay</li>
+<li>Explicación: “¿qué aprendiste sobre diversificación?”</li>
+</ul></li>
+<li><strong>Página publicada</strong> (link a GitHub Pages o similar) con el bloque <code>ojs</code> interactivo funcional</li>
+<li><strong>Reflexión</strong> (1 página): cómo usaste IA, cuál fue tu mayor dificultad, qué harías diferente</li>
+</ol>
+<hr>
+</section>
+</section>
+<section id="reflexión-final-ia-como-herramienta-no-reemplazo" class="level1">
+<h1>Reflexión Final: IA como Herramienta, No Reemplazo</h1>
+<section id="usa-ia-para" class="level2">
+<h2 class="anchored" data-anchor-id="usa-ia-para">✅ Usa IA para:</h2>
+<ul>
+<li>✅ <strong>Boilerplate</strong>: cargas, librerías, transformaciones estándar (ahorra 60%)</li>
+<li>✅ <strong>Exploración</strong>: “¿cómo haría esto en tidyverse?” vs “¿cómo en data.table?”</li>
+<li>✅ <strong>Debugging</strong>: “¿por qué falla este argumento de quadprog?”</li>
+<li>✅ <strong>Observable JS</strong>: IA domina esta sintaxis mejor que la mayoría de humanos</li>
+<li>✅ <strong>Documentación</strong>: genera comentarios y explicaciones automáticamente</li>
+</ul>
+</section>
+<section id="no-uses-ia-para" class="level2">
+<h2 class="anchored" data-anchor-id="no-uses-ia-para">❌ NO uses IA para:</h2>
+<ul>
+<li>❌ <strong>Decisiones financieras</strong>: TÚ eliges qué ponderación investigar, IA genera código</li>
+<li>❌ <strong>Validación</strong>: verifica siempre que Sharpe = (retorno - rf) / vol (no confíes ciegamente)</li>
+<li>❌ <strong>Comprensión</strong>: entiende el código <strong>antes</strong> de publicarlo (“¿qué está haciendo este loop?”)</li>
+<li>❌ <strong>Pensar</strong>: IA acelera la ejecución, no la estrategia analítica</li>
+</ul>
+</section>
+<section id="la-mentalidad-correcta" class="level2">
+<h2 class="anchored" data-anchor-id="la-mentalidad-correcta">La Mentalidad Correcta</h2>
+<blockquote class="blockquote">
+<p>“IA es como un copiloto competente: escribe código, pero <strong>TÚ</strong> diriges el análisis financiero. Verificas cada resultado, cuestiona las correlaciones, decide pesos en función de tu hipótesis, no al revés.”</p>
+</blockquote>
+<hr>
+</section>
+</section>
+<section id="recursos-adicionales" class="level1">
+<h1>Recursos Adicionales</h1>
+<p>📖 <a href="https://github.com/anthropics/claude-code">Claude Code Docs</a></p>
+<p>🐍 <a href="https://positron.posit.co">Positron IDE</a></p>
+<p>📊 <a href="https://www.tidyverse.org">tidyverse en R</a></p>
+<p>🎯 <a href="https://cran.r-project.org/web/packages/quadprog/index.html">quadprog: Portfolio Optimization</a></p>
+<p>📈 <a href="https://observablehq.com/@d3/gallery">Observable JS + D3</a></p>
+<p>🔗 <a href="https://en.wikipedia.org/wiki/Modern_portfolio_theory">Markowitz Modern Portfolio Theory</a></p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W119
+</script>
+<script type="module">
+if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+window._ojs.paths.runtimeToDoc = "../../clases_ia";
+window._ojs.paths.runtimeToRoot = "../..";
+window._ojs.paths.docToRoot = "..";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/sebaegana\.github\.io\/finanzas_en_r_webpage\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
