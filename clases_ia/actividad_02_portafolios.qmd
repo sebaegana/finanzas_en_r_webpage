@@ -478,48 +478,166 @@ cat("\nConclusión: Con 10k simulaciones, el error es de ~",
 
 ---
 
-# Parte 5 — Servicing: Publicar como Página Interactiva
+# Parte 5 — Servicing: Publicar como Página Interactiva en GitHub Pages
 
-## Por qué servir importa
+## ¿Por qué servir importa?
 
-Hasta aquí tienes un análisis que funciona en tu máquina. **Servicing** = llevar ese análisis a una página web interactiva en GitHub Pages.
+Hasta aquí tienes un análisis que funciona en tu máquina. **Servicing** = convertir ese análisis en una **página web interactiva** que otros puedan usar sin ejecutar código.
 
-## Bloque Observable JS (ojs)
+No necesitas servidor costoso: GitHub Pages + Quarto + Observable JS = gratis + automático.
+
+---
+
+## El flujo completo (Quarto → GitHub Pages)
+
+### Paso 1: Crear archivo Quarto con Observable JS
+
+Tu archivo `actividad_02_portafolios.qmd` ya tiene un bloque `{ojs}` (Observable JS):
 
 ```{ojs}
-// Carga datos
+// Parte 5: Observable JS embebido en el .qmd
+// Carga datos desde CSV
 portafolio_data = FileAttachment("data/portafolio_retornos.csv").csv()
-retornos_matrix = portafolio_data.map(d => [d.SPY, d.EFA, d.IJS, d.EEM, d.AGG])
 
-// Medias anualizadas
-retornos_esperados = [
-  d3.mean(retornos_matrix, d => d[0]) * 12,
-  d3.mean(retornos_matrix, d => d[1]) * 12,
-  d3.mean(retornos_matrix, d => d[2]) * 12,
-  d3.mean(retornos_matrix, d => d[3]) * 12,
-  d3.mean(retornos_matrix, d => d[4]) * 12
-]
-
-// Sliders para ajustar pesos
+// Crea 5 sliders (0-100%) para ajustar pesos de cada activo
 peso_spy = Inputs.range([0, 100], {value: 20, step: 1, label: "SPY (%)"})
 peso_efa = Inputs.range([0, 100], {value: 25, step: 1, label: "EFA (%)"})
-peso_ijs = Inputs.range([0, 100], {value: 20, step: 1, label: "IJS (%)"})
-peso_eem = Inputs.range([0, 100], {value: 20, step: 1, label: "EEM (%)"})
-peso_agg = Inputs.range([0, 100], {value: 15, step: 1, label: "AGG (%)"})
+// ... etc
 
-// Normalizar y calcular
-w_manual = [peso_spy, peso_efa, peso_ijs, peso_eem, peso_agg].map(x => x / 100)
-retorno_manual = d3.sum(w_manual.map((w, i) => w * retornos_esperados[i]))
+// Calcula dinámicamente: retorno/volatilidad/Sharpe cuando mueves sliders
+retorno_portfolio = sum(pesos * retornos_esperados)
 
+// Muestra resultado en una caja HTML
+html`<p>Retorno Esperado: ${(retorno_portfolio * 100).toFixed(2)}% anual</p>`
+```
+
+**Ventajas del enfoque:**
+- ✅ Sin servidor Shiny ni backend
+- ✅ Solo HTML estático + JavaScript del cliente (rápido, seguro)
+- ✅ Funciona offline (excepto cargar CSV)
+- ✅ Responsive (móvil, tablet, desktop)
+
+### Paso 2: Renderizar localmente
+
+En tu terminal:
+
+```bash
+# Renderiza el .qmd a HTML
+quarto render clases_ia/actividad_02_portafolios.qmd --to html
+
+# Resultado: docs/clases_ia/actividad_02_portafolios.html (con Observable JS)
+```
+
+### Paso 3: Publicar en GitHub Pages (automático)
+
+```bash
+# Commit + push
+git add clases_ia/actividad_02_portafolios.qmd
+git add docs/clases_ia/actividad_02_portafolios.html
+git commit -m "feat: Add interactive portfolio servicing page"
+git push origin develop
+# → Merge a main (después de PR)
+```
+
+### Paso 4: Acceder a la página
+
+La configuración de `_quarto.yml` ya apunta a GitHub Pages:
+
+```yaml
+project:
+  output-dir: docs  # Quarto renderiza aquí
+website:
+  site-url: https://sebaegana.github.io/finanzas_en_r_webpage/
+```
+
+GitHub Pages automáticamente sirve archivos en `docs/` → tu página vive en:
+
+```
+https://sebaegana.github.io/finanzas_en_r_webpage/
+  clases_ia/
+    actividad_02_portafolios.html  ← Acá
+```
+
+---
+
+## ¿Cómo construir la página Observable JS?
+
+### Estructura básica:
+
+```{ojs}
+// 1. Cargar datos
+datos = FileAttachment("data/portafolio_retornos.csv").csv()
+
+// 2. Crear controles interactivos (sliders, botones, dropdowns)
+slider_spy = Inputs.range([0, 100], {label: "SPY (%)"})
+slider_efa = Inputs.range([0, 100], {label: "EFA (%)"})
+
+// 3. Definir lógica reactiva (recalcula automáticamente cuando cambien sliders)
+pesos = [slider_spy, slider_efa, ...]  // Reactivo: actualiza cuando muevas sliders
+retorno = suma(pesos * retornos_historicos)
+sharpe = (retorno - tasa_libre) / volatilidad
+
+// 4. Mostrar resultados
 html`
-<div style="border: 1px solid #ccc; padding: 10px; margin-top: 10px;">
-  <h3>Portafolio Personalizado</h3>
-  <p><strong>Retorno Esperado:</strong> ${(retorno_manual * 100).toFixed(2)}% anual</p>
+<div>
+  <p>Retorno: ${retorno.toFixed(2)}%</p>
+  <p>Sharpe: ${sharpe.toFixed(2)}</p>
 </div>
 `
 ```
 
-**Tiempo**: ~20 minutos (sintaxis Observable) o ~3 minutos con IA.
+### Recursos Observable JS:
+
+- 📖 [Observable Help](https://observablehq.com/explore)
+- 🎯 [Quarto + OJS Tutorial](https://quarto.org/docs/interactive/ojs/)
+- 💡 [D3.js para gráficos](https://d3js.org)
+
+---
+
+## Enfoque manual vs con IA
+
+| Paso | Manual | Con IA |
+|------|--------|--------|
+| Diseñar estructura | 15 min | 2 min (describir qué quieres) |
+| Escribir Observable JS | 30 min | 5 min (pedir código) |
+| Renderizar + publicar | 5 min | 2 min |
+| **Total** | ~50 min | ~9 min |
+
+---
+
+## Checklist para "Servicing" listo para producción
+
+- [ ] Archivo `.qmd` con bloque `{ojs}` incluido
+- [ ] Datos CSV en `clases_ia/data/` accesibles
+- [ ] `quarto render` genera HTML sin errores
+- [ ] Sliders/controles funcionan interactivos en el navegador
+- [ ] Página responsive (prueba en móvil)
+- [ ] Fecha de última actualización visible (`date: last-modified`)
+- [ ] Link a la página en `README` o tabla de materiales
+
+---
+
+## Ejemplo real: Este sitio
+
+El archivo `clases_ia/actividad_02_portafolios.qmd` (que estás leyendo) es exactamente eso:
+
+1. Fuente: `.qmd` con bloques `{ojs}`
+2. Renderiza: `quarto render` → `docs/clases_ia/actividad_02_portafolios.html`
+3. Publica: GitHub Pages sirve automáticamente
+4. Resultado: Página interactiva en vivo
+
+**Tiempo total publicación: 3 minutos** (render + push + GitHub Pages auto-deploy)
+
+---
+
+## Próximo paso
+
+Después de terminar tu análisis (Partes 1-4), **agrega un bloque `{ojs}`** en Parte 5 con:
+- Sliders para ajustar pesos del portafolio
+- Cálculo dinámico de retorno/volatilidad/Sharpe
+- Overlay gráfico de la frontera de Markowitz (opcional: usa Plotly o Observable Plot)
+
+Luego: `quarto render` + `git push` = **página interactiva viva en 5 minutos**.
 
 ---
 
