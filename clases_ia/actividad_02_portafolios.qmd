@@ -490,190 +490,126 @@ La buena noticia: no necesitas servidor costoso ni configuración compleja. GitH
 
 ## El flujo completo (Crear Proyecto → GitHub Pages)
 
-### Paso 1: Crear tu repositorio local
+### Paso 1: Preparar carpeta local con estructura de proyecto
 
-En tu terminal, crea una carpeta para tu proyecto:
+**Qué hacer**: Crea una carpeta en tu computador para tu proyecto. Dentro de ella, debes organizar:
+- Una carpeta llamada `data/` donde guardarás el archivo CSV de retornos
+- La carpeta raíz será donde vivirán tus archivos de Quarto (`.qmd`)
 
-```bash
-# Crea la carpeta
-mkdir portafolio-optimo-r
-cd portafolio-optimo-r
+**Por qué**: Quarto necesita una estructura de directorios clara para saber dónde buscar datos y dónde generar la salida HTML.
 
-# Inicializa git
-git init
+**Detalle**: Descarga el archivo `portafolio_retornos.csv` desde la clase y colócalo dentro de `data/`. Este será el único archivo externo que necesitarás.
 
-# Descarga el CSV de datos desde la clase y colócalo en una subcarpeta
-mkdir data
-# (Copia portafolio_retornos.csv a data/)
-```
-
-### Paso 2: Crear la estructura de Quarto
-
-Crea un archivo `_quarto.yml` en la raíz del proyecto (personaliza con tu nombre):
-
-```yaml
-project:
-  type: website
-  output-dir: docs
-
-website:
-  title: "Análisis de Portafolios Óptimos"
-
-  navbar:
-    left:
-      - text: "Inicio"
-        href: index.qmd
-      - text: "Autor"
-        href: about.qmd
-
-format:
-  html:
-    theme: cosmo
-    toc: true
-    toc-depth: 2
-```
-
-### Paso 3: Crear tu archivo principal de análisis
-
-Crea `index.qmd` con tus 4 partes (EDA, Markowitz, Simulación, Comparación):
-
-```yaml
----
-title: "Construcción de Portafolios Óptimos"
-subtitle: "EDA → Markowitz → Simulación → Validación"
-author: "[Tu Nombre]"
-date: last-modified
-format:
-  html:
-    toc: true
-    code-fold: false
 ---
 
-# Introducción
+### Paso 2: Crear configuración de Quarto
 
-[Tu contexto del problema]
+**Qué hacer**: Crea un archivo de configuración que le diga a Quarto cómo montar tu sitio web. Este archivo debe estar en la raíz de tu proyecto y debe especificar:
+- Que quieres crear un **website** (no solo un documento)
+- Dónde Quarto debe guardar los archivos HTML generados (en una carpeta llamada `docs/`)
+- El título de tu sitio
+- La estructura de navegación (qué páginas tendrá y en qué orden)
 
-# Parte 1 — EDA
+**Por qué**: Sin este archivo, Quarto no sabe que quieres un sitio web multi-página. Este archivo es el "cerebro" de tu proyecto.
 
-[Tu código de EDA aquí]
+**Detalle**: El archivo debe ser simple pero preciso. Quarto es muy sensible a la indentación y los nombres de carpetas.
 
-# Parte 2 — Markowitz
+---
 
-[Tu código de Markowitz aquí]
+### Paso 3: Crear archivo principal con tu análisis
 
-# Parte 3 — Simulación
+**Qué hacer**: Crea un archivo llamado `index.qmd` (el "home" de tu sitio) que contenga todo tu análisis:
+- Tu introducción y contexto del problema
+- Toda tu Parte 1 (EDA) con gráficos
+- Toda tu Parte 2 (Markowitz) con explicación matemática
+- Toda tu Parte 3 (Simulación)
+- Toda tu Parte 4 (Comparación) con gráficos overlay
 
-[Tu código de simulación aquí]
+**Por qué**: Este archivo es el corazón de tu proyecto. Quarto lo convertirá a HTML y lo servirá como tu página principal.
 
-# Parte 4 — Comparación
+**Detalle**: El archivo debe incluir un encabezado (frontmatter) con metadatos: título, autor, fecha. Luego el contenido con encabezados, código R en bloques, y explicación en markdown.
 
-[Tus gráficos de validación aquí]
-```
+---
 
-### Paso 4: Agregar la Parte 5 — Interactividad
+### Paso 4: Agregar interactividad con JavaScript
 
-En el mismo archivo `index.qmd`, agrega un bloque `{ojs}` (Observable JavaScript) con sliders interactivos:
+**Qué hacer**: En el mismo archivo `index.qmd`, agrega una sección nueva (Parte 5) con un bloque de JavaScript especial que:
+- Cargue tus datos CSV
+- Cree 5 sliders interactivos (uno para cada activo)
+- Calcule dinámicamente el retorno, volatilidad y Sharpe ratio cuando muevas los sliders
+- Muestre los resultados en una caja visual
 
-```{ojs}
-// 1. Cargar datos
-portafolio_data = FileAttachment("data/portafolio_retornos.csv").csv()
+**Por qué**: Esto convierte tu análisis estático en una herramienta interactiva que otros pueden usar sin abrir R. Los usuarios pueden experimentar con diferentes pesos y ver resultados en tiempo real.
 
-// 2. Crear controles interactivos (sliders para cada activo)
-peso_spy = Inputs.range([0, 100], {value: 20, step: 1, label: "SPY (%)"})
-peso_efa = Inputs.range([0, 100], {value: 25, step: 1, label: "EFA (%)"})
-peso_ijs = Inputs.range([0, 100], {value: 15, step: 1, label: "IJS (%)"})
-peso_eem = Inputs.range([0, 100], {value: 20, step: 1, label: "EEM (%)"})
-peso_agg = Inputs.range([0, 100], {value: 20, step: 1, label: "AGG (%)"})
+**Detalle**: Esta es la única parte que requiere JavaScript (lenguaje de navegador). Quarto tiene un sistema especial llamado Observable que facilita escribir JS sin ser un experto. Los sliders deben estar normalizados para que siempre sumen 100%.
 
-// 3. Normalizar pesos (asegurar que sumen 100%)
-pesos_raw = [peso_spy, peso_efa, peso_ijs, peso_eem, peso_agg]
-suma_pesos = pesos_raw.reduce((a, b) => a + b, 0)
-pesos = pesos_raw.map(w => w / suma_pesos * 100)
+---
 
-// 4. Calcular retorno/volatilidad esperados (precomputa de tu análisis)
-retornos_medios = [0.12, 0.09, 0.14, 0.15, 0.04]  // anuales
-sharpe_resultado = (pesos[0] * retornos_medios[0] + ...) / volatilidad_portfolio
+### Paso 5: Convertir análisis a página HTML
 
-// 5. Mostrar resultados
-html`
-<div style="padding: 20px; background: #f0f8ff; border-radius: 8px;">
-  <h3>Tu Portafolio Personalizado</h3>
-  <p><strong>Retorno Esperado:</strong> ${retorno_total.toFixed(2)}% anual</p>
-  <p><strong>Volatilidad:</strong> ${volatilidad_portfolio.toFixed(2)}% anual</p>
-  <p><strong>Sharpe Ratio:</strong> ${sharpe_resultado.toFixed(2)}</p>
-</div>
-`
-```
+**Qué hacer**: Desde tu terminal, ejecuta un comando que le diga a Quarto:
+- Procesa mi archivo `index.qmd`
+- Corre todo el código R
+- Genera gráficos
+- Convierte markdown a HTML
+- Guarda el resultado en la carpeta `docs/`
 
-### Paso 5: Renderizar localmente
+**Por qué**: El navegador no entiende `.qmd`. Necesitas convertirlo a HTML para que pueda ser visto en web.
 
-En tu terminal:
+**Detalle**: Este proceso toma 30-60 segundos (depende de cuántos cálculos tengas). Quarto genera una página completamente **estática** e **independiente** — no necesita servidor.
 
-```bash
-# Renderiza el proyecto a HTML (se guarda en docs/)
-quarto render
+---
 
-# Opcionalmente, previsualiza localmente
-quarto preview
-```
+### Paso 6: Crear repositorio en línea en GitHub
 
-Abre `docs/index.html` en tu navegador para verificar que todo funciona.
+**Qué hacer**: Ve a github.com y crea un nuevo repositorio público. Debes:
+- Darle un nombre descriptivo (ej: `portafolio-optimo-r`)
+- Marcarlo como **público** (así otros pueden verlo)
+- **NO inicializar con README** (tú ya tienes archivos locales listos)
 
-### Paso 6: Crear repositorio en GitHub
+**Por qué**: GitHub es donde vivirá el código y los archivos HTML. Es el "servidor" que almacena tu proyecto y lo hace accesible.
 
-1. Ve a [github.com](https://github.com) y crea un nuevo repositorio público
-2. Nómbralo (ej: `portafolio-optimo-r`)
-3. **NO inicialices con README** (ya tienes archivos locales)
+**Detalle**: Después de crear, GitHub te dará una URL única para tu repositorio. Guárdala — la usarás en el próximo paso.
 
-### Paso 7: Vincular repositorio local con GitHub
+---
 
-En tu terminal:
+### Paso 7: Sincronizar tu carpeta local con GitHub
 
-```bash
-# Agrega el repositorio remoto
-git remote add origin https://github.com/[TU_USUARIO]/portafolio-optimo-r.git
+**Qué hacer**: Desde tu terminal, dentro de tu carpeta de proyecto:
+- Dile a Git que voy a conectar esta carpeta con GitHub
+- Agrega **todos** tus archivos (`.qmd`, `docs/`, `data/`, configuración)
+- Haz un "commit" (guardar una versión) con mensaje descriptivo
+- Sube todo a GitHub (push)
 
-# Agrega todos los archivos
-git add .
+**Por qué**: Esto vincula tu carpeta local con el repositorio en línea. A partir de ahora, cada vez que hagas cambios y hagas push, los cambios aparecerán en GitHub.
 
-# Commit inicial
-git commit -m "feat: Initial portfolio analysis project"
+**Detalle**: Git controla el historial de cambios. El primer push llevará todos tus archivos. Los siguientes pushes solo subirán lo que cambió.
 
-# Push a main branch
-git branch -M main
-git push -u origin main
-```
+---
 
-### Paso 8: Habilitar GitHub Pages
+### Paso 8: Activar despliegue automático en GitHub Pages
 
-En GitHub:
+**Qué hacer**: En la página de tu repositorio en GitHub, ve a **Settings** → **Pages** y configura:
+- Especifica que quieres desplegar desde una **rama** (no desde acciones automatizadas)
+- Elige la rama **main**
+- Especifica que los archivos HTML están en la carpeta **/docs**
+- Guarda los cambios
 
-1. Ve a **Settings** → **Pages**
-2. En "Build and deployment", elige:
-   - Source: **Deploy from a branch**
-   - Branch: **main** / folder: **/docs**
-3. Haz clic en **Save**
+**Por qué**: GitHub Pages es un servicio **gratuito** que toma los archivos HTML en `docs/` y los sirve automáticamente en una URL pública. Esto es lo que hace tu página accesible en internet.
 
-¡Listo! Tu sitio estará disponible en: `https://[TU_USUARIO].github.io/portafolio-optimo-r/`
+**Detalle**: Una vez activado, tu página estará disponible en `https://[tu-usuario].github.io/[nombre-repo]/`. GitHub Pages se actualiza automáticamente cada vez que haces push a la rama main.
 
 ---
 
 ## Flujo de actualización futuro
 
-Después de esto, cada vez que quieras actualizar:
+Una vez que tu proyecto esté publicado, **no necesitas volver a hacer estos 8 pasos**. El flujo se simplifica:
 
-```bash
-# 1. Modifica tus archivos .qmd
-# 2. Renderiza
-quarto render
+1. **Modifica** tu archivo `index.qmd` con cambios (más código, mejor análisis, correcciones)
+2. **Renderiza** localmente para probar que todo funciona
+3. **Sube** cambios a GitHub — GitHub Pages se actualiza automáticamente en ~30 segundos
 
-# 3. Commit + push
-git add .
-git commit -m "update: Refina simulación con 50k portafolios"
-git push origin main
-
-# GitHub Pages se actualiza automáticamente en ~30 segundos
-```
+Tu página pública refleja siempre la última versión que hayas subido a GitHub.
 
 ---
 
