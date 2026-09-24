@@ -66,7 +66,7 @@ format:
 2. **Parte 2 — Markowitz**: calcular la frontera eficiente (solución analítica exacta)
 3. **Parte 3 — Simulación**: generar miles de portafolios aleatorios para validar que Markowitz es realmente óptimo
 4. **Parte 4 — Comparación**: ¿cuán buena es la nube simulada vs la frontera exacta?
-5. **Parte 5 — Servicing**: publicar el resultado como una página interactiva en este sitio
+5. **Parte 5 — Servicing**: publicar el resultado como tu propio proyecto de Quarto en GitHub Pages
 
 En cada parte, verás dos enfoques: **Manual** (escribes cada línea de código) y **Asistido con Claude Code** (acelera 5-10x).
 
@@ -478,170 +478,295 @@ cat("\nConclusión: Con 10k simulaciones, el error es de ~",
 
 ---
 
-# Parte 5 — Servicing: Publicar como Página Interactiva en GitHub Pages
+# Parte 5 — Servicing: Publicar tu Proyecto en GitHub Pages
 
 ## ¿Por qué servir importa?
 
 Hasta aquí tienes un análisis que funciona en tu máquina. **Servicing** = convertir ese análisis en una **página web interactiva** que otros puedan usar sin ejecutar código.
 
-No necesitas servidor costoso: GitHub Pages + Quarto + Observable JS = gratis + automático.
+La buena noticia: no necesitas servidor costoso ni configuración compleja. GitHub Pages + Quarto = gratis + automático.
 
 ---
 
-## El flujo completo (Quarto → GitHub Pages)
+## El flujo completo (Crear Proyecto → GitHub Pages)
 
-### Paso 1: Crear archivo Quarto con Observable JS
+### Paso 1: Crear tu repositorio local
 
-Tu archivo `actividad_02_portafolios.qmd` ya tiene un bloque `{ojs}` (Observable JS):
+En tu terminal, crea una carpeta para tu proyecto:
 
-```{ojs}
-// Parte 5: Observable JS embebido en el .qmd
-// Carga datos desde CSV
-portafolio_data = FileAttachment("data/portafolio_retornos.csv").csv()
+```bash
+# Crea la carpeta
+mkdir portafolio-optimo-r
+cd portafolio-optimo-r
 
-// Crea 5 sliders (0-100%) para ajustar pesos de cada activo
-peso_spy = Inputs.range([0, 100], {value: 20, step: 1, label: "SPY (%)"})
-peso_efa = Inputs.range([0, 100], {value: 25, step: 1, label: "EFA (%)"})
-// ... etc
+# Inicializa git
+git init
 
-// Calcula dinámicamente: retorno/volatilidad/Sharpe cuando mueves sliders
-retorno_portfolio = sum(pesos * retornos_esperados)
-
-// Muestra resultado en una caja HTML
-html`<p>Retorno Esperado: ${(retorno_portfolio * 100).toFixed(2)}% anual</p>`
+# Descarga el CSV de datos desde la clase y colócalo en una subcarpeta
+mkdir data
+# (Copia portafolio_retornos.csv a data/)
 ```
 
-**Ventajas del enfoque:**
-- ✅ Sin servidor Shiny ni backend
-- ✅ Solo HTML estático + JavaScript del cliente (rápido, seguro)
-- ✅ Funciona offline (excepto cargar CSV)
-- ✅ Responsive (móvil, tablet, desktop)
+### Paso 2: Crear la estructura de Quarto
 
-### Paso 2: Renderizar localmente
+Crea un archivo `_quarto.yml` en la raíz del proyecto (personaliza con tu nombre):
+
+```yaml
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Análisis de Portafolios Óptimos"
+
+  navbar:
+    left:
+      - text: "Inicio"
+        href: index.qmd
+      - text: "Autor"
+        href: about.qmd
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+    toc-depth: 2
+```
+
+### Paso 3: Crear tu archivo principal de análisis
+
+Crea `index.qmd` con tus 4 partes (EDA, Markowitz, Simulación, Comparación):
+
+```yaml
+---
+title: "Construcción de Portafolios Óptimos"
+subtitle: "EDA → Markowitz → Simulación → Validación"
+author: "[Tu Nombre]"
+date: last-modified
+format:
+  html:
+    toc: true
+    code-fold: false
+---
+
+# Introducción
+
+[Tu contexto del problema]
+
+# Parte 1 — EDA
+
+[Tu código de EDA aquí]
+
+# Parte 2 — Markowitz
+
+[Tu código de Markowitz aquí]
+
+# Parte 3 — Simulación
+
+[Tu código de simulación aquí]
+
+# Parte 4 — Comparación
+
+[Tus gráficos de validación aquí]
+```
+
+### Paso 4: Agregar la Parte 5 — Interactividad
+
+En el mismo archivo `index.qmd`, agrega un bloque `{ojs}` (Observable JavaScript) con sliders interactivos:
+
+```{ojs}
+// 1. Cargar datos
+portafolio_data = FileAttachment("data/portafolio_retornos.csv").csv()
+
+// 2. Crear controles interactivos (sliders para cada activo)
+peso_spy = Inputs.range([0, 100], {value: 20, step: 1, label: "SPY (%)"})
+peso_efa = Inputs.range([0, 100], {value: 25, step: 1, label: "EFA (%)"})
+peso_ijs = Inputs.range([0, 100], {value: 15, step: 1, label: "IJS (%)"})
+peso_eem = Inputs.range([0, 100], {value: 20, step: 1, label: "EEM (%)"})
+peso_agg = Inputs.range([0, 100], {value: 20, step: 1, label: "AGG (%)"})
+
+// 3. Normalizar pesos (asegurar que sumen 100%)
+pesos_raw = [peso_spy, peso_efa, peso_ijs, peso_eem, peso_agg]
+suma_pesos = pesos_raw.reduce((a, b) => a + b, 0)
+pesos = pesos_raw.map(w => w / suma_pesos * 100)
+
+// 4. Calcular retorno/volatilidad esperados (precomputa de tu análisis)
+retornos_medios = [0.12, 0.09, 0.14, 0.15, 0.04]  // anuales
+sharpe_resultado = (pesos[0] * retornos_medios[0] + ...) / volatilidad_portfolio
+
+// 5. Mostrar resultados
+html`
+<div style="padding: 20px; background: #f0f8ff; border-radius: 8px;">
+  <h3>Tu Portafolio Personalizado</h3>
+  <p><strong>Retorno Esperado:</strong> ${retorno_total.toFixed(2)}% anual</p>
+  <p><strong>Volatilidad:</strong> ${volatilidad_portfolio.toFixed(2)}% anual</p>
+  <p><strong>Sharpe Ratio:</strong> ${sharpe_resultado.toFixed(2)}</p>
+</div>
+`
+```
+
+### Paso 5: Renderizar localmente
 
 En tu terminal:
 
 ```bash
-# Renderiza el .qmd a HTML
-quarto render clases_ia/actividad_02_portafolios.qmd --to html
+# Renderiza el proyecto a HTML (se guarda en docs/)
+quarto render
 
-# Resultado: docs/clases_ia/actividad_02_portafolios.html (con Observable JS)
+# Opcionalmente, previsualiza localmente
+quarto preview
 ```
 
-### Paso 3: Publicar en GitHub Pages (automático)
+Abre `docs/index.html` en tu navegador para verificar que todo funciona.
+
+### Paso 6: Crear repositorio en GitHub
+
+1. Ve a [github.com](https://github.com) y crea un nuevo repositorio público
+2. Nómbralo (ej: `portafolio-optimo-r`)
+3. **NO inicialices con README** (ya tienes archivos locales)
+
+### Paso 7: Vincular repositorio local con GitHub
+
+En tu terminal:
 
 ```bash
-# Commit + push
-git add clases_ia/actividad_02_portafolios.qmd
-git add docs/clases_ia/actividad_02_portafolios.html
-git commit -m "feat: Add interactive portfolio servicing page"
-git push origin develop
-# → Merge a main (después de PR)
+# Agrega el repositorio remoto
+git remote add origin https://github.com/[TU_USUARIO]/portafolio-optimo-r.git
+
+# Agrega todos los archivos
+git add .
+
+# Commit inicial
+git commit -m "feat: Initial portfolio analysis project"
+
+# Push a main branch
+git branch -M main
+git push -u origin main
 ```
 
-### Paso 4: Acceder a la página
+### Paso 8: Habilitar GitHub Pages
 
-La configuración de `_quarto.yml` ya apunta a GitHub Pages:
+En GitHub:
 
-```yaml
-project:
-  output-dir: docs  # Quarto renderiza aquí
-website:
-  site-url: https://sebaegana.github.io/finanzas_en_r_webpage/
-```
+1. Ve a **Settings** → **Pages**
+2. En "Build and deployment", elige:
+   - Source: **Deploy from a branch**
+   - Branch: **main** / folder: **/docs**
+3. Haz clic en **Save**
 
-GitHub Pages automáticamente sirve archivos en `docs/` → tu página vive en:
+¡Listo! Tu sitio estará disponible en: `https://[TU_USUARIO].github.io/portafolio-optimo-r/`
 
-```
-https://sebaegana.github.io/finanzas_en_r_webpage/
-  clases_ia/
-    actividad_02_portafolios.html  ← Acá
+---
+
+## Flujo de actualización futuro
+
+Después de esto, cada vez que quieras actualizar:
+
+```bash
+# 1. Modifica tus archivos .qmd
+# 2. Renderiza
+quarto render
+
+# 3. Commit + push
+git add .
+git commit -m "update: Refina simulación con 50k portafolios"
+git push origin main
+
+# GitHub Pages se actualiza automáticamente en ~30 segundos
 ```
 
 ---
 
 ## ¿Cómo construir la página Observable JS?
 
-### Estructura básica:
+### Estructura recomendada:
+
+1. **Carga de datos** (FileAttachment)
+2. **Controles interactivos** (Inputs.range, Inputs.select)
+3. **Lógica reactiva** (cálculos que se actualizan al cambiar sliders)
+4. **Visualización** (HTML o gráficos con Observable Plot/D3)
+
+### Ejemplo simplificado:
 
 ```{ojs}
-// 1. Cargar datos
+// Cargar datos
 datos = FileAttachment("data/portafolio_retornos.csv").csv()
 
-// 2. Crear controles interactivos (sliders, botones, dropdowns)
-slider_spy = Inputs.range([0, 100], {label: "SPY (%)"})
-slider_efa = Inputs.range([0, 100], {label: "EFA (%)"})
+// Slider reactivo
+mi_peso = Inputs.range([0, 100], {label: "Mi peso en SPY"})
 
-// 3. Definir lógica reactiva (recalcula automáticamente cuando cambien sliders)
-pesos = [slider_spy, slider_efa, ...]  // Reactivo: actualiza cuando muevas sliders
-retorno = suma(pesos * retornos_historicos)
-sharpe = (retorno - tasa_libre) / volatilidad
+// Cálculo que reacciona al slider
+retorno_calculado = mi_peso / 100 * retorno_spy
 
-// 4. Mostrar resultados
-html`
-<div>
-  <p>Retorno: ${retorno.toFixed(2)}%</p>
-  <p>Sharpe: ${sharpe.toFixed(2)}</p>
-</div>
-`
+// Mostrar resultado
+html`<p>Retorno: ${retorno_calculado.toFixed(2)}%</p>`
 ```
 
-### Recursos Observable JS:
+### Recursos adicionales:
 
 - 📖 [Observable Help](https://observablehq.com/explore)
-- 🎯 [Quarto + OJS Tutorial](https://quarto.org/docs/interactive/ojs/)
-- 💡 [D3.js para gráficos](https://d3js.org)
+- 🎯 [Quarto + Observable JS](https://quarto.org/docs/interactive/ojs/)
+- 📊 [Observable Plot (gráficos)](https://observablehq.com/@observablehq/plot)
+- 💡 [D3.js (avanzado)](https://d3js.org)
 
 ---
 
-## Enfoque manual vs con IA
+## Comparación: Enfoque manual vs con IA
 
-| Paso | Manual | Con IA |
-|------|--------|--------|
-| Diseñar estructura | 15 min | 2 min (describir qué quieres) |
-| Escribir Observable JS | 30 min | 5 min (pedir código) |
+| Tarea | Manual | Con IA |
+|-------|--------|--------|
+| Estructurar proyecto Quarto | 20 min | 3 min (1 prompt) |
+| Escribir Observable JS | 40 min | 5 min (pedir código) |
+| Configurar GitHub Pages | 15 min | 5 min (guía) |
 | Renderizar + publicar | 5 min | 2 min |
-| **Total** | ~50 min | ~9 min |
+| **Total** | ~80 min | ~15 min |
 
 ---
 
-## Checklist para "Servicing" listo para producción
+## Checklist antes de entregar
 
-- [ ] Archivo `.qmd` con bloque `{ojs}` incluido
-- [ ] Datos CSV en `clases_ia/data/` accesibles
-- [ ] `quarto render` genera HTML sin errores
-- [ ] Sliders/controles funcionan interactivos en el navegador
-- [ ] Página responsive (prueba en móvil)
-- [ ] Fecha de última actualización visible (`date: last-modified`)
-- [ ] Link a la página en `README` o tabla de materiales
+- [ ] Carpeta local con estructura: `_quarto.yml`, `index.qmd`, `data/portafolio_retornos.csv`
+- [ ] `quarto render` genera `docs/index.html` sin errores
+- [ ] Todas las 4 partes (EDA, Markowitz, Simulación, Comparación) están en `index.qmd`
+- [ ] Bloque `{ojs}` con sliders funciona en el navegador local
+- [ ] Repositorio GitHub creado y vinculado
+- [ ] GitHub Pages habilitado en Settings → Pages
+- [ ] Página viva en `https://[usuario].github.io/[repo-name]/`
+- [ ] Sliders interactivos funcionan en la página pública
+- [ ] URL compartible en tu entrega final
 
 ---
 
-## Ejemplo real: Este sitio
+## Ejemplo de estructura final
 
-El archivo `clases_ia/actividad_02_portafolios.qmd` (que estás leyendo) es exactamente eso:
-
-1. Fuente: `.qmd` con bloques `{ojs}`
-2. Renderiza: `quarto render` → `docs/clases_ia/actividad_02_portafolios.html`
-3. Publica: GitHub Pages sirve automáticamente
-4. Resultado: Página interactiva en vivo
-
-**Tiempo total publicación: 3 minutos** (render + push + GitHub Pages auto-deploy)
+```
+portafolio-optimo-r/
+├── _quarto.yml                    # Configuración de Quarto
+├── index.qmd                      # Tu análisis completo (Partes 1-5)
+├── about.qmd                      # (Opcional) Página "Acerca de"
+├── data/
+│   └── portafolio_retornos.csv   # Tu CSV de datos
+├── docs/                          # Generado por `quarto render`
+│   ├── index.html                # Tu página renderizada
+│   └── ...
+└── .gitignore                     # (Opcional) para ignorar /docs en git
+```
 
 ---
 
 ## Próximo paso
 
-Después de terminar tu análisis (Partes 1-4), **agrega un bloque `{ojs}`** en Parte 5 con:
-- Sliders para ajustar pesos del portafolio
-- Cálculo dinámico de retorno/volatilidad/Sharpe
-- Overlay gráfico de la frontera de Markowitz (opcional: usa Plotly o Observable Plot)
-
-Luego: `quarto render` + `git push` = **página interactiva viva en 5 minutos**.
+1. Completa Partes 1-4 en tu `.qmd` local
+2. Agrega el bloque `{ojs}` interactivo
+3. Prueba con `quarto preview`
+4. Sigue los pasos 6-8 para GitHub + Pages
+5. Comparte tu URL en la entrega final
 
 ---
 
 # Tabla de Ventajas: Manual vs IA
+
+Tiempos estimados para completar la actividad completa (incluyendo crear tu propio proyecto GitHub Pages):
 
 | Aspecto | Manual (Total) | Con IA (Total) |
 |---------|---|---|
@@ -649,8 +774,10 @@ Luego: `quarto render` + `git push` = **página interactiva viva en 5 minutos**.
 | **Parte 2 (Markowitz)** | 30 min | 5 min |
 | **Parte 3 (Simulación)** | 25 min | 3 min |
 | **Parte 4 (Comparación)** | 15 min | 8 min |
-| **Parte 5 (Servicing)** | 20 min | 3 min |
-| **TOTAL** | ~130 min | ~24 min |
+| **Parte 5 (Proyecto + GitHub Pages)** | 40 min | 15 min |
+| **TOTAL** | ~150 min | ~36 min |
+
+**Nota**: Parte 5 ahora incluye crear estructura Quarto, escribir Observable JS, y publicar en GitHub Pages (antes no estaba). El enfoque con IA sigue siendo **4x más rápido**.
 
 ---
 
@@ -696,10 +823,88 @@ Pídele a Claude Code el flujo completo en 1-2 prompts. Claude genera ~800 líne
 
 ## Entrega
 
-1. **Script R/Quarto** comentado con las 5 partes
-2. **Reporte** (HTML/PDF) con gráficos + análisis
-3. **Página publicada** (GitHub Pages) con sliders interactivos
-4. **Reflexión** (1 página): cómo usaste IA, brecha encontrada, lecciones aprendidas
+Tu entrega debe incluir:
+
+1. **URL de GitHub** del repositorio con tu proyecto (público)
+   - Carpeta con estructura Quarto correcta
+   - Archivo `index.qmd` con todas las 5 partes
+   - Carpeta `data/` con tu CSV
+
+2. **URL de GitHub Pages** de tu proyecto en vivo
+   - Demuestra que la página está publicada
+   - Verifica que los sliders funcionan
+
+3. **Reflexión escrita** (1 página, formato libre):
+   - ¿Qué estrategia elegiste (A: Maximalista, B: Híbrida, C: Minimalista)?
+   - ¿Cómo usaste IA en cada parte? (Sé específico con prompts si es relevante)
+   - ¿Cuál fue la brecha de optimización que encontraste? (Diferencia Markowitz vs simulación)
+   - ¿Qué aprendiste sobre GitHub Pages y Quarto?
+   - ¿Cuáles fueron los principales desafíos técnicos?
+
+4. **Archivo de código comentado** (opcional pero recomendado):
+   - Exporta tu `index.qmd` desde GitHub
+   - Incluye comentarios que expliquen decisiones clave
+
+---
+
+# Troubleshooting Común
+
+### "Error: `quarto render` falla"
+
+**Posible causa**: Faltan librerías de R.
+
+```bash
+# Instala las que faltan
+Rscript -e "install.packages('tidyverse'); install.packages('quadprog')"
+```
+
+### "GitHub Pages muestra 404"
+
+**Pasos a verificar**:
+
+1. En tu repo, ve a **Settings** → **Pages**
+2. Confirma que Source es "Deploy from a branch" + "main" + "/docs"
+3. Espera 1-2 minutos (GitHub tarda en actualizar)
+4. La URL debe ser: `https://[usuario].github.io/[repo-name]/`
+
+### "Los sliders Observable no cargan datos"
+
+**Causa común**: El archivo CSV no está en la ruta correcta.
+
+```{ojs}
+// ❌ Incorrecto
+datos = FileAttachment("portafolio_retornos.csv").csv()
+
+// ✅ Correcto (asume que quarto render está en la raíz)
+datos = FileAttachment("data/portafolio_retornos.csv").csv()
+```
+
+### "La página renderiza pero los cálculos no funcionan"
+
+**Verifica**:
+
+1. ¿El CSV se carga? Abre browser console (F12) y busca errores
+2. ¿Los valores son NaN? Revisa que los nombres de columnas coincidan:
+   ```r
+   names(portafolio_retornos)  # En R
+   ```
+3. ¿Falta variable en Observable? Usa `console.log(variable)` en {ojs}
+
+### "¿Cómo actualizar la página después de cambios?"
+
+```bash
+# 1. Modifica tu .qmd
+# 2. Renderiza
+quarto render
+
+# 3. Commit + push
+git add .
+git commit -m "update: [descripción]"
+git push origin main
+
+# GitHub Pages se actualiza en ~30 segundos
+# Recarga la página en tu navegador (Ctrl+Shift+R para forzar caché)
+```
 
 ---
 
@@ -719,6 +924,84 @@ Pídele a Claude Code el flujo completo en 1-2 prompts. Claude genera ~800 líne
 - Validación de resultados (verifica siempre que Sharpe = (ret - rf) / vol)
 - Comprensión (entiende el código antes de publicarlo)
 - Pensar (IA acelera ejecución, no estrategia)
+
+---
+
+# Alternativas y Extensiones
+
+## Si quieres explorar más allá...
+
+### Opción 1: Agregar una API con plumber (R)
+
+En lugar de solo Observable JS estático, puedes crear un backend interactivo:
+
+```r
+# En R: instala.packages("plumber")
+# Crea un archivo api.R con endpoints que reciban pesos
+# y devuelvan retorno/volatilidad calculados
+
+#* @post /calcular-portafolio
+function(pesos) {
+  retorno <- sum(pesos * retornos_medios)
+  return(list(retorno = retorno))
+}
+```
+
+Luego desplégalo en [Shinyapps.io](https://www.shinyapps.io/) o [Heroku](https://www.heroku.com/) (gratuitamente).
+
+**Tiempo adicional**: ~60 min de aprendizaje.
+
+### Opción 2: Usar Shiny en lugar de Observable JS
+
+Si prefieres R puro, puedes usar `library(shiny)` en lugar de Observable JS:
+
+```r
+library(shiny)
+
+ui <- fluidPage(
+  sliderInput("peso_spy", "SPY (%)", 0, 100, 20),
+  textOutput("resultado")
+)
+
+server <- function(input, output) {
+  output$resultado <- renderText({
+    paste("Retorno:", input$peso_spy * 0.12)
+  })
+}
+
+shinyApp(ui, server)
+```
+
+Deploy a [shinyapps.io](https://www.shinyapps.io/) automáticamente.
+
+**Nota**: Shiny tiene servidor gratuito limitado (25 horas/mes).
+
+### Opción 3: Versión en Python con Streamlit
+
+Si prefieren Python en lugar de R:
+
+```python
+import streamlit as st
+import pandas as pd
+
+peso_spy = st.slider("SPY (%)", 0, 100, 20)
+st.write(f"Retorno estimado: {peso_spy * 0.12}%")
+```
+
+Deploy en [Streamlit Cloud](https://streamlit.io/cloud) (gratis).
+
+**Tiempo adicional**: ~45 min si ya conoces Python.
+
+---
+
+## ¿Cuál elegir?
+
+| Opción | Complejidad | Deploy | Coste | Recomendado para |
+|--------|-------------|--------|-------|------------------|
+| **Observable JS (Parte 5)** | Baja | GitHub Pages | Gratis | Prototipos rápidos, estático |
+| **Shiny** | Media | Shinyapps.io | Gratis (limitado) | Análisis interactivo, R-centric |
+| **Streamlit** | Media | Streamlit Cloud | Gratis | Python-centric, máquinas ML |
+| **API + Backend** | Alta | Heroku/Railway | Gratis (con límites) | Producción real |
 
 ---
 
