@@ -613,40 +613,6 @@ Tu página pública refleja siempre la última versión que hayas subido a GitHu
 
 ---
 
-## ¿Cómo construir la página Observable JS?
-
-### Estructura recomendada:
-
-1. **Carga de datos** (FileAttachment)
-2. **Controles interactivos** (Inputs.range, Inputs.select)
-3. **Lógica reactiva** (cálculos que se actualizan al cambiar sliders)
-4. **Visualización** (HTML o gráficos con Observable Plot/D3)
-
-### Ejemplo simplificado:
-
-```{ojs}
-// Cargar datos
-datos = FileAttachment("data/portafolio_retornos.csv").csv()
-
-// Slider reactivo
-mi_peso = Inputs.range([0, 100], {label: "Mi peso en SPY"})
-
-// Cálculo que reacciona al slider
-retorno_calculado = mi_peso / 100 * retorno_spy
-
-// Mostrar resultado
-html`<p>Retorno: ${retorno_calculado.toFixed(2)}%</p>`
-```
-
-### Recursos adicionales:
-
-- 📖 [Observable Help](https://observablehq.com/explore)
-- 🎯 [Quarto + Observable JS](https://quarto.org/docs/interactive/ojs/)
-- 📊 [Observable Plot (gráficos)](https://observablehq.com/@observablehq/plot)
-- 💡 [D3.js (avanzado)](https://d3js.org)
-
----
-
 ## Comparación: Enfoque manual vs con IA
 
 | Tarea | Manual | Con IA |
