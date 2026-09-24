@@ -254,3 +254,5 @@ grep -h "listing_title" clases_ia/*.qmd | sort
 
 *(Esta lista es aproximada y puede cambiar según necesidades pedagógicas)*
 *(06 ya fue completado con Actividad 02 - Portafolios)*
+
+SEBASTIAN EGANA
