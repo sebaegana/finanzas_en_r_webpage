@@ -656,13 +656,14 @@ portafolio-optimo-r/
 
 ---
 
-## Próximo paso
+## Próximo paso: Tu checklist
 
-1. Completa Partes 1-4 en tu `.qmd` local
-2. Agrega el bloque `{ojs}` interactivo
-3. Prueba con `quarto preview`
-4. Sigue los pasos 6-8 para GitHub + Pages
-5. Comparte tu URL en la entrega final
+1. Completa tu análisis: Partes 1-4 (EDA, Markowitz, Simulación, Comparación) en `index.qmd`
+2. Agrega Parte 5: Interactividad con sliders (Paso 4 de la guía de 8 pasos)
+3. Renderiza localmente: prueba con `quarto render` para verificar que todo funciona
+4. Sigue los Pasos 5-8: renderizado → GitHub → GitHub Pages
+5. Verifica: tu página está viva en `https://[usuario].github.io/[repo]/`
+6. Entrega: comparte tu URL + reflexión escrita
 
 ---
 
