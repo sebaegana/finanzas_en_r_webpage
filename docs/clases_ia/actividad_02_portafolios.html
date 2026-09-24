@@ -261,14 +261,14 @@ window.Quarto = {
   <li><a href="#por-qué-servir-importa" id="toc-por-qué-servir-importa" class="nav-link" data-scroll-target="#por-qué-servir-importa">¿Por qué servir importa?</a></li>
   <li><a href="#el-flujo-completo-crear-proyecto-github-pages" id="toc-el-flujo-completo-crear-proyecto-github-pages" class="nav-link" data-scroll-target="#el-flujo-completo-crear-proyecto-github-pages">El flujo completo (Crear Proyecto → GitHub Pages)</a>
   <ul class="collapse">
-  <li><a href="#paso-1-crear-tu-repositorio-local" id="toc-paso-1-crear-tu-repositorio-local" class="nav-link" data-scroll-target="#paso-1-crear-tu-repositorio-local">Paso 1: Crear tu repositorio local</a></li>
-  <li><a href="#paso-2-crear-la-estructura-de-quarto" id="toc-paso-2-crear-la-estructura-de-quarto" class="nav-link" data-scroll-target="#paso-2-crear-la-estructura-de-quarto">Paso 2: Crear la estructura de Quarto</a></li>
-  <li><a href="#paso-3-crear-tu-archivo-principal-de-análisis" id="toc-paso-3-crear-tu-archivo-principal-de-análisis" class="nav-link" data-scroll-target="#paso-3-crear-tu-archivo-principal-de-análisis">Paso 3: Crear tu archivo principal de análisis</a></li>
-  <li><a href="#paso-4-agregar-la-parte-5-interactividad" id="toc-paso-4-agregar-la-parte-5-interactividad" class="nav-link" data-scroll-target="#paso-4-agregar-la-parte-5-interactividad">Paso 4: Agregar la Parte 5 — Interactividad</a></li>
-  <li><a href="#paso-5-renderizar-localmente" id="toc-paso-5-renderizar-localmente" class="nav-link" data-scroll-target="#paso-5-renderizar-localmente">Paso 5: Renderizar localmente</a></li>
-  <li><a href="#paso-6-crear-repositorio-en-github" id="toc-paso-6-crear-repositorio-en-github" class="nav-link" data-scroll-target="#paso-6-crear-repositorio-en-github">Paso 6: Crear repositorio en GitHub</a></li>
-  <li><a href="#paso-7-vincular-repositorio-local-con-github" id="toc-paso-7-vincular-repositorio-local-con-github" class="nav-link" data-scroll-target="#paso-7-vincular-repositorio-local-con-github">Paso 7: Vincular repositorio local con GitHub</a></li>
-  <li><a href="#paso-8-habilitar-github-pages" id="toc-paso-8-habilitar-github-pages" class="nav-link" data-scroll-target="#paso-8-habilitar-github-pages">Paso 8: Habilitar GitHub Pages</a></li>
+  <li><a href="#paso-1-preparar-carpeta-local-con-estructura-de-proyecto" id="toc-paso-1-preparar-carpeta-local-con-estructura-de-proyecto" class="nav-link" data-scroll-target="#paso-1-preparar-carpeta-local-con-estructura-de-proyecto">Paso 1: Preparar carpeta local con estructura de proyecto</a></li>
+  <li><a href="#paso-2-crear-configuración-de-quarto" id="toc-paso-2-crear-configuración-de-quarto" class="nav-link" data-scroll-target="#paso-2-crear-configuración-de-quarto">Paso 2: Crear configuración de Quarto</a></li>
+  <li><a href="#paso-3-crear-archivo-principal-con-tu-análisis" id="toc-paso-3-crear-archivo-principal-con-tu-análisis" class="nav-link" data-scroll-target="#paso-3-crear-archivo-principal-con-tu-análisis">Paso 3: Crear archivo principal con tu análisis</a></li>
+  <li><a href="#paso-4-agregar-interactividad-con-javascript" id="toc-paso-4-agregar-interactividad-con-javascript" class="nav-link" data-scroll-target="#paso-4-agregar-interactividad-con-javascript">Paso 4: Agregar interactividad con JavaScript</a></li>
+  <li><a href="#paso-5-convertir-análisis-a-página-html" id="toc-paso-5-convertir-análisis-a-página-html" class="nav-link" data-scroll-target="#paso-5-convertir-análisis-a-página-html">Paso 5: Convertir análisis a página HTML</a></li>
+  <li><a href="#paso-6-crear-repositorio-en-línea-en-github" id="toc-paso-6-crear-repositorio-en-línea-en-github" class="nav-link" data-scroll-target="#paso-6-crear-repositorio-en-línea-en-github">Paso 6: Crear repositorio en línea en GitHub</a></li>
+  <li><a href="#paso-7-sincronizar-tu-carpeta-local-con-github" id="toc-paso-7-sincronizar-tu-carpeta-local-con-github" class="nav-link" data-scroll-target="#paso-7-sincronizar-tu-carpeta-local-con-github">Paso 7: Sincronizar tu carpeta local con GitHub</a></li>
+  <li><a href="#paso-8-activar-despliegue-automático-en-github-pages" id="toc-paso-8-activar-despliegue-automático-en-github-pages" class="nav-link" data-scroll-target="#paso-8-activar-despliegue-automático-en-github-pages">Paso 8: Activar despliegue automático en GitHub Pages</a></li>
   </ul></li>
   <li><a href="#flujo-de-actualización-futuro" id="toc-flujo-de-actualización-futuro" class="nav-link" data-scroll-target="#flujo-de-actualización-futuro">Flujo de actualización futuro</a></li>
   <li><a href="#cómo-construir-la-página-observable-js" id="toc-cómo-construir-la-página-observable-js" class="nav-link" data-scroll-target="#cómo-construir-la-página-observable-js">¿Cómo construir la página Observable JS?</a>
@@ -781,191 +781,72 @@ window.Quarto = {
 </section>
 <section id="el-flujo-completo-crear-proyecto-github-pages" class="level2">
 <h2 class="anchored" data-anchor-id="el-flujo-completo-crear-proyecto-github-pages">El flujo completo (Crear Proyecto → GitHub Pages)</h2>
-<section id="paso-1-crear-tu-repositorio-local" class="level3">
-<h3 class="anchored" data-anchor-id="paso-1-crear-tu-repositorio-local">Paso 1: Crear tu repositorio local</h3>
-<p>En tu terminal, crea una carpeta para tu proyecto:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Crea la carpeta</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> portafolio-optimo-r</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> portafolio-optimo-r</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Inicializa git</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> init</span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Descarga el CSV de datos desde la clase y colócalo en una subcarpeta</span></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="fu">mkdir</span> data</span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="co"># (Copia portafolio_retornos.csv a data/)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="paso-1-preparar-carpeta-local-con-estructura-de-proyecto" class="level3">
+<h3 class="anchored" data-anchor-id="paso-1-preparar-carpeta-local-con-estructura-de-proyecto">Paso 1: Preparar carpeta local con estructura de proyecto</h3>
+<p><strong>Qué hacer</strong>: Crea una carpeta en tu computador para tu proyecto. Dentro de ella, debes organizar: - Una carpeta llamada <code>data/</code> donde guardarás el archivo CSV de retornos - La carpeta raíz será donde vivirán tus archivos de Quarto (<code>.qmd</code>)</p>
+<p><strong>Por qué</strong>: Quarto necesita una estructura de directorios clara para saber dónde buscar datos y dónde generar la salida HTML.</p>
+<p><strong>Detalle</strong>: Descarga el archivo <code>portafolio_retornos.csv</code> desde la clase y colócalo dentro de <code>data/</code>. Este será el único archivo externo que necesitarás.</p>
+<hr>
 </section>
-<section id="paso-2-crear-la-estructura-de-quarto" class="level3">
-<h3 class="anchored" data-anchor-id="paso-2-crear-la-estructura-de-quarto">Paso 2: Crear la estructura de Quarto</h3>
-<p>Crea un archivo <code>_quarto.yml</code> en la raíz del proyecto (personaliza con tu nombre):</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">project</span><span class="kw">:</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">type</span><span class="kw">:</span><span class="at"> website</span></span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">output-dir</span><span class="kw">:</span><span class="at"> docs</span></span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="fu">website</span><span class="kw">:</span></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Análisis de Portafolios Óptimos"</span></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">navbar</span><span class="kw">:</span></span>
-<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">left</span><span class="kw">:</span></span>
-<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">text</span><span class="kw">:</span><span class="at"> </span><span class="st">"Inicio"</span></span>
-<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">href</span><span class="kw">:</span><span class="at"> index.qmd</span></span>
-<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a><span class="at">      </span><span class="kw">-</span><span class="at"> </span><span class="fu">text</span><span class="kw">:</span><span class="at"> </span><span class="st">"Autor"</span></span>
-<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a><span class="at">        </span><span class="fu">href</span><span class="kw">:</span><span class="at"> about.qmd</span></span>
-<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span></span>
-<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
-<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">theme</span><span class="kw">:</span><span class="at"> cosmo</span></span>
-<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">toc</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">toc-depth</span><span class="kw">:</span><span class="at"> </span><span class="dv">2</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="paso-2-crear-configuración-de-quarto" class="level3">
+<h3 class="anchored" data-anchor-id="paso-2-crear-configuración-de-quarto">Paso 2: Crear configuración de Quarto</h3>
+<p><strong>Qué hacer</strong>: Crea un archivo de configuración que le diga a Quarto cómo montar tu sitio web. Este archivo debe estar en la raíz de tu proyecto y debe especificar: - Que quieres crear un <strong>website</strong> (no solo un documento) - Dónde Quarto debe guardar los archivos HTML generados (en una carpeta llamada <code>docs/</code>) - El título de tu sitio - La estructura de navegación (qué páginas tendrá y en qué orden)</p>
+<p><strong>Por qué</strong>: Sin este archivo, Quarto no sabe que quieres un sitio web multi-página. Este archivo es el “cerebro” de tu proyecto.</p>
+<p><strong>Detalle</strong>: El archivo debe ser simple pero preciso. Quarto es muy sensible a la indentación y los nombres de carpetas.</p>
+<hr>
 </section>
-<section id="paso-3-crear-tu-archivo-principal-de-análisis" class="level3">
-<h3 class="anchored" data-anchor-id="paso-3-crear-tu-archivo-principal-de-análisis">Paso 3: Crear tu archivo principal de análisis</h3>
-<p>Crea <code>index.qmd</code> con tus 4 partes (EDA, Markowitz, Simulación, Comparación):</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Construcción de Portafolios Óptimos"</span></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a><span class="fu">subtitle</span><span class="kw">:</span><span class="at"> </span><span class="st">"EDA → Markowitz → Simulación → Validación"</span></span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">"[Tu Nombre]"</span></span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="fu">date</span><span class="kw">:</span><span class="at"> last-modified</span></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="fu">format</span><span class="kw">:</span></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">toc</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">code-fold</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a><span class="pp">---</span></span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Introducción</span></span>
-<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a><span class="kw">[</span><span class="at">Tu contexto del problema</span><span class="kw">]</span></span>
-<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Parte 1 — EDA</span></span>
-<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a><span class="kw">[</span><span class="at">Tu código de EDA aquí</span><span class="kw">]</span></span>
-<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Parte 2 — Markowitz</span></span>
-<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a><span class="kw">[</span><span class="at">Tu código de Markowitz aquí</span><span class="kw">]</span></span>
-<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Parte 3 — Simulación</span></span>
-<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a><span class="kw">[</span><span class="at">Tu código de simulación aquí</span><span class="kw">]</span></span>
-<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Parte 4 — Comparación</span></span>
-<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a><span class="kw">[</span><span class="at">Tus gráficos de validación aquí</span><span class="kw">]</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="paso-3-crear-archivo-principal-con-tu-análisis" class="level3">
+<h3 class="anchored" data-anchor-id="paso-3-crear-archivo-principal-con-tu-análisis">Paso 3: Crear archivo principal con tu análisis</h3>
+<p><strong>Qué hacer</strong>: Crea un archivo llamado <code>index.qmd</code> (el “home” de tu sitio) que contenga todo tu análisis: - Tu introducción y contexto del problema - Toda tu Parte 1 (EDA) con gráficos - Toda tu Parte 2 (Markowitz) con explicación matemática - Toda tu Parte 3 (Simulación) - Toda tu Parte 4 (Comparación) con gráficos overlay</p>
+<p><strong>Por qué</strong>: Este archivo es el corazón de tu proyecto. Quarto lo convertirá a HTML y lo servirá como tu página principal.</p>
+<p><strong>Detalle</strong>: El archivo debe incluir un encabezado (frontmatter) con metadatos: título, autor, fecha. Luego el contenido con encabezados, código R en bloques, y explicación en markdown.</p>
+<hr>
 </section>
-<section id="paso-4-agregar-la-parte-5-interactividad" class="level3">
-<h3 class="anchored" data-anchor-id="paso-4-agregar-la-parte-5-interactividad">Paso 4: Agregar la Parte 5 — Interactividad</h3>
-<p>En el mismo archivo <code>index.qmd</code>, agrega un bloque <code>{ojs}</code> (Observable JavaScript) con sliders interactivos:</p>
-<div class="quarto-ojs-syntax-error">
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16" data-startfrom="577" data-syntax-error-position="922" data-source-offset="9"><pre class="sourceCode numberSource numberLines java code-with-copy"><code class="sourceCode java" style="counter-reset: source-line 576;"><span id="cb16-577"><a href="#cb16-577" aria-label="577"></a>```<span class="op">{</span>ojs<span class="op">}</span></span>
-<span id="cb16-578"><a href="#cb16-578" aria-label="578"></a><span class="co">// 1. Cargar datos</span></span>
-<span id="cb16-579"><a href="#cb16-579" aria-label="579"></a>portafolio_data <span class="op">=</span> <span class="fu">FileAttachment</span><span class="op">(</span><span class="st">"data/portafolio_retornos.csv"</span><span class="op">).</span><span class="fu">csv</span><span class="op">()</span></span>
-<span id="cb16-580"><a href="#cb16-580" aria-label="580"></a></span>
-<span id="cb16-581"><a href="#cb16-581" aria-label="581"></a><span class="co">// 2. Crear controles interactivos (sliders para cada activo)</span></span>
-<span id="cb16-582"><a href="#cb16-582" aria-label="582"></a>peso_spy <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span><span class="op">([</span><span class="dv">0</span><span class="op">,</span> <span class="dv">100</span><span class="op">],</span> <span class="op">{</span>value<span class="op">:</span> <span class="dv">20</span><span class="op">,</span> step<span class="op">:</span> <span class="dv">1</span><span class="op">,</span> label<span class="op">:</span> <span class="st">"SPY (%)"</span><span class="op">})</span></span>
-<span id="cb16-583"><a href="#cb16-583" aria-label="583"></a>peso_efa <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span><span class="op">([</span><span class="dv">0</span><span class="op">,</span> <span class="dv">100</span><span class="op">],</span> <span class="op">{</span>value<span class="op">:</span> <span class="dv">25</span><span class="op">,</span> step<span class="op">:</span> <span class="dv">1</span><span class="op">,</span> label<span class="op">:</span> <span class="st">"EFA (%)"</span><span class="op">})</span></span>
-<span id="cb16-584"><a href="#cb16-584" aria-label="584"></a>peso_ijs <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span><span class="op">([</span><span class="dv">0</span><span class="op">,</span> <span class="dv">100</span><span class="op">],</span> <span class="op">{</span>value<span class="op">:</span> <span class="dv">15</span><span class="op">,</span> step<span class="op">:</span> <span class="dv">1</span><span class="op">,</span> label<span class="op">:</span> <span class="st">"IJS (%)"</span><span class="op">})</span></span>
-<span id="cb16-585"><a href="#cb16-585" aria-label="585"></a>peso_eem <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span><span class="op">([</span><span class="dv">0</span><span class="op">,</span> <span class="dv">100</span><span class="op">],</span> <span class="op">{</span>value<span class="op">:</span> <span class="dv">20</span><span class="op">,</span> step<span class="op">:</span> <span class="dv">1</span><span class="op">,</span> label<span class="op">:</span> <span class="st">"EEM (%)"</span><span class="op">})</span></span>
-<span id="cb16-586"><a href="#cb16-586" aria-label="586"></a>peso_agg <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span><span class="op">([</span><span class="dv">0</span><span class="op">,</span> <span class="dv">100</span><span class="op">],</span> <span class="op">{</span>value<span class="op">:</span> <span class="dv">20</span><span class="op">,</span> step<span class="op">:</span> <span class="dv">1</span><span class="op">,</span> label<span class="op">:</span> <span class="st">"AGG (%)"</span><span class="op">})</span></span>
-<span id="cb16-587"><a href="#cb16-587" aria-label="587"></a></span>
-<span id="cb16-588"><a href="#cb16-588" aria-label="588"></a><span class="co">// 3. Normalizar pesos (asegurar que sumen 100%)</span></span>
-<span id="cb16-589"><a href="#cb16-589" aria-label="589"></a>pesos_raw <span class="op">=</span> <span class="op">[</span>peso_spy<span class="op">,</span> peso_efa<span class="op">,</span> peso_ijs<span class="op">,</span> peso_eem<span class="op">,</span> peso_agg<span class="op">]</span></span>
-<span id="cb16-590"><a href="#cb16-590" aria-label="590"></a>suma_pesos <span class="op">=</span> pesos_raw<span class="op">.</span><span class="fu">reduce</span><span class="op">((</span>a<span class="op">,</span> b<span class="op">)</span> <span class="op">=&gt;</span> a <span class="op">+</span> b<span class="op">,</span> <span class="dv">0</span><span class="op">)</span></span>
-<span id="cb16-591"><a href="#cb16-591" aria-label="591"></a>pesos <span class="op">=</span> pesos_raw<span class="op">.</span><span class="fu">map</span><span class="op">(</span>w <span class="op">=&gt;</span> w <span class="op">/</span> suma_pesos <span class="op">*</span> <span class="dv">100</span><span class="op">)</span></span>
-<span id="cb16-592"><a href="#cb16-592" aria-label="592"></a></span>
-<span id="cb16-593"><a href="#cb16-593" aria-label="593"></a><span class="co">// 4. Calcular retorno/volatilidad esperados (precomputa de tu análisis)</span></span>
-<span id="cb16-594"><a href="#cb16-594" aria-label="594"></a>retornos_medios <span class="op">=</span> <span class="op">[</span><span class="fl">0.12</span><span class="op">,</span> <span class="fl">0.09</span><span class="op">,</span> <span class="fl">0.14</span><span class="op">,</span> <span class="fl">0.15</span><span class="op">,</span> <span class="fl">0.04</span><span class="op">]</span>  <span class="co">// anuales</span></span>
-<span id="cb16-595"><a href="#cb16-595" aria-label="595"></a>sharpe_resultado <span class="op">=</span> <span class="op">(</span>pesos<span class="op">[</span><span class="dv">0</span><span class="op">]</span> <span class="op">*</span> retornos_medios<span class="op">[</span><span class="dv">0</span><span class="op">]</span> <span class="op">+</span> <span class="kw">...</span><span class="op">)</span> <span class="op">/</span> volatilidad_portfolio</span>
-<span id="cb16-596"><a href="#cb16-596" aria-label="596"></a></span>
-<span id="cb16-597"><a href="#cb16-597" aria-label="597"></a><span class="co">// 5. Mostrar resultados</span></span>
-<span id="cb16-598"><a href="#cb16-598" aria-label="598"></a>html`</span>
-<span id="cb16-599"><a href="#cb16-599" aria-label="599"></a><span class="op">&lt;</span>div style<span class="op">=</span><span class="st">"padding: 20px; background: #f0f8ff; border-radius: 8px;"</span><span class="op">&gt;</span></span>
-<span id="cb16-600"><a href="#cb16-600" aria-label="600"></a>  <span class="op">&lt;</span>h3<span class="op">&gt;</span>Tu Portafolio Personalizado<span class="op">&lt;/</span>h3<span class="op">&gt;</span></span>
-<span id="cb16-601"><a href="#cb16-601" aria-label="601"></a>  <span class="op">&lt;</span>p<span class="op">&gt;&lt;</span>strong<span class="op">&gt;</span>Retorno Esperado<span class="op">:&lt;/</span>strong<span class="op">&gt;</span> $<span class="op">{</span>retorno_total<span class="op">.</span><span class="fu">toFixed</span><span class="op">(</span><span class="dv">2</span><span class="op">)}%</span> anual<span class="op">&lt;/</span>p<span class="op">&gt;</span></span>
-<span id="cb16-602"><a href="#cb16-602" aria-label="602"></a>  <span class="op">&lt;</span>p<span class="op">&gt;&lt;</span>strong<span class="op">&gt;</span>Volatilidad<span class="op">:&lt;/</span>strong<span class="op">&gt;</span> $<span class="op">{</span>volatilidad_portfolio<span class="op">.</span><span class="fu">toFixed</span><span class="op">(</span><span class="dv">2</span><span class="op">)}%</span> anual<span class="op">&lt;/</span>p<span class="op">&gt;</span></span>
-<span id="cb16-603"><a href="#cb16-603" aria-label="603"></a>  <span class="op">&lt;</span>p<span class="op">&gt;&lt;</span>strong<span class="op">&gt;</span>Sharpe Ratio<span class="op">:&lt;/</span>strong<span class="op">&gt;</span> $<span class="op">{</span>sharpe_resultado<span class="op">.</span><span class="fu">toFixed</span><span class="op">(</span><span class="dv">2</span><span class="op">)}&lt;/</span>p<span class="op">&gt;</span></span>
-<span id="cb16-604"><a href="#cb16-604" aria-label="604"></a><span class="op">&lt;/</span>div<span class="op">&gt;</span></span>
-<span id="cb16-605"><a href="#cb16-605" aria-label="605"></a>`</span>
-<span id="cb16-606"><a href="#cb16-606" aria-label="606"></a>```</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-error">
-<div class="callout callout-style-default callout-important callout-empty-content callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Importante</span>OJS Syntax Error (line 595, column 53)Unexpected token
-</div>
-</div>
-<div class="callout-body-container callout-body">
-
-</div>
-</div>
-</div>
-</div>
+<section id="paso-4-agregar-interactividad-con-javascript" class="level3">
+<h3 class="anchored" data-anchor-id="paso-4-agregar-interactividad-con-javascript">Paso 4: Agregar interactividad con JavaScript</h3>
+<p><strong>Qué hacer</strong>: En el mismo archivo <code>index.qmd</code>, agrega una sección nueva (Parte 5) con un bloque de JavaScript especial que: - Cargue tus datos CSV - Cree 5 sliders interactivos (uno para cada activo) - Calcule dinámicamente el retorno, volatilidad y Sharpe ratio cuando muevas los sliders - Muestre los resultados en una caja visual</p>
+<p><strong>Por qué</strong>: Esto convierte tu análisis estático en una herramienta interactiva que otros pueden usar sin abrir R. Los usuarios pueden experimentar con diferentes pesos y ver resultados en tiempo real.</p>
+<p><strong>Detalle</strong>: Esta es la única parte que requiere JavaScript (lenguaje de navegador). Quarto tiene un sistema especial llamado Observable que facilita escribir JS sin ser un experto. Los sliders deben estar normalizados para que siempre sumen 100%.</p>
+<hr>
 </section>
-<section id="paso-5-renderizar-localmente" class="level3">
-<h3 class="anchored" data-anchor-id="paso-5-renderizar-localmente">Paso 5: Renderizar localmente</h3>
-<p>En tu terminal:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Renderiza el proyecto a HTML (se guarda en docs/)</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Opcionalmente, previsualiza localmente</span></span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> preview</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Abre <code>docs/index.html</code> en tu navegador para verificar que todo funciona.</p>
+<section id="paso-5-convertir-análisis-a-página-html" class="level3">
+<h3 class="anchored" data-anchor-id="paso-5-convertir-análisis-a-página-html">Paso 5: Convertir análisis a página HTML</h3>
+<p><strong>Qué hacer</strong>: Desde tu terminal, ejecuta un comando que le diga a Quarto: - Procesa mi archivo <code>index.qmd</code> - Corre todo el código R - Genera gráficos - Convierte markdown a HTML - Guarda el resultado en la carpeta <code>docs/</code></p>
+<p><strong>Por qué</strong>: El navegador no entiende <code>.qmd</code>. Necesitas convertirlo a HTML para que pueda ser visto en web.</p>
+<p><strong>Detalle</strong>: Este proceso toma 30-60 segundos (depende de cuántos cálculos tengas). Quarto genera una página completamente <strong>estática</strong> e <strong>independiente</strong> — no necesita servidor.</p>
+<hr>
 </section>
-<section id="paso-6-crear-repositorio-en-github" class="level3">
-<h3 class="anchored" data-anchor-id="paso-6-crear-repositorio-en-github">Paso 6: Crear repositorio en GitHub</h3>
-<ol type="1">
-<li>Ve a <a href="https://github.com">github.com</a> y crea un nuevo repositorio público</li>
-<li>Nómbralo (ej: <code>portafolio-optimo-r</code>)</li>
-<li><strong>NO inicialices con README</strong> (ya tienes archivos locales)</li>
-</ol>
+<section id="paso-6-crear-repositorio-en-línea-en-github" class="level3">
+<h3 class="anchored" data-anchor-id="paso-6-crear-repositorio-en-línea-en-github">Paso 6: Crear repositorio en línea en GitHub</h3>
+<p><strong>Qué hacer</strong>: Ve a github.com y crea un nuevo repositorio público. Debes: - Darle un nombre descriptivo (ej: <code>portafolio-optimo-r</code>) - Marcarlo como <strong>público</strong> (así otros pueden verlo) - <strong>NO inicializar con README</strong> (tú ya tienes archivos locales listos)</p>
+<p><strong>Por qué</strong>: GitHub es donde vivirá el código y los archivos HTML. Es el “servidor” que almacena tu proyecto y lo hace accesible.</p>
+<p><strong>Detalle</strong>: Después de crear, GitHub te dará una URL única para tu repositorio. Guárdala — la usarás en el próximo paso.</p>
+<hr>
 </section>
-<section id="paso-7-vincular-repositorio-local-con-github" class="level3">
-<h3 class="anchored" data-anchor-id="paso-7-vincular-repositorio-local-con-github">Paso 7: Vincular repositorio local con GitHub</h3>
-<p>En tu terminal:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Agrega el repositorio remoto</span></span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> remote add origin https://github.com/<span class="pp">[</span><span class="ss">TU_USUARIO</span><span class="pp">]</span>/portafolio-optimo-r.git</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Agrega todos los archivos</span></span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .</span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Commit inicial</span></span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"feat: Initial portfolio analysis project"</span></span>
-<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Push a main branch</span></span>
-<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> branch <span class="at">-M</span> main</span>
-<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push <span class="at">-u</span> origin main</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="paso-7-sincronizar-tu-carpeta-local-con-github" class="level3">
+<h3 class="anchored" data-anchor-id="paso-7-sincronizar-tu-carpeta-local-con-github">Paso 7: Sincronizar tu carpeta local con GitHub</h3>
+<p><strong>Qué hacer</strong>: Desde tu terminal, dentro de tu carpeta de proyecto: - Dile a Git que voy a conectar esta carpeta con GitHub - Agrega <strong>todos</strong> tus archivos (<code>.qmd</code>, <code>docs/</code>, <code>data/</code>, configuración) - Haz un “commit” (guardar una versión) con mensaje descriptivo - Sube todo a GitHub (push)</p>
+<p><strong>Por qué</strong>: Esto vincula tu carpeta local con el repositorio en línea. A partir de ahora, cada vez que hagas cambios y hagas push, los cambios aparecerán en GitHub.</p>
+<p><strong>Detalle</strong>: Git controla el historial de cambios. El primer push llevará todos tus archivos. Los siguientes pushes solo subirán lo que cambió.</p>
+<hr>
 </section>
-<section id="paso-8-habilitar-github-pages" class="level3">
-<h3 class="anchored" data-anchor-id="paso-8-habilitar-github-pages">Paso 8: Habilitar GitHub Pages</h3>
-<p>En GitHub:</p>
-<ol type="1">
-<li>Ve a <strong>Settings</strong> → <strong>Pages</strong></li>
-<li>En “Build and deployment”, elige:
-<ul>
-<li>Source: <strong>Deploy from a branch</strong></li>
-<li>Branch: <strong>main</strong> / folder: <strong>/docs</strong></li>
-</ul></li>
-<li>Haz clic en <strong>Save</strong></li>
-</ol>
-<p>¡Listo! Tu sitio estará disponible en: <code>https://[TU_USUARIO].github.io/portafolio-optimo-r/</code></p>
+<section id="paso-8-activar-despliegue-automático-en-github-pages" class="level3">
+<h3 class="anchored" data-anchor-id="paso-8-activar-despliegue-automático-en-github-pages">Paso 8: Activar despliegue automático en GitHub Pages</h3>
+<p><strong>Qué hacer</strong>: En la página de tu repositorio en GitHub, ve a <strong>Settings</strong> → <strong>Pages</strong> y configura: - Especifica que quieres desplegar desde una <strong>rama</strong> (no desde acciones automatizadas) - Elige la rama <strong>main</strong> - Especifica que los archivos HTML están en la carpeta <strong>/docs</strong> - Guarda los cambios</p>
+<p><strong>Por qué</strong>: GitHub Pages es un servicio <strong>gratuito</strong> que toma los archivos HTML en <code>docs/</code> y los sirve automáticamente en una URL pública. Esto es lo que hace tu página accesible en internet.</p>
+<p><strong>Detalle</strong>: Una vez activado, tu página estará disponible en <code>https://[tu-usuario].github.io/[nombre-repo]/</code>. GitHub Pages se actualiza automáticamente cada vez que haces push a la rama main.</p>
 <hr>
 </section>
 </section>
 <section id="flujo-de-actualización-futuro" class="level2">
 <h2 class="anchored" data-anchor-id="flujo-de-actualización-futuro">Flujo de actualización futuro</h2>
-<p>Después de esto, cada vez que quieras actualizar:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Modifica tus archivos .qmd</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Renderiza</span></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Commit + push</span></span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .</span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"update: Refina simulación con 50k portafolios"</span></span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push origin main</span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a><span class="co"># GitHub Pages se actualiza automáticamente en ~30 segundos</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Una vez que tu proyecto esté publicado, <strong>no necesitas volver a hacer estos 8 pasos</strong>. El flujo se simplifica:</p>
+<ol type="1">
+<li><strong>Modifica</strong> tu archivo <code>index.qmd</code> con cambios (más código, mejor análisis, correcciones)</li>
+<li><strong>Renderiza</strong> localmente para probar que todo funciona</li>
+<li><strong>Sube</strong> cambios a GitHub — GitHub Pages se actualiza automáticamente en ~30 segundos</li>
+</ol>
+<p>Tu página pública refleja siempre la última versión que hayas subido a GitHub.</p>
 <hr>
 </section>
 <section id="cómo-construir-la-página-observable-js" class="level2">
@@ -982,40 +863,40 @@ window.Quarto = {
 <section id="ejemplo-simplificado" class="level3">
 <h3 class="anchored" data-anchor-id="ejemplo-simplificado">Ejemplo simplificado:</h3>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20" data-startfrom="693" data-source-offset="-16"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 692;"><span id="cb20-693"><a href="#cb20-693" aria-hidden="true" tabindex="-1"></a>datos <span class="op">=</span> <span class="fu">FileAttachment</span>(<span class="st">"data/portafolio_retornos.csv"</span>)<span class="op">.</span><span class="fu">csv</span>()</span>
-<span id="cb20-694"><a href="#cb20-694" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-695"><a href="#cb20-695" aria-hidden="true" tabindex="-1"></a><span class="co">// Slider reactivo</span></span>
-<span id="cb20-696"><a href="#cb20-696" aria-hidden="true" tabindex="-1"></a>mi_peso <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">100</span>]<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"Mi peso en SPY"</span>})</span>
-<span id="cb20-697"><a href="#cb20-697" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-698"><a href="#cb20-698" aria-hidden="true" tabindex="-1"></a><span class="co">// Cálculo que reacciona al slider</span></span>
-<span id="cb20-699"><a href="#cb20-699" aria-hidden="true" tabindex="-1"></a>retorno_calculado <span class="op">=</span> mi_peso <span class="op">/</span> <span class="dv">100</span> <span class="op">*</span> retorno_spy</span>
-<span id="cb20-700"><a href="#cb20-700" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb20-701"><a href="#cb20-701" aria-hidden="true" tabindex="-1"></a><span class="co">// Mostrar resultado</span></span>
-<span id="cb20-702"><a href="#cb20-702" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;p&gt;Retorno: </span><span class="sc">${</span>retorno_calculado<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)<span class="sc">}</span><span class="vs">%&lt;/p&gt;`</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13" data-startfrom="629" data-source-offset="-16"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 628;"><span id="cb13-629"><a href="#cb13-629" aria-hidden="true" tabindex="-1"></a>datos <span class="op">=</span> <span class="fu">FileAttachment</span>(<span class="st">"data/portafolio_retornos.csv"</span>)<span class="op">.</span><span class="fu">csv</span>()</span>
+<span id="cb13-630"><a href="#cb13-630" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-631"><a href="#cb13-631" aria-hidden="true" tabindex="-1"></a><span class="co">// Slider reactivo</span></span>
+<span id="cb13-632"><a href="#cb13-632" aria-hidden="true" tabindex="-1"></a>mi_peso <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">100</span>]<span class="op">,</span> {<span class="dt">label</span><span class="op">:</span> <span class="st">"Mi peso en SPY"</span>})</span>
+<span id="cb13-633"><a href="#cb13-633" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-634"><a href="#cb13-634" aria-hidden="true" tabindex="-1"></a><span class="co">// Cálculo que reacciona al slider</span></span>
+<span id="cb13-635"><a href="#cb13-635" aria-hidden="true" tabindex="-1"></a>retorno_calculado <span class="op">=</span> mi_peso <span class="op">/</span> <span class="dv">100</span> <span class="op">*</span> retorno_spy</span>
+<span id="cb13-636"><a href="#cb13-636" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-637"><a href="#cb13-637" aria-hidden="true" tabindex="-1"></a><span class="co">// Mostrar resultado</span></span>
+<span id="cb13-638"><a href="#cb13-638" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;p&gt;Retorno: </span><span class="sc">${</span>retorno_calculado<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)<span class="sc">}</span><span class="vs">%&lt;/p&gt;`</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-2-1" data-nodetype="declaration">
+<div id="ojs-cell-1-1" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-2-2" data-nodetype="declaration">
+<div id="ojs-cell-1-2" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-2-3" data-nodetype="declaration">
+<div id="ojs-cell-1-3" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-2-4" data-nodetype="expression">
+<div id="ojs-cell-1-4" data-nodetype="expression">
 
 </div>
 </div>
@@ -1288,8 +1169,8 @@ window.Quarto = {
 <section id="error-quarto-render-falla" class="level3">
 <h3 class="anchored" data-anchor-id="error-quarto-render-falla">“Error: <code>quarto render</code> falla”</h3>
 <p><strong>Posible causa</strong>: Faltan librerías de R.</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Instala las que faltan</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Rscript</span> <span class="at">-e</span> <span class="st">"install.packages('tidyverse'); install.packages('quadprog')"</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Instala las que faltan</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Rscript</span> <span class="at">-e</span> <span class="st">"install.packages('tidyverse'); install.packages('quadprog')"</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="github-pages-muestra-404" class="level3">
 <h3 class="anchored" data-anchor-id="github-pages-muestra-404">“GitHub Pages muestra 404”</h3>
@@ -1305,20 +1186,20 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="los-sliders-observable-no-cargan-datos">“Los sliders Observable no cargan datos”</h3>
 <p><strong>Causa común</strong>: El archivo CSV no está en la ruta correcta.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23" data-startfrom="876" data-source-offset="-16"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 875;"><span id="cb23-876"><a href="#cb23-876" aria-hidden="true" tabindex="-1"></a>datos <span class="op">=</span> <span class="fu">FileAttachment</span>(<span class="st">"portafolio_retornos.csv"</span>)<span class="op">.</span><span class="fu">csv</span>()</span>
-<span id="cb23-877"><a href="#cb23-877" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-878"><a href="#cb23-878" aria-hidden="true" tabindex="-1"></a><span class="co">// ✅ Correcto (asume que quarto render está en la raíz)</span></span>
-<span id="cb23-879"><a href="#cb23-879" aria-hidden="true" tabindex="-1"></a>datos <span class="op">=</span> <span class="fu">FileAttachment</span>(<span class="st">"data/portafolio_retornos.csv"</span>)<span class="op">.</span><span class="fu">csv</span>()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16" data-startfrom="812" data-source-offset="-16"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 811;"><span id="cb16-812"><a href="#cb16-812" aria-hidden="true" tabindex="-1"></a>datos <span class="op">=</span> <span class="fu">FileAttachment</span>(<span class="st">"portafolio_retornos.csv"</span>)<span class="op">.</span><span class="fu">csv</span>()</span>
+<span id="cb16-813"><a href="#cb16-813" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-814"><a href="#cb16-814" aria-hidden="true" tabindex="-1"></a><span class="co">// ✅ Correcto (asume que quarto render está en la raíz)</span></span>
+<span id="cb16-815"><a href="#cb16-815" aria-hidden="true" tabindex="-1"></a>datos <span class="op">=</span> <span class="fu">FileAttachment</span>(<span class="st">"data/portafolio_retornos.csv"</span>)<span class="op">.</span><span class="fu">csv</span>()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-3-1" data-nodetype="declaration">
+<div id="ojs-cell-2-1" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-3-2" data-nodetype="declaration">
+<div id="ojs-cell-2-2" data-nodetype="declaration">
 
 </div>
 </div>
@@ -1331,23 +1212,23 @@ window.Quarto = {
 <ol type="1">
 <li><p>¿El CSV se carga? Abre browser console (F12) y busca errores</p></li>
 <li><p>¿Los valores son NaN? Revisa que los nombres de columnas coincidan:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(portafolio_retornos)  <span class="co"># En R</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div></li>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(portafolio_retornos)  <span class="co"># En R</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div></li>
 <li><p>¿Falta variable en Observable? Usa <code>console.log(variable)</code> en {ojs}</p></li>
 </ol>
 </section>
 <section id="cómo-actualizar-la-página-después-de-cambios" class="level3">
 <h3 class="anchored" data-anchor-id="cómo-actualizar-la-página-después-de-cambios">“¿Cómo actualizar la página después de cambios?”</h3>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Modifica tu .qmd</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Renderiza</span></span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render</span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Commit + push</span></span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .</span>
-<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"update: [descripción]"</span></span>
-<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push origin main</span>
-<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a><span class="co"># GitHub Pages se actualiza en ~30 segundos</span></span>
-<span id="cb25-11"><a href="#cb25-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Recarga la página en tu navegador (Ctrl+Shift+R para forzar caché)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Modifica tu .qmd</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Renderiza</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Commit + push</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"update: [descripción]"</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push origin main</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="co"># GitHub Pages se actualiza en ~30 segundos</span></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Recarga la página en tu navegador (Ctrl+Shift+R para forzar caché)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <hr>
 </section>
 </section>
@@ -1381,46 +1262,46 @@ window.Quarto = {
 <section id="opción-1-agregar-una-api-con-plumber-r" class="level3">
 <h3 class="anchored" data-anchor-id="opción-1-agregar-una-api-con-plumber-r">Opción 1: Agregar una API con plumber (R)</h3>
 <p>En lugar de solo Observable JS estático, puedes crear un backend interactivo:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># En R: instala.packages("plumber")</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Crea un archivo api.R con endpoints que reciban pesos</span></span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="co"># y devuelvan retorno/volatilidad calculados</span></span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="co">#* @post /calcular-portafolio</span></span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="cf">function</span>(pesos) {</span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>  retorno <span class="ot">&lt;-</span> <span class="fu">sum</span>(pesos <span class="sc">*</span> retornos_medios)</span>
-<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">list</span>(<span class="at">retorno =</span> retorno))</span>
-<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># En R: instala.packages("plumber")</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Crea un archivo api.R con endpoints que reciban pesos</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="co"># y devuelvan retorno/volatilidad calculados</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="co">#* @post /calcular-portafolio</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="cf">function</span>(pesos) {</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>  retorno <span class="ot">&lt;-</span> <span class="fu">sum</span>(pesos <span class="sc">*</span> retornos_medios)</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(<span class="fu">list</span>(<span class="at">retorno =</span> retorno))</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Luego desplégalo en <a href="https://www.shinyapps.io/">Shinyapps.io</a> o <a href="https://www.heroku.com/">Heroku</a> (gratuitamente).</p>
 <p><strong>Tiempo adicional</strong>: ~60 min de aprendizaje.</p>
 </section>
 <section id="opción-2-usar-shiny-en-lugar-de-observable-js" class="level3">
 <h3 class="anchored" data-anchor-id="opción-2-usar-shiny-en-lugar-de-observable-js">Opción 2: Usar Shiny en lugar de Observable JS</h3>
 <p>Si prefieres R puro, puedes usar <code>library(shiny)</code> en lugar de Observable JS:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
-<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sliderInput</span>(<span class="st">"peso_spy"</span>, <span class="st">"SPY (%)"</span>, <span class="dv">0</span>, <span class="dv">100</span>, <span class="dv">20</span>),</span>
-<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">textOutput</span>(<span class="st">"resultado"</span>)</span>
-<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
-<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>resultado <span class="ot">&lt;-</span> <span class="fu">renderText</span>({</span>
-<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">paste</span>(<span class="st">"Retorno:"</span>, input<span class="sc">$</span>peso_spy <span class="sc">*</span> <span class="fl">0.12</span>)</span>
-<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>  })</span>
-<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a><span class="fu">shinyApp</span>(ui, server)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">fluidPage</span>(</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sliderInput</span>(<span class="st">"peso_spy"</span>, <span class="st">"SPY (%)"</span>, <span class="dv">0</span>, <span class="dv">100</span>, <span class="dv">20</span>),</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">textOutput</span>(<span class="st">"resultado"</span>)</span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>  output<span class="sc">$</span>resultado <span class="ot">&lt;-</span> <span class="fu">renderText</span>({</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">paste</span>(<span class="st">"Retorno:"</span>, input<span class="sc">$</span>peso_spy <span class="sc">*</span> <span class="fl">0.12</span>)</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>  })</span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a><span class="fu">shinyApp</span>(ui, server)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Deploy a <a href="https://www.shinyapps.io/">shinyapps.io</a> automáticamente.</p>
 <p><strong>Nota</strong>: Shiny tiene servidor gratuito limitado (25 horas/mes).</p>
 </section>
 <section id="opción-3-versión-en-python-con-streamlit" class="level3">
 <h3 class="anchored" data-anchor-id="opción-3-versión-en-python-con-streamlit">Opción 3: Versión en Python con Streamlit</h3>
 <p>Si prefieren Python en lugar de R:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> streamlit <span class="im">as</span> st</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>peso_spy <span class="op">=</span> st.slider(<span class="st">"SPY (%)"</span>, <span class="dv">0</span>, <span class="dv">100</span>, <span class="dv">20</span>)</span>
-<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>st.write(<span class="ss">f"Retorno estimado: </span><span class="sc">{</span>peso_spy <span class="op">*</span> <span class="fl">0.12</span><span class="sc">}</span><span class="ss">%"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> streamlit <span class="im">as</span> st</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>peso_spy <span class="op">=</span> st.slider(<span class="st">"SPY (%)"</span>, <span class="dv">0</span>, <span class="dv">100</span>, <span class="dv">20</span>)</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>st.write(<span class="ss">f"Retorno estimado: </span><span class="sc">{</span>peso_spy <span class="op">*</span> <span class="fl">0.12</span><span class="sc">}</span><span class="ss">%"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Deploy en <a href="https://streamlit.io/cloud">Streamlit Cloud</a> (gratis).</p>
 <p><strong>Tiempo adicional</strong>: ~45 min si ya conoces Python.</p>
 <hr>
@@ -1492,7 +1373,7 @@ window.Quarto = {
 
 </main> <!-- /main -->
 <script type="ojs-module-contents">
-eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMiIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6Ii8vIENhcmdhciBkYXRvc1xuZGF0b3MgPSBGaWxlQXR0YWNobWVudChcImRhdGEvcG9ydGFmb2xpb19yZXRvcm5vcy5jc3ZcIikuY3N2KClcblxuLy8gU2xpZGVyIHJlYWN0aXZvXG5taV9wZXNvID0gSW5wdXRzLnJhbmdlKFswLCAxMDBdLCB7bGFiZWw6IFwiTWkgcGVzbyBlbiBTUFlcIn0pXG5cbi8vIEPDoWxjdWxvIHF1ZSByZWFjY2lvbmEgYWwgc2xpZGVyXG5yZXRvcm5vX2NhbGN1bGFkbyA9IG1pX3Blc28gLyAxMDAgKiByZXRvcm5vX3NweVxuXG4vLyBNb3N0cmFyIHJlc3VsdGFkb1xuaHRtbGA8cD5SZXRvcm5vOiAke3JldG9ybm9fY2FsY3VsYWRvLnRvRml4ZWQoMil9JTwvcD5gXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTMiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiIvLyDinYwgSW5jb3JyZWN0b1xuZGF0b3MgPSBGaWxlQXR0YWNobWVudChcInBvcnRhZm9saW9fcmV0b3Jub3MuY3N2XCIpLmNzdigpXG5cbi8vIOKchSBDb3JyZWN0byAoYXN1bWUgcXVlIHF1YXJ0byByZW5kZXIgZXN0w6EgZW4gbGEgcmHDrXopXG5kYXRvcyA9IEZpbGVBdHRhY2htZW50KFwiZGF0YS9wb3J0YWZvbGlvX3JldG9ybm9zLmNzdlwiKS5jc3YoKVxuIn1dfQ==
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6Ii8vIENhcmdhciBkYXRvc1xuZGF0b3MgPSBGaWxlQXR0YWNobWVudChcImRhdGEvcG9ydGFmb2xpb19yZXRvcm5vcy5jc3ZcIikuY3N2KClcblxuLy8gU2xpZGVyIHJlYWN0aXZvXG5taV9wZXNvID0gSW5wdXRzLnJhbmdlKFswLCAxMDBdLCB7bGFiZWw6IFwiTWkgcGVzbyBlbiBTUFlcIn0pXG5cbi8vIEPDoWxjdWxvIHF1ZSByZWFjY2lvbmEgYWwgc2xpZGVyXG5yZXRvcm5vX2NhbGN1bGFkbyA9IG1pX3Blc28gLyAxMDAgKiByZXRvcm5vX3NweVxuXG4vLyBNb3N0cmFyIHJlc3VsdGFkb1xuaHRtbGA8cD5SZXRvcm5vOiAke3JldG9ybm9fY2FsY3VsYWRvLnRvRml4ZWQoMil9JTwvcD5gXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTIiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiIvLyDinYwgSW5jb3JyZWN0b1xuZGF0b3MgPSBGaWxlQXR0YWNobWVudChcInBvcnRhZm9saW9fcmV0b3Jub3MuY3N2XCIpLmNzdigpXG5cbi8vIOKchSBDb3JyZWN0byAoYXN1bWUgcXVlIHF1YXJ0byByZW5kZXIgZXN0w6EgZW4gbGEgcmHDrXopXG5kYXRvcyA9IEZpbGVBdHRhY2htZW50KFwiZGF0YS9wb3J0YWZvbGlvX3JldG9ybm9zLmNzdlwiKS5jc3YoKVxuIn1dfQ==
 </script>
 <script type="module">
 if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
