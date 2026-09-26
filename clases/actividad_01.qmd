@@ -1,10 +1,7 @@
----
+﻿---
 listing_title: "Clase 01 - Notebook Actividad 01"
-clase: "Clase 01"
-title: |
-  | \includegraphics[width=5cm]{Imagen1.jpg}  
-  | Finanzas en R
-subtitle: Actividad 01
+title: "Finanzas en R â€” Actividad 01"
+subtitle: "Actividad 01"
 format:
   html:
     toc: true
@@ -18,8 +15,8 @@ format:
     geometry: margin=1in
 editor: visual
 author:
-  - Sebastián Egaña Santibáñez [{{< fa brands inbox >}}](mailto:segana@fen.uchile)
-  - Nicolás Leiva Díaz [{{< fa brands inbox >}}](mailto:nleivad@fen.uchile.cl)
+  - SebastiÃ¡n EgaÃ±a SantibÃ¡Ã±ez [{{< fa brands inbox >}}](mailto:segana@fen.uchile)
+  - NicolÃ¡s Leiva DÃ­az [{{< fa brands inbox >}}](mailto:nleivad@fen.uchile.cl)
 ---
 
 ------------------------------------------------------------------------
@@ -36,20 +33,22 @@ author:
 
 # Actividad 1
 
-## Introducción
+## IntroducciÃ³n
 
-La data corresponde a las estadísticas de las mujeres en el Ajedrez, de las distintas federaciones a través del mundo. En la hoja variables se específica el significado de cada una de las columnas.
+La data corresponde a las estadÃ­sticas de las mujeres en el Ajedrez, de las distintas federaciones a travÃ©s del mundo. En la hoja variables se especÃ­fica el significado de cada una de las columnas.
 
 ## Instrucciones
 
 1.  Cargue el archivo entregado en Excel
 2.  Cargue dos dataframes, uno con los datos (hoja data) y otro con el diccionario de la tabla (hoja variables)
-3.  El objetivo general corresponde a realizar una revisión y limpieza del set de datos en base a posibles errores. Para esto, considere la entrega de lo siguiente:
+3.  El objetivo general corresponde a realizar una revisiÃ³n y limpieza del set de datos en base a posibles errores. Para esto, considere la entrega de lo siguiente:
 
--   Diccionario de variables: Nombre variable, Tipo de variable, explicación.
--   Estadística descriptiva.
--   Detalle de modificación de variables en caso de ser necesario.
--   Estandarización de variables.
--   Posible creación de variables nuevas.
+-   Diccionario de variables: Nombre variable, Tipo de variable, explicaciÃ³n.
+-   EstadÃ­stica descriptiva.
+-   Detalle de modificaciÃ³n de variables en caso de ser necesario.
+-   EstandarizaciÃ³n de variables.
+-   Posible creaciÃ³n de variables nuevas.
 
-4.  La entrega debe realizarse con un archivo de texto que explique su trabajo y el código utilizado para esto
+4.  La entrega debe realizarse con un archivo de texto que explique su trabajo y el cÃ³digo utilizado para esto
+
+

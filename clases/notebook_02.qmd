@@ -1,8 +1,6 @@
----
+﻿---
 listing_title: "Clase 03 - Notebook 02"
-title: |
-  | \includegraphics[width=5cm]{Imagen1.jpg}  
-  | Finanzas en R
+title: "Finanzas en R"
 subtitle: Notebook 02
 format:
   html:
@@ -17,8 +15,8 @@ format:
     geometry: margin=1in
 editor: visual
 author:
-  - Sebastián Egaña Santibáñez
-  - Nicolás Leiva Díaz
+  - SebastiÃ¡n EgaÃ±a SantibÃ¡Ã±ez
+  - NicolÃ¡s Leiva DÃ­az
 ---
 
 ------------------------------------------------------------------------
@@ -33,19 +31,19 @@ author:
 
 ------------------------------------------------------------------------
 
-# Agregación y unión
+# AgregaciÃ³n y uniÃ³n
 
-## Agregación
+## AgregaciÃ³n
 
-Corresponde a cuando generamos métricas de un set de datos en base a alguna variable de agrupamiento. En este sentido, la métrica básica corresponde a conteos, pero también podemos generar promedios, máximos, mínimos, etc.
+Corresponde a cuando generamos mÃ©tricas de un set de datos en base a alguna variable de agrupamiento. En este sentido, la mÃ©trica bÃ¡sica corresponde a conteos, pero tambiÃ©n podemos generar promedios, mÃ¡ximos, mÃ­nimos, etc.
 
 Leemos la data presente en el siguiente repositorio:
 
-[Enlace acá](https://github.com/stringfestdata/advancing-into-analytics-book/tree/main/datasets/star)
+[Enlace acÃ¡](https://github.com/stringfestdata/advancing-into-analytics-book/tree/main/datasets/star)
 
 Utilizamos el set de datos star.
 
-1.  Cargamos las librerías:
+1.  Cargamos las librerÃ­as:
 
 ```{r}
 library(tidyverse)
@@ -54,7 +52,7 @@ library(readxl)
 
 ```
 
-2.  Con el siguiente código, podemos leer directamente el archivo:
+2.  Con el siguiente cÃ³digo, podemos leer directamente el archivo:
 
 ```{r}
 # Define the URL for the raw Excel file
@@ -80,9 +78,9 @@ if (response$status_code == 200) {
 
 ```
 
-Otro enfoque podría ser descargarlo y leerlo desde alguna carpeta.
+Otro enfoque podrÃ­a ser descargarlo y leerlo desde alguna carpeta.
 
-Generamos una agrupación por la variables ´classk´
+Generamos una agrupaciÃ³n por la variables Â´classkÂ´
 
 ```{r}
 data %>% group_by(classk) %>% summarise(n())
@@ -96,7 +94,7 @@ data %>% group_by(classk) %>% summarise(mean(tmathssk))
 
 ## Uniones
 
-Corresponde a la interacción entre dos tablas por al menos una llave. Traemos el set de datos distrcits:
+Corresponde a la interacciÃ³n entre dos tablas por al menos una llave. Traemos el set de datos distrcits:
 
 1.  Leemos el archivo districts:
 
@@ -146,13 +144,13 @@ data_join %>% group_by(county) %>% summarise(n())
 
 # Tipos de Join
 
-## Uniones: llave primaria y foránea
+## Uniones: llave primaria y forÃ¡nea
 
-En SQL, se habla principalmente de llaves en el sentido de columnas que nos permitan unir dos bases. Intentamos realizar un metodo que mantenga la integridad de la tabla a la cual añadiré información.
+En SQL, se habla principalmente de llaves en el sentido de columnas que nos permitan unir dos bases. Intentamos realizar un metodo que mantenga la integridad de la tabla a la cual aÃ±adirÃ© informaciÃ³n.
 
-Una llave primaria corresponde a la columna de la base a la cual yo deseo unir otra columna, usando como punto de interacción una llave foránea.
+Una llave primaria corresponde a la columna de la base a la cual yo deseo unir otra columna, usando como punto de interacciÃ³n una llave forÃ¡nea.
 
-Consideremos las dos bases, en donde A corresponde a la llave primaria y B corresponde a la base foránea de cada una de las bases:
+Consideremos las dos bases, en donde A corresponde a la llave primaria y B corresponde a la base forÃ¡nea de cada una de las bases:
 
 |  A  |     |  B  |
 |:---:|:---:|:---:|
@@ -161,20 +159,20 @@ Consideremos las dos bases, en donde A corresponde a la llave primaria y B corre
 |  3  |     |  5  |
 |  4  |     |  6  |
 
-¿Qué valores se repiten dentro de cada llave?
+Â¿QuÃ© valores se repiten dentro de cada llave?
 
 Una complejidad de las uniones en SQL, corresponde a los requisitos que se deben cumplir para poder realizar uniones entre bases. Por ejemplo, una particularidad es que la llave primaria no debe tener valores repetidos y esto se repite en programas como RStudio. Por otra parte, Excel al utilizar funciones de manera individual (celda por celda), no posee dicho problema.
 
 Veamos ahora distintos tipos de uniones que pueden generarse.
 
--   Inner Join: Refiere a la unión en base a intersecciones.
+-   Inner Join: Refiere a la uniÃ³n en base a intersecciones.
 
 |  A  |     |  B  |
 |:---:|:---:|:---:|
 |  3  |     |  3  |
 |  4  |     |  4  |
 
--   Outer Join: Refiere a la unión de todas las columnas en A y todas las columnas en B. Las celdas sin correlativo en la otra base, generarán un valor nulo.
+-   Outer Join: Refiere a la uniÃ³n de todas las columnas en A y todas las columnas en B. Las celdas sin correlativo en la otra base, generarÃ¡n un valor nulo.
 
 |  A   |     |  B   |
 |:----:|:---:|:----:|
@@ -185,7 +183,7 @@ Veamos ahora distintos tipos de uniones que pueden generarse.
 | NULL |     |  5   |
 | NULL |     |  6   |
 
-Esto tipo de unión, puede tener dos variaciones:
+Esto tipo de uniÃ³n, puede tener dos variaciones:
 
 -   Outer Join \> Left Outer Join: Predominan las columnas en A, y las comunes en B.
 
@@ -209,7 +207,7 @@ En Rstudio solo se conoce como Left Join.
 
 En Rstudio solo se conoce como Right Join.
 
-# Aplicación práctica de uniones
+# AplicaciÃ³n prÃ¡ctica de uniones
 
 ## Set de datos
 
@@ -222,39 +220,39 @@ Considere que se tiene un set de datos data_uniones.xlsx, que contiene 4 tablas:
 
 # Import - Tidy - Transform
 
--   ¿Cuáles son las variables de cada set de datos?
+-   Â¿CuÃ¡les son las variables de cada set de datos?
 
-Por ejemplo, ¿qué es FuelCostperSeatMile (Cents)? Pero una pregunta más general es, ¿por qué es relevante aprender estos conceptos?
+Por ejemplo, Â¿quÃ© es FuelCostperSeatMile (Cents)? Pero una pregunta mÃ¡s general es, Â¿por quÃ© es relevante aprender estos conceptos?
 
--   ¿Se observa algún error en los datos?
+-   Â¿Se observa algÃºn error en los datos?
 
 Fijemonos en el formato de la fecha.
 
--   ¿Posee la estructura correcta el set de datos?
+-   Â¿Posee la estructura correcta el set de datos?
 
-No se ven errores; en las filas están las observaciones y en las columnas las variables. No existen formatos, ni celdas combinadas.
+No se ven errores; en las filas estÃ¡n las observaciones y en las columnas las variables. No existen formatos, ni celdas combinadas.
 
--   ¿Existe identificadores únicos en los set de datos?
+-   Â¿Existe identificadores Ãºnicos en los set de datos?
 
-Existen múltiples identificadores únicos.
+Existen mÃºltiples identificadores Ãºnicos.
 
-Se debe intentar llegar al análisis relevante del set de datos. En el caso de este set datos, claramente se puede llegar a un set de datos más completo.
+Se debe intentar llegar al anÃ¡lisis relevante del set de datos. En el caso de este set datos, claramente se puede llegar a un set de datos mÃ¡s completo.
 
--   ¿Cúal es el set de datos que debe mantenerse? Veamos alguna manera de llegar a dicha conclusión.
+-   Â¿CÃºal es el set de datos que debe mantenerse? Veamos alguna manera de llegar a dicha conclusiÃ³n.
 
-Por último, se puede pensar en la inclusión de datos a la base de datos, que podrían ser de algún interés. En este caso intentaremos agregar los siguientes datos:
+Por Ãºltimo, se puede pensar en la inclusiÃ³n de datos a la base de datos, que podrÃ­an ser de algÃºn interÃ©s. En este caso intentaremos agregar los siguientes datos:
 
-\href{https://en.wikipedia.org/wiki/List_of_airports_in_the_United_States}{Acá}
+\href{https://en.wikipedia.org/wiki/List_of_airports_in_the_United_States}{AcÃ¡}
 
-Hasta este punto, aún no hemos terminado con dicho procedimiento de **batallar con los datos**.
+Hasta este punto, aÃºn no hemos terminado con dicho procedimiento de **batallar con los datos**.
 
-Antes de aplicar la unión de datos, sería bueno poder diagramar la relación que existe entre cada base datos. Acá debemos abordar un contenido relacionado.
+Antes de aplicar la uniÃ³n de datos, serÃ­a bueno poder diagramar la relaciÃ³n que existe entre cada base datos. AcÃ¡ debemos abordar un contenido relacionado.
 
 ## Modelo de datos
 
-Corresponde a una serie de conceptos que pueden utilizarse para describir un conjunto de datos y las operaciones relacionadas para su manipulación.
+Corresponde a una serie de conceptos que pueden utilizarse para describir un conjunto de datos y las operaciones relacionadas para su manipulaciÃ³n.
 
-En la actualidad el modelo de bases de datos más utilizado corresponde al modelo relacional, que se define como el intento de obtener datos de distintas fuentes a través de relaciones o consultas que se basan en llaves (o columnas) que permiten la relación entre las distintas tablas. Esto quiere decir, que no necesariamente se tiene una **base gigante**, sino que se tiene la opción de acceder a bases pequeñas que pueden ir complementando los análisis.
+En la actualidad el modelo de bases de datos mÃ¡s utilizado corresponde al modelo relacional, que se define como el intento de obtener datos de distintas fuentes a travÃ©s de relaciones o consultas que se basan en llaves (o columnas) que permiten la relaciÃ³n entre las distintas tablas. Esto quiere decir, que no necesariamente se tiene una **base gigante**, sino que se tiene la opciÃ³n de acceder a bases pequeÃ±as que pueden ir complementando los anÃ¡lisis.
 
 ### Modelo Relacional
 
@@ -264,9 +262,9 @@ Las entidades y relaciones se representan en formas de tablas.
 -   Las filas (tuplas) contienen datos sobre cada entidad.
 -   Las columnas corresponden a atributos de las entidades.
 
-Se pretende determinar operaciones a realizar: Unión, intersección, diferencia, producto cartesiano, selección, proyección, reunión, etc.
+Se pretende determinar operaciones a realizar: UniÃ³n, intersecciÃ³n, diferencia, producto cartesiano, selecciÃ³n, proyecciÃ³n, reuniÃ³n, etc.
 
-Por otra parte, existen restricciones de integridad de entidad como también de integridad referencial (relacionado con el tema de llaves que vimos anteriormente).
+Por otra parte, existen restricciones de integridad de entidad como tambiÃ©n de integridad referencial (relacionado con el tema de llaves que vimos anteriormente).
 
 Por ejemplo:
 
@@ -275,7 +273,7 @@ Por ejemplo:
     \hline
     Entidades & Proveedor & Pieza \\
     \hline
-    Atributos & Código & Código \\
+    Atributos & CÃ³digo & CÃ³digo \\
     \hline
     & Nombre & Nombre  \\
     \hline
@@ -290,7 +288,7 @@ En donde:
 \begin{center}
 \begin{tabular}{|c|c|}
     \hline
-    Relación & Suministra \\
+    RelaciÃ³n & Suministra \\
     \hline
     Entidades Participantes & Proveedor - Pieza \\
     \hline
@@ -301,11 +299,11 @@ En donde:
 \end{tabular}
 \end{center}
 
-De manera más especifica, el modelo entidad/relación corresponde a la técnica basada en la identificación de las entidades y de las relaciones que se dan entre ellas, según la realidad que se intenta modelar.
+De manera mÃ¡s especifica, el modelo entidad/relaciÃ³n corresponde a la tÃ©cnica basada en la identificaciÃ³n de las entidades y de las relaciones que se dan entre ellas, segÃºn la realidad que se intenta modelar.
 
-Se debe recordar acá, el concepto de llave del que hablamos la clase pasada. Una llave (o también llamada clave), corresponde a un conjunto de atributos que permite identificar unívocamente a una entidad dentro de un conjunto de entidades.
+Se debe recordar acÃ¡, el concepto de llave del que hablamos la clase pasada. Una llave (o tambiÃ©n llamada clave), corresponde a un conjunto de atributos que permite identificar unÃ­vocamente a una entidad dentro de un conjunto de entidades.
 
-Por ejemplo para una Facultad el modelo podría ser:
+Por ejemplo para una Facultad el modelo podrÃ­a ser:
 
 \begin{center}
 \begin{tabular}{|c|c|c|c|c|c|c|}
@@ -313,7 +311,7 @@ Por ejemplo para una Facultad el modelo podría ser:
     Entidades & Asignatura & Alumno & Profesor & Departamento & Aula & Grupo \\
     Atributos & ID & RUT & RUT & ID & ID & ID \\
     & Nombre & Nombre & Nombre & Nombre & Capacidad & Tipo  \\
-    & Créditos & Dirección & Categoría & & & \\
+    & CrÃ©ditos & DirecciÃ³n & CategorÃ­a & & & \\
     & Curso & Email & Email & & & \\
     \hline
 \end{tabular}
@@ -324,18 +322,18 @@ En donde existen las siguientes relaciones:
 \begin{center}
 \begin{tabular}{|c|c|c|c|c|c|c|}
     \hline
-    Relación & Entidades participantes & Cardinalidad & Atributos \\
-    se matricula en & Alumno - Grupo & N:M & Calificación \\
-    enseña & Profesor - Grupo & N:M & \\
+    RelaciÃ³n & Entidades participantes & Cardinalidad & Atributos \\
+    se matricula en & Alumno - Grupo & N:M & CalificaciÃ³n \\
+    enseÃ±a & Profesor - Grupo & N:M & \\
     impartida en & Asignatura - Grupo & 1:N  &\\
-    asignada a & Aula - Grupo & N:M & Día, hora \\
+    asignada a & Aula - Grupo & N:M & DÃ­a, hora \\
     pertenece a & Profesor - Departamento & N:1 & \\
     dirige & Profesor - Departamento & 1:1 & \\
     \hline
 \end{tabular}
 \end{center}
 
-Esto también puede ser representado de manera grafica. Veamos el siguiente ejemplo:
+Esto tambiÃ©n puede ser representado de manera grafica. Veamos el siguiente ejemplo:
 
 ```{mermaid}
 erDiagram
@@ -380,7 +378,7 @@ erDiagram
     }
 ```
 
-Veamos esto en relación a los datos que estuvimos revisando; primero debemos ingresar las tablas sobre las que estuvimos trabajando.
+Veamos esto en relaciÃ³n a los datos que estuvimos revisando; primero debemos ingresar las tablas sobre las que estuvimos trabajando.
 
 ```{r, message = FALSE, warning=FALSE}
 library(readxl)
@@ -437,7 +435,7 @@ erDiagram
     }
 ```
 
-Después debemos generar las relaciones entre cada una de las tablas:
+DespuÃ©s debemos generar las relaciones entre cada una de las tablas:
 
 ```{mermaid}
 erDiagram
@@ -480,7 +478,7 @@ erDiagram
     }
 ```
 
-Podemos intentar mejorar un poco el formato de la visualización:
+Podemos intentar mejorar un poco el formato de la visualizaciÃ³n:
 
 ```{mermaid}
 %%{init: {'er': {'fontSize': 16}, 'theme': 'default'}}}%%
@@ -523,3 +521,5 @@ erDiagram
         numeric ListPrice
     }
 ```
+
+

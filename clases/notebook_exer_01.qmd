@@ -1,8 +1,6 @@
----
+﻿---
 listing_title: "Revisar - Clase 02 - Notebook Ejercicio 01"
-title: |
-  | \includegraphics[width=5cm]{Imagen1.jpg}  
-  | Finanzas en R
+title: "Finanzas en R"
 subtitle: Notebook Ejercicio 01
 format:
   html:
@@ -17,8 +15,8 @@ format:
     geometry: margin=1in
 editor: visual
 author:
-  - Sebastián Egaña Santibáñez [{{< fa brands inbox >}}](mailto:segana@fen.uchile)
-  - Nicolás Leiva Díaz [{{< fa brands inbox >}}](mailto:nleivad@fen.uchile.cl)
+  - SebastiÃ¡n EgaÃ±a SantibÃ¡Ã±ez [{{< fa brands inbox >}}](mailto:segana@fen.uchile)
+  - NicolÃ¡s Leiva DÃ­az [{{< fa brands inbox >}}](mailto:nleivad@fen.uchile.cl)
 ---
 
 ------------------------------------------------------------------------
@@ -35,9 +33,9 @@ author:
 
 ## Ejercicio 1
 
-1.  Escriba una función que sume todos los números divisibles por 3 y 5 menores a 1000.
+1.  Escriba una funciÃ³n que sume todos los nÃºmeros divisibles por 3 y 5 menores a 1000.
 
-## Solución:
+## SoluciÃ³n:
 
 ```{r}
 #| eval: false
@@ -47,7 +45,7 @@ suma <- 0
 
 # Iteramos desde 1 hasta 999 (menos de 1000)
 for (numero in 1:999) {
-  # Si el número es divisible por 3 o 5, lo sumamos a la variable 'suma'
+  # Si el nÃºmero es divisible por 3 o 5, lo sumamos a la variable 'suma'
   if (numero %% 3 == 0 & numero %% 5 == 0) {
     suma <- suma + numero
   }
@@ -58,15 +56,15 @@ print(suma)
 
 ```
 
-2.  Identifque los operadores utilizados en su código
+2.  Identifque los operadores utilizados en su cÃ³digo
 
-3.  Comparelo con la misma solución en Python, y realice tres comentarios sobre las diferencias observadas
+3.  Comparelo con la misma soluciÃ³n en Python, y realice tres comentarios sobre las diferencias observadas
 
 ## Ejercicio 2
 
-1.  Escriba una función que imprima los números desde 1 a 100 y para los números que son múltiples de 3 imprima "TIC" en lugar del número, y para los números múltiplos de 5 imprima "TOC", y si el número es múltiplo de 3 y 5 a la vez, imprima "TICTOC"
+1.  Escriba una funciÃ³n que imprima los nÃºmeros desde 1 a 100 y para los nÃºmeros que son mÃºltiples de 3 imprima "TIC" en lugar del nÃºmero, y para los nÃºmeros mÃºltiplos de 5 imprima "TOC", y si el nÃºmero es mÃºltiplo de 3 y 5 a la vez, imprima "TICTOC"
 
-## Solución:
+## SoluciÃ³n:
 
 ```{r}
 #| eval: false
@@ -93,17 +91,17 @@ for (number in 1:100) {
 
 ## Ejercicio 3
 
-1- Haga un programa que filtre el arreglo y devuelva un arreglo con solo el nombre de sus amigos. Si un nombre tiene exactamente 4 letras, ¡puedes estar seguro que es amigo tuyo! De lo contrario, puede estar seguro de que no.
+1- Haga un programa que filtre el arreglo y devuelva un arreglo con solo el nombre de sus amigos. Si un nombre tiene exactamente 4 letras, Â¡puedes estar seguro que es amigo tuyo! De lo contrario, puede estar seguro de que no.
 
 Considere el siguiente input:
 
-`Amigo = c(“Ryan”, “Kieran”, “Mark”, “Miguel”)`
+`Amigo = c(â€œRyanâ€, â€œKieranâ€, â€œMarkâ€, â€œMiguelâ€)`
 
-Que debería ser:
+Que deberÃ­a ser:
 
-`Deberia = C(“Ryan”, “Mark”)`
+`Deberia = C(â€œRyanâ€, â€œMarkâ€)`
 
-### Solución:
+### SoluciÃ³n:
 
 ```{r}
 #| eval: false
@@ -117,7 +115,7 @@ print(deberia)
 
 ```
 
-Como función:
+Como funciÃ³n:
 
 ```{r}
 #| eval: false
@@ -132,7 +130,7 @@ filtrar_amigos <- function(amigos) {
 # Arreglo de amigos
 amigos <- c("Ryan", "Kieran", "Mark", "Miguel")
 
-# Obtener el resultado utilizando la función
+# Obtener el resultado utilizando la funciÃ³n
 resultado <- filtrar_amigos(amigos)
 
 # Imprimir el resultado
@@ -140,15 +138,15 @@ print(resultado)
 
 ```
 
-2.  Comparelo con la misma solución en Python, y realice tres comentarios sobre las diferencias observadas
+2.  Comparelo con la misma soluciÃ³n en Python, y realice tres comentarios sobre las diferencias observadas
 
 ## Ejercicio 4
 
-Escribe una función llamada sumaDigitos que retorne la suma de todos los dígitos de un número dado, por ejemplo:
+Escribe una funciÃ³n llamada sumaDigitos que retorne la suma de todos los dÃ­gitos de un nÃºmero dado, por ejemplo:
 
 `5646 => 5+6+4+6 => 21`
 
-### Solución:
+### SoluciÃ³n:
 
 ```{r}
 #| eval: false
@@ -164,7 +162,7 @@ sumaDigitos <- function(numero) {
 
 ```
 
-Implementación:
+ImplementaciÃ³n:
 
 ```{r}
 #| eval: false
@@ -175,42 +173,42 @@ numero2 <- 9876
 resultado1 <- sumaDigitos(numero1)
 resultado2 <- sumaDigitos(numero2)
 
-print(resultado1) # Debería imprimir 15 (1 + 2 + 3 + 4 + 5)
-print(resultado2) # Debería imprimir 30 (9 + 8 + 7 + 6)
+print(resultado1) # DeberÃ­a imprimir 15 (1 + 2 + 3 + 4 + 5)
+print(resultado2) # DeberÃ­a imprimir 30 (9 + 8 + 7 + 6)
 
 ```
 
 ## Ejercicio 5
 
-Genere una función en R que realice lo siguiente:
+Genere una funciÃ³n en R que realice lo siguiente:
 
-1.  Ingresa un número entre 1 y 9 desde el teclado usando la función de entrada y guárdalo en una variable llamada 'my_guess_number'
+1.  Ingresa un nÃºmero entre 1 y 9 desde el teclado usando la funciÃ³n de entrada y guÃ¡rdalo en una variable llamada 'my_guess_number'
 
-2.  Genera un número aleatorio entre 1 y 9 y guárdalo en una variable llamada 'numero_secreto'
+2.  Genera un nÃºmero aleatorio entre 1 y 9 y guÃ¡rdalo en una variable llamada 'numero_secreto'
 
-3.  Compara los números e imprime un mensaje: si lo adivinó, imprime "¡Bingo, tú ganas!" y si no, imprime "Inténtalo de nuevo"
+3.  Compara los nÃºmeros e imprime un mensaje: si lo adivinÃ³, imprime "Â¡Bingo, tÃº ganas!" y si no, imprime "IntÃ©ntalo de nuevo"
 
-Hint: verifique que el número ingresado esté entre el rango válido
+Hint: verifique que el nÃºmero ingresado estÃ© entre el rango vÃ¡lido
 
 ```{r}
 #| eval: false
 juego_adivinanza <- function() {
-  # 1. Ingresa un número entre 1 y 9 desde el teclado
-  my_guess_number <- as.integer(readline(prompt = "Ingresa un número entre 1 y 9: "))
+  # 1. Ingresa un nÃºmero entre 1 y 9 desde el teclado
+  my_guess_number <- as.integer(readline(prompt = "Ingresa un nÃºmero entre 1 y 9: "))
 
-  # Verificar que el número ingresado está dentro del rango válido
+  # Verificar que el nÃºmero ingresado estÃ¡ dentro del rango vÃ¡lido
   if (my_guess_number < 1 || my_guess_number > 9) {
-    stop("El número debe estar entre 1 y 9.")
+    stop("El nÃºmero debe estar entre 1 y 9.")
   }
 
-  # 2. Genera un número aleatorio entre 1 y 9
+  # 2. Genera un nÃºmero aleatorio entre 1 y 9
   numero_secreto <- sample(1:9, 1)
 
-  # 3. Compara los números e imprime un mensaje
+  # 3. Compara los nÃºmeros e imprime un mensaje
   if (my_guess_number == numero_secreto) {
-    print("¡Bingo, tú ganas!")
+    print("Â¡Bingo, tÃº ganas!")
   } else {
-    print("Inténtalo de nuevo")
+    print("IntÃ©ntalo de nuevo")
   }
 }
 
@@ -222,3 +220,5 @@ Probamos:
 #| eval: false
 juego_adivinanza()
 ```
+
+

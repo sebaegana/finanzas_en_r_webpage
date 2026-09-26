@@ -1,12 +1,47 @@
 ---
 title: "Clases"
-listing:
-  contents:
-    - "*.html"
-    - "!index.html"
-  sort: "listing_title"
-  type: default
-  fields: [listing_title]
 ---
 
-# Clases del curso
+```{r}
+#| echo: false
+#| results: asis
+
+# Leer todos los .qmd excepto index.qmd
+qmd_files <- list.files(pattern = "\\.qmd$")
+qmd_files <- qmd_files[qmd_files != "index.qmd"]
+
+# Extraer listing_title de cada archivo
+materials <- list()
+
+for (file in qmd_files) {
+  content <- readLines(file)
+  listing_line <- grep("^listing_title:", content, value = TRUE)
+
+  if (length(listing_line) > 0) {
+    title <- gsub('^listing_title: "(.+)"$', "\\1", listing_line[1])
+    html_file <- sub("\\.qmd$", ".html", file)
+    pdf_file <- sub("\\.qmd$", ".pdf", file)
+
+    materials[[length(materials) + 1]] <- list(
+      title = title,
+      html = html_file,
+      pdf = pdf_file
+    )
+  }
+}
+
+# Ordenar por título
+materials <- materials[order(sapply(materials, function(x) x$title))]
+
+# Generar HTML con links
+cat("<div class='list-group' style='margin-top: 20px;'>\n")
+
+for (item in materials) {
+  cat(sprintf(
+    "  <div class='list-group-item' style='padding: 12px; display: flex; justify-content: space-between; align-items: center;'>\n    <a href='%s' style='text-decoration: none; color: inherit; flex: 1;'>\n      <h5 style='margin: 0;'>%s</h5>\n    </a>\n    <a href='%s' class='btn btn-sm btn-primary' style='text-decoration: none; padding: 5px 10px; margin-left: 10px;'>📄 PDF</a>\n  </div>\n",
+    item$html, item$title, item$pdf
+  ))
+}
+
+cat("</div>\n")
+```

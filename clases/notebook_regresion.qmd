@@ -1,9 +1,7 @@
----
-listing_title: "Clase 05 - Notebook Regresión Lineal"
-title: |
-  | \includegraphics[width=5cm]{Imagen1.jpg}  
-  | Finanzas en R
-subtitle: Regresión lineal y aplicaciones
+﻿---
+listing_title: "Clase 05 - Notebook RegresiÃ³n Lineal"
+title: "Finanzas en R"
+subtitle: RegresiÃ³n lineal y aplicaciones
 format:
   html:
     toc: true
@@ -17,8 +15,8 @@ format:
     geometry: margin=1in
 editor: visual
 author:
-  - Sebastián Egaña Santibáñez [{{< fa brands inbox >}}](mailto:segana@fen.uchile)
-  - Nicolás Leiva Díaz [{{< fa brands inbox >}}](mailto:nleivad@fen.uchile.cl)
+  - SebastiÃ¡n EgaÃ±a SantibÃ¡Ã±ez [{{< fa brands inbox >}}](mailto:segana@fen.uchile)
+  - NicolÃ¡s Leiva DÃ­az [{{< fa brands inbox >}}](mailto:nleivad@fen.uchile.cl)
 ---
 
 ------------------------------------------------------------------------
@@ -33,9 +31,9 @@ author:
 
 ------------------------------------------------------------------------
 
-# Regresión Lineal
+# RegresiÃ³n Lineal
 
-En términos simples, una regresión lineal corresponde al intento matemático y estadístico de analizar como un conjunto de datos se adapta o no a un comportamiento lineal, ya sea esta relación directa o no.
+En tÃ©rminos simples, una regresiÃ³n lineal corresponde al intento matemÃ¡tico y estadÃ­stico de analizar como un conjunto de datos se adapta o no a un comportamiento lineal, ya sea esta relaciÃ³n directa o no.
 
 Por ejemplo la oferta en donde el precio depende de la cantidad demandada:
 
@@ -43,25 +41,25 @@ Por ejemplo la oferta en donde el precio depende de la cantidad demandada:
 Precio = \alpha + \beta * Cantidad
 \end{equation}
 
-Se asumía que la relación podía ser de la siguiente manera:
+Se asumÃ­a que la relaciÃ³n podÃ­a ser de la siguiente manera:
 
 \begin{equation}
 Precio = 2 + 2 * Cantidad
 \end{equation}
 
-La regresión lineal, corresponde al intento de estimar los valores del intercepto o constante y de la pendiente utilizando un metodo matemático, en base a una muestra para extrapolar el comportamiento de una población. Por ejemplo, pretendemos saber si la muestra utilizada nos permite confirmar el signo de la pendiente y el valor de la misma.
+La regresiÃ³n lineal, corresponde al intento de estimar los valores del intercepto o constante y de la pendiente utilizando un metodo matemÃ¡tico, en base a una muestra para extrapolar el comportamiento de una poblaciÃ³n. Por ejemplo, pretendemos saber si la muestra utilizada nos permite confirmar el signo de la pendiente y el valor de la misma.
 
-# Proyección de demanda
+# ProyecciÃ³n de demanda
 
-Se tiene un proyecto para una empresa de exportación, en donde se pretende realizar una estimación del Tipo de cambio nominal (TCN de ahora en adelante).
+Se tiene un proyecto para una empresa de exportaciÃ³n, en donde se pretende realizar una estimaciÃ³n del Tipo de cambio nominal (TCN de ahora en adelante).
 
--   Pregunta ¿por qué podría ser relevante el TCN para un proyecto como este? ¿Existe otro tipo de proyectos en dónde también podría ser relevante?
+-   Pregunta Â¿por quÃ© podrÃ­a ser relevante el TCN para un proyecto como este? Â¿Existe otro tipo de proyectos en dÃ³nde tambiÃ©n podrÃ­a ser relevante?
 
-Para esto, el especialista econométrico plantea que el TCN posee una relación con variables como el precio del cobre (Pcu) y el dolar index (DXY).
+Para esto, el especialista economÃ©trico plantea que el TCN posee una relaciÃ³n con variables como el precio del cobre (Pcu) y el dolar index (DXY).
 
--   ¿Cuál es la razón de pensar en que existe una relación entre el TCN y el PCU? ¿Para el DXY?
+-   Â¿CuÃ¡l es la razÃ³n de pensar en que existe una relaciÃ³n entre el TCN y el PCU? Â¿Para el DXY?
 
-Esto corresponde a una parte importante de la modelación; plantear la relación teórica entre las variables.
+Esto corresponde a una parte importante de la modelaciÃ³n; plantear la relaciÃ³n teÃ³rica entre las variables.
 
 Se plantea el siguiente modelo:
 
@@ -69,15 +67,15 @@ Se plantea el siguiente modelo:
 TCN = \alpha - \beta * Pcu
 \end{equation}
 
-Por otra parte, también podría ser:
+Por otra parte, tambiÃ©n podrÃ­a ser:
 
 \begin{equation}
 TCN = \alpha + \beta * DXY
 \end{equation}
 
-¿Cuál debería ser la relación entre cada variable y el TCN?, esto corresponde a un paso previo de la estimación econométrica.
+Â¿CuÃ¡l deberÃ­a ser la relaciÃ³n entre cada variable y el TCN?, esto corresponde a un paso previo de la estimaciÃ³n economÃ©trica.
 
-## Estimación del modelo
+## EstimaciÃ³n del modelo
 
 Vemos los modelos por separado:
 
@@ -105,27 +103,27 @@ modelo_02 <- lm(TCN ~ Pcu, data = data_subset)
 summary(modelo_02)
 ```
 
-Observamos la relación en un gráfico de dispersión:
+Observamos la relaciÃ³n en un grÃ¡fico de dispersiÃ³n:
 
 ```{r,message=FALSE, warning=FALSE}
 plot(data_subset$Pcu, data_subset$TCN, 
      pch = 16, cex = 1.3, col = "blue", 
-     main = "Relación TCN y Pcu", 
+     main = "RelaciÃ³n TCN y Pcu", 
      xlab = "Pcu", ylab = "TCN")
 
 abline(lm(TCN ~ Pcu, data = data_subset))
 ```
 
-¿Cómo interpretaría usted estos valores?
+Â¿CÃ³mo interpretarÃ­a usted estos valores?
 
-¿Existe alguna particularidad en los valores de la estimación? Los valores asociados a los parámetros estimados son particularmente grandes (especialmente el valor de la constante).
+Â¿Existe alguna particularidad en los valores de la estimaciÃ³n? Los valores asociados a los parÃ¡metros estimados son particularmente grandes (especialmente el valor de la constante).
 
-Una solución a esto, muy utilizada en la práctica, es la utilización de los logaritmos de las variables. Esto tiene dos ventajas:
+Una soluciÃ³n a esto, muy utilizada en la prÃ¡ctica, es la utilizaciÃ³n de los logaritmos de las variables. Esto tiene dos ventajas:
 
 1.  Soluciona problemas de escala.
-2.  Permite la interpretación en porcentajes.
+2.  Permite la interpretaciÃ³n en porcentajes.
 
-Con la regresión logaritmos:
+Con la regresiÃ³n logaritmos:
 
 ```{r, message=FALSE, warning=FALSE}
 modelo_03 <- lm(ln_tcn ~ ln_pcu, data = data_subset)
@@ -134,43 +132,43 @@ summary(modelo_03)
 
 plot(data_subset$ln_pcu, data_subset$ln_tcn, 
      pch = 16, cex = 1.3, col = "blue", 
-     main = "Relación TCN y Pcu", 
+     main = "RelaciÃ³n TCN y Pcu", 
      xlab = "Ln Pcu", ylab = "Ln TCN")
 
 abline(lm(ln_tcn ~ ln_pcu, data = data_subset))
 ```
 
-## ¿Cómo analizar una regresión?
+## Â¿CÃ³mo analizar una regresiÃ³n?
 
 -   Significancia individual
 
-Por ejemplo para la constante, se evalua la siguiente hipótesis:
+Por ejemplo para la constante, se evalua la siguiente hipÃ³tesis:
 
-Hipótesis Nula o $H_{0}$
+HipÃ³tesis Nula o $H_{0}$
 
 \begin{equation}
 \beta_{1} = 0
 \end{equation}
 
-Hipótesis Alternativa o $H_{1}$
+HipÃ³tesis Alternativa o $H_{1}$
 
 \begin{equation}
 \beta_{1} \neq 0
 \end{equation}
 
-Se busca el poder rechazar la hipótesis nula, ¿pero por qué?
+Se busca el poder rechazar la hipÃ³tesis nula, Â¿pero por quÃ©?
 
-Este proceso se puede realizar de dos maneras (hay más):
+Este proceso se puede realizar de dos maneras (hay mÃ¡s):
 
--   Estadístico calculado
+-   EstadÃ­stico calculado
 
-Por ejemplo para el caso de la constante, este valor corresponde a 2,081 según la siguiente fórmula:
+Por ejemplo para el caso de la constante, este valor corresponde a 2,081 segÃºn la siguiente fÃ³rmula:
 
 \begin{equation}
-t_{calculado} = \frac{Coeficiente}{\text{error estándar del coeficiente}}
+t_{calculado} = \frac{Coeficiente}{\text{error estÃ¡ndar del coeficiente}}
 \end{equation}
 
-lo que debe contrastarse con valores de tabla, según el siguiente detalle:
+lo que debe contrastarse con valores de tabla, segÃºn el siguiente detalle:
 
 \begin{equation}
 t_{tabla} = t-student_{10\%, n - 1}
@@ -180,33 +178,33 @@ Este valor de probabilidad se evalua generalmente al 10%, al 5% y al 1%, y se le
 
 -   P-Valor
 
-Corresponde a la probabilidad acumulada por el valor t calculado, considerando el espacio desde el estadístico hacia el final o inicio de la distibución.
+Corresponde a la probabilidad acumulada por el valor t calculado, considerando el espacio desde el estadÃ­stico hacia el final o inicio de la distibuciÃ³n.
 
-Se contrasta contra el valor de significancia. En caso de P-valor sea menor que el nivel de significancia, ya sea (1%, 5% o 10%), se rechaza la hipótesis nula.
+Se contrasta contra el valor de significancia. En caso de P-valor sea menor que el nivel de significancia, ya sea (1%, 5% o 10%), se rechaza la hipÃ³tesis nula.
 
 -   Significancia global
 
 Se aplica lo mismo, pero considerando el siguiente test:
 
-Hipótesis Nula o $H_{0}$
+HipÃ³tesis Nula o $H_{0}$
 
 \begin{equation}
 \beta_{2} = \beta_{3}...\beta_{n} = 0
 \end{equation}
 
-Hipótesis Alternativa o $H_{1}$
+HipÃ³tesis Alternativa o $H_{1}$
 
 \begin{equation}
 \beta_{2} = \beta_{3}...\beta_{n} \neq 0
 \end{equation}
 
-No se considera la constante con una distribución F.
+No se considera la constante con una distribuciÃ³n F.
 
 -   Bondad del Ajuste
 
-Se relaciona con el valor del R cuadrado y R cuadrado ajustado. Nos habla del ajuste lineal del modelo. El segundo considera el ajuste por el número de variables independientes.
+Se relaciona con el valor del R cuadrado y R cuadrado ajustado. Nos habla del ajuste lineal del modelo. El segundo considera el ajuste por el nÃºmero de variables independientes.
 
-Veamos esto en relación al último modelo calculado:
+Veamos esto en relaciÃ³n al Ãºltimo modelo calculado:
 
 ```{r}
 
@@ -216,9 +214,9 @@ summary(modelo_03)
 
 ```
 
-## ¿Cómo aplicamos esto?
+## Â¿CÃ³mo aplicamos esto?
 
-Teniendo las estimaciones del tipo de cambio, deberíamos poder generar las estimaciones de las cantidades a vender. Conociendo el precio, podríamos multiplicar todos los factores y obtenemos nuestro valor inicial.
+Teniendo las estimaciones del tipo de cambio, deberÃ­amos poder generar las estimaciones de las cantidades a vender. Conociendo el precio, podrÃ­amos multiplicar todos los factores y obtenemos nuestro valor inicial.
 
 Por ejemplo:
 
@@ -226,35 +224,35 @@ Por ejemplo:
 Ventas_{year 1} = TCN_{year 1} * Cantidad_{year 1} = 720 * 1.000 = 720.000
 \end{equation}
 
--   ¿Ve algún problema en esto?
+-   Â¿Ve algÃºn problema en esto?
 
-Desde este punto, solo queda poder aplicar un crecimiento a estas ventas para los otros años a estimar.
+Desde este punto, solo queda poder aplicar un crecimiento a estas ventas para los otros aÃ±os a estimar.
 
 Esto podemos explicarlo partiendo desde una pregunta:
 
--   Tiene dos modelos de estimación de sus ventas: el primero, en base a un modelo econométrico y el segundo en base a una pregunta realizada a sus propios vendedores, sobre cuánto esperan vender ellos. ¿En cuál estimación o proyección confía más?
+-   Tiene dos modelos de estimaciÃ³n de sus ventas: el primero, en base a un modelo economÃ©trico y el segundo en base a una pregunta realizada a sus propios vendedores, sobre cuÃ¡nto esperan vender ellos. Â¿En cuÃ¡l estimaciÃ³n o proyecciÃ³n confÃ­a mÃ¡s?
 
--   Por lo demás, existe un problema práctico sobre dichos modelos, si lo vemos en su especificación estimamos el siguiente modelo:
+-   Por lo demÃ¡s, existe un problema prÃ¡ctico sobre dichos modelos, si lo vemos en su especificaciÃ³n estimamos el siguiente modelo:
 
 \begin{equation}
 TCN = \alpha + \beta * Pcu
 \end{equation}
 
-¿Cuál es la temporalidad de la estimación? ¿Qué implica esto?
+Â¿CuÃ¡l es la temporalidad de la estimaciÃ³n? Â¿QuÃ© implica esto?
 
 # Modelo CAPM
 
-Debemos ahora aplicar los contenidos vistos relacionados con regresión simple. Un caso conocido en finanzas corresponde al modelo CAPM, que relaciona los retornos de un activos o portafolio con los retornos del mercado.
+Debemos ahora aplicar los contenidos vistos relacionados con regresiÃ³n simple. Un caso conocido en finanzas corresponde al modelo CAPM, que relaciona los retornos de un activos o portafolio con los retornos del mercado.
 
-En base a esto, sabemos que la regresión simple posee la siguiente especificación teórica:
+En base a esto, sabemos que la regresiÃ³n simple posee la siguiente especificaciÃ³n teÃ³rica:
 
 $$ y = \alpha + \beta * x $$
 
 n donde $y$ corresponde a la variable dependiente, $x$ corresponde a la variable independiente, $\alpha$ corresponde al intercepto y $\beta$ corresponde a la pendiente.
 
-Dicho ejercicio corresponde al intento de estimar de manera empirica los valores para una ecuación lineal; anteriormente los ejercicios que utilizan ecuaciones de este tipo asumían los valores dados y no ahondaban en el análisis estadístico que hay detrás de su estimación.
+Dicho ejercicio corresponde al intento de estimar de manera empirica los valores para una ecuaciÃ³n lineal; anteriormente los ejercicios que utilizan ecuaciones de este tipo asumÃ­an los valores dados y no ahondaban en el anÃ¡lisis estadÃ­stico que hay detrÃ¡s de su estimaciÃ³n.
 
-En base a esto CAPM en términos estimados corresponde a lo siguiente:
+En base a esto CAPM en tÃ©rminos estimados corresponde a lo siguiente:
 
 $$
 r_{activo} = \hat{\alpha} + \hat{\beta} * r_{mercado}
@@ -262,9 +260,9 @@ $$
 
 ------------------------------------------------------------------------
 
-# Librerías a utilizar
+# LibrerÃ­as a utilizar
 
-Se especificas a continuación las libreríass que serán utilizados en dicha sesión
+Se especificas a continuaciÃ³n las librerÃ­ass que serÃ¡n utilizados en dicha sesiÃ³n
 
 ```{r, message=FALSE, warning=FALSE}
 library(tidyquant)
@@ -280,7 +278,7 @@ library(kableExtra)
 
 # Acciones a utilizar
 
-Para este ejemplo, utilizáremos acciones del mercado de EE.UU.
+Para este ejemplo, utilizÃ¡remos acciones del mercado de EE.UU.
 
 ```{r, message=FALSE, warning=FALSE}
 # Tickers a descargar
@@ -301,10 +299,10 @@ prices <-
 
 ## Precios mensuales
 
-Por lo general, el modelo CAPM se calcula utilizando ya sea precios semanales o mensuales. En este caso utilizáremos precios mensuales.
+Por lo general, el modelo CAPM se calcula utilizando ya sea precios semanales o mensuales. En este caso utilizÃ¡remos precios mensuales.
 
 ```{r, message=FALSE, warning=FALSE}
-# Conversión a precios mensuales
+# ConversiÃ³n a precios mensuales
 
 prices_monthly <- to.monthly(prices,
                              indexAt = "lastof",
@@ -313,14 +311,14 @@ head(prices_monthly, 3)
 
 ```
 
-## Conversión a retornos
+## ConversiÃ³n a retornos
 
-Por lo general los retornos se calculan como la variación porcentual entre dos fechas, en este caso mensuales. Una alternativa es calcularlo utilizando variaciones en logaritmo lo que es muy utilizado por profesionales de economía y finanzas.
+Por lo general los retornos se calculan como la variaciÃ³n porcentual entre dos fechas, en este caso mensuales. Una alternativa es calcularlo utilizando variaciones en logaritmo lo que es muy utilizado por profesionales de economÃ­a y finanzas.
 
 Esto se puede cambiar variando el `method` entre `"discrete", "log", "difference"`.
 
 ```{r, message=FALSE, warning=FALSE}
-# Cálculo del retorno usando logaritmos
+# CÃ¡lculo del retorno usando logaritmos
 
 asset_returns_xts <-
   Return.calculate(prices_monthly,
@@ -330,10 +328,10 @@ asset_returns_xts <-
 head(asset_returns_xts, 3)
 ```
 
-## Modificación y estructuración del data frame
+## ModificaciÃ³n y estructuraciÃ³n del data frame
 
 ```{r, message=FALSE, warning=FALSE}
-# Generación de data frame desde archivo xts
+# GeneraciÃ³n de data frame desde archivo xts
 
 asset_returns_dplyr_byhand <-
   prices %>%
@@ -355,7 +353,7 @@ asset_returns_dplyr_byhand <-
 # Datos en formato long
 
 ```{r, message=FALSE, warning=FALSE}
-# Orientación del data frame en formato long
+# OrientaciÃ³n del data frame en formato long
 
 asset_returns_long <-
   asset_returns_dplyr_byhand %>%
@@ -367,10 +365,10 @@ head(asset_returns_long, 3)
 
 ## Pesos de los activos dentro del portafolio
 
-En este caso, calcularémos el modelo CAPM para un portafolio de activos. Para esto, debemos calcular el retorno ponderado del portafolio en base a las distintas ponderaciones de cada activos en el portafolio. Especificamos las ponderaciones:
+En este caso, calcularÃ©mos el modelo CAPM para un portafolio de activos. Para esto, debemos calcular el retorno ponderado del portafolio en base a las distintas ponderaciones de cada activos en el portafolio. Especificamos las ponderaciones:
 
 ```{r, message=FALSE, warning=FALSE}
-# Pesos para cálculo de portafolio
+# Pesos para cÃ¡lculo de portafolio
 
 w <- c(0.25,
        0.25,
@@ -379,10 +377,10 @@ w <- c(0.25,
        0.10)
 ```
 
-## Cálculo del retorno del portafolio
+## CÃ¡lculo del retorno del portafolio
 
 ```{r, message=FALSE, warning=FALSE}
-# Cálculo del retorno ponderado del portafolio
+# CÃ¡lculo del retorno ponderado del portafolio
 
 portfolio_returns_tq_rebalanced_monthly <-
   asset_returns_long %>%
@@ -417,7 +415,7 @@ asset_returns_long %>%
   theme_update(plot.title = element_text(hjust = 0.5))
 ```
 
-## Histograma por activo (variación)
+## Histograma por activo (variaciÃ³n)
 
 ```{r, message=FALSE, warning=FALSE, out.width="40%"}
 # Histograma de los retornos por activos
@@ -436,7 +434,7 @@ asset_returns_long %>%
 
 ```
 
-## Gráfico de densidad
+## GrÃ¡fico de densidad
 
 ```{r, message=FALSE, warning=FALSE, out.width="40%"}
 # Densidad
@@ -451,7 +449,7 @@ portfolio_density_plot <-
 portfolio_density_plot
 ```
 
-## Grafico de densidad con área sombreada
+## Grafico de densidad con Ã¡rea sombreada
 
 ```{r, message=FALSE, warning=FALSE, out.width="40%"}
 shaded_area_data <-
@@ -471,7 +469,7 @@ portfolio_density_plot_shaded
 
 # Retorno de Mercado
 
-El retorno del mercado será aproximado desde el retorno del SPY
+El retorno del mercado serÃ¡ aproximado desde el retorno del SPY
 
 ```{r message=FALSE, warning=FALSE}
 ## CAPM
@@ -549,15 +547,15 @@ knitr::kable(
 
 ```
 
-# Análisis
+# AnÃ¡lisis
 
-Debemos realizar el análisis en base a los valores obtenidos para los coeficientes. Cabe mencionar, que tenemos un mayor interés en encontrar significancia en el parámetro relacionado con la pendiente y no en el relacionado con el intercepto.
+Debemos realizar el anÃ¡lisis en base a los valores obtenidos para los coeficientes. Cabe mencionar, que tenemos un mayor interÃ©s en encontrar significancia en el parÃ¡metro relacionado con la pendiente y no en el relacionado con el intercepto.
 
-Por otra parte, ¿qué significa que el parámetro sea mayor o menor que 1?
+Por otra parte, Â¿quÃ© significa que el parÃ¡metro sea mayor o menor que 1?
 
-## Análisis gráfico
+## AnÃ¡lisis grÃ¡fico
 
-Podemos generar una regresión considerando que corresponde a la línea que atraviesa entre los puntos de ambas variables. Para esto generamos un gráfico de puntos entre X e Y, considerando la relación entre los retornos del portafolio y los retornos del mercado.
+Podemos generar una regresiÃ³n considerando que corresponde a la lÃ­nea que atraviesa entre los puntos de ambas variables. Para esto generamos un grÃ¡fico de puntos entre X e Y, considerando la relaciÃ³n entre los retornos del portafolio y los retornos del mercado.
 
 ```{r, message=FALSE, warning=FALSE, out.width="40%"}
 portfolio_returns_tq_rebalanced_monthly %>%
@@ -571,9 +569,9 @@ portfolio_returns_tq_rebalanced_monthly %>%
 
 ```
 
-## Línea de regresión
+## LÃ­nea de regresiÃ³n
 
-Utilizando el gráfico anterior, generamos la línea de regresión:
+Utilizando el grÃ¡fico anterior, generamos la lÃ­nea de regresiÃ³n:
 
 ```{r, message=FALSE, warning=FALSE, out.width="40%"}
 portfolio_returns_tq_rebalanced_monthly %>%
@@ -590,9 +588,9 @@ portfolio_returns_tq_rebalanced_monthly %>%
 
 ```
 
-## Gráfico con los parametros calculados
+## GrÃ¡fico con los parametros calculados
 
-Podemos también agregar al gráfico la éxpresión de la regresión calculada:
+Podemos tambiÃ©n agregar al grÃ¡fico la Ã©xpresiÃ³n de la regresiÃ³n calculada:
 
 ```{r, message=FALSE, warning=FALSE, out.width="40%"}
 data <- portfolio_returns_tq_rebalanced_monthly %>%
@@ -616,6 +614,8 @@ p
 
 # Tarea
 
-1.  Calcule y analice la regresión entre los retorno del portafolio y los retornos del mercado. Genere conclusiones sobre la significancia y valores de los parámetros.
+1.  Calcule y analice la regresiÃ³n entre los retorno del portafolio y los retornos del mercado. Genere conclusiones sobre la significancia y valores de los parÃ¡metros.
 
-2.  ¿Puede ser la pendiente de la regresión negativa?
+2.  Â¿Puede ser la pendiente de la regresiÃ³n negativa?
+
+

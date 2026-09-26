@@ -1,8 +1,6 @@
----
+﻿---
 listing_title: "Clase 07 - Notebook Documentos"
-title: |
-  | \includegraphics[width=5cm]{Imagen1.jpg}  
-  | Finanzas en R
+title: "Finanzas en R"
 subtitle: Documentos en R
 format:
   html:
@@ -17,8 +15,8 @@ format:
     geometry: margin=1in
 editor: visual
 author:
-  - Sebastián Egaña Santibáñez [{{< fa brands inbox >}}](mailto:segana@fen.uchile)
-  - Nicolás Leiva Díaz [{{< fa brands inbox >}}](mailto:nleivad@fen.uchile.cl)
+  - SebastiÃ¡n EgaÃ±a SantibÃ¡Ã±ez [{{< fa brands inbox >}}](mailto:segana@fen.uchile)
+  - NicolÃ¡s Leiva DÃ­az [{{< fa brands inbox >}}](mailto:nleivad@fen.uchile.cl)
 ---
 
 ------------------------------------------------------------------------
@@ -35,7 +33,7 @@ author:
 
 # Quarto basics:
 
-Esta es una estructura básica de un documento en Quarto:
+Esta es una estructura bÃ¡sica de un documento en Quarto:
 
 ```         
 ---
@@ -69,16 +67,16 @@ smaller |>
 Por parte:
 
 1.  YAML en el encabezado, rodeado por ---
-2.  Chunks de código en R rodeados por \`\`\`
+2.  Chunks de cÃ³digo en R rodeados por \`\`\`
 3.  Texto cojn formateos simples
 
 Para generar el documento, debemos utilizar "Render"
 
 El proceso que se genera es el siguiente:
 
-![Porceso de generación de documento](https://r4ds.hadley.nz/images/quarto-flow.png)
+![Porceso de generaciÃ³n de documento](https://r4ds.hadley.nz/images/quarto-flow.png)
 
-Para profundizar más:
+Para profundizar mÃ¡s:
 
 -   <https://r4ds.hadley.nz/quarto>
 
@@ -86,19 +84,19 @@ Para profundizar más:
 
 ## Documentos con Rmarkdown
 
-Como guía principal para los documentos en R, podemos ver el siguiente enlace:
+Como guÃ­a principal para los documentos en R, podemos ver el siguiente enlace:
 
 -   <https://bookdown.org/yihui/rmarkdown/>
 
 ## Diapositivas
 
-Dentro de la comunidad de R, está muy extendido el formato de diapositivas denominado xaringan. Veamos esta página:
+Dentro de la comunidad de R, estÃ¡ muy extendido el formato de diapositivas denominado xaringan. Veamos esta pÃ¡gina:
 
 -   <https://github.com/yihui/xaringan/wiki>
 
 ## Dashboards
 
-La principal librería para utilizar dashboards, corresponde a flexdashboars. Veamos este enlace:
+La principal librerÃ­a para utilizar dashboards, corresponde a flexdashboars. Veamos este enlace:
 
 -   <https://pkgs.rstudio.com/flexdashboard/>
 
@@ -110,10 +108,12 @@ Veamos la siguiente diapositiva:
 
 ### Actividad:
 
-Generamos un dashboard simple, y compartamoslo en internet. Utilice esta página:
+Generamos un dashboard simple, y compartamoslo en internet. Utilice esta pÃ¡gina:
 
 -   <https://r-graph-gallery.com/267-reorder-a-variable-in-ggplot2.html>
 
-El formato básico de dicho curso es el siguiente:
+El formato bÃ¡sico de dicho curso es el siguiente:
 
 -   <https://rstudio.github.io/distill/>
+
+

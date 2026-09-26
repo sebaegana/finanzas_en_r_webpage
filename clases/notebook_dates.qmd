@@ -1,4 +1,4 @@
----
+﻿---
 listing_title: "Revisar - Clase 01 - Notebook Dates"
 title: |
   Finanzas en R - Notebook Dates
@@ -16,8 +16,8 @@ format:
     geometry: margin=1in
 editor: visual
 author:
-  - Sebastián Egaña Santibáñez [{{< fa brands inbox >}}](mailto:segana@fen.uchile)
-  - Nicolás Leiva Díaz [{{< fa brands inbox >}}](mailto:nleivad@fen.uchile.cl)
+  - SebastiÃ¡n EgaÃ±a SantibÃ¡Ã±ez [{{< fa brands inbox >}}](mailto:segana@fen.uchile)
+  - NicolÃ¡s Leiva DÃ­az [{{< fa brands inbox >}}](mailto:nleivad@fen.uchile.cl)
 ---
 
 ------------------------------------------------------------------------
@@ -48,7 +48,7 @@ Sys.time()
 
 ### Lubridate
 
-La librería más utilizada para lidiar con fechas en R, corresponde a lubridate [enlace](https://lubridate.tidyverse.org), que es parte de tidyverse.
+La librerÃ­a mÃ¡s utilizada para lidiar con fechas en R, corresponde a lubridate [enlace](https://lubridate.tidyverse.org), que es parte de tidyverse.
 
 ```{r}
 #| eval: true
@@ -99,7 +99,7 @@ mdy(y)
 
 ```
 
-Como ventaja, lubridate debería reconocer de manera automática los separadores normalmente usado en formatos de fecha.
+Como ventaja, lubridate deberÃ­a reconocer de manera automÃ¡tica los separadores normalmente usado en formatos de fecha.
 
 ```{r}
 #| eval: true
@@ -124,7 +124,7 @@ ISOdate(year = yr, month = mo, day = day)
 as.Date(ISOdate(year = yr, month = mo, day = day))
 ```
 
-### ¿Cómo haríamos esto con lubridate?
+### Â¿CÃ³mo harÃ­amos esto con lubridate?
 
 ```{r}
 #| eval: true
@@ -134,7 +134,7 @@ ymd(paste0(yr, mo, day))
 
 ```
 
-### ¿Cuál es el error?
+### Â¿CuÃ¡l es el error?
 
 ```{r}
 #| eval: true
@@ -144,7 +144,7 @@ ymd(paste0(yr, '0',mo, day))
 
 ```
 
-### ¿Esto es una solución definitiva?
+### Â¿Esto es una soluciÃ³n definitiva?
 
 Modifiquemos los vectores de fecha:
 
@@ -154,7 +154,7 @@ mo_01 <- c("1", "5", "7", "2", "12")
 day_01 <- c("02", "22", "15", "28", "15")
 ```
 
-Repetimos el código anterior:
+Repetimos el cÃ³digo anterior:
 
 ```{r}
 #| eval: true
@@ -164,7 +164,7 @@ ymd(paste0(yr_01, '0',mo_01, day_01))
 
 ```
 
-Esto es un caso particular, que por lo general lleva a errores. Añademos una función de leading zeros:
+Esto es un caso particular, que por lo general lleva a errores. AÃ±ademos una funciÃ³n de leading zeros:
 
 ```{r}
 #| eval: true
@@ -173,9 +173,9 @@ ymd(paste0(yr_01,str_pad(mo_01, 2, pad = "0"), day_01))
 
 ```
 
-Cabe mencionar que `str_pad` permite añadir ya sean 0 a la izquierda, a la derecha, o ambos lados.
+Cabe mencionar que `str_pad` permite aÃ±adir ya sean 0 a la izquierda, a la derecha, o ambos lados.
 
-¿Dudas?
+Â¿Dudas?
 
 ## Obtener partes de una fecha:
 
@@ -211,7 +211,7 @@ x + years(1) - days(c(2, 9, 21))
 
 ## Crear secuencias de fechas
 
-Utilizando la librería básica de fechas:
+Utilizando la librerÃ­a bÃ¡sica de fechas:
 
 ```{r}
 #| eval: true
@@ -235,7 +235,7 @@ seq(ymd('2015-09-15'), ymd('2015-09-30'), by = "2 days")
 
 ```
 
-En el caso de añadir tiempo, los formatos por defecto de R deben considerar que sean tipo POSIXct y no Date (producidos por `as.Date`)
+En el caso de aÃ±adir tiempo, los formatos por defecto de R deben considerar que sean tipo POSIXct y no Date (producidos por `as.Date`)
 
 ```{r}
 #| eval: true
@@ -248,3 +248,5 @@ Con lubridate:
 #| eval: true
 seq(ymd_hm("2015-1-1 0:00"), ymd_hm("2015-1-1 12:00"), by = "hour")
 ```
+
+

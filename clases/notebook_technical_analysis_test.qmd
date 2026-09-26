@@ -1,7 +1,5 @@
----
-title: |
-  | \includegraphics[width=5cm]{Imagen1.jpg}  
-  | Finanzas en R
+﻿---
+title: "Finanzas en R"
 subtitle: Visualization
 format:
   html:
@@ -16,8 +14,8 @@ format:
     geometry: margin=1in
 editor: visual
 author:
-  - Sebastián Egaña Santibáñez [{{< fa brands inbox >}}](mailto:segana@fen.uchile)
-  - Nicolás Leiva Díaz [{{< fa brands inbox >}}](mailto:nleivad@fen.uchile.cl)
+  - SebastiÃ¡n EgaÃ±a SantibÃ¡Ã±ez [{{< fa brands inbox >}}](mailto:segana@fen.uchile)
+  - NicolÃ¡s Leiva DÃ­az [{{< fa brands inbox >}}](mailto:nleivad@fen.uchile.cl)
 ---
 
 ```{r setup, include=FALSE}
@@ -44,9 +42,9 @@ data <- mutate(data, fecha_nacimiento_2 = as.POSIXct(fecha_nacimiento, format = 
 
 ------------------------------------------------------------------------
 
-# Análisis técnico en R
+# AnÃ¡lisis tÃ©cnico en R
 
-## Sobre la teoría
+## Sobre la teorÃ­a
 
 ## Veamos un ejemplo aplicado
 
@@ -87,3 +85,5 @@ ggplot() +
        x = "Date", y = "Price/Indicator") +
   theme_minimal()
 ```
+
+

@@ -1,8 +1,6 @@
----
+﻿---
 listing_title: "Revisar - Clase 03 - Notebook Ejercicio 01"
-title: |
-  | \includegraphics[width=5cm]{Imagen1.jpg}  
-  | Finanzas en R
+title: "Finanzas en R"
 subtitle: Notebook Ejercicios 02
 format:
   html:
@@ -17,8 +15,8 @@ format:
     geometry: margin=1in
 editor: visual
 author:
-  - Sebastián Egaña Santibáñez [{{< fa brands inbox >}}](mailto:segana@fen.uchile)
-  - Nicolás Leiva Díaz [{{< fa brands inbox >}}](mailto:nleivad@fen.uchile.cl)
+  - SebastiÃ¡n EgaÃ±a SantibÃ¡Ã±ez [{{< fa brands inbox >}}](mailto:segana@fen.uchile)
+  - NicolÃ¡s Leiva DÃ­az [{{< fa brands inbox >}}](mailto:nleivad@fen.uchile.cl)
 ---
 
 ------------------------------------------------------------------------
@@ -33,11 +31,11 @@ author:
 
 ------------------------------------------------------------------------
 
-## Métricas básicas
+## MÃ©tricas bÃ¡sicas
 
 1.  Calculamos la mediana de un vector:
 
-## Solución:
+## SoluciÃ³n:
 
 ```{r}
 # Sample data
@@ -100,7 +98,7 @@ print(average_value)
 
 ```
 
-3.  Calculamos la desviación estándar
+3.  Calculamos la desviaciÃ³n estÃ¡ndar
 
 ```{r}
 # Sample data
@@ -133,9 +131,9 @@ print(std_dev_value)
 
 ```
 
-## Desempeño de un activo
+## DesempeÃ±o de un activo
 
-Veamos el desempeño de un activo financiero versus su benchmark conocido:
+Veamos el desempeÃ±o de un activo financiero versus su benchmark conocido:
 
 ```{r}
 # Load necessary library
@@ -159,7 +157,7 @@ ggplot(data, aes(x = dates)) +
 
 ```
 
-Calculemos algunas métricas de comparación:
+Calculemos algunas mÃ©tricas de comparaciÃ³n:
 
 1.  Ex-post Alpha:
 
@@ -176,7 +174,7 @@ print(ex_post_alpha)
 
 ```
 
-Consideramos que un Alpha positivo corresponde un desempeño por encima del benchmark.
+Consideramos que un Alpha positivo corresponde un desempeÃ±o por encima del benchmark.
 
 2.  Treynor ratio:
 
@@ -206,7 +204,7 @@ print(treynor_ratio_01)
 
 ```
 
-La comparación implica un menor retorno en relación a cada unidad de riesgo, siendo el riesgo medido en base al beta.
+La comparaciÃ³n implica un menor retorno en relaciÃ³n a cada unidad de riesgo, siendo el riesgo medido en base al beta.
 
 3.  Sharpe ratio:
 
@@ -240,7 +238,7 @@ print(sharpe_ratio_01)
 
 ```
 
-Reflexión parecida a la del Treynor ratio.
+ReflexiÃ³n parecida a la del Treynor ratio.
 
 4.  Information ratio:
 
@@ -256,7 +254,7 @@ print(information_ratio)
 
 ```
 
-Esto corresponde una metríca distinta de evaluación.
+Esto corresponde una metrÃ­ca distinta de evaluaciÃ³n.
 
 5.  Expected shortfall
 
@@ -274,3 +272,5 @@ expected_shortfall <- mean(sorted_returns[1:es_index])
 print(expected_shortfall)
 
 ```
+
+

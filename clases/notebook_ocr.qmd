@@ -1,8 +1,6 @@
----
+﻿---
 listing_title: "Clase 01 - Notebook OCR"
-title: |
-  | \includegraphics[width=5cm]{Imagen1.jpg}  
-  | Finanzas en R
+title: "Finanzas en R"
 subtitle: Aplicaciones de OCR
 format:
   html:
@@ -17,8 +15,8 @@ format:
     geometry: margin=1in
 editor: visual
 author:
-  - Sebastián Egaña Santibáñez [{{< fa brands inbox >}}](mailto:segana@fen.uchile)
-  - Nicolás Leiva Díaz [{{< fa brands inbox >}}](mailto:nleivad@fen.uchile.cl)
+  - SebastiÃ¡n EgaÃ±a SantibÃ¡Ã±ez [{{< fa brands inbox >}}](mailto:segana@fen.uchile)
+  - NicolÃ¡s Leiva DÃ­az [{{< fa brands inbox >}}](mailto:nleivad@fen.uchile.cl)
 ---
 
 ------------------------------------------------------------------------
@@ -35,41 +33,41 @@ author:
 
 # Optical Character Recognition
 
-OCR significa Reconocimiento Óptico de Caracteres (Optical Character Recognition, en inglés) y es una tecnología que permite convertir texto contenido en imágenes o documentos escaneados en texto editable y procesable digitalmente. Es especialmente útil cuando se trabaja con PDFs escaneados o imágenes que contienen texto, como facturas, informes o formularios.
+OCR significa Reconocimiento Ã“ptico de Caracteres (Optical Character Recognition, en inglÃ©s) y es una tecnologÃ­a que permite convertir texto contenido en imÃ¡genes o documentos escaneados en texto editable y procesable digitalmente. Es especialmente Ãºtil cuando se trabaja con PDFs escaneados o imÃ¡genes que contienen texto, como facturas, informes o formularios.
 
-A continuación veremos un ejemplo de aplicación de dicha tecnología.
+A continuaciÃ³n veremos un ejemplo de aplicaciÃ³n de dicha tecnologÃ­a.
 
-## Librerías a utilizar:
+## LibrerÃ­as a utilizar:
 
 ### library(pdftools)
 
-Esta librería permite leer y manipular archivos PDF. Tiene funciones como:
+Esta librerÃ­a permite leer y manipular archivos PDF. Tiene funciones como:
 
 -   pdf_text(): extrae texto de PDFs que ya contienen texto digital.
 
--   pdf_render_page(): convierte una página del PDF en una imagen (útil cuando el PDF es escaneado y no tiene texto digital).
+-   pdf_render_page(): convierte una pÃ¡gina del PDF en una imagen (Ãºtil cuando el PDF es escaneado y no tiene texto digital).
 
 ### library(tesseract)
 
-Tesseract es un motor OCR de código abierto muy potente. En R, esta librería permite:
+Tesseract es un motor OCR de cÃ³digo abierto muy potente. En R, esta librerÃ­a permite:
 
--   Aplicar OCR a imágenes para extraer el texto contenido.
+-   Aplicar OCR a imÃ¡genes para extraer el texto contenido.
 
--   Reconocer múltiples idiomas (por defecto, el inglés, pero puedes instalar otros).
+-   Reconocer mÃºltiples idiomas (por defecto, el inglÃ©s, pero puedes instalar otros).
 
 ### library(stringr)
 
-Esta librería es parte del tidyverse y proporciona funciones para manipular y limpiar cadenas de texto, por ejemplo:
+Esta librerÃ­a es parte del tidyverse y proporciona funciones para manipular y limpiar cadenas de texto, por ejemplo:
 
 -   str_detect(), str_replace(), str_extract(), str_sub() y muchas otras.
 
--   Muy útil para procesar el texto extraído con pdftools o tesseract, limpiarlo y extraer información relevante.
+-   Muy Ãºtil para procesar el texto extraÃ­do con pdftools o tesseract, limpiarlo y extraer informaciÃ³n relevante.
 
 ## Material
 
 -   [Reporte](data/usbp_stats_fy2017_sector_profile.pdf)
 
-# Códigos a utilizar
+# CÃ³digos a utilizar
 
 ## Caso 01
 
@@ -139,3 +137,5 @@ pngfile <- pdftools::pdf_convert('https://jeroen.github.io/images/ocrscan.pdf', 
 text <- tesseract::ocr(pngfile)
 cat(text)
 ```
+
+

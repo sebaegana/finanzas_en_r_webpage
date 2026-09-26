@@ -1,8 +1,6 @@
----
+﻿---
 listing_title: "Clase 03 - Notebook Actividad 03"
-title: |
-  | \includegraphics[width=5cm]{Imagen1.jpg}  
-  | Finanzas en R
+title: "Finanzas en R"
 subtitle: Actividad 03
 format:
   html:
@@ -17,8 +15,8 @@ format:
     geometry: margin=1in
 editor: visual
 author:
-  - Sebastián Egaña Santibáñez
-  - Nicolás Leiva Díaz
+  - SebastiÃ¡n EgaÃ±a SantibÃ¡Ã±ez
+  - NicolÃ¡s Leiva DÃ­az
 ---
 
 ------------------------------------------------------------------------
@@ -27,9 +25,9 @@ author:
 
 ## R y SQL
 
-Veremos un ejemplo simple de conexión entre R y SQL; en este caso utilizamos SQLite.
+Veremos un ejemplo simple de conexiÃ³n entre R y SQL; en este caso utilizamos SQLite.
 
-### Librerías y conexión
+### LibrerÃ­as y conexiÃ³n
 
 ```{r}
 #| warning: false
@@ -38,7 +36,7 @@ library(RSQLite)
 library(dplyr)
 ```
 
-Se establece la conexión con:
+Se establece la conexiÃ³n con:
 
 ```{r}
 
@@ -62,9 +60,9 @@ tables <- dbListTables(con)
 schema <- dbGetQuery(con, "PRAGMA table_info(mtcars_sql)")
 ```
 
-El primero nos permite ver las tablas en el schema en donde estamos trabajando y el segundo nos permite inspeccionar las carácteristicas de la tabla especificada. \## Lectura usando SQL
+El primero nos permite ver las tablas en el schema en donde estamos trabajando y el segundo nos permite inspeccionar las carÃ¡cteristicas de la tabla especificada. \## Lectura usando SQL
 
-Una primera manera es utilizar la query relacionada con la conexión de SQL que estamos utilizando:
+Una primera manera es utilizar la query relacionada con la conexiÃ³n de SQL que estamos utilizando:
 
 ```{r}
 
@@ -73,7 +71,7 @@ data_01 <- dbGetQuery(con, 'SELECT MPG, CYL FROM mtcars_sql WHERE MPG > 30')
 data_01
 ```
 
-Otra forma es "estorear" la query para después hacer la búsqueda:
+Otra forma es "estorear" la query para despuÃ©s hacer la bÃºsqueda:
 
 ```{r}
 
@@ -84,7 +82,7 @@ data_02 <- dbFetch(get_data_02)
 data_02
 ```
 
-La otra manera es convertir la tabla de sql a un dataframe en base a dplyr. Después usamos los comandos propios de R para lograr el mismo resultado anterior:
+La otra manera es convertir la tabla de sql a un dataframe en base a dplyr. DespuÃ©s usamos los comandos propios de R para lograr el mismo resultado anterior:
 
 ```{r}
 tabla_cars <- tbl(con, 'mtcars_sql')
@@ -95,7 +93,7 @@ tabla_cars %>%
   arrange(mpg) 
 ```
 
-¿Cómo se vería esto en una query? Preguntemosle a R:
+Â¿CÃ³mo se verÃ­a esto en una query? Preguntemosle a R:
 
 ```{r}
 tabla_cars %>% 
@@ -222,7 +220,7 @@ tables <- dbListTables(conn)
 tables
 ```
 
-Hacemos un gráfico simple:
+Hacemos un grÃ¡fico simple:
 
 ```{r}
 #| warning: false
@@ -246,3 +244,5 @@ ggplot(financial_data_df, aes(x = date)) +
   theme_minimal()
 
 ```
+
+

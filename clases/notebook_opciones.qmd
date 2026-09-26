@@ -1,8 +1,6 @@
----
+﻿---
 listing_title: "Clase 04 - Notebook Opciones"
-title: |
-  | \includegraphics[width=5cm]{Imagen1.jpg}  
-  | Finanzas en R
+title: "Finanzas en R"
 subtitle: Opciones
 format:
   html:
@@ -17,8 +15,8 @@ format:
     geometry: margin=1in
 editor: visual
 author:
-  - Sebastián Egaña Santibáñez [{{< fa brands inbox >}}](mailto:segana@fen.uchile)
-  - Nicolás Leiva Díaz [{{< fa brands inbox >}}](mailto:nleivad@fen.uchile.cl)
+  - SebastiÃ¡n EgaÃ±a SantibÃ¡Ã±ez [{{< fa brands inbox >}}](mailto:segana@fen.uchile)
+  - NicolÃ¡s Leiva DÃ­az [{{< fa brands inbox >}}](mailto:nleivad@fen.uchile.cl)
 ---
 
 ```{r setup, include=FALSE}
@@ -44,33 +42,33 @@ library(cowplot)
 
 # Opciones
 
-## Definición
+## DefiniciÃ³n
 
-Las opciones según la CMF:
+Las opciones segÃºn la CMF:
 
-"Los contratos de opciones sobre activos, son instrumentos financieros estandarizados, que mediante el pago de una prima de la opción, otorgan a su poseedor (comprador o tomador) el derecho, pero no la obligación, de comprar o vender a un precio previamente establecido y durante un plazo prefijado, una cantidad determinada del activo individualizado en el contrato.
+"Los contratos de opciones sobre activos, son instrumentos financieros estandarizados, que mediante el pago de una prima de la opciÃ³n, otorgan a su poseedor (comprador o tomador) el derecho, pero no la obligaciÃ³n, de comprar o vender a un precio previamente establecido y durante un plazo prefijado, una cantidad determinada del activo individualizado en el contrato.
 
-Por otro lado, los vendedores de los contratos de Opciones (o "lanzadores") tienen la obligación de vender o comprar el activo objeto en los mismos términos anteriormente señalados, en el caso que el comprador (o "tomador") de las opciones manifieste su deseo de ejecutar la opción."
+Por otro lado, los vendedores de los contratos de Opciones (o "lanzadores") tienen la obligaciÃ³n de vender o comprar el activo objeto en los mismos tÃ©rminos anteriormente seÃ±alados, en el caso que el comprador (o "tomador") de las opciones manifieste su deseo de ejecutar la opciÃ³n."
 
 En base a los anterior, existe dos tipos de opciones:
 
-1.  Opciones de Compra (Call Options): Una opción de compra le da al comprador el derecho de comprar un activo a un precio fijo, conocido como precio de ejercicio (strike price). Si el precio del activo subyacente aumenta por encima del precio de ejercicio, el comprador puede ejercer la opción para obtener una ganancia, comprando el activo al precio de ejercicio más bajo y vendiéndolo al precio de mercado actual. Si el precio del activo está por debajo del precio de ejercicio en la fecha de vencimiento, la opción expira sin valor y el comprador solo pierde la prima pagada por la opción.
+1.  Opciones de Compra (Call Options): Una opciÃ³n de compra le da al comprador el derecho de comprar un activo a un precio fijo, conocido como precio de ejercicio (strike price). Si el precio del activo subyacente aumenta por encima del precio de ejercicio, el comprador puede ejercer la opciÃ³n para obtener una ganancia, comprando el activo al precio de ejercicio mÃ¡s bajo y vendiÃ©ndolo al precio de mercado actual. Si el precio del activo estÃ¡ por debajo del precio de ejercicio en la fecha de vencimiento, la opciÃ³n expira sin valor y el comprador solo pierde la prima pagada por la opciÃ³n.
 
-2.  Opciones de Venta (Put Options): Una opción de venta da al comprador el derecho de vender un activo a un precio fijo (precio de ejercicio). Esta opción se utiliza generalmente para protegerse contra la caída del precio del activo subyacente. Si el precio del activo cae por debajo del precio de ejercicio, el comprador puede ejercer la opción vendiendo el activo al precio de ejercicio, que será mayor que el precio de mercado actual. Si el precio del activo es mayor que el precio de ejercicio en la fecha de vencimiento, la opción expira sin valor.
+2.  Opciones de Venta (Put Options): Una opciÃ³n de venta da al comprador el derecho de vender un activo a un precio fijo (precio de ejercicio). Esta opciÃ³n se utiliza generalmente para protegerse contra la caÃ­da del precio del activo subyacente. Si el precio del activo cae por debajo del precio de ejercicio, el comprador puede ejercer la opciÃ³n vendiendo el activo al precio de ejercicio, que serÃ¡ mayor que el precio de mercado actual. Si el precio del activo es mayor que el precio de ejercicio en la fecha de vencimiento, la opciÃ³n expira sin valor.
 
 Algunas definiciones:
 
--   Prima: El costo de comprar la opción, que el comprador paga al vendedor.
+-   Prima: El costo de comprar la opciÃ³n, que el comprador paga al vendedor.
 
--   Fecha de Vencimiento: La última fecha en la que la opción puede ser ejercida.
+-   Fecha de Vencimiento: La Ãºltima fecha en la que la opciÃ³n puede ser ejercida.
 
--   Precio de Ejercicio: El precio al cual el comprador de la opción puede comprar o vender el activo subyacente.
+-   Precio de Ejercicio: El precio al cual el comprador de la opciÃ³n puede comprar o vender el activo subyacente.
 
 -   Americana veruss europea: Las opciones americanas pueden ser ejercidas en cualquier momento del tiempo, mientras que las europeas solo al momento de expirar.
 
-Veamos las aplicaciones gráficas:
+Veamos las aplicaciones grÃ¡ficas:
 
-1.  Contrato de opción de compra: derecho a comprar a un precio determinado
+1.  Contrato de opciÃ³n de compra: derecho a comprar a un precio determinado
 
 ```{r}
 # Set parameters
@@ -93,7 +91,7 @@ option_plot <- ggplot(option_data, aes(x = StockPrice, y = Payoff)) +
 print(option_plot)
 ```
 
-2.  Contrato de opción de venta: derecho a vender a un precio determinado
+2.  Contrato de opciÃ³n de venta: derecho a vender a un precio determinado
 
 ```{r}
 # Parameters
@@ -121,7 +119,7 @@ option_plot <- ggplot(option_data, aes(x = StockPrice, y = Payoff)) +
 print(option_plot)
 ```
 
-Para practicar las visualizaciones, veremos la aplicación de esto en el contexto de derivados financieros y construcción de estrategias.
+Para practicar las visualizaciones, veremos la aplicaciÃ³n de esto en el contexto de derivados financieros y construcciÃ³n de estrategias.
 
 Por otra parte, se deben definir algunos conceptos:
 
@@ -131,9 +129,9 @@ Por otra parte, se deben definir algunos conceptos:
 
 ## Ejemplo: Mineral de Hierro.
 
-Al producir el mineral, de manera natural se obtiene una posición larga (tenencia del activo) en el tiempo, lógicamente en la medida que el precio del activo suba, muy probablemente las ganancias de la empresa también; lo mismo en el caso inverso.
+Al producir el mineral, de manera natural se obtiene una posiciÃ³n larga (tenencia del activo) en el tiempo, lÃ³gicamente en la medida que el precio del activo suba, muy probablemente las ganancias de la empresa tambiÃ©n; lo mismo en el caso inverso.
 
-Veamos esto gráficamente:
+Veamos esto grÃ¡ficamente:
 
 ```{r}
 #| eval: true
@@ -147,21 +145,21 @@ p2 <- p2 + scale_x_continuous("Precio del activo") + scale_y_continuous("Payoff"
   geom_hline(yintercept = 0, colour = "black") +
   geom_vline(xintercept = 0, colour = "black") +
   theme(panel.background = element_rect(fill = "white", colour = "grey50")) +
-  ggtitle("Posición larga en un activo") 
+  ggtitle("PosiciÃ³n larga en un activo") 
 
 p2
 
 ```
 
-Existe incertidumbre respecto a la dinámica futura del precio del activo, por esto, la empresa puede buscar disminuir el riesgo de precios a través de la utilización de coberturas.
+Existe incertidumbre respecto a la dinÃ¡mica futura del precio del activo, por esto, la empresa puede buscar disminuir el riesgo de precios a travÃ©s de la utilizaciÃ³n de coberturas.
 
 Estrategias de coberturas, para el mineral de hierro.
 
 1.  Coberturas futuros o forwards.
 
-La diferencia entre un futuro y forward es que el primero se negocia en la bolsa, y el segundo es un OTC (over the counter) o sea, un contrato privado entre dos partes. La estrategia sería la siguiente:
+La diferencia entre un futuro y forward es que el primero se negocia en la bolsa, y el segundo es un OTC (over the counter) o sea, un contrato privado entre dos partes. La estrategia serÃ­a la siguiente:
 
--   Empresa fija un precio de venta o referencia (strike), el cual al menos cubre toda la operación.
+-   Empresa fija un precio de venta o referencia (strike), el cual al menos cubre toda la operaciÃ³n.
 
 ```{r}
 #| eval: true
@@ -175,7 +173,7 @@ p3 <- p3 + scale_x_continuous("Precio del activo") + scale_y_continuous("Payoff"
   geom_hline(yintercept = 0, colour = "black") +
   geom_vline(xintercept = 0, colour = "black") +
   theme(panel.background = element_rect(fill = "white", colour = "grey50")) +
-  ggtitle("Posición larga en un activo") +
+  ggtitle("PosiciÃ³n larga en un activo") +
   geom_point(aes(x=40, y=0), colour="blue", shape="|", size=10)
 
 p3
@@ -196,14 +194,14 @@ p4 <- p4 + scale_x_continuous("Precio del activo") + scale_y_continuous("Payoff"
   geom_hline(yintercept = 0, colour = "black") +
   geom_vline(xintercept = 0, colour = "black") +
   theme(panel.background = element_rect(fill = "white", colour = "grey50")) +
-  ggtitle("Posición corta en un contrato de venta a futuro") +
+  ggtitle("PosiciÃ³n corta en un contrato de venta a futuro") +
   geom_point(aes(x=40, y=0), colour="red", shape="|", size=10)
 
 p4
 
 ```
 
--   Payoff: Precio spot del activo al momento de vencer el contrato es mayor que el precio strike, la empresa gana por la posición larga en el activo. Sin embargo, pierde por el acuerdo de vender a precio strike.
+-   Payoff: Precio spot del activo al momento de vencer el contrato es mayor que el precio strike, la empresa gana por la posiciÃ³n larga en el activo. Sin embargo, pierde por el acuerdo de vender a precio strike.
 
 ```{r}
 
@@ -227,7 +225,7 @@ Esta estrategia, explica el caso base en que se encuentra una empresa interesada
 
 2.  Coberturas con Opciones.
 
-Considerando el mismo precio strike, la empresa puede comprar una opción de venta sobre el subyacente.
+Considerando el mismo precio strike, la empresa puede comprar una opciÃ³n de venta sobre el subyacente.
 
 ```{r}
 p6 <- ggplot(data.frame(x = c(0, 100)), aes(x = x))
@@ -239,16 +237,16 @@ p6 <- p6 + scale_x_continuous("Precio del activo") + scale_y_continuous("Payoff"
   geom_hline(yintercept = 0, colour = "black") +
   geom_vline(xintercept = 0, colour = "black") +
   theme(panel.background = element_rect(fill = "white", colour = "grey50")) +
-  ggtitle("Posición larga en una opción de venta") 
+  ggtitle("PosiciÃ³n larga en una opciÃ³n de venta") 
 
 p6
 ```
 
-{{< fa regular lightbulb size=normalsize >}} Explicación: estoy obligado a vender cuando el precio del activo es menor al strike, y debo no ejecutar la opción cuando el precio spot es mayor al strike.
+{{< fa regular lightbulb size=normalsize >}} ExplicaciÃ³n: estoy obligado a vender cuando el precio del activo es menor al strike, y debo no ejecutar la opciÃ³n cuando el precio spot es mayor al strike.
 
-Cuando el precio strike es próximo al spot, el precio de la opción aumenta, lo que se conoce premio por el contrato, que en el fondo es un costo de la estrategia. El premio va a depender de la volatilidad implícita en los contratos, la volatilidad aumenta cuando la diferencia entre el spot y el strike es mayor; por lo tanto, el precio de la opción es menor.
+Cuando el precio strike es prÃ³ximo al spot, el precio de la opciÃ³n aumenta, lo que se conoce premio por el contrato, que en el fondo es un costo de la estrategia. El premio va a depender de la volatilidad implÃ­cita en los contratos, la volatilidad aumenta cuando la diferencia entre el spot y el strike es mayor; por lo tanto, el precio de la opciÃ³n es menor.
 
-La opción tiene la ventaja de poder aprovechar las rachas alcistas del precio del activo y limitar las pérdidas asociadas a una racha bajista, funcionando como un seguro. La desventaja es el costo asociado a tomar la opción.
+La opciÃ³n tiene la ventaja de poder aprovechar las rachas alcistas del precio del activo y limitar las pÃ©rdidas asociadas a una racha bajista, funcionando como un seguro. La desventaja es el costo asociado a tomar la opciÃ³n.
 
 Veamos la estrategia:
 
@@ -267,9 +265,9 @@ p7 <- p7 + scale_x_continuous("Precio del activo") + scale_y_continuous("Payoff"
 p7
 ```
 
--   Precio del activo mayor que el spot, no se ejerce la opción de venta, y se gana por la parte del activo. A pesar de esto, se debe considerar que la opción tuvo un valor.
+-   Precio del activo mayor que el spot, no se ejerce la opciÃ³n de venta, y se gana por la parte del activo. A pesar de esto, se debe considerar que la opciÃ³n tuvo un valor.
 
--   Precio del activo menor que el spot, se ejerce la opción, y se pierde porque hay que salir a vender el activo.
+-   Precio del activo menor que el spot, se ejerce la opciÃ³n, y se pierde porque hay que salir a vender el activo.
 
 Esto implica el siguiente payoff:
 
@@ -289,9 +287,9 @@ p8 <- p8 + scale_x_continuous("Precio del activo") + scale_y_continuous("Payoff"
 p8
 ```
 
-{{< fa regular lightbulb size=normalsize >}} Recordar que la opción solo se ejerce cuando conviene. Esto obviamente depende de la posición y la opción que se posea.
+{{< fa regular lightbulb size=normalsize >}} Recordar que la opciÃ³n solo se ejerce cuando conviene. Esto obviamente depende de la posiciÃ³n y la opciÃ³n que se posea.
 
-La estrategia puede ser autofinanciada agregando a lo anterior la venta de una opción de compra. En términos gráficos:
+La estrategia puede ser autofinanciada agregando a lo anterior la venta de una opciÃ³n de compra. En tÃ©rminos grÃ¡ficos:
 
 ```{r}
 p9 <- ggplot(data.frame(x = c(0, 100)), aes(x = x))
@@ -303,13 +301,13 @@ p9 <- p9 + scale_x_continuous("Precio del activo") + scale_y_continuous("Payoff"
   geom_hline(yintercept = 0, colour = "black") +
   geom_vline(xintercept = 0, colour = "black") +
   theme(panel.background = element_rect(fill = "white", colour = "grey50")) +
-  ggtitle("Posición corta en una opción de compra") 
+  ggtitle("PosiciÃ³n corta en una opciÃ³n de compra") 
 
 p9
 
 ```
 
-{{< fa regular lightbulb size=normalsize >}} Una posición corta en una opción de compra, implica que yo le doy el derecho a un tercero de que me compre un activo. Por esto, cuando el precio spot sea menor que el strike, el tercero no ejercerá la opción de compra y comprará en el mercado. Por el contrario, en el caso de que el precio spot sea mayor que el precio strike, me generará una pérdida debido a que estaré obligado a venderle a un precio inferior al de mercado.
+{{< fa regular lightbulb size=normalsize >}} Una posiciÃ³n corta en una opciÃ³n de compra, implica que yo le doy el derecho a un tercero de que me compre un activo. Por esto, cuando el precio spot sea menor que el strike, el tercero no ejercerÃ¡ la opciÃ³n de compra y comprarÃ¡ en el mercado. Por el contrario, en el caso de que el precio spot sea mayor que el precio strike, me generarÃ¡ una pÃ©rdida debido a que estarÃ© obligado a venderle a un precio inferior al de mercado.
 
 Esto implica la siguiente estrategia:
 
@@ -329,7 +327,7 @@ p10 <- p10 + scale_x_continuous("Precio del activo") + scale_y_continuous("Payof
 p10
 ```
 
-En relación al payoff:
+En relaciÃ³n al payoff:
 
 ```{r}
 
@@ -352,4 +350,6 @@ p11
 
 # {{< fa regular lightbulb size=normalsize >}} Preguntas
 
-¿Qué problemas ve en las estrategias antes mencionadas?
+Â¿QuÃ© problemas ve en las estrategias antes mencionadas?
+
+
