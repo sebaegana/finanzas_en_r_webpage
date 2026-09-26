@@ -1,6 +1,7 @@
 ﻿---
+listing_title: "Clase 03 - Notebook Shiny"
 title: "Finanzas en R"
-subtitle: Notebook 1
+subtitle: Shiny Applications
 format:
   html:
     toc: true

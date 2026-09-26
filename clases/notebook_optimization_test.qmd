@@ -1,6 +1,7 @@
 ﻿---
+listing_title: "Clase 05 - Notebook Optimization"
 title: "Finanzas en R"
-subtitle: RegresiÃ³n lineal y aplicaciones
+subtitle: Optimization
 format:
   html:
     toc: true
