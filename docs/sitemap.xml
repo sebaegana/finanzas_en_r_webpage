@@ -2,11 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://sebaegana.github.io/finanzas_en_r_webpage/recursos.html</loc>
-    <lastmod>2026-09-24T12:02:18.882Z</lastmod>
+    <lastmod>2026-09-02T03:45:59.725Z</lastmod>
   </url>
   <url>
     <loc>https://sebaegana.github.io/finanzas_en_r_webpage/contacto.html</loc>
-    <lastmod>2026-09-24T12:02:18.846Z</lastmod>
+    <lastmod>2026-09-02T03:45:59.657Z</lastmod>
   </url>
   <url>
     <loc>https://sebaegana.github.io/finanzas_en_r_webpage/clases_ia/RESPUESTAS_PROFESOR.html</loc>
@@ -14,31 +14,115 @@
   </url>
   <url>
     <loc>https://sebaegana.github.io/finanzas_en_r_webpage/clases_ia/intro.html</loc>
-    <lastmod>2026-09-24T12:02:18.845Z</lastmod>
+    <lastmod>2026-09-08T01:42:20.314Z</lastmod>
   </url>
   <url>
     <loc>https://sebaegana.github.io/finanzas_en_r_webpage/clases_ia/herramientas.html</loc>
-    <lastmod>2026-09-24T12:02:18.845Z</lastmod>
+    <lastmod>2026-09-08T01:42:20.310Z</lastmod>
   </url>
   <url>
-    <loc>https://sebaegana.github.io/finanzas_en_r_webpage/clases_ia/actividad_01_con_ia.html</loc>
-    <lastmod>2026-09-24T12:02:18.843Z</lastmod>
+    <loc>https://sebaegana.github.io/finanzas_en_r_webpage/clases_ia/actividad_02_portafolios.html</loc>
+    <lastmod>2026-09-25T01:31:09.880Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sebaegana.github.io/finanzas_en_r_webpage/clases.html</loc>
+    <lastmod>2026-09-02T03:45:59.527Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sebaegana.github.io/finanzas_en_r_webpage/clases/notebook_visualization.html</loc>
+    <lastmod>2026-09-25T01:36:07.429Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sebaegana.github.io/finanzas_en_r_webpage/clases/notebook_simulacion.html</loc>
+    <lastmod>2026-09-25T01:36:02.457Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sebaegana.github.io/finanzas_en_r_webpage/clases/notebook_regresion.html</loc>
+    <lastmod>2026-09-25T01:35:58.485Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sebaegana.github.io/finanzas_en_r_webpage/clases/notebook_optimization_test.html</loc>
+    <lastmod>2026-09-25T01:35:46.326Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sebaegana.github.io/finanzas_en_r_webpage/clases/notebook_ocr.html</loc>
+    <lastmod>2026-09-25T01:35:40.805Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sebaegana.github.io/finanzas_en_r_webpage/clases/notebook_exer_01.html</loc>
+    <lastmod>2026-09-25T01:35:28.163Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sebaegana.github.io/finanzas_en_r_webpage/clases/notebook_dates.html</loc>
+    <lastmod>2026-09-25T01:35:23.102Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sebaegana.github.io/finanzas_en_r_webpage/clases/notebook_02.html</loc>
+    <lastmod>2026-09-25T01:35:22.927Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sebaegana.github.io/finanzas_en_r_webpage/clases/index.html</loc>
+    <lastmod>2026-09-25T01:34:15.708Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sebaegana.github.io/finanzas_en_r_webpage/clases/actividad_03.html</loc>
+    <lastmod>2026-09-25T01:35:03.590Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sebaegana.github.io/finanzas_en_r_webpage/clases/actividad_01.html</loc>
+    <lastmod>2026-09-25T01:34:49.334Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sebaegana.github.io/finanzas_en_r_webpage/about.html</loc>
+    <lastmod>2026-09-02T03:45:59.527Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sebaegana.github.io/finanzas_en_r_webpage/clases/actividad_02.html</loc>
+    <lastmod>2026-09-25T01:34:59.890Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sebaegana.github.io/finanzas_en_r_webpage/clases/actividad_programacion.html</loc>
+    <lastmod>2026-09-25T01:35:05.811Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sebaegana.github.io/finanzas_en_r_webpage/clases/notebook_01.html</loc>
+    <lastmod>2026-09-25T01:35:07.396Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sebaegana.github.io/finanzas_en_r_webpage/clases/notebook_03.html</loc>
+    <lastmod>2026-09-25T01:35:23.003Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sebaegana.github.io/finanzas_en_r_webpage/clases/notebook_documents.html</loc>
+    <lastmod>2026-09-25T01:35:25.609Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sebaegana.github.io/finanzas_en_r_webpage/clases/notebook_exer_02.html</loc>
+    <lastmod>2026-09-25T01:35:38.295Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sebaegana.github.io/finanzas_en_r_webpage/clases/notebook_opciones.html</loc>
+    <lastmod>2026-09-25T01:35:43.294Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sebaegana.github.io/finanzas_en_r_webpage/clases/notebook_practices.html</loc>
+    <lastmod>2026-09-25T01:35:48.795Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sebaegana.github.io/finanzas_en_r_webpage/clases/notebook_shiny_applications_test.html</loc>
+    <lastmod>2026-09-25T01:36:00.491Z</lastmod>
+  </url>
+  <url>
+    <loc>https://sebaegana.github.io/finanzas_en_r_webpage/clases/notebook_technical_analysis_test.html</loc>
+    <lastmod>2026-09-25T01:36:04.937Z</lastmod>
   </url>
   <url>
     <loc>https://sebaegana.github.io/finanzas_en_r_webpage/clases/subida/index.html</loc>
     <lastmod>2026-09-02T03:45:59.650Z</lastmod>
   </url>
   <url>
-    <loc>https://sebaegana.github.io/finanzas_en_r_webpage/about.html</loc>
-    <lastmod>2026-09-24T12:02:18.811Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sebaegana.github.io/finanzas_en_r_webpage/clases/index.html</loc>
-    <lastmod>2026-09-09T03:09:07.648Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sebaegana.github.io/finanzas_en_r_webpage/clases.html</loc>
-    <lastmod>2026-09-24T12:02:18.811Z</lastmod>
+    <loc>https://sebaegana.github.io/finanzas_en_r_webpage/clases_ia/actividad_01_con_ia.html</loc>
+    <lastmod>2026-09-21T21:46:00.582Z</lastmod>
   </url>
   <url>
     <loc>https://sebaegana.github.io/finanzas_en_r_webpage/clases_ia/EVALUACIONES_PROFESOR.html</loc>
@@ -46,26 +130,18 @@
   </url>
   <url>
     <loc>https://sebaegana.github.io/finanzas_en_r_webpage/clases_ia/index.html</loc>
-    <lastmod>2026-09-24T12:02:18.845Z</lastmod>
+    <lastmod>2026-09-02T03:45:59.655Z</lastmod>
   </url>
   <url>
     <loc>https://sebaegana.github.io/finanzas_en_r_webpage/clases_ia/notebook_01.html</loc>
-    <lastmod>2026-09-24T12:02:18.845Z</lastmod>
+    <lastmod>2026-09-21T21:46:00.595Z</lastmod>
   </url>
   <url>
     <loc>https://sebaegana.github.io/finanzas_en_r_webpage/clases_ia/trabajo.html</loc>
-    <lastmod>2026-09-24T12:02:18.845Z</lastmod>
+    <lastmod>2026-09-08T01:42:20.316Z</lastmod>
   </url>
   <url>
     <loc>https://sebaegana.github.io/finanzas_en_r_webpage/index.html</loc>
-    <lastmod>2026-09-24T12:02:18.882Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sebaegana.github.io/finanzas_en_r_webpage/clases_ia/actividad_02_portafolios.html</loc>
-    <lastmod>2026-09-24T12:02:18.843Z</lastmod>
-  </url>
-  <url>
-    <loc>https://sebaegana.github.io/finanzas_en_r_webpage/clases_ia/actividad_02_portafolios.html</loc>
-    <lastmod>2026-09-21T04:28:14.892Z</lastmod>
+    <lastmod>2026-09-02T03:45:59.725Z</lastmod>
   </url>
 </urlset>
