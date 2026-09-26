@@ -1,6 +1,7 @@
 ﻿---
+listing_title: "Clase 05 - Notebook Análisis Técnico"
 title: "Finanzas en R"
-subtitle: Visualization
+subtitle: Análisis Técnico
 format:
   html:
     toc: true
