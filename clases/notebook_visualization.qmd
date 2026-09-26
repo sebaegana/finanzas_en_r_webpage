@@ -4,13 +4,21 @@ title: |
   | \includegraphics[width=5cm]{Imagen1.jpg}  
   | Finanzas en R
 subtitle: Visualization
-format: pdf
+format:
+  html:
+    toc: true
+    theme: cosmo
+    number-sections: false
+    code-block-bg: true
+    code-block-border-left: "#FF0000"
+  pdf:
+    documentclass: report
+    fontsize: 11pt
+    geometry: margin=1in
 editor: visual
-author:   
+author:
   - Sebastián Egaña Santibáñez [{{< fa brands inbox >}}](mailto:segana@fen.uchile)
   - Nicolás Leiva Díaz [{{< fa brands inbox >}}](mailto:nleivad@fen.uchile.cl)
-code-block-bg: true
-code-block-border-left: "#FF0000"
 ---
 
 ```{r setup, include=FALSE}

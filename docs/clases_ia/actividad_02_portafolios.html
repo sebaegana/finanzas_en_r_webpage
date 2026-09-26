@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.18">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -14,13 +14,10 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
+code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: 1.5em;}
-div.column{flex: auto;}
-@media screen {
-div.columns{gap: min(4vw, 1.5em);}
-div.column{overflow-x: auto;}
-}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -79,10 +76,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-36d6930034064a961a85a06e6a330a4a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-349e9611d7ce437f8276b20f376ddbca.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -114,7 +111,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -1115,7 +1112,7 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="los-sliders-observable-no-cargan-datos">“Los sliders Observable no cargan datos”</h3>
 <p><strong>Causa común</strong>: El archivo CSV no está en la ruta correcta.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15" data-startfrom="778" data-source-offset="-16"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 777;"><span id="cb15-778"><a href="#cb15-778" aria-hidden="true" tabindex="-1"></a>datos <span class="op">=</span> <span class="fu">FileAttachment</span>(<span class="st">"portafolio_retornos.csv"</span>)<span class="op">.</span><span class="fu">csv</span>()</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15" data-startfrom="778" data-source-offset="-17"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 777;"><span id="cb15-778"><a href="#cb15-778" aria-hidden="true" tabindex="-1"></a>datos <span class="op">=</span> <span class="fu">FileAttachment</span>(<span class="st">"portafolio_retornos.csv"</span>)<span class="op">.</span><span class="fu">csv</span>()</span>
 <span id="cb15-779"><a href="#cb15-779" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-780"><a href="#cb15-780" aria-hidden="true" tabindex="-1"></a><span class="co">// ✅ Correcto (asume que quarto render está en la raíz)</span></span>
 <span id="cb15-781"><a href="#cb15-781" aria-hidden="true" tabindex="-1"></a>datos <span class="op">=</span> <span class="fu">FileAttachment</span>(<span class="st">"data/portafolio_retornos.csv"</span>)<span class="op">.</span><span class="fu">csv</span>()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1302,7 +1299,7 @@ window.Quarto = {
 
 </main> <!-- /main -->
 <script type="ojs-module-contents">
-eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6Ii8vIOKdjCBJbmNvcnJlY3RvXG5kYXRvcyA9IEZpbGVBdHRhY2htZW50KFwicG9ydGFmb2xpb19yZXRvcm5vcy5jc3ZcIikuY3N2KClcblxuLy8g4pyFIENvcnJlY3RvIChhc3VtZSBxdWUgcXVhcnRvIHJlbmRlciBlc3TDoSBlbiBsYSByYcOteilcbmRhdG9zID0gRmlsZUF0dGFjaG1lbnQoXCJkYXRhL3BvcnRhZm9saW9fcmV0b3Jub3MuY3N2XCIpLmNzdigpXG4ifV19
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6Ii8vIOKdjCBJbmNvcnJlY3RvXHJcbmRhdG9zID0gRmlsZUF0dGFjaG1lbnQoXCJwb3J0YWZvbGlvX3JldG9ybm9zLmNzdlwiKS5jc3YoKVxyXG5cclxuLy8g4pyFIENvcnJlY3RvIChhc3VtZSBxdWUgcXVhcnRvIHJlbmRlciBlc3TDoSBlbiBsYSByYcOteilcclxuZGF0b3MgPSBGaWxlQXR0YWNobWVudChcImRhdGEvcG9ydGFmb2xpb19yZXRvcm5vcy5jc3ZcIikuY3N2KClcclxuIn1dfQ==
 </script>
 <script type="module">
 if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }

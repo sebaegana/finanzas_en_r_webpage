@@ -4,13 +4,21 @@ title: |
   | \includegraphics[width=5cm]{Imagen1.jpg}  
   | Finanzas en R
 subtitle: Simulaciones de Montecarlo
-format: pdf
+format:
+  html:
+    toc: true
+    theme: cosmo
+    number-sections: false
+    code-block-bg: true
+    code-block-border-left: "#FF0000"
+  pdf:
+    documentclass: report
+    fontsize: 11pt
+    geometry: margin=1in
 editor: visual
-author:   
-  - Sebastián Egaña Santibáñez   
+author:
+  - Sebastián Egaña Santibáñez
   - Nicolás Leiva Díaz
-code-block-bg: true
-code-block-border-left: "#FF0000"
 ---
 
 ```{r setup, include=FALSE}
