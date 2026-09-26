@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Sebastián Egaña Santibáñez">
-<meta name="author" content="Nicolás Leiva Díaz">
+<meta name="author" content="SebastiÃ¡n EgaÃ±a SantibÃ¡Ã±ez">
+<meta name="author" content="NicolÃ¡s Leiva DÃ­az">
 
-<title>quarto-input97b48ef6cb14e4f0 – Curso Finanzas en R</title>
+<title>notebook_simulacion – Curso Finanzas en R</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -79,7 +79,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-349e9611d7ce437f8276b20f376ddbca.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-a0f9fd0d421825b736dc1bbcbcba2219.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -198,24 +198,23 @@ window.Quarto = {
   <li><a href="#enlaces-del-profesor" id="toc-enlaces-del-profesor" class="nav-link active" data-scroll-target="#enlaces-del-profesor">Enlaces del profesor</a></li>
   <li><a href="#simulaciones" id="toc-simulaciones" class="nav-link" data-scroll-target="#simulaciones">Simulaciones</a>
   <ul class="collapse">
-  <li><a href="#simulaciones-y-valoración-de-opciones" id="toc-simulaciones-y-valoración-de-opciones" class="nav-link" data-scroll-target="#simulaciones-y-valoración-de-opciones">Simulaciones y valoración de opciones</a>
+  <li><a href="#simulaciones-y-valoraciã³n-de-opciones" id="toc-simulaciones-y-valoraciã³n-de-opciones" class="nav-link" data-scroll-target="#simulaciones-y-valoraciã³n-de-opciones">Simulaciones y valoraciÃ³n de opciones</a>
   <ul class="collapse">
   <li><a href="#black-scholes" id="toc-black-scholes" class="nav-link" data-scroll-target="#black-scholes">Black &amp; Scholes</a></li>
   <li><a href="#valoramos-utilizando-el-enfoque-de-simulaciones" id="toc-valoramos-utilizando-el-enfoque-de-simulaciones" class="nav-link" data-scroll-target="#valoramos-utilizando-el-enfoque-de-simulaciones">Valoramos utilizando el enfoque de simulaciones</a></li>
   </ul></li>
   </ul></li>
-  <li><a href="#aplicación-en-evaluación-de-proyectos" id="toc-aplicación-en-evaluación-de-proyectos" class="nav-link" data-scroll-target="#aplicación-en-evaluación-de-proyectos">Aplicación en evaluación de proyectos</a></li>
+  <li><a href="#aplicaciã³n-en-evaluaciã³n-de-proyectos" id="toc-aplicaciã³n-en-evaluaciã³n-de-proyectos" class="nav-link" data-scroll-target="#aplicaciã³n-en-evaluaciã³n-de-proyectos">AplicaciÃ³n en evaluaciÃ³n de proyectos</a></li>
   <li><a href="#referencias" id="toc-referencias" class="nav-link" data-scroll-target="#referencias">Referencias:</a></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="notebook_simulacion.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><div class="line-block"><br>
-Finanzas en R</div></h1>
+<h1 class="title">Finanzas en R</h1>
 <p class="subtitle lead">Simulaciones de Montecarlo</p>
 </div>
 
@@ -226,8 +225,8 @@ Finanzas en R</div></h1>
     <div>
     <div class="quarto-title-meta-heading">Authors</div>
     <div class="quarto-title-meta-contents">
-             <p>Sebastián Egaña Santibáñez </p>
-             <p>Nicolás Leiva Díaz </p>
+             <p>SebastiÃ¡n EgaÃ±a SantibÃ¡Ã±ez </p>
+             <p>NicolÃ¡s Leiva DÃ­az </p>
           </div>
   </div>
     
@@ -250,16 +249,16 @@ Finanzas en R</div></h1>
 </section>
 <section id="simulaciones" class="level1">
 <h1>Simulaciones</h1>
-<p>Pensemos en un activo, que desconocemos su precio futuro. Una forma de estimarlo es generar múltiples caminos que podría seguir el precio del activo en base a ciertos supuestos.</p>
-<p>Se puede asumir que el precio de una acción sigue un paseo aleatorio, representado por un proceso Browniano geométrico como el siguiente:</p>
+<p>Pensemos en un activo, que desconocemos su precio futuro. Una forma de estimarlo es generar mÃºltiples caminos que podrÃ­a seguir el precio del activo en base a ciertos supuestos.</p>
+<p>Se puede asumir que el precio de una acciÃ³n sigue un paseo aleatorio, representado por un proceso Browniano geomÃ©trico como el siguiente:</p>
 <p><span class="math display">\[ dS = \mu Sdt + \sigma Sdw\]</span></p>
-<p>donde <span class="math inline">\(S\)</span> corresponde al precio de un activo (por ejemplo, una acción), <span class="math inline">\(\mu\)</span> corresponde al valor esperado de los retornos (drift) y <span class="math inline">\(\sigma\)</span> corresponde a la volatilidad (volatility), <span class="math inline">\(dw\)</span> es el diferencial de un proceso de Wiener, que posee las siguientes propiedades:</p>
+<p>donde <span class="math inline">\(S\)</span> corresponde al precio de un activo (por ejemplo, una acciÃ³n), <span class="math inline">\(\mu\)</span> corresponde al valor esperado de los retornos (drift) y <span class="math inline">\(\sigma\)</span> corresponde a la volatilidad (volatility), <span class="math inline">\(dw\)</span> es el diferencial de un proceso de Wiener, que posee las siguientes propiedades:</p>
 <ol type="1">
 <li><span class="math inline">\(dw = \epsilon \sqrt{dt}\)</span>, donde <span class="math inline">\(\epsilon \sim N(0,1)\)</span></li>
 <li>Los cambios de <span class="math inline">\(dw\)</span> son independientes</li>
 </ol>
-<p>En términos discretos:</p>
-<p><span class="math display">\[ S_{t + 1} = S_{t} * exp((\mu - \frac{\sigma^2}{2})\Delta t + \sigma \epsilon_{t} \sqrt{\Delta t})\]</span> Definimos los valores para un activo cualquiera, que posee un valor de 100 en el período t (hoy o en el período 0):</p>
+<p>En tÃ©rminos discretos:</p>
+<p><span class="math display">\[ S_{t + 1} = S_{t} * exp((\mu - \frac{\sigma^2}{2})\Delta t + \sigma \epsilon_{t} \sqrt{\Delta t})\]</span> Definimos los valores para un activo cualquiera, que posee un valor de 100 en el perÃ­odo t (hoy o en el perÃ­odo 0):</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>So <span class="ot">=</span> <span class="dv">100</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>volatilidad <span class="ot">=</span> <span class="fl">0.15</span></span>
@@ -310,12 +309,12 @@ Finanzas en R</div></h1>
 </div>
 </div>
 </div>
-<section id="simulaciones-y-valoración-de-opciones" class="level2">
-<h2 class="anchored" data-anchor-id="simulaciones-y-valoración-de-opciones">Simulaciones y valoración de opciones</h2>
+<section id="simulaciones-y-valoraciã³n-de-opciones" class="level2">
+<h2 class="anchored" data-anchor-id="simulaciones-y-valoraciã³n-de-opciones">Simulaciones y valoraciÃ³n de opciones</h2>
 <section id="black-scholes" class="level3">
 <h3 class="anchored" data-anchor-id="black-scholes">Black &amp; Scholes</h3>
 <p>Para valorar opciones, se utiliza la formula de Black &amp; Scholes:</p>
-<p><span class="math display">\[ C = S * N(d_1) - X * exp (-rT) * N(d_2)\]</span> <span class="math display">\[ P = X * exp (-rT) * N(-d_2) - S * N(-d_1)\]</span> donde <span class="math inline">\(C\)</span> corresponde al precio de una opción de compra, <span class="math inline">\(P\)</span> corresponde al precio de una opción de venta, <span class="math inline">\(X\)</span> es el precio strike, <span class="math inline">\(S\)</span> corresponde al precio actual del activo, <span class="math inline">\(T\)</span> es el Time to madurity. Por otra parte:</p>
+<p><span class="math display">\[ C = S * N(d_1) - X * exp (-rT) * N(d_2)\]</span> <span class="math display">\[ P = X * exp (-rT) * N(-d_2) - S * N(-d_1)\]</span> donde <span class="math inline">\(C\)</span> corresponde al precio de una opciÃ³n de compra, <span class="math inline">\(P\)</span> corresponde al precio de una opciÃ³n de venta, <span class="math inline">\(X\)</span> es el precio strike, <span class="math inline">\(S\)</span> corresponde al precio actual del activo, <span class="math inline">\(T\)</span> es el Time to madurity. Por otra parte:</p>
 <p><span class="math display">\[ d_1 = \frac{ln(\frac{S}{X}) + (r + \frac{\sigma^2}{2})*T}{\sigma * \sqrt{T}}\]</span> <span class="math display">\[ d_2 = d_1 - \sigma * \sqrt{T}\]</span> Calculamos en base a B&amp;S:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>K <span class="ot">=</span> <span class="dv">100</span></span>
@@ -341,7 +340,7 @@ Finanzas en R</div></h1>
 </section>
 <section id="valoramos-utilizando-el-enfoque-de-simulaciones" class="level3">
 <h3 class="anchored" data-anchor-id="valoramos-utilizando-el-enfoque-de-simulaciones">Valoramos utilizando el enfoque de simulaciones</h3>
-<p>Utilizamos la misma expresión discreta:</p>
+<p>Utilizamos la misma expresiÃ³n discreta:</p>
 <p><span class="math display">\[ S_{t + 1} = S_{t} * exp((\mu - \frac{\sigma^2}{2})\Delta t + \sigma \epsilon_{t} \sqrt{\Delta t})\]</span></p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># call put option monte carlo</span></span>
@@ -389,19 +388,19 @@ $sterr_put
 </section>
 </section>
 </section>
-<section id="aplicación-en-evaluación-de-proyectos" class="level1">
-<h1>Aplicación en evaluación de proyectos</h1>
-<p>En el caso de proyectos, podemos realizar un análisis de carácter estocástico, lo que implica asumir que alguna de las variables no es conocida pero si que puede estar situada dentro de algunos parámetros.</p>
+<section id="aplicaciã³n-en-evaluaciã³n-de-proyectos" class="level1">
+<h1>AplicaciÃ³n en evaluaciÃ³n de proyectos</h1>
+<p>En el caso de proyectos, podemos realizar un anÃ¡lisis de carÃ¡cter estocÃ¡stico, lo que implica asumir que alguna de las variables no es conocida pero si que puede estar situada dentro de algunos parÃ¡metros.</p>
 <p>Veamos el siguiente ejemplo:</p>
-<p>Una empresa está evaluando la introducción de un nuevo producto y desea conocer la probabilidad que obtenga pérdidas. Para cumplir dicho propósito lo contrata a usted para construir un modelo financiero del negocio.</p>
-<p>Después de realizar la debida investigación, usted decide construir una simulación de Monte Carlo que le permita generar la distribución de probabilidad de las utilidades del negocio, modelando separadamente los ingresos y los costos totales, considerando los siguientes elementos:</p>
+<p>Una empresa estÃ¡ evaluando la introducciÃ³n de un nuevo producto y desea conocer la probabilidad que obtenga pÃ©rdidas. Para cumplir dicho propÃ³sito lo contrata a usted para construir un modelo financiero del negocio.</p>
+<p>DespuÃ©s de realizar la debida investigaciÃ³n, usted decide construir una simulaciÃ³n de Monte Carlo que le permita generar la distribuciÃ³n de probabilidad de las utilidades del negocio, modelando separadamente los ingresos y los costos totales, considerando los siguientes elementos:</p>
 <ul>
-<li>Por el lado de los ingresos totales, se considerarán tres escenarios (A, B y C) para el precio y la cantidad, los cuales aparecen descritos en la siguiente tabla:</li>
+<li>Por el lado de los ingresos totales, se considerarÃ¡n tres escenarios (A, B y C) para el precio y la cantidad, los cuales aparecen descritos en la siguiente tabla:</li>
 </ul>
 <ul>
-<li>En el caso de los costos totales, los costos fijos son iguales a $150 y los costos variables unitarios son constantes y son modelados usando una distribución triangular con los siguientes parámetros:</li>
+<li>En el caso de los costos totales, los costos fijos son iguales a $150 y los costos variables unitarios son constantes y son modelados usando una distribuciÃ³n triangular con los siguientes parÃ¡metros:</li>
 </ul>
-<p>A. ¿Cuál es la probabilidad que el negocio tenga pérdidas?</p>
+<p>A. Â¿CuÃ¡l es la probabilidad que el negocio tenga pÃ©rdidas?</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>

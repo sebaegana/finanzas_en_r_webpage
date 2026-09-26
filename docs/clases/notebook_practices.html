@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Sebastián Egaña Santibáñez ">
-<meta name="author" content="Nicolás Leiva Díaz ">
+<meta name="author" content="SebastiÃ¡n EgaÃ±a SantibÃ¡Ã±ez ">
+<meta name="author" content="NicolÃ¡s Leiva DÃ­az ">
 
-<title>quarto-input624d2f63cfd956db – Curso Finanzas en R</title>
+<title>notebook_practices – Curso Finanzas en R</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -79,7 +79,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-349e9611d7ce437f8276b20f376ddbca.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-a0f9fd0d421825b736dc1bbcbcba2219.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -167,25 +167,25 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#enlaces-del-profesor" id="toc-enlaces-del-profesor" class="nav-link active" data-scroll-target="#enlaces-del-profesor">Enlaces del profesor</a></li>
-  <li><a href="#instalación-de-paquetes-en-r" id="toc-instalación-de-paquetes-en-r" class="nav-link" data-scroll-target="#instalación-de-paquetes-en-r">Instalación de paquetes en R</a>
+  <li><a href="#instalaciã³n-de-paquetes-en-r" id="toc-instalaciã³n-de-paquetes-en-r" class="nav-link" data-scroll-target="#instalaciã³n-de-paquetes-en-r">InstalaciÃ³n de paquetes en R</a>
   <ul class="collapse">
-  <li><a href="#cómo-se-instalan-paquetes-en-r" id="toc-cómo-se-instalan-paquetes-en-r" class="nav-link" data-scroll-target="#cómo-se-instalan-paquetes-en-r">¿Cómo se instalan paquetes en R?</a></li>
+  <li><a href="#âcã³mo-se-instalan-paquetes-en-r" id="toc-âcã³mo-se-instalan-paquetes-en-r" class="nav-link" data-scroll-target="#âcã³mo-se-instalan-paquetes-en-r">Â¿CÃ³mo se instalan paquetes en R?</a></li>
   <li><a href="#cargar-un-paquete" id="toc-cargar-un-paquete" class="nav-link" data-scroll-target="#cargar-un-paquete">Cargar un paquete</a></li>
   </ul></li>
   <li><a href="#renv" id="toc-renv" class="nav-link" data-scroll-target="#renv">Renv</a>
   <ul class="collapse">
-  <li><a href="#qué-es-renv" id="toc-qué-es-renv" class="nav-link" data-scroll-target="#qué-es-renv">¿Qué es renv?</a></li>
-  <li><a href="#por-qué-usar-renv" id="toc-por-qué-usar-renv" class="nav-link" data-scroll-target="#por-qué-usar-renv">¿Por qué usar renv?</a></li>
+  <li><a href="#âquã-es-renv" id="toc-âquã-es-renv" class="nav-link" data-scroll-target="#âquã-es-renv">Â¿QuÃ© es renv?</a></li>
+  <li><a href="#âpor-quã-usar-renv" id="toc-âpor-quã-usar-renv" class="nav-link" data-scroll-target="#âpor-quã-usar-renv">Â¿Por quÃ© usar renv?</a></li>
   <li><a href="#paso-a-paso" id="toc-paso-a-paso" class="nav-link" data-scroll-target="#paso-a-paso">Paso a paso</a></li>
   <li><a href="#archivos-importantes" id="toc-archivos-importantes" class="nav-link" data-scroll-target="#archivos-importantes">Archivos importantes</a></li>
-  <li><a href="#buenas-prácticas" id="toc-buenas-prácticas" class="nav-link" data-scroll-target="#buenas-prácticas">Buenas prácticas</a></li>
+  <li><a href="#buenas-prãcticas" id="toc-buenas-prãcticas" class="nav-link" data-scroll-target="#buenas-prãcticas">Buenas prÃ¡cticas</a></li>
   <li><a href="#referencias" id="toc-referencias" class="nav-link" data-scroll-target="#referencias">Referencias</a></li>
   </ul></li>
-  <li><a href="#instalación-de-git" id="toc-instalación-de-git" class="nav-link" data-scroll-target="#instalación-de-git">Instalación de Git</a>
+  <li><a href="#instalaciã³n-de-git" id="toc-instalaciã³n-de-git" class="nav-link" data-scroll-target="#instalaciã³n-de-git">InstalaciÃ³n de Git</a>
   <ul class="collapse">
-  <li><a href="#qué-es-git" id="toc-qué-es-git" class="nav-link" data-scroll-target="#qué-es-git">¿Qué es Git?</a></li>
-  <li><a href="#verificar-si-git-ya-está-instalado" id="toc-verificar-si-git-ya-está-instalado" class="nav-link" data-scroll-target="#verificar-si-git-ya-está-instalado">Verificar si Git ya está instalado</a></li>
-  <li><a href="#instalación-según-sistema-operativo" id="toc-instalación-según-sistema-operativo" class="nav-link" data-scroll-target="#instalación-según-sistema-operativo">Instalación según sistema operativo</a>
+  <li><a href="#âquã-es-git" id="toc-âquã-es-git" class="nav-link" data-scroll-target="#âquã-es-git">Â¿QuÃ© es Git?</a></li>
+  <li><a href="#verificar-si-git-ya-estã-instalado" id="toc-verificar-si-git-ya-estã-instalado" class="nav-link" data-scroll-target="#verificar-si-git-ya-estã-instalado">Verificar si Git ya estÃ¡ instalado</a></li>
+  <li><a href="#instalaciã³n-segãºn-sistema-operativo" id="toc-instalaciã³n-segãºn-sistema-operativo" class="nav-link" data-scroll-target="#instalaciã³n-segãºn-sistema-operativo">InstalaciÃ³n segÃºn sistema operativo</a>
   <ul class="collapse">
   <li><a href="#windows" id="toc-windows" class="nav-link" data-scroll-target="#windows">Windows</a></li>
   <li><a href="#macos" id="toc-macos" class="nav-link" data-scroll-target="#macos">macOS</a></li>
@@ -198,15 +198,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#referencias-1" id="toc-referencias-1" class="nav-link" data-scroll-target="#referencias-1">Referencias:</a></li>
   </ul></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="notebook_practices.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><div class="line-block"><br>
-Finanzas en R</div></h1>
+<h1 class="title">Finanzas en R</h1>
 <p class="subtitle lead">Good practices</p>
 </div>
 
@@ -217,8 +216,8 @@ Finanzas en R</div></h1>
     <div>
     <div class="quarto-title-meta-heading">Authors</div>
     <div class="quarto-title-meta-contents">
-             <p>Sebastián Egaña Santibáñez <a href="mailto:segana@fen.uchile"><i class="fa-brands fa-inbox" aria-label="inbox"></i></a> </p>
-             <p>Nicolás Leiva Díaz <a href="mailto:nleivad@fen.uchile.cl"><i class="fa-brands fa-inbox" aria-label="inbox"></i></a> </p>
+             <p>SebastiÃ¡n EgaÃ±a SantibÃ¡Ã±ez <a href="mailto:segana@fen.uchile"><i class="fa-brands fa-inbox" aria-label="inbox"></i></a> </p>
+             <p>NicolÃ¡s Leiva DÃ­az <a href="mailto:nleivad@fen.uchile.cl"><i class="fa-brands fa-inbox" aria-label="inbox"></i></a> </p>
           </div>
   </div>
     
@@ -239,11 +238,11 @@ Finanzas en R</div></h1>
 <p><a href="https://www.linkedin.com/in/sebastian-egana-santibanez/"><i class="fa-brands fa-linkedin" aria-label="linkedin"></i></a> https://www.linkedin.com/in/sebastian-egana-santibanez/</p>
 <hr>
 </section>
-<section id="instalación-de-paquetes-en-r" class="level1">
-<h1>Instalación de paquetes en R</h1>
-<section id="cómo-se-instalan-paquetes-en-r" class="level2">
-<h2 class="anchored" data-anchor-id="cómo-se-instalan-paquetes-en-r">¿Cómo se instalan paquetes en R?</h2>
-<p>Los paquetes amplían las capacidades de R y se descargan desde CRAN.</p>
+<section id="instalaciã³n-de-paquetes-en-r" class="level1">
+<h1>InstalaciÃ³n de paquetes en R</h1>
+<section id="âcã³mo-se-instalan-paquetes-en-r" class="level2">
+<h2 class="anchored" data-anchor-id="âcã³mo-se-instalan-paquetes-en-r">Â¿CÃ³mo se instalan paquetes en R?</h2>
+<p>Los paquetes amplÃ­an las capacidades de R y se descargan desde CRAN.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"dplyr"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -254,7 +253,7 @@ Finanzas en R</div></h1>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Buenas prácticas al instalar paquetes</p>
+<p>Buenas prÃ¡cticas al instalar paquetes</p>
 <ul>
 <li>Instala paquetes solo una vez por entorno</li>
 <li>Usa library() dentro de scripts o notebooks</li>
@@ -265,16 +264,16 @@ Finanzas en R</div></h1>
 </section>
 <section id="renv" class="level1">
 <h1>Renv</h1>
-<section id="qué-es-renv" class="level2">
-<h2 class="anchored" data-anchor-id="qué-es-renv">¿Qué es renv?</h2>
-<p>renv es una herramienta para gestionar entornos de proyectos en R. Permite aislar las versiones de paquetes usados en un proyecto, asegurando que el análisis sea reproducible incluso si cambian las versiones globales de R o de los paquetes.</p>
+<section id="âquã-es-renv" class="level2">
+<h2 class="anchored" data-anchor-id="âquã-es-renv">Â¿QuÃ© es renv?</h2>
+<p>renv es una herramienta para gestionar entornos de proyectos en R. Permite aislar las versiones de paquetes usados en un proyecto, asegurando que el anÃ¡lisis sea reproducible incluso si cambian las versiones globales de R o de los paquetes.</p>
 </section>
-<section id="por-qué-usar-renv" class="level2">
-<h2 class="anchored" data-anchor-id="por-qué-usar-renv">¿Por qué usar renv?</h2>
+<section id="âpor-quã-usar-renv" class="level2">
+<h2 class="anchored" data-anchor-id="âpor-quã-usar-renv">Â¿Por quÃ© usar renv?</h2>
 <ul>
-<li><p>Asegura que otros puedan ejecutar tu código con los mismos paquetes y versiones.</p></li>
+<li><p>Asegura que otros puedan ejecutar tu cÃ³digo con los mismos paquetes y versiones.</p></li>
 <li><p>Facilita colaborar en equipo.</p></li>
-<li><p>Útil para compartir proyectos o generar informes reproducibles.</p></li>
+<li><p>Ãštil para compartir proyectos o generar informes reproducibles.</p></li>
 </ul>
 </section>
 <section id="paso-a-paso" class="level2">
@@ -294,7 +293,7 @@ Finanzas en R</div></h1>
 </div>
 <p>Esto hace:</p>
 <ul>
-<li><p>Crea una carpeta renv/ donde se instalarán los paquetes del proyecto.</p></li>
+<li><p>Crea una carpeta renv/ donde se instalarÃ¡n los paquetes del proyecto.</p></li>
 <li><p>Crea un archivo renv.lock que guarda las versiones exactas de los paquetes usados.</p></li>
 </ul>
 <ol start="3" type="1">
@@ -305,16 +304,16 @@ Finanzas en R</div></h1>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"dplyr"</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"ggplot2"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>renv registrará automáticamente estas instalaciones en el archivo renv.lock</p>
+<p>renv registrarÃ¡ automÃ¡ticamente estas instalaciones en el archivo renv.lock</p>
 <ol start="4" type="1">
-<li>Guardar el estado del entorno Si ya tenías paquetes instalados y quieres capturar el entorno actual:</li>
+<li>Guardar el estado del entorno Si ya tenÃ­as paquetes instalados y quieres capturar el entorno actual:</li>
 </ol>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">snapshot</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Esto actualiza el archivo renv.lock con los paquetes y versiones actuales.</p>
 <ol start="5" type="1">
-<li>Restaurar un entorno en otra máquina Cuando otra persona descarga tu proyecto (por ejemplo, desde GitHub):</li>
+<li>Restaurar un entorno en otra mÃ¡quina Cuando otra persona descarga tu proyecto (por ejemplo, desde GitHub):</li>
 </ol>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>renv<span class="sc">::</span><span class="fu">restore</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -328,8 +327,8 @@ Finanzas en R</div></h1>
 </ul>
 <p>No incluyas renv/library/ en tu repositorio si usas Git (puedes agregarlo a .gitignore).</p>
 </section>
-<section id="buenas-prácticas" class="level2">
-<h2 class="anchored" data-anchor-id="buenas-prácticas">Buenas prácticas</h2>
+<section id="buenas-prãcticas" class="level2">
+<h2 class="anchored" data-anchor-id="buenas-prãcticas">Buenas prÃ¡cticas</h2>
 <ul>
 <li><p>Siempre correr renv::snapshot() luego de instalar o actualizar paquetes.</p></li>
 <li><p>Incluir el archivo renv.lock en tu repositorio para asegurar la reproducibilidad.</p></li>
@@ -345,27 +344,27 @@ Finanzas en R</div></h1>
 </ul>
 </section>
 </section>
-<section id="instalación-de-git" class="level1">
-<h1>Instalación de Git</h1>
-<section id="qué-es-git" class="level2">
-<h2 class="anchored" data-anchor-id="qué-es-git">¿Qué es Git?</h2>
+<section id="instalaciã³n-de-git" class="level1">
+<h1>InstalaciÃ³n de Git</h1>
+<section id="âquã-es-git" class="level2">
+<h2 class="anchored" data-anchor-id="âquã-es-git">Â¿QuÃ© es Git?</h2>
 <p>Git es un sistema de control de versiones que permite:</p>
 <ul>
-<li>Registrar cambios en el código</li>
+<li>Registrar cambios en el cÃ³digo</li>
 <li>Volver a versiones anteriores</li>
 <li>Trabajar en equipo sin sobrescribir trabajo</li>
 </ul>
 <p>Es la base para trabajar con GitHub y flujos de CI/CD.</p>
 <hr>
 </section>
-<section id="verificar-si-git-ya-está-instalado" class="level2">
-<h2 class="anchored" data-anchor-id="verificar-si-git-ya-está-instalado">Verificar si Git ya está instalado</h2>
-<p>Antes de instalar, revisa si Git ya está disponible en tu sistema:</p>
+<section id="verificar-si-git-ya-estã-instalado" class="level2">
+<h2 class="anchored" data-anchor-id="verificar-si-git-ya-estã-instalado">Verificar si Git ya estÃ¡ instalado</h2>
+<p>Antes de instalar, revisa si Git ya estÃ¡ disponible en tu sistema:</p>
 <pre><code>git --version</code></pre>
-<p>Si aparece un número de versión, Git ya está instalado.</p>
+<p>Si aparece un nÃºmero de versiÃ³n, Git ya estÃ¡ instalado.</p>
 </section>
-<section id="instalación-según-sistema-operativo" class="level2">
-<h2 class="anchored" data-anchor-id="instalación-según-sistema-operativo">Instalación según sistema operativo</h2>
+<section id="instalaciã³n-segãºn-sistema-operativo" class="level2">
+<h2 class="anchored" data-anchor-id="instalaciã³n-segãºn-sistema-operativo">InstalaciÃ³n segÃºn sistema operativo</h2>
 <section id="windows" class="level3">
 <h3 class="anchored" data-anchor-id="windows">Windows</h3>
 <ol type="1">
@@ -377,7 +376,7 @@ Finanzas en R</div></h1>
 </section>
 <section id="macos" class="level3">
 <h3 class="anchored" data-anchor-id="macos">macOS</h3>
-<p>Opción recomendada usando Homebrew:</p>
+<p>OpciÃ³n recomendada usando Homebrew:</p>
 <pre><code>brew install git</code></pre>
 </section>
 </section>
@@ -388,7 +387,7 @@ Finanzas en R</div></h1>
 <h2 class="anchored" data-anchor-id="prerrequisitos">Prerrequisitos</h2>
 <ul>
 <li><p>Una cuenta en GitHub</p></li>
-<li><p>Git instalado en tu equipo (verifícalo con git –version)</p></li>
+<li><p>Git instalado en tu equipo (verifÃ­calo con git –version)</p></li>
 <li><p>RStudio (opcional, pero recomendado)</p></li>
 <li><p>Un proyecto de R ya inicializado (idealmente con renv::init())</p></li>
 </ul>
@@ -398,7 +397,7 @@ Finanzas en R</div></h1>
 <ol type="1">
 <li>Paquetes</li>
 </ol>
-<p>Asegúrate de tener los paquetes necesarios</p>
+<p>AsegÃºrate de tener los paquetes necesarios</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(<span class="st">"usethis"</span>, <span class="st">"renv"</span>, <span class="st">"gh"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -411,7 +410,7 @@ Finanzas en R</div></h1>
 <p>Esto:</p>
 <ul>
 <li><p>Inicializa Git en la carpeta del proyecto</p></li>
-<li><p>Crea un .gitignore con entradas útiles (incluye renv/library/)</p></li>
+<li><p>Crea un .gitignore con entradas Ãºtiles (incluye renv/library/)</p></li>
 <li><p>Realiza un primer commit</p></li>
 </ul>
 <ol start="3" type="1">
@@ -426,13 +425,13 @@ Finanzas en R</div></h1>
 <li><p>Conecta tu proyecto local al remoto (git remote add origin)</p></li>
 <li><p>Realiza push al repositorio</p></li>
 </ul>
-<p><i class="fa-brands fa-link" aria-label="link"></i> Asegúrate de haber iniciado sesión en GitHub con un Personal Access Token (PAT). Si no lo tienes, puedes crearlo e instalarlo con:</p>
+<p><i class="fa-brands fa-link" aria-label="link"></i> AsegÃºrate de haber iniciado sesiÃ³n en GitHub con un Personal Access Token (PAT). Si no lo tienes, puedes crearlo e instalarlo con:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">create_github_token</span>()</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>usethis<span class="sc">::</span><span class="fu">edit_r_environ</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Pega el token como:</p>
-<p>GITHUB_TOKEN=ghp_tu_token_aquí</p>
+<p>GITHUB_TOKEN=ghp_tu_token_aquÃ­</p>
 <p>Luego reinicia R y corre usethis::use_github() de nuevo.</p>
 </section>
 <section id="referencias-1" class="level2">
