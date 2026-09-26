@@ -1,8 +1,6 @@
----
+﻿---
 listing_title: "Revisar - Clase 01 - Notebook Actividad 02"
-title: |
-  | \includegraphics[width=5cm]{Imagen1.jpg}  
-  | Finanzas en R
+title: "Finanzas en R"
 subtitle: Actividad 02
 format:
   html:
@@ -17,8 +15,8 @@ format:
     geometry: margin=1in
 editor: visual
 author:
-  - Sebastián Egaña Santibáñez [{{< fa brands inbox >}}](mailto:segana@fen.uchile)
-  - Nicolás Leiva Díaz [{{< fa brands inbox >}}](mailto:nleivad@fen.uchile.cl)
+  - SebastiÃ¡n EgaÃ±a SantibÃ¡Ã±ez [{{< fa brands inbox >}}](mailto:segana@fen.uchile)
+  - NicolÃ¡s Leiva DÃ­az [{{< fa brands inbox >}}](mailto:nleivad@fen.uchile.cl)
 ---
 
 ------------------------------------------------------------------------
@@ -35,18 +33,20 @@ author:
 
 # Actividad 2
 
-## Introducción
+## IntroducciÃ³n
 
 De la tabla entregada, debe calcular lo siguiente:
 
 ## Parte 1
 
-1.  Nombres únicos dentro de la base.
-2.  Genere variable días de vacaciones. Explique los supuestos utilizados.
-3.  Suma de los días de vacaciones por cada nombre único.
-4.  Número de veces que cada persona tomó vacaciones dentro de la base de datos.
+1.  Nombres Ãºnicos dentro de la base.
+2.  Genere variable dÃ­as de vacaciones. Explique los supuestos utilizados.
+3.  Suma de los dÃ­as de vacaciones por cada nombre Ãºnico.
+4.  NÃºmero de veces que cada persona tomÃ³ vacaciones dentro de la base de datos.
 
 ## Parte 2
 
-1.  ¿Cuántos períodos de vacaciones se tomaron entre el 1 de febrero del 2012 y el 21 de marzo del 2012?
-2.  ¿Cuántas personas tomaron vacaciones en dicho período?
+1.  Â¿CuÃ¡ntos perÃ­odos de vacaciones se tomaron entre el 1 de febrero del 2012 y el 21 de marzo del 2012?
+2.  Â¿CuÃ¡ntas personas tomaron vacaciones en dicho perÃ­odo?
+
+

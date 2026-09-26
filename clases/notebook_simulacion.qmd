@@ -1,8 +1,6 @@
----
+﻿---
 listing_title: "Clase 04 - Notebook Simulaciones"
-title: |
-  | \includegraphics[width=5cm]{Imagen1.jpg}  
-  | Finanzas en R
+title: "Finanzas en R"
 subtitle: Simulaciones de Montecarlo
 format:
   html:
@@ -17,8 +15,8 @@ format:
     geometry: margin=1in
 editor: visual
 author:
-  - Sebastián Egaña Santibáñez
-  - Nicolás Leiva Díaz
+  - SebastiÃ¡n EgaÃ±a SantibÃ¡Ã±ez
+  - NicolÃ¡s Leiva DÃ­az
 ---
 
 ```{r setup, include=FALSE}
@@ -43,20 +41,20 @@ library(tidyverse)
 
 # Simulaciones
 
-Pensemos en un activo, que desconocemos su precio futuro. Una forma de estimarlo es generar múltiples caminos que podría seguir el precio del activo en base a ciertos supuestos.
+Pensemos en un activo, que desconocemos su precio futuro. Una forma de estimarlo es generar mÃºltiples caminos que podrÃ­a seguir el precio del activo en base a ciertos supuestos.
 
-Se puede asumir que el precio de una acción sigue un paseo aleatorio, representado por un proceso Browniano geométrico como el siguiente:
+Se puede asumir que el precio de una acciÃ³n sigue un paseo aleatorio, representado por un proceso Browniano geomÃ©trico como el siguiente:
 
 $$ dS = \mu Sdt + \sigma Sdw$$
 
-donde $S$ corresponde al precio de un activo (por ejemplo, una acción), $\mu$ corresponde al valor esperado de los retornos (drift) y $\sigma$ corresponde a la volatilidad (volatility), $dw$ es el diferencial de un proceso de Wiener, que posee las siguientes propiedades:
+donde $S$ corresponde al precio de un activo (por ejemplo, una acciÃ³n), $\mu$ corresponde al valor esperado de los retornos (drift) y $\sigma$ corresponde a la volatilidad (volatility), $dw$ es el diferencial de un proceso de Wiener, que posee las siguientes propiedades:
 
 1.  $dw = \epsilon \sqrt{dt}$, donde $\epsilon \sim N(0,1)$
 2.  Los cambios de $dw$ son independientes
 
-En términos discretos:
+En tÃ©rminos discretos:
 
-$$ S_{t + 1} = S_{t} * exp((\mu - \frac{\sigma^2}{2})\Delta t + \sigma \epsilon_{t} \sqrt{\Delta t})$$ Definimos los valores para un activo cualquiera, que posee un valor de 100 en el período t (hoy o en el período 0):
+$$ S_{t + 1} = S_{t} * exp((\mu - \frac{\sigma^2}{2})\Delta t + \sigma \epsilon_{t} \sqrt{\Delta t})$$ Definimos los valores para un activo cualquiera, que posee un valor de 100 en el perÃ­odo t (hoy o en el perÃ­odo 0):
 
 ```{r}
 So = 100
@@ -106,13 +104,13 @@ ggplot(data=data, aes(x=Trend)) +
   geom_line(aes(y=`99%`), color = "blue")
 ```
 
-## Simulaciones y valoración de opciones
+## Simulaciones y valoraciÃ³n de opciones
 
 ### Black & Scholes
 
 Para valorar opciones, se utiliza la formula de Black & Scholes:
 
-$$ C = S * N(d_1) - X * exp (-rT) * N(d_2)$$ $$ P = X * exp (-rT) * N(-d_2) - S * N(-d_1)$$ donde $C$ corresponde al precio de una opción de compra, $P$ corresponde al precio de una opción de venta, $X$ es el precio strike, $S$ corresponde al precio actual del activo, $T$ es el Time to madurity. Por otra parte:
+$$ C = S * N(d_1) - X * exp (-rT) * N(d_2)$$ $$ P = X * exp (-rT) * N(-d_2) - S * N(-d_1)$$ donde $C$ corresponde al precio de una opciÃ³n de compra, $P$ corresponde al precio de una opciÃ³n de venta, $X$ es el precio strike, $S$ corresponde al precio actual del activo, $T$ es el Time to madurity. Por otra parte:
 
 $$ d_1 = \frac{ln(\frac{S}{X}) + (r + \frac{\sigma^2}{2})*T}{\sigma * \sqrt{T}}$$ $$ d_2 = d_1 - \sigma * \sqrt{T}$$ Calculamos en base a B&S:
 
@@ -137,7 +135,7 @@ c(call_price, put_price)
 
 ### Valoramos utilizando el enfoque de simulaciones
 
-Utilizamos la misma expresión discreta:
+Utilizamos la misma expresiÃ³n discreta:
 
 $$ S_{t + 1} = S_{t} * exp((\mu - \frac{\sigma^2}{2})\Delta t + \sigma \epsilon_{t} \sqrt{\Delta t})$$
 
@@ -172,17 +170,17 @@ results<-call_put_mc(n=1000000, tau=0.5, r=0.02, sigma=0.2, S0=102, K=100)
 results
 ```
 
-# Aplicación en evaluación de proyectos
+# AplicaciÃ³n en evaluaciÃ³n de proyectos
 
-En el caso de proyectos, podemos realizar un análisis de carácter estocástico, lo que implica asumir que alguna de las variables no es conocida pero si que puede estar situada dentro de algunos parámetros.
+En el caso de proyectos, podemos realizar un anÃ¡lisis de carÃ¡cter estocÃ¡stico, lo que implica asumir que alguna de las variables no es conocida pero si que puede estar situada dentro de algunos parÃ¡metros.
 
 Veamos el siguiente ejemplo:
 
-Una empresa está evaluando la introducción de un nuevo producto y desea conocer la probabilidad que obtenga pérdidas. Para cumplir dicho propósito lo contrata a usted para construir un modelo financiero del negocio.
+Una empresa estÃ¡ evaluando la introducciÃ³n de un nuevo producto y desea conocer la probabilidad que obtenga pÃ©rdidas. Para cumplir dicho propÃ³sito lo contrata a usted para construir un modelo financiero del negocio.
 
-Después de realizar la debida investigación, usted decide construir una simulación de Monte Carlo que le permita generar la distribución de probabilidad de las utilidades del negocio, modelando separadamente los ingresos y los costos totales, considerando los siguientes elementos:
+DespuÃ©s de realizar la debida investigaciÃ³n, usted decide construir una simulaciÃ³n de Monte Carlo que le permita generar la distribuciÃ³n de probabilidad de las utilidades del negocio, modelando separadamente los ingresos y los costos totales, considerando los siguientes elementos:
 
--   Por el lado de los ingresos totales, se considerarán tres escenarios (A, B y C) para el precio y la cantidad, los cuales aparecen descritos en la siguiente tabla:
+-   Por el lado de los ingresos totales, se considerarÃ¡n tres escenarios (A, B y C) para el precio y la cantidad, los cuales aparecen descritos en la siguiente tabla:
 
 \begin{center}
 \begin{tabular}{lccc}
@@ -194,19 +192,19 @@ Probabilidad & 1/4 & 1/2 & 1/4
 \end{tabular}
 \end{center}
 
--   En el caso de los costos totales, los costos fijos son iguales a \$150 y los costos variables unitarios son constantes y son modelados usando una distribución triangular con los siguientes parámetros:
+-   En el caso de los costos totales, los costos fijos son iguales a \$150 y los costos variables unitarios son constantes y son modelados usando una distribuciÃ³n triangular con los siguientes parÃ¡metros:
 
 \begin{center}
 \begin{tabular}{lc}
-Parámetro & Valores \\
+ParÃ¡metro & Valores \\
 \hline
-Valor mínimo & 9 \\
-Valor máximo & 13 \\
+Valor mÃ­nimo & 9 \\
+Valor mÃ¡ximo & 13 \\
 Moda & 11 
 \end{tabular}
 \end{center}
 
-A. ¿Cuál es la probabilidad que el negocio tenga pérdidas?
+A. Â¿CuÃ¡l es la probabilidad que el negocio tenga pÃ©rdidas?
 
 ```{r}
 library(ggplot2)
@@ -261,3 +259,5 @@ paste0("Valor esperado utilidad = ", round(mean(utilidad$utilidad),2))
 -   https://www.r-bloggers.com/2012/11/simulating-multiple-asset-paths-in-r/
 
 -   https://rpubs.com/juanrendon/VaR_montecarlo_portafolio
+
+

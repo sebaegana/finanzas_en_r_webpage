@@ -1,9 +1,7 @@
----
-listing_title: "Clase 02 - Notebook Actividad Programación"
-title: |
-  | \includegraphics[width=5cm]{Imagen1.jpg}  
-  | Finanzas en R
-subtitle: Programación
+﻿---
+listing_title: "Clase 02 - Notebook Actividad ProgramaciÃ³n"
+title: "Finanzas en R"
+subtitle: ProgramaciÃ³n
 format:
   html:
     toc: true
@@ -17,8 +15,8 @@ format:
     geometry: margin=1in
 editor: visual
 author:
-  - Sebastián Egaña Santibáñez [{{< fa brands inbox >}}](mailto:segana@fen.uchile.cl)
-  - Nicolás Leiva Díaz [{{< fa brands inbox >}}](mailto:nleivad@fen.uchile.cl)
+  - SebastiÃ¡n EgaÃ±a SantibÃ¡Ã±ez [{{< fa brands inbox >}}](mailto:segana@fen.uchile.cl)
+  - NicolÃ¡s Leiva DÃ­az [{{< fa brands inbox >}}](mailto:nleivad@fen.uchile.cl)
 ---
 
 ------------------------------------------------------------------------
@@ -33,7 +31,7 @@ author:
 
 ------------------------------------------------------------------------
 
-# Actividad intermedia: programación en R
+# Actividad intermedia: programaciÃ³n en R
 
 ## Instrucciones
 
@@ -45,14 +43,16 @@ author:
 
 Considere los siguientes datasets census.csv y census-division.csv.
 
-1.  Ordene los datos de las siguientes maneras: región ascendente, división descendiente y población descendiente (se deben combinar ambos datasets). Termine escribiendo sus resultados en tres hojas de excel distintas de un mismo archivo Excel (Xlsx)
+1.  Ordene los datos de las siguientes maneras: regiÃ³n ascendente, divisiÃ³n descendiente y poblaciÃ³n descendiente (se deben combinar ambos datasets). Termine escribiendo sus resultados en tres hojas de excel distintas de un mismo archivo Excel (Xlsx)
 
-2.  Elimina el código postal del dataset cominado
+2.  Elimina el cÃ³digo postal del dataset cominado
 
-3.  Cree una nueva columna, llamada densidad, que corresponde a la división de la población en la superficie terreste (land area)
+3.  Cree una nueva columna, llamada densidad, que corresponde a la divisiÃ³n de la poblaciÃ³n en la superficie terreste (land area)
 
-4.  Visualice la relación entre la superficie terrestre y la población para todas las observaciones del año 2015
+4.  Visualice la relaciÃ³n entre la superficie terrestre y la poblaciÃ³n para todas las observaciones del aÃ±o 2015
 
-5.  Encontrar la población total para cada región
+5.  Encontrar la poblaciÃ³n total para cada regiÃ³n
 
-6.Cree una tabla que contenga los estados y población, con la población para cada año, mantiendo la estructura de una sola columna
+6.Cree una tabla que contenga los estados y poblaciÃ³n, con la poblaciÃ³n para cada aÃ±o, mantiendo la estructura de una sola columna
+
+

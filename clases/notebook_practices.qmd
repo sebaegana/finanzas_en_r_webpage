@@ -1,8 +1,6 @@
----
+﻿---
 listing_title: "Clase 02 - Notebook CICD"
-title: |
-  | \includegraphics[width=5cm]{Imagen1.jpg}  
-  | Finanzas en R
+title: "Finanzas en R"
 subtitle: Good practices
 format:
   html:
@@ -17,8 +15,8 @@ format:
     geometry: margin=1in
 editor: visual
 author:
-  - Sebastián Egaña Santibáñez [{{< fa brands inbox >}}](mailto:segana@fen.uchile)
-  - Nicolás Leiva Díaz [{{< fa brands inbox >}}](mailto:nleivad@fen.uchile.cl)
+  - SebastiÃ¡n EgaÃ±a SantibÃ¡Ã±ez [{{< fa brands inbox >}}](mailto:segana@fen.uchile)
+  - NicolÃ¡s Leiva DÃ­az [{{< fa brands inbox >}}](mailto:nleivad@fen.uchile.cl)
 ---
 
 ------------------------------------------------------------------------
@@ -33,11 +31,11 @@ author:
 
 ------------------------------------------------------------------------
 
-#  Instalación de paquetes en R
+#  InstalaciÃ³n de paquetes en R
 
-## ¿Cómo se instalan paquetes en R?
+## Â¿CÃ³mo se instalan paquetes en R?
 
-Los paquetes amplían las capacidades de R y se descargan desde CRAN.
+Los paquetes amplÃ­an las capacidades de R y se descargan desde CRAN.
 
 ```{r, eval=FALSE}
 install.packages("dplyr")
@@ -51,7 +49,7 @@ Instalar un paquete no es lo mismo que cargarlo:
 library(dplyr)
 ```
 
-Buenas prácticas al instalar paquetes
+Buenas prÃ¡cticas al instalar paquetes
 
   - Instala paquetes solo una vez por entorno
   - Usa library() dentro de scripts o notebooks
@@ -60,17 +58,17 @@ Buenas prácticas al instalar paquetes
 
 # Renv
 
-## ¿Qué es renv?
+## Â¿QuÃ© es renv?
 
-renv es una herramienta para gestionar entornos de proyectos en R. Permite aislar las versiones de paquetes usados en un proyecto, asegurando que el análisis sea reproducible incluso si cambian las versiones globales de R o de los paquetes.
+renv es una herramienta para gestionar entornos de proyectos en R. Permite aislar las versiones de paquetes usados en un proyecto, asegurando que el anÃ¡lisis sea reproducible incluso si cambian las versiones globales de R o de los paquetes.
 
-## ¿Por qué usar renv?
+## Â¿Por quÃ© usar renv?
 
--   Asegura que otros puedan ejecutar tu código con los mismos paquetes y versiones.
+-   Asegura que otros puedan ejecutar tu cÃ³digo con los mismos paquetes y versiones.
 
 -   Facilita colaborar en equipo.
 
--   Útil para compartir proyectos o generar informes reproducibles.
+-   Ãštil para compartir proyectos o generar informes reproducibles.
 
 ## Paso a paso
 
@@ -90,7 +88,7 @@ renv::init()
 
 Esto hace:
 
--   Crea una carpeta renv/ donde se instalarán los paquetes del proyecto.
+-   Crea una carpeta renv/ donde se instalarÃ¡n los paquetes del proyecto.
 
 -   Crea un archivo renv.lock que guarda las versiones exactas de los paquetes usados.
 
@@ -103,9 +101,9 @@ install.packages("dplyr")
 install.packages("ggplot2")
 ```
 
-renv registrará automáticamente estas instalaciones en el archivo renv.lock
+renv registrarÃ¡ automÃ¡ticamente estas instalaciones en el archivo renv.lock
 
-4.  Guardar el estado del entorno Si ya tenías paquetes instalados y quieres capturar el entorno actual:
+4.  Guardar el estado del entorno Si ya tenÃ­as paquetes instalados y quieres capturar el entorno actual:
 
 ```{r, eval=FALSE}
 renv::snapshot()
@@ -114,7 +112,7 @@ renv::snapshot()
 
 Esto actualiza el archivo renv.lock con los paquetes y versiones actuales.
 
-5.  Restaurar un entorno en otra máquina Cuando otra persona descarga tu proyecto (por ejemplo, desde GitHub):
+5.  Restaurar un entorno en otra mÃ¡quina Cuando otra persona descarga tu proyecto (por ejemplo, desde GitHub):
 
 ```{r, eval=FALSE}
 renv::restore()
@@ -129,7 +127,7 @@ renv::restore()
 
 No incluyas renv/library/ en tu repositorio si usas Git (puedes agregarlo a .gitignore).
 
-## Buenas prácticas
+## Buenas prÃ¡cticas
 
 -   Siempre correr renv::snapshot() luego de instalar o actualizar paquetes.
 
@@ -143,13 +141,13 @@ No incluyas renv/library/ en tu repositorio si usas Git (puedes agregarlo a .git
 -   <https://blog.djnavarro.net/posts/2023-06-16_tabulizer/>
 -   <https://crimebythenumbers.com/scrape-table.html>
 
-# Instalación de Git
+# InstalaciÃ³n de Git
 
-## ¿Qué es Git?
+## Â¿QuÃ© es Git?
 
 Git es un sistema de control de versiones que permite:
 
-- Registrar cambios en el código
+- Registrar cambios en el cÃ³digo
 - Volver a versiones anteriores
 - Trabajar en equipo sin sobrescribir trabajo
 
@@ -157,17 +155,17 @@ Es la base para trabajar con GitHub y flujos de CI/CD.
 
 ---
 
-## Verificar si Git ya está instalado
+## Verificar si Git ya estÃ¡ instalado
 
-Antes de instalar, revisa si Git ya está disponible en tu sistema:
+Antes de instalar, revisa si Git ya estÃ¡ disponible en tu sistema:
 
 ```
 git --version
 ```
 
-Si aparece un número de versión, Git ya está instalado.
+Si aparece un nÃºmero de versiÃ³n, Git ya estÃ¡ instalado.
 
-## Instalación según sistema operativo
+## InstalaciÃ³n segÃºn sistema operativo
 
 ### Windows
   
@@ -178,7 +176,7 @@ Si aparece un número de versión, Git ya está instalado.
   
 ### macOS
 
-Opción recomendada usando Homebrew:
+OpciÃ³n recomendada usando Homebrew:
 
 ```
 brew install git
@@ -190,7 +188,7 @@ brew install git
 
 -   Una cuenta en GitHub
 
--   Git instalado en tu equipo (verifícalo con git --version)
+-   Git instalado en tu equipo (verifÃ­calo con git --version)
 
 -   RStudio (opcional, pero recomendado)
 
@@ -200,7 +198,7 @@ brew install git
 
 1.  Paquetes
 
-Asegúrate de tener los paquetes necesarios
+AsegÃºrate de tener los paquetes necesarios
 
 ```{r, eval=FALSE}
 install.packages(c("usethis", "renv", "gh"))
@@ -216,7 +214,7 @@ Esto:
 
 -   Inicializa Git en la carpeta del proyecto
 
--   Crea un .gitignore con entradas útiles (incluye renv/library/)
+-   Crea un .gitignore con entradas Ãºtiles (incluye renv/library/)
 
 -   Realiza un primer commit
 
@@ -234,7 +232,7 @@ Esto:
 
 -   Realiza push al repositorio
 
-{{< fa brands link >}} Asegúrate de haber iniciado sesión en GitHub con un Personal Access Token (PAT). Si no lo tienes, puedes crearlo e instalarlo con:
+{{< fa brands link >}} AsegÃºrate de haber iniciado sesiÃ³n en GitHub con un Personal Access Token (PAT). Si no lo tienes, puedes crearlo e instalarlo con:
 
 ```{r, eval=FALSE}
 usethis::create_github_token()
@@ -243,7 +241,7 @@ usethis::edit_r_environ()
 
 Pega el token como:
 
-GITHUB_TOKEN=ghp_tu_token_aquí
+GITHUB_TOKEN=ghp_tu_token_aquÃ­
 
 Luego reinicia R y corre usethis::use_github() de nuevo.
 
@@ -254,3 +252,5 @@ Luego reinicia R y corre usethis::use_github() de nuevo.
 -   <https://rfortherestofus.com/2021/02/how-to-use-git-github-with-r>
 
 -   <https://happygitwithr.com/rstudio-git-github.html>
+
+

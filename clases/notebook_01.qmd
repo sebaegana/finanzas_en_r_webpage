@@ -1,8 +1,6 @@
----
+﻿---
 listing_title: "Clase 01 - Notebook 01"
-title: |
-  | \includegraphics[width=5cm]{Imagen1.jpg}  
-  | Finanzas en R
+title: "Finanzas en R"
 subtitle: Notebook 01
 format:
   html:
@@ -17,8 +15,8 @@ format:
     geometry: margin=1in
 editor: visual
 author:
-  - Sebastián Egaña Santibáñez [{{< fa brands inbox >}}](mailto:segana@fen.uchile.cl)
-  - Nicolás Leiva Díaz [{{< fa brands inbox >}}](mailto:nleivad@fen.uchile.cl)
+  - SebastiÃ¡n EgaÃ±a SantibÃ¡Ã±ez [{{< fa brands inbox >}}](mailto:segana@fen.uchile.cl)
+  - NicolÃ¡s Leiva DÃ­az [{{< fa brands inbox >}}](mailto:nleivad@fen.uchile.cl)
 ---
 
 ------------------------------------------------------------------------
@@ -37,15 +35,15 @@ author:
 
 ## Hello World
 
-Un ejercicio clásico, es programar un saludo dentro de cada lenguaje de programación.
+Un ejercicio clÃ¡sico, es programar un saludo dentro de cada lenguaje de programaciÃ³n.
 
-¿Cómo podemos hacer esto en R?
+Â¿CÃ³mo podemos hacer esto en R?
 
 ```         
 print("Hola")
 ```
 
-Para hacerlo en C, deberíamos implementar lo siguiente:
+Para hacerlo en C, deberÃ­amos implementar lo siguiente:
 
 ```         
 #include <stdio.h>
@@ -64,7 +62,7 @@ print("Hola")
 
 ## Variables
 
-Cuando se le atribuye un nombre a un elemento dentro de un entorno de programación, a esto se le denomina **variable**. En Python tenemos lo siguiente:
+Cuando se le atribuye un nombre a un elemento dentro de un entorno de programaciÃ³n, a esto se le denomina **variable**. En Python tenemos lo siguiente:
 
 ```{python}
 #| eval: false
@@ -93,7 +91,7 @@ print(x, y, xy)
 Lo que en R se genera de la siguiente manera:
 
 ```{r}
-# Inserte código acá
+# Inserte cÃ³digo acÃ¡
 
 x = 2
 y = 5
@@ -110,48 +108,48 @@ Editando el separador
 print(paste(x,y,xy, sep = ""))
 ```
 
-## Librerías en R
+## LibrerÃ­as en R
 
-Dentro de R existen librerías, las que pueden ser definidas como colección de módulos; estos, no son más que bloques de códigos generados para un fin particular.
+Dentro de R existen librerÃ­as, las que pueden ser definidas como colecciÃ³n de mÃ³dulos; estos, no son mÃ¡s que bloques de cÃ³digos generados para un fin particular.
 
-## Ejemplos de librerías
+## Ejemplos de librerÃ­as
 
-Algunas de las librerías más conocidas son:
+Algunas de las librerÃ­as mÃ¡s conocidas son:
 
 ### <font color='black'>**Dplyr**</font>
 
-Librería orientada a la manipulación de datos.
+LibrerÃ­a orientada a la manipulaciÃ³n de datos.
 
 Cheat Sheet: https://nyu-cdsc.github.io/learningr/assets/data-transformation.pdf
 
 ### <font color='black'>**Ggplot2**</font>
 
-Corresponde a la principal librería para graficar.
+Corresponde a la principal librerÃ­a para graficar.
 
 Cheat Sheet: https://www.maths.usyd.edu.au/u/UG/SM/STAT3022/r/current/Misc/data-visualization-2.1.pdf
 
 ### <font color='black'>**Tidyverse**</font>
 
-Biblioteca de librerías orientada a la manipulación de datos.
+Biblioteca de librerÃ­as orientada a la manipulaciÃ³n de datos.
 
-Dichas librerías son tres de una gran variedad de librerías que pueden ser utilizadas en R. Lo relevante es que para ser utilizadas se debe generar un proceso de instalación y llamado previo de dichas librerías.
+Dichas librerÃ­as son tres de una gran variedad de librerÃ­as que pueden ser utilizadas en R. Lo relevante es que para ser utilizadas se debe generar un proceso de instalaciÃ³n y llamado previo de dichas librerÃ­as.
 
-Otra librerías se pueden encontrar en el siguiente enlace: https://posit.co/resources/cheatsheets/
+Otra librerÃ­as se pueden encontrar en el siguiente enlace: https://posit.co/resources/cheatsheets/
 
-## Instalación y llamado
+## InstalaciÃ³n y llamado
 
-Para la utilización de dichas librerías debemos seguir dos pasos:
+Para la utilizaciÃ³n de dichas librerÃ­as debemos seguir dos pasos:
 
-1.  Instalación.
+1.  InstalaciÃ³n.
 2.  Llamado
 
-Para la instalación de librerías en R en modalidad local (en el computador) se debe utilizar el siguiente código:
+Para la instalaciÃ³n de librerÃ­as en R en modalidad local (en el computador) se debe utilizar el siguiente cÃ³digo:
 
 ```         
 install.packages("nombre del paquete")
 ```
 
-Asumiendo que ya tenemos instalada la librería, cada vez que utilicemos un código de la librería debemos realizar el llamado. Esto se realiza de la siguiente manera:
+Asumiendo que ya tenemos instalada la librerÃ­a, cada vez que utilicemos un cÃ³digo de la librerÃ­a debemos realizar el llamado. Esto se realiza de la siguiente manera:
 
 ```         
 install.packages("dplyr")
@@ -162,9 +160,9 @@ datos = iris
 select(datos, Species)
 ```
 
-En este caso, estamos haciendo un llamado a la librería **dplyr** para utilizar una de sus funciones que corresponde a **select**, la que permite seleccionar una columna de un set de datos llamado **iris**.
+En este caso, estamos haciendo un llamado a la librerÃ­a **dplyr** para utilizar una de sus funciones que corresponde a **select**, la que permite seleccionar una columna de un set de datos llamado **iris**.
 
-En el caso de utilizar una función de una librería no cargada, generará un error del siguiente tipo: **could not find function**. Por ejemplo:
+En el caso de utilizar una funciÃ³n de una librerÃ­a no cargada, generarÃ¡ un error del siguiente tipo: **could not find function**. Por ejemplo:
 
 ```         
 vtree(FakeData,"Severity Sex",sameline=T)
@@ -184,7 +182,7 @@ Realizamos el llamado
 library(dplyr)
 ```
 
-Utilizamos la librería
+Utilizamos la librerÃ­a
 
 ```{r}
 #| eval: false
@@ -194,7 +192,7 @@ datos = iris
 select(datos, Species)
 ```
 
-Por ejemplo, si no tenemos cargada una librería:
+Por ejemplo, si no tenemos cargada una librerÃ­a:
 
 ```{r}
 #| eval: false
@@ -222,15 +220,15 @@ dplyr::select(datos, Species)
 
 ### Help
 
-Dentro de R, viene considerada la opción de buscar ayuda. Para esto, debemos utilizar el siguiente código:
+Dentro de R, viene considerada la opciÃ³n de buscar ayuda. Para esto, debemos utilizar el siguiente cÃ³digo:
 
 ```         
 ?print
 ```
 
-### Páginas
+### PÃ¡ginas
 
-Por lo general, una parte importante de programar es aprender dónde buscar ejemplos y preguntas relacionadas con la labor que queremos programar. Para esto, existen algunas páginas claves:
+Por lo general, una parte importante de programar es aprender dÃ³nde buscar ejemplos y preguntas relacionadas con la labor que queremos programar. Para esto, existen algunas pÃ¡ginas claves:
 
 W3 Schools : https://www.w3schools.com/r/default.asp
 
@@ -240,9 +238,9 @@ Curso free de R en Datacamp: https://www.datacamp.com/courses/free-introduction-
 
 ### Google
 
-Una de las mejores opciones es utilizar Google; poner frases como: **Cómo hacer X en R** o **How to do X in R**
+Una de las mejores opciones es utilizar Google; poner frases como: **CÃ³mo hacer X en R** o **How to do X in R**
 
-## Asignación en R
+## AsignaciÃ³n en R
 
 Se tienen 3 maneras:
 
@@ -269,20 +267,20 @@ Hacia la derecha, utilizando `->`
 print(z)
 ```
 
-## Operadores matemáticos
+## Operadores matemÃ¡ticos
 
-En este caso, R es muy parecido a una calculadora (pero mucho más potente). Veamos cuáles son los operadores dentro de este lenguaje:
+En este caso, R es muy parecido a una calculadora (pero mucho mÃ¡s potente). Veamos cuÃ¡les son los operadores dentro de este lenguaje:
 
-|  Símbolo  |                Tarea ejecutada |
+|  SÃ­mbolo  |                Tarea ejecutada |
 |:---------:|-------------------------------:|
 |    \+     |                           Suma |
 |    \-     |                          Resta |
-|     /     |                       División |
-|    %%     |                         Módulo |
-|    \*     |                 Multiplicación |
-|    %/%    |            División de enteros |
-|    //     | Función de parte entera - Piso |
-| \*\* ó \^ |                       Potencia |
+|     /     |                       DivisiÃ³n |
+|    %%     |                         MÃ³dulo |
+|    \*     |                 MultiplicaciÃ³n |
+|    %/%    |            DivisiÃ³n de enteros |
+|    //     | FunciÃ³n de parte entera - Piso |
+| \*\* Ã³ \^ |                       Potencia |
 
 Veamos la siguiente diferencia entre operadores:
 
@@ -298,12 +296,12 @@ Veamos la siguiente diferencia entre operadores:
 
 ## Ejercicio 1
 
-Defina x como un número cualquiera. Compruebe que x es par.
+Defina x como un nÃºmero cualquiera. Compruebe que x es par.
 
-### Solución
+### SoluciÃ³n
 
 ```{r}
-# De una manera básica
+# De una manera bÃ¡sica
 
 x = 10001
 
@@ -314,7 +312,7 @@ print(ifelse(x %% 2 == 0, "Par", "Impar"))
 ```
 
 ```{r}
-# Generando una función para esto
+# Generando una funciÃ³n para esto
 
 es_par <- function(numero) {
   if (numero %% 2 == 0) {
@@ -336,9 +334,9 @@ print(es_par(numero2)) # Devuelve FALSE, ya que 7 no es par.
 
 ## Operadores relacionales
 
-En el caso de operatorias de carácter comparativo, existen los siguientes operadores:
+En el caso de operatorias de carÃ¡cter comparativo, existen los siguientes operadores:
 
-| Símbolo | Tarea ejecutada   |
+| SÃ­mbolo | Tarea ejecutada   |
 |:-------:|-------------------|
 |   ==    | igual             |
 |   !=    | no igual          |
@@ -359,19 +357,19 @@ z >= 1
 
 ## Ejercicio 2
 
-Considere el siguiente código
+Considere el siguiente cÃ³digo
 
 ```{r}
 (z == 2) + (z >= 1)
 ```
 
-Explique el resultado del código.
+Explique el resultado del cÃ³digo.
 
-## Operadores lógicos
+## Operadores lÃ³gicos
 
-Corresponde a los utilizados para álgebra booleana, es decir para escribir relaciones lógicas:
+Corresponde a los utilizados para Ã¡lgebra booleana, es decir para escribir relaciones lÃ³gicas:
 
-|  Símbolo  | Tarea ejecutada      |
+|  SÃ­mbolo  | Tarea ejecutada      |
 |:---------:|----------------------|
 |  x \| y   | x o y son verdaderos |
 |   x & y   | x y y son verdaderos |
@@ -386,7 +384,7 @@ Refiere a la posibilidad de generar interacciones con el usuario.
 readline(prompt="Mi nombre es: ")
 ```
 
-Otra posibilidad, es guardar ese input en una variable y después imprimirlo utilizando print.
+Otra posibilidad, es guardar ese input en una variable y despuÃ©s imprimirlo utilizando print.
 
 ```         
 nombre = readline(prompt="Mi nombre es: ")
@@ -416,11 +414,11 @@ print(paste("Hola yo soy", nombre))
 
 ## Pipe operator
 
-En programación, se relaciona con el encadenamiento de funciones. Puede estar representado por los siguientes símbolos `|`, `>>` o `%>%`
+En programaciÃ³n, se relaciona con el encadenamiento de funciones. Puede estar representado por los siguientes sÃ­mbolos `|`, `>>` o `%>%`
 
-El tercer caso corresponde a R, y puede ser utilizado a través de shortcut ctrl + shift + m
+El tercer caso corresponde a R, y puede ser utilizado a travÃ©s de shortcut ctrl + shift + m
 
-Se implementa a través de la librería magrittr. Veamos un ejemplo clásico:
+Se implementa a travÃ©s de la librerÃ­a magrittr. Veamos un ejemplo clÃ¡sico:
 
 ```{r}
 # Example of using the pipe operator in R
@@ -434,7 +432,7 @@ result <- c(-2, -10, 3, 4, 8) %>% abs() %>% log10() %>% mean() %>% sqrt()
 
 ```
 
-Otra implementación:
+Otra implementaciÃ³n:
 
 ```{r}
 quote(1:3 |> sum())
@@ -448,7 +446,7 @@ quote(split(x = iris[-5], f = iris$Species) |>
         do.call(what = rbind))
 ```
 
-Por lo general esta implementación es más restrictiva, por lo mismo, menos usada.
+Por lo general esta implementaciÃ³n es mÃ¡s restrictiva, por lo mismo, menos usada.
 
 ## Ver Notebook ejercicios 01
 
@@ -460,28 +458,28 @@ Por lo general esta implementación es más restrictiva, por lo mismo, menos usa
 
 ## Special constants en R: `NA`, `NULL`, `Inf`, `-Inf`, `NaN`
 
-`NA` indica datos pérdidos o indefinidos
+`NA` indica datos pÃ©rdidos o indefinidos
 
 ```{r}
 5 + NA      
 is.na(5+NA) 
 ```
 
-Aplicado con la función promedio:
+Aplicado con la funciÃ³n promedio:
 
 ```{r}
 mean(c(1, 2, NA, 4, 5)) 
 mean(c(1, 2, NA, 4, 5), na.rm = TRUE) 
 ```
 
-`NULL` indica un objeto vacío
+`NULL` indica un objeto vacÃ­o
 
 ```{r}
 10 + NULL     
 is.null(NULL) 
 ```
 
-`Inf` y `-Inf` representan infinitos tanto positivo como negativo. Pueden ser producto de operatorias matemáticas
+`Inf` y `-Inf` representan infinitos tanto positivo como negativo. Pueden ser producto de operatorias matemÃ¡ticas
 
 ```{r}
 5/0
@@ -511,7 +509,7 @@ v3 <- c(TRUE, TRUE, FALSE)  # Logical vector, same as c(T, T, F)
 v3
 ```
 
-Combinar distintos elementos en un vector, genera coerción hacia el elemento más restrictivo
+Combinar distintos elementos en un vector, genera coerciÃ³n hacia el elemento mÃ¡s restrictivo
 
 ```{r}
 v4 <- c(v1,v2,v3,"boo") 	# All elements turn into strings
@@ -531,7 +529,7 @@ v1 * 2
 v1 + c(1,7)  
 ```
 
-#### Operaciones matemáticas para vectores
+#### Operaciones matemÃ¡ticas para vectores
 
 ```{r}
 sum(v1)      
@@ -540,7 +538,7 @@ sd(v1)
 cor(v1,v1*5) 
 ```
 
-#### Operaciones lógicas con vectores
+#### Operaciones lÃ³gicas con vectores
 
 ```{r}
 
@@ -552,7 +550,7 @@ v1!=v2
 
 ```
 
-#### Selección de elementos en un vector
+#### SelecciÃ³n de elementos en un vector
 
 Seleccionando elementos de un vector:
 
@@ -564,16 +562,16 @@ v1[c(T,T,F,F,F)]
 v1[v1>3]  
 ```
 
-Cabe destacar, que la indexación se hace desde 1; esto no es un comportamiento clásico en lenguajes de programación.
+Cabe destacar, que la indexaciÃ³n se hace desde 1; esto no es un comportamiento clÃ¡sico en lenguajes de programaciÃ³n.
 
-Para añadir valores, solo se debe anotar la ubicación y los valores.
+Para aÃ±adir valores, solo se debe anotar la ubicaciÃ³n y los valores.
 
 ```{r}
 v1[6:10] <- 6:10
 v1
 ```
 
-Se puede asignar de manera directa una extensión a un vector
+Se puede asignar de manera directa una extensiÃ³n a un vector
 
 ```{r}
 length(v1) <- 15
@@ -582,7 +580,7 @@ v1
 
 ### Factores
 
-Son utilizados para almacenar datos categóricos.
+Son utilizados para almacenar datos categÃ³ricos.
 
 ```{r}
 eye.col.v <- c("brown", "green", "brown", "blue", "blue", "blue")     
@@ -591,7 +589,7 @@ eye.col.v
 eye.col.f
 ```
 
-Como carácteristica relevante, los factores si poseen una relación con un valor númerico:
+Como carÃ¡cteristica relevante, los factores si poseen una relaciÃ³n con un valor nÃºmerico:
 
 ```{r}
 levels(eye.col.f)  
@@ -631,7 +629,7 @@ m <- matrix(1:10,10,10)
 m
 ```
 
-#### Selección de elementos en una matriz:
+#### SelecciÃ³n de elementos en una matriz:
 
 Para seleccionar elementos dentro de una matriz, se opera de manera similar a con los vectores:
 
@@ -659,7 +657,7 @@ m %*% t(m)
 m * m         
 ```
 
-## Arreglos de dos o más dimensiones
+## Arreglos de dos o mÃ¡s dimensiones
 
 ```{r}
 a <- array(data=1:18,dim=c(3,3,2)) 
@@ -675,7 +673,7 @@ a[1,3,2]
 
 ## Listas
 
-Corresponden a colección de objetos:
+Corresponden a colecciÃ³n de objetos:
 
 ```{r}
 l1 <- list(boo=v1,foo=v2,moo=v3,zoo="Animals!")  
@@ -695,7 +693,7 @@ l1[[1]][2]
 l1$boo         
 ```
 
-Añadir elementos a una lista:
+AÃ±adir elementos a una lista:
 
 ```{r}
 l3[[1]] <- 11 
@@ -707,9 +705,9 @@ l1$Something <- "A thing"
 
 ## Data Frames
 
-Un dataframe es un caso especial de lista, utilizada para guardar las tablas de datos. Posee la estructura clásica fila columna.
+Un dataframe es un caso especial de lista, utilizada para guardar las tablas de datos. Posee la estructura clÃ¡sica fila columna.
 
-Nota: Mientras en un comienzo se usan `data.frame`, más adelante al trabajar con `tidyverse` se utilizan `tibble` que corresponde a un concepto evolucionado de dataframe; de manera más específica corrige algunos comportamientos propios del dataframe, al no interpretarse los strings como factor por defecto y no existir `rownames`.
+Nota: Mientras en un comienzo se usan `data.frame`, mÃ¡s adelante al trabajar con `tidyverse` se utilizan `tibble` que corresponde a un concepto evolucionado de dataframe; de manera mÃ¡s especÃ­fica corrige algunos comportamientos propios del dataframe, al no interpretarse los strings como factor por defecto y no existir `rownames`.
 
 Creando un dataframe:
 
@@ -722,7 +720,7 @@ dfr1 <- data.frame( ID=1:4,
 dfr1$FirstName
 ```
 
-Para acceder a los elementos de un dataframe se debe tener en claro dos cosas: `dfr[row, column]`, donde las para las filas se puede acceder por número o condición y a las columnas por número o nombre. De manera alternativa para las columnas `dfr$column`
+Para acceder a los elementos de un dataframe se debe tener en claro dos cosas: `dfr[row, column]`, donde las para las filas se puede acceder por nÃºmero o condiciÃ³n y a las columnas por nÃºmero o nombre. De manera alternativa para las columnas `dfr$column`
 
 ```{r}
 dfr1[1,]   
@@ -732,7 +730,7 @@ dfr1[1:2,3:4]
 dfr1[c(1,3),] 
 ```
 
-Para encontrar los nombres de todos quienes son mayores de 30 años:
+Para encontrar los nombres de todos quienes son mayores de 30 aÃ±os:
 
 ```{r}
 dfr1[dfr1$Age>30,2]
@@ -746,17 +744,17 @@ mean(dfr1[dfr1$Female==TRUE,4])
 
 ## Tidyverse
 
-Como parte de los desarrollo de [Hadley Wickham](http://hadley.nz/), la librería [`tidyverse`](https://www.tidyverse.org/), corresponde a un ecosistema orientado a las ciencias de datos, con paquetes que comparten la orientación de trabajo en relación a los datos.
+Como parte de los desarrollo de [Hadley Wickham](http://hadley.nz/), la librerÃ­a [`tidyverse`](https://www.tidyverse.org/), corresponde a un ecosistema orientado a las ciencias de datos, con paquetes que comparten la orientaciÃ³n de trabajo en relaciÃ³n a los datos.
 
-Por ejemplo, permiten la utilización del pipe operator.
+Por ejemplo, permiten la utilizaciÃ³n del pipe operator.
 
 ### Tibbles
 
-Corresponde a la versión de dataframe en `tidyverse`. Se trabaja igual, pero con ciertas mejoras. Se pueden crear de tres maneras:
+Corresponde a la versiÃ³n de dataframe en `tidyverse`. Se trabaja igual, pero con ciertas mejoras. Se pueden crear de tres maneras:
 
 1.  Crear usando `tibble()`
 2.  Usando explicitamente `as_tibble()` en una tabla.
-3.  Cuando se aplica una función de `dplyr` en un dataframe, se convierte a tibble.
+3.  Cuando se aplica una funciÃ³n de `dplyr` en un dataframe, se convierte a tibble.
 
 Vemos la tabla precargada `iris`
 
@@ -779,24 +777,24 @@ Convertirlo en un elemento tibble
 head(as_tibble(iris))
 ```
 
-Comparamos con la creación de un data frame:
+Comparamos con la creaciÃ³n de un data frame:
 
 ```{r}
 tibble(x = 1:5, y = 6:10)
 data.frame(x = 1:5, y = 6:10)
 ```
 
-## Importación y exportación de datos
+## ImportaciÃ³n y exportaciÃ³n de datos
 
-### Importación
+### ImportaciÃ³n
 
-A pesar de que existen múltiples origenes para la obtención de archivos, podemos pensar en un Excel como el típico archivo. Para esto, utilizamos readxl que viene con tidyverse. Podemos ver la librería en la siguiente [`página`](https://readxl.tidyverse.org)
+A pesar de que existen mÃºltiples origenes para la obtenciÃ³n de archivos, podemos pensar en un Excel como el tÃ­pico archivo. Para esto, utilizamos readxl que viene con tidyverse. Podemos ver la librerÃ­a en la siguiente [`pÃ¡gina`](https://readxl.tidyverse.org)
 
-### Exportación
+### ExportaciÃ³n
 
 #### Exportar en Excel
 
-Para esto existen las siguientes librerías:
+Para esto existen las siguientes librerÃ­as:
 
 -   xlsx
 -   openxlsx
@@ -843,7 +841,7 @@ family = binomial(link = "probit"))
 
 ```
 
-A pesar de esto, desde mi opinión stargazer no es una buena opción para exportar tablas en latex. Veamos una solución a esto:
+A pesar de esto, desde mi opiniÃ³n stargazer no es una buena opciÃ³n para exportar tablas en latex. Veamos una soluciÃ³n a esto:
 
 ```{r, eval=FALSE}
 
@@ -874,3 +872,5 @@ tbl_merge(
 as_kable_extra(t1, format = "latex") %>%
   save_kable("modelo_3.tex")
 ```
+
+

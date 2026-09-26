@@ -1,8 +1,6 @@
----
+﻿---
 listing_title: "Clase 04 - Notebook 03"
-title: |
-  | \includegraphics[width=5cm]{Imagen1.jpg}  
-  | Finanzas en R
+title: "Finanzas en R"
 subtitle: Notebook 03
 format:
   html:
@@ -17,8 +15,8 @@ format:
     geometry: margin=1in
 editor: visual
 author:
-  - Sebastián Egaña Santibáñez
-  - Nicolás Leiva Díaz
+  - SebastiÃ¡n EgaÃ±a SantibÃ¡Ã±ez
+  - NicolÃ¡s Leiva DÃ­az
 ---
 
 ------------------------------------------------------------------------
@@ -35,9 +33,9 @@ author:
 
 # Precios de activos financieros utilizando Quantmod
 
-Quantmod es una de las librarías financieras más utilizadas para la obtención de precios.
+Quantmod es una de las librarÃ­as financieras mÃ¡s utilizadas para la obtenciÃ³n de precios.
 
-La manera más simple de obtener precios es la siguiente:
+La manera mÃ¡s simple de obtener precios es la siguiente:
 
 ```{r}
 #| warning: false
@@ -53,9 +51,9 @@ getSymbols("AAPL",
 
 ```
 
-Solo debemos declarar el simbolo (instrumento financiero), el período y la periodicidad del instrumento.
+Solo debemos declarar el simbolo (instrumento financiero), el perÃ­odo y la periodicidad del instrumento.
 
-La librería también posee una forma simple de gráficar las series obtenidas:
+La librerÃ­a tambiÃ©n posee una forma simple de grÃ¡ficar las series obtenidas:
 
 ```{r}
 chartSeries(AAPL, TA=NULL)
@@ -69,7 +67,7 @@ chartSeries(AAPL, subset = "last 3 months")
 
 ```
 
-Para llevar esto a ggplot, deberíamos aplicar algunas funciones convirtiendo el set datos obtenido en un formato adecuado.
+Para llevar esto a ggplot, deberÃ­amos aplicar algunas funciones convirtiendo el set datos obtenido en un formato adecuado.
 
 ```{r}
 df_aapl_dates <- as_tibble(index(AAPL))
@@ -84,13 +82,13 @@ Graficamos:
 ```{r}
 
 g1 <- ggplot(df_aapl) + geom_line(mapping = aes(value, AAPL.Close))
-g1 <- g1 + labs(title = "AAPLE", subtitle = "Año 2010") + 
+g1 <- g1 + labs(title = "AAPLE", subtitle = "AÃ±o 2010") + 
   xlab("Fecha") + ylab("")
 g1 <- g1 + theme_bw()
 g1
 ```
 
-## Múltiples simbolos
+## MÃºltiples simbolos
 
 ```{r}
 tickers <- c("ORCL","AMD","IBM","NVDA")
@@ -124,13 +122,13 @@ g1 <- g1 + theme_bw()
 g1
 ```
 
-Pero esto no tiene mucho sentido, debido a las diferencias de escala de cada una de las acciones. La medida básica de comparación para acciones corresponde a los retornos.
+Pero esto no tiene mucho sentido, debido a las diferencias de escala de cada una de las acciones. La medida bÃ¡sica de comparaciÃ³n para acciones corresponde a los retornos.
 
 # Calcular retornos
 
-La fórmula básica para obtener retorno, corresponde a la variación porcentual:
+La fÃ³rmula bÃ¡sica para obtener retorno, corresponde a la variaciÃ³n porcentual:
 
-$$ r_t = \frac{p_t - p_{t-1}}{p_{t-1}}$$ en Finanzas también se puede trabajar con una expresión logaritmica:
+$$ r_t = \frac{p_t - p_{t-1}}{p_{t-1}}$$ en Finanzas tambiÃ©n se puede trabajar con una expresiÃ³n logaritmica:
 
 $$ r_t = ln( \frac{p_t}{p_{t-1}})$$ Que converge al mismo valor cuando el intervalo tiende a cero.
 
@@ -157,7 +155,7 @@ retornos <- data.frame(apply(precio.cierre, 2, function(x) Delt(x, type = "log")
             na.omit() 
 ```
 
-Veamos algunas diferencias entre cada data set (cargamos la librería vtable para esto):
+Veamos algunas diferencias entre cada data set (cargamos la librerÃ­a vtable para esto):
 
 ```{r}
 #| warning: false
@@ -177,7 +175,7 @@ g1 <- g1 + theme_bw()
 g1
 ```
 
-Podemos también construir un histograma de los retornos:
+Podemos tambiÃ©n construir un histograma de los retornos:
 
 ```{r}
 pl <- ggplot(retornos, aes(x=orcl)) +
@@ -185,7 +183,7 @@ pl <- ggplot(retornos, aes(x=orcl)) +
 pl
 ```
 
-¿Algún comentario sobre la distrubución? Veamos denuevo las medidas de resumen:
+Â¿AlgÃºn comentario sobre la distrubuciÃ³n? Veamos denuevo las medidas de resumen:
 
 ```{r}
 library(vtable)
@@ -216,7 +214,7 @@ g2
 
 # Ejemplo aplicado
 
-Una de las principales medidas de riesgo es el Value at risk o VaR. Se define como "cuál sería la pérdida que solo será excedida en p\*100% veces en los próximos k días". En este sentido, nos preguuntamos por la mayor pérdida que se genera con un x% de probabilidad.
+Una de las principales medidas de riesgo es el Value at risk o VaR. Se define como "cuÃ¡l serÃ­a la pÃ©rdida que solo serÃ¡ excedida en p\*100% veces en los prÃ³ximos k dÃ­as". En este sentido, nos preguuntamos por la mayor pÃ©rdida que se genera con un x% de probabilidad.
 
 Veamos un ejemplo:
 
@@ -236,7 +234,7 @@ FROM <<- "2020-01-01"   # change to Your dates!!!
 TO <<- "2022-12-31"
 ```
 
-Generamos una función para obtener los precios:
+Generamos una funciÃ³n para obtener los precios:
 
 ```{r}
 # preparing one table in common for all the downloaded tickers - You can change 
@@ -273,7 +271,7 @@ Qh <<- VaR(return2_a[,1], p=0.95, method="gaussian")
 Qh
 ```
 
-Cambiamos el método:
+Cambiamos el mÃ©todo:
 
 ```{r}
 Qv <<- VaR(return2_a[,1], p=0.95, method="historical")
@@ -283,7 +281,7 @@ Qv
 
 Para obtener el monto monetario aplicamos la siguiente formula:
 
-$$ VaR (\text{en pesos}) = V_{PF}(1-exp(-VaR)) $$ Asumamos que tenemos una posición de 2.000.000:
+$$ VaR (\text{en pesos}) = V_{PF}(1-exp(-VaR)) $$ Asumamos que tenemos una posiciÃ³n de 2.000.000:
 
 ```{r}
 2000000 * (1 - exp(-Qh))
@@ -291,10 +289,12 @@ $$ VaR (\text{en pesos}) = V_{PF}(1-exp(-VaR)) $$ Asumamos que tenemos una posic
 
 # Referencias:
 
--   Gabriel Cabrera G., Introducción a las finanzas quantitativas, https://finance-r.netlify.app
+-   Gabriel Cabrera G., IntroducciÃ³n a las finanzas quantitativas, https://finance-r.netlify.app
 
 -   https://rpubs.com/gazdavladimir/1039600
 
 -   https://www.r-bloggers.com/2022/02/nonparametric-value-at-risk-var/
 
 -   https://www.youtube.com/watch?v=0N7XBk7YA5A&list=PLJqpMAAwcLuus0FqGByq8FC3ukwYcJz7A&index=24&t=151s
+
+
