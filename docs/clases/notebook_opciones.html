@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Sebastián Egaña Santibáñez ">
-<meta name="author" content="Nicolás Leiva Díaz ">
+<meta name="author" content="SebastiÃ¡n EgaÃ±a SantibÃ¡Ã±ez ">
+<meta name="author" content="NicolÃ¡s Leiva DÃ­az ">
 
-<title>quarto-inputd4765013bab1dd16 – Curso Finanzas en R</title>
+<title>notebook_opciones – Curso Finanzas en R</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -79,7 +79,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-349e9611d7ce437f8276b20f376ddbca.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-a0f9fd0d421825b736dc1bbcbcba2219.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -169,20 +169,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#enlaces-del-profesor" id="toc-enlaces-del-profesor" class="nav-link active" data-scroll-target="#enlaces-del-profesor">Enlaces del profesor</a></li>
   <li><a href="#opciones" id="toc-opciones" class="nav-link" data-scroll-target="#opciones">Opciones</a>
   <ul class="collapse">
-  <li><a href="#definición" id="toc-definición" class="nav-link" data-scroll-target="#definición">Definición</a></li>
+  <li><a href="#definiciã³n" id="toc-definiciã³n" class="nav-link" data-scroll-target="#definiciã³n">DefiniciÃ³n</a></li>
   <li><a href="#ejemplo-mineral-de-hierro." id="toc-ejemplo-mineral-de-hierro." class="nav-link" data-scroll-target="#ejemplo-mineral-de-hierro.">Ejemplo: Mineral de Hierro.</a></li>
   </ul></li>
   <li><a href="#b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c20666120726567756c6172206c6967687462756c622073697a653d6e6f726d616c73697a65203e7d7d-preguntas" id="toc-b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c20666120726567756c6172206c6967687462756c622073697a653d6e6f726d616c73697a65203e7d7d-preguntas" class="nav-link" data-scroll-target="#b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c20666120726567756c6172206c6967687462756c622073697a653d6e6f726d616c73697a65203e7d7d-preguntas"><i class="fa-regular fa-lightbulb fa-normalsize" aria-label="lightbulb"></i> Preguntas</a></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="notebook_opciones.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><div class="line-block"><br>
-Finanzas en R</div></h1>
+<h1 class="title">Finanzas en R</h1>
 <p class="subtitle lead">Opciones</p>
 </div>
 
@@ -193,8 +192,8 @@ Finanzas en R</div></h1>
     <div>
     <div class="quarto-title-meta-heading">Authors</div>
     <div class="quarto-title-meta-contents">
-             <p>Sebastián Egaña Santibáñez <a href="mailto:segana@fen.uchile"><i class="fa-brands fa-inbox" aria-label="inbox"></i></a> </p>
-             <p>Nicolás Leiva Díaz <a href="mailto:nleivad@fen.uchile.cl"><i class="fa-brands fa-inbox" aria-label="inbox"></i></a> </p>
+             <p>SebastiÃ¡n EgaÃ±a SantibÃ¡Ã±ez <a href="mailto:segana@fen.uchile"><i class="fa-brands fa-inbox" aria-label="inbox"></i></a> </p>
+             <p>NicolÃ¡s Leiva DÃ­az <a href="mailto:nleivad@fen.uchile.cl"><i class="fa-brands fa-inbox" aria-label="inbox"></i></a> </p>
           </div>
   </div>
     
@@ -217,26 +216,26 @@ Finanzas en R</div></h1>
 </section>
 <section id="opciones" class="level1">
 <h1>Opciones</h1>
-<section id="definición" class="level2">
-<h2 class="anchored" data-anchor-id="definición">Definición</h2>
-<p>Las opciones según la CMF:</p>
-<p>“Los contratos de opciones sobre activos, son instrumentos financieros estandarizados, que mediante el pago de una prima de la opción, otorgan a su poseedor (comprador o tomador) el derecho, pero no la obligación, de comprar o vender a un precio previamente establecido y durante un plazo prefijado, una cantidad determinada del activo individualizado en el contrato.</p>
-<p>Por otro lado, los vendedores de los contratos de Opciones (o “lanzadores”) tienen la obligación de vender o comprar el activo objeto en los mismos términos anteriormente señalados, en el caso que el comprador (o “tomador”) de las opciones manifieste su deseo de ejecutar la opción.”</p>
+<section id="definiciã³n" class="level2">
+<h2 class="anchored" data-anchor-id="definiciã³n">DefiniciÃ³n</h2>
+<p>Las opciones segÃºn la CMF:</p>
+<p>“Los contratos de opciones sobre activos, son instrumentos financieros estandarizados, que mediante el pago de una prima de la opciÃ³n, otorgan a su poseedor (comprador o tomador) el derecho, pero no la obligaciÃ³n, de comprar o vender a un precio previamente establecido y durante un plazo prefijado, una cantidad determinada del activo individualizado en el contrato.</p>
+<p>Por otro lado, los vendedores de los contratos de Opciones (o “lanzadores”) tienen la obligaciÃ³n de vender o comprar el activo objeto en los mismos tÃ©rminos anteriormente seÃ±alados, en el caso que el comprador (o “tomador”) de las opciones manifieste su deseo de ejecutar la opciÃ³n.”</p>
 <p>En base a los anterior, existe dos tipos de opciones:</p>
 <ol type="1">
-<li><p>Opciones de Compra (Call Options): Una opción de compra le da al comprador el derecho de comprar un activo a un precio fijo, conocido como precio de ejercicio (strike price). Si el precio del activo subyacente aumenta por encima del precio de ejercicio, el comprador puede ejercer la opción para obtener una ganancia, comprando el activo al precio de ejercicio más bajo y vendiéndolo al precio de mercado actual. Si el precio del activo está por debajo del precio de ejercicio en la fecha de vencimiento, la opción expira sin valor y el comprador solo pierde la prima pagada por la opción.</p></li>
-<li><p>Opciones de Venta (Put Options): Una opción de venta da al comprador el derecho de vender un activo a un precio fijo (precio de ejercicio). Esta opción se utiliza generalmente para protegerse contra la caída del precio del activo subyacente. Si el precio del activo cae por debajo del precio de ejercicio, el comprador puede ejercer la opción vendiendo el activo al precio de ejercicio, que será mayor que el precio de mercado actual. Si el precio del activo es mayor que el precio de ejercicio en la fecha de vencimiento, la opción expira sin valor.</p></li>
+<li><p>Opciones de Compra (Call Options): Una opciÃ³n de compra le da al comprador el derecho de comprar un activo a un precio fijo, conocido como precio de ejercicio (strike price). Si el precio del activo subyacente aumenta por encima del precio de ejercicio, el comprador puede ejercer la opciÃ³n para obtener una ganancia, comprando el activo al precio de ejercicio mÃ¡s bajo y vendiÃ©ndolo al precio de mercado actual. Si el precio del activo estÃ¡ por debajo del precio de ejercicio en la fecha de vencimiento, la opciÃ³n expira sin valor y el comprador solo pierde la prima pagada por la opciÃ³n.</p></li>
+<li><p>Opciones de Venta (Put Options): Una opciÃ³n de venta da al comprador el derecho de vender un activo a un precio fijo (precio de ejercicio). Esta opciÃ³n se utiliza generalmente para protegerse contra la caÃ­da del precio del activo subyacente. Si el precio del activo cae por debajo del precio de ejercicio, el comprador puede ejercer la opciÃ³n vendiendo el activo al precio de ejercicio, que serÃ¡ mayor que el precio de mercado actual. Si el precio del activo es mayor que el precio de ejercicio en la fecha de vencimiento, la opciÃ³n expira sin valor.</p></li>
 </ol>
 <p>Algunas definiciones:</p>
 <ul>
-<li><p>Prima: El costo de comprar la opción, que el comprador paga al vendedor.</p></li>
-<li><p>Fecha de Vencimiento: La última fecha en la que la opción puede ser ejercida.</p></li>
-<li><p>Precio de Ejercicio: El precio al cual el comprador de la opción puede comprar o vender el activo subyacente.</p></li>
+<li><p>Prima: El costo de comprar la opciÃ³n, que el comprador paga al vendedor.</p></li>
+<li><p>Fecha de Vencimiento: La Ãºltima fecha en la que la opciÃ³n puede ser ejercida.</p></li>
+<li><p>Precio de Ejercicio: El precio al cual el comprador de la opciÃ³n puede comprar o vender el activo subyacente.</p></li>
 <li><p>Americana veruss europea: Las opciones americanas pueden ser ejercidas en cualquier momento del tiempo, mientras que las europeas solo al momento de expirar.</p></li>
 </ul>
-<p>Veamos las aplicaciones gráficas:</p>
+<p>Veamos las aplicaciones grÃ¡ficas:</p>
 <ol type="1">
-<li>Contrato de opción de compra: derecho a comprar a un precio determinado</li>
+<li>Contrato de opciÃ³n de compra: derecho a comprar a un precio determinado</li>
 </ol>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set parameters</span></span>
@@ -269,7 +268,7 @@ Finanzas en R</div></h1>
 </div>
 </div>
 <ol start="2" type="1">
-<li>Contrato de opción de venta: derecho a vender a un precio determinado</li>
+<li>Contrato de opciÃ³n de venta: derecho a vender a un precio determinado</li>
 </ol>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Parameters</span></span>
@@ -303,7 +302,7 @@ Finanzas en R</div></h1>
 </div>
 </div>
 </div>
-<p>Para practicar las visualizaciones, veremos la aplicación de esto en el contexto de derivados financieros y construcción de estrategias.</p>
+<p>Para practicar las visualizaciones, veremos la aplicaciÃ³n de esto en el contexto de derivados financieros y construcciÃ³n de estrategias.</p>
 <p>Por otra parte, se deben definir algunos conceptos:</p>
 <ol type="1">
 <li><p>Precio Strike (k), corresponde al precio negociado en el contrato de opciones.</p></li>
@@ -312,8 +311,8 @@ Finanzas en R</div></h1>
 </section>
 <section id="ejemplo-mineral-de-hierro." class="level2">
 <h2 class="anchored" data-anchor-id="ejemplo-mineral-de-hierro.">Ejemplo: Mineral de Hierro.</h2>
-<p>Al producir el mineral, de manera natural se obtiene una posición larga (tenencia del activo) en el tiempo, lógicamente en la medida que el precio del activo suba, muy probablemente las ganancias de la empresa también; lo mismo en el caso inverso.</p>
-<p>Veamos esto gráficamente:</p>
+<p>Al producir el mineral, de manera natural se obtiene una posiciÃ³n larga (tenencia del activo) en el tiempo, lÃ³gicamente en la medida que el precio del activo suba, muy probablemente las ganancias de la empresa tambiÃ©n; lo mismo en el caso inverso.</p>
+<p>Veamos esto grÃ¡ficamente:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>p2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">100</span>)), <span class="fu">aes</span>(<span class="at">x =</span> x))</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>fun<span class="fl">.2</span> <span class="ot">&lt;-</span> <span class="cf">function</span>(x) x <span class="sc">-</span> <span class="dv">40</span></span>
@@ -324,7 +323,7 @@ Finanzas en R</div></h1>
 <span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">colour =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>, <span class="at">colour =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
 <span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"white"</span>, <span class="at">colour =</span> <span class="st">"grey50"</span>)) <span class="sc">+</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Posición larga en un activo"</span>) </span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"PosiciÃ³n larga en un activo"</span>) </span>
 <span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>p2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
@@ -335,14 +334,14 @@ Finanzas en R</div></h1>
 </div>
 </div>
 </div>
-<p>Existe incertidumbre respecto a la dinámica futura del precio del activo, por esto, la empresa puede buscar disminuir el riesgo de precios a través de la utilización de coberturas.</p>
+<p>Existe incertidumbre respecto a la dinÃ¡mica futura del precio del activo, por esto, la empresa puede buscar disminuir el riesgo de precios a travÃ©s de la utilizaciÃ³n de coberturas.</p>
 <p>Estrategias de coberturas, para el mineral de hierro.</p>
 <ol type="1">
 <li>Coberturas futuros o forwards.</li>
 </ol>
-<p>La diferencia entre un futuro y forward es que el primero se negocia en la bolsa, y el segundo es un OTC (over the counter) o sea, un contrato privado entre dos partes. La estrategia sería la siguiente:</p>
+<p>La diferencia entre un futuro y forward es que el primero se negocia en la bolsa, y el segundo es un OTC (over the counter) o sea, un contrato privado entre dos partes. La estrategia serÃ­a la siguiente:</p>
 <ul>
-<li>Empresa fija un precio de venta o referencia (strike), el cual al menos cubre toda la operación.</li>
+<li>Empresa fija un precio de venta o referencia (strike), el cual al menos cubre toda la operaciÃ³n.</li>
 </ul>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>p3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">100</span>)), <span class="fu">aes</span>(<span class="at">x =</span> x))</span>
@@ -354,7 +353,7 @@ Finanzas en R</div></h1>
 <span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">colour =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>, <span class="at">colour =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
 <span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"white"</span>, <span class="at">colour =</span> <span class="st">"grey50"</span>)) <span class="sc">+</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Posición larga en un activo"</span>) <span class="sc">+</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"PosiciÃ³n larga en un activo"</span>) <span class="sc">+</span></span>
 <span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="dv">40</span>, <span class="at">y=</span><span class="dv">0</span>), <span class="at">colour=</span><span class="st">"blue"</span>, <span class="at">shape=</span><span class="st">"|"</span>, <span class="at">size=</span><span class="dv">10</span>)</span>
 <span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>p3</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -384,7 +383,7 @@ Finanzas en R</div></h1>
 <span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">colour =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
 <span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>, <span class="at">colour =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
 <span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"white"</span>, <span class="at">colour =</span> <span class="st">"grey50"</span>)) <span class="sc">+</span></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Posición corta en un contrato de venta a futuro"</span>) <span class="sc">+</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"PosiciÃ³n corta en un contrato de venta a futuro"</span>) <span class="sc">+</span></span>
 <span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="dv">40</span>, <span class="at">y=</span><span class="dv">0</span>), <span class="at">colour=</span><span class="st">"red"</span>, <span class="at">shape=</span><span class="st">"|"</span>, <span class="at">size=</span><span class="dv">10</span>)</span>
 <span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>p4</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -402,7 +401,7 @@ Finanzas en R</div></h1>
 </div>
 </div>
 <ul>
-<li>Payoff: Precio spot del activo al momento de vencer el contrato es mayor que el precio strike, la empresa gana por la posición larga en el activo. Sin embargo, pierde por el acuerdo de vender a precio strike.</li>
+<li>Payoff: Precio spot del activo al momento de vencer el contrato es mayor que el precio strike, la empresa gana por la posiciÃ³n larga en el activo. Sin embargo, pierde por el acuerdo de vender a precio strike.</li>
 </ul>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>p5 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">100</span>)), <span class="fu">aes</span>(<span class="at">x =</span> x))</span>
@@ -431,7 +430,7 @@ Finanzas en R</div></h1>
 <ol start="2" type="1">
 <li>Coberturas con Opciones.</li>
 </ol>
-<p>Considerando el mismo precio strike, la empresa puede comprar una opción de venta sobre el subyacente.</p>
+<p>Considerando el mismo precio strike, la empresa puede comprar una opciÃ³n de venta sobre el subyacente.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>p6 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">100</span>)), <span class="fu">aes</span>(<span class="at">x =</span> x))</span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>fun<span class="fl">.7</span> <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">pmax</span>(<span class="dv">40</span><span class="sc">*</span><span class="fl">0.9</span> <span class="sc">-</span> x, <span class="sc">-</span><span class="fl">2.2</span>)</span>
@@ -442,7 +441,7 @@ Finanzas en R</div></h1>
 <span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">colour =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
 <span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>, <span class="at">colour =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
 <span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"white"</span>, <span class="at">colour =</span> <span class="st">"grey50"</span>)) <span class="sc">+</span></span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Posición larga en una opción de venta"</span>) </span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"PosiciÃ³n larga en una opciÃ³n de venta"</span>) </span>
 <span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>p6</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
@@ -453,9 +452,9 @@ Finanzas en R</div></h1>
 </div>
 </div>
 </div>
-<p><i class="fa-regular fa-lightbulb fa-normalsize" aria-label="lightbulb"></i> Explicación: estoy obligado a vender cuando el precio del activo es menor al strike, y debo no ejecutar la opción cuando el precio spot es mayor al strike.</p>
-<p>Cuando el precio strike es próximo al spot, el precio de la opción aumenta, lo que se conoce premio por el contrato, que en el fondo es un costo de la estrategia. El premio va a depender de la volatilidad implícita en los contratos, la volatilidad aumenta cuando la diferencia entre el spot y el strike es mayor; por lo tanto, el precio de la opción es menor.</p>
-<p>La opción tiene la ventaja de poder aprovechar las rachas alcistas del precio del activo y limitar las pérdidas asociadas a una racha bajista, funcionando como un seguro. La desventaja es el costo asociado a tomar la opción.</p>
+<p><i class="fa-regular fa-lightbulb fa-normalsize" aria-label="lightbulb"></i> ExplicaciÃ³n: estoy obligado a vender cuando el precio del activo es menor al strike, y debo no ejecutar la opciÃ³n cuando el precio spot es mayor al strike.</p>
+<p>Cuando el precio strike es prÃ³ximo al spot, el precio de la opciÃ³n aumenta, lo que se conoce premio por el contrato, que en el fondo es un costo de la estrategia. El premio va a depender de la volatilidad implÃ­cita en los contratos, la volatilidad aumenta cuando la diferencia entre el spot y el strike es mayor; por lo tanto, el precio de la opciÃ³n es menor.</p>
+<p>La opciÃ³n tiene la ventaja de poder aprovechar las rachas alcistas del precio del activo y limitar las pÃ©rdidas asociadas a una racha bajista, funcionando como un seguro. La desventaja es el costo asociado a tomar la opciÃ³n.</p>
 <p>Veamos la estrategia:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>p7 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">100</span>)), <span class="fu">aes</span>(<span class="at">x =</span> x))</span>
@@ -479,8 +478,8 @@ Finanzas en R</div></h1>
 </div>
 </div>
 <ul>
-<li><p>Precio del activo mayor que el spot, no se ejerce la opción de venta, y se gana por la parte del activo. A pesar de esto, se debe considerar que la opción tuvo un valor.</p></li>
-<li><p>Precio del activo menor que el spot, se ejerce la opción, y se pierde porque hay que salir a vender el activo.</p></li>
+<li><p>Precio del activo mayor que el spot, no se ejerce la opciÃ³n de venta, y se gana por la parte del activo. A pesar de esto, se debe considerar que la opciÃ³n tuvo un valor.</p></li>
+<li><p>Precio del activo menor que el spot, se ejerce la opciÃ³n, y se pierde porque hay que salir a vender el activo.</p></li>
 </ul>
 <p>Esto implica el siguiente payoff:</p>
 <div class="cell">
@@ -510,8 +509,8 @@ Finanzas en R</div></h1>
 </div>
 </div>
 </div>
-<p><i class="fa-regular fa-lightbulb fa-normalsize" aria-label="lightbulb"></i> Recordar que la opción solo se ejerce cuando conviene. Esto obviamente depende de la posición y la opción que se posea.</p>
-<p>La estrategia puede ser autofinanciada agregando a lo anterior la venta de una opción de compra. En términos gráficos:</p>
+<p><i class="fa-regular fa-lightbulb fa-normalsize" aria-label="lightbulb"></i> Recordar que la opciÃ³n solo se ejerce cuando conviene. Esto obviamente depende de la posiciÃ³n y la opciÃ³n que se posea.</p>
+<p>La estrategia puede ser autofinanciada agregando a lo anterior la venta de una opciÃ³n de compra. En tÃ©rminos grÃ¡ficos:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>p9 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">100</span>)), <span class="fu">aes</span>(<span class="at">x =</span> x))</span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>fun<span class="fl">.9</span> <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">pmin</span>(<span class="fl">43.2</span> <span class="sc">-</span> x, <span class="fl">2.2</span>)</span>
@@ -522,7 +521,7 @@ Finanzas en R</div></h1>
 <span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">colour =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
 <span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>, <span class="at">colour =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
 <span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"white"</span>, <span class="at">colour =</span> <span class="st">"grey50"</span>)) <span class="sc">+</span></span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"Posición corta en una opción de compra"</span>) </span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggtitle</span>(<span class="st">"PosiciÃ³n corta en una opciÃ³n de compra"</span>) </span>
 <span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>p9</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
@@ -533,7 +532,7 @@ Finanzas en R</div></h1>
 </div>
 </div>
 </div>
-<p><i class="fa-regular fa-lightbulb fa-normalsize" aria-label="lightbulb"></i> Una posición corta en una opción de compra, implica que yo le doy el derecho a un tercero de que me compre un activo. Por esto, cuando el precio spot sea menor que el strike, el tercero no ejercerá la opción de compra y comprará en el mercado. Por el contrario, en el caso de que el precio spot sea mayor que el precio strike, me generará una pérdida debido a que estaré obligado a venderle a un precio inferior al de mercado.</p>
+<p><i class="fa-regular fa-lightbulb fa-normalsize" aria-label="lightbulb"></i> Una posiciÃ³n corta en una opciÃ³n de compra, implica que yo le doy el derecho a un tercero de que me compre un activo. Por esto, cuando el precio spot sea menor que el strike, el tercero no ejercerÃ¡ la opciÃ³n de compra y comprarÃ¡ en el mercado. Por el contrario, en el caso de que el precio spot sea mayor que el precio strike, me generarÃ¡ una pÃ©rdida debido a que estarÃ© obligado a venderle a un precio inferior al de mercado.</p>
 <p>Esto implica la siguiente estrategia:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>p10 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">100</span>)), <span class="fu">aes</span>(<span class="at">x =</span> x))</span>
@@ -557,7 +556,7 @@ Finanzas en R</div></h1>
 </div>
 </div>
 </div>
-<p>En relación al payoff:</p>
+<p>En relaciÃ³n al payoff:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>p11 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="fu">data.frame</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">75</span>)), <span class="fu">aes</span>(<span class="at">x =</span> x))</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>fun<span class="fl">.10</span> <span class="ot">&lt;-</span> <span class="cf">function</span>(x) <span class="fu">ifelse</span>( x<span class="sc">&lt;</span><span class="dv">36</span>, <span class="sc">-</span><span class="fl">1.8</span>,</span>
@@ -585,7 +584,7 @@ Finanzas en R</div></h1>
 </section>
 <section id="b58fc729-690b-4000-b19f-365a4093b2ff7b7b3c20666120726567756c6172206c6967687462756c622073697a653d6e6f726d616c73697a65203e7d7d-preguntas" class="level1">
 <h1><i class="fa-regular fa-lightbulb fa-normalsize" aria-label="lightbulb"></i> Preguntas</h1>
-<p>¿Qué problemas ve en las estrategias antes mencionadas?</p>
+<p>Â¿QuÃ© problemas ve en las estrategias antes mencionadas?</p>
 
 
 </section>

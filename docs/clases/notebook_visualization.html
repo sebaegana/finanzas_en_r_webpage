@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Sebastián Egaña Santibáñez ">
-<meta name="author" content="Nicolás Leiva Díaz ">
+<meta name="author" content="SebastiÃ¡n EgaÃ±a SantibÃ¡Ã±ez ">
+<meta name="author" content="NicolÃ¡s Leiva DÃ­az ">
 
-<title>quarto-inputd7129c249ea2075f – Curso Finanzas en R</title>
+<title>notebook_visualization – Curso Finanzas en R</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -79,7 +79,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-349e9611d7ce437f8276b20f376ddbca.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-a0f9fd0d421825b736dc1bbcbcba2219.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -167,27 +167,26 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#enlaces-del-profesor" id="toc-enlaces-del-profesor" class="nav-link active" data-scroll-target="#enlaces-del-profesor">Enlaces del profesor</a></li>
-  <li><a href="#visualización-en-r" id="toc-visualización-en-r" class="nav-link" data-scroll-target="#visualización-en-r">Visualización en R</a></li>
+  <li><a href="#visualizaciã³n-en-r" id="toc-visualizaciã³n-en-r" class="nav-link" data-scroll-target="#visualizaciã³n-en-r">VisualizaciÃ³n en R</a></li>
   <li><a href="#actividad" id="toc-actividad" class="nav-link" data-scroll-target="#actividad">Actividad</a></li>
-  <li><a href="#reflexiones-sobre-cómo-visualizar" id="toc-reflexiones-sobre-cómo-visualizar" class="nav-link" data-scroll-target="#reflexiones-sobre-cómo-visualizar">Reflexiones sobre cómo visualizar</a>
+  <li><a href="#reflexiones-sobre-cã³mo-visualizar" id="toc-reflexiones-sobre-cã³mo-visualizar" class="nav-link" data-scroll-target="#reflexiones-sobre-cã³mo-visualizar">Reflexiones sobre cÃ³mo visualizar</a>
   <ul class="collapse">
   <li><a href="#lo-que-no-se-debe-hacer-y-lo-que-se-debe-hacer." id="toc-lo-que-no-se-debe-hacer-y-lo-que-se-debe-hacer." class="nav-link" data-scroll-target="#lo-que-no-se-debe-hacer-y-lo-que-se-debe-hacer.">Lo que no se debe hacer y lo que se debe hacer.</a></li>
-  <li><a href="#feo-malo-y-malísimo-wilke-2019." id="toc-feo-malo-y-malísimo-wilke-2019." class="nav-link" data-scroll-target="#feo-malo-y-malísimo-wilke-2019.">Feo, malo y malísimo (Wilke, 2019).</a></li>
-  <li><a href="#la-intencionalidad-detrás-del-gráfico." id="toc-la-intencionalidad-detrás-del-gráfico." class="nav-link" data-scroll-target="#la-intencionalidad-detrás-del-gráfico.">La intencionalidad detrás del gráfico.</a></li>
+  <li><a href="#feo-malo-y-malãsimo-wilke-2019." id="toc-feo-malo-y-malãsimo-wilke-2019." class="nav-link" data-scroll-target="#feo-malo-y-malãsimo-wilke-2019.">Feo, malo y malÃ­simo (Wilke, 2019).</a></li>
+  <li><a href="#la-intencionalidad-detrãs-del-grãfico." id="toc-la-intencionalidad-detrãs-del-grãfico." class="nav-link" data-scroll-target="#la-intencionalidad-detrãs-del-grãfico.">La intencionalidad detrÃ¡s del grÃ¡fico.</a></li>
   </ul></li>
-  <li><a href="#la-visualización-ideal-en-seis-imagénes-roam-2016." id="toc-la-visualización-ideal-en-seis-imagénes-roam-2016." class="nav-link" data-scroll-target="#la-visualización-ideal-en-seis-imagénes-roam-2016.">La visualización ideal en seis imagénes (Roam, 2016).</a></li>
+  <li><a href="#la-visualizaciã³n-ideal-en-seis-imagãnes-roam-2016." id="toc-la-visualizaciã³n-ideal-en-seis-imagãnes-roam-2016." class="nav-link" data-scroll-target="#la-visualizaciã³n-ideal-en-seis-imagãnes-roam-2016.">La visualizaciÃ³n ideal en seis imagÃ©nes (Roam, 2016).</a></li>
   <li><a href="#storytelling-with-data" id="toc-storytelling-with-data" class="nav-link" data-scroll-target="#storytelling-with-data">Storytelling with data</a></li>
   <li><a href="#referencias" id="toc-referencias" class="nav-link" data-scroll-target="#referencias">Referencias</a></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="notebook_visualization.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><div class="line-block"><br>
-Finanzas en R</div></h1>
+<h1 class="title">Finanzas en R</h1>
 <p class="subtitle lead">Visualization</p>
 </div>
 
@@ -198,8 +197,8 @@ Finanzas en R</div></h1>
     <div>
     <div class="quarto-title-meta-heading">Authors</div>
     <div class="quarto-title-meta-contents">
-             <p>Sebastián Egaña Santibáñez <a href="mailto:segana@fen.uchile"><i class="fa-brands fa-inbox" aria-label="inbox"></i></a> </p>
-             <p>Nicolás Leiva Díaz <a href="mailto:nleivad@fen.uchile.cl"><i class="fa-brands fa-inbox" aria-label="inbox"></i></a> </p>
+             <p>SebastiÃ¡n EgaÃ±a SantibÃ¡Ã±ez <a href="mailto:segana@fen.uchile"><i class="fa-brands fa-inbox" aria-label="inbox"></i></a> </p>
+             <p>NicolÃ¡s Leiva DÃ­az <a href="mailto:nleivad@fen.uchile.cl"><i class="fa-brands fa-inbox" aria-label="inbox"></i></a> </p>
           </div>
   </div>
     
@@ -220,18 +219,18 @@ Finanzas en R</div></h1>
 <p><a href="https://www.linkedin.com/in/sebastian-egana-santibanez/"><i class="fa-brands fa-linkedin" aria-label="linkedin"></i></a> https://www.linkedin.com/in/sebastian-egana-santibanez/</p>
 <hr>
 </section>
-<section id="visualización-en-r" class="level1">
-<h1>Visualización en R</h1>
-<p>La principal librería para fines de visualización corresponde a GGPLOT2. Crearemos un gráfico simple utilizando la librería ggplot2<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
+<section id="visualizaciã³n-en-r" class="level1">
+<h1>VisualizaciÃ³n en R</h1>
+<p>La principal librerÃ­a para fines de visualizaciÃ³n corresponde a GGPLOT2. Crearemos un grÃ¡fico simple utilizando la librerÃ­a ggplot2<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
 <p>Revisemos el Cheatsheet asociado:</p>
 <p></p>
-<p>La construcción de un gráfico utilizando GGPLOT2 se realiza a través de los siguientes elementos:</p>
+<p>La construcciÃ³n de un grÃ¡fico utilizando GGPLOT2 se realiza a travÃ©s de los siguientes elementos:</p>
 <ol type="1">
 <li>Un set de datos.</li>
 <li>Un sistema de coordenadas.</li>
-<li>Figuras geométricas (geoms) o representaciones visuales de los datos.</li>
+<li>Figuras geomÃ©tricas (geoms) o representaciones visuales de los datos.</li>
 </ol>
-<p>Para cambiar la forma en que se muestran los datos se pueden editar las figuras geométricas (geoms), cambiando color, tamaño y la ubicación de los puntos en x y/o en y.</p>
+<p>Para cambiar la forma en que se muestran los datos se pueden editar las figuras geomÃ©tricas (geoms), cambiando color, tamaÃ±o y la ubicaciÃ³n de los puntos en x y/o en y.</p>
 <p>Inclusive se plantea una plantilla para esto:</p>
 <pre><code>ggplot (data = &lt;DATA&gt; ) +
  &lt;GEOM_FUNCTION&gt; (mapping = aes( &lt;MAPPINGS&gt; ),
@@ -240,7 +239,7 @@ Finanzas en R</div></h1>
  &lt;FACET_FUNCTION&gt; +
  &lt;SCALE_FUNCTION&gt; +
  &lt;THEME_FUNCTION&gt;</code></pre>
-<p>En donde las dos primeras líneas son ogligatoias.</p>
+<p>En donde las dos primeras lÃ­neas son ogligatoias.</p>
 <p>Apliquemos esto a los datos importados. Referencia relevante para esta parte </p>
 <ol type="1">
 <li>Asignamos el set de datos:</li>
@@ -275,10 +274,10 @@ Finanzas en R</div></h1>
 </div>
 </div>
 <ul>
-<li>Cabe mencionar, que cada elemento que se agrega dentro de un gráfico en GGPLOT2, se realiza utilizando el signo “+” (cómo ir añadiendo capas).</li>
+<li>Cabe mencionar, que cada elemento que se agrega dentro de un grÃ¡fico en GGPLOT2, se realiza utilizando el signo “+” (cÃ³mo ir aÃ±adiendo capas).</li>
 </ul>
 <ol start="3" type="1">
-<li>Declaremos ahora el tipo de figura, Por ejemplo, para un gráfico de barras el sistema de coordenadas solo debe contener el eje x (el eje y viene dado por el conteo de las ocurrencias):</li>
+<li>Declaremos ahora el tipo de figura, Por ejemplo, para un grÃ¡fico de barras el sistema de coordenadas solo debe contener el eje x (el eje y viene dado por el conteo de las ocurrencias):</li>
 </ol>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(data) <span class="sc">+</span> <span class="fu">aes</span>(<span class="at">x =</span> sexo) <span class="sc">+</span> <span class="fu">geom_bar</span>()</span>
@@ -292,7 +291,7 @@ Finanzas en R</div></h1>
 </div>
 </div>
 </div>
-<p>Podemos voltear el gráfico, y agregar diferenciación en base a otra variable:</p>
+<p>Podemos voltear el grÃ¡fico, y agregar diferenciaciÃ³n en base a otra variable:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(data) <span class="sc">+</span> <span class="fu">aes</span>(<span class="at">y =</span> sexo) <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">fill =</span> afectacion))</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -305,7 +304,7 @@ Finanzas en R</div></h1>
 </div>
 </div>
 </div>
-<p>Podríamos graficar de manera separada cada columna, en base a esta página :</p>
+<p>PodrÃ­amos graficar de manera separada cada columna, en base a esta pÃ¡gina :</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(data) <span class="sc">+</span> <span class="fu">aes</span>(<span class="at">y =</span> sexo, <span class="at">fill =</span> afectacion) <span class="sc">+</span> </span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">position=</span><span class="fu">position_dodge</span>())</span>
@@ -323,15 +322,15 @@ Finanzas en R</div></h1>
 </section>
 <section id="actividad" class="level1">
 <h1>Actividad</h1>
-<p>Repliquemos los gráficos en el siguiente enlace.</p>
+<p>Repliquemos los grÃ¡ficos en el siguiente enlace.</p>
 <p></p>
 <hr>
 </section>
-<section id="reflexiones-sobre-cómo-visualizar" class="level1">
-<h1>Reflexiones sobre cómo visualizar</h1>
-<p>La visualización, es en parte un arte y en parte una ciencia (Wilke, 2019).</p>
-<p>La relevancia de la visualización se genera como una aproximación visual resumida a los datos. El problema, es que no todas las visualizaciones son buenas, en otras palabras no todos los gráficos son construidos de manera correcta.</p>
-<p>Un buen gráfico no responde necesariamente sobre el ¿cómo se ve?, sino que debe responder a la necesidad de ¿quién lo ve? y ¿por qué lo ve?</p>
+<section id="reflexiones-sobre-cã³mo-visualizar" class="level1">
+<h1>Reflexiones sobre cÃ³mo visualizar</h1>
+<p>La visualizaciÃ³n, es en parte un arte y en parte una ciencia (Wilke, 2019).</p>
+<p>La relevancia de la visualizaciÃ³n se genera como una aproximaciÃ³n visual resumida a los datos. El problema, es que no todas las visualizaciones son buenas, en otras palabras no todos los grÃ¡ficos son construidos de manera correcta.</p>
+<p>Un buen grÃ¡fico no responde necesariamente sobre el Â¿cÃ³mo se ve?, sino que debe responder a la necesidad de Â¿quiÃ©n lo ve? y Â¿por quÃ© lo ve?</p>
 <section id="lo-que-no-se-debe-hacer-y-lo-que-se-debe-hacer." class="level2">
 <h2 class="anchored" data-anchor-id="lo-que-no-se-debe-hacer-y-lo-que-se-debe-hacer.">Lo que no se debe hacer y lo que se debe hacer.</h2>
 <p>Veamos un primer ejemplo:</p>
@@ -341,7 +340,7 @@ Finanzas en R</div></h1>
 <figcaption>Wilke (2019)</figcaption>
 </figure>
 </div>
-<p>¿Qué le parece a usted? ¿es un buen o mal gráfico?</p>
+<p>Â¿QuÃ© le parece a usted? Â¿es un buen o mal grÃ¡fico?</p>
 <p>Otro ejemplo:</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -350,13 +349,13 @@ Finanzas en R</div></h1>
 </figure>
 </div>
 </section>
-<section id="feo-malo-y-malísimo-wilke-2019." class="level2">
-<h2 class="anchored" data-anchor-id="feo-malo-y-malísimo-wilke-2019.">Feo, malo y malísimo (Wilke, 2019).</h2>
-<p>Un gráfico puede tener tres errores:</p>
+<section id="feo-malo-y-malãsimo-wilke-2019." class="level2">
+<h2 class="anchored" data-anchor-id="feo-malo-y-malãsimo-wilke-2019.">Feo, malo y malÃ­simo (Wilke, 2019).</h2>
+<p>Un grÃ¡fico puede tener tres errores:</p>
 <ul>
-<li><p>Feo (Ugly): falla la estética, pudiendo ser claro e informativo.</p></li>
-<li><p>Malo (Bad): problemas de percepción en el gráfico, pudiendo ser poco claro, confuso o engañoso.</p></li>
-<li><p>Malísimo (Wrong): existen errores matemáticos detrás del gráfico.</p></li>
+<li><p>Feo (Ugly): falla la estÃ©tica, pudiendo ser claro e informativo.</p></li>
+<li><p>Malo (Bad): problemas de percepciÃ³n en el grÃ¡fico, pudiendo ser poco claro, confuso o engaÃ±oso.</p></li>
+<li><p>MalÃ­simo (Wrong): existen errores matemÃ¡ticos detrÃ¡s del grÃ¡fico.</p></li>
 </ul>
 <p>De manera aplicada:</p>
 <div class="quarto-figure quarto-figure-center">
@@ -365,7 +364,7 @@ Finanzas en R</div></h1>
 <figcaption>Wilke (2019)</figcaption>
 </figure>
 </div>
-<p>Un ejemplo más realista de lo antes mencionado. Este gráfico, ¿está feo, malo o malísimo?</p>
+<p>Un ejemplo mÃ¡s realista de lo antes mencionado. Este grÃ¡fico, Â¿estÃ¡ feo, malo o malÃ­simo?</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="imagenes/graph_06.jpg" class="img-fluid figure-img" style="width:70.0%"></p>
@@ -373,8 +372,8 @@ Finanzas en R</div></h1>
 </figure>
 </div>
 </section>
-<section id="la-intencionalidad-detrás-del-gráfico." class="level2">
-<h2 class="anchored" data-anchor-id="la-intencionalidad-detrás-del-gráfico.">La intencionalidad detrás del gráfico.</h2>
+<section id="la-intencionalidad-detrãs-del-grãfico." class="level2">
+<h2 class="anchored" data-anchor-id="la-intencionalidad-detrãs-del-grãfico.">La intencionalidad detrÃ¡s del grÃ¡fico.</h2>
 <p>Dos maneras distintas de graficar lo mismo: una mejor que otra.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -390,15 +389,15 @@ Finanzas en R</div></h1>
 </div>
 </section>
 </section>
-<section id="la-visualización-ideal-en-seis-imagénes-roam-2016." class="level1">
-<h1>La visualización ideal en seis imagénes (Roam, 2016).</h1>
+<section id="la-visualizaciã³n-ideal-en-seis-imagãnes-roam-2016." class="level1">
+<h1>La visualizaciÃ³n ideal en seis imagÃ©nes (Roam, 2016).</h1>
 <ol type="1">
-<li><p>Who and what is involved (¿Quién o qué está involucrado?): Se debe iniciar con un resumen visual sobre lo que se hablará.</p></li>
-<li><p>How many are involved (¿Qué cantidad está involucrada?): Se deben generar medidas cuantitativas de lo hablado. Cambios en los números también son relevantes.</p></li>
-<li><p>Where the pieces are located (¿Dónde se ubica?): Presentar alguna relación visual entre lo hablado y su ubicación.</p></li>
-<li><p>When things occur (¿Cuándo ocurre?): Mostrar algo relacionado con la temporalidad o la secuencia de los eventos en las que ocurren las interacciones relevantes.</p></li>
-<li><p>How things impact each other (¿Cómo las cosas se relacionan?): Generar una visualización que presente la relación causa - efecto que afectan lo mostrado anteriormente.</p></li>
-<li><p>Why this matters (¿Por qué es importante?): Se debe concluir visualizado anteriormente.</p></li>
+<li><p>Who and what is involved (Â¿QuiÃ©n o quÃ© estÃ¡ involucrado?): Se debe iniciar con un resumen visual sobre lo que se hablarÃ¡.</p></li>
+<li><p>How many are involved (Â¿QuÃ© cantidad estÃ¡ involucrada?): Se deben generar medidas cuantitativas de lo hablado. Cambios en los nÃºmeros tambiÃ©n son relevantes.</p></li>
+<li><p>Where the pieces are located (Â¿DÃ³nde se ubica?): Presentar alguna relaciÃ³n visual entre lo hablado y su ubicaciÃ³n.</p></li>
+<li><p>When things occur (Â¿CuÃ¡ndo ocurre?): Mostrar algo relacionado con la temporalidad o la secuencia de los eventos en las que ocurren las interacciones relevantes.</p></li>
+<li><p>How things impact each other (Â¿CÃ³mo las cosas se relacionan?): Generar una visualizaciÃ³n que presente la relaciÃ³n causa - efecto que afectan lo mostrado anteriormente.</p></li>
+<li><p>Why this matters (Â¿Por quÃ© es importante?): Se debe concluir visualizado anteriormente.</p></li>
 </ol>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -412,14 +411,14 @@ Finanzas en R</div></h1>
 <p>Seis puntos claves:</p>
 <ol type="1">
 <li>Comprender el contexto</li>
-<li>Elegir el gráfico adecuado</li>
+<li>Elegir el grÃ¡fico adecuado</li>
 <li>Eliminar el caos</li>
-<li>Dirija la atención hacía donde le interese</li>
-<li>Piense como un diseñador</li>
+<li>Dirija la atenciÃ³n hacÃ­a donde le interese</li>
+<li>Piense como un diseÃ±ador</li>
 <li>Cuente una historia</li>
 </ol>
-<p>En relación a este enfoque, se puede consutar el siguiente material:</p>
-<p><a href="https://www.storytellingwithdata.com">Página del libro</a></p>
+<p>En relaciÃ³n a este enfoque, se puede consutar el siguiente material:</p>
+<p><a href="https://www.storytellingwithdata.com">PÃ¡gina del libro</a></p>
 </section>
 <section id="referencias" class="level1">
 <h1>Referencias</h1>
@@ -435,7 +434,7 @@ Finanzas en R</div></h1>
 <div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
-<li id="fn1"><p>Recordar instalar y cargar la librería<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p>Recordar instalar y cargar la librerÃ­a<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

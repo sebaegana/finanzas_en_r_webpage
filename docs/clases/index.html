@@ -33,8 +33,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<script src="../site_libs/quarto-listing/list.min.js"></script>
-<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -72,65 +70,7 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-listing_title',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-filename","listing-file-modified"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -182,14 +122,8 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#clases-del-curso" id="toc-clases-del-curso" class="nav-link active" data-scroll-target="#clases-del-curso">Clases del curso</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -213,198 +147,32 @@ window.Quarto = {
 </header>
 
 
-<section id="clases-del-curso" class="level1">
-<h1>Clases del curso</h1>
+<ul>
+<li><a href="notebook_01.html">Clase 01 - Notebook 01</a> — <a href="notebook_01.pdf">PDF</a></li>
+<li><a href="actividad_01.html">Clase 01 - Notebook Actividad 01</a> — <a href="actividad_01.pdf">PDF</a></li>
+<li><a href="notebook_ocr.html">Clase 01 - Notebook OCR</a> — <a href="notebook_ocr.pdf">PDF</a></li>
+<li><a href="actividad_programacion.html">Clase 02 - Notebook Actividad Programación</a> — <a href="actividad_programacion.pdf">PDF</a></li>
+<li><a href="notebook_practices.html">Clase 02 - Notebook CICD</a> — <a href="notebook_practices.pdf">PDF</a></li>
+<li><a href="notebook_02.html">Clase 03 - Notebook 02</a> — <a href="notebook_02.pdf">PDF</a></li>
+<li><a href="actividad_03.html">Clase 03 - Notebook Actividad 03</a> — <a href="actividad_03.pdf">PDF</a></li>
+<li><a href="notebook_shiny_applications_test.html">Clase 03 - Notebook Shiny</a> — <a href="notebook_shiny_applications_test.pdf">PDF</a></li>
+<li><a href="notebook_visualization.html">Clase 03 - Notebook Visualizaciones</a> — <a href="notebook_visualization.pdf">PDF</a></li>
+<li><a href="notebook_03.html">Clase 04 - Notebook 03</a> — <a href="notebook_03.pdf">PDF</a></li>
+<li><a href="notebook_opciones.html">Clase 04 - Notebook Opciones</a> — <a href="notebook_opciones.pdf">PDF</a></li>
+<li><a href="notebook_simulacion.html">Clase 04 - Notebook Simulaciones</a> — <a href="notebook_simulacion.pdf">PDF</a></li>
+<li><a href="notebook_technical_analysis_test.html">Clase 05 - Notebook Análisis Técnico</a> — <a href="notebook_technical_analysis_test.pdf">PDF</a></li>
+<li><a href="notebook_optimization_test.html">Clase 05 - Notebook Optimization</a> — <a href="notebook_optimization_test.pdf">PDF</a></li>
+<li><a href="notebook_regresion.html">Clase 05 - Notebook Regresión Lineal</a> — <a href="notebook_regresion.pdf">PDF</a></li>
+<li><a href="notebook_documents.html">Clase 07 - Notebook Documentos</a> — <a href="notebook_documents.pdf">PDF</a></li>
+<li><a href="actividad_02.html">Revisar - Clase 01 - Notebook Actividad 02</a> — <a href="actividad_02.pdf">PDF</a></li>
+<li><a href="notebook_dates.html">Revisar - Clase 01 - Notebook Dates</a> — <a href="notebook_dates.pdf">PDF</a></li>
+<li><a href="notebook_exer_01.html">Revisar - Clase 02 - Notebook Ejercicio 01</a> — <a href="notebook_exer_01.pdf">PDF</a></li>
+<li><a href="notebook_exer_02.html">Revisar - Clase 03 - Notebook Ejercicio 02</a> — <a href="notebook_exer_02.pdf">PDF</a></li>
+</ul>
 
 
 
-</section>
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-listing-file-modified-sort="1790375685080">
-<div class="body">
-
-</div>
-<div class="metadata">
-<a href="../clases\actividad_01.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-listing-file-modified-sort="1790375691456">
-<div class="body">
-
-</div>
-<div class="metadata">
-<a href="../clases\actividad_02.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-listing-file-modified-sort="1790375722638">
-<div class="body">
-
-</div>
-<div class="metadata">
-<a href="../clases\actividad_03.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="3" data-listing-file-modified-sort="1790375729088">
-<div class="body">
-
-</div>
-<div class="metadata">
-<a href="../clases\actividad_programacion.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="4" data-listing-file-modified-sort="1790371756497">
-<div class="body">
-
-</div>
-<div class="metadata">
-<a href="../clases\notebook_01.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="5" data-listing-file-modified-sort="1790375654672">
-<div class="body">
-
-</div>
-<div class="metadata">
-<a href="../clases\notebook_02.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="6" data-listing-file-modified-sort="1790371787436">
-<div class="body">
-
-</div>
-<div class="metadata">
-<a href="../clases\notebook_03.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="7" data-listing-file-modified-sort="1790371795449">
-<div class="body">
-
-</div>
-<div class="metadata">
-<a href="../clases\notebook_dates.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="8" data-listing-file-modified-sort="1790371796001">
-<div class="body">
-
-</div>
-<div class="metadata">
-<a href="../clases\notebook_documents.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="9" data-listing-file-modified-sort="1790371802601">
-<div class="body">
-
-</div>
-<div class="metadata">
-<a href="../clases\notebook_exer_01.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="10" data-listing-file-modified-sort="1790371810308">
-<div class="body">
-
-</div>
-<div class="metadata">
-<a href="../clases\notebook_exer_02.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="11" data-listing-file-modified-sort="1790371816690">
-<div class="body">
-
-</div>
-<div class="metadata">
-<a href="../clases\notebook_ocr.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="12" data-listing-file-modified-sort="1790371826663">
-<div class="body">
-
-</div>
-<div class="metadata">
-<a href="../clases\notebook_opciones.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="13" data-listing-file-modified-sort="1790371846151">
-<div class="body">
-
-</div>
-<div class="metadata">
-<a href="../clases\notebook_optimization_test.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="14" data-listing-file-modified-sort="1790371852954">
-<div class="body">
-
-</div>
-<div class="metadata">
-<a href="../clases\notebook_practices.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="15" data-listing-file-modified-sort="1790371870531">
-<div class="body">
-
-</div>
-<div class="metadata">
-<a href="../clases\notebook_regresion.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="16" data-listing-file-modified-sort="1790371870990">
-<div class="body">
-
-</div>
-<div class="metadata">
-<a href="../clases\notebook_shiny_applications_test.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="17" data-listing-file-modified-sort="1790371880068">
-<div class="body">
-
-</div>
-<div class="metadata">
-<a href="../clases\notebook_simulacion.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="18" data-listing-file-modified-sort="1790371888554">
-<div class="body">
-
-</div>
-<div class="metadata">
-<a href="../clases\notebook_technical_analysis_test.html" class="no-external">
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="19" data-listing-file-modified-sort="1790371897398">
-<div class="body">
-
-</div>
-<div class="metadata">
-<a href="../clases\notebook_visualization.html" class="no-external">
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

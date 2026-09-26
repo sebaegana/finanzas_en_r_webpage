@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Sebastián Egaña Santibáñez ">
-<meta name="author" content="Nicolás Leiva Díaz ">
+<meta name="author" content="SebastiÃ¡n EgaÃ±a SantibÃ¡Ã±ez ">
+<meta name="author" content="NicolÃ¡s Leiva DÃ­az ">
 
-<title>quarto-inputa008abde7c17929a – Curso Finanzas en R</title>
+<title>notebook_01 – Curso Finanzas en R</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -79,7 +79,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-349e9611d7ce437f8276b20f376ddbca.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-a0f9fd0d421825b736dc1bbcbcba2219.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -171,29 +171,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#hello-world" id="toc-hello-world" class="nav-link" data-scroll-target="#hello-world">Hello World</a></li>
   <li><a href="#variables" id="toc-variables" class="nav-link" data-scroll-target="#variables">Variables</a></li>
-  <li><a href="#librerías-en-r" id="toc-librerías-en-r" class="nav-link" data-scroll-target="#librerías-en-r">Librerías en R</a></li>
-  <li><a href="#ejemplos-de-librerías" id="toc-ejemplos-de-librerías" class="nav-link" data-scroll-target="#ejemplos-de-librerías">Ejemplos de librerías</a>
+  <li><a href="#librerãas-en-r" id="toc-librerãas-en-r" class="nav-link" data-scroll-target="#librerãas-en-r">LibrerÃ­as en R</a></li>
+  <li><a href="#ejemplos-de-librerãas" id="toc-ejemplos-de-librerãas" class="nav-link" data-scroll-target="#ejemplos-de-librerãas">Ejemplos de librerÃ­as</a>
   <ul class="collapse">
   <li><a href="#dplyr" id="toc-dplyr" class="nav-link" data-scroll-target="#dplyr"><font color="black"><strong>Dplyr</strong></font></a></li>
   <li><a href="#ggplot2" id="toc-ggplot2" class="nav-link" data-scroll-target="#ggplot2"><font color="black"><strong>Ggplot2</strong></font></a></li>
   <li><a href="#tidyverse" id="toc-tidyverse" class="nav-link" data-scroll-target="#tidyverse"><font color="black"><strong>Tidyverse</strong></font></a></li>
   </ul></li>
-  <li><a href="#instalación-y-llamado" id="toc-instalación-y-llamado" class="nav-link" data-scroll-target="#instalación-y-llamado">Instalación y llamado</a></li>
+  <li><a href="#instalaciã³n-y-llamado" id="toc-instalaciã³n-y-llamado" class="nav-link" data-scroll-target="#instalaciã³n-y-llamado">InstalaciÃ³n y llamado</a></li>
   <li><a href="#ayuda-en-r" id="toc-ayuda-en-r" class="nav-link" data-scroll-target="#ayuda-en-r">Ayuda en R</a>
   <ul class="collapse">
   <li><a href="#help" id="toc-help" class="nav-link" data-scroll-target="#help">Help</a></li>
-  <li><a href="#páginas" id="toc-páginas" class="nav-link" data-scroll-target="#páginas">Páginas</a></li>
+  <li><a href="#pãginas" id="toc-pãginas" class="nav-link" data-scroll-target="#pãginas">PÃ¡ginas</a></li>
   <li><a href="#google" id="toc-google" class="nav-link" data-scroll-target="#google">Google</a></li>
   </ul></li>
-  <li><a href="#asignación-en-r" id="toc-asignación-en-r" class="nav-link" data-scroll-target="#asignación-en-r">Asignación en R</a></li>
-  <li><a href="#operadores-matemáticos" id="toc-operadores-matemáticos" class="nav-link" data-scroll-target="#operadores-matemáticos">Operadores matemáticos</a></li>
+  <li><a href="#asignaciã³n-en-r" id="toc-asignaciã³n-en-r" class="nav-link" data-scroll-target="#asignaciã³n-en-r">AsignaciÃ³n en R</a></li>
+  <li><a href="#operadores-matemãticos" id="toc-operadores-matemãticos" class="nav-link" data-scroll-target="#operadores-matemãticos">Operadores matemÃ¡ticos</a></li>
   <li><a href="#ejercicio-1" id="toc-ejercicio-1" class="nav-link" data-scroll-target="#ejercicio-1">Ejercicio 1</a>
   <ul class="collapse">
-  <li><a href="#solución" id="toc-solución" class="nav-link" data-scroll-target="#solución">Solución</a></li>
+  <li><a href="#soluciã³n" id="toc-soluciã³n" class="nav-link" data-scroll-target="#soluciã³n">SoluciÃ³n</a></li>
   </ul></li>
   <li><a href="#operadores-relacionales" id="toc-operadores-relacionales" class="nav-link" data-scroll-target="#operadores-relacionales">Operadores relacionales</a></li>
   <li><a href="#ejercicio-2" id="toc-ejercicio-2" class="nav-link" data-scroll-target="#ejercicio-2">Ejercicio 2</a></li>
-  <li><a href="#operadores-lógicos" id="toc-operadores-lógicos" class="nav-link" data-scroll-target="#operadores-lógicos">Operadores lógicos</a></li>
+  <li><a href="#operadores-lã³gicos" id="toc-operadores-lã³gicos" class="nav-link" data-scroll-target="#operadores-lã³gicos">Operadores lÃ³gicos</a></li>
   <li><a href="#input-del-usuario" id="toc-input-del-usuario" class="nav-link" data-scroll-target="#input-del-usuario">Input del usuario</a></li>
   <li><a href="#pipe-operator" id="toc-pipe-operator" class="nav-link" data-scroll-target="#pipe-operator">Pipe operator</a></li>
   <li><a href="#ver-notebook-ejercicios-01" id="toc-ver-notebook-ejercicios-01" class="nav-link" data-scroll-target="#ver-notebook-ejercicios-01">Ver Notebook ejercicios 01</a></li>
@@ -207,29 +207,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#factores" id="toc-factores" class="nav-link" data-scroll-target="#factores">Factores</a></li>
   </ul></li>
   <li><a href="#matrices-y-arreglos" id="toc-matrices-y-arreglos" class="nav-link" data-scroll-target="#matrices-y-arreglos">Matrices y arreglos</a></li>
-  <li><a href="#arreglos-de-dos-o-más-dimensiones" id="toc-arreglos-de-dos-o-más-dimensiones" class="nav-link" data-scroll-target="#arreglos-de-dos-o-más-dimensiones">Arreglos de dos o más dimensiones</a></li>
+  <li><a href="#arreglos-de-dos-o-mãs-dimensiones" id="toc-arreglos-de-dos-o-mãs-dimensiones" class="nav-link" data-scroll-target="#arreglos-de-dos-o-mãs-dimensiones">Arreglos de dos o mÃ¡s dimensiones</a></li>
   <li><a href="#listas" id="toc-listas" class="nav-link" data-scroll-target="#listas">Listas</a></li>
   <li><a href="#data-frames" id="toc-data-frames" class="nav-link" data-scroll-target="#data-frames">Data Frames</a></li>
   <li><a href="#tidyverse-1" id="toc-tidyverse-1" class="nav-link" data-scroll-target="#tidyverse-1">Tidyverse</a>
   <ul class="collapse">
   <li><a href="#tibbles" id="toc-tibbles" class="nav-link" data-scroll-target="#tibbles">Tibbles</a></li>
   </ul></li>
-  <li><a href="#importación-y-exportación-de-datos" id="toc-importación-y-exportación-de-datos" class="nav-link" data-scroll-target="#importación-y-exportación-de-datos">Importación y exportación de datos</a>
+  <li><a href="#importaciã³n-y-exportaciã³n-de-datos" id="toc-importaciã³n-y-exportaciã³n-de-datos" class="nav-link" data-scroll-target="#importaciã³n-y-exportaciã³n-de-datos">ImportaciÃ³n y exportaciÃ³n de datos</a>
   <ul class="collapse">
-  <li><a href="#importación" id="toc-importación" class="nav-link" data-scroll-target="#importación">Importación</a></li>
-  <li><a href="#exportación" id="toc-exportación" class="nav-link" data-scroll-target="#exportación">Exportación</a></li>
+  <li><a href="#importaciã³n" id="toc-importaciã³n" class="nav-link" data-scroll-target="#importaciã³n">ImportaciÃ³n</a></li>
+  <li><a href="#exportaciã³n" id="toc-exportaciã³n" class="nav-link" data-scroll-target="#exportaciã³n">ExportaciÃ³n</a></li>
   </ul></li>
   </ul></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="notebook_01.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><div class="line-block"><br>
-Finanzas en R</div></h1>
+<h1 class="title">Finanzas en R</h1>
 <p class="subtitle lead">Notebook 01</p>
 </div>
 
@@ -240,8 +239,8 @@ Finanzas en R</div></h1>
     <div>
     <div class="quarto-title-meta-heading">Authors</div>
     <div class="quarto-title-meta-contents">
-             <p>Sebastián Egaña Santibáñez <a href="mailto:segana@fen.uchile.cl"><i class="fa-brands fa-inbox" aria-label="inbox"></i></a> </p>
-             <p>Nicolás Leiva Díaz <a href="mailto:nleivad@fen.uchile.cl"><i class="fa-brands fa-inbox" aria-label="inbox"></i></a> </p>
+             <p>SebastiÃ¡n EgaÃ±a SantibÃ¡Ã±ez <a href="mailto:segana@fen.uchile.cl"><i class="fa-brands fa-inbox" aria-label="inbox"></i></a> </p>
+             <p>NicolÃ¡s Leiva DÃ­az <a href="mailto:nleivad@fen.uchile.cl"><i class="fa-brands fa-inbox" aria-label="inbox"></i></a> </p>
           </div>
   </div>
     
@@ -266,10 +265,10 @@ Finanzas en R</div></h1>
 <h1>Clase 01</h1>
 <section id="hello-world" class="level2">
 <h2 class="anchored" data-anchor-id="hello-world">Hello World</h2>
-<p>Un ejercicio clásico, es programar un saludo dentro de cada lenguaje de programación.</p>
-<p>¿Cómo podemos hacer esto en R?</p>
+<p>Un ejercicio clÃ¡sico, es programar un saludo dentro de cada lenguaje de programaciÃ³n.</p>
+<p>Â¿CÃ³mo podemos hacer esto en R?</p>
 <pre><code>print("Hola")</code></pre>
-<p>Para hacerlo en C, deberíamos implementar lo siguiente:</p>
+<p>Para hacerlo en C, deberÃ­amos implementar lo siguiente:</p>
 <pre><code>#include &lt;stdio.h&gt;
 int main() {
    // printf() displays the string inside quotation
@@ -287,7 +286,7 @@ int main() {
 </section>
 <section id="variables" class="level2">
 <h2 class="anchored" data-anchor-id="variables">Variables</h2>
-<p>Cuando se le atribuye un nombre a un elemento dentro de un entorno de programación, a esto se le denomina <strong>variable</strong>. En Python tenemos lo siguiente:</p>
+<p>Cuando se le atribuye un nombre a un elemento dentro de un entorno de programaciÃ³n, a esto se le denomina <strong>variable</strong>. En Python tenemos lo siguiente:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">2</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="dv">5</span></span>
@@ -303,7 +302,7 @@ int main() {
 </div>
 <p>Lo que en R se genera de la siguiente manera:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Inserte código acá</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Inserte cÃ³digo acÃ¡</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">2</span></span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>y <span class="ot">=</span> <span class="dv">5</span></span>
@@ -323,48 +322,48 @@ int main() {
 </div>
 </div>
 </section>
-<section id="librerías-en-r" class="level2">
-<h2 class="anchored" data-anchor-id="librerías-en-r">Librerías en R</h2>
-<p>Dentro de R existen librerías, las que pueden ser definidas como colección de módulos; estos, no son más que bloques de códigos generados para un fin particular.</p>
+<section id="librerãas-en-r" class="level2">
+<h2 class="anchored" data-anchor-id="librerãas-en-r">LibrerÃ­as en R</h2>
+<p>Dentro de R existen librerÃ­as, las que pueden ser definidas como colecciÃ³n de mÃ³dulos; estos, no son mÃ¡s que bloques de cÃ³digos generados para un fin particular.</p>
 </section>
-<section id="ejemplos-de-librerías" class="level2">
-<h2 class="anchored" data-anchor-id="ejemplos-de-librerías">Ejemplos de librerías</h2>
-<p>Algunas de las librerías más conocidas son:</p>
+<section id="ejemplos-de-librerãas" class="level2">
+<h2 class="anchored" data-anchor-id="ejemplos-de-librerãas">Ejemplos de librerÃ­as</h2>
+<p>Algunas de las librerÃ­as mÃ¡s conocidas son:</p>
 <section id="dplyr" class="level3">
 <h3 class="anchored" data-anchor-id="dplyr"><font color="black"><strong>Dplyr</strong></font></h3>
-<p>Librería orientada a la manipulación de datos.</p>
+<p>LibrerÃ­a orientada a la manipulaciÃ³n de datos.</p>
 <p>Cheat Sheet: https://nyu-cdsc.github.io/learningr/assets/data-transformation.pdf</p>
 </section>
 <section id="ggplot2" class="level3">
 <h3 class="anchored" data-anchor-id="ggplot2"><font color="black"><strong>Ggplot2</strong></font></h3>
-<p>Corresponde a la principal librería para graficar.</p>
+<p>Corresponde a la principal librerÃ­a para graficar.</p>
 <p>Cheat Sheet: https://www.maths.usyd.edu.au/u/UG/SM/STAT3022/r/current/Misc/data-visualization-2.1.pdf</p>
 </section>
 <section id="tidyverse" class="level3">
 <h3 class="anchored" data-anchor-id="tidyverse"><font color="black"><strong>Tidyverse</strong></font></h3>
-<p>Biblioteca de librerías orientada a la manipulación de datos.</p>
-<p>Dichas librerías son tres de una gran variedad de librerías que pueden ser utilizadas en R. Lo relevante es que para ser utilizadas se debe generar un proceso de instalación y llamado previo de dichas librerías.</p>
-<p>Otra librerías se pueden encontrar en el siguiente enlace: https://posit.co/resources/cheatsheets/</p>
+<p>Biblioteca de librerÃ­as orientada a la manipulaciÃ³n de datos.</p>
+<p>Dichas librerÃ­as son tres de una gran variedad de librerÃ­as que pueden ser utilizadas en R. Lo relevante es que para ser utilizadas se debe generar un proceso de instalaciÃ³n y llamado previo de dichas librerÃ­as.</p>
+<p>Otra librerÃ­as se pueden encontrar en el siguiente enlace: https://posit.co/resources/cheatsheets/</p>
 </section>
 </section>
-<section id="instalación-y-llamado" class="level2">
-<h2 class="anchored" data-anchor-id="instalación-y-llamado">Instalación y llamado</h2>
-<p>Para la utilización de dichas librerías debemos seguir dos pasos:</p>
+<section id="instalaciã³n-y-llamado" class="level2">
+<h2 class="anchored" data-anchor-id="instalaciã³n-y-llamado">InstalaciÃ³n y llamado</h2>
+<p>Para la utilizaciÃ³n de dichas librerÃ­as debemos seguir dos pasos:</p>
 <ol type="1">
-<li>Instalación.</li>
+<li>InstalaciÃ³n.</li>
 <li>Llamado</li>
 </ol>
-<p>Para la instalación de librerías en R en modalidad local (en el computador) se debe utilizar el siguiente código:</p>
+<p>Para la instalaciÃ³n de librerÃ­as en R en modalidad local (en el computador) se debe utilizar el siguiente cÃ³digo:</p>
 <pre><code>install.packages("nombre del paquete")</code></pre>
-<p>Asumiendo que ya tenemos instalada la librería, cada vez que utilicemos un código de la librería debemos realizar el llamado. Esto se realiza de la siguiente manera:</p>
+<p>Asumiendo que ya tenemos instalada la librerÃ­a, cada vez que utilicemos un cÃ³digo de la librerÃ­a debemos realizar el llamado. Esto se realiza de la siguiente manera:</p>
 <pre><code>install.packages("dplyr")
 library(dplyr)
 
 datos = iris
 
 select(datos, Species)</code></pre>
-<p>En este caso, estamos haciendo un llamado a la librería <strong>dplyr</strong> para utilizar una de sus funciones que corresponde a <strong>select</strong>, la que permite seleccionar una columna de un set de datos llamado <strong>iris</strong>.</p>
-<p>En el caso de utilizar una función de una librería no cargada, generará un error del siguiente tipo: <strong>could not find function</strong>. Por ejemplo:</p>
+<p>En este caso, estamos haciendo un llamado a la librerÃ­a <strong>dplyr</strong> para utilizar una de sus funciones que corresponde a <strong>select</strong>, la que permite seleccionar una columna de un set de datos llamado <strong>iris</strong>.</p>
+<p>En el caso de utilizar una funciÃ³n de una librerÃ­a no cargada, generarÃ¡ un error del siguiente tipo: <strong>could not find function</strong>. Por ejemplo:</p>
 <pre><code>vtree(FakeData,"Severity Sex",sameline=T)</code></pre>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"dplyr"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -373,14 +372,14 @@ select(datos, Species)</code></pre>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Utilizamos la librería</p>
+<p>Utilizamos la librerÃ­a</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># iris corresponde a un set de datos precargado en R</span></span>
 <span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>datos <span class="ot">=</span> iris</span>
 <span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>(datos, Species)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Por ejemplo, si no tenemos cargada una librería:</p>
+<p>Por ejemplo, si no tenemos cargada una librerÃ­a:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -403,23 +402,23 @@ select(datos, Species)</code></pre>
 </div>
 <section id="help" class="level3">
 <h3 class="anchored" data-anchor-id="help">Help</h3>
-<p>Dentro de R, viene considerada la opción de buscar ayuda. Para esto, debemos utilizar el siguiente código:</p>
+<p>Dentro de R, viene considerada la opciÃ³n de buscar ayuda. Para esto, debemos utilizar el siguiente cÃ³digo:</p>
 <pre><code>?print</code></pre>
 </section>
-<section id="páginas" class="level3">
-<h3 class="anchored" data-anchor-id="páginas">Páginas</h3>
-<p>Por lo general, una parte importante de programar es aprender dónde buscar ejemplos y preguntas relacionadas con la labor que queremos programar. Para esto, existen algunas páginas claves:</p>
+<section id="pãginas" class="level3">
+<h3 class="anchored" data-anchor-id="pãginas">PÃ¡ginas</h3>
+<p>Por lo general, una parte importante de programar es aprender dÃ³nde buscar ejemplos y preguntas relacionadas con la labor que queremos programar. Para esto, existen algunas pÃ¡ginas claves:</p>
 <p>W3 Schools : https://www.w3schools.com/r/default.asp</p>
 <p>R para ciencia de datos: https://es.r4ds.hadley.nz/</p>
 <p>Curso free de R en Datacamp: https://www.datacamp.com/courses/free-introduction-to-r</p>
 </section>
 <section id="google" class="level3">
 <h3 class="anchored" data-anchor-id="google">Google</h3>
-<p>Una de las mejores opciones es utilizar Google; poner frases como: <strong>Cómo hacer X en R</strong> o <strong>How to do X in R</strong></p>
+<p>Una de las mejores opciones es utilizar Google; poner frases como: <strong>CÃ³mo hacer X en R</strong> o <strong>How to do X in R</strong></p>
 </section>
 </section>
-<section id="asignación-en-r" class="level2">
-<h2 class="anchored" data-anchor-id="asignación-en-r">Asignación en R</h2>
+<section id="asignaciã³n-en-r" class="level2">
+<h2 class="anchored" data-anchor-id="asignaciã³n-en-r">AsignaciÃ³n en R</h2>
 <p>Se tienen 3 maneras:</p>
 <p>Utilizando <code>=</code></p>
 <div class="cell">
@@ -446,13 +445,13 @@ select(datos, Species)</code></pre>
 </div>
 </div>
 </section>
-<section id="operadores-matemáticos" class="level2">
-<h2 class="anchored" data-anchor-id="operadores-matemáticos">Operadores matemáticos</h2>
-<p>En este caso, R es muy parecido a una calculadora (pero mucho más potente). Veamos cuáles son los operadores dentro de este lenguaje:</p>
+<section id="operadores-matemãticos" class="level2">
+<h2 class="anchored" data-anchor-id="operadores-matemãticos">Operadores matemÃ¡ticos</h2>
+<p>En este caso, R es muy parecido a una calculadora (pero mucho mÃ¡s potente). Veamos cuÃ¡les son los operadores dentro de este lenguaje:</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
-<th style="text-align: center;">Símbolo</th>
+<th style="text-align: center;">SÃ­mbolo</th>
 <th style="text-align: right;">Tarea ejecutada</th>
 </tr>
 </thead>
@@ -467,26 +466,26 @@ select(datos, Species)</code></pre>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">/</td>
-<td style="text-align: right;">División</td>
+<td style="text-align: right;">DivisiÃ³n</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">%%</td>
-<td style="text-align: right;">Módulo</td>
+<td style="text-align: right;">MÃ³dulo</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">*</td>
-<td style="text-align: right;">Multiplicación</td>
+<td style="text-align: right;">MultiplicaciÃ³n</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">%/%</td>
-<td style="text-align: right;">División de enteros</td>
+<td style="text-align: right;">DivisiÃ³n de enteros</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">//</td>
-<td style="text-align: right;">Función de parte entera - Piso</td>
+<td style="text-align: right;">FunciÃ³n de parte entera - Piso</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">** ó ^</td>
+<td style="text-align: center;">** Ã³ ^</td>
 <td style="text-align: right;">Potencia</td>
 </tr>
 </tbody>
@@ -507,11 +506,11 @@ select(datos, Species)</code></pre>
 </section>
 <section id="ejercicio-1" class="level2">
 <h2 class="anchored" data-anchor-id="ejercicio-1">Ejercicio 1</h2>
-<p>Defina x como un número cualquiera. Compruebe que x es par.</p>
-<section id="solución" class="level3">
-<h3 class="anchored" data-anchor-id="solución">Solución</h3>
+<p>Defina x como un nÃºmero cualquiera. Compruebe que x es par.</p>
+<section id="soluciã³n" class="level3">
+<h3 class="anchored" data-anchor-id="soluciã³n">SoluciÃ³n</h3>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># De una manera básica</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># De una manera bÃ¡sica</span></span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">=</span> <span class="dv">10001</span></span>
 <span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a></span>
@@ -525,7 +524,7 @@ select(datos, Species)</code></pre>
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generando una función para esto</span></span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generando una funciÃ³n para esto</span></span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>es_par <span class="ot">&lt;-</span> <span class="cf">function</span>(numero) {</span>
 <span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (numero <span class="sc">%%</span> <span class="dv">2</span> <span class="sc">==</span> <span class="dv">0</span>) {</span>
@@ -552,11 +551,11 @@ select(datos, Species)</code></pre>
 </section>
 <section id="operadores-relacionales" class="level2">
 <h2 class="anchored" data-anchor-id="operadores-relacionales">Operadores relacionales</h2>
-<p>En el caso de operatorias de carácter comparativo, existen los siguientes operadores:</p>
+<p>En el caso de operatorias de carÃ¡cter comparativo, existen los siguientes operadores:</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
-<th style="text-align: center;">Símbolo</th>
+<th style="text-align: center;">SÃ­mbolo</th>
 <th>Tarea ejecutada</th>
 </tr>
 </thead>
@@ -603,22 +602,22 @@ select(datos, Species)</code></pre>
 </section>
 <section id="ejercicio-2" class="level2">
 <h2 class="anchored" data-anchor-id="ejercicio-2">Ejercicio 2</h2>
-<p>Considere el siguiente código</p>
+<p>Considere el siguiente cÃ³digo</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>(z <span class="sc">==</span> <span class="dv">2</span>) <span class="sc">+</span> (z <span class="sc">&gt;=</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1</code></pre>
 </div>
 </div>
-<p>Explique el resultado del código.</p>
+<p>Explique el resultado del cÃ³digo.</p>
 </section>
-<section id="operadores-lógicos" class="level2">
-<h2 class="anchored" data-anchor-id="operadores-lógicos">Operadores lógicos</h2>
-<p>Corresponde a los utilizados para álgebra booleana, es decir para escribir relaciones lógicas:</p>
+<section id="operadores-lã³gicos" class="level2">
+<h2 class="anchored" data-anchor-id="operadores-lã³gicos">Operadores lÃ³gicos</h2>
+<p>Corresponde a los utilizados para Ã¡lgebra booleana, es decir para escribir relaciones lÃ³gicas:</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
-<th style="text-align: center;">Símbolo</th>
+<th style="text-align: center;">SÃ­mbolo</th>
 <th>Tarea ejecutada</th>
 </tr>
 </thead>
@@ -646,7 +645,7 @@ select(datos, Species)</code></pre>
 <h2 class="anchored" data-anchor-id="input-del-usuario">Input del usuario</h2>
 <p>Refiere a la posibilidad de generar interacciones con el usuario.</p>
 <pre><code>readline(prompt="Mi nombre es: ")</code></pre>
-<p>Otra posibilidad, es guardar ese input en una variable y después imprimirlo utilizando print.</p>
+<p>Otra posibilidad, es guardar ese input en una variable y despuÃ©s imprimirlo utilizando print.</p>
 <pre><code>nombre = readline(prompt="Mi nombre es: ")</code></pre>
 <p>Para imprimir:</p>
 <pre><code>print(paste("Hola yo soy", nombre))</code></pre>
@@ -676,9 +675,9 @@ select(datos, Species)</code></pre>
 </section>
 <section id="pipe-operator" class="level2">
 <h2 class="anchored" data-anchor-id="pipe-operator">Pipe operator</h2>
-<p>En programación, se relaciona con el encadenamiento de funciones. Puede estar representado por los siguientes símbolos <code>|</code>, <code>&gt;&gt;</code> o <code>%&gt;%</code></p>
-<p>El tercer caso corresponde a R, y puede ser utilizado a través de shortcut ctrl + shift + m</p>
-<p>Se implementa a través de la librería magrittr. Veamos un ejemplo clásico:</p>
+<p>En programaciÃ³n, se relaciona con el encadenamiento de funciones. Puede estar representado por los siguientes sÃ­mbolos <code>|</code>, <code>&gt;&gt;</code> o <code>%&gt;%</code></p>
+<p>El tercer caso corresponde a R, y puede ser utilizado a travÃ©s de shortcut ctrl + shift + m</p>
+<p>Se implementa a travÃ©s de la librerÃ­a magrittr. Veamos un ejemplo clÃ¡sico:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Example of using the pipe operator in R</span></span>
 <span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(magrittr)</span>
@@ -689,7 +688,7 @@ select(datos, Species)</code></pre>
 <span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Using the pipe operator for the same computation</span></span>
 <span id="cb56-8"><a href="#cb56-8" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">2</span>, <span class="sc">-</span><span class="dv">10</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">8</span>) <span class="sc">%&gt;%</span> <span class="fu">abs</span>() <span class="sc">%&gt;%</span> <span class="fu">log10</span>() <span class="sc">%&gt;%</span> <span class="fu">mean</span>() <span class="sc">%&gt;%</span> <span class="fu">sqrt</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Otra implementación:</p>
+<p>Otra implementaciÃ³n:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">quote</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span> <span class="sc">|&gt;</span> <span class="fu">sum</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -710,7 +709,7 @@ select(datos, Species)</code></pre>
 <pre><code>do.call(lapply(split(x = iris[-5], f = iris$Species), min), what = rbind)</code></pre>
 </div>
 </div>
-<p>Por lo general esta implementación es más restrictiva, por lo mismo, menos usada.</p>
+<p>Por lo general esta implementaciÃ³n es mÃ¡s restrictiva, por lo mismo, menos usada.</p>
 </section>
 <section id="ver-notebook-ejercicios-01" class="level2">
 <h2 class="anchored" data-anchor-id="ver-notebook-ejercicios-01">Ver Notebook ejercicios 01</h2>
@@ -721,7 +720,7 @@ select(datos, Species)</code></pre>
 <h1>Clase 02</h1>
 <section id="special-constants-en-r-na-null-inf--inf-nan" class="level2">
 <h2 class="anchored" data-anchor-id="special-constants-en-r-na-null-inf--inf-nan">Special constants en R: <code>NA</code>, <code>NULL</code>, <code>Inf</code>, <code>-Inf</code>, <code>NaN</code></h2>
-<p><code>NA</code> indica datos pérdidos o indefinidos</p>
+<p><code>NA</code> indica datos pÃ©rdidos o indefinidos</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span> <span class="sc">+</span> <span class="cn">NA</span>      </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -732,7 +731,7 @@ select(datos, Species)</code></pre>
 <pre><code>[1] TRUE</code></pre>
 </div>
 </div>
-<p>Aplicado con la función promedio:</p>
+<p>Aplicado con la funciÃ³n promedio:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>, <span class="cn">NA</span>, <span class="dv">4</span>, <span class="dv">5</span>)) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -743,7 +742,7 @@ select(datos, Species)</code></pre>
 <pre><code>[1] 3</code></pre>
 </div>
 </div>
-<p><code>NULL</code> indica un objeto vacío</p>
+<p><code>NULL</code> indica un objeto vacÃ­o</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="dv">10</span> <span class="sc">+</span> <span class="cn">NULL</span>     </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -754,7 +753,7 @@ select(datos, Species)</code></pre>
 <pre><code>[1] TRUE</code></pre>
 </div>
 </div>
-<p><code>Inf</code> y <code>-Inf</code> representan infinitos tanto positivo como negativo. Pueden ser producto de operatorias matemáticas</p>
+<p><code>Inf</code> y <code>-Inf</code> representan infinitos tanto positivo como negativo. Pueden ser producto de operatorias matemÃ¡ticas</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="dv">5</span><span class="sc">/</span><span class="dv">0</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -802,7 +801,7 @@ select(datos, Species)</code></pre>
 <pre><code>[1]  TRUE  TRUE FALSE</code></pre>
 </div>
 </div>
-<p>Combinar distintos elementos en un vector, genera coerción hacia el elemento más restrictivo</p>
+<p>Combinar distintos elementos en un vector, genera coerciÃ³n hacia el elemento mÃ¡s restrictivo</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb91"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb91-1"><a href="#cb91-1" aria-hidden="true" tabindex="-1"></a>v4 <span class="ot">&lt;-</span> <span class="fu">c</span>(v1,v2,v3,<span class="st">"boo"</span>)     <span class="co"># All elements turn into strings</span></span>
 <span id="cb91-2"><a href="#cb91-2" aria-hidden="true" tabindex="-1"></a>v4</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -840,8 +839,8 @@ length</code></pre>
 <pre><code>[1]  2 12 12 40</code></pre>
 </div>
 </div>
-<section id="operaciones-matemáticas-para-vectores" class="level4">
-<h4 class="anchored" data-anchor-id="operaciones-matemáticas-para-vectores">Operaciones matemáticas para vectores</h4>
+<section id="operaciones-matemãticas-para-vectores" class="level4">
+<h4 class="anchored" data-anchor-id="operaciones-matemãticas-para-vectores">Operaciones matemÃ¡ticas para vectores</h4>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb104"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb104-1"><a href="#cb104-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(v1)      </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -861,8 +860,8 @@ length</code></pre>
 </div>
 </div>
 </section>
-<section id="operaciones-lógicas-con-vectores" class="level4">
-<h4 class="anchored" data-anchor-id="operaciones-lógicas-con-vectores">Operaciones lógicas con vectores</h4>
+<section id="operaciones-lã³gicas-con-vectores" class="level4">
+<h4 class="anchored" data-anchor-id="operaciones-lã³gicas-con-vectores">Operaciones lÃ³gicas con vectores</h4>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb112"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb112-1"><a href="#cb112-1" aria-hidden="true" tabindex="-1"></a>v1 <span class="sc">&gt;</span> <span class="dv">2</span>      </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -886,8 +885,8 @@ length</code></pre>
 </div>
 </div>
 </section>
-<section id="selección-de-elementos-en-un-vector" class="level4">
-<h4 class="anchored" data-anchor-id="selección-de-elementos-en-un-vector">Selección de elementos en un vector</h4>
+<section id="selecciã³n-de-elementos-en-un-vector" class="level4">
+<h4 class="anchored" data-anchor-id="selecciã³n-de-elementos-en-un-vector">SelecciÃ³n de elementos en un vector</h4>
 <p>Seleccionando elementos de un vector:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb122"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb122-1"><a href="#cb122-1" aria-hidden="true" tabindex="-1"></a>v1[<span class="dv">3</span>]             </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -911,8 +910,8 @@ length</code></pre>
 <pre><code>[1]  5 11 33</code></pre>
 </div>
 </div>
-<p>Cabe destacar, que la indexación se hace desde 1; esto no es un comportamiento clásico en lenguajes de programación.</p>
-<p>Para añadir valores, solo se debe anotar la ubicación y los valores.</p>
+<p>Cabe destacar, que la indexaciÃ³n se hace desde 1; esto no es un comportamiento clÃ¡sico en lenguajes de programaciÃ³n.</p>
+<p>Para aÃ±adir valores, solo se debe anotar la ubicaciÃ³n y los valores.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb132"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb132-1"><a href="#cb132-1" aria-hidden="true" tabindex="-1"></a>v1[<span class="dv">6</span><span class="sc">:</span><span class="dv">10</span>] <span class="ot">&lt;-</span> <span class="dv">6</span><span class="sc">:</span><span class="dv">10</span></span>
 <span id="cb132-2"><a href="#cb132-2" aria-hidden="true" tabindex="-1"></a>v1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -920,7 +919,7 @@ length</code></pre>
 <pre><code> [1]  1  5 11 33 NA  6  7  8  9 10</code></pre>
 </div>
 </div>
-<p>Se puede asignar de manera directa una extensión a un vector</p>
+<p>Se puede asignar de manera directa una extensiÃ³n a un vector</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb134"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb134-1"><a href="#cb134-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(v1) <span class="ot">&lt;-</span> <span class="dv">15</span></span>
 <span id="cb134-2"><a href="#cb134-2" aria-hidden="true" tabindex="-1"></a>v1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -932,7 +931,7 @@ length</code></pre>
 </section>
 <section id="factores" class="level3">
 <h3 class="anchored" data-anchor-id="factores">Factores</h3>
-<p>Son utilizados para almacenar datos categóricos.</p>
+<p>Son utilizados para almacenar datos categÃ³ricos.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb136"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb136-1"><a href="#cb136-1" aria-hidden="true" tabindex="-1"></a>eye.col.v <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"brown"</span>, <span class="st">"green"</span>, <span class="st">"brown"</span>, <span class="st">"blue"</span>, <span class="st">"blue"</span>, <span class="st">"blue"</span>)     </span>
 <span id="cb136-2"><a href="#cb136-2" aria-hidden="true" tabindex="-1"></a>eye.col.f <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="st">"brown"</span>, <span class="st">"green"</span>, <span class="st">"brown"</span>, <span class="st">"blue"</span>, <span class="st">"blue"</span>, <span class="st">"blue"</span>)) </span>
@@ -946,7 +945,7 @@ length</code></pre>
 Levels: blue brown green</code></pre>
 </div>
 </div>
-<p>Como carácteristica relevante, los factores si poseen una relación con un valor númerico:</p>
+<p>Como carÃ¡cteristica relevante, los factores si poseen una relaciÃ³n con un valor nÃºmerico:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb140"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb140-1"><a href="#cb140-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span>(eye.col.f)  </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -1028,8 +1027,8 @@ Levels: blue brown green</code></pre>
 [10,]   10   10   10   10   10   10   10   10   10    10</code></pre>
 </div>
 </div>
-<section id="selección-de-elementos-en-una-matriz" class="level4">
-<h4 class="anchored" data-anchor-id="selección-de-elementos-en-una-matriz">Selección de elementos en una matriz:</h4>
+<section id="selecciã³n-de-elementos-en-una-matriz" class="level4">
+<h4 class="anchored" data-anchor-id="selecciã³n-de-elementos-en-una-matriz">SelecciÃ³n de elementos en una matriz:</h4>
 <p>Para seleccionar elementos dentro de una matriz, se opera de manera similar a con los vectores:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb159"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb159-1"><a href="#cb159-1" aria-hidden="true" tabindex="-1"></a>m[<span class="dv">2</span>,<span class="dv">3</span>]  <span class="co"># Matrix m, row 2, column 3 - a single cell</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1138,8 +1137,8 @@ Levels: blue brown green</code></pre>
 </div>
 </section>
 </section>
-<section id="arreglos-de-dos-o-más-dimensiones" class="level2">
-<h2 class="anchored" data-anchor-id="arreglos-de-dos-o-más-dimensiones">Arreglos de dos o más dimensiones</h2>
+<section id="arreglos-de-dos-o-mãs-dimensiones" class="level2">
+<h2 class="anchored" data-anchor-id="arreglos-de-dos-o-mãs-dimensiones">Arreglos de dos o mÃ¡s dimensiones</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb181"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb181-1"><a href="#cb181-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">array</span>(<span class="at">data=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">18</span>,<span class="at">dim=</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">2</span>)) </span>
 <span id="cb181-2"><a href="#cb181-2" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fu">array</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">18</span>,<span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">2</span>))          </span>
@@ -1170,7 +1169,7 @@ Levels: blue brown green</code></pre>
 </section>
 <section id="listas" class="level2">
 <h2 class="anchored" data-anchor-id="listas">Listas</h2>
-<p>Corresponden a colección de objetos:</p>
+<p>Corresponden a colecciÃ³n de objetos:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb185"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb185-1"><a href="#cb185-1" aria-hidden="true" tabindex="-1"></a>l1 <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">boo=</span>v1,<span class="at">foo=</span>v2,<span class="at">moo=</span>v3,<span class="at">zoo=</span><span class="st">"Animals!"</span>)  </span>
 <span id="cb185-2"><a href="#cb185-2" aria-hidden="true" tabindex="-1"></a>l2 <span class="ot">&lt;-</span> <span class="fu">list</span>(v1,v2,v3,<span class="st">"Animals!"</span>)</span>
@@ -1202,7 +1201,7 @@ Levels: blue brown green</code></pre>
 <pre><code> [1]  1  5 11 33 NA  6  7  8  9 10 NA NA NA NA NA</code></pre>
 </div>
 </div>
-<p>Añadir elementos a una lista:</p>
+<p>AÃ±adir elementos a una lista:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb196"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb196-1"><a href="#cb196-1" aria-hidden="true" tabindex="-1"></a>l3[[<span class="dv">1</span>]] <span class="ot">&lt;-</span> <span class="dv">11</span> </span>
 <span id="cb196-2"><a href="#cb196-2" aria-hidden="true" tabindex="-1"></a>l4[[<span class="dv">3</span>]] <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">22</span>, <span class="dv">23</span>) </span>
@@ -1213,8 +1212,8 @@ Levels: blue brown green</code></pre>
 </section>
 <section id="data-frames" class="level2">
 <h2 class="anchored" data-anchor-id="data-frames">Data Frames</h2>
-<p>Un dataframe es un caso especial de lista, utilizada para guardar las tablas de datos. Posee la estructura clásica fila columna.</p>
-<p>Nota: Mientras en un comienzo se usan <code>data.frame</code>, más adelante al trabajar con <code>tidyverse</code> se utilizan <code>tibble</code> que corresponde a un concepto evolucionado de dataframe; de manera más específica corrige algunos comportamientos propios del dataframe, al no interpretarse los strings como factor por defecto y no existir <code>rownames</code>.</p>
+<p>Un dataframe es un caso especial de lista, utilizada para guardar las tablas de datos. Posee la estructura clÃ¡sica fila columna.</p>
+<p>Nota: Mientras en un comienzo se usan <code>data.frame</code>, mÃ¡s adelante al trabajar con <code>tidyverse</code> se utilizan <code>tibble</code> que corresponde a un concepto evolucionado de dataframe; de manera mÃ¡s especÃ­fica corrige algunos comportamientos propios del dataframe, al no interpretarse los strings como factor por defecto y no existir <code>rownames</code>.</p>
 <p>Creando un dataframe:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb197"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb197-1"><a href="#cb197-1" aria-hidden="true" tabindex="-1"></a>dfr1 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>( <span class="at">ID=</span><span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>,</span>
@@ -1227,7 +1226,7 @@ Levels: blue brown green</code></pre>
 <pre><code>[1] "Jesper"   "Jonas"    "Pernille" "Helle"   </code></pre>
 </div>
 </div>
-<p>Para acceder a los elementos de un dataframe se debe tener en claro dos cosas: <code>dfr[row, column]</code>, donde las para las filas se puede acceder por número o condición y a las columnas por número o nombre. De manera alternativa para las columnas <code>dfr$column</code></p>
+<p>Para acceder a los elementos de un dataframe se debe tener en claro dos cosas: <code>dfr[row, column]</code>, donde las para las filas se puede acceder por nÃºmero o condiciÃ³n y a las columnas por nÃºmero o nombre. De manera alternativa para las columnas <code>dfr$column</code></p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb199"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb199-1"><a href="#cb199-1" aria-hidden="true" tabindex="-1"></a>dfr1[<span class="dv">1</span>,]   </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -1255,7 +1254,7 @@ Levels: blue brown green</code></pre>
 3  3  Pernille   TRUE  44</code></pre>
 </div>
 </div>
-<p>Para encontrar los nombres de todos quienes son mayores de 30 años:</p>
+<p>Para encontrar los nombres de todos quienes son mayores de 30 aÃ±os:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb209"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb209-1"><a href="#cb209-1" aria-hidden="true" tabindex="-1"></a>dfr1[dfr1<span class="sc">$</span>Age<span class="sc">&gt;</span><span class="dv">30</span>,<span class="dv">2</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -1272,15 +1271,15 @@ Levels: blue brown green</code></pre>
 </section>
 <section id="tidyverse-1" class="level2">
 <h2 class="anchored" data-anchor-id="tidyverse-1">Tidyverse</h2>
-<p>Como parte de los desarrollo de <a href="http://hadley.nz/">Hadley Wickham</a>, la librería <a href="https://www.tidyverse.org/"><code>tidyverse</code></a>, corresponde a un ecosistema orientado a las ciencias de datos, con paquetes que comparten la orientación de trabajo en relación a los datos.</p>
-<p>Por ejemplo, permiten la utilización del pipe operator.</p>
+<p>Como parte de los desarrollo de <a href="http://hadley.nz/">Hadley Wickham</a>, la librerÃ­a <a href="https://www.tidyverse.org/"><code>tidyverse</code></a>, corresponde a un ecosistema orientado a las ciencias de datos, con paquetes que comparten la orientaciÃ³n de trabajo en relaciÃ³n a los datos.</p>
+<p>Por ejemplo, permiten la utilizaciÃ³n del pipe operator.</p>
 <section id="tibbles" class="level3">
 <h3 class="anchored" data-anchor-id="tibbles">Tibbles</h3>
-<p>Corresponde a la versión de dataframe en <code>tidyverse</code>. Se trabaja igual, pero con ciertas mejoras. Se pueden crear de tres maneras:</p>
+<p>Corresponde a la versiÃ³n de dataframe en <code>tidyverse</code>. Se trabaja igual, pero con ciertas mejoras. Se pueden crear de tres maneras:</p>
 <ol type="1">
 <li>Crear usando <code>tibble()</code></li>
 <li>Usando explicitamente <code>as_tibble()</code> en una tabla.</li>
-<li>Cuando se aplica una función de <code>dplyr</code> en un dataframe, se convierte a tibble.</li>
+<li>Cuando se aplica una funciÃ³n de <code>dplyr</code> en un dataframe, se convierte a tibble.</li>
 </ol>
 <p>Vemos la tabla precargada <code>iris</code></p>
 <div class="cell">
@@ -1301,7 +1300,7 @@ Levels: blue brown green</code></pre>
 6          5.4         3.9          1.7         0.4 setosa </code></pre>
 </div>
 </div>
-<p>Comparamos con la creación de un data frame:</p>
+<p>Comparamos con la creaciÃ³n de un data frame:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb216"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb216-1"><a href="#cb216-1" aria-hidden="true" tabindex="-1"></a><span class="fu">tibble</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">y =</span> <span class="dv">6</span><span class="sc">:</span><span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -1326,17 +1325,17 @@ Levels: blue brown green</code></pre>
 </div>
 </section>
 </section>
-<section id="importación-y-exportación-de-datos" class="level2">
-<h2 class="anchored" data-anchor-id="importación-y-exportación-de-datos">Importación y exportación de datos</h2>
-<section id="importación" class="level3">
-<h3 class="anchored" data-anchor-id="importación">Importación</h3>
-<p>A pesar de que existen múltiples origenes para la obtención de archivos, podemos pensar en un Excel como el típico archivo. Para esto, utilizamos readxl que viene con tidyverse. Podemos ver la librería en la siguiente <a href="https://readxl.tidyverse.org"><code>página</code></a></p>
+<section id="importaciã³n-y-exportaciã³n-de-datos" class="level2">
+<h2 class="anchored" data-anchor-id="importaciã³n-y-exportaciã³n-de-datos">ImportaciÃ³n y exportaciÃ³n de datos</h2>
+<section id="importaciã³n" class="level3">
+<h3 class="anchored" data-anchor-id="importaciã³n">ImportaciÃ³n</h3>
+<p>A pesar de que existen mÃºltiples origenes para la obtenciÃ³n de archivos, podemos pensar en un Excel como el tÃ­pico archivo. Para esto, utilizamos readxl que viene con tidyverse. Podemos ver la librerÃ­a en la siguiente <a href="https://readxl.tidyverse.org"><code>pÃ¡gina</code></a></p>
 </section>
-<section id="exportación" class="level3">
-<h3 class="anchored" data-anchor-id="exportación">Exportación</h3>
+<section id="exportaciã³n" class="level3">
+<h3 class="anchored" data-anchor-id="exportaciã³n">ExportaciÃ³n</h3>
 <section id="exportar-en-excel" class="level4">
 <h4 class="anchored" data-anchor-id="exportar-en-excel">Exportar en Excel</h4>
-<p>Para esto existen las siguientes librerías:</p>
+<p>Para esto existen las siguientes librerÃ­as:</p>
 <ul>
 <li>xlsx</li>
 <li>openxlsx</li>
@@ -1371,7 +1370,7 @@ Levels: blue brown green</code></pre>
 <span id="cb222-8"><a href="#cb222-8" aria-hidden="true" tabindex="-1"></a>probit.model <span class="ot">&lt;-</span> <span class="fu">glm</span>(high.rating <span class="sc">~</span> learning <span class="sc">+</span> critical <span class="sc">+</span> advance, <span class="at">data=</span>attitude,</span>
 <span id="cb222-9"><a href="#cb222-9" aria-hidden="true" tabindex="-1"></a><span class="at">family =</span> <span class="fu">binomial</span>(<span class="at">link =</span> <span class="st">"probit"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>A pesar de esto, desde mi opinión stargazer no es una buena opción para exportar tablas en latex. Veamos una solución a esto:</p>
+<p>A pesar de esto, desde mi opiniÃ³n stargazer no es una buena opciÃ³n para exportar tablas en latex. Veamos una soluciÃ³n a esto:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb223"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb223-1"><a href="#cb223-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gtsummary)</span>
 <span id="cb223-2"><a href="#cb223-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(kableExtra)</span>
