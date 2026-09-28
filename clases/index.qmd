@@ -1,12 +1,25 @@
 ---
 title: "Clases"
-listing:
-  contents:
-    - "*.qmd"
-    - "!index.qmd"
-  type: default
-  fields: [listing_title]
-  sort: listing_title
+execute:
+  freeze: false
 ---
 
-# Clases del curso
+```{r}
+#| echo: false
+#| results: asis
+
+library(yaml)
+
+# Leer archivo de materiales
+materials <- yaml::read_yaml("materials.yml")$materials
+
+# Ordenar alfabéticamente por título
+materials <- materials[order(sapply(materials, function(x) x$title))]
+
+# Generar Markdown
+for (mat in materials) {
+  html_file <- paste0(mat$file, ".html")
+  pdf_file <- paste0(mat$file, ".pdf")
+  cat(sprintf("- [%s](%s) — [PDF](%s)\n", mat$title, html_file, pdf_file))
+}
+```

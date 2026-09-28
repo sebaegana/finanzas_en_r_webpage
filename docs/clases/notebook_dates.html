@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Sebastián Egaña Santibáñez ">
-<meta name="author" content="Nicolás Leiva Díaz ">
+<meta name="author" content="SebastiÃ¡n EgaÃ±a SantibÃ¡Ã±ez ">
+<meta name="author" content="NicolÃ¡s Leiva DÃ­az ">
 
-<title>Finanzas en R - Notebook Dates – Curso Finanzas en R</title>
+<title>notebook_dates – Curso Finanzas en R</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -79,7 +79,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-349e9611d7ce437f8276b20f376ddbca.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-a0f9fd0d421825b736dc1bbcbcba2219.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -179,16 +179,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#crear-en-base-a-uniones" id="toc-crear-en-base-a-uniones" class="nav-link" data-scroll-target="#crear-en-base-a-uniones">Crear en base a uniones</a>
   <ul class="collapse">
-  <li><a href="#cómo-haríamos-esto-con-lubridate" id="toc-cómo-haríamos-esto-con-lubridate" class="nav-link" data-scroll-target="#cómo-haríamos-esto-con-lubridate">¿Cómo haríamos esto con lubridate?</a></li>
-  <li><a href="#cuál-es-el-error" id="toc-cuál-es-el-error" class="nav-link" data-scroll-target="#cuál-es-el-error">¿Cuál es el error?</a></li>
-  <li><a href="#esto-es-una-solución-definitiva" id="toc-esto-es-una-solución-definitiva" class="nav-link" data-scroll-target="#esto-es-una-solución-definitiva">¿Esto es una solución definitiva?</a></li>
+  <li><a href="#âcã³mo-harãamos-esto-con-lubridate" id="toc-âcã³mo-harãamos-esto-con-lubridate" class="nav-link" data-scroll-target="#âcã³mo-harãamos-esto-con-lubridate">Â¿CÃ³mo harÃ­amos esto con lubridate?</a></li>
+  <li><a href="#âcuãl-es-el-error" id="toc-âcuãl-es-el-error" class="nav-link" data-scroll-target="#âcuãl-es-el-error">Â¿CuÃ¡l es el error?</a></li>
+  <li><a href="#âesto-es-una-soluciã³n-definitiva" id="toc-âesto-es-una-soluciã³n-definitiva" class="nav-link" data-scroll-target="#âesto-es-una-soluciã³n-definitiva">Â¿Esto es una soluciÃ³n definitiva?</a></li>
   </ul></li>
   <li><a href="#obtener-partes-de-una-fecha" id="toc-obtener-partes-de-una-fecha" class="nav-link" data-scroll-target="#obtener-partes-de-una-fecha">Obtener partes de una fecha:</a></li>
   <li><a href="#modificar-fechas" id="toc-modificar-fechas" class="nav-link" data-scroll-target="#modificar-fechas">Modificar fechas</a></li>
   <li><a href="#crear-secuencias-de-fechas" id="toc-crear-secuencias-de-fechas" class="nav-link" data-scroll-target="#crear-secuencias-de-fechas">Crear secuencias de fechas</a></li>
   </ul></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="notebook_dates.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -206,8 +206,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Authors</div>
     <div class="quarto-title-meta-contents">
-             <p>Sebastián Egaña Santibáñez <a href="mailto:segana@fen.uchile"><i class="fa-brands fa-inbox" aria-label="inbox"></i></a> </p>
-             <p>Nicolás Leiva Díaz <a href="mailto:nleivad@fen.uchile.cl"><i class="fa-brands fa-inbox" aria-label="inbox"></i></a> </p>
+             <p>SebastiÃ¡n EgaÃ±a SantibÃ¡Ã±ez <a href="mailto:segana@fen.uchile"><i class="fa-brands fa-inbox" aria-label="inbox"></i></a> </p>
+             <p>NicolÃ¡s Leiva DÃ­az <a href="mailto:nleivad@fen.uchile.cl"><i class="fa-brands fa-inbox" aria-label="inbox"></i></a> </p>
           </div>
   </div>
     
@@ -240,22 +240,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.Date</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "2026-09-25"</code></pre>
+<pre><code>[1] "2026-09-26"</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.time</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "2026-09-25 19:37:13 -03"</code></pre>
+<pre><code>[1] "2026-09-26 14:18:29 -03"</code></pre>
 </div>
 </div>
 <section id="lubridate" class="level3">
 <h3 class="anchored" data-anchor-id="lubridate">Lubridate</h3>
-<p>La librería más utilizada para lidiar con fechas en R, corresponde a lubridate <a href="https://lubridate.tidyverse.org">enlace</a>, que es parte de tidyverse.</p>
+<p>La librerÃ­a mÃ¡s utilizada para lidiar con fechas en R, corresponde a lubridate <a href="https://lubridate.tidyverse.org">enlace</a>, que es parte de tidyverse.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">now</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] "2026-09-25 19:37:14 -03"</code></pre>
+<pre><code>[1] "2026-09-26 14:18:30 -03"</code></pre>
 </div>
 </div>
 </section>
@@ -294,7 +294,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>[1] "2015-07-01" "2015-07-01" "2015-07-01"</code></pre>
 </div>
 </div>
-<p>Como ventaja, lubridate debería reconocer de manera automática los separadores normalmente usado en formatos de fecha.</p>
+<p>Como ventaja, lubridate deberÃ­a reconocer de manera automÃ¡tica los separadores normalmente usado en formatos de fecha.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"07012015"</span>, <span class="st">"07012015"</span>, <span class="st">"07012015"</span>)</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -322,8 +322,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>[1] "2012-01-02" "2013-05-22" "2014-07-15" "2015-02-28"</code></pre>
 </div>
 </div>
-<section id="cómo-haríamos-esto-con-lubridate" class="level3">
-<h3 class="anchored" data-anchor-id="cómo-haríamos-esto-con-lubridate">¿Cómo haríamos esto con lubridate?</h3>
+<section id="âcã³mo-harãamos-esto-con-lubridate" class="level3">
+<h3 class="anchored" data-anchor-id="âcã³mo-harãamos-esto-con-lubridate">Â¿CÃ³mo harÃ­amos esto con lubridate?</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ymd</span>(<span class="fu">paste0</span>(yr, mo, day))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
@@ -334,8 +334,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="cuál-es-el-error" class="level3">
-<h3 class="anchored" data-anchor-id="cuál-es-el-error">¿Cuál es el error?</h3>
+<section id="âcuãl-es-el-error" class="level3">
+<h3 class="anchored" data-anchor-id="âcuãl-es-el-error">Â¿CuÃ¡l es el error?</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ymd</span>(<span class="fu">paste0</span>(yr, <span class="st">'0'</span>,mo, day))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -343,15 +343,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="esto-es-una-solución-definitiva" class="level3">
-<h3 class="anchored" data-anchor-id="esto-es-una-solución-definitiva">¿Esto es una solución definitiva?</h3>
+<section id="âesto-es-una-soluciã³n-definitiva" class="level3">
+<h3 class="anchored" data-anchor-id="âesto-es-una-soluciã³n-definitiva">Â¿Esto es una soluciÃ³n definitiva?</h3>
 <p>Modifiquemos los vectores de fecha:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>yr_01 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"2012"</span>, <span class="st">"2013"</span>, <span class="st">"2014"</span>, <span class="st">"2015"</span>, <span class="st">"2023"</span>)</span>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>mo_01 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"1"</span>, <span class="st">"5"</span>, <span class="st">"7"</span>, <span class="st">"2"</span>, <span class="st">"12"</span>)</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>day_01 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"02"</span>, <span class="st">"22"</span>, <span class="st">"15"</span>, <span class="st">"28"</span>, <span class="st">"15"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Repetimos el código anterior:</p>
+<p>Repetimos el cÃ³digo anterior:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ymd</span>(<span class="fu">paste0</span>(yr_01, <span class="st">'0'</span>,mo_01, day_01))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stderr">
@@ -361,7 +361,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>[1] "2012-01-02" "2013-05-22" "2014-07-15" "2015-02-28" NA          </code></pre>
 </div>
 </div>
-<p>Esto es un caso particular, que por lo general lleva a errores. Añademos una función de leading zeros:</p>
+<p>Esto es un caso particular, que por lo general lleva a errores. AÃ±ademos una funciÃ³n de leading zeros:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ymd</span>(<span class="fu">paste0</span>(yr_01,<span class="fu">str_pad</span>(mo_01, <span class="dv">2</span>, <span class="at">pad =</span> <span class="st">"0"</span>), day_01))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -369,8 +369,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>[1] "2012-01-02" "2013-05-22" "2014-07-15" "2015-02-28" "2023-12-15"</code></pre>
 </div>
 </div>
-<p>Cabe mencionar que <code>str_pad</code> permite añadir ya sean 0 a la izquierda, a la derecha, o ambos lados.</p>
-<p>¿Dudas?</p>
+<p>Cabe mencionar que <code>str_pad</code> permite aÃ±adir ya sean 0 a la izquierda, a la derecha, o ambos lados.</p>
+<p>Â¿Dudas?</p>
 </section>
 </section>
 <section id="obtener-partes-de-una-fecha" class="level2">
@@ -432,7 +432,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="crear-secuencias-de-fechas" class="level2">
 <h2 class="anchored" data-anchor-id="crear-secuencias-de-fechas">Crear secuencias de fechas</h2>
-<p>Utilizando la librería básica de fechas:</p>
+<p>Utilizando la librerÃ­a bÃ¡sica de fechas:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="fu">as.Date</span>(<span class="st">"2010-1-1"</span>), <span class="fu">as.Date</span>(<span class="st">"2015-1-1"</span>), <span class="at">by =</span> <span class="st">"years"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
@@ -466,7 +466,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 [6] "2015-09-25" "2015-09-27" "2015-09-29"</code></pre>
 </div>
 </div>
-<p>En el caso de añadir tiempo, los formatos por defecto de R deben considerar que sean tipo POSIXct y no Date (producidos por <code>as.Date</code>)</p>
+<p>En el caso de aÃ±adir tiempo, los formatos por defecto de R deben considerar que sean tipo POSIXct y no Date (producidos por <code>as.Date</code>)</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">seq</span>(<span class="fu">as.POSIXct</span>(<span class="st">"2015-1-1 0:00"</span>), <span class="fu">as.POSIXct</span>(<span class="st">"2015-1-1 12:00"</span>), <span class="at">by =</span> <span class="st">"hour"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">

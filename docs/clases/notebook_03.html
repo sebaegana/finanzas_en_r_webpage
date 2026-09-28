@@ -6,10 +6,10 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Sebastián Egaña Santibáñez">
-<meta name="author" content="Nicolás Leiva Díaz">
+<meta name="author" content="SebastiÃ¡n EgaÃ±a SantibÃ¡Ã±ez">
+<meta name="author" content="NicolÃ¡s Leiva DÃ­az">
 
-<title>quarto-inputf561f6069461e6c0 – Curso Finanzas en R</title>
+<title>notebook_03 – Curso Finanzas en R</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -79,7 +79,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-349e9611d7ce437f8276b20f376ddbca.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-a0f9fd0d421825b736dc1bbcbcba2219.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -202,7 +202,7 @@ window.Quarto = {
   <li><a href="#enlaces-del-profesor" id="toc-enlaces-del-profesor" class="nav-link active" data-scroll-target="#enlaces-del-profesor">Enlaces del profesor</a></li>
   <li><a href="#precios-de-activos-financieros-utilizando-quantmod" id="toc-precios-de-activos-financieros-utilizando-quantmod" class="nav-link" data-scroll-target="#precios-de-activos-financieros-utilizando-quantmod">Precios de activos financieros utilizando Quantmod</a>
   <ul class="collapse">
-  <li><a href="#múltiples-simbolos" id="toc-múltiples-simbolos" class="nav-link" data-scroll-target="#múltiples-simbolos">Múltiples simbolos</a></li>
+  <li><a href="#mãºltiples-simbolos" id="toc-mãºltiples-simbolos" class="nav-link" data-scroll-target="#mãºltiples-simbolos">MÃºltiples simbolos</a></li>
   </ul></li>
   <li><a href="#calcular-retornos" id="toc-calcular-retornos" class="nav-link" data-scroll-target="#calcular-retornos">Calcular retornos</a>
   <ul class="collapse">
@@ -211,15 +211,14 @@ window.Quarto = {
   <li><a href="#ejemplo-aplicado" id="toc-ejemplo-aplicado" class="nav-link" data-scroll-target="#ejemplo-aplicado">Ejemplo aplicado</a></li>
   <li><a href="#referencias" id="toc-referencias" class="nav-link" data-scroll-target="#referencias">Referencias:</a></li>
   </ul>
-<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="notebook_03.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><div class="line-block"><br>
-Finanzas en R</div></h1>
+<h1 class="title">Finanzas en R</h1>
 <p class="subtitle lead">Notebook 03</p>
 </div>
 
@@ -230,8 +229,8 @@ Finanzas en R</div></h1>
     <div>
     <div class="quarto-title-meta-heading">Authors</div>
     <div class="quarto-title-meta-contents">
-             <p>Sebastián Egaña Santibáñez </p>
-             <p>Nicolás Leiva Díaz </p>
+             <p>SebastiÃ¡n EgaÃ±a SantibÃ¡Ã±ez </p>
+             <p>NicolÃ¡s Leiva DÃ­az </p>
           </div>
   </div>
     
@@ -254,8 +253,8 @@ Finanzas en R</div></h1>
 </section>
 <section id="precios-de-activos-financieros-utilizando-quantmod" class="level1">
 <h1>Precios de activos financieros utilizando Quantmod</h1>
-<p>Quantmod es una de las librarías financieras más utilizadas para la obtención de precios.</p>
-<p>La manera más simple de obtener precios es la siguiente:</p>
+<p>Quantmod es una de las librarÃ­as financieras mÃ¡s utilizadas para la obtenciÃ³n de precios.</p>
+<p>La manera mÃ¡s simple de obtener precios es la siguiente:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyquant)</span>
@@ -270,8 +269,8 @@ Finanzas en R</div></h1>
 <pre><code>[1] "AAPL"</code></pre>
 </div>
 </div>
-<p>Solo debemos declarar el simbolo (instrumento financiero), el período y la periodicidad del instrumento.</p>
-<p>La librería también posee una forma simple de gráficar las series obtenidas:</p>
+<p>Solo debemos declarar el simbolo (instrumento financiero), el perÃ­odo y la periodicidad del instrumento.</p>
+<p>La librerÃ­a tambiÃ©n posee una forma simple de grÃ¡ficar las series obtenidas:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">chartSeries</span>(AAPL, <span class="at">TA=</span><span class="cn">NULL</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
@@ -293,7 +292,7 @@ Finanzas en R</div></h1>
 </div>
 </div>
 </div>
-<p>Para llevar esto a ggplot, deberíamos aplicar algunas funciones convirtiendo el set datos obtenido en un formato adecuado.</p>
+<p>Para llevar esto a ggplot, deberÃ­amos aplicar algunas funciones convirtiendo el set datos obtenido en un formato adecuado.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df_aapl_dates <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(<span class="fu">index</span>(AAPL))</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>df_aapl_data <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(AAPL)</span>
@@ -304,7 +303,7 @@ Finanzas en R</div></h1>
 <p>Graficamos:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>g1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(df_aapl) <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(value, AAPL.Close))</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>g1 <span class="ot">&lt;-</span> g1 <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"AAPLE"</span>, <span class="at">subtitle =</span> <span class="st">"Año 2010"</span>) <span class="sc">+</span> </span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>g1 <span class="ot">&lt;-</span> g1 <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"AAPLE"</span>, <span class="at">subtitle =</span> <span class="st">"AÃ±o 2010"</span>) <span class="sc">+</span> </span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlab</span>(<span class="st">"Fecha"</span>) <span class="sc">+</span> <span class="fu">ylab</span>(<span class="st">""</span>)</span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>g1 <span class="ot">&lt;-</span> g1 <span class="sc">+</span> <span class="fu">theme_bw</span>()</span>
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>g1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -316,8 +315,8 @@ Finanzas en R</div></h1>
 </div>
 </div>
 </div>
-<section id="múltiples-simbolos" class="level2">
-<h2 class="anchored" data-anchor-id="múltiples-simbolos">Múltiples simbolos</h2>
+<section id="mãºltiples-simbolos" class="level2">
+<h2 class="anchored" data-anchor-id="mãºltiples-simbolos">MÃºltiples simbolos</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>tickers <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"ORCL"</span>,<span class="st">"AMD"</span>,<span class="st">"IBM"</span>,<span class="st">"NVDA"</span>)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -354,13 +353,13 @@ Finanzas en R</div></h1>
 </div>
 </div>
 </div>
-<p>Pero esto no tiene mucho sentido, debido a las diferencias de escala de cada una de las acciones. La medida básica de comparación para acciones corresponde a los retornos.</p>
+<p>Pero esto no tiene mucho sentido, debido a las diferencias de escala de cada una de las acciones. La medida bÃ¡sica de comparaciÃ³n para acciones corresponde a los retornos.</p>
 </section>
 </section>
 <section id="calcular-retornos" class="level1">
 <h1>Calcular retornos</h1>
-<p>La fórmula básica para obtener retorno, corresponde a la variación porcentual:</p>
-<p><span class="math display">\[ r_t = \frac{p_t - p_{t-1}}{p_{t-1}}\]</span> en Finanzas también se puede trabajar con una expresión logaritmica:</p>
+<p>La fÃ³rmula bÃ¡sica para obtener retorno, corresponde a la variaciÃ³n porcentual:</p>
+<p><span class="math display">\[ r_t = \frac{p_t - p_{t-1}}{p_{t-1}}\]</span> en Finanzas tambiÃ©n se puede trabajar con una expresiÃ³n logaritmica:</p>
 <p><span class="math display">\[ r_t = ln( \frac{p_t}{p_{t-1}})\]</span> Que converge al mismo valor cuando el intervalo tiende a cero.</p>
 <p>Calculamos de las dos maneras:</p>
 <div class="cell">
@@ -382,7 +381,7 @@ Finanzas en R</div></h1>
 <span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>                   <span class="at">nvda =</span> NVDA.Close) <span class="sc">%&gt;%</span> </span>
 <span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>            <span class="fu">na.omit</span>() </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Veamos algunas diferencias entre cada data set (cargamos la librería vtable para esto):</p>
+<p>Veamos algunas diferencias entre cada data set (cargamos la librerÃ­a vtable para esto):</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vtable)</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">st</span>(retornos)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -521,7 +520,7 @@ Finanzas en R</div></h1>
 </div>
 </div>
 </div>
-<p>Podemos también construir un histograma de los retornos:</p>
+<p>Podemos tambiÃ©n construir un histograma de los retornos:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>pl <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(retornos, <span class="fu">aes</span>(<span class="at">x=</span>orcl)) <span class="sc">+</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">bins =</span> <span class="dv">100</span>, <span class="at">col=</span><span class="st">'black'</span>, <span class="at">fill=</span><span class="st">'green'</span>, <span class="at">alpha=</span><span class="fl">0.4</span>)</span>
@@ -534,7 +533,7 @@ Finanzas en R</div></h1>
 </div>
 </div>
 </div>
-<p>¿Algún comentario sobre la distrubución? Veamos denuevo las medidas de resumen:</p>
+<p>Â¿AlgÃºn comentario sobre la distrubuciÃ³n? Veamos denuevo las medidas de resumen:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(vtable)</span>
 <span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">st</span>(retornos)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -637,7 +636,7 @@ Attaching package: 'reshape2'</code></pre>
 </section>
 <section id="ejemplo-aplicado" class="level1">
 <h1>Ejemplo aplicado</h1>
-<p>Una de las principales medidas de riesgo es el Value at risk o VaR. Se define como “cuál sería la pérdida que solo será excedida en p*100% veces en los próximos k días”. En este sentido, nos preguuntamos por la mayor pérdida que se genera con un x% de probabilidad.</p>
+<p>Una de las principales medidas de riesgo es el Value at risk o VaR. Se define como “cuÃ¡l serÃ­a la pÃ©rdida que solo serÃ¡ excedida en p*100% veces en los prÃ³ximos k dÃ­as”. En este sentido, nos preguuntamos por la mayor pÃ©rdida que se genera con un x% de probabilidad.</p>
 <p>Veamos un ejemplo:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(PerformanceAnalytics)</span>
@@ -652,7 +651,7 @@ Attaching package: 'reshape2'</code></pre>
 <span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>FROM <span class="ot">&lt;&lt;-</span> <span class="st">"2020-01-01"</span>   <span class="co"># change to Your dates!!!</span></span>
 <span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>TO <span class="ot">&lt;&lt;-</span> <span class="st">"2022-12-31"</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>Generamos una función para obtener los precios:</p>
+<p>Generamos una funciÃ³n para obtener los precios:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># preparing one table in common for all the downloaded tickers - You can change </span></span>
 <span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(symbol_name)) {</span>
@@ -684,32 +683,32 @@ Attaching package: 'reshape2'</code></pre>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>Qh</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>           AAPL
-VaR -0.03747266</code></pre>
+VaR -0.03747264</code></pre>
 </div>
 </div>
-<p>Cambiamos el método:</p>
+<p>Cambiamos el mÃ©todo:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>Qv <span class="ot">&lt;&lt;-</span> <span class="fu">VaR</span>(return2_a[,<span class="dv">1</span>], <span class="at">p=</span><span class="fl">0.95</span>, <span class="at">method=</span><span class="st">"historical"</span>)</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>Qv</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>           AAPL
-VaR -0.03546482</code></pre>
+VaR -0.03546502</code></pre>
 </div>
 </div>
 <p>Para obtener el monto monetario aplicamos la siguiente formula:</p>
-<p><span class="math display">\[ VaR (\text{en pesos}) = V_{PF}(1-exp(-VaR)) \]</span> Asumamos que tenemos una posición de 2.000.000:</p>
+<p><span class="math display">\[ VaR (\text{en pesos}) = V_{PF}(1-exp(-VaR)) \]</span> Asumamos que tenemos una posiciÃ³n de 2.000.000:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2000000</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fu">exp</span>(<span class="sc">-</span>Qh))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>         AAPL
-VaR -76367.22</code></pre>
+VaR -76367.19</code></pre>
 </div>
 </div>
 </section>
 <section id="referencias" class="level1">
 <h1>Referencias:</h1>
 <ul>
-<li><p>Gabriel Cabrera G., Introducción a las finanzas quantitativas, https://finance-r.netlify.app</p></li>
+<li><p>Gabriel Cabrera G., IntroducciÃ³n a las finanzas quantitativas, https://finance-r.netlify.app</p></li>
 <li><p>https://rpubs.com/gazdavladimir/1039600</p></li>
 <li><p>https://www.r-bloggers.com/2022/02/nonparametric-value-at-risk-var/</p></li>
 <li><p>https://www.youtube.com/watch?v=0N7XBk7YA5A&amp;list=PLJqpMAAwcLuus0FqGByq8FC3ukwYcJz7A&amp;index=24&amp;t=151s</p></li>
