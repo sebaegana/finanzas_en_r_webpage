@@ -85,7 +85,7 @@ Donde:
 - `MM` = número de unidad temática (01, 02, 03, ...)
 - `[Nombre Descriptivo]` = título corto
 
-### Orden Actual (2026-09-21)
+### Orden Actual (2026-09-28)
 
 | Num | Tipo | Archivo | Descripción |
 |-----|------|---------|-------------|
@@ -95,6 +95,7 @@ Donde:
 | 04 | Trabajo | `trabajo.qmd` | Proyecto del curso |
 | 05 | Actividad | `actividad_01_con_ia.qmd` | Actividad 01 - Limpieza de datos |
 | 06 | Actividad | `actividad_02_portafolios.qmd` | Actividad 02 - Portafolios: EDA → Modelos → Servicing |
+| 07 | Guía | `diccionario_terminos.qmd` | Diccionario de términos técnicos |
 
 ### Estructura de Contenido para Clases_IA
 
@@ -246,11 +247,11 @@ grep -h "listing_title" clases_ia/*.qmd | sort
 ## 🚀 Próximos Materiales Planeados
 
 ```
-07 - Clase 02 - Regresión y Modelado Financiero
-08 - Actividad 03 - Agregaciones y Joins con IA (Data Wrangling)
-09 - Guía 01 - Buenas Prácticas de Prompting
-10 - Taller 01 - Debugging Interactivo en Positron
+08 - Clase 02 - Regresión y Modelado Financiero
+09 - Actividad 03 - Agregaciones y Joins con IA (Data Wrangling)
+10 - Guía 02 - Buenas Prácticas de Prompting
+11 - Taller 01 - Debugging Interactivo en Positron
 ```
 
 *(Esta lista es aproximada y puede cambiar según necesidades pedagógicas)*
-*(06 ya fue completado con Actividad 02 - Portafolios)*
+*(07 - Completado: Diccionario de términos técnicos)*
