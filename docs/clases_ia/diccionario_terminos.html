@@ -1,0 +1,1937 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Sebastián Egaña Santibáñez (segana@fen.uchile.cl)">
+<meta name="author" content="Nicolás Leiva Díaz (nleivad@fen.uchile.cl)">
+
+<title>Diccionario de Términos Técnicos – Curso Finanzas en R</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-349e9611d7ce437f8276b20f376ddbca.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Curso Finanzas en R</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../clases/index.html"> 
+<span class="menu-text">Clases</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../clases_ia/index.html"> 
+<span class="menu-text">Clases con IA</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../recursos.html"> 
+<span class="menu-text">Recursos</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../contacto.html"> 
+<span class="menu-text">Contacto</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul class="collapse">
+  <li><a href="#descargas-y-enlaces" id="toc-descargas-y-enlaces" class="nav-link active" data-scroll-target="#descargas-y-enlaces">📥 Descargas y Enlaces</a></li>
+  <li><a href="#diccionario-de-términos-técnicos-faq-y-recursos" id="toc-diccionario-de-términos-técnicos-faq-y-recursos" class="nav-link" data-scroll-target="#diccionario-de-términos-técnicos-faq-y-recursos">Diccionario de términos técnicos, FAQ y recursos</a></li>
+  <li><a href="#conceptos-de-finanzas-y-análisis-cuantitativo" id="toc-conceptos-de-finanzas-y-análisis-cuantitativo" class="nav-link" data-scroll-target="#conceptos-de-finanzas-y-análisis-cuantitativo">📈 Conceptos de finanzas y análisis cuantitativo</a>
+  <ul class="collapse">
+  <li><a href="#acción" id="toc-acción" class="nav-link" data-scroll-target="#acción">Acción</a></li>
+  <li><a href="#activo" id="toc-activo" class="nav-link" data-scroll-target="#activo">Activo</a></li>
+  <li><a href="#ticker" id="toc-ticker" class="nav-link" data-scroll-target="#ticker">Ticker</a></li>
+  <li><a href="#retorno" id="toc-retorno" class="nav-link" data-scroll-target="#retorno">Retorno</a></li>
+  <li><a href="#retorno-diario" id="toc-retorno-diario" class="nav-link" data-scroll-target="#retorno-diario">Retorno diario</a></li>
+  <li><a href="#retorno-esperado" id="toc-retorno-esperado" class="nav-link" data-scroll-target="#retorno-esperado">Retorno esperado</a></li>
+  <li><a href="#retorno-acumulado" id="toc-retorno-acumulado" class="nav-link" data-scroll-target="#retorno-acumulado">Retorno acumulado</a></li>
+  <li><a href="#retorno-objetivo" id="toc-retorno-objetivo" class="nav-link" data-scroll-target="#retorno-objetivo">Retorno objetivo</a></li>
+  <li><a href="#desviación-estándar" id="toc-desviación-estándar" class="nav-link" data-scroll-target="#desviación-estándar">Desviación estándar</a></li>
+  <li><a href="#volatilidad" id="toc-volatilidad" class="nav-link" data-scroll-target="#volatilidad">Volatilidad</a></li>
+  <li><a href="#varianza" id="toc-varianza" class="nav-link" data-scroll-target="#varianza">Varianza</a></li>
+  <li><a href="#covarianza" id="toc-covarianza" class="nav-link" data-scroll-target="#covarianza">Covarianza</a></li>
+  <li><a href="#matriz-de-covarianzas" id="toc-matriz-de-covarianzas" class="nav-link" data-scroll-target="#matriz-de-covarianzas">Matriz de covarianzas</a></li>
+  <li><a href="#correlación" id="toc-correlación" class="nav-link" data-scroll-target="#correlación">Correlación</a></li>
+  <li><a href="#matriz-de-correlación" id="toc-matriz-de-correlación" class="nav-link" data-scroll-target="#matriz-de-correlación">Matriz de correlación</a></li>
+  </ul></li>
+  <li><a href="#teoría-de-portafolios" id="toc-teoría-de-portafolios" class="nav-link" data-scroll-target="#teoría-de-portafolios">💼 Teoría de portafolios</a>
+  <ul class="collapse">
+  <li><a href="#portafolio" id="toc-portafolio" class="nav-link" data-scroll-target="#portafolio">Portafolio</a></li>
+  <li><a href="#peso-de-un-activo" id="toc-peso-de-un-activo" class="nav-link" data-scroll-target="#peso-de-un-activo">Peso de un activo</a></li>
+  <li><a href="#restricción-presupuestaria" id="toc-restricción-presupuestaria" class="nav-link" data-scroll-target="#restricción-presupuestaria">Restricción presupuestaria</a></li>
+  <li><a href="#venta-corta-o-short-selling" id="toc-venta-corta-o-short-selling" class="nav-link" data-scroll-target="#venta-corta-o-short-selling">Venta corta o Short Selling</a></li>
+  <li><a href="#diversificación" id="toc-diversificación" class="nav-link" data-scroll-target="#diversificación">Diversificación</a></li>
+  <li><a href="#modelo-de-markowitz" id="toc-modelo-de-markowitz" class="nav-link" data-scroll-target="#modelo-de-markowitz">Modelo de Markowitz</a></li>
+  <li><a href="#optimización-media-varianza" id="toc-optimización-media-varianza" class="nav-link" data-scroll-target="#optimización-media-varianza">Optimización Media-Varianza</a></li>
+  <li><a href="#frontera-eficiente" id="toc-frontera-eficiente" class="nav-link" data-scroll-target="#frontera-eficiente">Frontera eficiente</a></li>
+  <li><a href="#programación-cuadrática" id="toc-programación-cuadrática" class="nav-link" data-scroll-target="#programación-cuadrática">Programación cuadrática</a></li>
+  <li><a href="#restricciones-del-problema-de-optimización" id="toc-restricciones-del-problema-de-optimización" class="nav-link" data-scroll-target="#restricciones-del-problema-de-optimización">Restricciones del problema de optimización</a></li>
+  <li><a href="#tasa-libre-de-riesgo" id="toc-tasa-libre-de-riesgo" class="nav-link" data-scroll-target="#tasa-libre-de-riesgo">Tasa libre de riesgo</a></li>
+  <li><a href="#ratio-de-sharpe" id="toc-ratio-de-sharpe" class="nav-link" data-scroll-target="#ratio-de-sharpe">Ratio de Sharpe</a></li>
+  <li><a href="#portafolio-tangente" id="toc-portafolio-tangente" class="nav-link" data-scroll-target="#portafolio-tangente">Portafolio tangente</a></li>
+  <li><a href="#capital-allocation-line-cal" id="toc-capital-allocation-line-cal" class="nav-link" data-scroll-target="#capital-allocation-line-cal">Capital Allocation Line — CAL</a></li>
+  <li><a href="#anualización" id="toc-anualización" class="nav-link" data-scroll-target="#anualización">Anualización</a></li>
+  </ul></li>
+  <li><a href="#simulación-y-probabilidad" id="toc-simulación-y-probabilidad" class="nav-link" data-scroll-target="#simulación-y-probabilidad">🎲 Simulación y probabilidad</a>
+  <ul class="collapse">
+  <li><a href="#distribución-normal" id="toc-distribución-normal" class="nav-link" data-scroll-target="#distribución-normal">Distribución normal</a></li>
+  <li><a href="#distribución-triangular" id="toc-distribución-triangular" class="nav-link" data-scroll-target="#distribución-triangular">Distribución triangular</a></li>
+  <li><a href="#simulación" id="toc-simulación" class="nav-link" data-scroll-target="#simulación">Simulación</a></li>
+  <li><a href="#simulación-monte-carlo" id="toc-simulación-monte-carlo" class="nav-link" data-scroll-target="#simulación-monte-carlo">Simulación Monte Carlo</a></li>
+  <li><a href="#escenario" id="toc-escenario" class="nav-link" data-scroll-target="#escenario">Escenario</a></li>
+  <li><a href="#probabilidad" id="toc-probabilidad" class="nav-link" data-scroll-target="#probabilidad">Probabilidad</a></li>
+  </ul></li>
+  <li><a href="#conceptos-de-programación-y-análisis-de-datos" id="toc-conceptos-de-programación-y-análisis-de-datos" class="nav-link" data-scroll-target="#conceptos-de-programación-y-análisis-de-datos">💻 Conceptos de programación y análisis de datos</a>
+  <ul class="collapse">
+  <li><a href="#r" id="toc-r" class="nav-link" data-scroll-target="#r">R</a></li>
+  <li><a href="#python" id="toc-python" class="nav-link" data-scroll-target="#python">Python</a></li>
+  <li><a href="#rstudio" id="toc-rstudio" class="nav-link" data-scroll-target="#rstudio">RStudio</a></li>
+  <li><a href="#positron" id="toc-positron" class="nav-link" data-scroll-target="#positron">Positron</a></li>
+  <li><a href="#ide" id="toc-ide" class="nav-link" data-scroll-target="#ide">IDE</a></li>
+  <li><a href="#script" id="toc-script" class="nav-link" data-scroll-target="#script">Script</a></li>
+  <li><a href="#objeto" id="toc-objeto" class="nav-link" data-scroll-target="#objeto">Objeto</a></li>
+  <li><a href="#asignación--" id="toc-asignación--" class="nav-link" data-scroll-target="#asignación--">Asignación <code>&lt;-</code></a></li>
+  <li><a href="#función" id="toc-función" class="nav-link" data-scroll-target="#función">Función</a></li>
+  <li><a href="#paquete" id="toc-paquete" class="nav-link" data-scroll-target="#paquete">Paquete</a></li>
+  <li><a href="#library" id="toc-library" class="nav-link" data-scroll-target="#library"><code>library()</code></a></li>
+  <li><a href="#install.packages" id="toc-install.packages" class="nav-link" data-scroll-target="#install.packages"><code>install.packages()</code></a></li>
+  </ul></li>
+  <li><a href="#manipulación-y-estructuras-de-datos" id="toc-manipulación-y-estructuras-de-datos" class="nav-link" data-scroll-target="#manipulación-y-estructuras-de-datos">🗃️ Manipulación y estructuras de datos</a>
+  <ul class="collapse">
+  <li><a href="#tidyverse" id="toc-tidyverse" class="nav-link" data-scroll-target="#tidyverse">tidyverse</a></li>
+  <li><a href="#dplyr" id="toc-dplyr" class="nav-link" data-scroll-target="#dplyr">dplyr</a></li>
+  <li><a href="#pipe" id="toc-pipe" class="nav-link" data-scroll-target="#pipe">Pipe <code>%&gt;%</code></a></li>
+  <li><a href="#pipe-nativo" id="toc-pipe-nativo" class="nav-link" data-scroll-target="#pipe-nativo">Pipe nativo <code>|&gt;</code></a></li>
+  <li><a href="#data-frame" id="toc-data-frame" class="nav-link" data-scroll-target="#data-frame">Data frame</a></li>
+  <li><a href="#tibble" id="toc-tibble" class="nav-link" data-scroll-target="#tibble">Tibble</a></li>
+  <li><a href="#matriz" id="toc-matriz" class="nav-link" data-scroll-target="#matriz">Matriz</a></li>
+  <li><a href="#as.matrix" id="toc-as.matrix" class="nav-link" data-scroll-target="#as.matrix"><code>as.matrix()</code></a></li>
+  <li><a href="#colmeans" id="toc-colmeans" class="nav-link" data-scroll-target="#colmeans"><code>colMeans()</code></a></li>
+  <li><a href="#cov" id="toc-cov" class="nav-link" data-scroll-target="#cov"><code>cov()</code></a></li>
+  <li><a href="#ncol" id="toc-ncol" class="nav-link" data-scroll-target="#ncol"><code>ncol()</code></a></li>
+  <li><a href="#list" id="toc-list" class="nav-link" data-scroll-target="#list"><code>list()</code></a></li>
+  </ul></li>
+  <li><a href="#datos-y-archivos" id="toc-datos-y-archivos" class="nav-link" data-scroll-target="#datos-y-archivos">📁 Datos y archivos</a>
+  <ul class="collapse">
+  <li><a href="#csv" id="toc-csv" class="nav-link" data-scroll-target="#csv">CSV</a></li>
+  <li><a href="#read_csv" id="toc-read_csv" class="nav-link" data-scroll-target="#read_csv"><code>read_csv()</code></a></li>
+  <li><a href="#write_csv" id="toc-write_csv" class="nav-link" data-scroll-target="#write_csv"><code>write_csv()</code></a></li>
+  <li><a href="#ruta-relativa" id="toc-ruta-relativa" class="nav-link" data-scroll-target="#ruta-relativa">Ruta relativa</a></li>
+  </ul></li>
+  <li><a href="#visualización-de-datos" id="toc-visualización-de-datos" class="nav-link" data-scroll-target="#visualización-de-datos">📊 Visualización de datos</a>
+  <ul class="collapse">
+  <li><a href="#ggplot2" id="toc-ggplot2" class="nav-link" data-scroll-target="#ggplot2">ggplot2</a></li>
+  <li><a href="#aes" id="toc-aes" class="nav-link" data-scroll-target="#aes"><code>aes()</code></a></li>
+  <li><a href="#geom_line" id="toc-geom_line" class="nav-link" data-scroll-target="#geom_line"><code>geom_line()</code></a></li>
+  <li><a href="#geom_point" id="toc-geom_point" class="nav-link" data-scroll-target="#geom_point"><code>geom_point()</code></a></li>
+  <li><a href="#histograma" id="toc-histograma" class="nav-link" data-scroll-target="#histograma">Histograma</a></li>
+  <li><a href="#geom_histogram" id="toc-geom_histogram" class="nav-link" data-scroll-target="#geom_histogram"><code>geom_histogram()</code></a></li>
+  <li><a href="#theme_minimal" id="toc-theme_minimal" class="nav-link" data-scroll-target="#theme_minimal"><code>theme_minimal()</code></a></li>
+  </ul></li>
+  <li><a href="#aleatoriedad-y-reproducibilidad" id="toc-aleatoriedad-y-reproducibilidad" class="nav-link" data-scroll-target="#aleatoriedad-y-reproducibilidad">🎲 Aleatoriedad y reproducibilidad</a>
+  <ul class="collapse">
+  <li><a href="#rnorm" id="toc-rnorm" class="nav-link" data-scroll-target="#rnorm"><code>rnorm()</code></a></li>
+  <li><a href="#rtriangle" id="toc-rtriangle" class="nav-link" data-scroll-target="#rtriangle"><code>rtriangle()</code></a></li>
+  <li><a href="#sample" id="toc-sample" class="nav-link" data-scroll-target="#sample"><code>sample()</code></a></li>
+  <li><a href="#set.seed" id="toc-set.seed" class="nav-link" data-scroll-target="#set.seed"><code>set.seed()</code></a></li>
+  <li><a href="#reproducibilidad" id="toc-reproducibilidad" class="nav-link" data-scroll-target="#reproducibilidad">Reproducibilidad</a></li>
+  </ul></li>
+  <li><a href="#git-github-y-control-de-versiones" id="toc-git-github-y-control-de-versiones" class="nav-link" data-scroll-target="#git-github-y-control-de-versiones">🔧 Git, GitHub y control de versiones</a>
+  <ul class="collapse">
+  <li><a href="#git" id="toc-git" class="nav-link" data-scroll-target="#git">Git</a></li>
+  <li><a href="#github" id="toc-github" class="nav-link" data-scroll-target="#github">GitHub</a></li>
+  <li><a href="#repositorio" id="toc-repositorio" class="nav-link" data-scroll-target="#repositorio">Repositorio</a></li>
+  <li><a href="#git-clone" id="toc-git-clone" class="nav-link" data-scroll-target="#git-clone"><code>git clone</code></a></li>
+  <li><a href="#datos-privados-y-github" id="toc-datos-privados-y-github" class="nav-link" data-scroll-target="#datos-privados-y-github">Datos privados y GitHub</a></li>
+  </ul></li>
+  <li><a href="#gestión-del-entorno" id="toc-gestión-del-entorno" class="nav-link" data-scroll-target="#gestión-del-entorno">📦 Gestión del entorno</a>
+  <ul class="collapse">
+  <li><a href="#renv" id="toc-renv" class="nav-link" data-scroll-target="#renv">renv</a></li>
+  </ul></li>
+  <li><a href="#markdown-y-documentos-reproducibles" id="toc-markdown-y-documentos-reproducibles" class="nav-link" data-scroll-target="#markdown-y-documentos-reproducibles">📝 Markdown y documentos reproducibles</a>
+  <ul class="collapse">
+  <li><a href="#markdown" id="toc-markdown" class="nav-link" data-scroll-target="#markdown">Markdown</a></li>
+  <li><a href="#r-markdown" id="toc-r-markdown" class="nav-link" data-scroll-target="#r-markdown">R Markdown</a></li>
+  </ul></li>
+  <li><a href="#inteligencia-artificial-y-desarrollo-asistido" id="toc-inteligencia-artificial-y-desarrollo-asistido" class="nav-link" data-scroll-target="#inteligencia-artificial-y-desarrollo-asistido">🤖 Inteligencia artificial y desarrollo asistido</a>
+  <ul class="collapse">
+  <li><a href="#desarrollo-asistido-por-ia" id="toc-desarrollo-asistido-por-ia" class="nav-link" data-scroll-target="#desarrollo-asistido-por-ia">Desarrollo asistido por IA</a></li>
+  <li><a href="#supervisión-humana" id="toc-supervisión-humana" class="nav-link" data-scroll-target="#supervisión-humana">Supervisión humana</a></li>
+  </ul></li>
+  <li><a href="#preguntas-frecuentes" id="toc-preguntas-frecuentes" class="nav-link" data-scroll-target="#preguntas-frecuentes">❓ Preguntas frecuentes</a>
+  <ul class="collapse">
+  <li><a href="#necesito-utilizar-positron-y-rstudio-simultáneamente" id="toc-necesito-utilizar-positron-y-rstudio-simultáneamente" class="nav-link" data-scroll-target="#necesito-utilizar-positron-y-rstudio-simultáneamente">¿Necesito utilizar Positron y RStudio simultáneamente?</a></li>
+  <li><a href="#necesito-tener-python-instalado-para-trabajar-en-finanzas-en-r" id="toc-necesito-tener-python-instalado-para-trabajar-en-finanzas-en-r" class="nav-link" data-scroll-target="#necesito-tener-python-instalado-para-trabajar-en-finanzas-en-r">¿Necesito tener Python instalado para trabajar en Finanzas en R?</a></li>
+  <li><a href="#necesito-saber-python-para-seguir-el-curso" id="toc-necesito-saber-python-para-seguir-el-curso" class="nav-link" data-scroll-target="#necesito-saber-python-para-seguir-el-curso">¿Necesito saber Python para seguir el curso?</a></li>
+  <li><a href="#por-qué-utilizamos-252-días-para-representar-un-año" id="toc-por-qué-utilizamos-252-días-para-representar-un-año" class="nav-link" data-scroll-target="#por-qué-utilizamos-252-días-para-representar-un-año">¿Por qué utilizamos 252 días para representar un año?</a></li>
+  <li><a href="#por-qué-utilizamos-set.seed" id="toc-por-qué-utilizamos-set.seed" class="nav-link" data-scroll-target="#por-qué-utilizamos-set.seed">¿Por qué utilizamos <code>set.seed()</code>?</a></li>
+  <li><a href="#qué-diferencia-existe-entre-retorno-diario-y-retorno-acumulado" id="toc-qué-diferencia-existe-entre-retorno-diario-y-retorno-acumulado" class="nav-link" data-scroll-target="#qué-diferencia-existe-entre-retorno-diario-y-retorno-acumulado">¿Qué diferencia existe entre retorno diario y retorno acumulado?</a></li>
+  <li><a href="#por-qué-no-podemos-simplemente-sumar-retornos" id="toc-por-qué-no-podemos-simplemente-sumar-retornos" class="nav-link" data-scroll-target="#por-qué-no-podemos-simplemente-sumar-retornos">¿Por qué no podemos simplemente sumar retornos?</a></li>
+  <li><a href="#qué-representa-una-matriz-de-correlación" id="toc-qué-representa-una-matriz-de-correlación" class="nav-link" data-scroll-target="#qué-representa-una-matriz-de-correlación">¿Qué representa una matriz de correlación?</a></li>
+  <li><a href="#qué-diferencia-existe-entre-correlación-y-covarianza" id="toc-qué-diferencia-existe-entre-correlación-y-covarianza" class="nav-link" data-scroll-target="#qué-diferencia-existe-entre-correlación-y-covarianza">¿Qué diferencia existe entre correlación y covarianza?</a></li>
+  <li><a href="#por-qué-la-covarianza-es-importante-para-un-portafolio" id="toc-por-qué-la-covarianza-es-importante-para-un-portafolio" class="nav-link" data-scroll-target="#por-qué-la-covarianza-es-importante-para-un-portafolio">¿Por qué la covarianza es importante para un portafolio?</a></li>
+  <li><a href="#qué-es-la-frontera-eficiente" id="toc-qué-es-la-frontera-eficiente" class="nav-link" data-scroll-target="#qué-es-la-frontera-eficiente">¿Qué es la frontera eficiente?</a></li>
+  <li><a href="#cada-punto-de-la-frontera-eficiente-representa-un-portafolio-diferente" id="toc-cada-punto-de-la-frontera-eficiente-representa-un-portafolio-diferente" class="nav-link" data-scroll-target="#cada-punto-de-la-frontera-eficiente-representa-un-portafolio-diferente">¿Cada punto de la frontera eficiente representa un portafolio diferente?</a></li>
+  <li><a href="#qué-significa-que-los-pesos-sumen-1" id="toc-qué-significa-que-los-pesos-sumen-1" class="nav-link" data-scroll-target="#qué-significa-que-los-pesos-sumen-1">¿Qué significa que los pesos sumen 1?</a></li>
+  <li><a href="#qué-significa-w-0" id="toc-qué-significa-w-0" class="nav-link" data-scroll-target="#qué-significa-w-0">¿Qué significa <code>w &gt;= 0</code>?</a></li>
+  <li><a href="#qué-hace-quadprog" id="toc-qué-hace-quadprog" class="nav-link" data-scroll-target="#qué-hace-quadprog">¿Qué hace <code>quadprog</code>?</a></li>
+  <li><a href="#por-qué-probamos-muchos-retornos-objetivo" id="toc-por-qué-probamos-muchos-retornos-objetivo" class="nav-link" data-scroll-target="#por-qué-probamos-muchos-retornos-objetivo">¿Por qué probamos muchos retornos objetivo?</a></li>
+  <li><a href="#por-qué-el-retorno-objetivo-se-divide-por-12" id="toc-por-qué-el-retorno-objetivo-se-divide-por-12" class="nav-link" data-scroll-target="#por-qué-el-retorno-objetivo-se-divide-por-12">¿Por qué el retorno objetivo se divide por 12?</a></li>
+  <li><a href="#por-qué-la-volatilidad-se-multiplica-por-sqrt12" id="toc-por-qué-la-volatilidad-se-multiplica-por-sqrt12" class="nav-link" data-scroll-target="#por-qué-la-volatilidad-se-multiplica-por-sqrt12">¿Por qué la volatilidad se multiplica por <code>sqrt(12)</code>?</a></li>
+  <li><a href="#por-qué-el-retorno-se-multiplica-por-12-pero-la-volatilidad-por-sqrt12" id="toc-por-qué-el-retorno-se-multiplica-por-12-pero-la-volatilidad-por-sqrt12" class="nav-link" data-scroll-target="#por-qué-el-retorno-se-multiplica-por-12-pero-la-volatilidad-por-sqrt12">¿Por qué el retorno se multiplica por 12 pero la volatilidad por <code>sqrt(12)</code>?</a></li>
+  <li><a href="#qué-representa-la-tasa-libre-de-riesgo" id="toc-qué-representa-la-tasa-libre-de-riesgo" class="nav-link" data-scroll-target="#qué-representa-la-tasa-libre-de-riesgo">¿Qué representa la tasa libre de riesgo?</a></li>
+  <li><a href="#qué-es-el-ratio-de-sharpe" id="toc-qué-es-el-ratio-de-sharpe" class="nav-link" data-scroll-target="#qué-es-el-ratio-de-sharpe">¿Qué es el Ratio de Sharpe?</a></li>
+  <li><a href="#un-sharpe-mayor-es-siempre-mejor" id="toc-un-sharpe-mayor-es-siempre-mejor" class="nav-link" data-scroll-target="#un-sharpe-mayor-es-siempre-mejor">¿Un Sharpe mayor es siempre mejor?</a></li>
+  <li><a href="#qué-es-el-portafolio-tangente" id="toc-qué-es-el-portafolio-tangente" class="nav-link" data-scroll-target="#qué-es-el-portafolio-tangente">¿Qué es el portafolio tangente?</a></li>
+  <li><a href="#qué-es-la-capital-allocation-line" id="toc-qué-es-la-capital-allocation-line" class="nav-link" data-scroll-target="#qué-es-la-capital-allocation-line">¿Qué es la Capital Allocation Line?</a></li>
+  <li><a href="#por-qué-solve.qp-puede-fallar-para-algún-retorno-objetivo" id="toc-por-qué-solve.qp-puede-fallar-para-algún-retorno-objetivo" class="nav-link" data-scroll-target="#por-qué-solve.qp-puede-fallar-para-algún-retorno-objetivo">¿Por qué <code>solve.QP()</code> puede fallar para algún retorno objetivo?</a></li>
+  <li><a href="#para-qué-utilizamos-trycatch" id="toc-para-qué-utilizamos-trycatch" class="nav-link" data-scroll-target="#para-qué-utilizamos-trycatch">¿Para qué utilizamos <code>tryCatch()</code>?</a></li>
+  <li><a href="#qué-diferencia-existe-entre-write.csv-y-write_csv" id="toc-qué-diferencia-existe-entre-write.csv-y-write_csv" class="nav-link" data-scroll-target="#qué-diferencia-existe-entre-write.csv-y-write_csv">¿Qué diferencia existe entre <code>write.csv()</code> y <code>write_csv()</code>?</a></li>
+  <li><a href="#para-qué-sirve-una-distribución-triangular" id="toc-para-qué-sirve-una-distribución-triangular" class="nav-link" data-scroll-target="#para-qué-sirve-una-distribución-triangular">¿Para qué sirve una distribución triangular?</a></li>
+  <li><a href="#por-qué-ejecutar-una-simulación-10.000-veces" id="toc-por-qué-ejecutar-una-simulación-10.000-veces" class="nav-link" data-scroll-target="#por-qué-ejecutar-una-simulación-10.000-veces">¿Por qué ejecutar una simulación 10.000 veces?</a></li>
+  <li><a href="#qué-diferencia-existe-entre-ggplot2-matplotlib-seaborn-y-plotly" id="toc-qué-diferencia-existe-entre-ggplot2-matplotlib-seaborn-y-plotly" class="nav-link" data-scroll-target="#qué-diferencia-existe-entre-ggplot2-matplotlib-seaborn-y-plotly">¿Qué diferencia existe entre ggplot2, matplotlib, seaborn y plotly?</a></li>
+  <li><a href="#es-seguro-subir-información-privada-a-github" id="toc-es-seguro-subir-información-privada-a-github" class="nav-link" data-scroll-target="#es-seguro-subir-información-privada-a-github">¿Es seguro subir información privada a GitHub?</a></li>
+  <li><a href="#para-qué-sirve-renv" id="toc-para-qué-sirve-renv" class="nav-link" data-scroll-target="#para-qué-sirve-renv">¿Para qué sirve <code>renv</code>?</a></li>
+  <li><a href="#qué-diferencia-existe-entre-markdown-y-r-markdown" id="toc-qué-diferencia-existe-entre-markdown-y-r-markdown" class="nav-link" data-scroll-target="#qué-diferencia-existe-entre-markdown-y-r-markdown">¿Qué diferencia existe entre Markdown y R Markdown?</a></li>
+  <li><a href="#la-ia-puede-generar-todo-el-código-del-análisis" id="toc-la-ia-puede-generar-todo-el-código-del-análisis" class="nav-link" data-scroll-target="#la-ia-puede-generar-todo-el-código-del-análisis">¿La IA puede generar todo el código del análisis?</a></li>
+  </ul></li>
+  <li><a href="#enlaces-y-recursos-utilizados-en-clases" id="toc-enlaces-y-recursos-utilizados-en-clases" class="nav-link" data-scroll-target="#enlaces-y-recursos-utilizados-en-clases">🔗 Enlaces y recursos utilizados en clases</a>
+  <ul class="collapse">
+  <li><a href="#material-del-curso" id="toc-material-del-curso" class="nav-link" data-scroll-target="#material-del-curso">Material del curso</a></li>
+  <li><a href="#aprender-r-y-tidyverse" id="toc-aprender-r-y-tidyverse" class="nav-link" data-scroll-target="#aprender-r-y-tidyverse">Aprender R y tidyverse</a></li>
+  <li><a href="#reproducibilidad-1" id="toc-reproducibilidad-1" class="nav-link" data-scroll-target="#reproducibilidad-1">Reproducibilidad</a></li>
+  </ul></li>
+  <li><a href="#mapa-general-de-conceptos-del-curso" id="toc-mapa-general-de-conceptos-del-curso" class="nav-link" data-scroll-target="#mapa-general-de-conceptos-del-curso">✅ Mapa general de conceptos del curso</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Otros formatos</h2><ul><li><a href="diccionario_terminos.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><p>Diccionario de Términos Técnicos</p></h1>
+<p class="subtitle lead">Referencia completa de conceptos de finanzas, programación, análisis de datos y herramientas</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autores/as</div>
+    <div class="quarto-title-meta-contents">
+             <p>Sebastián Egaña Santibáñez (segana@fen.uchile.cl) </p>
+             <p>Nicolás Leiva Díaz (nleivad@fen.uchile.cl) </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de publicación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">28 de septiembre de 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="descargas-y-enlaces" class="level2">
+<h2 class="anchored" data-anchor-id="descargas-y-enlaces">📥 Descargas y Enlaces</h2>
+<div style="margin-bottom: 20px;">
+  <div style="margin-bottom: 12px; display: flex; gap: 10px; flex-wrap: wrap;">
+    <a href="diccionario_terminos.pdf" class="btn btn-primary" role="button" style="padding: 8px 16px; border-radius: 4px; background-color: #0d6efd; color: white; text-decoration: none;">📄 Descargar PDF</a>
+    <a href="../clases_ia/diccionario_terminos.html" class="btn btn-secondary" role="button" style="padding: 8px 16px; border-radius: 4px; background-color: #6c757d; color: white; text-decoration: none;">💾 Descargar Fuente</a>
+  </div>
+</div>
+<hr>
+</section>
+<section id="diccionario-de-términos-técnicos-faq-y-recursos" class="level1">
+<h1>Diccionario de términos técnicos, FAQ y recursos</h1>
+<p>Esta sección reúne conceptos de <strong>finanzas, programación, análisis de datos y herramientas tecnológicas</strong> utilizados durante las clases de Finanzas en R.</p>
+<p>El objetivo es disponer de una referencia rápida para revisar los notebooks, ejercicios y código desarrollado durante el curso.</p>
+<hr>
+</section>
+<section id="conceptos-de-finanzas-y-análisis-cuantitativo" class="level1">
+<h1>📈 Conceptos de finanzas y análisis cuantitativo</h1>
+<section id="acción" class="level2">
+<h2 class="anchored" data-anchor-id="acción">Acción</h2>
+<p>Instrumento financiero que representa una participación en una empresa.</p>
+<p>En los ejercicios se utilizaron como ejemplo acciones identificadas mediante tickers como <code>AAPL</code>, <code>GOOGL</code> y <code>MSFT</code>.</p>
+<hr>
+</section>
+<section id="activo" class="level2">
+<h2 class="anchored" data-anchor-id="activo">Activo</h2>
+<p>Instrumento o recurso financiero susceptible de generar retornos.</p>
+<p>Una acción es un ejemplo de activo financiero.</p>
+<hr>
+</section>
+<section id="ticker" class="level2">
+<h2 class="anchored" data-anchor-id="ticker">Ticker</h2>
+<p>Código utilizado para identificar un activo financiero en los mercados.</p>
+<p>Ejemplos:</p>
+<ul>
+<li><code>AAPL</code>: Apple.</li>
+<li><code>GOOGL</code>: Alphabet.</li>
+<li><code>MSFT</code>: Microsoft.</li>
+</ul>
+<hr>
+</section>
+<section id="retorno" class="level2">
+<h2 class="anchored" data-anchor-id="retorno">Retorno</h2>
+<p>Variación porcentual del valor de un activo durante un período.</p>
+<p>En los ejercicios se simularon retornos mediante:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>(</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">n =</span> n_dias,</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mean =</span> <span class="fl">0.0005</span>,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">sd =</span> <span class="fl">0.015</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p>En este caso se utiliza una media diaria de <strong>0,05 %</strong> y una desviación estándar de <strong>1,5 %</strong>.</p>
+<hr>
+</section>
+<section id="retorno-diario" class="level2">
+<h2 class="anchored" data-anchor-id="retorno-diario">Retorno diario</h2>
+<p>Retorno de un activo medido entre un día y el siguiente.</p>
+<p>En distintos ejercicios se utilizaron <strong>252 observaciones</strong> como aproximación a un año bursátil.</p>
+<hr>
+</section>
+<section id="retorno-esperado" class="level2">
+<h2 class="anchored" data-anchor-id="retorno-esperado">Retorno esperado</h2>
+<p>Valor promedio que se espera obtener para un activo o portafolio.</p>
+<p>En las simulaciones iniciales:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>media <span class="ot">&lt;-</span> <span class="fl">0.0005</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p>representa un retorno esperado diario de aproximadamente <strong>0,05 %</strong>.</p>
+<p>En el ejercicio de portafolios, los retornos esperados de cada activo se calcularon mediante:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>retornos_esperados <span class="ot">&lt;-</span> <span class="fu">colMeans</span>(retornos_matrix)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+<section id="retorno-acumulado" class="level2">
+<h2 class="anchored" data-anchor-id="retorno-acumulado">Retorno acumulado</h2>
+<p>Representa el rendimiento obtenido al reinvertir sucesivamente los retornos de cada período.</p>
+<p>En R:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>retorno_acumulado <span class="ot">=</span> <span class="fu">cumprod</span>(<span class="dv">1</span> <span class="sc">+</span> retorno) <span class="sc">-</span> <span class="dv">1</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p>La fórmula general corresponde a:</p>
+<pre class="text"><code>(1+r1)(1+r2)...(1+rn)-1</code></pre>
+<p>Por esta razón, los retornos porcentuales de distintos períodos no deben simplemente sumarse cuando se desea obtener el rendimiento compuesto.</p>
+<hr>
+</section>
+<section id="retorno-objetivo" class="level2">
+<h2 class="anchored" data-anchor-id="retorno-objetivo">Retorno objetivo</h2>
+<p>Nivel de retorno que se busca alcanzar al construir un portafolio.</p>
+<p>En el ejercicio de Markowitz se analizaron distintos retornos objetivo:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>retornos_objetivo <span class="ot">&lt;-</span> <span class="fu">seq</span>(</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fl">0.08</span>,</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fl">0.20</span>,</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">length.out =</span> <span class="dv">50</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>) <span class="sc">/</span> <span class="dv">12</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Esto genera 50 niveles de retorno entre 8 % y 20 % anual, transformados a valores mensuales para mantener consistencia con la frecuencia de los datos utilizados.</p>
+<hr>
+</section>
+<section id="desviación-estándar" class="level2">
+<h2 class="anchored" data-anchor-id="desviación-estándar">Desviación estándar</h2>
+<p>Medida estadística que representa cuánto se dispersan los valores respecto de su media.</p>
+<p>En los ejercicios:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>desv_est <span class="ot">&lt;-</span> <span class="fl">0.015</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p>corresponde a una desviación estándar diaria de <strong>1,5 %</strong>.</p>
+<p>En finanzas se utiliza frecuentemente como medida de volatilidad.</p>
+<hr>
+</section>
+<section id="volatilidad" class="level2">
+<h2 class="anchored" data-anchor-id="volatilidad">Volatilidad</h2>
+<p>Medida de la variabilidad de los retornos de un activo o portafolio.</p>
+<p>Una mayor volatilidad indica que los retornos presentan mayores fluctuaciones alrededor de su promedio.</p>
+<p>En el ejercicio de portafolios se calculó la volatilidad mediante la matriz de covarianzas y los pesos del portafolio:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>vol_opt <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">t</span>(w_opt) <span class="sc">%*%</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  cov_matrix <span class="sc">%*%</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  w_opt</span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>) <span class="sc">*</span> <span class="fu">sqrt</span>(<span class="dv">12</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p>El factor <code>sqrt(12)</code> anualiza una volatilidad calculada con datos mensuales.</p>
+<hr>
+</section>
+<section id="varianza" class="level2">
+<h2 class="anchored" data-anchor-id="varianza">Varianza</h2>
+<p>Medida estadística que cuantifica la dispersión de una variable respecto de su media.</p>
+<p>La desviación estándar corresponde a la raíz cuadrada de la varianza.</p>
+<p>En teoría de portafolios, la varianza permite representar matemáticamente el riesgo del portafolio.</p>
+<hr>
+</section>
+<section id="covarianza" class="level2">
+<h2 class="anchored" data-anchor-id="covarianza">Covarianza</h2>
+<p>Medida de cómo dos variables tienden a cambiar conjuntamente.</p>
+<p>En finanzas se utiliza para estudiar cómo se relacionan los retornos de distintos activos.</p>
+<p>Una covarianza positiva indica que ambos activos tienden a moverse en la misma dirección, mientras que una covarianza negativa indica una tendencia a moverse en direcciones opuestas.</p>
+<hr>
+</section>
+<section id="matriz-de-covarianzas" class="level2">
+<h2 class="anchored" data-anchor-id="matriz-de-covarianzas">Matriz de covarianzas</h2>
+<p>Matriz que contiene las varianzas y covarianzas entre todos los activos de un conjunto.</p>
+<p>En clase se calculó mediante:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>cov_matrix <span class="ot">&lt;-</span> <span class="fu">cov</span>(retornos_matrix)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Esta matriz es uno de los elementos fundamentales de la optimización de portafolios de Markowitz.</p>
+<hr>
+</section>
+<section id="correlación" class="level2">
+<h2 class="anchored" data-anchor-id="correlación">Correlación</h2>
+<p>Medida estadística estandarizada del grado de asociación lineal entre dos variables.</p>
+<p>Para retornos financieros permite estudiar en qué medida dos activos tienden a moverse conjuntamente.</p>
+<p>Una correlación cercana a:</p>
+<ul>
+<li><code>1</code>: indica movimientos lineales similares.</li>
+<li><code>0</code>: indica poca relación lineal.</li>
+<li><code>-1</code>: indica movimientos lineales en direcciones opuestas.</li>
+</ul>
+<p>La correlación no implica causalidad.</p>
+<hr>
+</section>
+<section id="matriz-de-correlación" class="level2">
+<h2 class="anchored" data-anchor-id="matriz-de-correlación">Matriz de correlación</h2>
+<p>Tabla que contiene las correlaciones entre varios activos.</p>
+<p>En clase:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>tabla_correlacion <span class="ot">&lt;-</span> datos <span class="sc">%&gt;%</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_from =</span> ticker,</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_from =</span> retorno</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>fecha) <span class="sc">%&gt;%</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cor</span>(<span class="at">use =</span> <span class="st">"complete.obs"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+</section>
+<section id="teoría-de-portafolios" class="level1">
+<h1>💼 Teoría de portafolios</h1>
+<section id="portafolio" class="level2">
+<h2 class="anchored" data-anchor-id="portafolio">Portafolio</h2>
+<p>Conjunto de activos financieros mantenidos simultáneamente por un inversionista.</p>
+<p>Cada activo representa una determinada proporción de la inversión total.</p>
+<hr>
+</section>
+<section id="peso-de-un-activo" class="level2">
+<h2 class="anchored" data-anchor-id="peso-de-un-activo">Peso de un activo</h2>
+<p>Proporción del capital del portafolio invertida en un determinado activo.</p>
+<p>Se representa normalmente mediante:</p>
+<pre class="text"><code>w</code></pre>
+<p>Si un portafolio tiene tres activos, podría tener pesos como:</p>
+<pre class="text"><code>Activo A = 40 %
+Activo B = 35 %
+Activo C = 25 %</code></pre>
+<p>La suma de los pesos sería:</p>
+<pre class="text"><code>40 % + 35 % + 25 % = 100 %</code></pre>
+<hr>
+</section>
+<section id="restricción-presupuestaria" class="level2">
+<h2 class="anchored" data-anchor-id="restricción-presupuestaria">Restricción presupuestaria</h2>
+<p>Condición que establece que la totalidad del capital debe distribuirse entre los activos.</p>
+<p>En el código:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(w) <span class="ot">=</span> <span class="dv">1</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p>y se incorpora mediante:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rep</span>(<span class="dv">1</span>, n_activos)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+<section id="venta-corta-o-short-selling" class="level2">
+<h2 class="anchored" data-anchor-id="venta-corta-o-short-selling">Venta corta o Short Selling</h2>
+<p>Operación en la cual se toma una posición negativa sobre un activo.</p>
+<p>En el ejercicio realizado en clase se incorporó la restricción:</p>
+<pre class="text"><code>w &gt;= 0</code></pre>
+<p>lo que implica que <strong>no se permiten pesos negativos</strong> y, por lo tanto, el problema planteado no contempla posiciones cortas.</p>
+<hr>
+</section>
+<section id="diversificación" class="level2">
+<h2 class="anchored" data-anchor-id="diversificación">Diversificación</h2>
+<p>Distribución de una inversión entre distintos activos.</p>
+<p>La idea central es que el riesgo de un portafolio depende no solamente del riesgo individual de sus activos, sino también de cómo estos activos se relacionan entre sí.</p>
+<p>Por esto la matriz de covarianzas resulta fundamental.</p>
+<hr>
+</section>
+<section id="modelo-de-markowitz" class="level2">
+<h2 class="anchored" data-anchor-id="modelo-de-markowitz">Modelo de Markowitz</h2>
+<p>Modelo de selección de portafolios que analiza simultáneamente:</p>
+<ul>
+<li>retorno esperado;</li>
+<li>riesgo;</li>
+<li>pesos de los activos;</li>
+<li>correlaciones o covarianzas entre activos.</li>
+</ul>
+<p>El problema puede formularse buscando el portafolio de <strong>mínima varianza para un determinado retorno objetivo</strong>.</p>
+<hr>
+</section>
+<section id="optimización-media-varianza" class="level2">
+<h2 class="anchored" data-anchor-id="optimización-media-varianza">Optimización Media-Varianza</h2>
+<p>Enfoque utilizado por el modelo de Markowitz.</p>
+<p>Considera dos dimensiones principales:</p>
+<pre class="text"><code>Media     → retorno esperado
+Varianza  → riesgo</code></pre>
+<p>El objetivo es encontrar combinaciones de activos que entreguen determinadas relaciones entre retorno y riesgo.</p>
+<hr>
+</section>
+<section id="frontera-eficiente" class="level2">
+<h2 class="anchored" data-anchor-id="frontera-eficiente">Frontera eficiente</h2>
+<p>Conjunto de portafolios que representan combinaciones eficientes entre riesgo y retorno.</p>
+<p>Para cada nivel de retorno objetivo se busca el portafolio con menor riesgo posible.</p>
+<p>En clase se creó una estructura llamada:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>frontera_markowitz</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p>que almacena:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>frontera_markowitz <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">retorno =</span> ...,</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">volatilidad =</span> ...,</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">sharpe =</span> ...,</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">pesos =</span> ...</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Cada punto de la frontera representa un portafolio diferente.</p>
+<hr>
+</section>
+<section id="programación-cuadrática" class="level2">
+<h2 class="anchored" data-anchor-id="programación-cuadrática">Programación cuadrática</h2>
+<p>Método matemático de optimización en el cual la función objetivo contiene términos cuadráticos.</p>
+<p>La minimización de la varianza de un portafolio puede expresarse como un problema de programación cuadrática.</p>
+<p>En R se utilizó el paquete:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(quadprog)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p>y la función:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">solve.QP</span>()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+<section id="restricciones-del-problema-de-optimización" class="level2">
+<h2 class="anchored" data-anchor-id="restricciones-del-problema-de-optimización">Restricciones del problema de optimización</h2>
+<p>En el ejercicio de clase se utilizaron tres grupos principales de condiciones:</p>
+<pre class="text"><code>1. Los pesos deben sumar 1.
+
+2. El portafolio debe alcanzar el retorno objetivo.
+
+3. Los pesos deben ser mayores o iguales a 0.</code></pre>
+<p>En el código:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>A <span class="ot">&lt;-</span> <span class="fu">cbind</span>(</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rep</span>(<span class="dv">1</span>, n_activos),</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>  retornos_esperados,</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">diag</span>(n_activos)</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+<section id="tasa-libre-de-riesgo" class="level2">
+<h2 class="anchored" data-anchor-id="tasa-libre-de-riesgo">Tasa libre de riesgo</h2>
+<p>Retorno teórico de una inversión considerada sin riesgo para efectos del modelo.</p>
+<p>En el ejercicio se utilizó:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>tasa_libre_riesgo <span class="ot">&lt;-</span> <span class="fl">0.02</span> <span class="sc">/</span> <span class="dv">12</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p>correspondiente a una tasa anual de <strong>2 %</strong>, transformada a una aproximación mensual mediante división por 12.</p>
+<hr>
+</section>
+<section id="ratio-de-sharpe" class="level2">
+<h2 class="anchored" data-anchor-id="ratio-de-sharpe">Ratio de Sharpe</h2>
+<p>Indicador que relaciona el retorno adicional obtenido respecto de la tasa libre de riesgo con la volatilidad asumida.</p>
+<p>Su estructura general es:</p>
+<pre class="text"><code>Sharpe =
+(Retorno del portafolio - Tasa libre de riesgo)
+/
+Volatilidad del portafolio</code></pre>
+<p>En clase:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>frontera_markowitz<span class="sc">$</span>sharpe <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  frontera_markowitz<span class="sc">$</span>volatilidad <span class="sc">&gt;</span> <span class="fl">1e-10</span>,</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  (frontera_markowitz<span class="sc">$</span>retorno <span class="sc">-</span> <span class="fl">0.02</span>) <span class="sc">/</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    frontera_markowitz<span class="sc">$</span>volatilidad,</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="cn">NA</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Un mayor Sharpe representa una mayor cantidad de retorno excedente por unidad de volatilidad dentro de este criterio.</p>
+<hr>
+</section>
+<section id="portafolio-tangente" class="level2">
+<h2 class="anchored" data-anchor-id="portafolio-tangente">Portafolio tangente</h2>
+<p>Portafolio de la frontera eficiente que maximiza el ratio de Sharpe respecto de una determinada tasa libre de riesgo.</p>
+<p>En el ejercicio se identificó utilizando:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>idx_tangente <span class="ot">&lt;-</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">which.max</span>(frontera_markowitz<span class="sc">$</span>sharpe)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Posteriormente se almacenaron sus características:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>portafolio_tangente <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">retorno =</span> ...,</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">volatilidad =</span> ...,</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">sharpe =</span> ...,</span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">pesos =</span> ...</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+<section id="capital-allocation-line-cal" class="level2">
+<h2 class="anchored" data-anchor-id="capital-allocation-line-cal">Capital Allocation Line — CAL</h2>
+<p>La <strong>Capital Allocation Line</strong> representa combinaciones entre:</p>
+<ul>
+<li>el activo libre de riesgo;</li>
+<li>un portafolio riesgoso.</li>
+</ul>
+<p>En el gráfico desarrollado durante la clase se muestra junto a la frontera eficiente:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">title =</span> <span class="st">"Frontera Eficiente y Capital Allocation Line"</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p>El portafolio tangente corresponde al punto donde la CAL es tangente a la frontera eficiente bajo los supuestos del modelo.</p>
+<hr>
+</section>
+<section id="anualización" class="level2">
+<h2 class="anchored" data-anchor-id="anualización">Anualización</h2>
+<p>Transformación de una métrica calculada con frecuencia diaria o mensual a una escala anual.</p>
+<p>Por ejemplo, en el código los retornos mensuales se transforman nuevamente a escala anual mediante:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>r_obj <span class="sc">*</span> <span class="dv">12</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Mientras que la volatilidad mensual se anualiza mediante:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>volatilidad_mensual <span class="sc">*</span> <span class="fu">sqrt</span>(<span class="dv">12</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Es importante distinguir ambas transformaciones: retorno y volatilidad no se anualizan exactamente de la misma manera en este ejercicio.</p>
+<hr>
+</section>
+</section>
+<section id="simulación-y-probabilidad" class="level1">
+<h1>🎲 Simulación y probabilidad</h1>
+<section id="distribución-normal" class="level2">
+<h2 class="anchored" data-anchor-id="distribución-normal">Distribución normal</h2>
+<p>Distribución de probabilidad utilizada en los ejercicios para simular retornos mediante:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Se caracteriza principalmente por una media y una desviación estándar.</p>
+<hr>
+</section>
+<section id="distribución-triangular" class="level2">
+<h2 class="anchored" data-anchor-id="distribución-triangular">Distribución triangular</h2>
+<p>Distribución de probabilidad definida mediante tres parámetros:</p>
+<ul>
+<li>mínimo;</li>
+<li>máximo;</li>
+<li>moda o valor más probable.</li>
+</ul>
+<p>En clase:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rtriangle</span>(<span class="dv">1</span>, <span class="dv">9</span>, <span class="dv">13</span>, <span class="dv">11</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p>representa:</p>
+<pre class="text"><code>mínimo = 9
+máximo = 13
+más probable = 11</code></pre>
+<hr>
+</section>
+<section id="simulación" class="level2">
+<h2 class="anchored" data-anchor-id="simulación">Simulación</h2>
+<p>Proceso mediante el cual se generan valores artificiales utilizando determinados supuestos.</p>
+<p>Ejemplo:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>retorno <span class="ot">=</span> <span class="fu">rnorm</span>(</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">n</span>(),</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">mean =</span> <span class="fl">0.0005</span>,</span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">sd =</span> <span class="fl">0.015</span></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+<section id="simulación-monte-carlo" class="level2">
+<h2 class="anchored" data-anchor-id="simulación-monte-carlo">Simulación Monte Carlo</h2>
+<p>Método que repite múltiples veces un experimento que contiene variables aleatorias para estudiar los distintos resultados posibles.</p>
+<p>En uno de los ejercicios:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>reps <span class="ot">=</span> <span class="dv">10000</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p>indica que la simulación se ejecuta 10.000 veces.</p>
+<hr>
+</section>
+<section id="escenario" class="level2">
+<h2 class="anchored" data-anchor-id="escenario">Escenario</h2>
+<p>Una posible combinación de condiciones dentro de una simulación.</p>
+<p>En clase se trabajó con:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="st">"A"</span>, <span class="st">"B"</span>, <span class="st">"C"</span>),</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>  <span class="dv">1</span>,</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">replace =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">prob =</span> <span class="fu">c</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">4</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">2</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">4</span>)</span>
+<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+<section id="probabilidad" class="level2">
+<h2 class="anchored" data-anchor-id="probabilidad">Probabilidad</h2>
+<p>Medida de qué tan probable es que ocurra determinado resultado.</p>
+<p>En una simulación permite asignar distintos pesos a posibles escenarios.</p>
+<hr>
+</section>
+</section>
+<section id="conceptos-de-programación-y-análisis-de-datos" class="level1">
+<h1>💻 Conceptos de programación y análisis de datos</h1>
+<section id="r" class="level2">
+<h2 class="anchored" data-anchor-id="r">R</h2>
+<p>Lenguaje de programación especialmente utilizado en estadística, ciencia de datos, visualización y modelamiento.</p>
+<p>Es el lenguaje principal del curso.</p>
+<hr>
+</section>
+<section id="python" class="level2">
+<h2 class="anchored" data-anchor-id="python">Python</h2>
+<p>Lenguaje de programación de propósito general muy utilizado en ciencia de datos, automatización e inteligencia artificial.</p>
+<hr>
+</section>
+<section id="rstudio" class="level2">
+<h2 class="anchored" data-anchor-id="rstudio">RStudio</h2>
+<p>Entorno de desarrollo especializado tradicionalmente en R.</p>
+<p>Permite trabajar con scripts, consola, gráficos, paquetes, archivos y proyectos.</p>
+<hr>
+</section>
+<section id="positron" class="level2">
+<h2 class="anchored" data-anchor-id="positron">Positron</h2>
+<p>Entorno de desarrollo orientado a ciencia de datos que permite trabajar con lenguajes como R y Python.</p>
+<p>Positron y RStudio son aplicaciones independientes.</p>
+<hr>
+</section>
+<section id="ide" class="level2">
+<h2 class="anchored" data-anchor-id="ide">IDE</h2>
+<p><strong>Integrated Development Environment</strong>.</p>
+<p>Aplicación que reúne herramientas para escribir, ejecutar, revisar y depurar código.</p>
+<p>RStudio y Positron son ejemplos.</p>
+<hr>
+</section>
+<section id="script" class="level2">
+<h2 class="anchored" data-anchor-id="script">Script</h2>
+<p>Archivo que contiene una secuencia de instrucciones de programación.</p>
+<p>Un script puede, por ejemplo:</p>
+<pre class="text"><code>Cargar datos
+→ Transformarlos
+→ Calcular indicadores
+→ Generar gráficos
+→ Exportar resultados</code></pre>
+<hr>
+</section>
+<section id="objeto" class="level2">
+<h2 class="anchored" data-anchor-id="objeto">Objeto</h2>
+<p>Elemento almacenado en memoria dentro de R.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">2</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p>crea un objeto llamado <code>x</code>.</p>
+<hr>
+</section>
+<section id="asignación--" class="level2">
+<h2 class="anchored" data-anchor-id="asignación--">Asignación <code>&lt;-</code></h2>
+<p>Operador utilizado habitualmente en R para guardar información dentro de un objeto.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>media <span class="ot">&lt;-</span> <span class="fl">0.0005</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+<section id="función" class="level2">
+<h2 class="anchored" data-anchor-id="función">Función</h2>
+<p>Bloque de código diseñado para realizar una tarea.</p>
+<p>Ejemplos utilizados durante las clases:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rnorm</span>()</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>()</span>
+<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a><span class="fu">cov</span>()</span>
+<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>()</span>
+<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>()</span>
+<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a><span class="fu">read_csv</span>()</span>
+<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a><span class="fu">solve.QP</span>()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+<section id="paquete" class="level2">
+<h2 class="anchored" data-anchor-id="paquete">Paquete</h2>
+<p>Colección de funciones que amplían las capacidades de R.</p>
+<p>Entre los paquetes utilizados durante las clases se encuentran:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>tidyverse</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>ggplot2</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>dplyr</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>readr</span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>lubridate</span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>triangle</span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>scales</span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>quadprog</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+<section id="library" class="level2">
+<h2 class="anchored" data-anchor-id="library"><code>library()</code></h2>
+<p>Carga un paquete instalado.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+<section id="install.packages" class="level2">
+<h2 class="anchored" data-anchor-id="install.packages"><code>install.packages()</code></h2>
+<p>Instala un paquete.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"rmarkdown"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+</section>
+<section id="manipulación-y-estructuras-de-datos" class="level1">
+<h1>🗃️ Manipulación y estructuras de datos</h1>
+<section id="tidyverse" class="level2">
+<h2 class="anchored" data-anchor-id="tidyverse">tidyverse</h2>
+<p>Ecosistema de paquetes de R diseñado para análisis y transformación de datos.</p>
+<p>Incluye herramientas como:</p>
+<pre class="text"><code>dplyr
+ggplot2
+readr
+tidyr
+tibble</code></pre>
+<hr>
+</section>
+<section id="dplyr" class="level2">
+<h2 class="anchored" data-anchor-id="dplyr">dplyr</h2>
+<p>Paquete utilizado para transformar y manipular datos.</p>
+<p>Entre las funciones trabajadas:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">select</span>()</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mutate</span>()</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="fu">arrange</span>()</span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a><span class="fu">group_by</span>()</span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ungroup</span>()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+<section id="pipe" class="level2">
+<h2 class="anchored" data-anchor-id="pipe">Pipe <code>%&gt;%</code></h2>
+<p>Operador utilizado tradicionalmente dentro del ecosistema tidyverse para encadenar operaciones.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>datos <span class="sc">%&gt;%</span></span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(ticker) <span class="sc">%&gt;%</span></span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(...)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+<section id="pipe-nativo" class="level2">
+<h2 class="anchored" data-anchor-id="pipe-nativo">Pipe nativo <code>|&gt;</code></h2>
+<p>Operador incorporado directamente en versiones modernas de R.</p>
+<p>Durante la clase de portafolios se utilizó:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>portafolio_retornos <span class="sc">|&gt;</span></span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>fecha) <span class="sc">|&gt;</span></span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.matrix</span>()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Su objetivo es similar al de <code>%&gt;%</code>: facilitar la lectura de una secuencia de operaciones.</p>
+<hr>
+</section>
+<section id="data-frame" class="level2">
+<h2 class="anchored" data-anchor-id="data-frame">Data frame</h2>
+<p>Estructura tabular utilizada en R para almacenar datos organizados en filas y columnas.</p>
+<hr>
+</section>
+<section id="tibble" class="level2">
+<h2 class="anchored" data-anchor-id="tibble">Tibble</h2>
+<p>Versión moderna de un <code>data.frame</code>, ampliamente utilizada por tidyverse.</p>
+<p>Durante el ejercicio de Markowitz:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>portafolio_tangente_df <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">retorno =</span> ...,</span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">volatilidad =</span> ...,</span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">sharpe =</span> ...,</span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">pesos =</span> ...</span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+<section id="matriz" class="level2">
+<h2 class="anchored" data-anchor-id="matriz">Matriz</h2>
+<p>Estructura bidimensional en la cual todos los elementos son del mismo tipo.</p>
+<p>En el ejercicio de portafolios:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>retornos_matrix <span class="ot">&lt;-</span></span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>  portafolio_retornos <span class="sc">|&gt;</span></span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>fecha) <span class="sc">|&gt;</span></span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.matrix</span>()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+<section id="as.matrix" class="level2">
+<h2 class="anchored" data-anchor-id="as.matrix"><code>as.matrix()</code></h2>
+<p>Convierte un objeto compatible en una matriz.</p>
+<hr>
+</section>
+<section id="colmeans" class="level2">
+<h2 class="anchored" data-anchor-id="colmeans"><code>colMeans()</code></h2>
+<p>Calcula la media de cada columna de una matriz o estructura similar.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>retornos_esperados <span class="ot">&lt;-</span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">colMeans</span>(retornos_matrix)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+<section id="cov" class="level2">
+<h2 class="anchored" data-anchor-id="cov"><code>cov()</code></h2>
+<p>Calcula covarianzas.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>cov_matrix <span class="ot">&lt;-</span></span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cov</span>(retornos_matrix)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+<section id="ncol" class="level2">
+<h2 class="anchored" data-anchor-id="ncol"><code>ncol()</code></h2>
+<p>Entrega el número de columnas de una estructura.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>n_activos <span class="ot">&lt;-</span></span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ncol</span>(retornos_matrix)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p>En el ejercicio corresponde al número de activos del portafolio.</p>
+<hr>
+</section>
+<section id="list" class="level2">
+<h2 class="anchored" data-anchor-id="list"><code>list()</code></h2>
+<p>Crea una estructura capaz de almacenar objetos de distintos tipos.</p>
+<p>En clase se utilizó para almacenar simultáneamente:</p>
+<pre class="text"><code>retorno
+volatilidad
+Sharpe
+pesos</code></pre>
+<hr>
+</section>
+</section>
+<section id="datos-y-archivos" class="level1">
+<h1>📁 Datos y archivos</h1>
+<section id="csv" class="level2">
+<h2 class="anchored" data-anchor-id="csv">CSV</h2>
+<p><strong>Comma-Separated Values</strong>.</p>
+<p>Formato de texto utilizado para intercambiar datos tabulares.</p>
+<p>Durante las clases se utilizaron archivos como:</p>
+<pre class="text"><code>retornos.csv
+retornos_3_acciones.csv
+portafolio_retornos.csv</code></pre>
+<hr>
+</section>
+<section id="read_csv" class="level2">
+<h2 class="anchored" data-anchor-id="read_csv"><code>read_csv()</code></h2>
+<p>Función de <code>readr</code> utilizada para importar CSV.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>portafolio_retornos <span class="ot">&lt;-</span></span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">read_csv</span>(</span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"data/portafolio_retornos.csv"</span></span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+<section id="write_csv" class="level2">
+<h2 class="anchored" data-anchor-id="write_csv"><code>write_csv()</code></h2>
+<p>Exporta información a CSV.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(</span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>  datos_simulados,</span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"retornos_3_acciones.csv"</span></span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+<section id="ruta-relativa" class="level2">
+<h2 class="anchored" data-anchor-id="ruta-relativa">Ruta relativa</h2>
+<p>Ubicación de un archivo expresada respecto de la carpeta del proyecto.</p>
+<p>Por ejemplo:</p>
+<pre class="text"><code>data/portafolio_retornos.csv</code></pre>
+<p>indica que existe una carpeta llamada <code>data</code> dentro del proyecto.</p>
+<p>Utilizar rutas relativas facilita la reproducibilidad de un proyecto.</p>
+<hr>
+</section>
+</section>
+<section id="visualización-de-datos" class="level1">
+<h1>📊 Visualización de datos</h1>
+<section id="ggplot2" class="level2">
+<h2 class="anchored" data-anchor-id="ggplot2">ggplot2</h2>
+<p>Paquete utilizado para construir gráficos en R mediante una gramática de visualización.</p>
+<hr>
+</section>
+<section id="aes" class="level2">
+<h2 class="anchored" data-anchor-id="aes"><code>aes()</code></h2>
+<p>Define la relación entre variables y propiedades visuales.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">aes</span>(</span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">x =</span> volatilidad,</span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">y =</span> retorno</span>
+<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+<section id="geom_line" class="level2">
+<h2 class="anchored" data-anchor-id="geom_line"><code>geom_line()</code></h2>
+<p>Genera líneas.</p>
+<p>Se utilizó tanto para retornos acumulados como para representar la frontera eficiente.</p>
+<hr>
+</section>
+<section id="geom_point" class="level2">
+<h2 class="anchored" data-anchor-id="geom_point"><code>geom_point()</code></h2>
+<p>Genera puntos sobre un gráfico.</p>
+<p>En la actividad de portafolios se utilizó para destacar el portafolio tangente.</p>
+<hr>
+</section>
+<section id="histograma" class="level2">
+<h2 class="anchored" data-anchor-id="histograma">Histograma</h2>
+<p>Gráfico que representa cómo se distribuyen las observaciones de una variable.</p>
+<hr>
+</section>
+<section id="geom_histogram" class="level2">
+<h2 class="anchored" data-anchor-id="geom_histogram"><code>geom_histogram()</code></h2>
+<p>Genera un histograma.</p>
+<hr>
+</section>
+<section id="theme_minimal" class="level2">
+<h2 class="anchored" data-anchor-id="theme_minimal"><code>theme_minimal()</code></h2>
+<p>Aplica un estilo visual simplificado a un gráfico de ggplot2.</p>
+<hr>
+</section>
+</section>
+<section id="aleatoriedad-y-reproducibilidad" class="level1">
+<h1>🎲 Aleatoriedad y reproducibilidad</h1>
+<section id="rnorm" class="level2">
+<h2 class="anchored" data-anchor-id="rnorm"><code>rnorm()</code></h2>
+<p>Genera números pseudoaleatorios provenientes de una distribución normal.</p>
+<hr>
+</section>
+<section id="rtriangle" class="level2">
+<h2 class="anchored" data-anchor-id="rtriangle"><code>rtriangle()</code></h2>
+<p>Genera valores provenientes de una distribución triangular.</p>
+<hr>
+</section>
+<section id="sample" class="level2">
+<h2 class="anchored" data-anchor-id="sample"><code>sample()</code></h2>
+<p>Selecciona elementos aleatoriamente y permite especificar probabilidades.</p>
+<hr>
+</section>
+<section id="set.seed" class="level2">
+<h2 class="anchored" data-anchor-id="set.seed"><code>set.seed()</code></h2>
+<p>Fija la semilla del generador pseudoaleatorio.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Esto permite volver a ejecutar un análisis y obtener la misma secuencia aleatoria.</p>
+<hr>
+</section>
+<section id="reproducibilidad" class="level2">
+<h2 class="anchored" data-anchor-id="reproducibilidad">Reproducibilidad</h2>
+<p>Capacidad de volver a ejecutar un análisis obteniendo resultados consistentes a partir del mismo:</p>
+<pre class="text"><code>Código
++ Datos
++ Dependencias
++ Configuración</code></pre>
+<p>Herramientas utilizadas durante el curso relacionadas con reproducibilidad incluyen:</p>
+<pre class="text"><code>set.seed()
+Git
+GitHub
+renv
+R Markdown</code></pre>
+<hr>
+</section>
+</section>
+<section id="git-github-y-control-de-versiones" class="level1">
+<h1>🔧 Git, GitHub y control de versiones</h1>
+<section id="git" class="level2">
+<h2 class="anchored" data-anchor-id="git">Git</h2>
+<p>Sistema de control de versiones utilizado para registrar cambios realizados en archivos y código.</p>
+<hr>
+</section>
+<section id="github" class="level2">
+<h2 class="anchored" data-anchor-id="github">GitHub</h2>
+<p>Plataforma que permite alojar repositorios Git y colaborar en proyectos.</p>
+<hr>
+</section>
+<section id="repositorio" class="level2">
+<h2 class="anchored" data-anchor-id="repositorio">Repositorio</h2>
+<p>Carpeta de proyecto administrada mediante Git.</p>
+<p>El repositorio del curso es:</p>
+<pre class="text"><code>https://github.com/sebaegana/clase_finanzas_r_202609</code></pre>
+<hr>
+</section>
+<section id="git-clone" class="level2">
+<h2 class="anchored" data-anchor-id="git-clone"><code>git clone</code></h2>
+<p>Descarga una copia de un repositorio.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb64"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/sebaegana/clase_finanzas_r_202609.git</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+<section id="datos-privados-y-github" class="level2">
+<h2 class="anchored" data-anchor-id="datos-privados-y-github">Datos privados y GitHub</h2>
+<p>Los repositorios pueden configurarse como privados, pero esto no reemplaza las políticas de protección de datos.</p>
+<p>No deberían almacenarse directamente en un repositorio:</p>
+<pre class="text"><code>Contraseñas
+Tokens
+API Keys
+Credenciales
+Datos personales sensibles
+Información institucional confidencial</code></pre>
+<hr>
+</section>
+</section>
+<section id="gestión-del-entorno" class="level1">
+<h1>📦 Gestión del entorno</h1>
+<section id="renv" class="level2">
+<h2 class="anchored" data-anchor-id="renv">renv</h2>
+<p>Herramienta utilizada para registrar las versiones de los paquetes utilizados por un proyecto de R.</p>
+<p>Ayuda a reproducir un entorno de trabajo en otro computador.</p>
+<hr>
+</section>
+</section>
+<section id="markdown-y-documentos-reproducibles" class="level1">
+<h1>📝 Markdown y documentos reproducibles</h1>
+<section id="markdown" class="level2">
+<h2 class="anchored" data-anchor-id="markdown">Markdown</h2>
+<p>Lenguaje de marcado ligero para estructurar documentos de texto.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb66"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu"># Título</span></span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a><span class="fu">## Subtítulo</span></span>
+<span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-5"><a href="#cb66-5" aria-hidden="true" tabindex="-1"></a>**Negrita**</span>
+<span id="cb66-6"><a href="#cb66-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-7"><a href="#cb66-7" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>Elemento</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+<section id="r-markdown" class="level2">
+<h2 class="anchored" data-anchor-id="r-markdown">R Markdown</h2>
+<p>Sistema que permite combinar en un mismo documento:</p>
+<pre class="text"><code>Texto
++ Código R
++ Resultados
++ Tablas
++ Gráficos</code></pre>
+<p>Puede instalarse mediante:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"rmarkdown"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+</section>
+<section id="inteligencia-artificial-y-desarrollo-asistido" class="level1">
+<h1>🤖 Inteligencia artificial y desarrollo asistido</h1>
+<section id="desarrollo-asistido-por-ia" class="level2">
+<h2 class="anchored" data-anchor-id="desarrollo-asistido-por-ia">Desarrollo asistido por IA</h2>
+<p>Uso de modelos de inteligencia artificial para apoyar tareas de programación.</p>
+<p>Durante las clases se utilizó como herramienta para reducir la fricción al construir scripts y trabajar con bibliotecas como <code>tidyverse</code> y <code>ggplot2</code>.</p>
+<hr>
+</section>
+<section id="supervisión-humana" class="level2">
+<h2 class="anchored" data-anchor-id="supervisión-humana">Supervisión humana</h2>
+<p>Aunque una herramienta de IA puede generar código, una persona debe validar:</p>
+<pre class="text"><code>Supuestos financieros
+Fórmulas
+Unidades
+Datos
+Resultados
+Interpretación</code></pre>
+<p>Generar código rápidamente no reemplaza la comprensión del problema.</p>
+<hr>
+</section>
+</section>
+<section id="preguntas-frecuentes" class="level1">
+<h1>❓ Preguntas frecuentes</h1>
+<section id="necesito-utilizar-positron-y-rstudio-simultáneamente" class="level2">
+<h2 class="anchored" data-anchor-id="necesito-utilizar-positron-y-rstudio-simultáneamente">¿Necesito utilizar Positron y RStudio simultáneamente?</h2>
+<p>No.&nbsp;Son entornos de desarrollo independientes y es posible trabajar con R utilizando cualquiera de ellos.</p>
+<hr>
+</section>
+<section id="necesito-tener-python-instalado-para-trabajar-en-finanzas-en-r" class="level2">
+<h2 class="anchored" data-anchor-id="necesito-tener-python-instalado-para-trabajar-en-finanzas-en-r">¿Necesito tener Python instalado para trabajar en Finanzas en R?</h2>
+<p>Para los ejercicios desarrollados exclusivamente en R, no.</p>
+<p>Python apareció también durante las clases como herramienta complementaria.</p>
+<hr>
+</section>
+<section id="necesito-saber-python-para-seguir-el-curso" class="level2">
+<h2 class="anchored" data-anchor-id="necesito-saber-python-para-seguir-el-curso">¿Necesito saber Python para seguir el curso?</h2>
+<p>No necesariamente. El lenguaje principal utilizado para desarrollar los ejercicios financieros es R.</p>
+<hr>
+</section>
+<section id="por-qué-utilizamos-252-días-para-representar-un-año" class="level2">
+<h2 class="anchored" data-anchor-id="por-qué-utilizamos-252-días-para-representar-un-año">¿Por qué utilizamos 252 días para representar un año?</h2>
+<p>Porque corresponde a una aproximación habitual al número de días de negociación existentes durante un año.</p>
+<hr>
+</section>
+<section id="por-qué-utilizamos-set.seed" class="level2">
+<h2 class="anchored" data-anchor-id="por-qué-utilizamos-set.seed">¿Por qué utilizamos <code>set.seed()</code>?</h2>
+<p>Porque permite reproducir los mismos números pseudoaleatorios.</p>
+<p>Esto facilita comparar resultados y detectar errores.</p>
+<hr>
+</section>
+<section id="qué-diferencia-existe-entre-retorno-diario-y-retorno-acumulado" class="level2">
+<h2 class="anchored" data-anchor-id="qué-diferencia-existe-entre-retorno-diario-y-retorno-acumulado">¿Qué diferencia existe entre retorno diario y retorno acumulado?</h2>
+<p>El retorno diario representa el cambio correspondiente a un período.</p>
+<p>El retorno acumulado considera el efecto compuesto de todos los períodos anteriores.</p>
+<hr>
+</section>
+<section id="por-qué-no-podemos-simplemente-sumar-retornos" class="level2">
+<h2 class="anchored" data-anchor-id="por-qué-no-podemos-simplemente-sumar-retornos">¿Por qué no podemos simplemente sumar retornos?</h2>
+<p>Porque los retornos porcentuales se aplican sobre valores que cambian en cada período.</p>
+<p>Por eso utilizamos:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cumprod</span>(<span class="dv">1</span> <span class="sc">+</span> retorno) <span class="sc">-</span> <span class="dv">1</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+<section id="qué-representa-una-matriz-de-correlación" class="level2">
+<h2 class="anchored" data-anchor-id="qué-representa-una-matriz-de-correlación">¿Qué representa una matriz de correlación?</h2>
+<p>Permite estudiar la relación lineal entre los retornos de distintos activos.</p>
+<hr>
+</section>
+<section id="qué-diferencia-existe-entre-correlación-y-covarianza" class="level2">
+<h2 class="anchored" data-anchor-id="qué-diferencia-existe-entre-correlación-y-covarianza">¿Qué diferencia existe entre correlación y covarianza?</h2>
+<p>Ambas describen cómo dos variables se mueven conjuntamente.</p>
+<p>La <strong>covarianza</strong> conserva las unidades y escalas de las variables.</p>
+<p>La <strong>correlación</strong> estandariza esa relación entre <code>-1</code> y <code>1</code>.</p>
+<p>En la optimización de Markowitz utilizamos directamente la matriz de covarianzas.</p>
+<hr>
+</section>
+<section id="por-qué-la-covarianza-es-importante-para-un-portafolio" class="level2">
+<h2 class="anchored" data-anchor-id="por-qué-la-covarianza-es-importante-para-un-portafolio">¿Por qué la covarianza es importante para un portafolio?</h2>
+<p>Porque el riesgo del portafolio depende tanto de la volatilidad individual de sus activos como de la forma en que estos se mueven conjuntamente.</p>
+<p>Dos activos muy volátiles pueden, bajo determinadas relaciones entre sus retornos, producir un portafolio cuyo riesgo conjunto sea diferente del riesgo de cada activo considerado aisladamente.</p>
+<hr>
+</section>
+<section id="qué-es-la-frontera-eficiente" class="level2">
+<h2 class="anchored" data-anchor-id="qué-es-la-frontera-eficiente">¿Qué es la frontera eficiente?</h2>
+<p>Es el conjunto de portafolios eficientes que se obtiene al buscar, para distintos niveles de retorno, combinaciones con el menor riesgo permitido por el modelo y sus restricciones.</p>
+<hr>
+</section>
+<section id="cada-punto-de-la-frontera-eficiente-representa-un-portafolio-diferente" class="level2">
+<h2 class="anchored" data-anchor-id="cada-punto-de-la-frontera-eficiente-representa-un-portafolio-diferente">¿Cada punto de la frontera eficiente representa un portafolio diferente?</h2>
+<p>Sí. Cada punto puede contener diferentes:</p>
+<pre class="text"><code>Pesos
+Retorno esperado
+Volatilidad
+Ratio de Sharpe</code></pre>
+<hr>
+</section>
+<section id="qué-significa-que-los-pesos-sumen-1" class="level2">
+<h2 class="anchored" data-anchor-id="qué-significa-que-los-pesos-sumen-1">¿Qué significa que los pesos sumen 1?</h2>
+<p>Significa que se distribuye el 100 % del capital disponible.</p>
+<pre class="text"><code>w1 + w2 + ... + wn = 1</code></pre>
+<hr>
+</section>
+<section id="qué-significa-w-0" class="level2">
+<h2 class="anchored" data-anchor-id="qué-significa-w-0">¿Qué significa <code>w &gt;= 0</code>?</h2>
+<p>Que los pesos no pueden ser negativos.</p>
+<p>En el ejercicio esto implica que no se permiten posiciones cortas.</p>
+<hr>
+</section>
+<section id="qué-hace-quadprog" class="level2">
+<h2 class="anchored" data-anchor-id="qué-hace-quadprog">¿Qué hace <code>quadprog</code>?</h2>
+<p>Es un paquete de R utilizado para resolver problemas de programación cuadrática.</p>
+<p>En clase se utilizó:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="fu">solve.QP</span>()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p>para encontrar los pesos del portafolio bajo determinadas restricciones.</p>
+<hr>
+</section>
+<section id="por-qué-probamos-muchos-retornos-objetivo" class="level2">
+<h2 class="anchored" data-anchor-id="por-qué-probamos-muchos-retornos-objetivo">¿Por qué probamos muchos retornos objetivo?</h2>
+<p>Porque para construir la frontera eficiente necesitamos calcular múltiples portafolios.</p>
+<p>En el ejercicio se utilizaron 50 retornos objetivo.</p>
+<p>Cada retorno objetivo genera un nuevo problema de optimización.</p>
+<hr>
+</section>
+<section id="por-qué-el-retorno-objetivo-se-divide-por-12" class="level2">
+<h2 class="anchored" data-anchor-id="por-qué-el-retorno-objetivo-se-divide-por-12">¿Por qué el retorno objetivo se divide por 12?</h2>
+<p>En el ejercicio los niveles objetivo se expresan inicialmente en términos anuales y se dividen por 12 para trabajar en una escala mensual consistente con los datos utilizados en esa actividad.</p>
+<hr>
+</section>
+<section id="por-qué-la-volatilidad-se-multiplica-por-sqrt12" class="level2">
+<h2 class="anchored" data-anchor-id="por-qué-la-volatilidad-se-multiplica-por-sqrt12">¿Por qué la volatilidad se multiplica por <code>sqrt(12)</code>?</h2>
+<p>Cuando se parte de una desviación estándar mensual, una forma habitual de anualizarla bajo los supuestos utilizados es:</p>
+<pre class="text"><code>Volatilidad anual =
+Volatilidad mensual × √12</code></pre>
+<hr>
+</section>
+<section id="por-qué-el-retorno-se-multiplica-por-12-pero-la-volatilidad-por-sqrt12" class="level2">
+<h2 class="anchored" data-anchor-id="por-qué-el-retorno-se-multiplica-por-12-pero-la-volatilidad-por-sqrt12">¿Por qué el retorno se multiplica por 12 pero la volatilidad por <code>sqrt(12)</code>?</h2>
+<p>Porque retorno esperado y volatilidad tienen propiedades matemáticas distintas.</p>
+<p>En la aproximación utilizada en el ejercicio:</p>
+<pre class="text"><code>Retorno:
+mensual × 12
+
+Volatilidad:
+mensual × √12</code></pre>
+<hr>
+</section>
+<section id="qué-representa-la-tasa-libre-de-riesgo" class="level2">
+<h2 class="anchored" data-anchor-id="qué-representa-la-tasa-libre-de-riesgo">¿Qué representa la tasa libre de riesgo?</h2>
+<p>Es una tasa utilizada como referencia para comparar el retorno de un activo o portafolio riesgoso.</p>
+<p>En el ejercicio:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fl">0.02</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p>corresponde a una tasa anual del 2 %.</p>
+<hr>
+</section>
+<section id="qué-es-el-ratio-de-sharpe" class="level2">
+<h2 class="anchored" data-anchor-id="qué-es-el-ratio-de-sharpe">¿Qué es el Ratio de Sharpe?</h2>
+<p>Relaciona el retorno adicional obtenido sobre la tasa libre de riesgo con la volatilidad asumida.</p>
+<p>Simplificadamente:</p>
+<pre class="text"><code>Sharpe =
+Retorno excedente / Volatilidad</code></pre>
+<hr>
+</section>
+<section id="un-sharpe-mayor-es-siempre-mejor" class="level2">
+<h2 class="anchored" data-anchor-id="un-sharpe-mayor-es-siempre-mejor">¿Un Sharpe mayor es siempre mejor?</h2>
+<p>Dentro de este criterio y comparando alternativas construidas de forma consistente, un Sharpe mayor representa más retorno excedente por unidad de volatilidad.</p>
+<p>Sin embargo, sigue siendo un indicador basado en determinados supuestos y no resume por sí solo todas las dimensiones posibles del riesgo financiero.</p>
+<hr>
+</section>
+<section id="qué-es-el-portafolio-tangente" class="level2">
+<h2 class="anchored" data-anchor-id="qué-es-el-portafolio-tangente">¿Qué es el portafolio tangente?</h2>
+<p>Es el portafolio de la frontera eficiente que presenta el mayor ratio de Sharpe respecto de la tasa libre de riesgo utilizada.</p>
+<p>En el ejercicio se obtiene con:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="fu">which.max</span>(</span>
+<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>  frontera_markowitz<span class="sc">$</span>sharpe</span>
+<span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+<section id="qué-es-la-capital-allocation-line" class="level2">
+<h2 class="anchored" data-anchor-id="qué-es-la-capital-allocation-line">¿Qué es la Capital Allocation Line?</h2>
+<p>Es una línea que representa combinaciones entre el activo libre de riesgo y un portafolio riesgoso.</p>
+<p>En la actividad se representa junto con la frontera eficiente y el portafolio tangente.</p>
+<hr>
+</section>
+<section id="por-qué-solve.qp-puede-fallar-para-algún-retorno-objetivo" class="level2">
+<h2 class="anchored" data-anchor-id="por-qué-solve.qp-puede-fallar-para-algún-retorno-objetivo">¿Por qué <code>solve.QP()</code> puede fallar para algún retorno objetivo?</h2>
+<p>Algunos retornos objetivo pueden no ser alcanzables dadas las restricciones utilizadas.</p>
+<p>Por ejemplo, exigir simultáneamente:</p>
+<pre class="text"><code>Pesos que sumen 100 %
+Sin posiciones negativas
+Un determinado retorno objetivo</code></pre>
+<p>puede producir un problema sin una solución válida para algunas combinaciones.</p>
+<hr>
+</section>
+<section id="para-qué-utilizamos-trycatch" class="level2">
+<h2 class="anchored" data-anchor-id="para-qué-utilizamos-trycatch">¿Para qué utilizamos <code>tryCatch()</code>?</h2>
+<p>Para evitar que una iteración fallida detenga todo el programa.</p>
+<p>El programa puede registrar una advertencia y continuar con los demás retornos objetivo.</p>
+<hr>
+</section>
+<section id="qué-diferencia-existe-entre-write.csv-y-write_csv" class="level2">
+<h2 class="anchored" data-anchor-id="qué-diferencia-existe-entre-write.csv-y-write_csv">¿Qué diferencia existe entre <code>write.csv()</code> y <code>write_csv()</code>?</h2>
+<p><code>write.csv()</code> forma parte de R base.</p>
+<p><code>write_csv()</code> pertenece al paquete <code>readr</code>, utilizado por tidyverse.</p>
+<hr>
+</section>
+<section id="para-qué-sirve-una-distribución-triangular" class="level2">
+<h2 class="anchored" data-anchor-id="para-qué-sirve-una-distribución-triangular">¿Para qué sirve una distribución triangular?</h2>
+<p>Puede utilizarse cuando conocemos aproximadamente:</p>
+<pre class="text"><code>Un mínimo
+Un máximo
+Un valor más probable</code></pre>
+<p>pero no contamos necesariamente con suficiente información histórica para estimar una distribución más compleja.</p>
+<hr>
+</section>
+<section id="por-qué-ejecutar-una-simulación-10.000-veces" class="level2">
+<h2 class="anchored" data-anchor-id="por-qué-ejecutar-una-simulación-10.000-veces">¿Por qué ejecutar una simulación 10.000 veces?</h2>
+<p>Porque permite observar una distribución de resultados posibles en lugar de depender de un único escenario.</p>
+<hr>
+</section>
+<section id="qué-diferencia-existe-entre-ggplot2-matplotlib-seaborn-y-plotly" class="level2">
+<h2 class="anchored" data-anchor-id="qué-diferencia-existe-entre-ggplot2-matplotlib-seaborn-y-plotly">¿Qué diferencia existe entre ggplot2, matplotlib, seaborn y plotly?</h2>
+<p><code>ggplot2</code> pertenece principalmente al ecosistema R.</p>
+<p><code>matplotlib</code> y <code>seaborn</code> pertenecen principalmente al ecosistema Python.</p>
+<p><code>plotly</code> permite generar visualizaciones interactivas y posee implementaciones para diferentes lenguajes.</p>
+<hr>
+</section>
+<section id="es-seguro-subir-información-privada-a-github" class="level2">
+<h2 class="anchored" data-anchor-id="es-seguro-subir-información-privada-a-github">¿Es seguro subir información privada a GitHub?</h2>
+<p>Que un repositorio sea privado no significa que cualquier información deba almacenarse allí.</p>
+<p>No deberían incorporarse directamente credenciales, contraseñas, tokens ni información sensible sin las medidas de seguridad correspondientes.</p>
+<hr>
+</section>
+<section id="para-qué-sirve-renv" class="level2">
+<h2 class="anchored" data-anchor-id="para-qué-sirve-renv">¿Para qué sirve <code>renv</code>?</h2>
+<p>Permite registrar y reconstruir las versiones de los paquetes utilizadas por un proyecto de R.</p>
+<hr>
+</section>
+<section id="qué-diferencia-existe-entre-markdown-y-r-markdown" class="level2">
+<h2 class="anchored" data-anchor-id="qué-diferencia-existe-entre-markdown-y-r-markdown">¿Qué diferencia existe entre Markdown y R Markdown?</h2>
+<p>Markdown permite estructurar documentos mediante texto.</p>
+<p>R Markdown permite incorporar además código R y sus resultados.</p>
+<hr>
+</section>
+<section id="la-ia-puede-generar-todo-el-código-del-análisis" class="level2">
+<h2 class="anchored" data-anchor-id="la-ia-puede-generar-todo-el-código-del-análisis">¿La IA puede generar todo el código del análisis?</h2>
+<p>Puede ayudar considerablemente, pero el código debe ser validado.</p>
+<p>Especialmente deben revisarse:</p>
+<pre class="text"><code>Supuestos
+Unidades
+Frecuencias
+Fórmulas
+Restricciones
+Resultados
+Interpretación financiera</code></pre>
+<hr>
+</section>
+</section>
+<section id="enlaces-y-recursos-utilizados-en-clases" class="level1">
+<h1>🔗 Enlaces y recursos utilizados en clases</h1>
+<section id="material-del-curso" class="level2">
+<h2 class="anchored" data-anchor-id="material-del-curso">Material del curso</h2>
+<section id="sitio-finanzas-en-r" class="level3">
+<h3 class="anchored" data-anchor-id="sitio-finanzas-en-r">Sitio Finanzas en R</h3>
+<p>https://sebaegana.github.io/finanzas_en_r_webpage/clases_ia/</p>
+<p>Material general utilizado durante las sesiones.</p>
+</section>
+<section id="notebook-01" class="level3">
+<h3 class="anchored" data-anchor-id="notebook-01">Notebook 01</h3>
+<p>https://sebaegana.github.io/finanzas_en_r_webpage/clases_ia/notebook_01.html</p>
+<p>Notebook utilizado como material de apoyo.</p>
+</section>
+<section id="actividad-02-portafolios" class="level3">
+<h3 class="anchored" data-anchor-id="actividad-02-portafolios">Actividad 02 — Portafolios</h3>
+<p>https://sebaegana.github.io/finanzas_en_r_webpage/clases_ia/actividad_02_portafolios.html</p>
+<p>Actividad utilizada para trabajar optimización de portafolios, frontera eficiente y teoría de Markowitz.</p>
+</section>
+<section id="repositorio-github-del-curso" class="level3">
+<h3 class="anchored" data-anchor-id="repositorio-github-del-curso">Repositorio GitHub del curso</h3>
+<p>https://github.com/sebaegana/clase_finanzas_r_202609</p>
+<p>Para clonarlo:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb82"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/sebaegana/clase_finanzas_r_202609.git</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+</section>
+<section id="aprender-r-y-tidyverse" class="level2">
+<h2 class="anchored" data-anchor-id="aprender-r-y-tidyverse">Aprender R y tidyverse</h2>
+<section id="r-for-data-science" class="level3">
+<h3 class="anchored" data-anchor-id="r-for-data-science">R for Data Science</h3>
+<p>https://r4ds.hadley.nz</p>
+<p>Libro de referencia para aprender análisis de datos con R.</p>
+</section>
+<section id="r-for-data-science-español" class="level3">
+<h3 class="anchored" data-anchor-id="r-for-data-science-español">R for Data Science — español</h3>
+<p>https://es.r4ds.hadley.nz</p>
+<p>Versión en español.</p>
+</section>
+<section id="paquetes-tidyverse" class="level3">
+<h3 class="anchored" data-anchor-id="paquetes-tidyverse">Paquetes tidyverse</h3>
+<p>https://tidyverse.org/packages/</p>
+<p>Información sobre los principales paquetes del ecosistema tidyverse.</p>
+</section>
+<section id="posit-data-transformation-cheat-sheet" class="level3">
+<h3 class="anchored" data-anchor-id="posit-data-transformation-cheat-sheet">Posit — Data Transformation Cheat Sheet</h3>
+<p>https://opensource.posit.co/resources/cheatsheets/data-transformation/</p>
+<p>Hoja de referencia para transformación de datos.</p>
+<hr>
+</section>
+</section>
+<section id="reproducibilidad-1" class="level2">
+<h2 class="anchored" data-anchor-id="reproducibilidad-1">Reproducibilidad</h2>
+<section id="renv-1" class="level3">
+<h3 class="anchored" data-anchor-id="renv-1">renv</h3>
+<p>https://rstudio.github.io/renv/articles/renv.html</p>
+<p>Documentación sobre gestión reproducible de dependencias.</p>
+<hr>
+</section>
+</section>
+</section>
+<section id="mapa-general-de-conceptos-del-curso" class="level1">
+<h1>✅ Mapa general de conceptos del curso</h1>
+<p>Los contenidos trabajados hasta el momento pueden entenderse como una progresión:</p>
+<pre class="text"><code>R y herramientas
+        ↓
+Manipulación de datos
+        ↓
+Retornos financieros
+        ↓
+Estadística y volatilidad
+        ↓
+Correlación y covarianza
+        ↓
+Simulación
+        ↓
+Riesgo y retorno
+        ↓
+Portafolios
+        ↓
+Optimización Media-Varianza
+        ↓
+Frontera eficiente
+        ↓
+Ratio de Sharpe
+        ↓
+Portafolio tangente</code></pre>
+<p>A nivel tecnológico, el flujo de trabajo incorpora:</p>
+<pre class="text"><code>R
++ tidyverse
++ ggplot2
++ Git / GitHub
++ renv
++ Markdown / R Markdown
++ herramientas de IA</code></pre>
+<p>El objetivo del curso no es solamente aprender sintaxis, sino utilizar estas herramientas para <strong>construir análisis financieros reproducibles, entender el vínculo entre riesgo y retorno, automatizar procesos analíticos y mantener la capacidad de interpretar y validar los resultados obtenidos</strong>.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/sebaegana\.github\.io\/finanzas_en_r_webpage\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>

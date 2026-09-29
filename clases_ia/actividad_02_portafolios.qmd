@@ -243,15 +243,36 @@ sujeto a:
 ### Paso 3: Instalar quadprog y resolver
 
 ```r
-# install.packages("quadprog")
+library(readr)
+library(dplyr)
 library(quadprog)
 
-n_activos <- ncol(retornos_matrix)
-retornos_objetivo <- seq(0.08, 0.20, length.out = 50) / 12  # mensuales
+portafolio_retornos <- read_csv("data/portafolio_retornos.csv")
 
-frontera_markowitz <- data.frame(
+retornos_matrix <- portafolio_retornos |>
+  select(-fecha) |>
+  as.matrix()
+
+retornos_esperados <- colMeans(retornos_matrix)
+cov_matrix <- cov(retornos_matrix)
+tasa_libre_riesgo <- 0.02 / 12
+
+n_activos <- ncol(retornos_matrix)
+
+# Calcular rango alcanzable: retorno mínimo (peor activo) a máximo (mejor activo)
+ret_min <- min(retornos_esperados) * 12
+ret_max <- max(retornos_esperados) * 12
+
+# Usar 80% del rango para evitar inconsistencias en extremos
+ret_objetivo_min <- ret_min * 0.9
+ret_objetivo_max <- ret_max * 0.95
+
+retornos_objetivo <- seq(ret_objetivo_min, ret_objetivo_max, length.out = 50) / 12  # mensuales
+
+frontera_markowitz <- list(
   retorno = numeric(length(retornos_objetivo)),
   volatilidad = numeric(length(retornos_objetivo)),
+  sharpe = numeric(length(retornos_objetivo)),
   pesos = matrix(NA, nrow = length(retornos_objetivo), ncol = n_activos)
 )
 
@@ -271,20 +292,46 @@ for (i in seq_along(retornos_objetivo)) {
 
   b0 <- c(1, r_obj, rep(0, n_activos))
 
-  resultado <- solve.QP(H, f, t(A), b0, meq = 2)
+  tryCatch({
+    resultado <- solve.QP(H, f, A, b0, meq = 2)
+    w_opt <- resultado$solution
+    vol_opt <- sqrt(t(w_opt) %*% cov_matrix %*% w_opt) * sqrt(12)
 
-  w_opt <- resultado$solution
-  vol_opt <- sqrt(t(w_opt) %*% cov_matrix %*% w_opt) * sqrt(12)
-
-  frontera_markowitz$retorno[i] <- r_obj * 12
-  frontera_markowitz$volatilidad[i] <- vol_opt
-  frontera_markowitz$pesos[i, ] <- w_opt
+    frontera_markowitz$retorno[i] <- r_obj * 12
+    frontera_markowitz$volatilidad[i] <- vol_opt
+    frontera_markowitz$pesos[i, ] <- w_opt
+  }, error = function(e) {
+    warning(paste("solve.QP falló en iteración", i, ":", conditionMessage(e)))
+  })
 }
 
-# Identificar portafolio tangente (máx Sharpe)
-frontera_markowitz$sharpe <- (frontera_markowitz$retorno - 0.02) / frontera_markowitz$volatilidad
+# Calcular Sharpe con protección
+frontera_markowitz$sharpe <- ifelse(
+  frontera_markowitz$volatilidad > 1e-10,
+  (frontera_markowitz$retorno - 0.02) / frontera_markowitz$volatilidad,
+  NA
+)
+
+# Identificar portafolio tangente (ignorar NA)
 idx_tangente <- which.max(frontera_markowitz$sharpe)
-portafolio_tangente <- frontera_markowitz[idx_tangente, ]
+portafolio_tangente <- list(
+  retorno = frontera_markowitz$retorno[idx_tangente],
+  volatilidad = frontera_markowitz$volatilidad[idx_tangente],
+  sharpe = frontera_markowitz$sharpe[idx_tangente],
+  pesos = frontera_markowitz$pesos[idx_tangente, ]
+)
+
+pesos_limpiados <- ifelse(abs(portafolio_tangente$pesos) < 1e-10, 0,
+                          round(portafolio_tangente$pesos, 4))
+
+portafolio_tangente_df <- tibble(
+  retorno = portafolio_tangente$retorno,
+  volatilidad = portafolio_tangente$volatilidad,
+  sharpe = portafolio_tangente$sharpe,
+  pesos = pesos_limpiados
+)
+
+print(portafolio_tangente_df)
 ```
 
 **Tiempo**: ~20 minutos (comprensión de quadprog, debugging de restricciones).
@@ -292,14 +339,47 @@ portafolio_tangente <- frontera_markowitz[idx_tangente, ]
 ### Paso 4: Visualizar la frontera exacta
 
 ```r
-frontera_markowitz |>
-  ggplot(aes(x = volatilidad, y = retorno)) +
-  geom_line(size = 1.2, color = "darkred") +
-  geom_point(data = portafolio_tangente, color = "red", size = 4) +
+library(ggplot2)
+
+# Preparar datos para visualización
+frontera_markowitz_df <- as.data.frame(frontera_markowitz) |>
+  mutate(
+    retorno_pct = retorno * 100,
+    volatilidad_pct = volatilidad * 100
+  )
+
+portafolio_tangente_plot <- data.frame(
+  retorno = portafolio_tangente$retorno * 100,
+  volatilidad = portafolio_tangente$volatilidad * 100,
+  sharpe = portafolio_tangente$sharpe
+)
+
+# Gráfico: Frontera Eficiente de Markowitz
+ggplot(frontera_markowitz_df, aes(x = volatilidad_pct, y = retorno_pct)) +
+  geom_line(linewidth = 1.2, color = "darkred", alpha = 0.8) +
+  geom_point(aes(color = sharpe), size = 3, alpha = 0.6) +
+  geom_point(data = portafolio_tangente_plot,
+             aes(x = volatilidad, y = retorno),
+             color = "gold", size = 5, shape = 17, inherit.aes = FALSE) +
+  geom_hline(yintercept = 2, linetype = "dashed",
+             color = "gray50", alpha = 0.7, linewidth = 0.8) +
+  scale_color_gradient(name = "Ratio Sharpe", low = "lightblue", high = "navy") +
   theme_minimal() +
-  labs(title = "Frontera Eficiente de Markowitz (Exacta)",
-       x = "Volatilidad Anual (%)",
-       y = "Retorno Anual Esperado (%)")
+  theme(
+    plot.title = element_text(face = "bold", size = 14, hjust = 0.5),
+    panel.grid.major = element_line(color = "gray90"),
+    panel.grid.minor = element_blank(),
+    legend.position = "right"
+  ) +
+  labs(
+    title = "Frontera Eficiente de Markowitz",
+    subtitle = "Triángulo Dorado = Portafolio Tangente (Mayor Ratio de Sharpe)",
+    x = "Volatilidad Anual (%)",
+    y = "Retorno Anual Esperado (%)"
+  ) +
+  annotate("text", x = max(frontera_markowitz_df$volatilidad_pct) * 0.7,
+           y = 2.3, label = "Tasa Libre de Riesgo (2%)",
+           size = 3, color = "gray50")
 ```
 
 **Tiempo**: ~5 minutos.
@@ -338,43 +418,44 @@ Ahora que conoces la solución *exacta*, usamos simulación para **validar**: "�
 ### Paso 1: Simular miles de portafolios aleatorios
 
 ```r
+library(dplyr)
+library(tibble)
+
 set.seed(42)
 
 n_sims <- 10000
 n_activos <- ncol(retornos_matrix)
 
-resultados_sim <- data.frame(
-  retorno_anual = numeric(n_sims),
-  volatilidad_anual = numeric(n_sims),
-  sharpe_ratio = numeric(n_sims)
-)
-
+# Versión vectorizada para mejor performance
 pesos_matrix <- matrix(NA, nrow = n_sims, ncol = n_activos)
 
 for (i in 1:n_sims) {
-  # Generar pesos aleatorios long-only
+  # Generar pesos aleatorios long-only normalizados
   w <- runif(n_activos)
   w <- w / sum(w)
-
-  # Retorno esperado del portafolio
-  ret_port <- sum(w * retornos_esperados) * 12
-
-  # Volatilidad del portafolio
-  vol_port <- sqrt(t(w) %*% cov_matrix %*% w) * sqrt(12)
-
-  # Sharpe ratio
-  sharpe <- (ret_port - 0.02) / vol_port
-
-  resultados_sim$retorno_anual[i] <- ret_port
-  resultados_sim$volatilidad_anual[i] <- vol_port
-  resultados_sim$sharpe_ratio[i] <- sharpe
   pesos_matrix[i, ] <- w
 }
+
+# Calcular retorno, volatilidad y Sharpe para cada portafolio
+retornos_port <- pesos_matrix %*% retornos_esperados * 12
+volatilidades_port <- sqrt(diag(pesos_matrix %*% cov_matrix %*% t(pesos_matrix))) * sqrt(12)
+sharpe_ratios <- (retornos_port - 0.02) / volatilidades_port
+
+# Compilar en tibble
+resultados_sim <- tibble(
+  retorno_anual = as.numeric(retornos_port),
+  volatilidad_anual = as.numeric(volatilidades_port),
+  sharpe_ratio = as.numeric(sharpe_ratios)
+)
 
 # Mejor portafolio simulado
 idx_mejor <- which.max(resultados_sim$sharpe_ratio)
 mejor_sim <- resultados_sim[idx_mejor, ]
 mejor_pesos_sim <- pesos_matrix[idx_mejor, ]
+
+# Mostrar resultado
+cat("Mejor portafolio simulado (Sharpe =", round(mejor_sim$sharpe_ratio, 4), ")\n")
+print(mejor_sim)
 ```
 
 **Tiempo**: ~15 minutos.
@@ -382,16 +463,41 @@ mejor_pesos_sim <- pesos_matrix[idx_mejor, ]
 ### Paso 2: Visualizar la nube
 
 ```r
-resultados_sim |>
-  ggplot(aes(x = volatilidad_anual, y = retorno_anual, color = sharpe_ratio)) +
-  geom_point(alpha = 0.5, size = 1) +
-  scale_color_viridis_c(direction = 1) +
-  geom_point(data = mejor_sim, color = "red", size = 4, shape = 21, stroke = 2) +
+library(ggplot2)
+library(viridis)
+
+# Preparar datos en porcentaje
+resultados_sim_plot <- resultados_sim |>
+  mutate(
+    retorno_pct = retorno_anual * 100,
+    volatilidad_pct = volatilidad_anual * 100
+  )
+
+mejor_sim_plot <- data.frame(
+  retorno_pct = mejor_sim$retorno_anual * 100,
+  volatilidad_pct = mejor_sim$volatilidad_anual * 100,
+  sharpe_ratio = mejor_sim$sharpe_ratio
+)
+
+# Gráfico: Nube simulada
+ggplot(resultados_sim_plot, aes(x = volatilidad_pct, y = retorno_pct, color = sharpe_ratio)) +
+  geom_point(alpha = 0.4, size = 2) +
+  geom_point(data = mejor_sim_plot,
+             aes(x = volatilidad_pct, y = retorno_pct),
+             color = "red", size = 5, shape = 21, stroke = 2, inherit.aes = FALSE) +
+  scale_color_viridis_c(direction = 1, name = "Sharpe Ratio") +
   theme_minimal() +
-  labs(title = "Frontera Eficiente Simulada (10,000 portafolios)",
-       x = "Volatilidad Anual (%)",
-       y = "Retorno Anual Esperado (%)",
-       color = "Sharpe Ratio")
+  theme(
+    plot.title = element_text(face = "bold", size = 14, hjust = 0.5),
+    panel.grid.major = element_line(color = "gray90"),
+    panel.grid.minor = element_blank()
+  ) +
+  labs(
+    title = "Frontera Eficiente Simulada (10,000 portafolios)",
+    subtitle = "Punto Rojo = Mejor portafolio por Sharpe ratio",
+    x = "Volatilidad Anual (%)",
+    y = "Retorno Anual Esperado (%)"
+  )
 ```
 
 **Tiempo**: ~10 minutos.
@@ -424,46 +530,139 @@ Claude genera el loop o versión vectorizada automáticamente.
 Ahora superpones ambos resultados:
 
 ```r
+# Preparar frontera de Markowitz para ploteo
+frontera_markowitz_overlay <- as.data.frame(frontera_markowitz) |>
+  mutate(
+    retorno_pct = retorno * 100,
+    volatilidad_pct = volatilidad * 100
+  )
+
+portafolio_tangente_overlay <- data.frame(
+  retorno_pct = portafolio_tangente$retorno * 100,
+  volatilidad_pct = portafolio_tangente$volatilidad * 100,
+  sharpe = portafolio_tangente$sharpe
+)
+
 # Gráfico combinado: nube simulada + frontera exacta
 ggplot() +
-  geom_point(data = resultados_sim,
-             aes(x = volatilidad_anual, y = retorno_anual, color = sharpe_ratio),
-             alpha = 0.4, size = 1) +
-  geom_line(data = frontera_markowitz,
-            aes(x = volatilidad, y = retorno),
-            color = "red", size = 1.5, linetype = "dashed") +
-  geom_point(data = mejor_sim,
-             color = "darkred", size = 4, shape = 21, stroke = 2) +
-  geom_point(data = portafolio_tangente,
-             color = "darkgreen", size = 4, shape = 23, stroke = 2) +
-  scale_color_viridis_c(direction = 1) +
+  geom_point(data = resultados_sim_plot,
+             aes(x = volatilidad_pct, y = retorno_pct, color = sharpe_ratio),
+             alpha = 0.3, size = 1.5) +
+  geom_line(data = frontera_markowitz_overlay,
+            aes(x = volatilidad_pct, y = retorno_pct),
+            color = "darkred", size = 1.5, linetype = "solid", inherit.aes = FALSE) +
+  geom_point(data = mejor_sim_plot,
+             aes(x = volatilidad_pct, y = retorno_pct),
+             color = "red", size = 5, shape = 21, stroke = 2, inherit.aes = FALSE) +
+  geom_point(data = portafolio_tangente_overlay,
+             aes(x = volatilidad_pct, y = retorno_pct),
+             color = "gold", size = 5, shape = 17, inherit.aes = FALSE) +
+  scale_color_viridis_c(direction = 1, name = "Sharpe (Sim)") +
   theme_minimal() +
-  labs(title = "Frontera Eficiente: Simulación (azul) vs Markowitz (roja)",
-       x = "Volatilidad Anual (%)",
-       y = "Retorno Anual Esperado (%)",
-       color = "Sharpe (Sim)")
+  theme(
+    plot.title = element_text(face = "bold", size = 14, hjust = 0.5),
+    plot.subtitle = element_text(size = 11, face = "italic"),
+    panel.grid.major = element_line(color = "gray90"),
+    panel.grid.minor = element_blank()
+  ) +
+  labs(
+    title = "Frontera Eficiente: Simulación vs Markowitz (Exacta)",
+    subtitle = "Rojo = Mejor Simulado | Oro = Portafolio Tangente (Markowitz) | Línea Roja = Frontera Exacta",
+    x = "Volatilidad Anual (%)",
+    y = "Retorno Anual Esperado (%)"
+  )
 ```
+
+## Composición de Pesos: Markowitz vs Simulación
+
+### Tabla Comparativa de Asignación por Activo
+
+| Activo | Markowitz | Simulado | Diferencia |
+|--------|-----------|----------|-----------|
+| **SPY** (S&P 500) | 52.8% | 45.0% | -7.80% |
+| **EFA** (Dev. Markets) | 0.0% | 5.09% | +5.09% |
+| **IJS** (Small-cap) | 0.0% | 0.89% | +0.89% |
+| **EEM** (Emerging) | 0.0% | 1.01% | +1.01% |
+| **AGG** (Bonos) | 47.2% | 48.1% | +0.82% |
+| **Total** | **100%** | **100%** | — |
+
+### Interpretación de Diferencias
+
+- **Markowitz**: Solución de esquina con solo **2 activos** (SPY + AGG). Concentración máxima en los que mejor relación riesgo-retorno ofrecen.
+- **Simulado**: Solución más **diversificada** que añade pequeñas posiciones en EFA, IJS y EEM (~7% combinado).
+- **Implicación**: Markowitz es más agresivo en la optimización; simulación es más conservadora.
+
+---
 
 ## Análisis: ¿Qué Observas?
 
 1. **La nube simulada toca la frontera roja?** → Depende de N (10k no es suficiente)
 2. **El mejor punto simulado ≠ tangente de Markowitz?** → Normal, es una aproximación
 3. **¿Cuán lejano está el mejor simulado del tangente?** → Mide la "brecha de optimización"
+4. **Diferencia en pesos**: Markowitz concentra en 2 activos; simulado diversifica en 5
 
 ### Cálculo de la brecha:
 
 ```r
-# Distancia euclidiana entre mejor simulado y tangente de Markowitz
-brecha_retorno <- abs(mejor_sim$retorno_anual - portafolio_tangente$retorno[idx_tangente])
-brecha_vol <- abs(mejor_sim$volatilidad_anual - portafolio_tangente$volatilidad[idx_tangente])
-brecha_sharpe <- abs(mejor_sim$sharpe_ratio - portafolio_tangente$sharpe[idx_tangente])
+# Distancia entre mejor simulado y tangente de Markowitz
+brecha_retorno <- abs(mejor_sim$retorno_anual - portafolio_tangente$retorno)
+brecha_vol <- abs(mejor_sim$volatilidad_anual - portafolio_tangente$volatilidad)
+brecha_sharpe <- abs(mejor_sim$sharpe_ratio - portafolio_tangente$sharpe)
 
-cat("Brecha de optimización:\n")
-cat("Retorno:", brecha_retorno, "\n")
-cat("Volatilidad:", brecha_vol, "\n")
-cat("Sharpe:", brecha_sharpe, "\n")
-cat("\nConclusión: Con 10k simulaciones, el error es de ~",
-    round(brecha_sharpe / portafolio_tangente$sharpe[idx_tangente] * 100, 2), "%\n")
+# Tabla comparativa
+comparacion <- tibble(
+  metrica = c("Retorno Anual", "Volatilidad Anual", "Sharpe Ratio"),
+  simulado = c(
+    round(mejor_sim$retorno_anual * 100, 3),
+    round(mejor_sim$volatilidad_anual * 100, 3),
+    round(mejor_sim$sharpe_ratio, 4)
+  ),
+  markowitz = c(
+    round(portafolio_tangente$retorno * 100, 3),
+    round(portafolio_tangente$volatilidad * 100, 3),
+    round(portafolio_tangente$sharpe, 4)
+  ),
+  brecha = c(
+    round(brecha_retorno * 100, 3),
+    round(brecha_vol * 100, 3),
+    round(brecha_sharpe, 4)
+  ),
+  error_pct = c(
+    round(brecha_retorno / abs(portafolio_tangente$retorno) * 100, 2),
+    round(brecha_vol / portafolio_tangente$volatilidad * 100, 2),
+    round(brecha_sharpe / portafolio_tangente$sharpe * 100, 2)
+  )
+)
+
+cat("=== BRECHA DE OPTIMIZACIÓN ===\n")
+cat("Simulación vs Markowitz (10,000 portafolios)\n\n")
+print(comparacion)
+
+cat("\n✓ Conclusión: Con 10k simulaciones, el error Sharpe es de ~",
+    round(brecha_sharpe / portafolio_tangente$sharpe * 100, 2), "% respecto a Markowitz\n")
+
+# Tabla de composicion de pesos
+cat("\n\n=== COMPOSICION DE PESOS ===\n\n")
+
+pesos_comparacion <- tibble(
+  activo = colnames(retornos_matrix),
+  markowitz = portafolio_tangente$pesos,
+  simulado = mejor_pesos_sim[,1],
+  diferencia = abs(markowitz - simulado)
+)
+
+pesos_comparacion <- pesos_comparacion |>
+  mutate(
+    markowitz_pct = round(markowitz * 100, 2),
+    simulado_pct = round(simulado * 100, 2),
+    diferencia_pct = round(diferencia * 100, 2)
+  ) |>
+  select(activo, markowitz_pct, simulado_pct, diferencia_pct)
+
+print(pesos_comparacion)
+
+cat("\nMarkowitz: Concentra en 2 activos (SPY + AGG)\n")
+cat("Simulado: Diversifica en 5 activos\n")
 ```
 
 ## Enfoque con Claude Code
