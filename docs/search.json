@@ -508,7 +508,7 @@
     "href": "clases_ia/actividad_02_portafolios.html#enfoque-manual",
     "title": "Actividad 02 — Construcción de Portafolios Óptimos",
     "section": "Enfoque Manual",
-    "text": "Enfoque Manual\n\nPaso 1: Preparar datos y matriz de covarianza\nportafolio_retornos &lt;- read_csv(\"data/portafolio_retornos.csv\")\n\nretornos_matrix &lt;- portafolio_retornos |&gt;\n  select(-fecha) |&gt;\n  as.matrix()\n\nretornos_esperados &lt;- colMeans(retornos_matrix)\ncov_matrix &lt;- cov(retornos_matrix)\ntasa_libre_riesgo &lt;- 0.02 / 12\nTiempo: ~5 minutos.\n\n\nPaso 2: Formular el problema de Markowitz\nLa frontera eficiente resuelve:\n\\[\\min_w \\left[ w^T \\Sigma w \\right]\\]\nsujeto a: - \\(w^T r = r_p\\) (retorno objetivo) - \\(\\sum w_i = 1\\) (pesos suman 1) - \\(w_i \\geq 0\\) (long-only, sin venta corta)\n\n\nPaso 3: Instalar quadprog y resolver\n# install.packages(\"quadprog\")\nlibrary(quadprog)\n\nn_activos &lt;- ncol(retornos_matrix)\nretornos_objetivo &lt;- seq(0.08, 0.20, length.out = 50) / 12  # mensuales\n\nfrontera_markowitz &lt;- data.frame(\n  retorno = numeric(length(retornos_objetivo)),\n  volatilidad = numeric(length(retornos_objetivo)),\n  pesos = matrix(NA, nrow = length(retornos_objetivo), ncol = n_activos)\n)\n\nfor (i in seq_along(retornos_objetivo)) {\n  r_obj &lt;- retornos_objetivo[i]\n\n  # Formulación quadprog\n  H &lt;- 2 * cov_matrix\n  f &lt;- rep(0, n_activos)\n\n  # Restricciones: sum(w)=1, w'*r=r_obj, w&gt;=0\n  A &lt;- cbind(\n    rep(1, n_activos),          # suma = 1\n    retornos_esperados,          # retorno objetivo\n    diag(n_activos)              # w &gt;= 0\n  )\n\n  b0 &lt;- c(1, r_obj, rep(0, n_activos))\n\n  resultado &lt;- solve.QP(H, f, t(A), b0, meq = 2)\n\n  w_opt &lt;- resultado$solution\n  vol_opt &lt;- sqrt(t(w_opt) %*% cov_matrix %*% w_opt) * sqrt(12)\n\n  frontera_markowitz$retorno[i] &lt;- r_obj * 12\n  frontera_markowitz$volatilidad[i] &lt;- vol_opt\n  frontera_markowitz$pesos[i, ] &lt;- w_opt\n}\n\n# Identificar portafolio tangente (máx Sharpe)\nfrontera_markowitz$sharpe &lt;- (frontera_markowitz$retorno - 0.02) / frontera_markowitz$volatilidad\nidx_tangente &lt;- which.max(frontera_markowitz$sharpe)\nportafolio_tangente &lt;- frontera_markowitz[idx_tangente, ]\nTiempo: ~20 minutos (comprensión de quadprog, debugging de restricciones).\n\n\nPaso 4: Visualizar la frontera exacta\nfrontera_markowitz |&gt;\n  ggplot(aes(x = volatilidad, y = retorno)) +\n  geom_line(size = 1.2, color = \"darkred\") +\n  geom_point(data = portafolio_tangente, color = \"red\", size = 4) +\n  theme_minimal() +\n  labs(title = \"Frontera Eficiente de Markowitz (Exacta)\",\n       x = \"Volatilidad Anual (%)\",\n       y = \"Retorno Anual Esperado (%)\")\nTiempo: ~5 minutos.\nTotal Parte 2 Manual: ~30 minutos."
+    "text": "Enfoque Manual\n\nPaso 1: Preparar datos y matriz de covarianza\nportafolio_retornos &lt;- read_csv(\"data/portafolio_retornos.csv\")\n\nretornos_matrix &lt;- portafolio_retornos |&gt;\n  select(-fecha) |&gt;\n  as.matrix()\n\nretornos_esperados &lt;- colMeans(retornos_matrix)\ncov_matrix &lt;- cov(retornos_matrix)\ntasa_libre_riesgo &lt;- 0.02 / 12\nTiempo: ~5 minutos.\n\n\nPaso 2: Formular el problema de Markowitz\nLa frontera eficiente resuelve:\n\\[\\min_w \\left[ w^T \\Sigma w \\right]\\]\nsujeto a: - \\(w^T r = r_p\\) (retorno objetivo) - \\(\\sum w_i = 1\\) (pesos suman 1) - \\(w_i \\geq 0\\) (long-only, sin venta corta)\n\n\nPaso 3: Instalar quadprog y resolver\nlibrary(readr)\nlibrary(dplyr)\nlibrary(quadprog)\n\nportafolio_retornos &lt;- read_csv(\"data/portafolio_retornos.csv\")\n\nretornos_matrix &lt;- portafolio_retornos |&gt;\n  select(-fecha) |&gt;\n  as.matrix()\n\nretornos_esperados &lt;- colMeans(retornos_matrix)\ncov_matrix &lt;- cov(retornos_matrix)\ntasa_libre_riesgo &lt;- 0.02 / 12\n\nn_activos &lt;- ncol(retornos_matrix)\n\n# Calcular rango alcanzable: retorno mínimo (peor activo) a máximo (mejor activo)\nret_min &lt;- min(retornos_esperados) * 12\nret_max &lt;- max(retornos_esperados) * 12\n\n# Usar 80% del rango para evitar inconsistencias en extremos\nret_objetivo_min &lt;- ret_min * 0.9\nret_objetivo_max &lt;- ret_max * 0.95\n\nretornos_objetivo &lt;- seq(ret_objetivo_min, ret_objetivo_max, length.out = 50) / 12  # mensuales\n\nfrontera_markowitz &lt;- list(\n  retorno = numeric(length(retornos_objetivo)),\n  volatilidad = numeric(length(retornos_objetivo)),\n  sharpe = numeric(length(retornos_objetivo)),\n  pesos = matrix(NA, nrow = length(retornos_objetivo), ncol = n_activos)\n)\n\nfor (i in seq_along(retornos_objetivo)) {\n  r_obj &lt;- retornos_objetivo[i]\n\n  # Formulación quadprog\n  H &lt;- 2 * cov_matrix\n  f &lt;- rep(0, n_activos)\n\n  # Restricciones: sum(w)=1, w'*r=r_obj, w&gt;=0\n  A &lt;- cbind(\n    rep(1, n_activos),          # suma = 1\n    retornos_esperados,          # retorno objetivo\n    diag(n_activos)              # w &gt;= 0\n  )\n\n  b0 &lt;- c(1, r_obj, rep(0, n_activos))\n\n  tryCatch({\n    resultado &lt;- solve.QP(H, f, A, b0, meq = 2)\n    w_opt &lt;- resultado$solution\n    vol_opt &lt;- sqrt(t(w_opt) %*% cov_matrix %*% w_opt) * sqrt(12)\n\n    frontera_markowitz$retorno[i] &lt;- r_obj * 12\n    frontera_markowitz$volatilidad[i] &lt;- vol_opt\n    frontera_markowitz$pesos[i, ] &lt;- w_opt\n  }, error = function(e) {\n    warning(paste(\"solve.QP falló en iteración\", i, \":\", conditionMessage(e)))\n  })\n}\n\n# Calcular Sharpe con protección\nfrontera_markowitz$sharpe &lt;- ifelse(\n  frontera_markowitz$volatilidad &gt; 1e-10,\n  (frontera_markowitz$retorno - 0.02) / frontera_markowitz$volatilidad,\n  NA\n)\n\n# Identificar portafolio tangente (ignorar NA)\nidx_tangente &lt;- which.max(frontera_markowitz$sharpe)\nportafolio_tangente &lt;- list(\n  retorno = frontera_markowitz$retorno[idx_tangente],\n  volatilidad = frontera_markowitz$volatilidad[idx_tangente],\n  sharpe = frontera_markowitz$sharpe[idx_tangente],\n  pesos = frontera_markowitz$pesos[idx_tangente, ]\n)\n\npesos_limpiados &lt;- ifelse(abs(portafolio_tangente$pesos) &lt; 1e-10, 0,\n                          round(portafolio_tangente$pesos, 4))\n\nportafolio_tangente_df &lt;- tibble(\n  retorno = portafolio_tangente$retorno,\n  volatilidad = portafolio_tangente$volatilidad,\n  sharpe = portafolio_tangente$sharpe,\n  pesos = pesos_limpiados\n)\n\nprint(portafolio_tangente_df)\nTiempo: ~20 minutos (comprensión de quadprog, debugging de restricciones).\n\n\nPaso 4: Visualizar la frontera exacta\nlibrary(ggplot2)\n\n# Preparar datos para visualización\nfrontera_markowitz_df &lt;- as.data.frame(frontera_markowitz) |&gt;\n  mutate(\n    retorno_pct = retorno * 100,\n    volatilidad_pct = volatilidad * 100\n  )\n\nportafolio_tangente_plot &lt;- data.frame(\n  retorno = portafolio_tangente$retorno * 100,\n  volatilidad = portafolio_tangente$volatilidad * 100,\n  sharpe = portafolio_tangente$sharpe\n)\n\n# Gráfico: Frontera Eficiente de Markowitz\nggplot(frontera_markowitz_df, aes(x = volatilidad_pct, y = retorno_pct)) +\n  geom_line(linewidth = 1.2, color = \"darkred\", alpha = 0.8) +\n  geom_point(aes(color = sharpe), size = 3, alpha = 0.6) +\n  geom_point(data = portafolio_tangente_plot,\n             aes(x = volatilidad, y = retorno),\n             color = \"gold\", size = 5, shape = 17, inherit.aes = FALSE) +\n  geom_hline(yintercept = 2, linetype = \"dashed\",\n             color = \"gray50\", alpha = 0.7, linewidth = 0.8) +\n  scale_color_gradient(name = \"Ratio Sharpe\", low = \"lightblue\", high = \"navy\") +\n  theme_minimal() +\n  theme(\n    plot.title = element_text(face = \"bold\", size = 14, hjust = 0.5),\n    panel.grid.major = element_line(color = \"gray90\"),\n    panel.grid.minor = element_blank(),\n    legend.position = \"right\"\n  ) +\n  labs(\n    title = \"Frontera Eficiente de Markowitz\",\n    subtitle = \"Triángulo Dorado = Portafolio Tangente (Mayor Ratio de Sharpe)\",\n    x = \"Volatilidad Anual (%)\",\n    y = \"Retorno Anual Esperado (%)\"\n  ) +\n  annotate(\"text\", x = max(frontera_markowitz_df$volatilidad_pct) * 0.7,\n           y = 2.3, label = \"Tasa Libre de Riesgo (2%)\",\n           size = 3, color = \"gray50\")\nTiempo: ~5 minutos.\nTotal Parte 2 Manual: ~30 minutos."
   },
   {
     "objectID": "clases_ia/actividad_02_portafolios.html#enfoque-asistido-con-claude-code-1",
@@ -529,7 +529,7 @@
     "href": "clases_ia/actividad_02_portafolios.html#enfoque-manual-1",
     "title": "Actividad 02 — Construcción de Portafolios Óptimos",
     "section": "Enfoque Manual",
-    "text": "Enfoque Manual\n\nPaso 1: Simular miles de portafolios aleatorios\nset.seed(42)\n\nn_sims &lt;- 10000\nn_activos &lt;- ncol(retornos_matrix)\n\nresultados_sim &lt;- data.frame(\n  retorno_anual = numeric(n_sims),\n  volatilidad_anual = numeric(n_sims),\n  sharpe_ratio = numeric(n_sims)\n)\n\npesos_matrix &lt;- matrix(NA, nrow = n_sims, ncol = n_activos)\n\nfor (i in 1:n_sims) {\n  # Generar pesos aleatorios long-only\n  w &lt;- runif(n_activos)\n  w &lt;- w / sum(w)\n\n  # Retorno esperado del portafolio\n  ret_port &lt;- sum(w * retornos_esperados) * 12\n\n  # Volatilidad del portafolio\n  vol_port &lt;- sqrt(t(w) %*% cov_matrix %*% w) * sqrt(12)\n\n  # Sharpe ratio\n  sharpe &lt;- (ret_port - 0.02) / vol_port\n\n  resultados_sim$retorno_anual[i] &lt;- ret_port\n  resultados_sim$volatilidad_anual[i] &lt;- vol_port\n  resultados_sim$sharpe_ratio[i] &lt;- sharpe\n  pesos_matrix[i, ] &lt;- w\n}\n\n# Mejor portafolio simulado\nidx_mejor &lt;- which.max(resultados_sim$sharpe_ratio)\nmejor_sim &lt;- resultados_sim[idx_mejor, ]\nmejor_pesos_sim &lt;- pesos_matrix[idx_mejor, ]\nTiempo: ~15 minutos.\n\n\nPaso 2: Visualizar la nube\nresultados_sim |&gt;\n  ggplot(aes(x = volatilidad_anual, y = retorno_anual, color = sharpe_ratio)) +\n  geom_point(alpha = 0.5, size = 1) +\n  scale_color_viridis_c(direction = 1) +\n  geom_point(data = mejor_sim, color = \"red\", size = 4, shape = 21, stroke = 2) +\n  theme_minimal() +\n  labs(title = \"Frontera Eficiente Simulada (10,000 portafolios)\",\n       x = \"Volatilidad Anual (%)\",\n       y = \"Retorno Anual Esperado (%)\",\n       color = \"Sharpe Ratio\")\nTiempo: ~10 minutos.\nTotal Parte 3 Manual: ~25 minutos."
+    "text": "Enfoque Manual\n\nPaso 1: Simular miles de portafolios aleatorios\nlibrary(dplyr)\nlibrary(tibble)\n\nset.seed(42)\n\nn_sims &lt;- 10000\nn_activos &lt;- ncol(retornos_matrix)\n\n# Versión vectorizada para mejor performance\npesos_matrix &lt;- matrix(NA, nrow = n_sims, ncol = n_activos)\n\nfor (i in 1:n_sims) {\n  # Generar pesos aleatorios long-only normalizados\n  w &lt;- runif(n_activos)\n  w &lt;- w / sum(w)\n  pesos_matrix[i, ] &lt;- w\n}\n\n# Calcular retorno, volatilidad y Sharpe para cada portafolio\nretornos_port &lt;- pesos_matrix %*% retornos_esperados * 12\nvolatilidades_port &lt;- sqrt(diag(pesos_matrix %*% cov_matrix %*% t(pesos_matrix))) * sqrt(12)\nsharpe_ratios &lt;- (retornos_port - 0.02) / volatilidades_port\n\n# Compilar en tibble\nresultados_sim &lt;- tibble(\n  retorno_anual = as.numeric(retornos_port),\n  volatilidad_anual = as.numeric(volatilidades_port),\n  sharpe_ratio = as.numeric(sharpe_ratios)\n)\n\n# Mejor portafolio simulado\nidx_mejor &lt;- which.max(resultados_sim$sharpe_ratio)\nmejor_sim &lt;- resultados_sim[idx_mejor, ]\nmejor_pesos_sim &lt;- pesos_matrix[idx_mejor, ]\n\n# Mostrar resultado\ncat(\"Mejor portafolio simulado (Sharpe =\", round(mejor_sim$sharpe_ratio, 4), \")\\n\")\nprint(mejor_sim)\nTiempo: ~15 minutos.\n\n\nPaso 2: Visualizar la nube\nlibrary(ggplot2)\nlibrary(viridis)\n\n# Preparar datos en porcentaje\nresultados_sim_plot &lt;- resultados_sim |&gt;\n  mutate(\n    retorno_pct = retorno_anual * 100,\n    volatilidad_pct = volatilidad_anual * 100\n  )\n\nmejor_sim_plot &lt;- data.frame(\n  retorno_pct = mejor_sim$retorno_anual * 100,\n  volatilidad_pct = mejor_sim$volatilidad_anual * 100,\n  sharpe_ratio = mejor_sim$sharpe_ratio\n)\n\n# Gráfico: Nube simulada\nggplot(resultados_sim_plot, aes(x = volatilidad_pct, y = retorno_pct, color = sharpe_ratio)) +\n  geom_point(alpha = 0.4, size = 2) +\n  geom_point(data = mejor_sim_plot,\n             aes(x = volatilidad_pct, y = retorno_pct),\n             color = \"red\", size = 5, shape = 21, stroke = 2, inherit.aes = FALSE) +\n  scale_color_viridis_c(direction = 1, name = \"Sharpe Ratio\") +\n  theme_minimal() +\n  theme(\n    plot.title = element_text(face = \"bold\", size = 14, hjust = 0.5),\n    panel.grid.major = element_line(color = \"gray90\"),\n    panel.grid.minor = element_blank()\n  ) +\n  labs(\n    title = \"Frontera Eficiente Simulada (10,000 portafolios)\",\n    subtitle = \"Punto Rojo = Mejor portafolio por Sharpe ratio\",\n    x = \"Volatilidad Anual (%)\",\n    y = \"Retorno Anual Esperado (%)\"\n  )\nTiempo: ~10 minutos.\nTotal Parte 3 Manual: ~25 minutos."
   },
   {
     "objectID": "clases_ia/actividad_02_portafolios.html#enfoque-asistido-con-claude-code-2",
@@ -543,14 +543,14 @@
     "href": "clases_ia/actividad_02_portafolios.html#el-gráfico-overlay-validación-visual",
     "title": "Actividad 02 — Construcción de Portafolios Óptimos",
     "section": "El Gráfico Overlay: Validación Visual",
-    "text": "El Gráfico Overlay: Validación Visual\nAhora superpones ambos resultados:\n# Gráfico combinado: nube simulada + frontera exacta\nggplot() +\n  geom_point(data = resultados_sim,\n             aes(x = volatilidad_anual, y = retorno_anual, color = sharpe_ratio),\n             alpha = 0.4, size = 1) +\n  geom_line(data = frontera_markowitz,\n            aes(x = volatilidad, y = retorno),\n            color = \"red\", size = 1.5, linetype = \"dashed\") +\n  geom_point(data = mejor_sim,\n             color = \"darkred\", size = 4, shape = 21, stroke = 2) +\n  geom_point(data = portafolio_tangente,\n             color = \"darkgreen\", size = 4, shape = 23, stroke = 2) +\n  scale_color_viridis_c(direction = 1) +\n  theme_minimal() +\n  labs(title = \"Frontera Eficiente: Simulación (azul) vs Markowitz (roja)\",\n       x = \"Volatilidad Anual (%)\",\n       y = \"Retorno Anual Esperado (%)\",\n       color = \"Sharpe (Sim)\")"
+    "text": "El Gráfico Overlay: Validación Visual\nAhora superpones ambos resultados:\n# Preparar frontera de Markowitz para ploteo\nfrontera_markowitz_overlay &lt;- as.data.frame(frontera_markowitz) |&gt;\n  mutate(\n    retorno_pct = retorno * 100,\n    volatilidad_pct = volatilidad * 100\n  )\n\nportafolio_tangente_overlay &lt;- data.frame(\n  retorno_pct = portafolio_tangente$retorno * 100,\n  volatilidad_pct = portafolio_tangente$volatilidad * 100,\n  sharpe = portafolio_tangente$sharpe\n)\n\n# Gráfico combinado: nube simulada + frontera exacta\nggplot() +\n  geom_point(data = resultados_sim_plot,\n             aes(x = volatilidad_pct, y = retorno_pct, color = sharpe_ratio),\n             alpha = 0.3, size = 1.5) +\n  geom_line(data = frontera_markowitz_overlay,\n            aes(x = volatilidad_pct, y = retorno_pct),\n            color = \"darkred\", size = 1.5, linetype = \"solid\", inherit.aes = FALSE) +\n  geom_point(data = mejor_sim_plot,\n             aes(x = volatilidad_pct, y = retorno_pct),\n             color = \"red\", size = 5, shape = 21, stroke = 2, inherit.aes = FALSE) +\n  geom_point(data = portafolio_tangente_overlay,\n             aes(x = volatilidad_pct, y = retorno_pct),\n             color = \"gold\", size = 5, shape = 17, inherit.aes = FALSE) +\n  scale_color_viridis_c(direction = 1, name = \"Sharpe (Sim)\") +\n  theme_minimal() +\n  theme(\n    plot.title = element_text(face = \"bold\", size = 14, hjust = 0.5),\n    plot.subtitle = element_text(size = 11, face = \"italic\"),\n    panel.grid.major = element_line(color = \"gray90\"),\n    panel.grid.minor = element_blank()\n  ) +\n  labs(\n    title = \"Frontera Eficiente: Simulación vs Markowitz (Exacta)\",\n    subtitle = \"Rojo = Mejor Simulado | Oro = Portafolio Tangente (Markowitz) | Línea Roja = Frontera Exacta\",\n    x = \"Volatilidad Anual (%)\",\n    y = \"Retorno Anual Esperado (%)\"\n  )"
   },
   {
     "objectID": "clases_ia/actividad_02_portafolios.html#análisis-qué-observas",
     "href": "clases_ia/actividad_02_portafolios.html#análisis-qué-observas",
     "title": "Actividad 02 — Construcción de Portafolios Óptimos",
     "section": "Análisis: ¿Qué Observas?",
-    "text": "Análisis: ¿Qué Observas?\n\nLa nube simulada toca la frontera roja? → Depende de N (10k no es suficiente)\nEl mejor punto simulado ≠ tangente de Markowitz? → Normal, es una aproximación\n¿Cuán lejano está el mejor simulado del tangente? → Mide la “brecha de optimización”\n\n\nCálculo de la brecha:\n# Distancia euclidiana entre mejor simulado y tangente de Markowitz\nbrecha_retorno &lt;- abs(mejor_sim$retorno_anual - portafolio_tangente$retorno[idx_tangente])\nbrecha_vol &lt;- abs(mejor_sim$volatilidad_anual - portafolio_tangente$volatilidad[idx_tangente])\nbrecha_sharpe &lt;- abs(mejor_sim$sharpe_ratio - portafolio_tangente$sharpe[idx_tangente])\n\ncat(\"Brecha de optimización:\\n\")\ncat(\"Retorno:\", brecha_retorno, \"\\n\")\ncat(\"Volatilidad:\", brecha_vol, \"\\n\")\ncat(\"Sharpe:\", brecha_sharpe, \"\\n\")\ncat(\"\\nConclusión: Con 10k simulaciones, el error es de ~\",\n    round(brecha_sharpe / portafolio_tangente$sharpe[idx_tangente] * 100, 2), \"%\\n\")"
+    "text": "Análisis: ¿Qué Observas?\n\nLa nube simulada toca la frontera roja? → Depende de N (10k no es suficiente)\nEl mejor punto simulado ≠ tangente de Markowitz? → Normal, es una aproximación\n¿Cuán lejano está el mejor simulado del tangente? → Mide la “brecha de optimización”\nDiferencia en pesos: Markowitz concentra en 2 activos; simulado diversifica en 5\n\n\nCálculo de la brecha:\n# Distancia entre mejor simulado y tangente de Markowitz\nbrecha_retorno &lt;- abs(mejor_sim$retorno_anual - portafolio_tangente$retorno)\nbrecha_vol &lt;- abs(mejor_sim$volatilidad_anual - portafolio_tangente$volatilidad)\nbrecha_sharpe &lt;- abs(mejor_sim$sharpe_ratio - portafolio_tangente$sharpe)\n\n# Tabla comparativa\ncomparacion &lt;- tibble(\n  metrica = c(\"Retorno Anual\", \"Volatilidad Anual\", \"Sharpe Ratio\"),\n  simulado = c(\n    round(mejor_sim$retorno_anual * 100, 3),\n    round(mejor_sim$volatilidad_anual * 100, 3),\n    round(mejor_sim$sharpe_ratio, 4)\n  ),\n  markowitz = c(\n    round(portafolio_tangente$retorno * 100, 3),\n    round(portafolio_tangente$volatilidad * 100, 3),\n    round(portafolio_tangente$sharpe, 4)\n  ),\n  brecha = c(\n    round(brecha_retorno * 100, 3),\n    round(brecha_vol * 100, 3),\n    round(brecha_sharpe, 4)\n  ),\n  error_pct = c(\n    round(brecha_retorno / abs(portafolio_tangente$retorno) * 100, 2),\n    round(brecha_vol / portafolio_tangente$volatilidad * 100, 2),\n    round(brecha_sharpe / portafolio_tangente$sharpe * 100, 2)\n  )\n)\n\ncat(\"=== BRECHA DE OPTIMIZACIÓN ===\\n\")\ncat(\"Simulación vs Markowitz (10,000 portafolios)\\n\\n\")\nprint(comparacion)\n\ncat(\"\\n✓ Conclusión: Con 10k simulaciones, el error Sharpe es de ~\",\n    round(brecha_sharpe / portafolio_tangente$sharpe * 100, 2), \"% respecto a Markowitz\\n\")\n\n# Tabla de composicion de pesos\ncat(\"\\n\\n=== COMPOSICION DE PESOS ===\\n\\n\")\n\npesos_comparacion &lt;- tibble(\n  activo = colnames(retornos_matrix),\n  markowitz = portafolio_tangente$pesos,\n  simulado = mejor_pesos_sim[,1],\n  diferencia = abs(markowitz - simulado)\n)\n\npesos_comparacion &lt;- pesos_comparacion |&gt;\n  mutate(\n    markowitz_pct = round(markowitz * 100, 2),\n    simulado_pct = round(simulado * 100, 2),\n    diferencia_pct = round(diferencia * 100, 2)\n  ) |&gt;\n  select(activo, markowitz_pct, simulado_pct, diferencia_pct)\n\nprint(pesos_comparacion)\n\ncat(\"\\nMarkowitz: Concentra en 2 activos (SPY + AGG)\\n\")\ncat(\"Simulado: Diversifica en 5 activos\\n\")"
   },
   {
     "objectID": "clases_ia/actividad_02_portafolios.html#enfoque-con-claude-code",
@@ -1740,7 +1740,7 @@
     "href": "clases_ia/index.html",
     "title": "Clases — Finanzas en R con IA",
     "section": "",
-    "text": "Desarrollo Asistido por IA en Finanzas\nMateriales del curso que integran Claude Code y Positron para acelerar el desarrollo de análisis financieros en R. Desde la generación automática de código hasta debugging, documentación y buenas prácticas de prompting.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n01 - Introducción a Finanzas en R\n\n\n\n\n\n\n\n\n\n\n\n02 - Stack Tecnológico\n\n\n\n\n\n\n\n\n\n\n\n03 - Clase 01 - Desarrollo Asistido por IA\n\n\n\n\n\n\n\n\n\n\n\n04 - Trabajo del Curso\n\n\n\n\n\n\n\n\n\n\n\n05 - Actividad 01 - Limpieza de Datos (Manual vs IA-Asistido)\n\n\n\n\n\n\n\n\n\n\n\n06 - Actividad 02 - Portafolios: EDA, Markowitz y Validación por Simulación (Manual vs IA-Asistido)\n\n\n\n\n\nNo matching items"
+    "text": "Desarrollo Asistido por IA en Finanzas\nMateriales del curso que integran Claude Code y Positron para acelerar el desarrollo de análisis financieros en R. Desde la generación automática de código hasta debugging, documentación y buenas prácticas de prompting.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n01 - Introducción a Finanzas en R\n\n\n\n\n\n\n\n\n\n\n\n02 - Stack Tecnológico\n\n\n\n\n\n\n\n\n\n\n\n03 - Clase 01 - Desarrollo Asistido por IA\n\n\n\n\n\n\n\n\n\n\n\n04 - Trabajo del Curso\n\n\n\n\n\n\n\n\n\n\n\n05 - Actividad 01 - Limpieza de Datos (Manual vs IA-Asistido)\n\n\n\n\n\n\n\n\n\n\n\n06 - Actividad 02 - Portafolios: EDA, Markowitz y Validación por Simulación (Manual vs IA-Asistido)\n\n\n\n\n\n\n\n\n\n\n\n07 - Guía 01 - Diccionario de Términos Técnicos\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "clases_ia/notebook_01.html",
@@ -1930,5 +1930,1020 @@
     "title": "Diplomado en Ciencia de Datos para las Finanzas",
     "section": "",
     "text": "Este será el repositorio de los distintos materiales utilizados en el curso."
+  },
+  {
+    "objectID": "clases_ia/actividad_02_portafolios.html#composición-de-pesos-markowitz-vs-simulación",
+    "href": "clases_ia/actividad_02_portafolios.html#composición-de-pesos-markowitz-vs-simulación",
+    "title": "Actividad 02 — Construcción de Portafolios Óptimos",
+    "section": "Composición de Pesos: Markowitz vs Simulación",
+    "text": "Composición de Pesos: Markowitz vs Simulación\n\nTabla Comparativa de Asignación por Activo\n\n\n\nActivo\nMarkowitz\nSimulado\nDiferencia\n\n\n\n\nSPY (S&P 500)\n52.8%\n45.0%\n-7.80%\n\n\nEFA (Dev. Markets)\n0.0%\n5.09%\n+5.09%\n\n\nIJS (Small-cap)\n0.0%\n0.89%\n+0.89%\n\n\nEEM (Emerging)\n0.0%\n1.01%\n+1.01%\n\n\nAGG (Bonos)\n47.2%\n48.1%\n+0.82%\n\n\nTotal\n100%\n100%\n—\n\n\n\n\n\nInterpretación de Diferencias\n\nMarkowitz: Solución de esquina con solo 2 activos (SPY + AGG). Concentración máxima en los que mejor relación riesgo-retorno ofrecen.\nSimulado: Solución más diversificada que añade pequeñas posiciones en EFA, IJS y EEM (~7% combinado).\nImplicación: Markowitz es más agresivo en la optimización; simulación es más conservadora."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html",
+    "href": "clases_ia/diccionario_terminos.html",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "",
+    "text": "📄 Descargar PDF\n    💾 Descargar Fuente"
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#descargas-y-enlaces",
+    "href": "clases_ia/diccionario_terminos.html#descargas-y-enlaces",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "",
+    "text": "📄 Descargar PDF\n    💾 Descargar Fuente"
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#acción",
+    "href": "clases_ia/diccionario_terminos.html#acción",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "Acción",
+    "text": "Acción\nInstrumento financiero que representa una participación en una empresa.\nEn los ejercicios se utilizaron como ejemplo acciones identificadas mediante tickers como AAPL, GOOGL y MSFT."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#activo",
+    "href": "clases_ia/diccionario_terminos.html#activo",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "Activo",
+    "text": "Activo\nInstrumento o recurso financiero susceptible de generar retornos.\nUna acción es un ejemplo de activo financiero."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#ticker",
+    "href": "clases_ia/diccionario_terminos.html#ticker",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "Ticker",
+    "text": "Ticker\nCódigo utilizado para identificar un activo financiero en los mercados.\nEjemplos:\n\nAAPL: Apple.\nGOOGL: Alphabet.\nMSFT: Microsoft."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#retorno",
+    "href": "clases_ia/diccionario_terminos.html#retorno",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "Retorno",
+    "text": "Retorno\nVariación porcentual del valor de un activo durante un período.\nEn los ejercicios se simularon retornos mediante:\nrnorm(\n  n = n_dias,\n  mean = 0.0005,\n  sd = 0.015\n)\nEn este caso se utiliza una media diaria de 0,05 % y una desviación estándar de 1,5 %."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#retorno-diario",
+    "href": "clases_ia/diccionario_terminos.html#retorno-diario",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "Retorno diario",
+    "text": "Retorno diario\nRetorno de un activo medido entre un día y el siguiente.\nEn distintos ejercicios se utilizaron 252 observaciones como aproximación a un año bursátil."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#retorno-acumulado",
+    "href": "clases_ia/diccionario_terminos.html#retorno-acumulado",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "Retorno acumulado",
+    "text": "Retorno acumulado\nRepresenta el rendimiento obtenido al reinvertir sucesivamente los retornos de cada período.\nEn R:\nretorno_acumulado = cumprod(1 + retorno) - 1\nLa fórmula general corresponde a:\n(1+r1)(1+r2)...(1+rn)-1\nPor esta razón, los retornos porcentuales de distintos períodos no deben simplemente sumarse cuando se desea obtener el rendimiento compuesto."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#retorno-esperado",
+    "href": "clases_ia/diccionario_terminos.html#retorno-esperado",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "Retorno esperado",
+    "text": "Retorno esperado\nValor promedio que se espera obtener para un activo o portafolio.\nEn las simulaciones iniciales:\nmedia &lt;- 0.0005\nrepresenta un retorno esperado diario de aproximadamente 0,05 %.\nEn el ejercicio de portafolios, los retornos esperados de cada activo se calcularon mediante:\nretornos_esperados &lt;- colMeans(retornos_matrix)"
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#desviación-estándar",
+    "href": "clases_ia/diccionario_terminos.html#desviación-estándar",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "Desviación estándar",
+    "text": "Desviación estándar\nMedida estadística que representa cuánto se dispersan los valores respecto de su media.\nEn los ejercicios:\ndesv_est &lt;- 0.015\ncorresponde a una desviación estándar diaria de 1,5 %.\nEn finanzas se utiliza frecuentemente como medida de volatilidad."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#volatilidad",
+    "href": "clases_ia/diccionario_terminos.html#volatilidad",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "Volatilidad",
+    "text": "Volatilidad\nMedida de la variabilidad de los retornos de un activo o portafolio.\nUna mayor volatilidad indica que los retornos presentan mayores fluctuaciones alrededor de su promedio.\nEn el ejercicio de portafolios se calculó la volatilidad mediante la matriz de covarianzas y los pesos del portafolio:\nvol_opt &lt;- sqrt(\n  t(w_opt) %*%\n  cov_matrix %*%\n  w_opt\n) * sqrt(12)\nEl factor sqrt(12) anualiza una volatilidad calculada con datos mensuales."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#distribución-normal",
+    "href": "clases_ia/diccionario_terminos.html#distribución-normal",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "Distribución normal",
+    "text": "Distribución normal\nDistribución de probabilidad utilizada en los ejercicios para simular retornos mediante:\nrnorm()\nSe caracteriza principalmente por una media y una desviación estándar."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#distribución-triangular",
+    "href": "clases_ia/diccionario_terminos.html#distribución-triangular",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "Distribución triangular",
+    "text": "Distribución triangular\nDistribución de probabilidad definida mediante tres parámetros:\n\nmínimo;\nmáximo;\nmoda o valor más probable.\n\nEn clase:\nrtriangle(1, 9, 13, 11)\nrepresenta:\nmínimo = 9\nmáximo = 13\nmás probable = 11"
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#simulación",
+    "href": "clases_ia/diccionario_terminos.html#simulación",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "Simulación",
+    "text": "Simulación\nProceso mediante el cual se generan valores artificiales utilizando determinados supuestos.\nEjemplo:\nretorno = rnorm(\n  n(),\n  mean = 0.0005,\n  sd = 0.015\n)"
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#simulación-monte-carlo",
+    "href": "clases_ia/diccionario_terminos.html#simulación-monte-carlo",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "Simulación Monte Carlo",
+    "text": "Simulación Monte Carlo\nMétodo que repite múltiples veces un experimento que contiene variables aleatorias para estudiar los distintos resultados posibles.\nEn uno de los ejercicios:\nreps = 10000\nindica que la simulación se ejecuta 10.000 veces."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#escenario",
+    "href": "clases_ia/diccionario_terminos.html#escenario",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "Escenario",
+    "text": "Escenario\nUna posible combinación de condiciones dentro de una simulación.\nEn clase se trabajó con:\nsample(\n  c(\"A\", \"B\", \"C\"),\n  1,\n  replace = TRUE,\n  prob = c(1/4, 1/2, 1/4)\n)"
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#probabilidad",
+    "href": "clases_ia/diccionario_terminos.html#probabilidad",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "Probabilidad",
+    "text": "Probabilidad\nMedida de qué tan probable es que ocurra determinado resultado.\nEn una simulación permite asignar distintos pesos a posibles escenarios."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#utilidad",
+    "href": "clases_ia/diccionario_terminos.html#utilidad",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "Utilidad",
+    "text": "Utilidad\nResultado económico obtenido después de considerar ingresos y costos.\nEn el ejercicio de clase:\nutilidad =\n  (precio - costo_variable_unitario) * cantidad -\n  costo_fijo"
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#costo-variable-unitario",
+    "href": "clases_ia/diccionario_terminos.html#costo-variable-unitario",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "Costo variable unitario",
+    "text": "Costo variable unitario\nCosto asociado a producir o vender una unidad adicional.\nEn el ejercicio se modeló como una variable aleatoria utilizando una distribución triangular."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#costo-fijo",
+    "href": "clases_ia/diccionario_terminos.html#costo-fijo",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "Costo fijo",
+    "text": "Costo fijo\nCosto que no cambia directamente con la cantidad producida o vendida dentro del escenario analizado."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#correlación",
+    "href": "clases_ia/diccionario_terminos.html#correlación",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "Correlación",
+    "text": "Correlación\nMedida estadística estandarizada del grado de asociación lineal entre dos variables.\nPara retornos financieros permite estudiar en qué medida dos activos tienden a moverse conjuntamente.\nUna correlación cercana a:\n\n1: indica movimientos lineales similares.\n0: indica poca relación lineal.\n-1: indica movimientos lineales en direcciones opuestas.\n\nLa correlación no implica causalidad."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#matriz-de-correlación",
+    "href": "clases_ia/diccionario_terminos.html#matriz-de-correlación",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "Matriz de correlación",
+    "text": "Matriz de correlación\nTabla que contiene las correlaciones entre varios activos.\nEn clase:\ntabla_correlacion &lt;- datos %&gt;%\n  pivot_wider(\n    names_from = ticker,\n    values_from = retorno\n  ) %&gt;%\n  select(-fecha) %&gt;%\n  cor(use = \"complete.obs\")"
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#historial-sintético",
+    "href": "clases_ia/diccionario_terminos.html#historial-sintético",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "Historial sintético",
+    "text": "Historial sintético\nSerie de datos generada mediante una simulación en lugar de provenir directamente de observaciones reales.\nSe construyó un historial sintético de aproximadamente un año bursátil para distintos activos."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#densidad",
+    "href": "clases_ia/diccionario_terminos.html#densidad",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "Densidad",
+    "text": "Densidad\nForma de representar cómo se distribuye una variable continua.\nEn el ejercicio de utilidad se utilizó un histograma cuya escala vertical correspondía a densidad:\nafter_stat(density)"
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#r",
+    "href": "clases_ia/diccionario_terminos.html#r",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "R",
+    "text": "R\nLenguaje de programación especialmente utilizado en estadística, ciencia de datos, visualización y modelamiento.\nEs el lenguaje principal del curso."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#python",
+    "href": "clases_ia/diccionario_terminos.html#python",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "Python",
+    "text": "Python\nLenguaje de programación de propósito general muy utilizado en ciencia de datos, automatización e inteligencia artificial."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#rstudio",
+    "href": "clases_ia/diccionario_terminos.html#rstudio",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "RStudio",
+    "text": "RStudio\nEntorno de desarrollo especializado tradicionalmente en R.\nPermite trabajar con scripts, consola, gráficos, paquetes, archivos y proyectos."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#positron",
+    "href": "clases_ia/diccionario_terminos.html#positron",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "Positron",
+    "text": "Positron\nEntorno de desarrollo orientado a ciencia de datos que permite trabajar con lenguajes como R y Python.\nPositron y RStudio son aplicaciones independientes."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#ide",
+    "href": "clases_ia/diccionario_terminos.html#ide",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "IDE",
+    "text": "IDE\nIntegrated Development Environment.\nAplicación que reúne herramientas para escribir, ejecutar, revisar y depurar código.\nRStudio y Positron son ejemplos."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#script",
+    "href": "clases_ia/diccionario_terminos.html#script",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "Script",
+    "text": "Script\nArchivo que contiene una secuencia de instrucciones de programación.\nUn script puede, por ejemplo:\nCargar datos\n→ Transformarlos\n→ Calcular indicadores\n→ Generar gráficos\n→ Exportar resultados"
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#objeto",
+    "href": "clases_ia/diccionario_terminos.html#objeto",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "Objeto",
+    "text": "Objeto\nElemento almacenado en memoria dentro de R.\nx &lt;- 2\ncrea un objeto llamado x."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#asignación--",
+    "href": "clases_ia/diccionario_terminos.html#asignación--",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "Asignación <-",
+    "text": "Asignación &lt;-\nOperador utilizado habitualmente en R para guardar información dentro de un objeto.\nmedia &lt;- 0.0005"
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#función",
+    "href": "clases_ia/diccionario_terminos.html#función",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "Función",
+    "text": "Función\nBloque de código diseñado para realizar una tarea.\nEjemplos utilizados durante las clases:\nrnorm()\nmean()\ncov()\ncor()\nggplot()\nread_csv()\nsolve.QP()"
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#paquete",
+    "href": "clases_ia/diccionario_terminos.html#paquete",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "Paquete",
+    "text": "Paquete\nColección de funciones que amplían las capacidades de R.\nEntre los paquetes utilizados durante las clases se encuentran:\ntidyverse\nggplot2\ndplyr\nreadr\nlubridate\ntriangle\nscales\nquadprog"
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#library",
+    "href": "clases_ia/diccionario_terminos.html#library",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "library()",
+    "text": "library()\nCarga un paquete instalado.\nlibrary(dplyr)"
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#install.packages",
+    "href": "clases_ia/diccionario_terminos.html#install.packages",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "install.packages()",
+    "text": "install.packages()\nInstala un paquete.\ninstall.packages(\"rmarkdown\")"
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#tidyverse",
+    "href": "clases_ia/diccionario_terminos.html#tidyverse",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "tidyverse",
+    "text": "tidyverse\nEcosistema de paquetes de R diseñado para análisis y transformación de datos.\nIncluye herramientas como:\ndplyr\nggplot2\nreadr\ntidyr\ntibble"
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#dplyr",
+    "href": "clases_ia/diccionario_terminos.html#dplyr",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "dplyr",
+    "text": "dplyr\nPaquete utilizado para transformar y manipular datos.\nEntre las funciones trabajadas:\nselect()\nmutate()\narrange()\ngroup_by()\nungroup()"
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#pipe",
+    "href": "clases_ia/diccionario_terminos.html#pipe",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "Pipe %>%",
+    "text": "Pipe %&gt;%\nOperador utilizado tradicionalmente dentro del ecosistema tidyverse para encadenar operaciones.\ndatos %&gt;%\n  group_by(ticker) %&gt;%\n  mutate(...)"
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#group_by",
+    "href": "clases_ia/diccionario_terminos.html#group_by",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "group_by()",
+    "text": "group_by()\nAgrupa observaciones según una o varias variables.\ngroup_by(ticker)\npermite realizar cálculos independientes para cada acción."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#ungroup",
+    "href": "clases_ia/diccionario_terminos.html#ungroup",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "ungroup()",
+    "text": "ungroup()\nElimina una agrupación creada anteriormente con group_by()."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#mutate",
+    "href": "clases_ia/diccionario_terminos.html#mutate",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "mutate()",
+    "text": "mutate()\nPermite crear o modificar columnas.\nmutate(\n  retorno_acumulado = cumprod(1 + retorno) - 1\n)"
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#arrange",
+    "href": "clases_ia/diccionario_terminos.html#arrange",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "arrange()",
+    "text": "arrange()\nOrdena las filas de un dataset.\narrange(fecha)"
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#select",
+    "href": "clases_ia/diccionario_terminos.html#select",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "select()",
+    "text": "select()\nSelecciona o elimina columnas.\nEjemplo:\nselect(-fecha)\nelimina la columna fecha."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#pivot_wider",
+    "href": "clases_ia/diccionario_terminos.html#pivot_wider",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "pivot_wider()",
+    "text": "pivot_wider()\nTransforma datos desde formato largo hacia formato ancho.\nSe utilizó para construir una tabla donde cada ticker correspondiera a una columna antes de calcular las correlaciones."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#expand_grid",
+    "href": "clases_ia/diccionario_terminos.html#expand_grid",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "expand_grid()",
+    "text": "expand_grid()\nGenera todas las combinaciones posibles entre los valores entregados.\nEn clase permitió combinar:\n\nfechas;\ntickers."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#cumprod",
+    "href": "clases_ia/diccionario_terminos.html#cumprod",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "cumprod()",
+    "text": "cumprod()\nCalcula el producto acumulado.\nEs especialmente útil para construir retornos acumulados:\ncumprod(1 + retorno) - 1"
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#data-frame",
+    "href": "clases_ia/diccionario_terminos.html#data-frame",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "Data frame",
+    "text": "Data frame\nEstructura tabular utilizada en R para almacenar datos organizados en filas y columnas."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#tibble",
+    "href": "clases_ia/diccionario_terminos.html#tibble",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "Tibble",
+    "text": "Tibble\nVersión moderna de un data.frame, ampliamente utilizada por tidyverse.\nDurante el ejercicio de Markowitz:\nportafolio_tangente_df &lt;- tibble(\n  retorno = ...,\n  volatilidad = ...,\n  sharpe = ...,\n  pesos = ...\n)"
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#csv",
+    "href": "clases_ia/diccionario_terminos.html#csv",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "CSV",
+    "text": "CSV\nComma-Separated Values.\nFormato de texto utilizado para intercambiar datos tabulares.\nDurante las clases se utilizaron archivos como:\nretornos.csv\nretornos_3_acciones.csv\nportafolio_retornos.csv"
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#read_csv",
+    "href": "clases_ia/diccionario_terminos.html#read_csv",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "read_csv()",
+    "text": "read_csv()\nFunción de readr utilizada para importar CSV.\nportafolio_retornos &lt;-\n  read_csv(\n    \"data/portafolio_retornos.csv\"\n  )"
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#write_csv",
+    "href": "clases_ia/diccionario_terminos.html#write_csv",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "write_csv()",
+    "text": "write_csv()\nExporta información a CSV.\nwrite_csv(\n  datos_simulados,\n  \"retornos_3_acciones.csv\"\n)"
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#write.csv",
+    "href": "clases_ia/diccionario_terminos.html#write.csv",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "write.csv()",
+    "text": "write.csv()\nFunción incluida directamente en R que también permite exportar archivos CSV."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#png",
+    "href": "clases_ia/diccionario_terminos.html#png",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "PNG",
+    "text": "PNG\nFormato de imagen utilizado para guardar gráficos.\nEn clase:\nggsave(\n  \"retorno_acumulado_comparativo.png\"\n)\nNota: PNG es un formato de imagen raster. No es un formato vectorial."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#ggplot2",
+    "href": "clases_ia/diccionario_terminos.html#ggplot2",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "ggplot2",
+    "text": "ggplot2\nPaquete utilizado para construir gráficos en R mediante una gramática de visualización."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#aes",
+    "href": "clases_ia/diccionario_terminos.html#aes",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "aes()",
+    "text": "aes()\nDefine la relación entre variables y propiedades visuales.\naes(\n  x = volatilidad,\n  y = retorno\n)"
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#geom_line",
+    "href": "clases_ia/diccionario_terminos.html#geom_line",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "geom_line()",
+    "text": "geom_line()\nGenera líneas.\nSe utilizó tanto para retornos acumulados como para representar la frontera eficiente."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#geom_histogram",
+    "href": "clases_ia/diccionario_terminos.html#geom_histogram",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "geom_histogram()",
+    "text": "geom_histogram()\nGenera un histograma."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#histograma",
+    "href": "clases_ia/diccionario_terminos.html#histograma",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "Histograma",
+    "text": "Histograma\nGráfico que representa cómo se distribuyen las observaciones de una variable."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#ggsave",
+    "href": "clases_ia/diccionario_terminos.html#ggsave",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "ggsave()",
+    "text": "ggsave()\nGuarda un gráfico generado con ggplot2 en un archivo."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#matplotlib",
+    "href": "clases_ia/diccionario_terminos.html#matplotlib",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "matplotlib",
+    "text": "matplotlib\nBiblioteca de Python para generación de gráficos."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#seaborn",
+    "href": "clases_ia/diccionario_terminos.html#seaborn",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "seaborn",
+    "text": "seaborn\nBiblioteca de Python construida sobre matplotlib y orientada a visualización estadística."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#plotly",
+    "href": "clases_ia/diccionario_terminos.html#plotly",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "plotly",
+    "text": "plotly\nBiblioteca utilizada para crear gráficos interactivos y disponible en distintos lenguajes, incluyendo R y Python."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#rnorm",
+    "href": "clases_ia/diccionario_terminos.html#rnorm",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "rnorm()",
+    "text": "rnorm()\nGenera números pseudoaleatorios provenientes de una distribución normal."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#rtriangle",
+    "href": "clases_ia/diccionario_terminos.html#rtriangle",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "rtriangle()",
+    "text": "rtriangle()\nGenera valores provenientes de una distribución triangular."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#sample",
+    "href": "clases_ia/diccionario_terminos.html#sample",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "sample()",
+    "text": "sample()\nSelecciona elementos aleatoriamente y permite especificar probabilidades."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#set.seed",
+    "href": "clases_ia/diccionario_terminos.html#set.seed",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "set.seed()",
+    "text": "set.seed()\nFija la semilla del generador pseudoaleatorio.\nset.seed(123)\nEsto permite volver a ejecutar un análisis y obtener la misma secuencia aleatoria."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#reproducibilidad",
+    "href": "clases_ia/diccionario_terminos.html#reproducibilidad",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "Reproducibilidad",
+    "text": "Reproducibilidad\nCapacidad de volver a ejecutar un análisis obteniendo resultados consistentes a partir del mismo:\nCódigo\n+ Datos\n+ Dependencias\n+ Configuración\nHerramientas utilizadas durante el curso relacionadas con reproducibilidad incluyen:\nset.seed()\nGit\nGitHub\nrenv\nR Markdown"
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#git",
+    "href": "clases_ia/diccionario_terminos.html#git",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "Git",
+    "text": "Git\nSistema de control de versiones utilizado para registrar cambios realizados en archivos y código."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#github",
+    "href": "clases_ia/diccionario_terminos.html#github",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "GitHub",
+    "text": "GitHub\nPlataforma que permite alojar repositorios Git y colaborar en proyectos."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#repositorio",
+    "href": "clases_ia/diccionario_terminos.html#repositorio",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "Repositorio",
+    "text": "Repositorio\nCarpeta de proyecto administrada mediante Git.\nEl repositorio del curso es:\nhttps://github.com/sebaegana/clase_finanzas_r_202609"
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#renv",
+    "href": "clases_ia/diccionario_terminos.html#renv",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "renv",
+    "text": "renv\nHerramienta utilizada para registrar las versiones de los paquetes utilizados por un proyecto de R.\nAyuda a reproducir un entorno de trabajo en otro computador."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#markdown",
+    "href": "clases_ia/diccionario_terminos.html#markdown",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "Markdown",
+    "text": "Markdown\nLenguaje de marcado ligero para estructurar documentos de texto.\n# Título\n\n## Subtítulo\n\n**Negrita**\n\n- Elemento"
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#r-markdown",
+    "href": "clases_ia/diccionario_terminos.html#r-markdown",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "R Markdown",
+    "text": "R Markdown\nSistema que permite combinar en un mismo documento:\nTexto\n+ Código R\n+ Resultados\n+ Tablas\n+ Gráficos\nPuede instalarse mediante:\ninstall.packages(\"rmarkdown\")"
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#desarrollo-asistido-por-ia",
+    "href": "clases_ia/diccionario_terminos.html#desarrollo-asistido-por-ia",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "Desarrollo asistido por IA",
+    "text": "Desarrollo asistido por IA\nUso de modelos de inteligencia artificial para apoyar tareas de programación.\nDurante las clases se utilizó como herramienta para reducir la fricción al construir scripts y trabajar con bibliotecas como tidyverse y ggplot2."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#supervisión-humana",
+    "href": "clases_ia/diccionario_terminos.html#supervisión-humana",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "Supervisión humana",
+    "text": "Supervisión humana\nAunque una herramienta de IA puede generar código, una persona debe validar:\nSupuestos financieros\nFórmulas\nUnidades\nDatos\nResultados\nInterpretación\nGenerar código rápidamente no reemplaza la comprensión del problema."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#retorno-objetivo",
+    "href": "clases_ia/diccionario_terminos.html#retorno-objetivo",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "Retorno objetivo",
+    "text": "Retorno objetivo\nNivel de retorno que se busca alcanzar al construir un portafolio.\nEn el ejercicio de Markowitz se analizaron distintos retornos objetivo:\nretornos_objetivo &lt;- seq(\n  0.08,\n  0.20,\n  length.out = 50\n) / 12\nEsto genera 50 niveles de retorno entre 8 % y 20 % anual, transformados a valores mensuales para mantener consistencia con la frecuencia de los datos utilizados."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#varianza",
+    "href": "clases_ia/diccionario_terminos.html#varianza",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "Varianza",
+    "text": "Varianza\nMedida estadística que cuantifica la dispersión de una variable respecto de su media.\nLa desviación estándar corresponde a la raíz cuadrada de la varianza.\nEn teoría de portafolios, la varianza permite representar matemáticamente el riesgo del portafolio."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#covarianza",
+    "href": "clases_ia/diccionario_terminos.html#covarianza",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "Covarianza",
+    "text": "Covarianza\nMedida de cómo dos variables tienden a cambiar conjuntamente.\nEn finanzas se utiliza para estudiar cómo se relacionan los retornos de distintos activos.\nUna covarianza positiva indica que ambos activos tienden a moverse en la misma dirección, mientras que una covarianza negativa indica una tendencia a moverse en direcciones opuestas."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#matriz-de-covarianzas",
+    "href": "clases_ia/diccionario_terminos.html#matriz-de-covarianzas",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "Matriz de covarianzas",
+    "text": "Matriz de covarianzas\nMatriz que contiene las varianzas y covarianzas entre todos los activos de un conjunto.\nEn clase se calculó mediante:\ncov_matrix &lt;- cov(retornos_matrix)\nEsta matriz es uno de los elementos fundamentales de la optimización de portafolios de Markowitz."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#portafolio",
+    "href": "clases_ia/diccionario_terminos.html#portafolio",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "Portafolio",
+    "text": "Portafolio\nConjunto de activos financieros mantenidos simultáneamente por un inversionista.\nCada activo representa una determinada proporción de la inversión total."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#peso-de-un-activo",
+    "href": "clases_ia/diccionario_terminos.html#peso-de-un-activo",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "Peso de un activo",
+    "text": "Peso de un activo\nProporción del capital del portafolio invertida en un determinado activo.\nSe representa normalmente mediante:\nw\nSi un portafolio tiene tres activos, podría tener pesos como:\nActivo A = 40 %\nActivo B = 35 %\nActivo C = 25 %\nLa suma de los pesos sería:\n40 % + 35 % + 25 % = 100 %"
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#restricción-presupuestaria",
+    "href": "clases_ia/diccionario_terminos.html#restricción-presupuestaria",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "Restricción presupuestaria",
+    "text": "Restricción presupuestaria\nCondición que establece que la totalidad del capital debe distribuirse entre los activos.\nEn el código:\nsum(w) = 1\ny se incorpora mediante:\nrep(1, n_activos)"
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#venta-corta-o-short-selling",
+    "href": "clases_ia/diccionario_terminos.html#venta-corta-o-short-selling",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "Venta corta o Short Selling",
+    "text": "Venta corta o Short Selling\nOperación en la cual se toma una posición negativa sobre un activo.\nEn el ejercicio realizado en clase se incorporó la restricción:\nw &gt;= 0\nlo que implica que no se permiten pesos negativos y, por lo tanto, el problema planteado no contempla posiciones cortas."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#diversificación",
+    "href": "clases_ia/diccionario_terminos.html#diversificación",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "Diversificación",
+    "text": "Diversificación\nDistribución de una inversión entre distintos activos.\nLa idea central es que el riesgo de un portafolio depende no solamente del riesgo individual de sus activos, sino también de cómo estos activos se relacionan entre sí.\nPor esto la matriz de covarianzas resulta fundamental."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#modelo-de-markowitz",
+    "href": "clases_ia/diccionario_terminos.html#modelo-de-markowitz",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "Modelo de Markowitz",
+    "text": "Modelo de Markowitz\nModelo de selección de portafolios que analiza simultáneamente:\n\nretorno esperado;\nriesgo;\npesos de los activos;\ncorrelaciones o covarianzas entre activos.\n\nEl problema puede formularse buscando el portafolio de mínima varianza para un determinado retorno objetivo."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#optimización-media-varianza",
+    "href": "clases_ia/diccionario_terminos.html#optimización-media-varianza",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "Optimización Media-Varianza",
+    "text": "Optimización Media-Varianza\nEnfoque utilizado por el modelo de Markowitz.\nConsidera dos dimensiones principales:\nMedia     → retorno esperado\nVarianza  → riesgo\nEl objetivo es encontrar combinaciones de activos que entreguen determinadas relaciones entre retorno y riesgo."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#frontera-eficiente",
+    "href": "clases_ia/diccionario_terminos.html#frontera-eficiente",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "Frontera eficiente",
+    "text": "Frontera eficiente\nConjunto de portafolios que representan combinaciones eficientes entre riesgo y retorno.\nPara cada nivel de retorno objetivo se busca el portafolio con menor riesgo posible.\nEn clase se creó una estructura llamada:\nfrontera_markowitz\nque almacena:\nfrontera_markowitz &lt;- list(\n  retorno = ...,\n  volatilidad = ...,\n  sharpe = ...,\n  pesos = ...\n)\nCada punto de la frontera representa un portafolio diferente."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#programación-cuadrática",
+    "href": "clases_ia/diccionario_terminos.html#programación-cuadrática",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "Programación cuadrática",
+    "text": "Programación cuadrática\nMétodo matemático de optimización en el cual la función objetivo contiene términos cuadráticos.\nLa minimización de la varianza de un portafolio puede expresarse como un problema de programación cuadrática.\nEn R se utilizó el paquete:\nlibrary(quadprog)\ny la función:\nsolve.QP()"
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#restricciones-del-problema-de-optimización",
+    "href": "clases_ia/diccionario_terminos.html#restricciones-del-problema-de-optimización",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "Restricciones del problema de optimización",
+    "text": "Restricciones del problema de optimización\nEn el ejercicio de clase se utilizaron tres grupos principales de condiciones:\n1. Los pesos deben sumar 1.\n\n2. El portafolio debe alcanzar el retorno objetivo.\n\n3. Los pesos deben ser mayores o iguales a 0.\nEn el código:\nA &lt;- cbind(\n  rep(1, n_activos),\n  retornos_esperados,\n  diag(n_activos)\n)"
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#tasa-libre-de-riesgo",
+    "href": "clases_ia/diccionario_terminos.html#tasa-libre-de-riesgo",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "Tasa libre de riesgo",
+    "text": "Tasa libre de riesgo\nRetorno teórico de una inversión considerada sin riesgo para efectos del modelo.\nEn el ejercicio se utilizó:\ntasa_libre_riesgo &lt;- 0.02 / 12\ncorrespondiente a una tasa anual de 2 %, transformada a una aproximación mensual mediante división por 12."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#ratio-de-sharpe",
+    "href": "clases_ia/diccionario_terminos.html#ratio-de-sharpe",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "Ratio de Sharpe",
+    "text": "Ratio de Sharpe\nIndicador que relaciona el retorno adicional obtenido respecto de la tasa libre de riesgo con la volatilidad asumida.\nSu estructura general es:\nSharpe =\n(Retorno del portafolio - Tasa libre de riesgo)\n/\nVolatilidad del portafolio\nEn clase:\nfrontera_markowitz$sharpe &lt;- ifelse(\n  frontera_markowitz$volatilidad &gt; 1e-10,\n  (frontera_markowitz$retorno - 0.02) /\n    frontera_markowitz$volatilidad,\n  NA\n)\nUn mayor Sharpe representa una mayor cantidad de retorno excedente por unidad de volatilidad dentro de este criterio."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#portafolio-tangente",
+    "href": "clases_ia/diccionario_terminos.html#portafolio-tangente",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "Portafolio tangente",
+    "text": "Portafolio tangente\nPortafolio de la frontera eficiente que maximiza el ratio de Sharpe respecto de una determinada tasa libre de riesgo.\nEn el ejercicio se identificó utilizando:\nidx_tangente &lt;-\n  which.max(frontera_markowitz$sharpe)\nPosteriormente se almacenaron sus características:\nportafolio_tangente &lt;- list(\n  retorno = ...,\n  volatilidad = ...,\n  sharpe = ...,\n  pesos = ...\n)"
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#capital-allocation-line-cal",
+    "href": "clases_ia/diccionario_terminos.html#capital-allocation-line-cal",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "Capital Allocation Line — CAL",
+    "text": "Capital Allocation Line — CAL\nLa Capital Allocation Line representa combinaciones entre:\n\nel activo libre de riesgo;\nun portafolio riesgoso.\n\nEn el gráfico desarrollado durante la clase se muestra junto a la frontera eficiente:\nlabs(\n  title = \"Frontera Eficiente y Capital Allocation Line\"\n)\nEl portafolio tangente corresponde al punto donde la CAL es tangente a la frontera eficiente bajo los supuestos del modelo."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#anualización",
+    "href": "clases_ia/diccionario_terminos.html#anualización",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "Anualización",
+    "text": "Anualización\nTransformación de una métrica calculada con frecuencia diaria o mensual a una escala anual.\nPor ejemplo, en el código los retornos mensuales se transforman nuevamente a escala anual mediante:\nr_obj * 12\nMientras que la volatilidad mensual se anualiza mediante:\nvolatilidad_mensual * sqrt(12)\nEs importante distinguir ambas transformaciones: retorno y volatilidad no se anualizan exactamente de la misma manera en este ejercicio."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#pipe-nativo",
+    "href": "clases_ia/diccionario_terminos.html#pipe-nativo",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "Pipe nativo |>",
+    "text": "Pipe nativo |&gt;\nOperador incorporado directamente en versiones modernas de R.\nDurante la clase de portafolios se utilizó:\nportafolio_retornos |&gt;\n  select(-fecha) |&gt;\n  as.matrix()\nSu objetivo es similar al de %&gt;%: facilitar la lectura de una secuencia de operaciones."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#matriz",
+    "href": "clases_ia/diccionario_terminos.html#matriz",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "Matriz",
+    "text": "Matriz\nEstructura bidimensional en la cual todos los elementos son del mismo tipo.\nEn el ejercicio de portafolios:\nretornos_matrix &lt;-\n  portafolio_retornos |&gt;\n  select(-fecha) |&gt;\n  as.matrix()"
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#as.matrix",
+    "href": "clases_ia/diccionario_terminos.html#as.matrix",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "as.matrix()",
+    "text": "as.matrix()\nConvierte un objeto compatible en una matriz."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#colmeans",
+    "href": "clases_ia/diccionario_terminos.html#colmeans",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "colMeans()",
+    "text": "colMeans()\nCalcula la media de cada columna de una matriz o estructura similar.\nretornos_esperados &lt;-\n  colMeans(retornos_matrix)"
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#cov",
+    "href": "clases_ia/diccionario_terminos.html#cov",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "cov()",
+    "text": "cov()\nCalcula covarianzas.\ncov_matrix &lt;-\n  cov(retornos_matrix)"
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#ncol",
+    "href": "clases_ia/diccionario_terminos.html#ncol",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "ncol()",
+    "text": "ncol()\nEntrega el número de columnas de una estructura.\nn_activos &lt;-\n  ncol(retornos_matrix)\nEn el ejercicio corresponde al número de activos del portafolio."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#list",
+    "href": "clases_ia/diccionario_terminos.html#list",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "list()",
+    "text": "list()\nCrea una estructura capaz de almacenar objetos de distintos tipos.\nEn clase se utilizó para almacenar simultáneamente:\nretorno\nvolatilidad\nSharpe\npesos"
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#ruta-relativa",
+    "href": "clases_ia/diccionario_terminos.html#ruta-relativa",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "Ruta relativa",
+    "text": "Ruta relativa\nUbicación de un archivo expresada respecto de la carpeta del proyecto.\nPor ejemplo:\ndata/portafolio_retornos.csv\nindica que existe una carpeta llamada data dentro del proyecto.\nUtilizar rutas relativas facilita la reproducibilidad de un proyecto."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#geom_point",
+    "href": "clases_ia/diccionario_terminos.html#geom_point",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "geom_point()",
+    "text": "geom_point()\nGenera puntos sobre un gráfico.\nEn la actividad de portafolios se utilizó para destacar el portafolio tangente."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#theme_minimal",
+    "href": "clases_ia/diccionario_terminos.html#theme_minimal",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "theme_minimal()",
+    "text": "theme_minimal()\nAplica un estilo visual simplificado a un gráfico de ggplot2."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#git-clone",
+    "href": "clases_ia/diccionario_terminos.html#git-clone",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "git clone",
+    "text": "git clone\nDescarga una copia de un repositorio.\ngit clone https://github.com/sebaegana/clase_finanzas_r_202609.git"
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#datos-privados-y-github",
+    "href": "clases_ia/diccionario_terminos.html#datos-privados-y-github",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "Datos privados y GitHub",
+    "text": "Datos privados y GitHub\nLos repositorios pueden configurarse como privados, pero esto no reemplaza las políticas de protección de datos.\nNo deberían almacenarse directamente en un repositorio:\nContraseñas\nTokens\nAPI Keys\nCredenciales\nDatos personales sensibles\nInformación institucional confidencial"
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#necesito-utilizar-positron-y-rstudio-simultáneamente",
+    "href": "clases_ia/diccionario_terminos.html#necesito-utilizar-positron-y-rstudio-simultáneamente",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "¿Necesito utilizar Positron y RStudio simultáneamente?",
+    "text": "¿Necesito utilizar Positron y RStudio simultáneamente?\nNo. Son entornos de desarrollo independientes y es posible trabajar con R utilizando cualquiera de ellos."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#necesito-tener-python-instalado-para-trabajar-en-finanzas-en-r",
+    "href": "clases_ia/diccionario_terminos.html#necesito-tener-python-instalado-para-trabajar-en-finanzas-en-r",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "¿Necesito tener Python instalado para trabajar en Finanzas en R?",
+    "text": "¿Necesito tener Python instalado para trabajar en Finanzas en R?\nPara los ejercicios desarrollados exclusivamente en R, no.\nPython apareció también durante las clases como herramienta complementaria."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#necesito-saber-python-para-seguir-el-curso",
+    "href": "clases_ia/diccionario_terminos.html#necesito-saber-python-para-seguir-el-curso",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "¿Necesito saber Python para seguir el curso?",
+    "text": "¿Necesito saber Python para seguir el curso?\nNo necesariamente. El lenguaje principal utilizado para desarrollar los ejercicios financieros es R."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#por-qué-utilizamos-252-días-para-representar-un-año",
+    "href": "clases_ia/diccionario_terminos.html#por-qué-utilizamos-252-días-para-representar-un-año",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "¿Por qué utilizamos 252 días para representar un año?",
+    "text": "¿Por qué utilizamos 252 días para representar un año?\nPorque corresponde a una aproximación habitual al número de días de negociación existentes durante un año."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#por-qué-utilizamos-set.seed",
+    "href": "clases_ia/diccionario_terminos.html#por-qué-utilizamos-set.seed",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "¿Por qué utilizamos set.seed()?",
+    "text": "¿Por qué utilizamos set.seed()?\nPorque permite reproducir los mismos números pseudoaleatorios.\nEsto facilita comparar resultados y detectar errores."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#qué-diferencia-existe-entre-retorno-diario-y-retorno-acumulado",
+    "href": "clases_ia/diccionario_terminos.html#qué-diferencia-existe-entre-retorno-diario-y-retorno-acumulado",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "¿Qué diferencia existe entre retorno diario y retorno acumulado?",
+    "text": "¿Qué diferencia existe entre retorno diario y retorno acumulado?\nEl retorno diario representa el cambio correspondiente a un período.\nEl retorno acumulado considera el efecto compuesto de todos los períodos anteriores."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#por-qué-no-podemos-simplemente-sumar-retornos",
+    "href": "clases_ia/diccionario_terminos.html#por-qué-no-podemos-simplemente-sumar-retornos",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "¿Por qué no podemos simplemente sumar retornos?",
+    "text": "¿Por qué no podemos simplemente sumar retornos?\nPorque los retornos porcentuales se aplican sobre valores que cambian en cada período.\nPor eso utilizamos:\ncumprod(1 + retorno) - 1"
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#qué-representa-una-matriz-de-correlación",
+    "href": "clases_ia/diccionario_terminos.html#qué-representa-una-matriz-de-correlación",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "¿Qué representa una matriz de correlación?",
+    "text": "¿Qué representa una matriz de correlación?\nPermite estudiar la relación lineal entre los retornos de distintos activos."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#qué-diferencia-existe-entre-correlación-y-covarianza",
+    "href": "clases_ia/diccionario_terminos.html#qué-diferencia-existe-entre-correlación-y-covarianza",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "¿Qué diferencia existe entre correlación y covarianza?",
+    "text": "¿Qué diferencia existe entre correlación y covarianza?\nAmbas describen cómo dos variables se mueven conjuntamente.\nLa covarianza conserva las unidades y escalas de las variables.\nLa correlación estandariza esa relación entre -1 y 1.\nEn la optimización de Markowitz utilizamos directamente la matriz de covarianzas."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#por-qué-la-covarianza-es-importante-para-un-portafolio",
+    "href": "clases_ia/diccionario_terminos.html#por-qué-la-covarianza-es-importante-para-un-portafolio",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "¿Por qué la covarianza es importante para un portafolio?",
+    "text": "¿Por qué la covarianza es importante para un portafolio?\nPorque el riesgo del portafolio depende tanto de la volatilidad individual de sus activos como de la forma en que estos se mueven conjuntamente.\nDos activos muy volátiles pueden, bajo determinadas relaciones entre sus retornos, producir un portafolio cuyo riesgo conjunto sea diferente del riesgo de cada activo considerado aisladamente."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#qué-es-la-frontera-eficiente",
+    "href": "clases_ia/diccionario_terminos.html#qué-es-la-frontera-eficiente",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "¿Qué es la frontera eficiente?",
+    "text": "¿Qué es la frontera eficiente?\nEs el conjunto de portafolios eficientes que se obtiene al buscar, para distintos niveles de retorno, combinaciones con el menor riesgo permitido por el modelo y sus restricciones."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#cada-punto-de-la-frontera-eficiente-representa-un-portafolio-diferente",
+    "href": "clases_ia/diccionario_terminos.html#cada-punto-de-la-frontera-eficiente-representa-un-portafolio-diferente",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "¿Cada punto de la frontera eficiente representa un portafolio diferente?",
+    "text": "¿Cada punto de la frontera eficiente representa un portafolio diferente?\nSí. Cada punto puede contener diferentes:\nPesos\nRetorno esperado\nVolatilidad\nRatio de Sharpe"
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#qué-significa-que-los-pesos-sumen-1",
+    "href": "clases_ia/diccionario_terminos.html#qué-significa-que-los-pesos-sumen-1",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "¿Qué significa que los pesos sumen 1?",
+    "text": "¿Qué significa que los pesos sumen 1?\nSignifica que se distribuye el 100 % del capital disponible.\nw1 + w2 + ... + wn = 1"
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#qué-significa-w-0",
+    "href": "clases_ia/diccionario_terminos.html#qué-significa-w-0",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "¿Qué significa w >= 0?",
+    "text": "¿Qué significa w &gt;= 0?\nQue los pesos no pueden ser negativos.\nEn el ejercicio esto implica que no se permiten posiciones cortas."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#qué-hace-quadprog",
+    "href": "clases_ia/diccionario_terminos.html#qué-hace-quadprog",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "¿Qué hace quadprog?",
+    "text": "¿Qué hace quadprog?\nEs un paquete de R utilizado para resolver problemas de programación cuadrática.\nEn clase se utilizó:\nsolve.QP()\npara encontrar los pesos del portafolio bajo determinadas restricciones."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#por-qué-probamos-muchos-retornos-objetivo",
+    "href": "clases_ia/diccionario_terminos.html#por-qué-probamos-muchos-retornos-objetivo",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "¿Por qué probamos muchos retornos objetivo?",
+    "text": "¿Por qué probamos muchos retornos objetivo?\nPorque para construir la frontera eficiente necesitamos calcular múltiples portafolios.\nEn el ejercicio se utilizaron 50 retornos objetivo.\nCada retorno objetivo genera un nuevo problema de optimización."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#por-qué-el-retorno-objetivo-se-divide-por-12",
+    "href": "clases_ia/diccionario_terminos.html#por-qué-el-retorno-objetivo-se-divide-por-12",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "¿Por qué el retorno objetivo se divide por 12?",
+    "text": "¿Por qué el retorno objetivo se divide por 12?\nEn el ejercicio los niveles objetivo se expresan inicialmente en términos anuales y se dividen por 12 para trabajar en una escala mensual consistente con los datos utilizados en esa actividad."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#por-qué-la-volatilidad-se-multiplica-por-sqrt12",
+    "href": "clases_ia/diccionario_terminos.html#por-qué-la-volatilidad-se-multiplica-por-sqrt12",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "¿Por qué la volatilidad se multiplica por sqrt(12)?",
+    "text": "¿Por qué la volatilidad se multiplica por sqrt(12)?\nCuando se parte de una desviación estándar mensual, una forma habitual de anualizarla bajo los supuestos utilizados es:\nVolatilidad anual =\nVolatilidad mensual × √12"
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#por-qué-el-retorno-se-multiplica-por-12-pero-la-volatilidad-por-sqrt12",
+    "href": "clases_ia/diccionario_terminos.html#por-qué-el-retorno-se-multiplica-por-12-pero-la-volatilidad-por-sqrt12",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "¿Por qué el retorno se multiplica por 12 pero la volatilidad por sqrt(12)?",
+    "text": "¿Por qué el retorno se multiplica por 12 pero la volatilidad por sqrt(12)?\nPorque retorno esperado y volatilidad tienen propiedades matemáticas distintas.\nEn la aproximación utilizada en el ejercicio:\nRetorno:\nmensual × 12\n\nVolatilidad:\nmensual × √12"
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#qué-representa-la-tasa-libre-de-riesgo",
+    "href": "clases_ia/diccionario_terminos.html#qué-representa-la-tasa-libre-de-riesgo",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "¿Qué representa la tasa libre de riesgo?",
+    "text": "¿Qué representa la tasa libre de riesgo?\nEs una tasa utilizada como referencia para comparar el retorno de un activo o portafolio riesgoso.\nEn el ejercicio:\n0.02\ncorresponde a una tasa anual del 2 %."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#qué-es-el-ratio-de-sharpe",
+    "href": "clases_ia/diccionario_terminos.html#qué-es-el-ratio-de-sharpe",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "¿Qué es el Ratio de Sharpe?",
+    "text": "¿Qué es el Ratio de Sharpe?\nRelaciona el retorno adicional obtenido sobre la tasa libre de riesgo con la volatilidad asumida.\nSimplificadamente:\nSharpe =\nRetorno excedente / Volatilidad"
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#un-sharpe-mayor-es-siempre-mejor",
+    "href": "clases_ia/diccionario_terminos.html#un-sharpe-mayor-es-siempre-mejor",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "¿Un Sharpe mayor es siempre mejor?",
+    "text": "¿Un Sharpe mayor es siempre mejor?\nDentro de este criterio y comparando alternativas construidas de forma consistente, un Sharpe mayor representa más retorno excedente por unidad de volatilidad.\nSin embargo, sigue siendo un indicador basado en determinados supuestos y no resume por sí solo todas las dimensiones posibles del riesgo financiero."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#qué-es-el-portafolio-tangente",
+    "href": "clases_ia/diccionario_terminos.html#qué-es-el-portafolio-tangente",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "¿Qué es el portafolio tangente?",
+    "text": "¿Qué es el portafolio tangente?\nEs el portafolio de la frontera eficiente que presenta el mayor ratio de Sharpe respecto de la tasa libre de riesgo utilizada.\nEn el ejercicio se obtiene con:\nwhich.max(\n  frontera_markowitz$sharpe\n)"
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#qué-es-la-capital-allocation-line",
+    "href": "clases_ia/diccionario_terminos.html#qué-es-la-capital-allocation-line",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "¿Qué es la Capital Allocation Line?",
+    "text": "¿Qué es la Capital Allocation Line?\nEs una línea que representa combinaciones entre el activo libre de riesgo y un portafolio riesgoso.\nEn la actividad se representa junto con la frontera eficiente y el portafolio tangente."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#por-qué-solve.qp-puede-fallar-para-algún-retorno-objetivo",
+    "href": "clases_ia/diccionario_terminos.html#por-qué-solve.qp-puede-fallar-para-algún-retorno-objetivo",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "¿Por qué solve.QP() puede fallar para algún retorno objetivo?",
+    "text": "¿Por qué solve.QP() puede fallar para algún retorno objetivo?\nAlgunos retornos objetivo pueden no ser alcanzables dadas las restricciones utilizadas.\nPor ejemplo, exigir simultáneamente:\nPesos que sumen 100 %\nSin posiciones negativas\nUn determinado retorno objetivo\npuede producir un problema sin una solución válida para algunas combinaciones."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#para-qué-utilizamos-trycatch",
+    "href": "clases_ia/diccionario_terminos.html#para-qué-utilizamos-trycatch",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "¿Para qué utilizamos tryCatch()?",
+    "text": "¿Para qué utilizamos tryCatch()?\nPara evitar que una iteración fallida detenga todo el programa.\nEl programa puede registrar una advertencia y continuar con los demás retornos objetivo."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#qué-diferencia-existe-entre-write.csv-y-write_csv",
+    "href": "clases_ia/diccionario_terminos.html#qué-diferencia-existe-entre-write.csv-y-write_csv",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "¿Qué diferencia existe entre write.csv() y write_csv()?",
+    "text": "¿Qué diferencia existe entre write.csv() y write_csv()?\nwrite.csv() forma parte de R base.\nwrite_csv() pertenece al paquete readr, utilizado por tidyverse."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#para-qué-sirve-una-distribución-triangular",
+    "href": "clases_ia/diccionario_terminos.html#para-qué-sirve-una-distribución-triangular",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "¿Para qué sirve una distribución triangular?",
+    "text": "¿Para qué sirve una distribución triangular?\nPuede utilizarse cuando conocemos aproximadamente:\nUn mínimo\nUn máximo\nUn valor más probable\npero no contamos necesariamente con suficiente información histórica para estimar una distribución más compleja."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#por-qué-ejecutar-una-simulación-10.000-veces",
+    "href": "clases_ia/diccionario_terminos.html#por-qué-ejecutar-una-simulación-10.000-veces",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "¿Por qué ejecutar una simulación 10.000 veces?",
+    "text": "¿Por qué ejecutar una simulación 10.000 veces?\nPorque permite observar una distribución de resultados posibles en lugar de depender de un único escenario."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#qué-diferencia-existe-entre-ggplot2-matplotlib-seaborn-y-plotly",
+    "href": "clases_ia/diccionario_terminos.html#qué-diferencia-existe-entre-ggplot2-matplotlib-seaborn-y-plotly",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "¿Qué diferencia existe entre ggplot2, matplotlib, seaborn y plotly?",
+    "text": "¿Qué diferencia existe entre ggplot2, matplotlib, seaborn y plotly?\nggplot2 pertenece principalmente al ecosistema R.\nmatplotlib y seaborn pertenecen principalmente al ecosistema Python.\nplotly permite generar visualizaciones interactivas y posee implementaciones para diferentes lenguajes."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#es-seguro-subir-información-privada-a-github",
+    "href": "clases_ia/diccionario_terminos.html#es-seguro-subir-información-privada-a-github",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "¿Es seguro subir información privada a GitHub?",
+    "text": "¿Es seguro subir información privada a GitHub?\nQue un repositorio sea privado no significa que cualquier información deba almacenarse allí.\nNo deberían incorporarse directamente credenciales, contraseñas, tokens ni información sensible sin las medidas de seguridad correspondientes."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#para-qué-sirve-renv",
+    "href": "clases_ia/diccionario_terminos.html#para-qué-sirve-renv",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "¿Para qué sirve renv?",
+    "text": "¿Para qué sirve renv?\nPermite registrar y reconstruir las versiones de los paquetes utilizadas por un proyecto de R."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#qué-diferencia-existe-entre-markdown-y-r-markdown",
+    "href": "clases_ia/diccionario_terminos.html#qué-diferencia-existe-entre-markdown-y-r-markdown",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "¿Qué diferencia existe entre Markdown y R Markdown?",
+    "text": "¿Qué diferencia existe entre Markdown y R Markdown?\nMarkdown permite estructurar documentos mediante texto.\nR Markdown permite incorporar además código R y sus resultados."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#la-ia-puede-generar-todo-el-código-del-análisis",
+    "href": "clases_ia/diccionario_terminos.html#la-ia-puede-generar-todo-el-código-del-análisis",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "¿La IA puede generar todo el código del análisis?",
+    "text": "¿La IA puede generar todo el código del análisis?\nPuede ayudar considerablemente, pero el código debe ser validado.\nEspecialmente deben revisarse:\nSupuestos\nUnidades\nFrecuencias\nFórmulas\nRestricciones\nResultados\nInterpretación financiera"
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#material-del-curso",
+    "href": "clases_ia/diccionario_terminos.html#material-del-curso",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "Material del curso",
+    "text": "Material del curso\n\nSitio Finanzas en R\nhttps://sebaegana.github.io/finanzas_en_r_webpage/clases_ia/\nMaterial general utilizado durante las sesiones.\n\n\nNotebook 01\nhttps://sebaegana.github.io/finanzas_en_r_webpage/clases_ia/notebook_01.html\nNotebook utilizado como material de apoyo.\n\n\nActividad 02 — Portafolios\nhttps://sebaegana.github.io/finanzas_en_r_webpage/clases_ia/actividad_02_portafolios.html\nActividad utilizada para trabajar optimización de portafolios, frontera eficiente y teoría de Markowitz.\n\n\nRepositorio GitHub del curso\nhttps://github.com/sebaegana/clase_finanzas_r_202609\nPara clonarlo:\ngit clone https://github.com/sebaegana/clase_finanzas_r_202609.git"
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#aprender-r-y-tidyverse",
+    "href": "clases_ia/diccionario_terminos.html#aprender-r-y-tidyverse",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "Aprender R y tidyverse",
+    "text": "Aprender R y tidyverse\n\nR for Data Science\nhttps://r4ds.hadley.nz\nLibro de referencia para aprender análisis de datos con R.\n\n\nR for Data Science — español\nhttps://es.r4ds.hadley.nz\nVersión en español.\n\n\nPaquetes tidyverse\nhttps://tidyverse.org/packages/\nInformación sobre los principales paquetes del ecosistema tidyverse.\n\n\nPosit — Data Transformation Cheat Sheet\nhttps://opensource.posit.co/resources/cheatsheets/data-transformation/\nHoja de referencia para transformación de datos."
+  },
+  {
+    "objectID": "clases_ia/diccionario_terminos.html#reproducibilidad-1",
+    "href": "clases_ia/diccionario_terminos.html#reproducibilidad-1",
+    "title": "Diccionario de Términos Técnicos",
+    "section": "Reproducibilidad",
+    "text": "Reproducibilidad\n\nrenv\nhttps://rstudio.github.io/renv/articles/renv.html\nDocumentación sobre gestión reproducible de dependencias."
   }
 ]
