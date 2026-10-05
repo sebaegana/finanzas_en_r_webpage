@@ -466,14 +466,14 @@
     "href": "clases_ia/actividad_02_portafolios.html",
     "title": "Actividad 02 — Construcción de Portafolios Óptimos",
     "section": "",
-    "text": "📄 Descargar PDF\n    💾 Descargar Fuente\n  \n\n  \n    📊 Datos para la Actividad:\n    \n      Descargar portafolio_retornos.csv (retornos mensuales log 2012-2021, 5 activos)"
+    "text": "📄 Descargar PDF\n    💾 Descargar Fuente\n  \n\n  \n    📊 Datos para la Actividad:\n    \n      Descargar portafolio_retornos.csv (retornos mensuales log 2012-2021, 5 activos)\n    \n  \n\n  \n    🚀 Reporte Interactivo en Netlify:\n    \n      📊 Ver Reporte Completo (Markowitz + Simulación + Calculadora Interactiva) — Análisis en tiempo real con gráficos interactivos y calculadora de portafolios personalizados."
   },
   {
     "objectID": "clases_ia/actividad_02_portafolios.html#descargas-y-enlaces",
     "href": "clases_ia/actividad_02_portafolios.html#descargas-y-enlaces",
     "title": "Actividad 02 — Construcción de Portafolios Óptimos",
     "section": "",
-    "text": "📄 Descargar PDF\n    💾 Descargar Fuente\n  \n\n  \n    📊 Datos para la Actividad:\n    \n      Descargar portafolio_retornos.csv (retornos mensuales log 2012-2021, 5 activos)"
+    "text": "📄 Descargar PDF\n    💾 Descargar Fuente\n  \n\n  \n    📊 Datos para la Actividad:\n    \n      Descargar portafolio_retornos.csv (retornos mensuales log 2012-2021, 5 activos)\n    \n  \n\n  \n    🚀 Reporte Interactivo en Netlify:\n    \n      📊 Ver Reporte Completo (Markowitz + Simulación + Calculadora Interactiva) — Análisis en tiempo real con gráficos interactivos y calculadora de portafolios personalizados."
   },
   {
     "objectID": "clases_ia/actividad_02_portafolios.html#enfoque-manual-tradicional",
@@ -3127,5 +3127,124 @@
     "title": "📚 Recursos Adicionales",
     "section": "",
     "text": "Referencia completa de conceptos utilizados durante el curso:\n\nTérminos de finanzas: Activos, retornos, volatilidad, portafolios, Markowitz, Sharpe ratio\nConceptos cuantitativos: Covarianza, correlación, simulación Monte Carlo, optimización\nHerramientas y librerías: R, tidyverse, ggplot2, quadprog, Quarto, Claude Code, Positron\nMetodología: Desarrollo asistido por IA, buenas prácticas de prompting\n\nVer diccionario completo: Diccionario de Términos Técnicos"
+  },
+  {
+    "objectID": "clases_ia/clase_shiny_portafolios.html",
+    "href": "clases_ia/clase_shiny_portafolios.html",
+    "title": "Construyendo una aplicación Shiny para Finanzas",
+    "section": "",
+    "text": "En esta clase construiremos paso a paso una aplicación Shiny que permita explorar un portafolio de cinco activos financieros. El usuario podrá modificar los pesos del portafolio y observar el retorno esperado, la volatilidad y el ratio de Sharpe.\nLa aplicación no reemplaza el análisis financiero: lo convierte en una interfaz para experimentar, formular preguntas y comunicar resultados."
+  },
+  {
+    "objectID": "clases_ia/clase_shiny_portafolios.html#objetivo-de-la-clase",
+    "href": "clases_ia/clase_shiny_portafolios.html#objetivo-de-la-clase",
+    "title": "Construyendo una aplicación Shiny para Finanzas",
+    "section": "",
+    "text": "En esta clase construiremos paso a paso una aplicación Shiny que permita explorar un portafolio de cinco activos financieros. El usuario podrá modificar los pesos del portafolio y observar el retorno esperado, la volatilidad y el ratio de Sharpe.\nLa aplicación no reemplaza el análisis financiero: lo convierte en una interfaz para experimentar, formular preguntas y comunicar resultados."
+  },
+  {
+    "objectID": "clases_ia/clase_shiny_portafolios.html#resultado-final",
+    "href": "clases_ia/clase_shiny_portafolios.html#resultado-final",
+    "title": "Construyendo una aplicación Shiny para Finanzas",
+    "section": "Resultado final",
+    "text": "Resultado final\nAl terminar tendremos una aplicación con:\n\ncontroles para cambiar los pesos de SPY, EFA, IJS, EEM y AGG;\nnormalización automática de los pesos para que sumen 100%;\nmétricas financieras calculadas en tiempo real;\ngráfico riesgo-retorno;\ncomparación contra un portafolio equiponderado;\nbotones para cargar una estrategia conservadora, balanceada o agresiva.\n\n\nIdea central: en Shiny, la interfaz (ui) describe lo que el usuario ve y el servidor (server) contiene los cálculos que reaccionan a sus acciones."
+  },
+  {
+    "objectID": "clases_ia/clase_shiny_portafolios.html#preparación",
+    "href": "clases_ia/clase_shiny_portafolios.html#preparación",
+    "title": "Construyendo una aplicación Shiny para Finanzas",
+    "section": "Preparación",
+    "text": "Preparación\nInstala los paquetes una sola vez:\n\ninstall.packages(c(\"shiny\", \"readr\", \"dplyr\", \"tidyr\", \"ggplot2\", \"scales\"))\n\nLa aplicación usará el archivo:\nclases_ia/data/portafolio_retornos.csv\nLa versión ejecutable de la clase está en:\nclases_ia/shiny_portafolio/app.R\nPara abrirla, ejecuta app.R desde Positron o RStudio y presiona Run App."
+  },
+  {
+    "objectID": "clases_ia/clase_shiny_portafolios.html#fase-1-la-aplicación-mínima",
+    "href": "clases_ia/clase_shiny_portafolios.html#fase-1-la-aplicación-mínima",
+    "title": "Construyendo una aplicación Shiny para Finanzas",
+    "section": "Fase 1 — La aplicación mínima",
+    "text": "Fase 1 — La aplicación mínima\nAntes de trabajar con finanzas, construimos la aplicación más pequeña posible:\nlibrary(shiny)\n\nui &lt;- fluidPage(\n  titlePanel(\"Mi primera aplicación Shiny\"),\n  p(\"Esta aplicación todavía no calcula nada.\")\n)\n\nserver &lt;- function(input, output, session) {\n}\n\nshinyApp(ui = ui, server = server)\n\nQué aprendemos\n\nfluidPage() crea una página adaptable.\ntitlePanel() agrega un título.\nserver será el lugar donde vivirán los cálculos.\nshinyApp() conecta la interfaz con el servidor.\n\nEn esta primera fase no hay inputs ni outputs. Solo comprobamos que Shiny está instalado y que podemos levantar una aplicación."
+  },
+  {
+    "objectID": "clases_ia/clase_shiny_portafolios.html#fase-2-agregar-una-entrada-y-una-salida",
+    "href": "clases_ia/clase_shiny_portafolios.html#fase-2-agregar-una-entrada-y-una-salida",
+    "title": "Construyendo una aplicación Shiny para Finanzas",
+    "section": "Fase 2 — Agregar una entrada y una salida",
+    "text": "Fase 2 — Agregar una entrada y una salida\nAhora agregamos un deslizador y un texto que muestra su valor.\nlibrary(shiny)\n\nui &lt;- fluidPage(\n  titlePanel(\"Explorando un peso de portafolio\"),\n  sliderInput(\n    inputId = \"peso_spy\",\n    label = \"Peso de SPY (%)\",\n    min = 0,\n    max = 100,\n    value = 40,\n    step = 1\n  ),\n  textOutput(\"mostrar_peso\")\n)\n\nserver &lt;- function(input, output, session) {\n  output$mostrar_peso &lt;- renderText({\n    paste(\"El peso seleccionado es\", input$peso_spy, \"%\")\n  })\n}\n\nshinyApp(ui = ui, server = server)\n\nLa regla de reactividad\ninput$peso_spy contiene el valor actual del deslizador. Cuando el usuario lo mueve, Shiny vuelve a ejecutar el bloque renderText() y actualiza la salida.\nLa relación es:\ninput$peso_spy → renderText() → output$mostrar_peso"
+  },
+  {
+    "objectID": "clases_ia/clase_shiny_portafolios.html#fase-3-cargar-los-datos-financieros",
+    "href": "clases_ia/clase_shiny_portafolios.html#fase-3-cargar-los-datos-financieros",
+    "title": "Construyendo una aplicación Shiny para Finanzas",
+    "section": "Fase 3 — Cargar los datos financieros",
+    "text": "Fase 3 — Cargar los datos financieros\nLos datos deben cargarse una sola vez, antes de construir la interfaz:\nlibrary(shiny)\nlibrary(readr)\n\ndatos &lt;- read_csv(\"../data/portafolio_retornos.csv\", show_col_types = FALSE)\n\nhead(datos)\nLa columna fecha identifica el período y las otras columnas contienen retornos mensuales.\nactivos &lt;- c(\"SPY\", \"EFA\", \"IJS\", \"EEM\", \"AGG\")\nretornos &lt;- as.matrix(datos[activos])\n\nretornos_medios &lt;- colMeans(retornos)\ncovarianzas &lt;- cov(retornos)\nEn esta clase anualizamos los retornos mensuales usando:\nretorno_anual &lt;- retorno_mensual * 12\nvolatilidad_anual &lt;- volatilidad_mensual * sqrt(12)"
+  },
+  {
+    "objectID": "clases_ia/clase_shiny_portafolios.html#fase-4-escribir-las-funciones-financieras",
+    "href": "clases_ia/clase_shiny_portafolios.html#fase-4-escribir-las-funciones-financieras",
+    "title": "Construyendo una aplicación Shiny para Finanzas",
+    "section": "Fase 4 — Escribir las funciones financieras",
+    "text": "Fase 4 — Escribir las funciones financieras\nSeparar los cálculos de la interfaz facilita las pruebas y la explicación.\ncalcular_metricas &lt;- function(pesos, retornos_medios, covarianzas,\n                              tasa_libre = 0.02) {\n  retorno &lt;- sum(pesos * retornos_medios) * 12\n\n  varianza &lt;- as.numeric(t(pesos) %*% covarianzas %*% pesos)\n  volatilidad &lt;- sqrt(varianza) * sqrt(12)\n\n  sharpe &lt;- (retorno - tasa_libre) / volatilidad\n\n  list(\n    retorno = retorno,\n    volatilidad = volatilidad,\n    sharpe = sharpe\n  )\n}\nLa función implementa tres ideas:\n\nEl retorno del portafolio es el promedio ponderado de los retornos.\nLa volatilidad depende de la matriz de covarianzas.\nEl ratio de Sharpe compara el exceso de retorno con el riesgo.\n\nTambién creamos una función para normalizar pesos:\nnormalizar_pesos &lt;- function(pesos) {\n  if (sum(pesos) == 0) {\n    return(rep(1 / length(pesos), length(pesos)))\n  }\n\n  pesos / sum(pesos)\n}\nEsto permite que el usuario mueva libremente los controles, pero el cálculo siempre trabaje con pesos que suman 1."
+  },
+  {
+    "objectID": "clases_ia/clase_shiny_portafolios.html#fase-5-construir-la-interfaz-financiera",
+    "href": "clases_ia/clase_shiny_portafolios.html#fase-5-construir-la-interfaz-financiera",
+    "title": "Construyendo una aplicación Shiny para Finanzas",
+    "section": "Fase 5 — Construir la interfaz financiera",
+    "text": "Fase 5 — Construir la interfaz financiera\nPara evitar repetir código, definimos una función que crea un deslizador:\ncrear_slider &lt;- function(activo, valor) {\n  sliderInput(\n    inputId = paste0(\"peso_\", tolower(activo)),\n    label = paste0(\"Peso de \", activo, \" (%)\"),\n    min = 0,\n    max = 100,\n    value = valor,\n    step = 1\n  )\n}\nLa interfaz completa puede organizarse en dos columnas:\nui &lt;- fluidPage(\n  titlePanel(\"Laboratorio de Portafolios\"),\n\n  sidebarLayout(\n    sidebarPanel(\n      h4(\"Pesos del portafolio\"),\n      crear_slider(\"SPY\", 40),\n      crear_slider(\"EFA\", 20),\n      crear_slider(\"IJS\", 10),\n      crear_slider(\"EEM\", 10),\n      crear_slider(\"AGG\", 20),\n      actionButton(\"conservador\", \"Conservador\"),\n      actionButton(\"balanceado\", \"Balanceado\"),\n      actionButton(\"agresivo\", \"Agresivo\")\n    ),\n\n    mainPanel(\n      h3(\"Resultados\"),\n      textOutput(\"pesos_finales\"),\n      tableOutput(\"metricas\"),\n      plotOutput(\"grafico_riesgo_retorno\", height = \"500px\")\n    )\n  )\n)"
+  },
+  {
+    "objectID": "clases_ia/clase_shiny_portafolios.html#fase-6-leer-los-controles-de-forma-reactiva",
+    "href": "clases_ia/clase_shiny_portafolios.html#fase-6-leer-los-controles-de-forma-reactiva",
+    "title": "Construyendo una aplicación Shiny para Finanzas",
+    "section": "Fase 6 — Leer los controles de forma reactiva",
+    "text": "Fase 6 — Leer los controles de forma reactiva\nEn el servidor reunimos los valores de los cinco sliders:\npesos_reactivos &lt;- reactive({\n  pesos &lt;- c(\n    input$peso_spy,\n    input$peso_efa,\n    input$peso_ijs,\n    input$peso_eem,\n    input$peso_agg\n  )\n\n  normalizar_pesos(pesos)\n})\nUna expresión reactive() calcula un valor que será reutilizado por varias salidas. Si cambia cualquier slider, se actualiza pesos_reactivos() y Shiny recalcula solamente lo necesario.\nLuego calculamos las métricas:\nmetricas_reactivas &lt;- reactive({\n  calcular_metricas(\n    pesos = pesos_reactivos(),\n    retornos_medios = retornos_medios,\n    covarianzas = covarianzas\n  )\n})\nObserva la diferencia entre una variable normal y una expresión reactiva:\npesos_reactivos()       # Se ejecuta llamando a la función\nmetricas_reactivas()    # También se consulta con paréntesis"
+  },
+  {
+    "objectID": "clases_ia/clase_shiny_portafolios.html#fase-7-mostrar-resultados",
+    "href": "clases_ia/clase_shiny_portafolios.html#fase-7-mostrar-resultados",
+    "title": "Construyendo una aplicación Shiny para Finanzas",
+    "section": "Fase 7 — Mostrar resultados",
+    "text": "Fase 7 — Mostrar resultados\noutput$pesos_finales &lt;- renderText({\n  pesos &lt;- round(pesos_reactivos() * 100, 1)\n  nombres &lt;- paste(activos, pesos, \"%\", sep = \" \")\n  paste(\"Pesos normalizados:\", paste(nombres, collapse = \" | \"))\n})\n\noutput$metricas &lt;- renderTable({\n  metricas &lt;- metricas_reactivas()\n\n  data.frame(\n    Métrica = c(\"Retorno anual\", \"Volatilidad anual\", \"Ratio de Sharpe\"),\n    Valor = c(\n      paste0(round(metricas$retorno * 100, 2), \"%\"),\n      paste0(round(metricas$volatilidad * 100, 2), \"%\"),\n      round(metricas$sharpe, 3)\n    ),\n    check.names = FALSE\n  )\n})\nLa salida no modifica los cálculos. Solo transforma los resultados en un formato comprensible para la persona que usa la aplicación."
+  },
+  {
+    "objectID": "clases_ia/clase_shiny_portafolios.html#fase-8-visualizar-riesgo-y-retorno",
+    "href": "clases_ia/clase_shiny_portafolios.html#fase-8-visualizar-riesgo-y-retorno",
+    "title": "Construyendo una aplicación Shiny para Finanzas",
+    "section": "Fase 8 — Visualizar riesgo y retorno",
+    "text": "Fase 8 — Visualizar riesgo y retorno\nPrimero generamos una nube de portafolios aleatorios para tener un contexto.\nset.seed(42)\n\nsimulacion &lt;- replicate(3000, {\n  pesos &lt;- normalizar_pesos(runif(length(activos)))\n  metricas &lt;- calcular_metricas(pesos, retornos_medios, covarianzas)\n\n  c(\n    retorno = metricas$retorno,\n    volatilidad = metricas$volatilidad,\n    sharpe = metricas$sharpe\n  )\n})\n\nsimulacion &lt;- as.data.frame(t(simulacion))\nDespués marcamos el portafolio elegido por el usuario:\noutput$grafico_riesgo_retorno &lt;- renderPlot({\n  elegido &lt;- metricas_reactivas()\n\n  ggplot(simulacion, aes(x = volatilidad, y = retorno, color = sharpe)) +\n    geom_point(alpha = 0.35, size = 1.5) +\n    geom_point(\n      data = data.frame(\n        volatilidad = elegido$volatilidad,\n        retorno = elegido$retorno\n      ),\n      aes(x = volatilidad, y = retorno),\n      color = \"red\",\n      size = 5\n    ) +\n    scale_x_continuous(labels = scales::percent) +\n    scale_y_continuous(labels = scales::percent) +\n    labs(\n      title = \"Riesgo y retorno de portafolios\",\n      subtitle = \"El punto rojo corresponde a tu selección\",\n      x = \"Volatilidad anual\",\n      y = \"Retorno anual\",\n      color = \"Sharpe\"\n    ) +\n    theme_minimal()\n})\nLa nube representa alternativas posibles. El punto rojo representa la decisión del usuario. La aplicación ayuda a interpretar la posición relativa del portafolio, pero no convierte una estimación histórica en una garantía de retorno futuro."
+  },
+  {
+    "objectID": "clases_ia/clase_shiny_portafolios.html#fase-9-botones-y-valores-predefinidos",
+    "href": "clases_ia/clase_shiny_portafolios.html#fase-9-botones-y-valores-predefinidos",
+    "title": "Construyendo una aplicación Shiny para Finanzas",
+    "section": "Fase 9 — Botones y valores predefinidos",
+    "text": "Fase 9 — Botones y valores predefinidos\nLos botones permiten comenzar desde estrategias reconocibles.\nobserveEvent(input$conservador, {\n  updateSliderInput(session, \"peso_spy\", value = 15)\n  updateSliderInput(session, \"peso_efa\", value = 10)\n  updateSliderInput(session, \"peso_ijs\", value = 5)\n  updateSliderInput(session, \"peso_eem\", value = 5)\n  updateSliderInput(session, \"peso_agg\", value = 65)\n})\n\nobserveEvent(input$balanceado, {\n  updateSliderInput(session, \"peso_spy\", value = 30)\n  updateSliderInput(session, \"peso_efa\", value = 15)\n  updateSliderInput(session, \"peso_ijs\", value = 10)\n  updateSliderInput(session, \"peso_eem\", value = 10)\n  updateSliderInput(session, \"peso_agg\", value = 35)\n})\n\nobserveEvent(input$agresivo, {\n  updateSliderInput(session, \"peso_spy\", value = 40)\n  updateSliderInput(session, \"peso_efa\", value = 25)\n  updateSliderInput(session, \"peso_ijs\", value = 15)\n  updateSliderInput(session, \"peso_eem\", value = 15)\n  updateSliderInput(session, \"peso_agg\", value = 5)\n})\nobserveEvent() escucha una acción. En este caso, la acción es hacer clic en un botón y la respuesta consiste en actualizar los cinco controles."
+  },
+  {
+    "objectID": "clases_ia/clase_shiny_portafolios.html#fase-10-reflexión-financiera",
+    "href": "clases_ia/clase_shiny_portafolios.html#fase-10-reflexión-financiera",
+    "title": "Construyendo una aplicación Shiny para Finanzas",
+    "section": "Fase 10 — Reflexión financiera",
+    "text": "Fase 10 — Reflexión financiera\nResponde las siguientes preguntas usando la aplicación:\n\n¿Qué ocurre con la volatilidad cuando aumenta el peso de AGG?\n¿Un portafolio con mayor retorno siempre tiene mayor ratio de Sharpe?\n¿Qué importancia tiene la correlación entre los activos?\n¿Qué diferencias observas entre una estrategia conservadora y una agresiva?\n¿Qué supuestos estamos haciendo al usar promedios y covarianzas históricas?\n\nLa aplicación es un instrumento para experimentar con estas preguntas. Las respuestas deben combinar el resultado numérico con una interpretación financiera."
+  },
+  {
+    "objectID": "clases_ia/clase_shiny_portafolios.html#ejercicio",
+    "href": "clases_ia/clase_shiny_portafolios.html#ejercicio",
+    "title": "Construyendo una aplicación Shiny para Finanzas",
+    "section": "Ejercicio",
+    "text": "Ejercicio\nModifica la aplicación para agregar:\n\nun campo para cambiar la tasa libre de riesgo;\nuna tarjeta que indique cuál es el activo con mayor peso;\nuna tabla con el retorno y la volatilidad de cada activo;\nun botón que restablezca todos los sliders a cero y evite errores;\nun segundo marcador para un portafolio de referencia."
+  },
+  {
+    "objectID": "clases_ia/clase_shiny_portafolios.html#checklist-técnico",
+    "href": "clases_ia/clase_shiny_portafolios.html#checklist-técnico",
+    "title": "Construyendo una aplicación Shiny para Finanzas",
+    "section": "Checklist técnico",
+    "text": "Checklist técnico\n\nLa aplicación abre desde app.R.\nLos cinco sliders modifican los resultados.\nLos pesos normalizados suman 100%.\nEl retorno, la volatilidad y Sharpe cambian al mover un slider.\nEl gráfico muestra la simulación y el portafolio elegido.\nLos botones cargan estrategias distintas.\nEl código está separado en datos, funciones, interfaz y servidor."
+  },
+  {
+    "objectID": "clases_ia/clase_shiny_portafolios.html#idea-clave",
+    "href": "clases_ia/clase_shiny_portafolios.html#idea-clave",
+    "title": "Construyendo una aplicación Shiny para Finanzas",
+    "section": "Idea clave",
+    "text": "Idea clave\nUna aplicación Shiny no es solamente un conjunto de controles. Es un modelo financiero conectado a una interfaz reactiva:\ndatos → funciones financieras → reactive() → outputs → interpretación\nEl valor de la aplicación está en hacer visible la relación entre una decisión de inversión y sus consecuencias en riesgo y retorno."
   }
 ]
