@@ -1740,7 +1740,7 @@
     "href": "clases_ia/index.html",
     "title": "Clases — Finanzas en R con IA",
     "section": "",
-    "text": "Desarrollo Asistido por IA en Finanzas\nMateriales del curso que integran Claude Code y Positron para acelerar el desarrollo de análisis financieros en R. Desde la generación automática de código hasta debugging, documentación y buenas prácticas de prompting.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n01 - Introducción a Finanzas en R\n\n\n\n\n\n\n\n\n\n\n\n02 - Stack Tecnológico\n\n\n\n\n\n\n\n\n\n\n\n03 - Clase 01 - Desarrollo Asistido por IA\n\n\n\n\n\n\n\n\n\n\n\n04 - Trabajo del Curso\n\n\n\n\n\n\n\n\n\n\n\n05 - Actividad 01 - Limpieza de Datos (Manual vs IA-Asistido)\n\n\n\n\n\n\n\n\n\n\n\n06 - Actividad 02 - Portafolios: EDA, Markowitz y Validación por Simulación (Manual vs IA-Asistido)\n\n\n\n\n\n\n\n\n\n\n\n07 - Aplicación Shiny: Laboratorio de Portafolios\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Desarrollo Asistido por IA en Finanzas\nMateriales del curso que integran Claude Code y Positron para acelerar el desarrollo de análisis financieros en R. Desde la generación automática de código hasta debugging, documentación y buenas prácticas de prompting.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n01 - Introducción a Finanzas en R\n\n\n\n\n\n\n\n\n\n\n\n02 - Stack Tecnológico\n\n\n\n\n\n\n\n\n\n\n\n03 - Clase 01 - Desarrollo Asistido por IA\n\n\n\n\n\n\n\n\n\n\n\n04 - Trabajo del Curso\n\n\n\n\n\n\n\n\n\n\n\n05 - Actividad 01 - Limpieza de Datos (Manual vs IA-Asistido)\n\n\n\n\n\n\n\n\n\n\n\n06 - Actividad 02 - Portafolios: EDA, Markowitz y Validación por Simulación (Manual vs IA-Asistido)\n\n\n\n\n\n\n\n\n\n\n\n07 - Aplicación Shiny: Laboratorio de Portafolios\n\n\n\n\n\n\n\n\n\n\n\n08 - Notebook: Lectura guiada de una aplicación Shiny\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "clases_ia/notebook_01.html",
@@ -3246,5 +3246,124 @@
     "title": "Construyendo una aplicación Shiny para Finanzas",
     "section": "Idea clave",
     "text": "Idea clave\nUna aplicación Shiny no es solamente un conjunto de controles. Es un modelo financiero conectado a una interfaz reactiva:\ndatos → funciones financieras → reactive() → outputs → interpretación\nEl valor de la aplicación está en hacer visible la relación entre una decisión de inversión y sus consecuencias en riesgo y retorno."
+  },
+  {
+    "objectID": "clases_ia/notebook_shiny_portafolio.html",
+    "href": "clases_ia/notebook_shiny_portafolio.html",
+    "title": "Notebook guiado: cómo funciona nuestra aplicación Shiny",
+    "section": "",
+    "text": "Este notebook explica, parte por parte, el código de la aplicación ubicada en shiny_portafolio/app.R.\nLa idea central es:\ndatos → funciones financieras → inputs → reactivos → outputs\nPara ejecutar la aplicación:\nshiny::runApp(\"clases_ia/shiny_portafolio\")"
+  },
+  {
+    "objectID": "clases_ia/notebook_shiny_portafolio.html#propósito",
+    "href": "clases_ia/notebook_shiny_portafolio.html#propósito",
+    "title": "Notebook guiado: cómo funciona nuestra aplicación Shiny",
+    "section": "",
+    "text": "Este notebook explica, parte por parte, el código de la aplicación ubicada en shiny_portafolio/app.R.\nLa idea central es:\ndatos → funciones financieras → inputs → reactivos → outputs\nPara ejecutar la aplicación:\nshiny::runApp(\"clases_ia/shiny_portafolio\")"
+  },
+  {
+    "objectID": "clases_ia/notebook_shiny_portafolio.html#estructura-de-shiny",
+    "href": "clases_ia/notebook_shiny_portafolio.html#estructura-de-shiny",
+    "title": "Notebook guiado: cómo funciona nuestra aplicación Shiny",
+    "section": "1. Estructura de Shiny",
+    "text": "1. Estructura de Shiny\nToda aplicación Shiny tiene una interfaz y un servidor:\nui &lt;- fluidPage(\n  # Lo que verá el usuario\n)\n\nserver &lt;- function(input, output, session) {\n  # Cálculos y respuestas\n}\n\nshinyApp(ui = ui, server = server)\nLa interfaz define controles y espacios de salida. El servidor recibe acciones, calcula resultados y actualiza la pantalla. La aplicación queda esperando eventos del usuario."
+  },
+  {
+    "objectID": "clases_ia/notebook_shiny_portafolio.html#paquetes-y-datos",
+    "href": "clases_ia/notebook_shiny_portafolio.html#paquetes-y-datos",
+    "title": "Notebook guiado: cómo funciona nuestra aplicación Shiny",
+    "section": "2. Paquetes y datos",
+    "text": "2. Paquetes y datos\nlibrary(shiny)\nlibrary(readr)\nlibrary(ggplot2)\n\n\n\nPaquete\nResponsabilidad\n\n\n\n\nshiny\nInterfaz, eventos y reactividad\n\n\nreadr\nLectura del CSV\n\n\nggplot2\nGráfico de riesgo y retorno\n\n\n\nLa aplicación busca el CSV en varias rutas:\nrutas_datos &lt;- c(\n  \"data/portafolio_retornos.csv\",\n  \"../data/portafolio_retornos.csv\",\n  \"clases_ia/data/portafolio_retornos.csv\"\n)\n\nruta_datos &lt;- rutas_datos[file.exists(rutas_datos)][1]\n\nif (is.na(ruta_datos)) {\n  stop(\"No se encontró el archivo de datos.\")\n}\n\ndatos &lt;- read_csv(ruta_datos, show_col_types = FALSE)\nEsto permite iniciar la app desde la carpeta de la aplicación o desde la raíz del repositorio."
+  },
+  {
+    "objectID": "clases_ia/notebook_shiny_portafolio.html#preparar-los-activos",
+    "href": "clases_ia/notebook_shiny_portafolio.html#preparar-los-activos",
+    "title": "Notebook guiado: cómo funciona nuestra aplicación Shiny",
+    "section": "3. Preparar los activos",
+    "text": "3. Preparar los activos\nactivos &lt;- c(\"SPY\", \"EFA\", \"IJS\", \"EEM\", \"AGG\")\nretornos &lt;- as.matrix(datos[activos])\nretornos_medios &lt;- colMeans(retornos)\ncovarianzas &lt;- cov(retornos)\nSeleccionamos las columnas, convertimos los retornos en una matriz y calculamos los insumos financieros. La covarianza es importante porque el riesgo del portafolio depende también de la diversificación."
+  },
+  {
+    "objectID": "clases_ia/notebook_shiny_portafolio.html#normalizar-pesos",
+    "href": "clases_ia/notebook_shiny_portafolio.html#normalizar-pesos",
+    "title": "Notebook guiado: cómo funciona nuestra aplicación Shiny",
+    "section": "4. Normalizar pesos",
+    "text": "4. Normalizar pesos\nLos sliders trabajan entre 0 y 100, pero el modelo necesita pesos que sumen 1:\nnormalizar_pesos &lt;- function(pesos) {\n  if (sum(pesos) == 0) {\n    return(rep(1 / length(pesos), length(pesos)))\n  }\n\n  pesos / sum(pesos)\n}\nLa condición inicial evita dividir por cero cuando todos los sliders están en cero. En ese caso usamos un portafolio equiponderado."
+  },
+  {
+    "objectID": "clases_ia/notebook_shiny_portafolio.html#calcular-las-métricas-financieras",
+    "href": "clases_ia/notebook_shiny_portafolio.html#calcular-las-métricas-financieras",
+    "title": "Notebook guiado: cómo funciona nuestra aplicación Shiny",
+    "section": "5. Calcular las métricas financieras",
+    "text": "5. Calcular las métricas financieras\ncalcular_metricas &lt;- function(pesos, retornos_medios, covarianzas,\n                              tasa_libre = 0.02) {\n  retorno &lt;- sum(pesos * retornos_medios) * 12\n  varianza &lt;- as.numeric(t(pesos) %*% covarianzas %*% pesos)\n  volatilidad &lt;- sqrt(varianza) * sqrt(12)\n  sharpe &lt;- (retorno - tasa_libre) / volatilidad\n\n  list(\n    retorno = retorno,\n    volatilidad = volatilidad,\n    sharpe = sharpe\n  )\n}\nLa función calcula:\nretorno = suma(peso por retorno)\nvarianza = t(pesos) %*% covarianzas %*% pesos\nSharpe = (retorno - tasa libre de riesgo) / volatilidad\nLos factores 12 y sqrt(12) anualizan datos mensuales."
+  },
+  {
+    "objectID": "clases_ia/notebook_shiny_portafolio.html#simular-portafolios",
+    "href": "clases_ia/notebook_shiny_portafolio.html#simular-portafolios",
+    "title": "Notebook guiado: cómo funciona nuestra aplicación Shiny",
+    "section": "6. Simular portafolios",
+    "text": "6. Simular portafolios\nset.seed(42)\n\nsimulacion &lt;- replicate(3000, {\n  pesos &lt;- normalizar_pesos(runif(length(activos)))\n  metricas &lt;- calcular_metricas(pesos, retornos_medios, covarianzas)\n\n  c(\n    retorno = metricas$retorno,\n    volatilidad = metricas$volatilidad,\n    sharpe = metricas$sharpe\n  )\n})\n\nsimulacion &lt;- as.data.frame(t(simulacion))\nCada fila representa un portafolio aleatorio. La simulación es contexto visual: el punto rojo representa la selección del usuario. set.seed hace reproducible la nube de puntos."
+  },
+  {
+    "objectID": "clases_ia/notebook_shiny_portafolio.html#construir-la-interfaz",
+    "href": "clases_ia/notebook_shiny_portafolio.html#construir-la-interfaz",
+    "title": "Notebook guiado: cómo funciona nuestra aplicación Shiny",
+    "section": "7. Construir la interfaz",
+    "text": "7. Construir la interfaz\nPara no repetir cinco veces el mismo slider:\ncrear_slider &lt;- function(activo, valor) {\n  sliderInput(\n    inputId = paste0(\"peso_\", tolower(activo)),\n    label = paste0(\"Peso de \", activo, \" (%)\"),\n    min = 0,\n    max = 100,\n    value = valor,\n    step = 1\n  )\n}\nUso:\nsidebarPanel(\n  h4(\"Pesos del portafolio\"),\n  crear_slider(\"SPY\", 40),\n  crear_slider(\"EFA\", 20),\n  crear_slider(\"IJS\", 10),\n  crear_slider(\"EEM\", 10),\n  crear_slider(\"AGG\", 20)\n)\nEl inputId debe ser único. La interfaz también reserva:\ntextOutput(\"pesos_finales\")\ntableOutput(\"metricas\")\nplotOutput(\"grafico_riesgo_retorno\", height = \"500px\")"
+  },
+  {
+    "objectID": "clases_ia/notebook_shiny_portafolio.html#leer-inputs-con-reactive",
+    "href": "clases_ia/notebook_shiny_portafolio.html#leer-inputs-con-reactive",
+    "title": "Notebook guiado: cómo funciona nuestra aplicación Shiny",
+    "section": "8. Leer inputs con reactive",
+    "text": "8. Leer inputs con reactive\npesos_reactivos &lt;- reactive({\n  pesos &lt;- c(\n    input$peso_spy,\n    input$peso_efa,\n    input$peso_ijs,\n    input$peso_eem,\n    input$peso_agg\n  )\n\n  normalizar_pesos(pesos)\n})\nReactive crea una expresión que se recalcula cuando cambia alguno de sus inputs. Se consulta con paréntesis:\npesos_reactivos()\nEl flujo es:\nsliderInput → input$peso_spy → pesos_reactivos() → outputs"
+  },
+  {
+    "objectID": "clases_ia/notebook_shiny_portafolio.html#encadenar-cálculos",
+    "href": "clases_ia/notebook_shiny_portafolio.html#encadenar-cálculos",
+    "title": "Notebook guiado: cómo funciona nuestra aplicación Shiny",
+    "section": "9. Encadenar cálculos",
+    "text": "9. Encadenar cálculos\nmetricas_reactivas &lt;- reactive({\n  calcular_metricas(\n    pesos = pesos_reactivos(),\n    retornos_medios = retornos_medios,\n    covarianzas = covarianzas\n  )\n})\nLa cadena queda:\ninputs → pesos_reactivos() → metricas_reactivas() → tabla y gráfico\nEsta separación evita copiar la fórmula financiera dentro de cada salida."
+  },
+  {
+    "objectID": "clases_ia/notebook_shiny_portafolio.html#mostrar-texto-y-tabla",
+    "href": "clases_ia/notebook_shiny_portafolio.html#mostrar-texto-y-tabla",
+    "title": "Notebook guiado: cómo funciona nuestra aplicación Shiny",
+    "section": "10. Mostrar texto y tabla",
+    "text": "10. Mostrar texto y tabla\noutput$pesos_finales &lt;- renderText({\n  pesos &lt;- round(pesos_reactivos() * 100, 1)\n  nombres &lt;- paste(activos, pesos, \"%\", sep = \" \")\n  paste(\"Pesos normalizados:\", paste(nombres, collapse = \" | \"))\n})\noutput$metricas &lt;- renderTable({\n  metricas &lt;- metricas_reactivas()\n\n  data.frame(\n    Metrica = c(\"Retorno anual\", \"Volatilidad anual\", \"Ratio de Sharpe\"),\n    Valor = c(\n      paste0(round(metricas$retorno * 100, 2), \"%\"),\n      paste0(round(metricas$volatilidad * 100, 2), \"%\"),\n      round(metricas$sharpe, 3)\n    )\n  )\n})\nEl identificador debe coincidir en el servidor y la interfaz:\noutput$metricas &lt;- renderTable({ ... })\ntableOutput(\"metricas\")"
+  },
+  {
+    "objectID": "clases_ia/notebook_shiny_portafolio.html#crear-el-gráfico-reactivo",
+    "href": "clases_ia/notebook_shiny_portafolio.html#crear-el-gráfico-reactivo",
+    "title": "Notebook guiado: cómo funciona nuestra aplicación Shiny",
+    "section": "11. Crear el gráfico reactivo",
+    "text": "11. Crear el gráfico reactivo\noutput$grafico_riesgo_retorno &lt;- renderPlot({\n  elegido &lt;- metricas_reactivas()\n\n  ggplot(simulacion, aes(x = volatilidad, y = retorno, color = sharpe)) +\n    geom_point(alpha = 0.35, size = 1.5) +\n    geom_point(\n      data = data.frame(\n        volatilidad = elegido$volatilidad,\n        retorno = elegido$retorno\n      ),\n      aes(x = volatilidad, y = retorno),\n      color = \"red\",\n      size = 5\n    ) +\n    theme_minimal()\n})\nEl primer grupo de puntos es la simulación. El punto rojo es el portafolio elegido. Al estar dentro de renderPlot, se actualiza con los sliders."
+  },
+  {
+    "objectID": "clases_ia/notebook_shiny_portafolio.html#responder-a-botones",
+    "href": "clases_ia/notebook_shiny_portafolio.html#responder-a-botones",
+    "title": "Notebook guiado: cómo funciona nuestra aplicación Shiny",
+    "section": "12. Responder a botones",
+    "text": "12. Responder a botones\nactionButton(\"conservador\", \"Conservador\")\nactionButton(\"balanceado\", \"Balanceado\")\nactionButton(\"agresivo\", \"Agresivo\")\nobserveEvent(input$conservador, {\n  updateSliderInput(session, \"peso_spy\", value = 15)\n  updateSliderInput(session, \"peso_efa\", value = 10)\n  updateSliderInput(session, \"peso_ijs\", value = 5)\n  updateSliderInput(session, \"peso_eem\", value = 5)\n  updateSliderInput(session, \"peso_agg\", value = 65)\n})\nObserveEvent escucha una acción. Aquí usa session para cambiar los controles visibles."
+  },
+  {
+    "objectID": "clases_ia/notebook_shiny_portafolio.html#reconstruir-el-flujo-completo",
+    "href": "clases_ia/notebook_shiny_portafolio.html#reconstruir-el-flujo-completo",
+    "title": "Notebook guiado: cómo funciona nuestra aplicación Shiny",
+    "section": "13. Reconstruir el flujo completo",
+    "text": "13. Reconstruir el flujo completo\n1. Se cargan datos históricos.\n2. Se calculan medias y covarianzas.\n3. Se simulan portafolios para el gráfico.\n4. El usuario modifica los sliders.\n5. reactive() normaliza los pesos.\n6. Las funciones calculan las métricas.\n7. Los outputs actualizan la pantalla.\n8. observeEvent() carga estrategias predefinidas.\n\n\n\nParte\nResponsabilidad\n\n\n\n\nDatos\nLeer y preparar retornos\n\n\nFunciones\nImplementar la lógica financiera\n\n\nUI\nDefinir controles y salidas\n\n\nReactividad\nConectar acciones y cálculos\n\n\nOutputs\nMostrar resultados"
+  },
+  {
+    "objectID": "clases_ia/notebook_shiny_portafolio.html#preguntas-y-ejercicio",
+    "href": "clases_ia/notebook_shiny_portafolio.html#preguntas-y-ejercicio",
+    "title": "Notebook guiado: cómo funciona nuestra aplicación Shiny",
+    "section": "14. Preguntas y ejercicio",
+    "text": "14. Preguntas y ejercicio\n\n¿Qué variables son inputs?\n¿Qué variables son outputs?\n¿Qué código se ejecuta una sola vez al iniciar?\n¿Qué código se repite al mover un slider?\n¿Por qué simulacion no necesita ser reactiva?\n¿Dónde se anualizan los retornos?\n¿Qué pasaría si eliminamos normalizar_pesos?\n\nAgrega una salida que muestre el activo con mayor peso:\noutput$activo_principal &lt;- renderText({\n  pesos &lt;- pesos_reactivos()\n  activo &lt;- activos[which.max(pesos)]\n  paste(\"El activo con mayor peso es\", activo)\n})\nY agrega su espacio en la interfaz:\ntextOutput(\"activo_principal\")"
+  },
+  {
+    "objectID": "clases_ia/notebook_shiny_portafolio.html#cierre",
+    "href": "clases_ia/notebook_shiny_portafolio.html#cierre",
+    "title": "Notebook guiado: cómo funciona nuestra aplicación Shiny",
+    "section": "Cierre",
+    "text": "Cierre\nLa aplicación conecta finanzas, programación y desarrollo de aplicaciones: retorno, riesgo, matrices, funciones, inputs, outputs y reactividad.\nEsta estructura permite extender la app con Markowitz, restricciones, nuevos datos o un benchmark sin perder claridad."
   }
 ]
