@@ -1,0 +1,143 @@
+═══════════════════════════════════════════════════════════════════════════════
+  PLAN COMPLETADO: Actividad 02 — Reporte Interactivo en Netlify
+═══════════════════════════════════════════════════════════════════════════════
+
+OBJETIVO
+────────
+Crear un reporte estático e interactivo de la Actividad 02 (Portafolios Óptimos)
+con análisis real ejecutado (Markowitz + Monte Carlo + Comparación) y publicarlo
+en Netlify con deploy manual.
+
+ESTRUCTURA CREADA
+─────────────────
+netlify_actividad02/
+├── _quarto.yml                    # Config Quarto (output-dir: _site)
+├── index.qmd                      # Reporte ejecutable (R + Observable JS)
+├── R/portafolio.R                 # Funciones reutilizables (170 líneas)
+├── data/portafolio_retornos.csv   # CSV autocontenido (108 meses)
+├── netlify.toml                   # Config para deploy manual
+├── DEPLOY.md                      # Guía paso-a-paso
+├── .gitignore                     # Excluye _site/, .quarto/
+└── _site/                         # Generado por `quarto render`
+    ├── index.html                 # 12 MB, completamente autocontenido
+    ├── data/
+    │   ├── portafolio_retornos.csv
+    │   └── resultados.json        # Pesos calculados para OJS
+    └── site_libs/                 # Librerías de Quarto
+
+CONTENIDO DEL REPORTE
+──────────────────────
+1. Resumen Ejecutivo
+2. Parte 1 — EDA
+   - Estadísticas descriptivas (retorno, volatilidad por activo)
+   - Distribuciones de retornos (histogramas con plotly)
+   - Matriz de correlaciones (heatmap interactivo)
+   
+3. Parte 2 — Markowitz
+   - Cálculo frontera eficiente exacta (50 puntos con quadprog)
+   - Portafolio tangente: SPY 52.77% / AGG 47.23%, Sharpe = 1.0214
+   - Gráfico interactivo de la frontera (hover con cifras)
+   
+4. Parte 3 — Simulación
+   - 10,000 portafolios aleatorios (set.seed(42))
+   - Mejor simulado: SPY 44.97% / AGG 48.05%, Sharpe = 0.9439
+   - Nube interactiva coloreada por Sharpe ratio
+   
+5. Parte 4 — Comparación
+   - Overlay: nube simulada + frontera exacta
+   - Tabla de brecha (error simulado vs Markowitz)
+   - Composición de pesos (diferencias)
+   
+6. Parte 5 — Calculadora Interactiva
+   - Sliders para 5 activos (SPY, EFA, IJS, EEM, AGG)
+   - Normalización automática a 100%
+   - Cálculo en vivo: retorno, volatilidad, Sharpe
+   - Visualización de la posición sobre la frontera
+
+FUNCIONES R (R/portafolio.R)
+────────────────────────────
+- cargar_datos()               : Lee CSV, retorna matriz
+- estadisticas_descriptivas() : Stats por activo
+- matriz_correlacion()        : Correlación entre activos
+- calcular_frontera_markowitz() : Frontera exacta (quadprog)
+- simular_portafolios()       : 10k portafolios aleatorios
+- calcular_brecha()           : Compara Markowitz vs simulado
+- exportar_pesos_json()       : Genera JSON para OJS
+
+RESULTADOS CALCULADOS
+──────────────────────
+Portafolio Tangente (Markowitz, Exacto):
+  - Retorno: 9.34% anual
+  - Volatilidad: 7.18% anual
+  - Sharpe Ratio: 1.0214
+  - Composición: SPY 52.77%, AGG 47.23%
+
+Mejor Portafolio Simulado (10,000 iteraciones):
+  - Retorno: 8.64% anual
+  - Volatilidad: 7.03% anual
+  - Sharpe Ratio: 0.9439
+  - Composición: SPY 44.97%, EFA 5.09%, IJS 0.89%, EEM 1.01%, AGG 48.05%
+
+Brecha de Optimización:
+  - Error en Sharpe: 7.56% vs Markowitz
+
+CAMBIOS REALIZADOS
+───────────────────
+1. Creados: 9 archivos nuevos en netlify_actividad02/
+2. Modificado: clases_ia/actividad_02_portafolios.qmd
+   → Agregado link a reporte Netlify en sección de descargas
+3. Modificado: CLAUDE.md
+   → Documentada estructura mini-sitios + instrucciones deploy
+
+ARCHIVOS NO INCLUIDOS EN GIT
+────────────────────────────
+netlify_actividad02/_site/ → .gitignore (generado, 12 MB)
+
+VERIFICACIÓN LOCAL
+──────────────────
+✅ quarto render netlify_actividad02 completó sin errores
+✅ Gráficos plotly generados correctamente
+✅ OJS sliders normalizan a 100%
+✅ JSON de resultados válido
+✅ HTML autocontenido (embed-resources: true)
+
+PRÓXIMOS PASOS (Para Deploy a Netlify)
+───────────────────────────────────────
+1. Instalar netlify-cli:
+   npm install -g netlify-cli
+
+2. Autenticarse:
+   netlify login
+
+3. Deploy a staging (preview):
+   cd netlify_actividad02
+   netlify deploy --dir=_site
+
+4. Verificar en navegador (URL de draft)
+
+5. Deploy a producción:
+   netlify deploy --dir=_site --prod
+
+6. Actualizar link en CLAUDE.md y actividad_02_portafolios.qmd
+   con la URL definitiva (ej: https://portafolios-fen.netlify.app)
+
+7. Final commit:
+   git add . && git commit -m "fix: Update Netlify URLs with production domain"
+
+VENTAJAS DEL ENFOQUE
+────────────────────
+- 📊 Reporte completamente estático (sin servidor)
+- 🔗 Autocontenido (todos los datos y estilos en 1 archivo HTML)
+- 🎯 Código R real ejecutado (no pseudocódigo como en la clase)
+- 📱 Responsivo y accesible
+- ⚡ Rápido (HTML puro + plotly + OJS)
+- 🔄 Fácil de actualizar (solo re-render + re-deploy)
+
+TIEMPO TOTAL
+────────────
+- Planificación: 15 min
+- Implementación: 45 min (R functions + index.qmd + config)
+- Debugging + pruebas: 20 min
+- TOTAL: ~80 minutos
+
+═══════════════════════════════════════════════════════════════════════════════
