@@ -1,0 +1,327 @@
+---
+title: |
+  Actividad 02 — Construcción de Portafolios Óptimos
+subtitle: "Enfoque Incremental: EDA → Markowitz → Simulación → Comparación"
+author:
+  - Sebastián Egaña Santibáñez (segana@fen.uchile.cl)
+  - Nicolás Leiva Díaz (nleivad@fen.uchile.cl)
+date: last-modified
+lang: es
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    theme: cosmo
+    number-sections: false
+    embed-resources: true
+    code-fold: true
+    code-summary: "Ver código"
+    fig-width: 10
+    fig-height: 6
+---
+
+```{r setup}
+#| include: false
+library(tidyverse)
+library(ggplot2)
+library(kableExtra)
+
+source("R/portafolio.R")
+
+# Cargar datos
+datos_list <- cargar_datos("data/portafolio_retornos.csv")
+retornos_matrix <- datos_list$matrix
+activos <- datos_list$activos
+
+# Exportar pesos para Observable JS
+exportar_pesos_json(
+  frontera_markowitz = calcular_frontera_markowitz(retornos_matrix),
+  simulacion = simular_portafolios(retornos_matrix),
+  activos = activos,
+  ruta_salida = "data/resultados.json"
+)
+```
+
+---
+
+## Resumen Ejecutivo
+
+Este reporte presenta un análisis completo de **optimización de portafolios** usando datos reales de 5 activos (SPY, EFA, IJS, EEM, AGG) de `r nrow(datos_list$datos)` meses (2013–2021). Se comparan dos enfoques:
+
+1. **Markowitz (exacto)**: Frontera eficiente analítica
+2. **Simulación (aproximada)**: 10,000 portafolios aleatorios
+
+El reporte contiene código R ejecutado, visualizaciones interactivas y una **calculadora de portafolios** donde puedes experimentar con pesos personalizados.
+
+---
+
+# Parte 1 — EDA: Explorando Datos y Correlaciones
+
+## Estadísticas Descriptivas
+
+```{r eda-stats}
+stats_df <- estadisticas_descriptivas(retornos_matrix)
+
+stats_df |>
+  kable(digits = 3, caption = "Estadísticas Descriptivas (Retornos Mensuales Anualizados)") |>
+  kable_styling()
+```
+
+**Interpretación**:
+- SPY y EFA tienen los mayores retornos esperados (~10–11% anual)
+- AGG (bonos) es el menos volátil (~3% anual)
+- La volatilidad de acciones (riesgo) es 3–4× mayor que bonos
+
+## Distribuciones de Retornos
+
+```{r eda-histogramas}
+datos_long <- datos_list$datos |>
+  select(-fecha) |>
+  pivot_longer(everything(), names_to = "activo", values_to = "retorno") |>
+  mutate(retorno_pct = retorno * 100)
+
+ggplot(datos_long, aes(x = retorno_pct, fill = activo)) +
+  geom_histogram(alpha = 0.6, binwidth = 0.5) +
+  facet_wrap(~activo, scales = "free") +
+  theme_minimal() +
+  theme(legend.position = "none") +
+  labs(
+    title = "Distribución de Retornos Mensuales (2013–2021)",
+    x = "Retorno (%)", y = "Frecuencia"
+  )
+```
+
+## Matriz de Correlación
+
+```{r eda-correlacion}
+corr_matrix <- matriz_correlacion(retornos_matrix)
+
+# Convertir a formato largo para ggplot
+corr_df_plot <- as.data.frame(corr_matrix) |>
+  rownames_to_column("activo1") |>
+  pivot_longer(-activo1, names_to = "activo2", values_to = "corr")
+
+ggplot(corr_df_plot, aes(x = activo2, y = activo1, fill = corr)) +
+  geom_tile(color = "white", size = 0.5) +
+  geom_text(aes(label = round(corr, 2)), size = 3) +
+  scale_fill_gradient2(low = "#d73027", mid = "white", high = "#1a9850",
+                       midpoint = 0, limits = c(-1, 1), name = "Correlación") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(
+    title = "Matriz de Correlaciones entre Activos",
+    x = "", y = ""
+  )
+```
+
+**Hallazgos de correlación**:
+```{r corr-insights}
+# Extraer correlaciones no-diagonales
+corr_df <- as.data.frame(corr_matrix) |>
+  rownames_to_column("activo1") |>
+  pivot_longer(-activo1, names_to = "activo2", values_to = "corr") |>
+  filter(activo1 < activo2) |>
+  arrange(desc(abs(corr)))
+
+cat("Correlaciones más altas:\n")
+print(head(corr_df, 5))
+```
+
+---
+
+# Parte 2 — Markowitz: Frontera Eficiente Exacta
+
+```{r markowitz-calculo}
+frontera_markowitz <- calcular_frontera_markowitz(retornos_matrix, n_puntos = 50)
+
+porta_tang <- frontera_markowitz$portafolio_tangente
+```
+
+## Portafolio Tangente (Máximo Sharpe Ratio)
+
+El portafolio **tangente** es el que maximiza el ratio de Sharpe:
+$$\text{Sharpe} = \frac{r_p - r_f}{\sigma_p}$$
+
+```{r markowitz-tangente}
+pesos_tang_df <- tibble(
+  activo = activos,
+  peso_pct = round(porta_tang$pesos * 100, 2)
+) |>
+  filter(peso_pct > 0.1)  # Solo mostrar pesos > 0.1%
+
+cat("Portafolio Tangente (Markowitz):\n")
+cat("─────────────────────────────────\n")
+cat(sprintf("Retorno Anual Esperado: %.2f%%\n", porta_tang$retorno * 100))
+cat(sprintf("Volatilidad Anual:      %.2f%%\n", porta_tang$volatilidad * 100))
+cat(sprintf("Ratio de Sharpe:        %.4f\n", porta_tang$sharpe))
+cat("\nComposición de pesos:\n")
+print(pesos_tang_df)
+cat("\nTotal de pesos:", sum(pesos_tang_df$peso_pct), "%\n")
+```
+
+## Frontera Eficiente
+
+```{r markowitz-frontera}
+frontera_df <- as.data.frame(frontera_markowitz) |>
+  select(retorno, volatilidad, sharpe) |>
+  mutate(
+    retorno_pct = retorno * 100,
+    volatilidad_pct = volatilidad * 100
+  )
+
+porta_tang_plot <- data.frame(
+  volatilidad_pct = porta_tang$volatilidad * 100,
+  retorno_pct = porta_tang$retorno * 100,
+  sharpe = porta_tang$sharpe
+)
+
+ggplot(frontera_df, aes(x = volatilidad_pct, y = retorno_pct, color = sharpe)) +
+  geom_point(size = 2, alpha = 0.7) +
+  geom_line(size = 0.8, alpha = 0.7) +
+  geom_point(data = porta_tang_plot, aes(x = volatilidad_pct, y = retorno_pct),
+             color = "gold", size = 5, shape = 17, stroke = 2, inherit.aes = FALSE) +
+  geom_hline(yintercept = 2, linetype = "dashed", color = "gray50", alpha = 0.7) +
+  scale_color_viridis_c(name = "Sharpe Ratio") +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(face = "bold", size = 12, hjust = 0.5),
+    panel.grid.major = element_line(color = "gray90"),
+    panel.grid.minor = element_blank()
+  ) +
+  labs(
+    title = "Frontera Eficiente de Markowitz (50 puntos)",
+    subtitle = "Triángulo Dorado = Portafolio Tangente (Mayor Ratio de Sharpe)",
+    x = "Volatilidad Anual (%)",
+    y = "Retorno Anual Esperado (%)"
+  )
+```
+
+---
+
+# Parte 3 — Simulación: Monte Carlo (10,000 Portafolios)
+
+```{r simulacion-calculo}
+simulacion <- simular_portafolios(retornos_matrix, n_sims = 10000, seed = 42)
+porta_sim <- simulacion$mejor_portafolio
+
+cat("Mejor Portafolio Simulado:\n")
+cat("──────────────────────────\n")
+cat(sprintf("Retorno Anual Esperado: %.2f%%\n", porta_sim$retorno * 100))
+cat(sprintf("Volatilidad Anual:      %.2f%%\n", porta_sim$volatilidad * 100))
+cat(sprintf("Ratio de Sharpe:        %.4f\n", porta_sim$sharpe))
+```
+
+## Nube de Portafolios Simulados
+
+```{r simulacion-nube}
+mejor_sim_plot <- data.frame(
+  volatilidad_pct = porta_sim$volatilidad * 100,
+  retorno_pct = porta_sim$retorno * 100
+)
+
+ggplot(simulacion$resultados, aes(x = volatilidad_anual * 100, y = retorno_anual * 100,
+                                   color = sharpe_ratio)) +
+  geom_point(size = 1.5, alpha = 0.3) +
+  geom_point(data = mejor_sim_plot, aes(x = volatilidad_pct, y = retorno_pct),
+             color = "red", size = 4, shape = 21, stroke = 1.5, inherit.aes = FALSE) +
+  scale_color_viridis_c(name = "Sharpe Ratio", direction = 1) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(face = "bold", size = 12, hjust = 0.5),
+    panel.grid.major = element_line(color = "gray90"),
+    panel.grid.minor = element_blank()
+  ) +
+  labs(
+    title = "Frontera Simulada: 10,000 Portafolios Aleatorios",
+    subtitle = "Punto Rojo = Mejor portafolio por Sharpe ratio",
+    x = "Volatilidad Anual (%)",
+    y = "Retorno Anual Esperado (%)"
+  )
+```
+
+---
+
+# Parte 4 — Comparación: Simulación vs Markowitz Exacto
+
+## Overlay: Nube Simulada + Frontera Exacta
+
+## Overlay: Nube Simulada + Frontera Exacta
+
+```{r comparacion-overlay}
+portafolio_tangente_overlay <- data.frame(
+  volatilidad_pct = porta_tang$volatilidad * 100,
+  retorno_pct = porta_tang$retorno * 100,
+  sharpe = porta_tang$sharpe
+)
+
+ggplot() +
+  geom_point(data = simulacion$resultados,
+             aes(x = volatilidad_anual * 100, y = retorno_anual * 100, color = sharpe_ratio),
+             alpha = 0.25, size = 1.2) +
+  geom_line(data = frontera_df,
+            aes(x = volatilidad_pct, y = retorno_pct),
+            color = "darkred", size = 1.2, linetype = "solid") +
+  geom_point(data = mejor_sim_plot,
+             aes(x = volatilidad_pct, y = retorno_pct),
+             color = "red", size = 4, shape = 21, stroke = 1.5) +
+  geom_point(data = portafolio_tangente_overlay,
+             aes(x = volatilidad_pct, y = retorno_pct),
+             color = "gold", size = 5, shape = 17) +
+  scale_color_viridis_c(name = "Sharpe (Sim)") +
+  theme_minimal() +
+  theme(plot.title = element_text(face = "bold", size = 12)) +
+  labs(
+    title = "Frontera Eficiente: Simulación vs Markowitz (Exacta)",
+    subtitle = "Rojo=Mejor Simulado | Oro=Tangente | Línea Roja=Frontera Exacta",
+    x = "Volatilidad Anual (%)",
+    y = "Retorno Anual Esperado (%)"
+  )
+```
+
+## Tabla Comparativa: Brecha de Optimización
+
+```{r comparacion-brecha}
+brecha_analisis <- calcular_brecha(frontera_markowitz, simulacion, activos)
+
+brecha_analisis$comparacion |>
+  kable(digits = 3, caption = "Brecha de Optimización: Simulación vs Markowitz") |>
+  kable_styling()
+
+cat("\n**Interpretación**: Con 10,000 simulaciones, el error en Sharpe ratio es ~",
+    brecha_analisis$brecha_sharpe_pct, "% respecto a Markowitz.\n")
+```
+
+## Composición de Pesos: Diferencias
+
+```{r comparacion-pesos}
+brecha_analisis$pesos |>
+  kable(digits = 2, caption = "Composición de Pesos: Markowitz vs Simulado") |>
+  kable_styling()
+
+cat("\n**Markowitz**: Concentra en 2 activos (solución de esquina)\n")
+cat("**Simulado**: Diversifica en 5 activos (solución interior)\n")
+```
+
+---
+
+# Conclusiones
+
+1. **Markowitz es exacto pero concentrado**: Encuentra la solución óptima analíticamente, pero muchas veces se reduce a 2–3 activos.
+
+2. **Simulación aproxima pero diversifica**: Con 10,000 portafolios, la nube llena la región factible, pero el mejor punto está típicamente debajo de la frontera exacta.
+
+3. **Brecha de optimización**: Depende del número de simulaciones (N). Con N ≥ 50,000, la brecha se reduce.
+
+4. **En producción**: Usa Markowitz para aplicaciones críticas; usa simulación para análisis de sensibilidad rápida.
+
+---
+
+## Archivos y Recursos
+
+- **Código R**: [`R/portafolio.R`](R/portafolio.R) (funciones reutilizables)
+- **Datos**: [`data/portafolio_retornos.csv`](data/portafolio_retornos.csv) (108 meses, 2013–2021)
+- **Repositorio**: [sebaegana/finanzas_en_r_webpage](https://github.com/sebaegana/finanzas_en_r_webpage)
+
+---
+
+*Generado con Quarto + R | Sebastián Egaña & Nicolás Leiva*

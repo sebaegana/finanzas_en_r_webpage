@@ -1,0 +1,26 @@
+{
+  "tangente": {
+    "retorno": [0.0934],
+    "volatilidad": [0.0718],
+    "sharpe": [1.0214],
+    "pesos": {
+      "SPY": [0.5277],
+      "EFA": [0],
+      "IJS": [0],
+      "EEM": [-0],
+      "AGG": [0.4723]
+    }
+  },
+  "simulado": {
+    "retorno": [0.0864],
+    "volatilidad": [0.0703],
+    "sharpe": [0.9439],
+    "pesos": {
+      "SPY": [0.4497],
+      "EFA": [0.0509],
+      "IJS": [0.0089],
+      "EEM": [0.0101],
+      "AGG": [0.4805]
+    }
+  }
+}

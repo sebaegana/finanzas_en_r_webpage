@@ -1,0 +1,367 @@
+---
+title: "📚 Finanzas en R — Estructura del Curso"
+subtitle: "Guía completa de carpetas, archivos y cómo usarlos"
+author:
+  - Sebastián Egaña Santibáñez (segana@fen.uchile.cl)
+  - Nicolás Leiva Díaz (nleivad@fen.uchile.cl)
+date: last-modified
+lang: es
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    theme: cosmo
+    number-sections: false
+    code-block-bg: true
+    code-block-border-left: "#FF0000"
+---
+
+# 🎯 Bienvenida
+
+Este curso integra **código real, IA asistida y herramientas modernas** (Claude Code, Positron) para enseñar finanzas cuantitativas con R.
+
+**Dos enfoques pedagógicos**:
+- 📖 **`clases/`** — Material tradicional (2024-2025): PDFs con explicaciones teóricas
+- 🤖 **`clases_ia/`** — Material con IA (nuevo): Notebooks interactivos + análisis ejecutado en vivo
+
+---
+
+# 📂 Estructura de Carpetas
+
+## `clases/` — Material Heredado (PDF)
+
+```
+clases/
+├── index.qmd              # Listing automático de todas las clases
+├── actividad_01.qmd       # Actividad 01 (Limpieza de datos)
+├── notebook_01.qmd        # Clase 01 (Notebook teórico)
+├── diccionario_terminos.qmd
+└── data/                  # Datos compartidos para actividades
+    ├── chess.csv
+    └── ...
+```
+
+**Uso**:
+- Materiales congelados (no se ejecutan en Quarto)
+- Ideal para explicaciones teóricas largas
+- Contienen pseudocódigo y ejemplos conceptuales
+
+**Descargar**: [Clases PDF](clases/) (todos los archivos .pdf)
+
+---
+
+## `clases_ia/` — Material con IA Asistida (NUEVO)
+
+```
+clases_ia/
+├── index.qmd              # Listing automático
+├── herramientas.qmd       # 01 - Intro: Setup de Claude Code + Positron
+├── intro.qmd              # 02 - Intro: IA en finanzas cuantitativas
+├── notebook_01.qmd        # 03 - Clase 01: Desarrollo asistido por IA
+├── trabajo.qmd            # 04 - Proyecto del curso
+├── actividad_01_con_ia.qmd       # 05 - Actividad 01: Limpieza de datos (manual vs IA)
+├── actividad_02_portafolios.qmd  # 06 - Actividad 02: Portafolios (Markowitz + Simulación)
+├── diccionario_terminos.qmd       # 07 - Guía: Términos técnicos
+├── data/
+│   ├── portafolio_retornos.csv    # (108 meses de retornos, 5 activos)
+│   ├── actividad_01.xlsx
+│   └── retornos.csv
+└── [Evaluaciones y Respuestas]
+    ├── EVALUACIONES_PROFESOR.md
+    └── RESPUESTAS_PROFESOR.md
+```
+
+### Numeración Secuencial (Orden en el Listing)
+
+| # | Tipo | Archivo | Descripción |
+|---|------|---------|-------------|
+| 01 | Intro | `herramientas.qmd` | Setup: Claude Code, Positron, Git |
+| 02 | Intro | `intro.qmd` | IA en finanzas cuantitativas |
+| 03 | Clase | `notebook_01.qmd` | Clase 01 — Desarrollo asistido |
+| 04 | Trabajo | `trabajo.qmd` | Proyecto del curso |
+| 05 | Actividad | `actividad_01_con_ia.qmd` | Actividad 01 — Limpieza de datos |
+| 06 | Actividad | `actividad_02_portafolios.qmd` | **Actividad 02 — Portafolios** |
+| 07 | Guía | `diccionario_terminos.qmd` | Diccionario de términos técnicos |
+
+**Uso**:
+- Código R ejecutado en tiempo real (con `{r}` chunks)
+- Comparación manual vs IA-asistido (timing, complejidad)
+- Gráficos interactivos con plotly/ggplot2
+- Datasets reales incluidos
+- Recomendaciones de prompts para Claude Code
+
+**Descargar**: [Clases con IA](clases_ia/) (todos los .qmd + .pdf generados)
+
+---
+
+## `netlify_actividad02/` — Reporte Standalone para Deploy
+
+```
+netlify_actividad02/         # Mini-sitio Quarto independiente
+├── _quarto.yml              # Config Quarto
+├── index.qmd                # Reporte: EDA → Markowitz → Simulación
+├── R/portafolio.R           # Funciones R reutilizables
+├── data/
+│   ├── portafolio_retornos.csv
+│   └── resultados.json      # Pesos calculados
+├── netlify.toml             # Config Netlify (publish = "_site")
+├── DEPLOY.md                # Instrucciones de deploy
+└── .gitignore
+```
+
+**Uso**:
+- Reporte **completamente estático** (3.8 MB HTML autocontenido)
+- Gráficos con ggplot2 (PNG embebido, sin JavaScript)
+- Deploy manual a Netlify: `netlify deploy --dir=_site`
+- URL pública: `https://portafolios-fen.netlify.app`
+
+**Archivos generados** (no en git):
+```
+_site/
+├── index.html               # 3.8 MB (autocontenido, listo para web)
+├── data/
+│   ├── portafolio_retornos.csv
+│   └── resultados.json
+└── site_libs/               # Librerías de Quarto
+```
+
+---
+
+## `recursos/` — Enlaces Externos
+
+```
+recursos/
+├── referencias_r.md         # Links a paquetes, datasets, tutoriales
+├── herramientas_recomendadas.md
+└── bibliografia.md
+```
+
+---
+
+## `docs/` — Output Build (NO editar)
+
+```
+docs/                        # Generado por `quarto render` (GitHub Pages)
+├── index.html
+├── clases/
+│   ├── index.html
+│   ├── actividad_01.html
+│   └── *.pdf
+├── clases_ia/
+│   ├── index.html
+│   ├── herramientas.html
+│   ├── herramientas.pdf
+│   └── ...
+└── search.json              # Índice de búsqueda
+```
+
+**Nota**: Se regenera automáticamente con cada `quarto render`. No hagas ediciones aquí.
+
+---
+
+# 🚀 Cómo Usar Este Repositorio
+
+## Opción 1: Ver Online (Recomendado para revisar rápido)
+
+- **Sitio del curso**: [sebaegana.github.io/finanzas_en_r_webpage/](https://sebaegana.github.io/finanzas_en_r_webpage/)
+- **Reporte Actividad 02**: [portafolios-fen.netlify.app](https://portafolios-fen.netlify.app/)
+
+## Opción 2: Descargar y Usar Localmente
+
+### Paso 1: Descarga el repo como ZIP
+
+```bash
+# O descarga desde GitHub:
+# https://github.com/sebaegana/finanzas_en_r_webpage/archive/refs/heads/main.zip
+
+unzip finanzas_en_r_webpage-main.zip
+cd finanzas_en_r_webpage-main
+```
+
+### Paso 2: Instala dependencias
+
+```bash
+# R packages
+Rscript -e "renv::restore()"
+
+# Quarto (si no lo tienes)
+https://quarto.org/docs/get-started/
+
+# netlify-cli (para deployar Actividad 02)
+npm install -g netlify-cli
+```
+
+### Paso 3: Renderiza localmente
+
+```bash
+# Renderizar un archivo específico
+quarto render clases_ia/actividad_02_portafolios.qmd
+
+# Renderizar TODO el sitio
+quarto render
+
+# Preview en navegador
+quarto preview clases_ia/herramientas.qmd
+```
+
+### Paso 4 (Opcional): Deploy a Netlify
+
+```bash
+cd netlify_actividad02
+quarto render --to html
+netlify login
+netlify deploy --dir=_site --prod
+```
+
+---
+
+# 📊 Archivos de Datos
+
+| Archivo | Ubicación | Descripción | Tamaño |
+|---------|-----------|-------------|--------|
+| `portafolio_retornos.csv` | `clases_ia/data/` | Retornos mensuales (SPY, EFA, IJS, EEM, AGG), 2013-2021 | 12 KB |
+| `actividad_01.xlsx` | `clases_ia/data/` | Dataset chess (para limpieza) | 50 KB |
+| `retornos.csv` | `clases_ia/data/` | Retornos históricos (alternativo) | 15 KB |
+
+**Licencia de datos**: Públicos (Yahoo Finance, Kaggle)
+
+---
+
+# 🔧 Archivos de Configuración
+
+## `_quarto.yml` (Raíz)
+
+Configuración global del sitio Quarto:
+- Define estructura de navegación (navbar)
+- Tema cosmo
+- Opciones de ejecución (freeze: auto)
+
+## `renv.lock`
+
+Archivo de bloqueo de dependencias R. Permite reproducibilidad:
+```bash
+renv::restore()  # Instala exactas las versiones
+```
+
+## `.github/workflows/quarto-render.yml`
+
+GitHub Actions: renderiza automáticamente al hacer push a `main`.
+
+---
+
+# 📥 Descargar Todo
+
+## Opción A: Descargar Completo (ZIP)
+
+```html
+<a href="https://github.com/sebaegana/finanzas_en_r_webpage/archive/refs/heads/main.zip"
+   class="btn btn-primary" role="button">
+   📦 Descargar Todo (ZIP) — ~50 MB
+</a>
+```
+
+Incluye: código fuente (.qmd), datos, configuración, outputs (docs/), todo.
+
+## Opción B: Solo Materiales Procesados
+
+```html
+<a href="docs/" class="btn btn-secondary" role="button">
+   📄 Descargar PDFs + HTMLs — ~20 MB
+</a>
+```
+
+Incluye: archivos finales (sin código fuente .qmd).
+
+## Opción C: Solo Actividad 02
+
+```html
+<a href="https://portafolios-fen.netlify.app/"
+   class="btn btn-success" role="button">
+   📊 Abrir Reporte Actividad 02 (Netlify)
+</a>
+```
+
+Reporte autocontenido en 1 HTML (3.8 MB).
+
+---
+
+# 🎓 Flujo de Aprendizaje Recomendado
+
+## Semana 1-2: Fundamentos
+
+1. Leer: `clases_ia/herramientas.qmd` (setup de herramientas)
+2. Leer: `clases_ia/intro.qmd` (IA en finanzas)
+3. **Hacer**: Instalar Claude Code + Positron
+4. **Hacer**: Fork del repo
+
+## Semana 3-4: Primeras Actividades
+
+1. Leer: `clases_ia/notebook_01.qmd` (concepto de desarrollo asistido)
+2. **Hacer**: `clases_ia/actividad_01_con_ia.qmd` (limpieza de datos)
+   - Opción A: Escribes todo manualmente
+   - Opción B: Híbrida (mezcla manual + IA)
+   - Opción C: IA genera todo, tú interpretas
+
+## Semana 5-8: Proyecto Principal
+
+1. **Hacer**: `clases_ia/actividad_02_portafolios.qmd`
+   - Análisis Markowitz + Simulación
+   - Deploy a Netlify (ver `netlify_actividad02/DEPLOY.md`)
+
+2. **Hacer**: `clases_ia/trabajo.qmd` (proyecto final)
+   - Tema: elige uno de finanzas cuantitativas
+   - Entrega: GitHub repo + Netlify URL
+
+---
+
+# 🤝 Contribuir o Reportar Issues
+
+## Si encuentras un error:
+
+1. **Abre un Issue en GitHub**: [github.com/sebaegana/finanzas_en_r_webpage/issues](https://github.com/sebaegana/finanzas_en_r_webpage/issues)
+2. Describe el problema, archivos afectados, pasos para reproducir
+3. Si es posible, adjunta un screenshot
+
+## Si quieres proponer mejoras:
+
+1. Fork el repo
+2. Crea una rama (`git checkout -b feature/tu-idea`)
+3. Haz cambios y commit
+4. Abre un Pull Request
+
+---
+
+# 📚 Recursos Externos
+
+- **Claude Code Docs**: https://github.com/anthropics/claude-code
+- **Positron IDE**: https://positron.posit.co
+- **Quarto**: https://quarto.org
+- **Modern Portfolio Theory**: [Wikipedia - MPT](https://en.wikipedia.org/wiki/Modern_portfolio_theory)
+- **quadprog (R)**: [CRAN - quadprog](https://cran.r-project.org/web/packages/quadprog/)
+
+---
+
+# 📋 Checklist para Profesores
+
+Si usas este material en tus clases:
+
+- [ ] Descarga el ZIP completo
+- [ ] Instala `renv::restore()` para tener mismo entorno
+- [ ] Revisa `clases_ia/RESPUESTAS_PROFESOR.md` (soluciones)
+- [ ] Revisa `clases_ia/EVALUACIONES_PROFESOR.md` (rúbricas)
+- [ ] Personaliza las actividades con tus datos/datasets
+- [ ] Deploy el reporte Actividad 02 a tu propia cuenta Netlify
+- [ ] Comparte el link con estudiantes
+
+---
+
+# 📞 Contacto
+
+- **Sebastián Egaña**: [segana@fen.uchile.cl](mailto:segana@fen.uchile.cl)
+- **Nicolás Leiva**: [nleivad@fen.uchile.cl](mailto:nleivad@fen.uchile.cl)
+- **Repositorio**: [github.com/sebaegana/finanzas_en_r_webpage](https://github.com/sebaegana/finanzas_en_r_webpage)
+- **Sitio del Curso**: [sebaegana.github.io/finanzas_en_r_webpage/](https://sebaegana.github.io/finanzas_en_r_webpage/)
+
+---
+
+*Última actualización: 2026-10-04*

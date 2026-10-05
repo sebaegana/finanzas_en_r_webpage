@@ -2,28 +2,28 @@
   {
     "objectID": "recursos.html",
     "href": "recursos.html",
-    "title": "Recursos",
+    "title": "📚 Recursos Adicionales",
     "section": "",
-    "text": "Wickham, H., & Grolemund, G. (2016). R for data science: import, tidy, transform, visualize, and model data. ” O’Reilly Media, Inc.”. Enlace acá\nGrolemund, G. (2014). Hands-on programming with R: Write your own functions and simulations. ” O’Reilly Media, Inc.”. Enlace acá\nRegenstein Jr, J. K. (2018). Reproducible finance with R: Code flows and shiny apps for portfolio analysis. CRC Press. Enlace acá\nScheuch, C., Voigt, S., & Weiss, P. (2023). Tidy Finance with R (1st ed.). Chapman and Hall/CRC. https://doi.org/10.1201/b23237. Enlace acá\nXie, Y., Allaire, J. J., & Grolemund, G. (2018). R markdown: The definitive guide. CRC Press. Enlace acá\nBryan, J., & Hester, J. (n.d.). Happy Git and GitHub for the useR. Enlace acá\n\n\n\n\n\nUtilización de Renv: Enlace acá\n\n\n\n\n\nhttps://posit.co/resources/cheatsheets/"
+    "text": "Wickham, H., & Grolemund, G. (2016). R for data science: import, tidy, transform, visualize, and model data. ” O’Reilly Media, Inc.”. Enlace acá\nGrolemund, G. (2014). Hands-on programming with R: Write your own functions and simulations. ” O’Reilly Media, Inc.”. Enlace acá\nRegenstein Jr, J. K. (2018). Reproducible finance with R: Code flows and shiny apps for portfolio analysis. CRC Press. Enlace acá\nScheuch, C., Voigt, S., & Weiss, P. (2023). Tidy Finance with R (1st ed.). Chapman and Hall/CRC. https://doi.org/10.1201/b23237. Enlace acá\nXie, Y., Allaire, J. J., & Grolemund, G. (2018). R markdown: The definitive guide. CRC Press. Enlace acá\nBryan, J., & Hester, J. (n.d.). Happy Git and GitHub for the useR. Enlace acá\n\n\n\n\n\nUtilización de Renv: Enlace acá\n\n\n\n\n\nhttps://posit.co/resources/cheatsheets/\n\n\n\n\n\nReferencia completa de conceptos utilizados durante el curso:\n\nTérminos de finanzas: Activos, retornos, volatilidad, portafolios, Markowitz, Sharpe ratio\nConceptos cuantitativos: Covarianza, correlación, simulación Monte Carlo, optimización\nHerramientas y librerías: R, tidyverse, ggplot2, quadprog, Quarto, Claude Code, Positron\nMetodología: Desarrollo asistido por IA, buenas prácticas de prompting\n\nVer diccionario completo: Diccionario de Términos Técnicos"
   },
   {
     "objectID": "recursos.html#libros",
     "href": "recursos.html#libros",
-    "title": "Recursos",
+    "title": "📚 Recursos Adicionales",
     "section": "",
     "text": "Wickham, H., & Grolemund, G. (2016). R for data science: import, tidy, transform, visualize, and model data. ” O’Reilly Media, Inc.”. Enlace acá\nGrolemund, G. (2014). Hands-on programming with R: Write your own functions and simulations. ” O’Reilly Media, Inc.”. Enlace acá\nRegenstein Jr, J. K. (2018). Reproducible finance with R: Code flows and shiny apps for portfolio analysis. CRC Press. Enlace acá\nScheuch, C., Voigt, S., & Weiss, P. (2023). Tidy Finance with R (1st ed.). Chapman and Hall/CRC. https://doi.org/10.1201/b23237. Enlace acá\nXie, Y., Allaire, J. J., & Grolemund, G. (2018). R markdown: The definitive guide. CRC Press. Enlace acá\nBryan, J., & Hester, J. (n.d.). Happy Git and GitHub for the useR. Enlace acá"
   },
   {
     "objectID": "recursos.html#section",
     "href": "recursos.html#section",
-    "title": "Recursos",
+    "title": "📚 Recursos Adicionales",
     "section": "",
     "text": "Utilización de Renv: Enlace acá"
   },
   {
     "objectID": "recursos.html#cheatsheets",
     "href": "recursos.html#cheatsheets",
-    "title": "Recursos",
+    "title": "📚 Recursos Adicionales",
     "section": "",
     "text": "https://posit.co/resources/cheatsheets/"
   },
@@ -1740,7 +1740,7 @@
     "href": "clases_ia/index.html",
     "title": "Clases — Finanzas en R con IA",
     "section": "",
-    "text": "Desarrollo Asistido por IA en Finanzas\nMateriales del curso que integran Claude Code y Positron para acelerar el desarrollo de análisis financieros en R. Desde la generación automática de código hasta debugging, documentación y buenas prácticas de prompting.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n01 - Introducción a Finanzas en R\n\n\n\n\n\n\n\n\n\n\n\n02 - Stack Tecnológico\n\n\n\n\n\n\n\n\n\n\n\n03 - Clase 01 - Desarrollo Asistido por IA\n\n\n\n\n\n\n\n\n\n\n\n04 - Trabajo del Curso\n\n\n\n\n\n\n\n\n\n\n\n05 - Actividad 01 - Limpieza de Datos (Manual vs IA-Asistido)\n\n\n\n\n\n\n\n\n\n\n\n06 - Actividad 02 - Portafolios: EDA, Markowitz y Validación por Simulación (Manual vs IA-Asistido)\n\n\n\n\n\n\n\n\n\n\n\n07 - Guía 01 - Diccionario de Términos Técnicos\n\n\n\n\n\nNo matching items"
+    "text": "Desarrollo Asistido por IA en Finanzas\nMateriales del curso que integran Claude Code y Positron para acelerar el desarrollo de análisis financieros en R. Desde la generación automática de código hasta debugging, documentación y buenas prácticas de prompting.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n01 - Introducción a Finanzas en R\n\n\n\n\n\n\n\n\n\n\n\n02 - Stack Tecnológico\n\n\n\n\n\n\n\n\n\n\n\n03 - Clase 01 - Desarrollo Asistido por IA\n\n\n\n\n\n\n\n\n\n\n\n04 - Trabajo del Curso\n\n\n\n\n\n\n\n\n\n\n\n05 - Actividad 01 - Limpieza de Datos (Manual vs IA-Asistido)\n\n\n\n\n\n\n\n\n\n\n\n06 - Actividad 02 - Portafolios: EDA, Markowitz y Validación por Simulación (Manual vs IA-Asistido)\n\n\n\n\n\n\n\n\n\n\n\n07 - Aplicación Shiny: Laboratorio de Portafolios\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "clases_ia/notebook_01.html",
@@ -1927,9 +1927,9 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Diplomado en Ciencia de Datos para las Finanzas",
+    "title": "🎓 Diplomado en Ciencia de Datos para las Finanzas",
     "section": "",
-    "text": "Este será el repositorio de los distintos materiales utilizados en el curso."
+    "text": "Repositorio oficial con material educativo, código R real, análisis con IA asistida y herramientas modernas (Claude Code, Positron)."
   },
   {
     "objectID": "clases_ia/actividad_02_portafolios.html#composición-de-pesos-markowitz-vs-simulación",
@@ -2945,5 +2945,187 @@
     "title": "Diccionario de Términos Técnicos",
     "section": "Reproducibilidad",
     "text": "Reproducibilidad\n\nrenv\nhttps://rstudio.github.io/renv/articles/renv.html\nDocumentación sobre gestión reproducible de dependencias."
+  },
+  {
+    "objectID": "estructura_curso.html",
+    "href": "estructura_curso.html",
+    "title": "📚 Finanzas en R — Estructura del Curso",
+    "section": "",
+    "text": "Este curso integra código real, IA asistida y herramientas modernas (Claude Code, Positron) para enseñar finanzas cuantitativas con R.\nDos enfoques pedagógicos: - 📖 clases/ — Material tradicional (2024-2025): PDFs con explicaciones teóricas - 🤖 clases_ia/ — Material con IA (nuevo): Notebooks interactivos + análisis ejecutado en vivo"
+  },
+  {
+    "objectID": "estructura_curso.html#clases-material-heredado-pdf",
+    "href": "estructura_curso.html#clases-material-heredado-pdf",
+    "title": "📚 Finanzas en R — Estructura del Curso",
+    "section": "clases/ — Material Heredado (PDF)",
+    "text": "clases/ — Material Heredado (PDF)\nclases/\n├── index.qmd              # Listing automático de todas las clases\n├── actividad_01.qmd       # Actividad 01 (Limpieza de datos)\n├── notebook_01.qmd        # Clase 01 (Notebook teórico)\n├── diccionario_terminos.qmd\n└── data/                  # Datos compartidos para actividades\n    ├── chess.csv\n    └── ...\nUso: - Materiales congelados (no se ejecutan en Quarto) - Ideal para explicaciones teóricas largas - Contienen pseudocódigo y ejemplos conceptuales\nDescargar: Clases PDF (todos los archivos .pdf)"
+  },
+  {
+    "objectID": "estructura_curso.html#clases_ia-material-con-ia-asistida-nuevo",
+    "href": "estructura_curso.html#clases_ia-material-con-ia-asistida-nuevo",
+    "title": "📚 Finanzas en R — Estructura del Curso",
+    "section": "clases_ia/ — Material con IA Asistida (NUEVO)",
+    "text": "clases_ia/ — Material con IA Asistida (NUEVO)\nclases_ia/\n├── index.qmd              # Listing automático\n├── herramientas.qmd       # 01 - Intro: Setup de Claude Code + Positron\n├── intro.qmd              # 02 - Intro: IA en finanzas cuantitativas\n├── notebook_01.qmd        # 03 - Clase 01: Desarrollo asistido por IA\n├── trabajo.qmd            # 04 - Proyecto del curso\n├── actividad_01_con_ia.qmd       # 05 - Actividad 01: Limpieza de datos (manual vs IA)\n├── actividad_02_portafolios.qmd  # 06 - Actividad 02: Portafolios (Markowitz + Simulación)\n├── diccionario_terminos.qmd       # 07 - Guía: Términos técnicos\n├── data/\n│   ├── portafolio_retornos.csv    # (108 meses de retornos, 5 activos)\n│   ├── actividad_01.xlsx\n│   └── retornos.csv\n└── [Evaluaciones y Respuestas]\n    ├── EVALUACIONES_PROFESOR.md\n    └── RESPUESTAS_PROFESOR.md\n\nNumeración Secuencial (Orden en el Listing)\n\n\n\n\n\n\n\n\n\n#\nTipo\nArchivo\nDescripción\n\n\n\n\n01\nIntro\nherramientas.qmd\nSetup: Claude Code, Positron, Git\n\n\n02\nIntro\nintro.qmd\nIA en finanzas cuantitativas\n\n\n03\nClase\nnotebook_01.qmd\nClase 01 — Desarrollo asistido\n\n\n04\nTrabajo\ntrabajo.qmd\nProyecto del curso\n\n\n05\nActividad\nactividad_01_con_ia.qmd\nActividad 01 — Limpieza de datos\n\n\n06\nActividad\nactividad_02_portafolios.qmd\nActividad 02 — Portafolios\n\n\n07\nGuía\ndiccionario_terminos.qmd\nDiccionario de términos técnicos\n\n\n\nUso: - Código R ejecutado en tiempo real (con {r} chunks) - Comparación manual vs IA-asistido (timing, complejidad) - Gráficos interactivos con plotly/ggplot2 - Datasets reales incluidos - Recomendaciones de prompts para Claude Code\nDescargar: Clases con IA (todos los .qmd + .pdf generados)"
+  },
+  {
+    "objectID": "estructura_curso.html#netlify_actividad02-reporte-standalone-para-deploy",
+    "href": "estructura_curso.html#netlify_actividad02-reporte-standalone-para-deploy",
+    "title": "📚 Finanzas en R — Estructura del Curso",
+    "section": "netlify_actividad02/ — Reporte Standalone para Deploy",
+    "text": "netlify_actividad02/ — Reporte Standalone para Deploy\nnetlify_actividad02/         # Mini-sitio Quarto independiente\n├── _quarto.yml              # Config Quarto\n├── index.qmd                # Reporte: EDA → Markowitz → Simulación\n├── R/portafolio.R           # Funciones R reutilizables\n├── data/\n│   ├── portafolio_retornos.csv\n│   └── resultados.json      # Pesos calculados\n├── netlify.toml             # Config Netlify (publish = \"_site\")\n├── DEPLOY.md                # Instrucciones de deploy\n└── .gitignore\nUso: - Reporte completamente estático (3.8 MB HTML autocontenido) - Gráficos con ggplot2 (PNG embebido, sin JavaScript) - Deploy manual a Netlify: netlify deploy --dir=_site - URL pública: https://portafolios-fen.netlify.app\nArchivos generados (no en git):\n_site/\n├── index.html               # 3.8 MB (autocontenido, listo para web)\n├── data/\n│   ├── portafolio_retornos.csv\n│   └── resultados.json\n└── site_libs/               # Librerías de Quarto"
+  },
+  {
+    "objectID": "estructura_curso.html#recursos-enlaces-externos",
+    "href": "estructura_curso.html#recursos-enlaces-externos",
+    "title": "📚 Finanzas en R — Estructura del Curso",
+    "section": "recursos/ — Enlaces Externos",
+    "text": "recursos/ — Enlaces Externos\nrecursos/\n├── referencias_r.md         # Links a paquetes, datasets, tutoriales\n├── herramientas_recomendadas.md\n└── bibliografia.md"
+  },
+  {
+    "objectID": "estructura_curso.html#docs-output-build-no-editar",
+    "href": "estructura_curso.html#docs-output-build-no-editar",
+    "title": "📚 Finanzas en R — Estructura del Curso",
+    "section": "docs/ — Output Build (NO editar)",
+    "text": "docs/ — Output Build (NO editar)\ndocs/                        # Generado por `quarto render` (GitHub Pages)\n├── index.html\n├── clases/\n│   ├── index.html\n│   ├── actividad_01.html\n│   └── *.pdf\n├── clases_ia/\n│   ├── index.html\n│   ├── herramientas.html\n│   ├── herramientas.pdf\n│   └── ...\n└── search.json              # Índice de búsqueda\nNota: Se regenera automáticamente con cada quarto render. No hagas ediciones aquí."
+  },
+  {
+    "objectID": "estructura_curso.html#opción-1-ver-online-recomendado-para-revisar-rápido",
+    "href": "estructura_curso.html#opción-1-ver-online-recomendado-para-revisar-rápido",
+    "title": "📚 Finanzas en R — Estructura del Curso",
+    "section": "Opción 1: Ver Online (Recomendado para revisar rápido)",
+    "text": "Opción 1: Ver Online (Recomendado para revisar rápido)\n\nSitio del curso: sebaegana.github.io/finanzas_en_r_webpage/\nReporte Actividad 02: portafolios-fen.netlify.app"
+  },
+  {
+    "objectID": "estructura_curso.html#opción-2-descargar-y-usar-localmente",
+    "href": "estructura_curso.html#opción-2-descargar-y-usar-localmente",
+    "title": "📚 Finanzas en R — Estructura del Curso",
+    "section": "Opción 2: Descargar y Usar Localmente",
+    "text": "Opción 2: Descargar y Usar Localmente\n\nPaso 1: Descarga el repo como ZIP\n# O descarga desde GitHub:\n# https://github.com/sebaegana/finanzas_en_r_webpage/archive/refs/heads/main.zip\n\nunzip finanzas_en_r_webpage-main.zip\ncd finanzas_en_r_webpage-main\n\n\nPaso 2: Instala dependencias\n# R packages\nRscript -e \"renv::restore()\"\n\n# Quarto (si no lo tienes)\nhttps://quarto.org/docs/get-started/\n\n# netlify-cli (para deployar Actividad 02)\nnpm install -g netlify-cli\n\n\nPaso 3: Renderiza localmente\n# Renderizar un archivo específico\nquarto render clases_ia/actividad_02_portafolios.qmd\n\n# Renderizar TODO el sitio\nquarto render\n\n# Preview en navegador\nquarto preview clases_ia/herramientas.qmd\n\n\nPaso 4 (Opcional): Deploy a Netlify\ncd netlify_actividad02\nquarto render --to html\nnetlify login\nnetlify deploy --dir=_site --prod"
+  },
+  {
+    "objectID": "estructura_curso.html#quarto.yml-raíz",
+    "href": "estructura_curso.html#quarto.yml-raíz",
+    "title": "📚 Finanzas en R — Estructura del Curso",
+    "section": "_quarto.yml (Raíz)",
+    "text": "_quarto.yml (Raíz)\nConfiguración global del sitio Quarto: - Define estructura de navegación (navbar) - Tema cosmo - Opciones de ejecución (freeze: auto)"
+  },
+  {
+    "objectID": "estructura_curso.html#renv.lock",
+    "href": "estructura_curso.html#renv.lock",
+    "title": "📚 Finanzas en R — Estructura del Curso",
+    "section": "renv.lock",
+    "text": "renv.lock\nArchivo de bloqueo de dependencias R. Permite reproducibilidad:\nrenv::restore()  # Instala exactas las versiones"
+  },
+  {
+    "objectID": "estructura_curso.html#githubworkflowsquarto-render.yml",
+    "href": "estructura_curso.html#githubworkflowsquarto-render.yml",
+    "title": "📚 Finanzas en R — Estructura del Curso",
+    "section": ".github/workflows/quarto-render.yml",
+    "text": ".github/workflows/quarto-render.yml\nGitHub Actions: renderiza automáticamente al hacer push a main."
+  },
+  {
+    "objectID": "estructura_curso.html#opción-a-descargar-completo-zip",
+    "href": "estructura_curso.html#opción-a-descargar-completo-zip",
+    "title": "📚 Finanzas en R — Estructura del Curso",
+    "section": "Opción A: Descargar Completo (ZIP)",
+    "text": "Opción A: Descargar Completo (ZIP)\n&lt;a href=\"https://github.com/sebaegana/finanzas_en_r_webpage/archive/refs/heads/main.zip\"\n   class=\"btn btn-primary\" role=\"button\"&gt;\n   📦 Descargar Todo (ZIP) — ~50 MB\n&lt;/a&gt;\nIncluye: código fuente (.qmd), datos, configuración, outputs (docs/), todo."
+  },
+  {
+    "objectID": "estructura_curso.html#opción-b-solo-materiales-procesados",
+    "href": "estructura_curso.html#opción-b-solo-materiales-procesados",
+    "title": "📚 Finanzas en R — Estructura del Curso",
+    "section": "Opción B: Solo Materiales Procesados",
+    "text": "Opción B: Solo Materiales Procesados\n&lt;a href=\"docs/\" class=\"btn btn-secondary\" role=\"button\"&gt;\n   📄 Descargar PDFs + HTMLs — ~20 MB\n&lt;/a&gt;\nIncluye: archivos finales (sin código fuente .qmd)."
+  },
+  {
+    "objectID": "estructura_curso.html#opción-c-solo-actividad-02",
+    "href": "estructura_curso.html#opción-c-solo-actividad-02",
+    "title": "📚 Finanzas en R — Estructura del Curso",
+    "section": "Opción C: Solo Actividad 02",
+    "text": "Opción C: Solo Actividad 02\n&lt;a href=\"https://portafolios-fen.netlify.app/\"\n   class=\"btn btn-success\" role=\"button\"&gt;\n   📊 Abrir Reporte Actividad 02 (Netlify)\n&lt;/a&gt;\nReporte autocontenido en 1 HTML (3.8 MB)."
+  },
+  {
+    "objectID": "estructura_curso.html#semana-1-2-fundamentos",
+    "href": "estructura_curso.html#semana-1-2-fundamentos",
+    "title": "📚 Finanzas en R — Estructura del Curso",
+    "section": "Semana 1-2: Fundamentos",
+    "text": "Semana 1-2: Fundamentos\n\nLeer: clases_ia/herramientas.qmd (setup de herramientas)\nLeer: clases_ia/intro.qmd (IA en finanzas)\nHacer: Instalar Claude Code + Positron\nHacer: Fork del repo"
+  },
+  {
+    "objectID": "estructura_curso.html#semana-3-4-primeras-actividades",
+    "href": "estructura_curso.html#semana-3-4-primeras-actividades",
+    "title": "📚 Finanzas en R — Estructura del Curso",
+    "section": "Semana 3-4: Primeras Actividades",
+    "text": "Semana 3-4: Primeras Actividades\n\nLeer: clases_ia/notebook_01.qmd (concepto de desarrollo asistido)\nHacer: clases_ia/actividad_01_con_ia.qmd (limpieza de datos)\n\nOpción A: Escribes todo manualmente\nOpción B: Híbrida (mezcla manual + IA)\nOpción C: IA genera todo, tú interpretas"
+  },
+  {
+    "objectID": "estructura_curso.html#semana-5-8-proyecto-principal",
+    "href": "estructura_curso.html#semana-5-8-proyecto-principal",
+    "title": "📚 Finanzas en R — Estructura del Curso",
+    "section": "Semana 5-8: Proyecto Principal",
+    "text": "Semana 5-8: Proyecto Principal\n\nHacer: clases_ia/actividad_02_portafolios.qmd\n\nAnálisis Markowitz + Simulación\nDeploy a Netlify (ver netlify_actividad02/DEPLOY.md)\n\nHacer: clases_ia/trabajo.qmd (proyecto final)\n\nTema: elige uno de finanzas cuantitativas\nEntrega: GitHub repo + Netlify URL"
+  },
+  {
+    "objectID": "estructura_curso.html#si-encuentras-un-error",
+    "href": "estructura_curso.html#si-encuentras-un-error",
+    "title": "📚 Finanzas en R — Estructura del Curso",
+    "section": "Si encuentras un error:",
+    "text": "Si encuentras un error:\n\nAbre un Issue en GitHub: github.com/sebaegana/finanzas_en_r_webpage/issues\nDescribe el problema, archivos afectados, pasos para reproducir\nSi es posible, adjunta un screenshot"
+  },
+  {
+    "objectID": "estructura_curso.html#si-quieres-proponer-mejoras",
+    "href": "estructura_curso.html#si-quieres-proponer-mejoras",
+    "title": "📚 Finanzas en R — Estructura del Curso",
+    "section": "Si quieres proponer mejoras:",
+    "text": "Si quieres proponer mejoras:\n\nFork el repo\nCrea una rama (git checkout -b feature/tu-idea)\nHaz cambios y commit\nAbre un Pull Request"
+  },
+  {
+    "objectID": "index.html#accesos-rápidos",
+    "href": "index.html#accesos-rápidos",
+    "title": "🎓 Diplomado en Ciencia de Datos para las Finanzas",
+    "section": "🚀 Accesos Rápidos",
+    "text": "🚀 Accesos Rápidos\n\n\n\n  📚 Estructura del Curso\n  Guía completa de carpetas, archivos y cómo usarlos.\n  Ver Guía →\n\n\n\n  🤖 Clases con IA (Nuevo)\n  Notebooks ejecutados con análisis real en vivo.\n  Ver Clases →\n\n\n\n  📖 Material Tradicional\n  PDFs con explicaciones teóricas (2024-2025).\n  Ver PDFs →\n\n\n\n  📊 Actividad 02 Report\n  Portafolios Markowitz + Simulación (Netlify).\n  Abrir Reporte →\n\n\n\n  📦 Descargar Todo\n  Repositorio completo como ZIP (~50 MB).\n  Descargar ZIP →\n\n\n\n  🐙 Ver en GitHub\n  Repositorio público con issues y pull requests.\n  GitHub →"
+  },
+  {
+    "objectID": "index.html#contenido-principal",
+    "href": "index.html#contenido-principal",
+    "title": "🎓 Diplomado en Ciencia de Datos para las Finanzas",
+    "section": "📋 Contenido Principal",
+    "text": "📋 Contenido Principal\n\n🤖 Clases con IA (Nuevo — Recomendado)\nNotebooks interactivos ejecutados en vivo con análisis real:\n\n01 - Herramientas: Setup de Claude Code + Positron\n02 - Intro: IA en finanzas cuantitativas\n03 - Clase 01: Desarrollo asistido por IA\n04 - Trabajo: Proyecto del curso\n05 - Actividad 01: Limpieza de datos (manual vs IA)\n06 - Actividad 02: Portafolios Markowitz + Simulación Monte Carlo\n07 - Guía: Diccionario de términos técnicos\n\n→ Ver todas las clases con IA\n\n\n📖 Material Tradicional (Heredado)\nPDFs con explicaciones teóricas (congeladas, no se ejecutan):\n\nActividades de años anteriores\nApuntes de cátedra\nReferencias bibliográficas\n\n→ Ver material tradicional"
+  },
+  {
+    "objectID": "index.html#proyectos-destacados",
+    "href": "index.html#proyectos-destacados",
+    "title": "🎓 Diplomado en Ciencia de Datos para las Finanzas",
+    "section": "📊 Proyectos Destacados",
+    "text": "📊 Proyectos Destacados\n\nActividad 02: Portafolios Óptimos\nAnálisis completo de optimización de portafolios usando Markowitz + Simulación Monte Carlo:\n\nDatos: 108 meses de retornos históricos (SPY, EFA, IJS, EEM, AGG)\nAnálisis: EDA → Frontera eficiente exacta (quadprog) → 10,000 simulaciones aleatorias → Comparación\nResultados: Portafolio tangente (Sharpe = 1.0214) vs mejor simulado (Sharpe = 0.9439)\nDeploy: Reporte estático en Netlify (3.8 MB, carga en &lt;1s)\n\n→ Abrir reporte interactivo en Netlify"
+  },
+  {
+    "objectID": "index.html#estructura-recomendada-para-usar-este-material",
+    "href": "index.html#estructura-recomendada-para-usar-este-material",
+    "title": "🎓 Diplomado en Ciencia de Datos para las Finanzas",
+    "section": "🎯 Estructura Recomendada para Usar Este Material",
+    "text": "🎯 Estructura Recomendada para Usar Este Material\n\nPara Estudiantes:\n\nDescarga el ZIP completo o clona el repositorio\nInstala dependencias: Rscript -e \"renv::restore()\"\nSigue el flujo: Herramientas → Intro → Clases → Actividades → Proyecto\nCompleta cada actividad usando Claude Code (opcional: modo IA-asistido)\nDeploy tu proyecto final a Netlify\n\n\n\nPara Profesores:\n\nDescarga e inspecciona la estructura\nRevisa RESPUESTAS_PROFESOR.md (soluciones)\nRevisa EVALUACIONES_PROFESOR.md (rúbricas)\nPersonaliza con tus datos/objetivos\nDeploy repositorio a GitHub + Netlify"
+  },
+  {
+    "objectID": "index.html#tecnología-del-curso",
+    "href": "index.html#tecnología-del-curso",
+    "title": "🎓 Diplomado en Ciencia de Datos para las Finanzas",
+    "section": "💻 Tecnología del Curso",
+    "text": "💻 Tecnología del Curso\n\nR: Análisis de datos, modelos financieros (quadprog, tidyverse, ggplot2)\nQuarto: Documentos dinámicos (código + markdown)\nClaude Code: IDE con IA integrada (async prompting)\nPositron: IDE científico (alternativa a RStudio)\nNetlify: Deploy de reportes estáticos (gratuitamente)\nGitHub: Control de versiones + GitHub Pages"
+  },
+  {
+    "objectID": "index.html#contacto",
+    "href": "index.html#contacto",
+    "title": "🎓 Diplomado en Ciencia de Datos para las Finanzas",
+    "section": "📞 Contacto",
+    "text": "📞 Contacto\n\nSebastián Egaña: segana@fen.uchile.cl\nNicolás Leiva: nleivad@fen.uchile.cl\nRepositorio: github.com/sebaegana/finanzas_en_r_webpage\n\n\nÚltima actualización: 2026-10-04"
+  },
+  {
+    "objectID": "recursos.html#diccionario-de-términos-técnicos",
+    "href": "recursos.html#diccionario-de-términos-técnicos",
+    "title": "📚 Recursos Adicionales",
+    "section": "",
+    "text": "Referencia completa de conceptos utilizados durante el curso:\n\nTérminos de finanzas: Activos, retornos, volatilidad, portafolios, Markowitz, Sharpe ratio\nConceptos cuantitativos: Covarianza, correlación, simulación Monte Carlo, optimización\nHerramientas y librerías: R, tidyverse, ggplot2, quadprog, Quarto, Claude Code, Positron\nMetodología: Desarrollo asistido por IA, buenas prácticas de prompting\n\nVer diccionario completo: Diccionario de Términos Técnicos"
   }
 ]
