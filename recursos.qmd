@@ -1,9 +1,10 @@
 ---
-title: "Recursos"
+title: "📚 Recursos Adicionales"
+subtitle: "Referencias, herramientas y diccionario de términos"
 format: html
 ---
 
-# Recursos adicionales
+# Recursos Adicionales
 
 ## Libros
 
@@ -21,3 +22,16 @@ format: html
 ## Cheatsheets
 
 - https://posit.co/resources/cheatsheets/
+
+---
+
+## 📖 Diccionario de Términos Técnicos
+
+Referencia completa de conceptos utilizados durante el curso:
+
+- **Términos de finanzas**: Activos, retornos, volatilidad, portafolios, Markowitz, Sharpe ratio
+- **Conceptos cuantitativos**: Covarianza, correlación, simulación Monte Carlo, optimización
+- **Herramientas y librerías**: R, tidyverse, ggplot2, quadprog, Quarto, Claude Code, Positron
+- **Metodología**: Desarrollo asistido por IA, buenas prácticas de prompting
+
+**Ver diccionario completo**: [Diccionario de Términos Técnicos](clases_ia/diccionario_terminos.html)
