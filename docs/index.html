@@ -2,23 +2,20 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.10.18">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Diplomado en Ciencia de Datos para las Finanzas – Curso Finanzas en R</title>
+<title>🎓 Diplomado en Ciencia de Datos para las Finanzas – Curso Finanzas en R</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
+code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: 1.5em;}
-div.column{flex: auto;}
-@media screen {
-div.columns{gap: min(4vw, 1.5em);}
-div.column{overflow-x: auto;}
-}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -42,10 +39,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-55617497126496852ff9f5a59253c640.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-a0f9fd0d421825b736dc1bbcbcba2219.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -111,6 +108,10 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Recursos</span></a>
   </li>  
   <li class="nav-item">
+    <a class="nav-link" href="./clases_ia/diccionario_terminos.html"> 
+<span class="menu-text">📖 Diccionario</span></a>
+  </li>  
+  <li class="nav-item">
     <a class="nav-link" href="./contacto.html"> 
 <span class="menu-text">Contacto</span></a>
   </li>  
@@ -125,16 +126,38 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#accesos-rápidos" id="toc-accesos-rápidos" class="nav-link active" data-scroll-target="#accesos-rápidos">🚀 Accesos Rápidos</a></li>
+  <li><a href="#contenido-principal" id="toc-contenido-principal" class="nav-link" data-scroll-target="#contenido-principal">📋 Contenido Principal</a>
+  <ul class="collapse">
+  <li><a href="#clases-con-ia-nuevo-recomendado" id="toc-clases-con-ia-nuevo-recomendado" class="nav-link" data-scroll-target="#clases-con-ia-nuevo-recomendado">🤖 <strong>Clases con IA (Nuevo — Recomendado)</strong></a></li>
+  <li><a href="#material-tradicional-heredado" id="toc-material-tradicional-heredado" class="nav-link" data-scroll-target="#material-tradicional-heredado">📖 <strong>Material Tradicional (Heredado)</strong></a></li>
+  </ul></li>
+  <li><a href="#proyectos-destacados" id="toc-proyectos-destacados" class="nav-link" data-scroll-target="#proyectos-destacados">📊 Proyectos Destacados</a>
+  <ul class="collapse">
+  <li><a href="#actividad-02-portafolios-óptimos" id="toc-actividad-02-portafolios-óptimos" class="nav-link" data-scroll-target="#actividad-02-portafolios-óptimos"><strong>Actividad 02: Portafolios Óptimos</strong></a></li>
+  </ul></li>
+  <li><a href="#estructura-recomendada-para-usar-este-material" id="toc-estructura-recomendada-para-usar-este-material" class="nav-link" data-scroll-target="#estructura-recomendada-para-usar-este-material">🎯 Estructura Recomendada para Usar Este Material</a>
+  <ul class="collapse">
+  <li><a href="#para-estudiantes" id="toc-para-estudiantes" class="nav-link" data-scroll-target="#para-estudiantes">Para Estudiantes:</a></li>
+  <li><a href="#para-profesores" id="toc-para-profesores" class="nav-link" data-scroll-target="#para-profesores">Para Profesores:</a></li>
+  </ul></li>
+  <li><a href="#tecnología-del-curso" id="toc-tecnología-del-curso" class="nav-link" data-scroll-target="#tecnología-del-curso">💻 Tecnología del Curso</a></li>
+  <li><a href="#contacto" id="toc-contacto" class="nav-link" data-scroll-target="#contacto">📞 Contacto</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Diplomado en Ciencia de Datos para las Finanzas</h1>
-<p class="subtitle lead">Finanzas en R</p>
+<h1 class="title">🎓 Diplomado en Ciencia de Datos para las Finanzas</h1>
+<p class="subtitle lead">Finanzas en R — Material del Curso 2024-2025</p>
 </div>
 
 
@@ -145,7 +168,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Fecha de publicación</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">29 de septiembre de 2026</p>
+      <p class="date">4 de octubre de 2026</p>
     </div>
   </div>
   
@@ -157,9 +180,142 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Este será el repositorio de los distintos materiales utilizados en el curso.</p>
+<p>Repositorio oficial con material educativo, código R real, análisis con IA asistida y herramientas modernas (Claude Code, Positron).</p>
+<hr>
+<section id="accesos-rápidos" class="level2">
+<h2 class="anchored" data-anchor-id="accesos-rápidos">🚀 Accesos Rápidos</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin: 20px 0;">
+
+<div style="padding: 20px; border: 2px solid #0d6efd; border-radius: 8px; background: #f0f8ff;">
+  <h3 class="anchored">📚 Estructura del Curso</h3>
+  <p>Guía completa de carpetas, archivos y cómo usarlos.</p>
+  <a href="estructura_curso.html" style="display: inline-block; padding: 8px 16px; background: #0d6efd; color: white; border-radius: 4px; text-decoration: none;">Ver Guía →</a>
+</div>
+
+<div style="padding: 20px; border: 2px solid #198754; border-radius: 8px; background: #f0fff4;">
+  <h3 class="anchored">🤖 Clases con IA (Nuevo)</h3>
+  <p>Notebooks ejecutados con análisis real en vivo.</p>
+  <a href="clases_ia/index.html" style="display: inline-block; padding: 8px 16px; background: #198754; color: white; border-radius: 4px; text-decoration: none;">Ver Clases →</a>
+</div>
+
+<div style="padding: 20px; border: 2px solid #6f42c1; border-radius: 8px; background: #f8f5ff;">
+  <h3 class="anchored">📖 Material Tradicional</h3>
+  <p>PDFs con explicaciones teóricas (2024-2025).</p>
+  <a href="clases/index.html" style="display: inline-block; padding: 8px 16px; background: #6f42c1; color: white; border-radius: 4px; text-decoration: none;">Ver PDFs →</a>
+</div>
+
+<div style="padding: 20px; border: 2px solid #fd7e14; border-radius: 8px; background: #fff8f0;">
+  <h3 class="anchored">📊 Actividad 02 Report</h3>
+  <p>Portafolios Markowitz + Simulación (Netlify).</p>
+  <a href="https://portafolios-fen.netlify.app" target="_blank" style="display: inline-block; padding: 8px 16px; background: #fd7e14; color: white; border-radius: 4px; text-decoration: none;">Abrir Reporte →</a>
+</div>
+
+<div style="padding: 20px; border: 2px solid #dc3545; border-radius: 8px; background: #ffe5e8;">
+  <h3 class="anchored">📦 Descargar Todo</h3>
+  <p>Repositorio completo como ZIP (~50 MB).</p>
+  <a href="https://github.com/sebaegana/finanzas_en_r_webpage/archive/refs/heads/main.zip" style="display: inline-block; padding: 8px 16px; background: #dc3545; color: white; border-radius: 4px; text-decoration: none;">Descargar ZIP →</a>
+</div>
+
+<div style="padding: 20px; border: 2px solid #17a2b8; border-radius: 8px; background: #e0f7fa;">
+  <h3 class="anchored">🐙 Ver en GitHub</h3>
+  <p>Repositorio público con issues y pull requests.</p>
+  <a href="https://github.com/sebaegana/finanzas_en_r_webpage" target="_blank" style="display: inline-block; padding: 8px 16px; background: #17a2b8; color: white; border-radius: 4px; text-decoration: none;">GitHub →</a>
+</div>
+
+</div>
+<hr>
+</section>
+<section id="contenido-principal" class="level2">
+<h2 class="anchored" data-anchor-id="contenido-principal">📋 Contenido Principal</h2>
+<section id="clases-con-ia-nuevo-recomendado" class="level3">
+<h3 class="anchored" data-anchor-id="clases-con-ia-nuevo-recomendado">🤖 <strong>Clases con IA (Nuevo — Recomendado)</strong></h3>
+<p>Notebooks interactivos ejecutados en vivo con análisis real:</p>
+<ul>
+<li><strong>01 - Herramientas</strong>: Setup de Claude Code + Positron</li>
+<li><strong>02 - Intro</strong>: IA en finanzas cuantitativas</li>
+<li><strong>03 - Clase 01</strong>: Desarrollo asistido por IA</li>
+<li><strong>04 - Trabajo</strong>: Proyecto del curso</li>
+<li><strong>05 - Actividad 01</strong>: Limpieza de datos (manual vs IA)</li>
+<li><strong>06 - Actividad 02</strong>: Portafolios Markowitz + Simulación Monte Carlo</li>
+<li><strong>07 - Guía</strong>: Diccionario de términos técnicos</li>
+</ul>
+<p>→ <a href="clases_ia/index.html">Ver todas las clases con IA</a></p>
+</section>
+<section id="material-tradicional-heredado" class="level3">
+<h3 class="anchored" data-anchor-id="material-tradicional-heredado">📖 <strong>Material Tradicional (Heredado)</strong></h3>
+<p>PDFs con explicaciones teóricas (congeladas, no se ejecutan):</p>
+<ul>
+<li>Actividades de años anteriores</li>
+<li>Apuntes de cátedra</li>
+<li>Referencias bibliográficas</li>
+</ul>
+<p>→ <a href="clases/index.html">Ver material tradicional</a></p>
+<hr>
+</section>
+</section>
+<section id="proyectos-destacados" class="level2">
+<h2 class="anchored" data-anchor-id="proyectos-destacados">📊 Proyectos Destacados</h2>
+<section id="actividad-02-portafolios-óptimos" class="level3">
+<h3 class="anchored" data-anchor-id="actividad-02-portafolios-óptimos"><strong>Actividad 02: Portafolios Óptimos</strong></h3>
+<p>Análisis completo de optimización de portafolios usando <strong>Markowitz + Simulación Monte Carlo</strong>:</p>
+<ul>
+<li><strong>Datos</strong>: 108 meses de retornos históricos (SPY, EFA, IJS, EEM, AGG)</li>
+<li><strong>Análisis</strong>: EDA → Frontera eficiente exacta (quadprog) → 10,000 simulaciones aleatorias → Comparación</li>
+<li><strong>Resultados</strong>: Portafolio tangente (Sharpe = 1.0214) vs mejor simulado (Sharpe = 0.9439)</li>
+<li><strong>Deploy</strong>: Reporte estático en Netlify (3.8 MB, carga en &lt;1s)</li>
+</ul>
+<p>→ <a href="https://portafolios-fen.netlify.app">Abrir reporte interactivo en Netlify</a></p>
+<hr>
+</section>
+</section>
+<section id="estructura-recomendada-para-usar-este-material" class="level2">
+<h2 class="anchored" data-anchor-id="estructura-recomendada-para-usar-este-material">🎯 Estructura Recomendada para Usar Este Material</h2>
+<section id="para-estudiantes" class="level3">
+<h3 class="anchored" data-anchor-id="para-estudiantes">Para Estudiantes:</h3>
+<ol type="1">
+<li>Descarga el ZIP completo o clona el repositorio</li>
+<li>Instala dependencias: <code>Rscript -e "renv::restore()"</code></li>
+<li>Sigue el flujo: Herramientas → Intro → Clases → Actividades → Proyecto</li>
+<li>Completa cada actividad usando Claude Code (opcional: modo IA-asistido)</li>
+<li>Deploy tu proyecto final a Netlify</li>
+</ol>
+</section>
+<section id="para-profesores" class="level3">
+<h3 class="anchored" data-anchor-id="para-profesores">Para Profesores:</h3>
+<ol type="1">
+<li>Descarga e inspecciona la estructura</li>
+<li>Revisa <code>RESPUESTAS_PROFESOR.md</code> (soluciones)</li>
+<li>Revisa <code>EVALUACIONES_PROFESOR.md</code> (rúbricas)</li>
+<li>Personaliza con tus datos/objetivos</li>
+<li>Deploy repositorio a GitHub + Netlify</li>
+</ol>
+<hr>
+</section>
+</section>
+<section id="tecnología-del-curso" class="level2">
+<h2 class="anchored" data-anchor-id="tecnología-del-curso">💻 Tecnología del Curso</h2>
+<ul>
+<li><strong>R</strong>: Análisis de datos, modelos financieros (quadprog, tidyverse, ggplot2)</li>
+<li><strong>Quarto</strong>: Documentos dinámicos (código + markdown)</li>
+<li><strong>Claude Code</strong>: IDE con IA integrada (async prompting)</li>
+<li><strong>Positron</strong>: IDE científico (alternativa a RStudio)</li>
+<li><strong>Netlify</strong>: Deploy de reportes estáticos (gratuitamente)</li>
+<li><strong>GitHub</strong>: Control de versiones + GitHub Pages</li>
+</ul>
+<hr>
+</section>
+<section id="contacto" class="level2">
+<h2 class="anchored" data-anchor-id="contacto">📞 Contacto</h2>
+<ul>
+<li><strong>Sebastián Egaña</strong>: <a href="mailto:segana@fen.uchile.cl">segana@fen.uchile.cl</a></li>
+<li><strong>Nicolás Leiva</strong>: <a href="mailto:nleivad@fen.uchile.cl">nleivad@fen.uchile.cl</a></li>
+<li><strong>Repositorio</strong>: <a href="https://github.com/sebaegana/finanzas_en_r_webpage">github.com/sebaegana/finanzas_en_r_webpage</a></li>
+</ul>
+<hr>
+<p><em>Última actualización: 2026-10-04</em></p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
