@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Sebastián Egaña Santibáñez (segana@fen.uchile.cl)">
+<meta name="author" content="Nicolás Leiva Díaz (nleivad@fen.uchile.cl)">
+
+<title>📚 Finanzas en R — Estructura del Curso – Curso Finanzas en R</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-349e9611d7ce437f8276b20f376ddbca.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No se han encontrado resultados",
+    "search-matching-documents-text": "documentos encontrados",
+    "search-copy-link-title": "Copiar el enlace en la búsqueda",
+    "search-hide-matches-text": "Ocultar resultados adicionales",
+    "search-more-match-text": "resultado adicional en este documento",
+    "search-more-matches-text": "resultados adicionales en este documento",
+    "search-clear-button-title": "Borrar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Buscar"
+  }
+}</script>
+
+
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">Curso Finanzas en R</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Buscar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Navegación de palanca" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./index.html"> 
+<span class="menu-text">Inicio</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./clases/index.html"> 
+<span class="menu-text">Clases</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./clases_ia/index.html"> 
+<span class="menu-text">Clases con IA</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./recursos.html"> 
+<span class="menu-text">Recursos</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./contacto.html"> 
+<span class="menu-text">Contacto</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul class="collapse">
+  <li><a href="#bienvenida" id="toc-bienvenida" class="nav-link active" data-scroll-target="#bienvenida">🎯 Bienvenida</a></li>
+  <li><a href="#estructura-de-carpetas" id="toc-estructura-de-carpetas" class="nav-link" data-scroll-target="#estructura-de-carpetas">📂 Estructura de Carpetas</a>
+  <ul class="collapse">
+  <li><a href="#clases-material-heredado-pdf" id="toc-clases-material-heredado-pdf" class="nav-link" data-scroll-target="#clases-material-heredado-pdf"><code>clases/</code> — Material Heredado (PDF)</a></li>
+  <li><a href="#clases_ia-material-con-ia-asistida-nuevo" id="toc-clases_ia-material-con-ia-asistida-nuevo" class="nav-link" data-scroll-target="#clases_ia-material-con-ia-asistida-nuevo"><code>clases_ia/</code> — Material con IA Asistida (NUEVO)</a></li>
+  <li><a href="#netlify_actividad02-reporte-standalone-para-deploy" id="toc-netlify_actividad02-reporte-standalone-para-deploy" class="nav-link" data-scroll-target="#netlify_actividad02-reporte-standalone-para-deploy"><code>netlify_actividad02/</code> — Reporte Standalone para Deploy</a></li>
+  <li><a href="#recursos-enlaces-externos" id="toc-recursos-enlaces-externos" class="nav-link" data-scroll-target="#recursos-enlaces-externos"><code>recursos/</code> — Enlaces Externos</a></li>
+  <li><a href="#docs-output-build-no-editar" id="toc-docs-output-build-no-editar" class="nav-link" data-scroll-target="#docs-output-build-no-editar"><code>docs/</code> — Output Build (NO editar)</a></li>
+  </ul></li>
+  <li><a href="#cómo-usar-este-repositorio" id="toc-cómo-usar-este-repositorio" class="nav-link" data-scroll-target="#cómo-usar-este-repositorio">🚀 Cómo Usar Este Repositorio</a>
+  <ul class="collapse">
+  <li><a href="#opción-1-ver-online-recomendado-para-revisar-rápido" id="toc-opción-1-ver-online-recomendado-para-revisar-rápido" class="nav-link" data-scroll-target="#opción-1-ver-online-recomendado-para-revisar-rápido">Opción 1: Ver Online (Recomendado para revisar rápido)</a></li>
+  <li><a href="#opción-2-descargar-y-usar-localmente" id="toc-opción-2-descargar-y-usar-localmente" class="nav-link" data-scroll-target="#opción-2-descargar-y-usar-localmente">Opción 2: Descargar y Usar Localmente</a></li>
+  </ul></li>
+  <li><a href="#archivos-de-datos" id="toc-archivos-de-datos" class="nav-link" data-scroll-target="#archivos-de-datos">📊 Archivos de Datos</a></li>
+  <li><a href="#archivos-de-configuración" id="toc-archivos-de-configuración" class="nav-link" data-scroll-target="#archivos-de-configuración">🔧 Archivos de Configuración</a>
+  <ul class="collapse">
+  <li><a href="#quarto.yml-raíz" id="toc-quarto.yml-raíz" class="nav-link" data-scroll-target="#quarto.yml-raíz"><code>_quarto.yml</code> (Raíz)</a></li>
+  <li><a href="#renv.lock" id="toc-renv.lock" class="nav-link" data-scroll-target="#renv.lock"><code>renv.lock</code></a></li>
+  <li><a href="#githubworkflowsquarto-render.yml" id="toc-githubworkflowsquarto-render.yml" class="nav-link" data-scroll-target="#githubworkflowsquarto-render.yml"><code>.github/workflows/quarto-render.yml</code></a></li>
+  </ul></li>
+  <li><a href="#descargar-todo" id="toc-descargar-todo" class="nav-link" data-scroll-target="#descargar-todo">📥 Descargar Todo</a>
+  <ul class="collapse">
+  <li><a href="#opción-a-descargar-completo-zip" id="toc-opción-a-descargar-completo-zip" class="nav-link" data-scroll-target="#opción-a-descargar-completo-zip">Opción A: Descargar Completo (ZIP)</a></li>
+  <li><a href="#opción-b-solo-materiales-procesados" id="toc-opción-b-solo-materiales-procesados" class="nav-link" data-scroll-target="#opción-b-solo-materiales-procesados">Opción B: Solo Materiales Procesados</a></li>
+  <li><a href="#opción-c-solo-actividad-02" id="toc-opción-c-solo-actividad-02" class="nav-link" data-scroll-target="#opción-c-solo-actividad-02">Opción C: Solo Actividad 02</a></li>
+  </ul></li>
+  <li><a href="#flujo-de-aprendizaje-recomendado" id="toc-flujo-de-aprendizaje-recomendado" class="nav-link" data-scroll-target="#flujo-de-aprendizaje-recomendado">🎓 Flujo de Aprendizaje Recomendado</a>
+  <ul class="collapse">
+  <li><a href="#semana-1-2-fundamentos" id="toc-semana-1-2-fundamentos" class="nav-link" data-scroll-target="#semana-1-2-fundamentos">Semana 1-2: Fundamentos</a></li>
+  <li><a href="#semana-3-4-primeras-actividades" id="toc-semana-3-4-primeras-actividades" class="nav-link" data-scroll-target="#semana-3-4-primeras-actividades">Semana 3-4: Primeras Actividades</a></li>
+  <li><a href="#semana-5-8-proyecto-principal" id="toc-semana-5-8-proyecto-principal" class="nav-link" data-scroll-target="#semana-5-8-proyecto-principal">Semana 5-8: Proyecto Principal</a></li>
+  </ul></li>
+  <li><a href="#contribuir-o-reportar-issues" id="toc-contribuir-o-reportar-issues" class="nav-link" data-scroll-target="#contribuir-o-reportar-issues">🤝 Contribuir o Reportar Issues</a>
+  <ul class="collapse">
+  <li><a href="#si-encuentras-un-error" id="toc-si-encuentras-un-error" class="nav-link" data-scroll-target="#si-encuentras-un-error">Si encuentras un error:</a></li>
+  <li><a href="#si-quieres-proponer-mejoras" id="toc-si-quieres-proponer-mejoras" class="nav-link" data-scroll-target="#si-quieres-proponer-mejoras">Si quieres proponer mejoras:</a></li>
+  </ul></li>
+  <li><a href="#recursos-externos" id="toc-recursos-externos" class="nav-link" data-scroll-target="#recursos-externos">📚 Recursos Externos</a></li>
+  <li><a href="#checklist-para-profesores" id="toc-checklist-para-profesores" class="nav-link" data-scroll-target="#checklist-para-profesores">📋 Checklist para Profesores</a></li>
+  <li><a href="#contacto" id="toc-contacto" class="nav-link" data-scroll-target="#contacto">📞 Contacto</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">📚 Finanzas en R — Estructura del Curso</h1>
+<p class="subtitle lead">Guía completa de carpetas, archivos y cómo usarlos</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Autores/as</div>
+    <div class="quarto-title-meta-contents">
+             <p>Sebastián Egaña Santibáñez (segana@fen.uchile.cl) </p>
+             <p>Nicolás Leiva Díaz (nleivad@fen.uchile.cl) </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Fecha de publicación</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">4 de octubre de 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="bienvenida" class="level1">
+<h1>🎯 Bienvenida</h1>
+<p>Este curso integra <strong>código real, IA asistida y herramientas modernas</strong> (Claude Code, Positron) para enseñar finanzas cuantitativas con R.</p>
+<p><strong>Dos enfoques pedagógicos</strong>: - 📖 <strong><code>clases/</code></strong> — Material tradicional (2024-2025): PDFs con explicaciones teóricas - 🤖 <strong><code>clases_ia/</code></strong> — Material con IA (nuevo): Notebooks interactivos + análisis ejecutado en vivo</p>
+<hr>
+</section>
+<section id="estructura-de-carpetas" class="level1">
+<h1>📂 Estructura de Carpetas</h1>
+<section id="clases-material-heredado-pdf" class="level2">
+<h2 class="anchored" data-anchor-id="clases-material-heredado-pdf"><code>clases/</code> — Material Heredado (PDF)</h2>
+<pre><code>clases/
+├── index.qmd              # Listing automático de todas las clases
+├── actividad_01.qmd       # Actividad 01 (Limpieza de datos)
+├── notebook_01.qmd        # Clase 01 (Notebook teórico)
+├── diccionario_terminos.qmd
+└── data/                  # Datos compartidos para actividades
+    ├── chess.csv
+    └── ...</code></pre>
+<p><strong>Uso</strong>: - Materiales congelados (no se ejecutan en Quarto) - Ideal para explicaciones teóricas largas - Contienen pseudocódigo y ejemplos conceptuales</p>
+<p><strong>Descargar</strong>: <a href="clases/">Clases PDF</a> (todos los archivos .pdf)</p>
+<hr>
+</section>
+<section id="clases_ia-material-con-ia-asistida-nuevo" class="level2">
+<h2 class="anchored" data-anchor-id="clases_ia-material-con-ia-asistida-nuevo"><code>clases_ia/</code> — Material con IA Asistida (NUEVO)</h2>
+<pre><code>clases_ia/
+├── index.qmd              # Listing automático
+├── herramientas.qmd       # 01 - Intro: Setup de Claude Code + Positron
+├── intro.qmd              # 02 - Intro: IA en finanzas cuantitativas
+├── notebook_01.qmd        # 03 - Clase 01: Desarrollo asistido por IA
+├── trabajo.qmd            # 04 - Proyecto del curso
+├── actividad_01_con_ia.qmd       # 05 - Actividad 01: Limpieza de datos (manual vs IA)
+├── actividad_02_portafolios.qmd  # 06 - Actividad 02: Portafolios (Markowitz + Simulación)
+├── diccionario_terminos.qmd       # 07 - Guía: Términos técnicos
+├── data/
+│   ├── portafolio_retornos.csv    # (108 meses de retornos, 5 activos)
+│   ├── actividad_01.xlsx
+│   └── retornos.csv
+└── [Evaluaciones y Respuestas]
+    ├── EVALUACIONES_PROFESOR.md
+    └── RESPUESTAS_PROFESOR.md</code></pre>
+<section id="numeración-secuencial-orden-en-el-listing" class="level3">
+<h3 class="anchored" data-anchor-id="numeración-secuencial-orden-en-el-listing">Numeración Secuencial (Orden en el Listing)</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 19%">
+<col style="width: 29%">
+<col style="width: 41%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>#</th>
+<th>Tipo</th>
+<th>Archivo</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>01</td>
+<td>Intro</td>
+<td><code>herramientas.qmd</code></td>
+<td>Setup: Claude Code, Positron, Git</td>
+</tr>
+<tr class="even">
+<td>02</td>
+<td>Intro</td>
+<td><code>intro.qmd</code></td>
+<td>IA en finanzas cuantitativas</td>
+</tr>
+<tr class="odd">
+<td>03</td>
+<td>Clase</td>
+<td><code>notebook_01.qmd</code></td>
+<td>Clase 01 — Desarrollo asistido</td>
+</tr>
+<tr class="even">
+<td>04</td>
+<td>Trabajo</td>
+<td><code>trabajo.qmd</code></td>
+<td>Proyecto del curso</td>
+</tr>
+<tr class="odd">
+<td>05</td>
+<td>Actividad</td>
+<td><code>actividad_01_con_ia.qmd</code></td>
+<td>Actividad 01 — Limpieza de datos</td>
+</tr>
+<tr class="even">
+<td>06</td>
+<td>Actividad</td>
+<td><code>actividad_02_portafolios.qmd</code></td>
+<td><strong>Actividad 02 — Portafolios</strong></td>
+</tr>
+<tr class="odd">
+<td>07</td>
+<td>Guía</td>
+<td><code>diccionario_terminos.qmd</code></td>
+<td>Diccionario de términos técnicos</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Uso</strong>: - Código R ejecutado en tiempo real (con <code>{r}</code> chunks) - Comparación manual vs IA-asistido (timing, complejidad) - Gráficos interactivos con plotly/ggplot2 - Datasets reales incluidos - Recomendaciones de prompts para Claude Code</p>
+<p><strong>Descargar</strong>: <a href="clases_ia/">Clases con IA</a> (todos los .qmd + .pdf generados)</p>
+<hr>
+</section>
+</section>
+<section id="netlify_actividad02-reporte-standalone-para-deploy" class="level2">
+<h2 class="anchored" data-anchor-id="netlify_actividad02-reporte-standalone-para-deploy"><code>netlify_actividad02/</code> — Reporte Standalone para Deploy</h2>
+<pre><code>netlify_actividad02/         # Mini-sitio Quarto independiente
+├── _quarto.yml              # Config Quarto
+├── index.qmd                # Reporte: EDA → Markowitz → Simulación
+├── R/portafolio.R           # Funciones R reutilizables
+├── data/
+│   ├── portafolio_retornos.csv
+│   └── resultados.json      # Pesos calculados
+├── netlify.toml             # Config Netlify (publish = "_site")
+├── DEPLOY.md                # Instrucciones de deploy
+└── .gitignore</code></pre>
+<p><strong>Uso</strong>: - Reporte <strong>completamente estático</strong> (3.8 MB HTML autocontenido) - Gráficos con ggplot2 (PNG embebido, sin JavaScript) - Deploy manual a Netlify: <code>netlify deploy --dir=_site</code> - URL pública: <code>https://portafolios-fen.netlify.app</code></p>
+<p><strong>Archivos generados</strong> (no en git):</p>
+<pre><code>_site/
+├── index.html               # 3.8 MB (autocontenido, listo para web)
+├── data/
+│   ├── portafolio_retornos.csv
+│   └── resultados.json
+└── site_libs/               # Librerías de Quarto</code></pre>
+<hr>
+</section>
+<section id="recursos-enlaces-externos" class="level2">
+<h2 class="anchored" data-anchor-id="recursos-enlaces-externos"><code>recursos/</code> — Enlaces Externos</h2>
+<pre><code>recursos/
+├── referencias_r.md         # Links a paquetes, datasets, tutoriales
+├── herramientas_recomendadas.md
+└── bibliografia.md</code></pre>
+<hr>
+</section>
+<section id="docs-output-build-no-editar" class="level2">
+<h2 class="anchored" data-anchor-id="docs-output-build-no-editar"><code>docs/</code> — Output Build (NO editar)</h2>
+<pre><code>docs/                        # Generado por `quarto render` (GitHub Pages)
+├── index.html
+├── clases/
+│   ├── index.html
+│   ├── actividad_01.html
+│   └── *.pdf
+├── clases_ia/
+│   ├── index.html
+│   ├── herramientas.html
+│   ├── herramientas.pdf
+│   └── ...
+└── search.json              # Índice de búsqueda</code></pre>
+<p><strong>Nota</strong>: Se regenera automáticamente con cada <code>quarto render</code>. No hagas ediciones aquí.</p>
+<hr>
+</section>
+</section>
+<section id="cómo-usar-este-repositorio" class="level1">
+<h1>🚀 Cómo Usar Este Repositorio</h1>
+<section id="opción-1-ver-online-recomendado-para-revisar-rápido" class="level2">
+<h2 class="anchored" data-anchor-id="opción-1-ver-online-recomendado-para-revisar-rápido">Opción 1: Ver Online (Recomendado para revisar rápido)</h2>
+<ul>
+<li><strong>Sitio del curso</strong>: <a href="https://sebaegana.github.io/finanzas_en_r_webpage/">sebaegana.github.io/finanzas_en_r_webpage/</a></li>
+<li><strong>Reporte Actividad 02</strong>: <a href="https://portafolios-fen.netlify.app/">portafolios-fen.netlify.app</a></li>
+</ul>
+</section>
+<section id="opción-2-descargar-y-usar-localmente" class="level2">
+<h2 class="anchored" data-anchor-id="opción-2-descargar-y-usar-localmente">Opción 2: Descargar y Usar Localmente</h2>
+<section id="paso-1-descarga-el-repo-como-zip" class="level3">
+<h3 class="anchored" data-anchor-id="paso-1-descarga-el-repo-como-zip">Paso 1: Descarga el repo como ZIP</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># O descarga desde GitHub:</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co"># https://github.com/sebaegana/finanzas_en_r_webpage/archive/refs/heads/main.zip</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fu">unzip</span> finanzas_en_r_webpage-main.zip</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> finanzas_en_r_webpage-main</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="paso-2-instala-dependencias" class="level3">
+<h3 class="anchored" data-anchor-id="paso-2-instala-dependencias">Paso 2: Instala dependencias</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># R packages</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="ex">Rscript</span> <span class="at">-e</span> <span class="st">"renv::restore()"</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Quarto (si no lo tienes)</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="ex">https://quarto.org/docs/get-started/</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co"># netlify-cli (para deployar Actividad 02)</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> install <span class="at">-g</span> netlify-cli</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="paso-3-renderiza-localmente" class="level3">
+<h3 class="anchored" data-anchor-id="paso-3-renderiza-localmente">Paso 3: Renderiza localmente</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Renderizar un archivo específico</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render clases_ia/actividad_02_portafolios.qmd</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Renderizar </span><span class="al">TODO</span><span class="co"> el sitio</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Preview en navegador</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> preview clases_ia/herramientas.qmd</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="paso-4-opcional-deploy-a-netlify" class="level3">
+<h3 class="anchored" data-anchor-id="paso-4-opcional-deploy-a-netlify">Paso 4 (Opcional): Deploy a Netlify</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> netlify_actividad02</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render <span class="at">--to</span> html</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="ex">netlify</span> login</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="ex">netlify</span> deploy <span class="at">--dir</span><span class="op">=</span>_site <span class="at">--prod</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+</section>
+</section>
+<section id="archivos-de-datos" class="level1">
+<h1>📊 Archivos de Datos</h1>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 21%">
+<col style="width: 26%">
+<col style="width: 31%">
+<col style="width: 19%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Archivo</th>
+<th>Ubicación</th>
+<th>Descripción</th>
+<th>Tamaño</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>portafolio_retornos.csv</code></td>
+<td><code>clases_ia/data/</code></td>
+<td>Retornos mensuales (SPY, EFA, IJS, EEM, AGG), 2013-2021</td>
+<td>12 KB</td>
+</tr>
+<tr class="even">
+<td><code>actividad_01.xlsx</code></td>
+<td><code>clases_ia/data/</code></td>
+<td>Dataset chess (para limpieza)</td>
+<td>50 KB</td>
+</tr>
+<tr class="odd">
+<td><code>retornos.csv</code></td>
+<td><code>clases_ia/data/</code></td>
+<td>Retornos históricos (alternativo)</td>
+<td>15 KB</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Licencia de datos</strong>: Públicos (Yahoo Finance, Kaggle)</p>
+<hr>
+</section>
+<section id="archivos-de-configuración" class="level1">
+<h1>🔧 Archivos de Configuración</h1>
+<section id="quarto.yml-raíz" class="level2">
+<h2 class="anchored" data-anchor-id="quarto.yml-raíz"><code>_quarto.yml</code> (Raíz)</h2>
+<p>Configuración global del sitio Quarto: - Define estructura de navegación (navbar) - Tema cosmo - Opciones de ejecución (freeze: auto)</p>
+</section>
+<section id="renv.lock" class="level2">
+<h2 class="anchored" data-anchor-id="renv.lock"><code>renv.lock</code></h2>
+<p>Archivo de bloqueo de dependencias R. Permite reproducibilidad:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">renv::restore()</span>  <span class="co"># Instala exactas las versiones</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="githubworkflowsquarto-render.yml" class="level2">
+<h2 class="anchored" data-anchor-id="githubworkflowsquarto-render.yml"><code>.github/workflows/quarto-render.yml</code></h2>
+<p>GitHub Actions: renderiza automáticamente al hacer push a <code>main</code>.</p>
+<hr>
+</section>
+</section>
+<section id="descargar-todo" class="level1">
+<h1>📥 Descargar Todo</h1>
+<section id="opción-a-descargar-completo-zip" class="level2">
+<h2 class="anchored" data-anchor-id="opción-a-descargar-completo-zip">Opción A: Descargar Completo (ZIP)</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb12"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">"https://github.com/sebaegana/finanzas_en_r_webpage/archive/refs/heads/main.zip"</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="ot">   class</span><span class="op">=</span><span class="st">"btn btn-primary"</span><span class="ot"> role</span><span class="op">=</span><span class="st">"button"</span><span class="dt">&gt;</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>   📦 Descargar Todo (ZIP) — ~50 MB</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Incluye: código fuente (.qmd), datos, configuración, outputs (docs/), todo.</p>
+</section>
+<section id="opción-b-solo-materiales-procesados" class="level2">
+<h2 class="anchored" data-anchor-id="opción-b-solo-materiales-procesados">Opción B: Solo Materiales Procesados</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">"docs/"</span><span class="ot"> class</span><span class="op">=</span><span class="st">"btn btn-secondary"</span><span class="ot"> role</span><span class="op">=</span><span class="st">"button"</span><span class="dt">&gt;</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>   📄 Descargar PDFs + HTMLs — ~20 MB</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Incluye: archivos finales (sin código fuente .qmd).</p>
+</section>
+<section id="opción-c-solo-actividad-02" class="level2">
+<h2 class="anchored" data-anchor-id="opción-c-solo-actividad-02">Opción C: Solo Actividad 02</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">a</span><span class="ot"> href</span><span class="op">=</span><span class="st">"https://portafolios-fen.netlify.app/"</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="ot">   class</span><span class="op">=</span><span class="st">"btn btn-success"</span><span class="ot"> role</span><span class="op">=</span><span class="st">"button"</span><span class="dt">&gt;</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>   📊 Abrir Reporte Actividad 02 (Netlify)</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;/</span><span class="kw">a</span><span class="dt">&gt;</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Reporte autocontenido en 1 HTML (3.8 MB).</p>
+<hr>
+</section>
+</section>
+<section id="flujo-de-aprendizaje-recomendado" class="level1">
+<h1>🎓 Flujo de Aprendizaje Recomendado</h1>
+<section id="semana-1-2-fundamentos" class="level2">
+<h2 class="anchored" data-anchor-id="semana-1-2-fundamentos">Semana 1-2: Fundamentos</h2>
+<ol type="1">
+<li>Leer: <code>clases_ia/herramientas.qmd</code> (setup de herramientas)</li>
+<li>Leer: <code>clases_ia/intro.qmd</code> (IA en finanzas)</li>
+<li><strong>Hacer</strong>: Instalar Claude Code + Positron</li>
+<li><strong>Hacer</strong>: Fork del repo</li>
+</ol>
+</section>
+<section id="semana-3-4-primeras-actividades" class="level2">
+<h2 class="anchored" data-anchor-id="semana-3-4-primeras-actividades">Semana 3-4: Primeras Actividades</h2>
+<ol type="1">
+<li>Leer: <code>clases_ia/notebook_01.qmd</code> (concepto de desarrollo asistido)</li>
+<li><strong>Hacer</strong>: <code>clases_ia/actividad_01_con_ia.qmd</code> (limpieza de datos)
+<ul>
+<li>Opción A: Escribes todo manualmente</li>
+<li>Opción B: Híbrida (mezcla manual + IA)</li>
+<li>Opción C: IA genera todo, tú interpretas</li>
+</ul></li>
+</ol>
+</section>
+<section id="semana-5-8-proyecto-principal" class="level2">
+<h2 class="anchored" data-anchor-id="semana-5-8-proyecto-principal">Semana 5-8: Proyecto Principal</h2>
+<ol type="1">
+<li><strong>Hacer</strong>: <code>clases_ia/actividad_02_portafolios.qmd</code>
+<ul>
+<li>Análisis Markowitz + Simulación</li>
+<li>Deploy a Netlify (ver <code>netlify_actividad02/DEPLOY.md</code>)</li>
+</ul></li>
+<li><strong>Hacer</strong>: <code>clases_ia/trabajo.qmd</code> (proyecto final)
+<ul>
+<li>Tema: elige uno de finanzas cuantitativas</li>
+<li>Entrega: GitHub repo + Netlify URL</li>
+</ul></li>
+</ol>
+<hr>
+</section>
+</section>
+<section id="contribuir-o-reportar-issues" class="level1">
+<h1>🤝 Contribuir o Reportar Issues</h1>
+<section id="si-encuentras-un-error" class="level2">
+<h2 class="anchored" data-anchor-id="si-encuentras-un-error">Si encuentras un error:</h2>
+<ol type="1">
+<li><strong>Abre un Issue en GitHub</strong>: <a href="https://github.com/sebaegana/finanzas_en_r_webpage/issues">github.com/sebaegana/finanzas_en_r_webpage/issues</a></li>
+<li>Describe el problema, archivos afectados, pasos para reproducir</li>
+<li>Si es posible, adjunta un screenshot</li>
+</ol>
+</section>
+<section id="si-quieres-proponer-mejoras" class="level2">
+<h2 class="anchored" data-anchor-id="si-quieres-proponer-mejoras">Si quieres proponer mejoras:</h2>
+<ol type="1">
+<li>Fork el repo</li>
+<li>Crea una rama (<code>git checkout -b feature/tu-idea</code>)</li>
+<li>Haz cambios y commit</li>
+<li>Abre un Pull Request</li>
+</ol>
+<hr>
+</section>
+</section>
+<section id="recursos-externos" class="level1">
+<h1>📚 Recursos Externos</h1>
+<ul>
+<li><strong>Claude Code Docs</strong>: https://github.com/anthropics/claude-code</li>
+<li><strong>Positron IDE</strong>: https://positron.posit.co</li>
+<li><strong>Quarto</strong>: https://quarto.org</li>
+<li><strong>Modern Portfolio Theory</strong>: <a href="https://en.wikipedia.org/wiki/Modern_portfolio_theory">Wikipedia - MPT</a></li>
+<li><strong>quadprog (R)</strong>: <a href="https://cran.r-project.org/web/packages/quadprog/">CRAN - quadprog</a></li>
+</ul>
+<hr>
+</section>
+<section id="checklist-para-profesores" class="level1">
+<h1>📋 Checklist para Profesores</h1>
+<p>Si usas este material en tus clases:</p>
+<ul class="task-list">
+<li><label><input type="checkbox">Descarga el ZIP completo</label></li>
+<li><label><input type="checkbox">Instala <code>renv::restore()</code> para tener mismo entorno</label></li>
+<li><label><input type="checkbox">Revisa <code>clases_ia/RESPUESTAS_PROFESOR.md</code> (soluciones)</label></li>
+<li><label><input type="checkbox">Revisa <code>clases_ia/EVALUACIONES_PROFESOR.md</code> (rúbricas)</label></li>
+<li><label><input type="checkbox">Personaliza las actividades con tus datos/datasets</label></li>
+<li><label><input type="checkbox">Deploy el reporte Actividad 02 a tu propia cuenta Netlify</label></li>
+<li><label><input type="checkbox">Comparte el link con estudiantes</label></li>
+</ul>
+<hr>
+</section>
+<section id="contacto" class="level1">
+<h1>📞 Contacto</h1>
+<ul>
+<li><strong>Sebastián Egaña</strong>: <a href="mailto:segana@fen.uchile.cl">segana@fen.uchile.cl</a></li>
+<li><strong>Nicolás Leiva</strong>: <a href="mailto:nleivad@fen.uchile.cl">nleivad@fen.uchile.cl</a></li>
+<li><strong>Repositorio</strong>: <a href="https://github.com/sebaegana/finanzas_en_r_webpage">github.com/sebaegana/finanzas_en_r_webpage</a></li>
+<li><strong>Sitio del Curso</strong>: <a href="https://sebaegana.github.io/finanzas_en_r_webpage/">sebaegana.github.io/finanzas_en_r_webpage/</a></li>
+</ul>
+<hr>
+<p><em>Última actualización: 2026-10-04</em></p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiado");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiado");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/sebaegana\.github\.io\/finanzas_en_r_webpage\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
