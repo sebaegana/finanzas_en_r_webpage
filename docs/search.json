@@ -2,28 +2,28 @@
   {
     "objectID": "recursos.html",
     "href": "recursos.html",
-    "title": "Recursos",
+    "title": "📚 Recursos Adicionales",
     "section": "",
-    "text": "Wickham, H., & Grolemund, G. (2016). R for data science: import, tidy, transform, visualize, and model data. ” O’Reilly Media, Inc.”. Enlace acá\nGrolemund, G. (2014). Hands-on programming with R: Write your own functions and simulations. ” O’Reilly Media, Inc.”. Enlace acá\nRegenstein Jr, J. K. (2018). Reproducible finance with R: Code flows and shiny apps for portfolio analysis. CRC Press. Enlace acá\nScheuch, C., Voigt, S., & Weiss, P. (2023). Tidy Finance with R (1st ed.). Chapman and Hall/CRC. https://doi.org/10.1201/b23237. Enlace acá\nXie, Y., Allaire, J. J., & Grolemund, G. (2018). R markdown: The definitive guide. CRC Press. Enlace acá\nBryan, J., & Hester, J. (n.d.). Happy Git and GitHub for the useR. Enlace acá\n\n\n\n\n\nUtilización de Renv: Enlace acá\n\n\n\n\n\nhttps://posit.co/resources/cheatsheets/"
+    "text": "Wickham, H., & Grolemund, G. (2016). R for data science: import, tidy, transform, visualize, and model data. ” O’Reilly Media, Inc.”. Enlace acá\nGrolemund, G. (2014). Hands-on programming with R: Write your own functions and simulations. ” O’Reilly Media, Inc.”. Enlace acá\nRegenstein Jr, J. K. (2018). Reproducible finance with R: Code flows and shiny apps for portfolio analysis. CRC Press. Enlace acá\nScheuch, C., Voigt, S., & Weiss, P. (2023). Tidy Finance with R (1st ed.). Chapman and Hall/CRC. https://doi.org/10.1201/b23237. Enlace acá\nXie, Y., Allaire, J. J., & Grolemund, G. (2018). R markdown: The definitive guide. CRC Press. Enlace acá\nBryan, J., & Hester, J. (n.d.). Happy Git and GitHub for the useR. Enlace acá\n\n\n\n\n\nUtilización de Renv: Enlace acá\n\n\n\n\n\nhttps://posit.co/resources/cheatsheets/\n\n\n\n\n\nReferencia completa de conceptos utilizados durante el curso:\n\nTérminos de finanzas: Activos, retornos, volatilidad, portafolios, Markowitz, Sharpe ratio\nConceptos cuantitativos: Covarianza, correlación, simulación Monte Carlo, optimización\nHerramientas y librerías: R, tidyverse, ggplot2, quadprog, Quarto, Claude Code, Positron\nMetodología: Desarrollo asistido por IA, buenas prácticas de prompting\n\nVer diccionario completo: Diccionario de Términos Técnicos"
   },
   {
     "objectID": "recursos.html#libros",
     "href": "recursos.html#libros",
-    "title": "Recursos",
+    "title": "📚 Recursos Adicionales",
     "section": "",
     "text": "Wickham, H., & Grolemund, G. (2016). R for data science: import, tidy, transform, visualize, and model data. ” O’Reilly Media, Inc.”. Enlace acá\nGrolemund, G. (2014). Hands-on programming with R: Write your own functions and simulations. ” O’Reilly Media, Inc.”. Enlace acá\nRegenstein Jr, J. K. (2018). Reproducible finance with R: Code flows and shiny apps for portfolio analysis. CRC Press. Enlace acá\nScheuch, C., Voigt, S., & Weiss, P. (2023). Tidy Finance with R (1st ed.). Chapman and Hall/CRC. https://doi.org/10.1201/b23237. Enlace acá\nXie, Y., Allaire, J. J., & Grolemund, G. (2018). R markdown: The definitive guide. CRC Press. Enlace acá\nBryan, J., & Hester, J. (n.d.). Happy Git and GitHub for the useR. Enlace acá"
   },
   {
     "objectID": "recursos.html#section",
     "href": "recursos.html#section",
-    "title": "Recursos",
+    "title": "📚 Recursos Adicionales",
     "section": "",
     "text": "Utilización de Renv: Enlace acá"
   },
   {
     "objectID": "recursos.html#cheatsheets",
     "href": "recursos.html#cheatsheets",
-    "title": "Recursos",
+    "title": "📚 Recursos Adicionales",
     "section": "",
     "text": "https://posit.co/resources/cheatsheets/"
   },
@@ -1740,7 +1740,7 @@
     "href": "clases_ia/index.html",
     "title": "Clases — Finanzas en R con IA",
     "section": "",
-    "text": "Desarrollo Asistido por IA en Finanzas\nMateriales del curso que integran Claude Code y Positron para acelerar el desarrollo de análisis financieros en R. Desde la generación automática de código hasta debugging, documentación y buenas prácticas de prompting.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n01 - Introducción a Finanzas en R\n\n\n\n\n\n\n\n\n\n\n\n02 - Stack Tecnológico\n\n\n\n\n\n\n\n\n\n\n\n03 - Clase 01 - Desarrollo Asistido por IA\n\n\n\n\n\n\n\n\n\n\n\n04 - Trabajo del Curso\n\n\n\n\n\n\n\n\n\n\n\n05 - Actividad 01 - Limpieza de Datos (Manual vs IA-Asistido)\n\n\n\n\n\n\n\n\n\n\n\n06 - Actividad 02 - Portafolios: EDA, Markowitz y Validación por Simulación (Manual vs IA-Asistido)\n\n\n\n\n\n\n\n\n\n\n\n07 - Guía 01 - Diccionario de Términos Técnicos\n\n\n\n\n\nNo matching items"
+    "text": "Desarrollo Asistido por IA en Finanzas\nMateriales del curso que integran Claude Code y Positron para acelerar el desarrollo de análisis financieros en R. Desde la generación automática de código hasta debugging, documentación y buenas prácticas de prompting.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n01 - Introducción a Finanzas en R\n\n\n\n\n\n\n\n\n\n\n\n02 - Stack Tecnológico\n\n\n\n\n\n\n\n\n\n\n\n03 - Clase 01 - Desarrollo Asistido por IA\n\n\n\n\n\n\n\n\n\n\n\n04 - Trabajo del Curso\n\n\n\n\n\n\n\n\n\n\n\n05 - Actividad 01 - Limpieza de Datos (Manual vs IA-Asistido)\n\n\n\n\n\n\n\n\n\n\n\n06 - Actividad 02 - Portafolios: EDA, Markowitz y Validación por Simulación (Manual vs IA-Asistido)\n\n\n\n\n\n\n\n\n\n\n\n07 - Aplicación Shiny: Laboratorio de Portafolios\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "clases_ia/notebook_01.html",
@@ -3120,5 +3120,12 @@
     "title": "🎓 Diplomado en Ciencia de Datos para las Finanzas",
     "section": "📞 Contacto",
     "text": "📞 Contacto\n\nSebastián Egaña: segana@fen.uchile.cl\nNicolás Leiva: nleivad@fen.uchile.cl\nRepositorio: github.com/sebaegana/finanzas_en_r_webpage\n\n\nÚltima actualización: 2026-10-04"
+  },
+  {
+    "objectID": "recursos.html#diccionario-de-términos-técnicos",
+    "href": "recursos.html#diccionario-de-términos-técnicos",
+    "title": "📚 Recursos Adicionales",
+    "section": "",
+    "text": "Referencia completa de conceptos utilizados durante el curso:\n\nTérminos de finanzas: Activos, retornos, volatilidad, portafolios, Markowitz, Sharpe ratio\nConceptos cuantitativos: Covarianza, correlación, simulación Monte Carlo, optimización\nHerramientas y librerías: R, tidyverse, ggplot2, quadprog, Quarto, Claude Code, Positron\nMetodología: Desarrollo asistido por IA, buenas prácticas de prompting\n\nVer diccionario completo: Diccionario de Términos Técnicos"
   }
 ]
