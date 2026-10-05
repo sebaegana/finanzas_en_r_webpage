@@ -24,7 +24,6 @@ format:
 #| include: false
 library(tidyverse)
 library(ggplot2)
-library(plotly)
 library(kableExtra)
 
 source("R/portafolio.R")
@@ -81,7 +80,7 @@ datos_long <- datos_list$datos |>
   pivot_longer(everything(), names_to = "activo", values_to = "retorno") |>
   mutate(retorno_pct = retorno * 100)
 
-p_hist <- ggplot(datos_long, aes(x = retorno_pct, fill = activo)) +
+ggplot(datos_long, aes(x = retorno_pct, fill = activo)) +
   geom_histogram(alpha = 0.6, binwidth = 0.5) +
   facet_wrap(~activo, scales = "free") +
   theme_minimal() +
@@ -90,8 +89,6 @@ p_hist <- ggplot(datos_long, aes(x = retorno_pct, fill = activo)) +
     title = "Distribución de Retornos Mensuales (2013–2021)",
     x = "Retorno (%)", y = "Frecuencia"
   )
-
-ggplotly(p_hist, tooltip = c("x", "y"))
 ```
 
 ## Matriz de Correlación
@@ -99,20 +96,21 @@ ggplotly(p_hist, tooltip = c("x", "y"))
 ```{r eda-correlacion}
 corr_matrix <- matriz_correlacion(retornos_matrix)
 
-# Visualizar con plotly heatmap
-plotly::plot_ly(
-  x = colnames(corr_matrix),
-  y = rownames(corr_matrix),
-  z = corr_matrix,
-  type = "heatmap",
-  colorscale = "RdBu",
-  zmid = 0,
-  showscale = TRUE
-) |>
-  layout(
+# Convertir a formato largo para ggplot
+corr_df_plot <- as.data.frame(corr_matrix) |>
+  rownames_to_column("activo1") |>
+  pivot_longer(-activo1, names_to = "activo2", values_to = "corr")
+
+ggplot(corr_df_plot, aes(x = activo2, y = activo1, fill = corr)) +
+  geom_tile(color = "white", size = 0.5) +
+  geom_text(aes(label = round(corr, 2)), size = 3) +
+  scale_fill_gradient2(low = "#d73027", mid = "white", high = "#1a9850",
+                       midpoint = 0, limits = c(-1, 1), name = "Correlación") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(
     title = "Matriz de Correlaciones entre Activos",
-    xaxis = list(title = ""),
-    yaxis = list(title = "")
+    x = "", y = ""
   )
 ```
 
@@ -161,7 +159,7 @@ print(pesos_tang_df)
 cat("\nTotal de pesos:", sum(pesos_tang_df$peso_pct), "%\n")
 ```
 
-## Frontera Eficiente (Visualización Interactiva)
+## Frontera Eficiente
 
 ```{r markowitz-frontera}
 frontera_df <- as.data.frame(frontera_markowitz) |>
@@ -171,35 +169,31 @@ frontera_df <- as.data.frame(frontera_markowitz) |>
     volatilidad_pct = volatilidad * 100
   )
 
-p_frontera <- plot_ly(
-  data = frontera_df,
-  x = ~volatilidad_pct,
-  y = ~retorno_pct,
-  color = ~sharpe,
-  type = "scatter",
-  mode = "markers+lines",
-  marker = list(size = 5, opacity = 0.7),
-  colorscale = "Viridis",
-  hovertemplate = "<b>Retorno:</b> %{y:.2f}%<br><b>Volatilidad:</b> %{x:.2f}%<br><b>Sharpe:</b> %{color:.4f}<extra></extra>"
-) |>
-  add_trace(
-    x = c(porta_tang$volatilidad * 100),
-    y = c(porta_tang$retorno * 100),
-    type = "scatter",
-    mode = "markers",
-    marker = list(size = 12, color = "gold", symbol = "triangle-up", line = list(width = 2, color = "darkred")),
-    name = "Portafolio Tangente",
-    hovertemplate = "<b>Tangente</b><br>Retorno: %{y:.2f}%<br>Volatilidad: %{x:.2f}%<extra></extra>",
-    showlegend = TRUE
-  ) |>
-  layout(
-    title = "Frontera Eficiente de Markowitz (50 puntos)",
-    xaxis = list(title = "Volatilidad Anual (%)"),
-    yaxis = list(title = "Retorno Anual Esperado (%)"),
-    hovermode = "closest"
-  )
+porta_tang_plot <- data.frame(
+  volatilidad_pct = porta_tang$volatilidad * 100,
+  retorno_pct = porta_tang$retorno * 100,
+  sharpe = porta_tang$sharpe
+)
 
-p_frontera
+ggplot(frontera_df, aes(x = volatilidad_pct, y = retorno_pct, color = sharpe)) +
+  geom_point(size = 2, alpha = 0.7) +
+  geom_line(size = 0.8, alpha = 0.7) +
+  geom_point(data = porta_tang_plot, aes(x = volatilidad_pct, y = retorno_pct),
+             color = "gold", size = 5, shape = 17, stroke = 2, inherit.aes = FALSE) +
+  geom_hline(yintercept = 2, linetype = "dashed", color = "gray50", alpha = 0.7) +
+  scale_color_viridis_c(name = "Sharpe Ratio") +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(face = "bold", size = 12, hjust = 0.5),
+    panel.grid.major = element_line(color = "gray90"),
+    panel.grid.minor = element_blank()
+  ) +
+  labs(
+    title = "Frontera Eficiente de Markowitz (50 puntos)",
+    subtitle = "Triángulo Dorado = Portafolio Tangente (Mayor Ratio de Sharpe)",
+    x = "Volatilidad Anual (%)",
+    y = "Retorno Anual Esperado (%)"
+  )
 ```
 
 ---
@@ -220,35 +214,29 @@ cat(sprintf("Ratio de Sharpe:        %.4f\n", porta_sim$sharpe))
 ## Nube de Portafolios Simulados
 
 ```{r simulacion-nube}
-p_nube <- plot_ly(
-  data = simulacion$resultados,
-  x = ~volatilidad_anual * 100,
-  y = ~retorno_anual * 100,
-  color = ~sharpe_ratio,
-  type = "scatter",
-  mode = "markers",
-  marker = list(size = 3, opacity = 0.4),
-  colorscale = "Viridis",
-  hovertemplate = "<b>Retorno:</b> %{y:.2f}%<br><b>Volatilidad:</b> %{x:.2f}%<br><b>Sharpe:</b> %{color:.4f}<extra></extra>"
-) |>
-  add_trace(
-    x = c(porta_sim$volatilidad * 100),
-    y = c(porta_sim$retorno * 100),
-    type = "scatter",
-    mode = "markers",
-    marker = list(size = 10, color = "red", symbol = "circle", line = list(width = 2, color = "darkred")),
-    name = "Mejor Simulado",
-    hovertemplate = "<b>Mejor Simulado</b><br>Retorno: %{y:.2f}%<br>Volatilidad: %{x:.2f}%<extra></extra>",
-    showlegend = TRUE
-  ) |>
-  layout(
-    title = "Frontera Simulada: 10,000 Portafolios Aleatorios",
-    xaxis = list(title = "Volatilidad Anual (%)"),
-    yaxis = list(title = "Retorno Anual Esperado (%)"),
-    hovermode = "closest"
-  )
+mejor_sim_plot <- data.frame(
+  volatilidad_pct = porta_sim$volatilidad * 100,
+  retorno_pct = porta_sim$retorno * 100
+)
 
-p_nube
+ggplot(simulacion$resultados, aes(x = volatilidad_anual * 100, y = retorno_anual * 100,
+                                   color = sharpe_ratio)) +
+  geom_point(size = 1.5, alpha = 0.3) +
+  geom_point(data = mejor_sim_plot, aes(x = volatilidad_pct, y = retorno_pct),
+             color = "red", size = 4, shape = 21, stroke = 1.5, inherit.aes = FALSE) +
+  scale_color_viridis_c(name = "Sharpe Ratio", direction = 1) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(face = "bold", size = 12, hjust = 0.5),
+    panel.grid.major = element_line(color = "gray90"),
+    panel.grid.minor = element_blank()
+  ) +
+  labs(
+    title = "Frontera Simulada: 10,000 Portafolios Aleatorios",
+    subtitle = "Punto Rojo = Mejor portafolio por Sharpe ratio",
+    x = "Volatilidad Anual (%)",
+    y = "Retorno Anual Esperado (%)"
+  )
 ```
 
 ---
@@ -257,59 +245,37 @@ p_nube
 
 ## Overlay: Nube Simulada + Frontera Exacta
 
-```{r comparacion-overlay}
-p_overlay <- plot_ly() |>
-  add_trace(
-    data = simulacion$resultados,
-    x = ~volatilidad_anual * 100,
-    y = ~retorno_anual * 100,
-    color = ~sharpe_ratio,
-    type = "scatter",
-    mode = "markers",
-    marker = list(size = 3, opacity = 0.3),
-    colorscale = "Viridis",
-    name = "Portafolios Simulados",
-    hovertemplate = "<b>Simulado</b><br>Retorno: %{y:.2f}%<br>Volatilidad: %{x:.2f}%<br>Sharpe: %{color:.4f}<extra></extra>"
-  ) |>
-  add_trace(
-    data = frontera_df,
-    x = ~volatilidad_pct,
-    y = ~retorno_pct,
-    type = "scatter",
-    mode = "lines",
-    line = list(color = "darkred", width = 3, dash = "solid"),
-    name = "Frontera Markowitz",
-    hovertemplate = "<b>Markowitz</b><br>Retorno: %{y:.2f}%<br>Volatilidad: %{x:.2f}%<extra></extra>",
-    showlegend = TRUE
-  ) |>
-  add_trace(
-    x = c(porta_sim$volatilidad * 100),
-    y = c(porta_sim$retorno * 100),
-    type = "scatter",
-    mode = "markers",
-    marker = list(size = 10, color = "red", symbol = "circle", line = list(width = 2)),
-    name = "Mejor Simulado",
-    hovertemplate = "<b>Mejor Simulado</b><br>Retorno: %{y:.2f}%<br>Volatilidad: %{x:.2f}%<extra></extra>",
-    showlegend = TRUE
-  ) |>
-  add_trace(
-    x = c(porta_tang$volatilidad * 100),
-    y = c(porta_tang$retorno * 100),
-    type = "scatter",
-    mode = "markers",
-    marker = list(size = 12, color = "gold", symbol = "triangle-up", line = list(width = 2, color = "darkred")),
-    name = "Portafolio Tangente",
-    hovertemplate = "<b>Tangente (Markowitz)</b><br>Retorno: %{y:.2f}%<br>Volatilidad: %{x:.2f}%<extra></extra>",
-    showlegend = TRUE
-  ) |>
-  layout(
-    title = "Frontera Eficiente: Simulación vs Markowitz (Exacta)",
-    xaxis = list(title = "Volatilidad Anual (%)"),
-    yaxis = list(title = "Retorno Anual Esperado (%)"),
-    hovermode = "closest"
-  )
+## Overlay: Nube Simulada + Frontera Exacta
 
-p_overlay
+```{r comparacion-overlay}
+portafolio_tangente_overlay <- data.frame(
+  volatilidad_pct = porta_tang$volatilidad * 100,
+  retorno_pct = porta_tang$retorno * 100,
+  sharpe = porta_tang$sharpe
+)
+
+ggplot() +
+  geom_point(data = simulacion$resultados,
+             aes(x = volatilidad_anual * 100, y = retorno_anual * 100, color = sharpe_ratio),
+             alpha = 0.25, size = 1.2) +
+  geom_line(data = frontera_df,
+            aes(x = volatilidad_pct, y = retorno_pct),
+            color = "darkred", size = 1.2, linetype = "solid") +
+  geom_point(data = mejor_sim_plot,
+             aes(x = volatilidad_pct, y = retorno_pct),
+             color = "red", size = 4, shape = 21, stroke = 1.5) +
+  geom_point(data = portafolio_tangente_overlay,
+             aes(x = volatilidad_pct, y = retorno_pct),
+             color = "gold", size = 5, shape = 17) +
+  scale_color_viridis_c(name = "Sharpe (Sim)") +
+  theme_minimal() +
+  theme(plot.title = element_text(face = "bold", size = 12)) +
+  labs(
+    title = "Frontera Eficiente: Simulación vs Markowitz (Exacta)",
+    subtitle = "Rojo=Mejor Simulado | Oro=Tangente | Línea Roja=Frontera Exacta",
+    x = "Volatilidad Anual (%)",
+    y = "Retorno Anual Esperado (%)"
+  )
 ```
 
 ## Tabla Comparativa: Brecha de Optimización
@@ -335,8 +301,6 @@ brecha_analisis$pesos |>
 cat("\n**Markowitz**: Concentra en 2 activos (solución de esquina)\n")
 cat("**Simulado**: Diversifica en 5 activos (solución interior)\n")
 ```
-
----
 
 ---
 
