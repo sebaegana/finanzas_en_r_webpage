@@ -37,6 +37,13 @@ format:
       <li><a href="data/portafolio_retornos.csv" style="color: #0d6efd; text-decoration: underline;">Descargar portafolio_retornos.csv</a> (retornos mensuales log 2012-2021, 5 activos)</li>
     </ul>
   </div>
+
+  <div style="margin-top: 15px; padding: 12px; background: #e8f5e9; border-left: 4px solid #4caf50; border-radius: 4px;">
+    <strong>🚀 Reporte Interactivo en Netlify:</strong>
+    <ul style="margin: 8px 0; padding-left: 20px;">
+      <li>📊 <a href="https://portafolios-fen.netlify.app" style="color: #4caf50; font-weight: bold; text-decoration: underline;" target="_blank">Ver Reporte Completo (Markowitz + Simulación + Calculadora Interactiva)</a> — Análisis en tiempo real con gráficos interactivos y calculadora de portafolios personalizados.</li>
+    </ul>
+  </div>
 </div>
 ```
 

@@ -244,6 +244,36 @@ grep -h "listing_title" clases_ia/*.qmd | sort
 
 ---
 
+## 📍 Mini-Sitios Independientes (Netlify/GitHub Pages)
+
+Además del sitio del curso, mantenemos proyectos independientes renderizados para casos específicos:
+
+### `netlify_actividad02/` — Reporte Interactivo de Portafolios
+
+Ubicación local: `netlify_actividad02/`  
+Deploy: Manual a Netlify (drag-and-drop o CLI)  
+URL destino: `https://portafolios-fen.netlify.app` (ej.)
+
+**Estructura**:
+```
+netlify_actividad02/
+├── _quarto.yml          # Config website
+├── index.qmd            # Reporte con código R ejecutado + OJS interactivo
+├── R/portafolio.R       # Funciones reutilizables
+├── data/portafolio_retornos.csv
+├── netlify.toml         # Config Netlify (publish = "_site")
+└── .gitignore
+```
+
+**Pasos para renderizar y deployar**:
+1. `cd netlify_actividad02`
+2. `quarto render --to html` (genera `_site/index.html` con todos los gráficos/datos incrustados)
+3. Deploy manual: `npx netlify-cli deploy --dir=_site` (o drag-and-drop a app.netlify.com)
+
+**Datos incluidos**: CSV autocontenido, sliders OJS normalizados, overlay Markowitz + simulación.
+
+---
+
 ## 🚀 Próximos Materiales Planeados
 
 ```
@@ -255,3 +285,4 @@ grep -h "listing_title" clases_ia/*.qmd | sort
 
 *(Esta lista es aproximada y puede cambiar según necesidades pedagógicas)*
 *(07 - Completado: Diccionario de términos técnicos)*
+*(Actividad 02: Reporte interactivo Netlify completado 2026-10-04)*
