@@ -85,7 +85,7 @@ Donde:
 - `MM` = número de unidad temática (01, 02, 03, ...)
 - `[Nombre Descriptivo]` = título corto
 
-### Orden Actual (2026-09-28)
+### Orden Actual (2026-10-05)
 
 | Num | Tipo | Archivo | Descripción |
 |-----|------|---------|-------------|
@@ -96,6 +96,8 @@ Donde:
 | 05 | Actividad | `actividad_01_con_ia.qmd` | Actividad 01 - Limpieza de datos |
 | 06 | Actividad | `actividad_02_portafolios.qmd` | Actividad 02 - Portafolios: EDA → Modelos → Servicing |
 | 07 | Guía | `diccionario_terminos.qmd` | Diccionario de términos técnicos |
+| 08 | Clase | `clase_flexdashboard_financiero.qmd` | Clase 02 - Dashboard Financiero con Flexdashboard |
+| 09 | Guía | `guia_rag_financiero.qmd` | Introducción a RAG para Análisis Financiero |
 
 ### Estructura de Contenido para Clases_IA
 
@@ -277,12 +279,14 @@ netlify_actividad02/
 ## 🚀 Próximos Materiales Planeados
 
 ```
-08 - Clase 02 - Regresión y Modelado Financiero
-09 - Actividad 03 - Agregaciones y Joins con IA (Data Wrangling)
-10 - Guía 02 - Buenas Prácticas de Prompting
-11 - Taller 01 - Debugging Interactivo en Positron
+10 - Clase 03 - Regresión y Modelado Financiero
+11 - Actividad 03 - Agregaciones y Joins con IA (Data Wrangling)
+12 - Guía 02 - Buenas Prácticas de Prompting
+13 - Taller 01 - Debugging Interactivo en Positron
 ```
 
 *(Esta lista es aproximada y puede cambiar según necesidades pedagógicas)*
-*(07 - Completado: Diccionario de términos técnicos)*
+*(07 - Completado: Diccionario de términos técnicos 2026-09-28)*
+*(08 - Completado: Dashboard Financiero con Flexdashboard 2026-10-05)*
+*(09 - Completado: Introducción a RAG para Análisis Financiero 2026-10-05)*
 *(Actividad 02: Reporte interactivo Netlify completado 2026-10-04)*

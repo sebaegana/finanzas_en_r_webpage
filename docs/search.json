@@ -1740,7 +1740,7 @@
     "href": "clases_ia/index.html",
     "title": "Clases — Finanzas en R con IA",
     "section": "",
-    "text": "Desarrollo Asistido por IA en Finanzas\nMateriales del curso que integran Claude Code y Positron para acelerar el desarrollo de análisis financieros en R. Desde la generación automática de código hasta debugging, documentación y buenas prácticas de prompting.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n01 - Introducción a Finanzas en R\n\n\n\n\n\n\n\n\n\n\n\n02 - Stack Tecnológico\n\n\n\n\n\n\n\n\n\n\n\n03 - Clase 01 - Desarrollo Asistido por IA\n\n\n\n\n\n\n\n\n\n\n\n04 - Trabajo del Curso\n\n\n\n\n\n\n\n\n\n\n\n05 - Actividad 01 - Limpieza de Datos (Manual vs IA-Asistido)\n\n\n\n\n\n\n\n\n\n\n\n06 - Actividad 02 - Portafolios: EDA, Markowitz y Validación por Simulación (Manual vs IA-Asistido)\n\n\n\n\n\n\n\n\n\n\n\n07 - Aplicación Shiny: Laboratorio de Portafolios\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
+    "text": "Desarrollo Asistido por IA en Finanzas\nMateriales del curso que integran Claude Code y Positron para acelerar el desarrollo de análisis financieros en R. Desde la generación automática de código hasta debugging, documentación y buenas prácticas de prompting.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n01 - Introducción a Finanzas en R\n\n\n\n\n\n\n\n\n\n\n\n02 - Stack Tecnológico\n\n\n\n\n\n\n\n\n\n\n\n03 - Clase 01 - Desarrollo Asistido por IA\n\n\n\n\n\n\n\n\n\n\n\n04 - Trabajo del Curso\n\n\n\n\n\n\n\n\n\n\n\n05 - Actividad 01 - Limpieza de Datos (Manual vs IA-Asistido)\n\n\n\n\n\n\n\n\n\n\n\n06 - Actividad 02 - Portafolios: EDA, Markowitz y Validación por Simulación (Manual vs IA-Asistido)\n\n\n\n\n\n\n\n\n\n\n\n07 - Aplicación Shiny: Laboratorio de Portafolios\n\n\n\n\n\n\n\n\n\n\n\n08 - Clase 02 - Dashboard Financiero con Flexdashboard\n\n\n\n\n\n\n\n\n\n\n\n08 - Notebook: Lectura guiada de una aplicación Shiny\n\n\n\n\n\n\n\n\n\n\n\n09 - Guía - Introducción a RAG para Análisis Financiero\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "clases_ia/notebook_01.html",
@@ -3246,5 +3246,201 @@
     "title": "Construyendo una aplicación Shiny para Finanzas",
     "section": "Idea clave",
     "text": "Idea clave\nUna aplicación Shiny no es solamente un conjunto de controles. Es un modelo financiero conectado a una interfaz reactiva:\ndatos → funciones financieras → reactive() → outputs → interpretación\nEl valor de la aplicación está en hacer visible la relación entre una decisión de inversión y sus consecuencias en riesgo y retorno."
+  },
+  {
+    "objectID": "clases_ia/guia_rag_financiero.html",
+    "href": "clases_ia/guia_rag_financiero.html",
+    "title": "RAG en Finanzas: Consulta Inteligente de Documentos",
+    "section": "",
+    "text": "RAG (Retrieval Augmented Generation) es una técnica que mejora los modelos de lenguaje permitiendo que consulten documentos específicos antes de responder.\nSin RAG: &gt; ¿Cuál fue la ganancia neta de Apple en 2023? &gt; → Claude: “Mi conocimiento se corta en febrero de 2025. No tengo datos específicos de 2023.”\nCon RAG: &gt; ¿Cuál fue la ganancia neta de Apple en 2023? (con 10-K de Apple cargado) &gt; → Claude: “Según el 10-K de Apple 2023, la ganancia neta fue de $96.995 mil millones USD.”\nEn esta guía aprenderás:\n\nCómo funciona RAG conceptualmente\nCasos de uso en finanzas\nFlujo técnico: documentos → embeddings → búsqueda → prompt → respuesta\nEjemplo práctico con Claude API"
+  },
+  {
+    "objectID": "clases_ia/guia_rag_financiero.html#objetivo-de-la-clase",
+    "href": "clases_ia/guia_rag_financiero.html#objetivo-de-la-clase",
+    "title": "RAG en Finanzas: Consulta Inteligente de Documentos",
+    "section": "",
+    "text": "RAG (Retrieval Augmented Generation) es una técnica que mejora los modelos de lenguaje permitiendo que consulten documentos específicos antes de responder.\nSin RAG: &gt; ¿Cuál fue la ganancia neta de Apple en 2023? &gt; → Claude: “Mi conocimiento se corta en febrero de 2025. No tengo datos específicos de 2023.”\nCon RAG: &gt; ¿Cuál fue la ganancia neta de Apple en 2023? (con 10-K de Apple cargado) &gt; → Claude: “Según el 10-K de Apple 2023, la ganancia neta fue de $96.995 mil millones USD.”\nEn esta guía aprenderás:\n\nCómo funciona RAG conceptualmente\nCasos de uso en finanzas\nFlujo técnico: documentos → embeddings → búsqueda → prompt → respuesta\nEjemplo práctico con Claude API"
+  },
+  {
+    "objectID": "clases_ia/guia_rag_financiero.html#fase-1-concepto-qué-es-rag",
+    "href": "clases_ia/guia_rag_financiero.html#fase-1-concepto-qué-es-rag",
+    "title": "RAG en Finanzas: Consulta Inteligente de Documentos",
+    "section": "Fase 1 — Concepto: ¿Qué es RAG?",
+    "text": "Fase 1 — Concepto: ¿Qué es RAG?\nRAG = Retrieval (recuperación) + Augmented (aumentado) + Generation (generación)\nImagina que Claude es un analista financiero. Sin RAG, solo tiene su entrenamiento (hasta febrero de 2025). Con RAG, le das acceso a documentos específicos:\nUsuario pregunta:\n  \"¿Cuáles son los riesgos mencionados en el 10-K de Tesla?\"\n\nSistema RAG:\n  1. Busca en los documentos cargados\n  2. Encuentra párrafos relevantes sobre \"riesgos\"\n  3. Los añade al contexto de Claude\n  4. Claude responde basándose en esos párrafos específicos\nAnalogía: Es como si Claude tuviera permiso para abrir un archivo PDF durante el examen, siempre y cuando le haya dado acceso previamente."
+  },
+  {
+    "objectID": "clases_ia/guia_rag_financiero.html#fase-2-componentes-clave-de-un-sistema-rag",
+    "href": "clases_ia/guia_rag_financiero.html#fase-2-componentes-clave-de-un-sistema-rag",
+    "title": "RAG en Finanzas: Consulta Inteligente de Documentos",
+    "section": "Fase 2 — Componentes clave de un sistema RAG",
+    "text": "Fase 2 — Componentes clave de un sistema RAG\nTodo sistema RAG tiene 3 partes:\n\n1. Almacén de documentos (Vector Store)\nLos documentos se dividen en fragmentos pequeños (chunks) y se convierten a vectores (representaciones numéricas de significado):\nDocumento original (10-K de Apple):\n  \"Apple's revenue for 2023 was $394.3 billion.\n   The company faced supply chain challenges...\n   Risk factors include...\"\n\n                    ↓ (dividir en chunks)\n\nChunk 1: \"Apple's revenue for 2023 was $394.3 billion.\"\n  → Vector: [0.2, -0.5, 0.8, 0.1, ...]\n\nChunk 2: \"The company faced supply chain challenges...\"\n  → Vector: [0.3, -0.4, 0.7, 0.2, ...]\n\nChunk 3: \"Risk factors include...\"\n  → Vector: [0.1, -0.6, 0.9, 0.0, ...]\n\n          Se guardan en base de datos\n\n\n2. Motor de búsqueda (Retriever)\nCuando llega una pregunta, se convierte a vector y se buscan los chunks más parecidos:\nPregunta: \"¿Cuáles fueron los ingresos de Apple?\"\n  → Vector: [0.25, -0.48, 0.75, 0.12, ...]\n\n              ↓ (comparar similitud)\n\nChunk 1: [0.2, -0.5, 0.8, 0.1, ...]   ← Similitud: 0.98 ✓ MEJOR MATCH\nChunk 2: [0.3, -0.4, 0.7, 0.2, ...]   ← Similitud: 0.62\nChunk 3: [0.1, -0.6, 0.9, 0.0, ...]   ← Similitud: 0.45\n\n       Recupera los top-3 chunks relevantes\n\n\n3. Modelo generativo (LLM con contexto)\nEl LLM (Claude) recibe los chunks recuperados + la pregunta:\nSistema:\n  \"Eres un analista financiero. Responde basándote en los documentos\n   proporcionados. Si la respuesta no está en los documentos, di que no la encontraste.\"\n\nContexto (chunks recuperados):\n  \"Apple's revenue for 2023 was $394.3 billion.\"\n\nUsuario pregunta:\n  \"¿Cuáles fueron los ingresos de Apple en 2023?\"\n\nClaude responde:\n  \"Según el documento, los ingresos de Apple en 2023 fueron $394.3 mil millones.\""
+  },
+  {
+    "objectID": "clases_ia/guia_rag_financiero.html#fase-3-casos-de-uso-en-finanzas",
+    "href": "clases_ia/guia_rag_financiero.html#fase-3-casos-de-uso-en-finanzas",
+    "title": "RAG en Finanzas: Consulta Inteligente de Documentos",
+    "section": "Fase 3 — Casos de uso en finanzas",
+    "text": "Fase 3 — Casos de uso en finanzas\n\nCaso 1: Análisis de Reportes Trimestrales\nEscenario: Portfolio manager necesita entender cambios en las ganancias de 50 empresas.\nSin RAG: - Descargar 50 PDFs de 10-Q - Leer manualmente (10-20 horas) - Extraer datos a Excel\nCon RAG:\n\"Compara el margen bruto de Q2 vs Q3 en estos 5 reportes\"\n→ Sistema busca párrafos sobre márgenes en cada PDF\n→ Crea tabla comparativa automáticamente\n→ Tiempo: 5 minutos\n\n\nCaso 2: Detección de Señales de Alerta (Red Flags)\nEscenario: Analista de crédito debe evaluar si una startup es riesgosa.\nCon RAG, pregunta: - “¿Qué riesgos menciona la empresa?” - “¿Hay conflictos de intereses en la junta directiva?” - “¿Qué clientes concentran &gt;30% de ingresos?”\nEl sistema busca en estatutos, prospectos, comunicados oficiales.\n\n\nCaso 3: Due Diligence en M&A\nEscenario: Banco inversionista evalúa adquisición de 2 empresas.\nCon RAG: - Carga docenas de documentos (estados financieros, contratos, estudios legales) - Responde preguntas como: “¿Hay litigios activos?” o “¿Cuáles son los contratos de mayor valor?” - Genera resumen ejecutivo automáticamente\n\n\nCaso 4: Chatbot de Atención al Cliente\nEscenario: Cliente de banco quiere saber detalles de su hipoteca.\nCon RAG: - Se carga el contrato de hipoteca del cliente - Pregunta: “¿Cuál es mi tasa de interés?” - Sistema busca en el documento y responde - Respuesta verificada contra documento real"
+  },
+  {
+    "objectID": "clases_ia/guia_rag_financiero.html#fase-4-flujo-técnico-implementación-conceptual",
+    "href": "clases_ia/guia_rag_financiero.html#fase-4-flujo-técnico-implementación-conceptual",
+    "title": "RAG en Finanzas: Consulta Inteligente de Documentos",
+    "section": "Fase 4 — Flujo técnico: Implementación (conceptual)",
+    "text": "Fase 4 — Flujo técnico: Implementación (conceptual)\n\nPaso 1: Preparar documentos\n# Pseudocódigo\ndocumentos = cargar_PDFs(\"reportes_10K/\")\n\n# Dividir en fragmentos (chunks de ~300 palabras)\nchunks = dividir_documentos(documentos, tamaño=300)\n\n# Ejemplo de un chunk:\nchunks[0] = \"Consolidated Statements of Operations.\n            Revenue increased 12% YoY to $394.3B.\n            Operating income margin was 29.8%...\"\n\n\nPaso 2: Crear embeddings\n# Convertir cada chunk a vector (embedding)\nfor chunk in chunks:\n    vector = crear_embedding(chunk)  # Usa API de OpenAI, Anthropic, etc.\n    guardar_en_base_datos(chunk, vector)\n\n# Resultado: base de datos de vectores (vector store)\n# Opciones: Pinecone, Chroma, Weaviate, FAISS\n\n\nPaso 3: Búsqueda (Retrieval)\npregunta = \"¿Cuál fue la ganancia neta?\"\n\n# Convertir pregunta a vector\nvector_pregunta = crear_embedding(pregunta)\n\n# Buscar chunks similares en la base de datos\nchunks_relevantes = buscar_top_k(vector_pregunta, k=3)\n\n# Resultado: los 3 chunks más cercanos semánticamente\n\n\nPaso 4: Aumentar el prompt\n# Construir el prompt que enviaremos a Claude\nprompt_aumentado = f\"\"\"\nSistema:\nEres un analista financiero experto. Responde la pregunta del usuario\nbasándote únicamente en los documentos proporcionados.\nSi la respuesta no aparece en los documentos, di claramente que no la encontraste.\n\nDocumentos relevantes:\n{chunks_relevantes}\n\nPregunta del usuario:\n{pregunta}\n\nRespuesta:\n\"\"\"\n\n\nPaso 5: Generar respuesta\nrespuesta = llamar_a_claude(prompt_aumentado)\n# Claude responde considerando los chunks específicos"
+  },
+  {
+    "objectID": "clases_ia/guia_rag_financiero.html#fase-5-arquitectura-de-un-sistema-rag-moderno",
+    "href": "clases_ia/guia_rag_financiero.html#fase-5-arquitectura-de-un-sistema-rag-moderno",
+    "title": "RAG en Finanzas: Consulta Inteligente de Documentos",
+    "section": "Fase 5 — Arquitectura de un sistema RAG moderno",
+    "text": "Fase 5 — Arquitectura de un sistema RAG moderno\n┌─────────────────────────────────────────────────────────┐\n│                   DOCUMENTOS (PDFs, TXTs)               │\n│          10-K's, Balances, Comunicados de Prensa        │\n└────────────────────────┬────────────────────────────────┘\n                         │\n                    Preprocesar\n                  (dividir chunks)\n                         │\n                         ↓\n┌─────────────────────────────────────────────────────────┐\n│            EMBEDDING MODEL (Transformer)                │\n│    Convierte texto a vectores (768-1536 dimensiones)   │\n└────────────────────────┬────────────────────────────────┘\n                         │\n                         ↓\n┌─────────────────────────────────────────────────────────┐\n│            VECTOR STORE (Base de datos)                 │\n│     Chroma / Pinecone / Weaviate (millones de chunks)  │\n└────────────────────────┬────────────────────────────────┘\n                         │\n         ┌───────────────┴───────────────┐\n         │                               │\n    (Cuando llega pregunta)              │\n         │                               │\n         ↓                               ↓\n┌──────────────────┐          ┌────────────────────┐\n│ Embed Question   │          │  Semantic Search   │\n│  (user input)    │ ────────→│  (top-k chunks)    │\n└──────────────────┘          └────────────────────┘\n                                        │\n                                        ↓\n                    ┌───────────────────────────────┐\n                    │  PROMPT AUGMENTATION          │\n                    │  Pregunta + Chunks → Prompt   │\n                    └───────────────────┬───────────┘\n                                        │\n                                        ↓\n                    ┌───────────────────────────────┐\n                    │  CLAUDE API                   │\n                    │  (LLM generation)             │\n                    └───────────────────┬───────────┘\n                                        │\n                                        ↓\n                    ┌───────────────────────────────┐\n                    │  RESPUESTA FINAL              │\n                    │  (basada en documentos)       │\n                    └───────────────────────────────┘"
+  },
+  {
+    "objectID": "clases_ia/guia_rag_financiero.html#fase-6-limitaciones-y-consideraciones-éticas",
+    "href": "clases_ia/guia_rag_financiero.html#fase-6-limitaciones-y-consideraciones-éticas",
+    "title": "RAG en Finanzas: Consulta Inteligente de Documentos",
+    "section": "Fase 6 — Limitaciones y consideraciones éticas",
+    "text": "Fase 6 — Limitaciones y consideraciones éticas\n\n¿Qué pueden fallar en RAG?\n\nHallucinations (alucinaciones)\n\nClaude genera información que NO está en los documentos\nSolución: Usar instrucciones explícitas (“responde solo basándote en…”)\n\nChunks desconectados\n\nLa respuesta necesita contexto de múltiples párrafos, pero se recuperan solo fragmentos\nSolución: Aumentar tamaño de chunks o usar re-rankers\n\nErrores en los documentos fuente\n\nSi el PDF tiene OCR defectuoso, la búsqueda falla\nSolución: Revisar calidad de documentos antes de cargarios\n\n\n\n\nPrivacidad y seguridad\n\nLos documentos se envían al API de Claude (se procesa bajo sus términos)\nPara datos muy sensibles (secretos comerciales), considera RAG local con modelos open-source\nSiempre requiere autorización explícita de stakeholders"
+  },
+  {
+    "objectID": "clases_ia/guia_rag_financiero.html#fase-7-ejemplo-práctico-rag-en-claude-api",
+    "href": "clases_ia/guia_rag_financiero.html#fase-7-ejemplo-práctico-rag-en-claude-api",
+    "title": "RAG en Finanzas: Consulta Inteligente de Documentos",
+    "section": "Fase 7 — Ejemplo práctico: RAG en Claude API",
+    "text": "Fase 7 — Ejemplo práctico: RAG en Claude API\n# Este es código conceptual para ilustrar el flujo\n\nfrom anthropic import Anthropic\nimport json\n\nclient = Anthropic()\n\n# Simular que ya tenemos chunks recuperados\ndocumentos_relevantes = [\n    \"Apple Inc. reported net income of $96.995 billion for fiscal 2023.\",\n    \"Operating margins improved to 29.8% due to operational efficiency.\",\n    \"The company faces risks from supply chain disruption and regulatory changes.\"\n]\n\n# Construir el contexto\ncontexto = \"\\n\".join([f\"- {doc}\" for doc in documentos_relevantes])\n\n# Conversación multi-turno con contexto persistente\nconversation_history = []\n\ndef consultar_con_rag(pregunta, contexto_docs):\n    # Añadir la pregunta con contexto\n    mensaje_usuario = f\"\"\"\nBasándote ÚNICAMENTE en los siguientes documentos, responde la pregunta.\nSi la respuesta no aparece en los documentos, di claramente que no la encontraste.\n\nDOCUMENTOS:\n{contexto_docs}\n\nPREGUNTA:\n{pregunta}\n\"\"\"\n\n    conversation_history.append({\n        \"role\": \"user\",\n        \"content\": mensaje_usuario\n    })\n\n    # Llamar a Claude\n    response = client.messages.create(\n        model=\"claude-3-5-sonnet-20241022\",\n        max_tokens=1024,\n        system=\"Eres un analista financiero experto. Responde preguntas sobre documentos financieros.\",\n        messages=conversation_history\n    )\n\n    # Guardar respuesta en histórico\n    respuesta = response.content[0].text\n    conversation_history.append({\n        \"role\": \"assistant\",\n        \"content\": respuesta\n    })\n\n    return respuesta\n\n# Ejemplo de uso\nprint(\"=== CONSULTA 1 ===\")\nrespuesta1 = consultar_con_rag(\n    \"¿Cuál fue la ganancia neta de Apple en 2023?\",\n    contexto\n)\nprint(respuesta1)\n\nprint(\"\\n=== CONSULTA 2 (Seguimiento) ===\")\nrespuesta2 = consultar_con_rag(\n    \"¿Cuál fue el margen operativo?\",\n    contexto\n)\nprint(respuesta2)\nSalida esperada:\n=== CONSULTA 1 ===\nSegún los documentos proporcionados, Apple Inc. reportó una ganancia neta\nde $96.995 mil millones en el año fiscal 2023.\n\n=== CONSULTA 2 ===\nEl margen operativo mejoró a 29.8%, atribuido a mejoras en la eficiencia operacional."
+  },
+  {
+    "objectID": "clases_ia/guia_rag_financiero.html#fase-8-tecnologías-y-herramientas-para-rag",
+    "href": "clases_ia/guia_rag_financiero.html#fase-8-tecnologías-y-herramientas-para-rag",
+    "title": "RAG en Finanzas: Consulta Inteligente de Documentos",
+    "section": "Fase 8 — Tecnologías y herramientas para RAG",
+    "text": "Fase 8 — Tecnologías y herramientas para RAG\n\nVector Stores (almacenar embeddings)\n\n\n\n\n\n\n\n\nHerramienta\nVentajas\nCaso de uso\n\n\n\n\nChroma\nFácil de comenzar, open-source\nPrototipado local\n\n\nPinecone\nEscalable, cloud-native, 0-mantenimiento\nProducción empresarial\n\n\nWeaviate\nOpen-source, GraphQL, flexible\nEquipos que quieren control\n\n\nFAISS\nSuper rápido, local\nBúsqueda masiva offline\n\n\n\n\n\nEmbedding Models\n\n\n\nModelo\nProveedor\nCosto\nDimensiones\n\n\n\n\ntext-embedding-3-small\nOpenAI\n$\n512\n\n\ntext-embedding-3-large\nOpenAI\n$$\n3,072\n\n\nmultilingual-e5-base\nHugging Face\nGratis\n768\n\n\nbge-m3\nBAAI\nGratis\n1,024\n\n\n\n\n\nFrameworks RAG\n\nLangChain: Herramienta popular, pero opinada\nLlamaIndex: Especializada en RAG, muy flexible\nHaystack: Por DeepSet, enfoque enterprise"
+  },
+  {
+    "objectID": "clases_ia/guia_rag_financiero.html#fase-9-comparación-rag-vs-fine-tuning-vs-prompting",
+    "href": "clases_ia/guia_rag_financiero.html#fase-9-comparación-rag-vs-fine-tuning-vs-prompting",
+    "title": "RAG en Finanzas: Consulta Inteligente de Documentos",
+    "section": "Fase 9 — Comparación: RAG vs Fine-tuning vs Prompting",
+    "text": "Fase 9 — Comparación: RAG vs Fine-tuning vs Prompting\n\n\n\n\n\n\n\n\n\nTécnica\nMejor para\nComplejidad\nCosto\n\n\n\n\nPrompting simple\nTareas genéricas\nBaja\nBajo\n\n\nIn-context learning\nPatrones cortos (&lt;4k tokens)\nMedia\nMedio\n\n\nRAG\nDocumentos específicos grandes\nMedia\nMedio\n\n\nFine-tuning\nCambiar estilo/formato permanente\nAlta\nAlto\n\n\n\nRegla general: - ¿Datos cambian frecuentemente? → RAG - ¿Necesitas pocos ejemplos fijos? → In-context learning - ¿Cambias el comportamiento permanente? → Fine-tuning"
+  },
+  {
+    "objectID": "clases_ia/guia_rag_financiero.html#fase-10-proyecto-construir-un-rag-para-reportes-financieros",
+    "href": "clases_ia/guia_rag_financiero.html#fase-10-proyecto-construir-un-rag-para-reportes-financieros",
+    "title": "RAG en Finanzas: Consulta Inteligente de Documentos",
+    "section": "Fase 10 — Proyecto: Construir un RAG para reportes financieros",
+    "text": "Fase 10 — Proyecto: Construir un RAG para reportes financieros\n\nObjetivo\nCrear un asistente que responda preguntas sobre reportes trimestrales de empresas.\n\n\nEjercicio propuesto\n\nDescarga 2-3 10-K o 10-Q reales (investor.apple.com, sec.gov)\nCarga los PDFs en una herramienta RAG (Chroma o Pinecone)\nHaz preguntas variadas y documenta las respuestas\nIdentifica fallos (hallucinations, chunks mal recuperados)\nPropone mejoras\n\n\n\nPreguntas de prueba (Financial Due Diligence)\n\n“¿Cuáles fueron los ingresos del último trimestre?”\n“¿Qué riesgos identifica la empresa en su 10-K?”\n“¿Cuál es la estructura de propiedad (board members)?”\n“¿Hay litigios activos mencionados?”\n“¿Cuál es la política de dividendos?”\n\n\n\nChecklist de implementación\n\nRAG retrieves chunks relevantes (verifica manualmente)\nClaude responde con fuentes citadas\nDetectas al menos 1 hallucination (y la corriges con prompting)\nDocumentas el flujo (qué funciona, qué falla)"
+  },
+  {
+    "objectID": "clases_ia/guia_rag_financiero.html#reflexión-final-rag-en-el-futuro-de-finanzas",
+    "href": "clases_ia/guia_rag_financiero.html#reflexión-final-rag-en-el-futuro-de-finanzas",
+    "title": "RAG en Finanzas: Consulta Inteligente de Documentos",
+    "section": "Reflexión final: RAG en el futuro de finanzas",
+    "text": "Reflexión final: RAG en el futuro de finanzas\nRAG es una transición hacia finanzas asistidas por IA:\n\nHoy: Humanos leen reportes, IA ayuda con cálculos\nFuturo: IA lee reportes, humanos verifican decisiones\n\nComo analista financiero o developer, tu rol evoluciona:\n\nNo es “ser reemplazado por IA”\nEs amplificar tu capacidad: 50 reportes en 1 hora vs 50 horas manualmente\n\nHabilidades clave para el futuro: 1. Formular preguntas claras a sistemas RAG 2. Verificar respuestas contra documentos originales 3. Detectar sesgos y errores en sistemas RAG 4. Construir RAG systems customizados\nLa ventaja competitiva es saber qué preguntar."
+  },
+  {
+    "objectID": "clases_ia/clase_flexdashboard_financiero.html",
+    "href": "clases_ia/clase_flexdashboard_financiero.html",
+    "title": "Construyendo un Dashboard Financiero con Flexdashboard",
+    "section": "",
+    "text": "En esta clase construiremos un dashboard financiero interactivo usando Flexdashboard, una herramienta que combina R Markdown con diseño responsivo tipo Bootstrap.\nEl dashboard presentará métricas clave de TechCorp Inc., empresa ficticia de tecnología, con análisis de:\n\nIngresos trimestrales y márgenes\nAnálisis de rentabilidad (ROE, ROA)\nFlujos de efectivo\nComparación contra competencia\nIndicadores de salud financiera\n\nUn dashboard bien construido transforma números en historias visuales que comunican decisiones de inversión a no-especialistas."
+  },
+  {
+    "objectID": "clases_ia/clase_flexdashboard_financiero.html#objetivo-de-la-clase",
+    "href": "clases_ia/clase_flexdashboard_financiero.html#objetivo-de-la-clase",
+    "title": "Construyendo un Dashboard Financiero con Flexdashboard",
+    "section": "",
+    "text": "En esta clase construiremos un dashboard financiero interactivo usando Flexdashboard, una herramienta que combina R Markdown con diseño responsivo tipo Bootstrap.\nEl dashboard presentará métricas clave de TechCorp Inc., empresa ficticia de tecnología, con análisis de:\n\nIngresos trimestrales y márgenes\nAnálisis de rentabilidad (ROE, ROA)\nFlujos de efectivo\nComparación contra competencia\nIndicadores de salud financiera\n\nUn dashboard bien construido transforma números en historias visuales que comunican decisiones de inversión a no-especialistas."
+  },
+  {
+    "objectID": "clases_ia/clase_flexdashboard_financiero.html#resultado-final",
+    "href": "clases_ia/clase_flexdashboard_financiero.html#resultado-final",
+    "title": "Construyendo un Dashboard Financiero con Flexdashboard",
+    "section": "Resultado final",
+    "text": "Resultado final\nAl terminar tendremos un dashboard con:\n\n3 pestañas: Resumen ejecutivo, Análisis de ingresos, Solidez financiera\nValueboxes mostrando KPIs principales (Ingresos, Margen neto, ROE actual)\nGráficos interactivos (plotly) con series de tiempo\nTablas de comparación contra competidores\nIndicadores de tendencia (↑/↓) en color rojo/verde\nDescargas de datos en CSV\n\n\nIdea central: un dashboard efectivo jerarquiza información: primero lo importante, luego lo detallado. El usuario debe entender la salud financiera de la empresa en 10 segundos."
+  },
+  {
+    "objectID": "clases_ia/clase_flexdashboard_financiero.html#preparación",
+    "href": "clases_ia/clase_flexdashboard_financiero.html#preparación",
+    "title": "Construyendo un Dashboard Financiero con Flexdashboard",
+    "section": "Preparación",
+    "text": "Preparación\nInstala los paquetes una sola vez:\n\ninstall.packages(c(\"flexdashboard\", \"plotly\", \"dplyr\", \"tidyr\", \"ggplot2\", \"scales\"))\n\nFlexdashboard es un paquete que extiende R Markdown. No ejecutas un archivo .R como Shiny, sino que renderizas un .Rmd o .qmd que genera un HTML interactivo."
+  },
+  {
+    "objectID": "clases_ia/clase_flexdashboard_financiero.html#fase-1-estructura-básica-de-un-dashboard",
+    "href": "clases_ia/clase_flexdashboard_financiero.html#fase-1-estructura-básica-de-un-dashboard",
+    "title": "Construyendo un Dashboard Financiero con Flexdashboard",
+    "section": "Fase 1 — Estructura básica de un dashboard",
+    "text": "Fase 1 — Estructura básica de un dashboard\nLa anatomía de un dashboard Flexdashboard es simple:\n---\ntitle: \"Mi Dashboard\"\noutput: flexdashboard::flex_dashboard:\n  orientation: columns\n  vertical_layout: fill\n---\n\n### Caja 1\n\n[R code block]\nplot(1:10)\n[/R code block]\n\n### Caja 2\n\nTexto o más código.\nQué aprendemos:\n\nflexdashboard::flex_dashboard es el formato de salida\norientation: columns organiza en columnas (alternativamente rows)\nvertical_layout: fill hace que los gráficos llenen el espacio disponible\nCada ### Título crea una caja (card)\n\nEsta estructura se renderiza como un sitio web responsivo automáticamente."
+  },
+  {
+    "objectID": "clases_ia/clase_flexdashboard_financiero.html#fase-2-agregar-pestañas-tabs",
+    "href": "clases_ia/clase_flexdashboard_financiero.html#fase-2-agregar-pestañas-tabs",
+    "title": "Construyendo un Dashboard Financiero con Flexdashboard",
+    "section": "Fase 2 — Agregar pestañas (tabs)",
+    "text": "Fase 2 — Agregar pestañas (tabs)\nLos dashboards complejos usan pestañas para organizar temas:\n---\ntitle: \"Dashboard Financiero\"\noutput: flexdashboard::flex_dashboard\n---\n\n## Resumen Ejecutivo {data-icon=\"fa-chart-line\"}\n\n### Ingresos\n\n[R code block]\n# Gráfico de ingresos\n[/R code block]\n\n### Márgenes\n\n[R code block]\n# Gráfico de márgenes\n[/R code block]\n\n## Análisis Detallado {data-icon=\"fa-chart-bar\"}\n\n### Comparación\n\n[R code block]\n# Tabla de competencia\n[/R code block]\nEstructura:\n\n## Nombre {data-icon=\"...\"} crea una pestaña\nLas ### Cajas dentro de cada pestaña son tarjetas\nUsa Font Awesome icons para los botones de pestañas"
+  },
+  {
+    "objectID": "clases_ia/clase_flexdashboard_financiero.html#fase-3-cargar-datos-de-la-empresa",
+    "href": "clases_ia/clase_flexdashboard_financiero.html#fase-3-cargar-datos-de-la-empresa",
+    "title": "Construyendo un Dashboard Financiero con Flexdashboard",
+    "section": "Fase 3 — Cargar datos de la empresa",
+    "text": "Fase 3 — Cargar datos de la empresa\nCrearemos datos ficticios de TechCorp Inc., empresa de software fundada en 2018:\n\n# Datos históricos de TechCorp Inc. (ficticio)\n# Trimestres desde Q1 2021 a Q3 2024\n\ndatos_techcorp &lt;- data.frame(\n  trimestre = c(\"Q1-2021\", \"Q2-2021\", \"Q3-2021\", \"Q4-2021\",\n                \"Q1-2022\", \"Q2-2022\", \"Q3-2022\", \"Q4-2022\",\n                \"Q1-2023\", \"Q2-2023\", \"Q3-2023\", \"Q4-2023\",\n                \"Q1-2024\", \"Q2-2024\", \"Q3-2024\"),\n  ingresos = c(12, 14, 16, 19, 22, 25, 28, 32,\n               37, 41, 46, 52, 58, 65, 72),  # millones USD\n  costo_operativo = c(8, 9, 10, 12, 13, 15, 16, 18,\n                      20, 22, 24, 27, 29, 32, 35),\n  ganancia_neta = c(2, 3, 4, 5, 6, 7, 9, 11,\n                    13, 15, 17, 20, 22, 25, 28)\n)\n\n# Calcula indicadores\ndatos_techcorp &lt;- datos_techcorp %&gt;%\n  mutate(\n    margen_neto = round(ganancia_neta / ingresos * 100, 1),\n    ganancia_operativa = ingresos - costo_operativo,\n    margen_operativo = round(ganancia_operativa / ingresos * 100, 1)\n  )\n\nhead(datos_techcorp)\n\nEste conjunto de datos simula crecimiento consistente de una startup exitosa. Los márgenes también mejoran (economía de escala)."
+  },
+  {
+    "objectID": "clases_ia/clase_flexdashboard_financiero.html#fase-4-diseñar-kpis-con-value-boxes",
+    "href": "clases_ia/clase_flexdashboard_financiero.html#fase-4-diseñar-kpis-con-value-boxes",
+    "title": "Construyendo un Dashboard Financiero con Flexdashboard",
+    "section": "Fase 4 — Diseñar KPIs con value boxes",
+    "text": "Fase 4 — Diseñar KPIs con value boxes\nLos KPIs (Key Performance Indicators) son números grandes que comunican salud:\n\nlibrary(flexdashboard)\n\n# Datos más recientes\nultimo_trimestre &lt;- datos_techcorp %&gt;% slice(n())\n\n# KPI 1: Ingresos actuales\nvalueBox(\n  value = paste0(\"$\", ultimo_trimestre$ingresos, \"M\"),\n  caption = \"Ingresos (Q3 2024)\",\n  icon = \"fa-dollar-sign\",\n  color = \"primary\"\n)\n\n# KPI 2: Margen neto\nvalueBox(\n  value = paste0(ultimo_trimestre$margen_neto, \"%\"),\n  caption = \"Margen neto\",\n  icon = \"fa-percentage\",\n  color = if_else(ultimo_trimestre$margen_neto &gt; 35, \"success\", \"warning\")\n)\n\n# KPI 3: Ganancia\nvalueBox(\n  value = paste0(\"$\", ultimo_trimestre$ganancia_neta, \"M\"),\n  caption = \"Ganancia neta\",\n  icon = \"fa-chart-line\",\n  color = \"success\"\n)\n\nConceptos:\n\nvalueBox() crea una caja grande con un número destacado\ncolor puede ser primary, success, warning, danger\nLos iconos vienen de Font Awesome (fa-*)"
+  },
+  {
+    "objectID": "clases_ia/clase_flexdashboard_financiero.html#fase-5-graficar-series-de-tiempo",
+    "href": "clases_ia/clase_flexdashboard_financiero.html#fase-5-graficar-series-de-tiempo",
+    "title": "Construyendo un Dashboard Financiero con Flexdashboard",
+    "section": "Fase 5 — Graficar series de tiempo",
+    "text": "Fase 5 — Graficar series de tiempo\nLa mayoría del dashboard son gráficos que muestran evolución:\n\nlibrary(plotly)\n\n# Gráfico de ingresos trimestrales\nplot_ingresos &lt;- datos_techcorp %&gt;%\n  plot_ly(x = ~trimestre, y = ~ingresos, type = \"scatter\", mode = \"lines+markers\") %&gt;%\n  layout(\n    title = \"Ingresos trimestrales\",\n    xaxis = list(title = \"Trimestre\"),\n    yaxis = list(title = \"Ingresos ($ millones)\"),\n    hovermode = \"x unified\"\n  )\n\nplot_ingresos\n\nPlotly es interactivo: permite zoom, hover, descargar como PNG."
+  },
+  {
+    "objectID": "clases_ia/clase_flexdashboard_financiero.html#fase-6-comparación-contra-competencia",
+    "href": "clases_ia/clase_flexdashboard_financiero.html#fase-6-comparación-contra-competencia",
+    "title": "Construyendo un Dashboard Financiero con Flexdashboard",
+    "section": "Fase 6 — Comparación contra competencia",
+    "text": "Fase 6 — Comparación contra competencia\nPara contexto, incluimos competidores ficticios:\n\n# Datos de competencia (Q3 2024)\ncompetencia &lt;- data.frame(\n  empresa = c(\"TechCorp\", \"CloudCo\", \"DataFlow\", \"NetworkPlus\"),\n  ingresos_q3 = c(72, 85, 65, 78),\n  margen_neto = c(38.9, 35.2, 32.1, 40.5),\n  roe = c(22.5, 18.3, 15.2, 24.1)  # Return on Equity %\n)\n\n# Visualizar como tabla interactiva\nDT::datatable(\n  competencia,\n  options = list(pageLength = 4),\n  rownames = FALSE\n)\n\nEsta tabla ayuda al lector a ubicar a TechCorp en el mercado."
+  },
+  {
+    "objectID": "clases_ia/clase_flexdashboard_financiero.html#fase-7-calcular-indicadores-de-rentabilidad",
+    "href": "clases_ia/clase_flexdashboard_financiero.html#fase-7-calcular-indicadores-de-rentabilidad",
+    "title": "Construyendo un Dashboard Financiero con Flexdashboard",
+    "section": "Fase 7 — Calcular indicadores de rentabilidad",
+    "text": "Fase 7 — Calcular indicadores de rentabilidad\nROE (Return on Equity) y ROA (Return on Assets) son claves para inversores:\n\n# Supuestos simplificados\nactivos_totales &lt;- 150  # $ millones\npatrimonio &lt;- 90        # $ millones (capital + ganancias retenidas)\n\ndatos_techcorp &lt;- datos_techcorp %&gt;%\n  mutate(\n    # Ganancia anualizada (4 trimestres)\n    ganancia_anual = ganancia_neta * 4,\n    # ROA = ganancia anual / activos\n    roa = round(ganancia_anual / activos_totales * 100, 1),\n    # ROE = ganancia anual / patrimonio\n    roe = round(ganancia_anual / patrimonio * 100, 1)\n  )\n\n# El ROE de TechCorp es muy fuerte (&gt;30% es excelente)\ntail(datos_techcorp[, c(\"trimestre\", \"roe\", \"roa\")], 1)\n\nEstos números indican si la empresa genera valor para accionistas."
+  },
+  {
+    "objectID": "clases_ia/clase_flexdashboard_financiero.html#fase-8-diseño-responsivo-mobile-first",
+    "href": "clases_ia/clase_flexdashboard_financiero.html#fase-8-diseño-responsivo-mobile-first",
+    "title": "Construyendo un Dashboard Financiero con Flexdashboard",
+    "section": "Fase 8 — Diseño responsivo (mobile-first)",
+    "text": "Fase 8 — Diseño responsivo (mobile-first)\nFlexdashboard adapta automáticamente a pantallas pequeñas:\n---\ntitle: \"Dashboard Financiero\"\noutput: flexdashboard::flex_dashboard:\n  orientation: columns\n  vertical_layout: fill\n  theme: lumen\n---\n\nColumn {data-width=500}\n-------\n\n### Ingreso Anual\n\n[R code block]\n# Gráfico ancho\n[/R code block]\n\nColumn {data-width=500}\n-------\n\n### Margen Neto\n\n[R code block]\n# Gráfico angosto\n[/R code block]\nControl:\n\ndata-width controla el ancho relativo de columnas\nEn móvil, automáticamente se apilan verticalmente\nEstilos (lumen, flatly, dark, spacelab) cambian la apariencia"
+  },
+  {
+    "objectID": "clases_ia/clase_flexdashboard_financiero.html#fase-9-interactividad-con-shinyinputs",
+    "href": "clases_ia/clase_flexdashboard_financiero.html#fase-9-interactividad-con-shinyinputs",
+    "title": "Construyendo un Dashboard Financiero con Flexdashboard",
+    "section": "Fase 9 — Interactividad con shinyInputs",
+    "text": "Fase 9 — Interactividad con shinyInputs\nFlexdashboard puede incluir selectores Shiny para filtrado dinámico:\n\nlibrary(shiny)\n\n# En el dashboard:\nselectInput(\n  inputId = \"metrica\",\n  label = \"Selecciona métrica:\",\n  choices = c(\"Ingresos\" = \"ingresos\",\n              \"Margen neto\" = \"margen_neto\",\n              \"ROE\" = \"roe\")\n)\n\n# Luego el gráfico reacciona:\nrenderPlot({\n  datos_techcorp %&gt;%\n    plot_ly(x = ~trimestre, y = as.formula(paste0(\"~\", input$metrica))) %&gt;%\n    layout(yaxis = list(title = input$metrica))\n})\n\nNota: Para esto, el archivo debe tener runtime: shiny en el YAML, lo que convierte el dashboard en una app Shiny en lugar de HTML estático."
+  },
+  {
+    "objectID": "clases_ia/clase_flexdashboard_financiero.html#fase-10-reflexión-y-casos-de-uso",
+    "href": "clases_ia/clase_flexdashboard_financiero.html#fase-10-reflexión-y-casos-de-uso",
+    "title": "Construyendo un Dashboard Financiero con Flexdashboard",
+    "section": "Fase 10 — Reflexión y casos de uso",
+    "text": "Fase 10 — Reflexión y casos de uso\n¿Cuándo usar Flexdashboard vs Shiny?\n\n\n\n\n\n\n\n\nAspecto\nFlexdashboard\nShiny\n\n\n\n\nComplejidad\nSimple (gráficos estáticos)\nCompleja (mucha interactividad)\n\n\nDeploy\nHTML estático (Netlify, GitHub Pages)\nServidor (shinyapps.io, Heroku)\n\n\nActualizaciones\nManual (re-render y subir)\nEn tiempo real (reactivos)\n\n\nAudiencia\nDirectivos (reportes)\nAnalistas (exploración)\n\n\n\nEjemplo de cada:\n\nFlexdashboard: Reporte mensual de finanzas enviado por email\nShiny: Herramienta interactiva para que traders exploren portafolios\n\nEjercicio:\nCrea un dashboard de TechCorp que incluya:\n\n3 pestañas (Resumen, Ingresos, Rentabilidad)\n4 value boxes mostrando KPIs\n2 gráficos plotly interactivos\n1 tabla DT (DataTables) con datos de competencia\n1 indicador de tendencia (↑ Crecimiento del 15% YoY)\nUn selector para cambiar entre trimestres\n\nChecklist técnico:\n\nInstalaste flexdashboard\nEl archivo .qmd renderiza sin errores\nLos value boxes muestran números correctos\nLos gráficos son interactivos (zoom, hover)\nEl layout es responsivo (prueba en navegador pequeño)\nLas tablas tienen paginación\n\nIdea clave:\nUn dashboard no es solo visualización. Es comunicación financiera: - El ejecutivo debe entender en 5 segundos si va bien - El analista debe profundizar sin perder contexto - El inversor debe decidir en 2 minutos\nLa estructura, los colores y los números deben alinear con esa intención."
+  },
+  {
+    "objectID": "clases_ia/clase_flexdashboard_financiero.html#próximas-mejoras",
+    "href": "clases_ia/clase_flexdashboard_financiero.html#próximas-mejoras",
+    "title": "Construyendo un Dashboard Financiero con Flexdashboard",
+    "section": "Próximas mejoras",
+    "text": "Próximas mejoras\n\nConectar a datos en tiempo real (API de Yahoo Finance, FRED)\nAgregar pronósticos (modelos ARIMA, Prophet)\nImplementar alertas automáticas (si ROE cae bajo umbral)\nMulti-empresa (dropdown para cambiar entre empresas)"
   }
 ]

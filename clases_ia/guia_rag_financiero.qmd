@@ -1,0 +1,520 @@
+---
+listing_title: "09 - Guía - Introducción a RAG para Análisis Financiero"
+title: "RAG en Finanzas: Consulta Inteligente de Documentos"
+subtitle: "Cómo entrenar un asistente IA para analizar reportes, balances y comunicados de prensa"
+author:
+  - Sebastián Egaña Santibáñez (segana@fen.uchile.cl)
+  - Nicolás Leiva Díaz (nleivad@fen.uchile.cl)
+date: last-modified
+lang: es
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    theme: cosmo
+    number-sections: false
+    code-block-bg: true
+    code-block-border-left: "#FF0000"
+  pdf:
+    documentclass: report
+    fontsize: 11pt
+    geometry: margin=1in
+execute:
+  echo: true
+  eval: false
+  warning: false
+---
+
+## Objetivo de la clase
+
+**RAG** (Retrieval Augmented Generation) es una técnica que mejora los modelos de lenguaje
+permitiendo que consulten **documentos específicos** antes de responder.
+
+Sin RAG:
+> *¿Cuál fue la ganancia neta de Apple en 2023?*
+> → Claude: "Mi conocimiento se corta en febrero de 2025. No tengo datos específicos de 2023."
+
+Con RAG:
+> *¿Cuál fue la ganancia neta de Apple en 2023?* (con 10-K de Apple cargado)
+> → Claude: "Según el 10-K de Apple 2023, la ganancia neta fue de $96.995 mil millones USD."
+
+En esta guía aprenderás:
+
+- Cómo funciona RAG conceptualmente
+- Casos de uso en finanzas
+- Flujo técnico: documentos → embeddings → búsqueda → prompt → respuesta
+- Ejemplo práctico con Claude API
+
+---
+
+## Fase 1 — Concepto: ¿Qué es RAG?
+
+**RAG = Retrieval (recuperación) + Augmented (aumentado) + Generation (generación)**
+
+Imagina que Claude es un analista financiero. Sin RAG, solo tiene su entrenamiento
+(hasta febrero de 2025). Con RAG, le das acceso a documentos específicos:
+
+```
+Usuario pregunta:
+  "¿Cuáles son los riesgos mencionados en el 10-K de Tesla?"
+
+Sistema RAG:
+  1. Busca en los documentos cargados
+  2. Encuentra párrafos relevantes sobre "riesgos"
+  3. Los añade al contexto de Claude
+  4. Claude responde basándose en esos párrafos específicos
+```
+
+**Analogía**: Es como si Claude tuviera permiso para abrir un archivo PDF durante
+el examen, siempre y cuando le haya dado acceso previamente.
+
+---
+
+## Fase 2 — Componentes clave de un sistema RAG
+
+Todo sistema RAG tiene 3 partes:
+
+### 1. **Almacén de documentos (Vector Store)**
+
+Los documentos se dividen en fragmentos pequeños (chunks) y se convierten a
+**vectores** (representaciones numéricas de significado):
+
+```
+Documento original (10-K de Apple):
+  "Apple's revenue for 2023 was $394.3 billion.
+   The company faced supply chain challenges...
+   Risk factors include..."
+
+                    ↓ (dividir en chunks)
+
+Chunk 1: "Apple's revenue for 2023 was $394.3 billion."
+  → Vector: [0.2, -0.5, 0.8, 0.1, ...]
+
+Chunk 2: "The company faced supply chain challenges..."
+  → Vector: [0.3, -0.4, 0.7, 0.2, ...]
+
+Chunk 3: "Risk factors include..."
+  → Vector: [0.1, -0.6, 0.9, 0.0, ...]
+
+          Se guardan en base de datos
+```
+
+### 2. **Motor de búsqueda (Retriever)**
+
+Cuando llega una pregunta, se convierte a vector y se buscan los chunks más parecidos:
+
+```
+Pregunta: "¿Cuáles fueron los ingresos de Apple?"
+  → Vector: [0.25, -0.48, 0.75, 0.12, ...]
+
+              ↓ (comparar similitud)
+
+Chunk 1: [0.2, -0.5, 0.8, 0.1, ...]   ← Similitud: 0.98 ✓ MEJOR MATCH
+Chunk 2: [0.3, -0.4, 0.7, 0.2, ...]   ← Similitud: 0.62
+Chunk 3: [0.1, -0.6, 0.9, 0.0, ...]   ← Similitud: 0.45
+
+       Recupera los top-3 chunks relevantes
+```
+
+### 3. **Modelo generativo (LLM con contexto)**
+
+El LLM (Claude) recibe los chunks recuperados + la pregunta:
+
+```
+Sistema:
+  "Eres un analista financiero. Responde basándote en los documentos
+   proporcionados. Si la respuesta no está en los documentos, di que no la encontraste."
+
+Contexto (chunks recuperados):
+  "Apple's revenue for 2023 was $394.3 billion."
+
+Usuario pregunta:
+  "¿Cuáles fueron los ingresos de Apple en 2023?"
+
+Claude responde:
+  "Según el documento, los ingresos de Apple en 2023 fueron $394.3 mil millones."
+```
+
+---
+
+## Fase 3 — Casos de uso en finanzas
+
+### Caso 1: Análisis de Reportes Trimestrales
+
+**Escenario**: Portfolio manager necesita entender cambios en las ganancias de 50 empresas.
+
+Sin RAG:
+- Descargar 50 PDFs de 10-Q
+- Leer manualmente (10-20 horas)
+- Extraer datos a Excel
+
+Con RAG:
+```
+"Compara el margen bruto de Q2 vs Q3 en estos 5 reportes"
+→ Sistema busca párrafos sobre márgenes en cada PDF
+→ Crea tabla comparativa automáticamente
+→ Tiempo: 5 minutos
+```
+
+### Caso 2: Detección de Señales de Alerta (Red Flags)
+
+**Escenario**: Analista de crédito debe evaluar si una startup es riesgosa.
+
+Con RAG, pregunta:
+- "¿Qué riesgos menciona la empresa?"
+- "¿Hay conflictos de intereses en la junta directiva?"
+- "¿Qué clientes concentran >30% de ingresos?"
+
+El sistema busca en estatutos, prospectos, comunicados oficiales.
+
+### Caso 3: Due Diligence en M&A
+
+**Escenario**: Banco inversionista evalúa adquisición de 2 empresas.
+
+Con RAG:
+- Carga docenas de documentos (estados financieros, contratos, estudios legales)
+- Responde preguntas como: "¿Hay litigios activos?" o "¿Cuáles son los contratos de mayor valor?"
+- Genera resumen ejecutivo automáticamente
+
+### Caso 4: Chatbot de Atención al Cliente
+
+**Escenario**: Cliente de banco quiere saber detalles de su hipoteca.
+
+Con RAG:
+- Se carga el contrato de hipoteca del cliente
+- Pregunta: "¿Cuál es mi tasa de interés?"
+- Sistema busca en el documento y responde
+- Respuesta verificada contra documento real
+
+---
+
+## Fase 4 — Flujo técnico: Implementación (conceptual)
+
+### Paso 1: Preparar documentos
+
+```python
+# Pseudocódigo
+documentos = cargar_PDFs("reportes_10K/")
+
+# Dividir en fragmentos (chunks de ~300 palabras)
+chunks = dividir_documentos(documentos, tamaño=300)
+
+# Ejemplo de un chunk:
+chunks[0] = "Consolidated Statements of Operations.
+            Revenue increased 12% YoY to $394.3B.
+            Operating income margin was 29.8%..."
+```
+
+### Paso 2: Crear embeddings
+
+```python
+# Convertir cada chunk a vector (embedding)
+for chunk in chunks:
+    vector = crear_embedding(chunk)  # Usa API de OpenAI, Anthropic, etc.
+    guardar_en_base_datos(chunk, vector)
+
+# Resultado: base de datos de vectores (vector store)
+# Opciones: Pinecone, Chroma, Weaviate, FAISS
+```
+
+### Paso 3: Búsqueda (Retrieval)
+
+```python
+pregunta = "¿Cuál fue la ganancia neta?"
+
+# Convertir pregunta a vector
+vector_pregunta = crear_embedding(pregunta)
+
+# Buscar chunks similares en la base de datos
+chunks_relevantes = buscar_top_k(vector_pregunta, k=3)
+
+# Resultado: los 3 chunks más cercanos semánticamente
+```
+
+### Paso 4: Aumentar el prompt
+
+```python
+# Construir el prompt que enviaremos a Claude
+prompt_aumentado = f"""
+Sistema:
+Eres un analista financiero experto. Responde la pregunta del usuario
+basándote únicamente en los documentos proporcionados.
+Si la respuesta no aparece en los documentos, di claramente que no la encontraste.
+
+Documentos relevantes:
+{chunks_relevantes}
+
+Pregunta del usuario:
+{pregunta}
+
+Respuesta:
+"""
+```
+
+### Paso 5: Generar respuesta
+
+```python
+respuesta = llamar_a_claude(prompt_aumentado)
+# Claude responde considerando los chunks específicos
+```
+
+---
+
+## Fase 5 — Arquitectura de un sistema RAG moderno
+
+```
+┌─────────────────────────────────────────────────────────┐
+│                   DOCUMENTOS (PDFs, TXTs)               │
+│          10-K's, Balances, Comunicados de Prensa        │
+└────────────────────────┬────────────────────────────────┘
+                         │
+                    Preprocesar
+                  (dividir chunks)
+                         │
+                         ↓
+┌─────────────────────────────────────────────────────────┐
+│            EMBEDDING MODEL (Transformer)                │
+│    Convierte texto a vectores (768-1536 dimensiones)   │
+└────────────────────────┬────────────────────────────────┘
+                         │
+                         ↓
+┌─────────────────────────────────────────────────────────┐
+│            VECTOR STORE (Base de datos)                 │
+│     Chroma / Pinecone / Weaviate (millones de chunks)  │
+└────────────────────────┬────────────────────────────────┘
+                         │
+         ┌───────────────┴───────────────┐
+         │                               │
+    (Cuando llega pregunta)              │
+         │                               │
+         ↓                               ↓
+┌──────────────────┐          ┌────────────────────┐
+│ Embed Question   │          │  Semantic Search   │
+│  (user input)    │ ────────→│  (top-k chunks)    │
+└──────────────────┘          └────────────────────┘
+                                        │
+                                        ↓
+                    ┌───────────────────────────────┐
+                    │  PROMPT AUGMENTATION          │
+                    │  Pregunta + Chunks → Prompt   │
+                    └───────────────────┬───────────┘
+                                        │
+                                        ↓
+                    ┌───────────────────────────────┐
+                    │  CLAUDE API                   │
+                    │  (LLM generation)             │
+                    └───────────────────┬───────────┘
+                                        │
+                                        ↓
+                    ┌───────────────────────────────┐
+                    │  RESPUESTA FINAL              │
+                    │  (basada en documentos)       │
+                    └───────────────────────────────┘
+```
+
+---
+
+## Fase 6 — Limitaciones y consideraciones éticas
+
+### ¿Qué pueden fallar en RAG?
+
+1. **Hallucinations (alucinaciones)**
+   - Claude genera información que NO está en los documentos
+   - **Solución**: Usar instrucciones explícitas ("responde solo basándote en...")
+
+2. **Chunks desconectados**
+   - La respuesta necesita contexto de múltiples párrafos, pero se recuperan solo fragmentos
+   - **Solución**: Aumentar tamaño de chunks o usar re-rankers
+
+3. **Errores en los documentos fuente**
+   - Si el PDF tiene OCR defectuoso, la búsqueda falla
+   - **Solución**: Revisar calidad de documentos antes de cargarios
+
+### Privacidad y seguridad
+
+- Los documentos se envían al API de Claude (se procesa bajo sus términos)
+- Para datos muy sensibles (secretos comerciales), considera RAG local con modelos open-source
+- Siempre requiere autorización explícita de stakeholders
+
+---
+
+## Fase 7 — Ejemplo práctico: RAG en Claude API
+
+```python
+# Este es código conceptual para ilustrar el flujo
+
+from anthropic import Anthropic
+import json
+
+client = Anthropic()
+
+# Simular que ya tenemos chunks recuperados
+documentos_relevantes = [
+    "Apple Inc. reported net income of $96.995 billion for fiscal 2023.",
+    "Operating margins improved to 29.8% due to operational efficiency.",
+    "The company faces risks from supply chain disruption and regulatory changes."
+]
+
+# Construir el contexto
+contexto = "\n".join([f"- {doc}" for doc in documentos_relevantes])
+
+# Conversación multi-turno con contexto persistente
+conversation_history = []
+
+def consultar_con_rag(pregunta, contexto_docs):
+    # Añadir la pregunta con contexto
+    mensaje_usuario = f"""
+Basándote ÚNICAMENTE en los siguientes documentos, responde la pregunta.
+Si la respuesta no aparece en los documentos, di claramente que no la encontraste.
+
+DOCUMENTOS:
+{contexto_docs}
+
+PREGUNTA:
+{pregunta}
+"""
+
+    conversation_history.append({
+        "role": "user",
+        "content": mensaje_usuario
+    })
+
+    # Llamar a Claude
+    response = client.messages.create(
+        model="claude-3-5-sonnet-20241022",
+        max_tokens=1024,
+        system="Eres un analista financiero experto. Responde preguntas sobre documentos financieros.",
+        messages=conversation_history
+    )
+
+    # Guardar respuesta en histórico
+    respuesta = response.content[0].text
+    conversation_history.append({
+        "role": "assistant",
+        "content": respuesta
+    })
+
+    return respuesta
+
+# Ejemplo de uso
+print("=== CONSULTA 1 ===")
+respuesta1 = consultar_con_rag(
+    "¿Cuál fue la ganancia neta de Apple en 2023?",
+    contexto
+)
+print(respuesta1)
+
+print("\n=== CONSULTA 2 (Seguimiento) ===")
+respuesta2 = consultar_con_rag(
+    "¿Cuál fue el margen operativo?",
+    contexto
+)
+print(respuesta2)
+```
+
+**Salida esperada**:
+```
+=== CONSULTA 1 ===
+Según los documentos proporcionados, Apple Inc. reportó una ganancia neta
+de $96.995 mil millones en el año fiscal 2023.
+
+=== CONSULTA 2 ===
+El margen operativo mejoró a 29.8%, atribuido a mejoras en la eficiencia operacional.
+```
+
+---
+
+## Fase 8 — Tecnologías y herramientas para RAG
+
+### Vector Stores (almacenar embeddings)
+
+| Herramienta | Ventajas | Caso de uso |
+|-------------|----------|------------|
+| **Chroma** | Fácil de comenzar, open-source | Prototipado local |
+| **Pinecone** | Escalable, cloud-native, 0-mantenimiento | Producción empresarial |
+| **Weaviate** | Open-source, GraphQL, flexible | Equipos que quieren control |
+| **FAISS** | Super rápido, local | Búsqueda masiva offline |
+
+### Embedding Models
+
+| Modelo | Proveedor | Costo | Dimensiones |
+|--------|-----------|-------|-------------|
+| text-embedding-3-small | OpenAI | $ | 512 |
+| text-embedding-3-large | OpenAI | $$ | 3,072 |
+| multilingual-e5-base | Hugging Face | Gratis | 768 |
+| bge-m3 | BAAI | Gratis | 1,024 |
+
+### Frameworks RAG
+
+- **LangChain**: Herramienta popular, pero opinada
+- **LlamaIndex**: Especializada en RAG, muy flexible
+- **Haystack**: Por DeepSet, enfoque enterprise
+
+---
+
+## Fase 9 — Comparación: RAG vs Fine-tuning vs Prompting
+
+| Técnica | Mejor para | Complejidad | Costo |
+|---------|-----------|------------|-------|
+| **Prompting simple** | Tareas genéricas | Baja | Bajo |
+| **In-context learning** | Patrones cortos (<4k tokens) | Media | Medio |
+| **RAG** | Documentos específicos grandes | Media | Medio |
+| **Fine-tuning** | Cambiar estilo/formato permanente | Alta | Alto |
+
+**Regla general**:
+- ¿Datos cambian frecuentemente? → RAG
+- ¿Necesitas pocos ejemplos fijos? → In-context learning
+- ¿Cambias el comportamiento permanente? → Fine-tuning
+
+---
+
+## Fase 10 — Proyecto: Construir un RAG para reportes financieros
+
+### Objetivo
+
+Crear un asistente que responda preguntas sobre reportes trimestrales de empresas.
+
+### Ejercicio propuesto
+
+- [ ] Descarga 2-3 10-K o 10-Q reales (investor.apple.com, sec.gov)
+- [ ] Carga los PDFs en una herramienta RAG (Chroma o Pinecone)
+- [ ] Haz preguntas variadas y documenta las respuestas
+- [ ] Identifica fallos (hallucinations, chunks mal recuperados)
+- [ ] Propone mejoras
+
+### Preguntas de prueba (Financial Due Diligence)
+
+1. "¿Cuáles fueron los ingresos del último trimestre?"
+2. "¿Qué riesgos identifica la empresa en su 10-K?"
+3. "¿Cuál es la estructura de propiedad (board members)?"
+4. "¿Hay litigios activos mencionados?"
+5. "¿Cuál es la política de dividendos?"
+
+### Checklist de implementación
+
+- [ ] RAG retrieves chunks relevantes (verifica manualmente)
+- [ ] Claude responde con fuentes citadas
+- [ ] Detectas al menos 1 hallucination (y la corriges con prompting)
+- [ ] Documentas el flujo (qué funciona, qué falla)
+
+---
+
+## Reflexión final: RAG en el futuro de finanzas
+
+RAG es una transición hacia **finanzas asistidas por IA**:
+
+- **Hoy**: Humanos leen reportes, IA ayuda con cálculos
+- **Futuro**: IA lee reportes, humanos verifican decisiones
+
+Como analista financiero o developer, tu rol evoluciona:
+
+- No es "ser reemplazado por IA"
+- Es **amplificar tu capacidad**: 50 reportes en 1 hora vs 50 horas manualmente
+
+**Habilidades clave para el futuro**:
+1. Formular preguntas claras a sistemas RAG
+2. Verificar respuestas contra documentos originales
+3. Detectar sesgos y errores en sistemas RAG
+4. Construir RAG systems customizados
+
+La ventaja competitiva es **saber qué preguntar**.
