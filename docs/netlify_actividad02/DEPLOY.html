@@ -6,10 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="SebastiÃ¡n EgaÃ±a SantibÃ¡Ã±ez ">
-<meta name="author" content="NicolÃ¡s Leiva DÃ­az ">
 
-<title>notebook_ocr – Curso Finanzas en R</title>
+<title>deploy – Curso Finanzas en R</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -80,8 +78,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-a0f9fd0d421825b736dc1bbcbcba2219.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/all.css" rel="stylesheet">
-<link href="../site_libs/quarto-contrib/fontawesome6-0.1.0/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -170,171 +166,143 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#enlaces-del-profesor" id="toc-enlaces-del-profesor" class="nav-link active" data-scroll-target="#enlaces-del-profesor">Enlaces del profesor</a></li>
-  <li><a href="#optical-character-recognition" id="toc-optical-character-recognition" class="nav-link" data-scroll-target="#optical-character-recognition">Optical Character Recognition</a>
+  <li><a href="#guía-de-deploy-a-netlify-actividad-02-reporte-interactivo" id="toc-guía-de-deploy-a-netlify-actividad-02-reporte-interactivo" class="nav-link active" data-scroll-target="#guía-de-deploy-a-netlify-actividad-02-reporte-interactivo">Guía de Deploy a Netlify — Actividad 02 Reporte Interactivo</a>
   <ul class="collapse">
-  <li><a href="#librerãas-a-utilizar" id="toc-librerãas-a-utilizar" class="nav-link" data-scroll-target="#librerãas-a-utilizar">LibrerÃ­as a utilizar:</a>
+  <li><a href="#opción-1-deploy-con-netlify-cli-recomendado" id="toc-opción-1-deploy-con-netlify-cli-recomendado" class="nav-link" data-scroll-target="#opción-1-deploy-con-netlify-cli-recomendado">Opción 1: Deploy con netlify-cli (Recomendado)</a>
   <ul class="collapse">
-  <li><a href="#librarypdftools" id="toc-librarypdftools" class="nav-link" data-scroll-target="#librarypdftools">library(pdftools)</a></li>
-  <li><a href="#librarytesseract" id="toc-librarytesseract" class="nav-link" data-scroll-target="#librarytesseract">library(tesseract)</a></li>
-  <li><a href="#librarystringr" id="toc-librarystringr" class="nav-link" data-scroll-target="#librarystringr">library(stringr)</a></li>
+  <li><a href="#paso-1-instalar-netlify-cli" id="toc-paso-1-instalar-netlify-cli" class="nav-link" data-scroll-target="#paso-1-instalar-netlify-cli">Paso 1: Instalar netlify-cli</a></li>
+  <li><a href="#paso-2-autenticarse" id="toc-paso-2-autenticarse" class="nav-link" data-scroll-target="#paso-2-autenticarse">Paso 2: Autenticarse</a></li>
+  <li><a href="#paso-3-deploy-stagingpreview" id="toc-paso-3-deploy-stagingpreview" class="nav-link" data-scroll-target="#paso-3-deploy-stagingpreview">Paso 3: Deploy (Staging/Preview)</a></li>
+  <li><a href="#paso-4-deploy-a-producción-prod" id="toc-paso-4-deploy-a-producción-prod" class="nav-link" data-scroll-target="#paso-4-deploy-a-producción-prod">Paso 4: Deploy a Producción (–prod)</a></li>
   </ul></li>
-  <li><a href="#material" id="toc-material" class="nav-link" data-scroll-target="#material">Material</a></li>
-  </ul></li>
-  <li><a href="#cã³digos-a-utilizar" id="toc-cã³digos-a-utilizar" class="nav-link" data-scroll-target="#cã³digos-a-utilizar">CÃ³digos a utilizar</a>
+  <li><a href="#opción-2-deploy-manual-drag-and-drop" id="toc-opción-2-deploy-manual-drag-and-drop" class="nav-link" data-scroll-target="#opción-2-deploy-manual-drag-and-drop">Opción 2: Deploy Manual (Drag and Drop)</a></li>
+  <li><a href="#configuración-del-dominio-personalizado" id="toc-configuración-del-dominio-personalizado" class="nav-link" data-scroll-target="#configuración-del-dominio-personalizado">Configuración del Dominio Personalizado</a></li>
+  <li><a href="#actualización-futura" id="toc-actualización-futura" class="nav-link" data-scroll-target="#actualización-futura">Actualización Futura</a></li>
+  <li><a href="#troubleshooting" id="toc-troubleshooting" class="nav-link" data-scroll-target="#troubleshooting">Troubleshooting</a>
   <ul class="collapse">
-  <li><a href="#caso-01" id="toc-caso-01" class="nav-link" data-scroll-target="#caso-01">Caso 01</a></li>
-  <li><a href="#caso-02" id="toc-caso-02" class="nav-link" data-scroll-target="#caso-02">Caso 02</a></li>
+  <li><a href="#netlify-deploy-falla-permiso-denegado" id="toc-netlify-deploy-falla-permiso-denegado" class="nav-link" data-scroll-target="#netlify-deploy-falla-permiso-denegado">“netlify deploy falla: permiso denegado”</a></li>
+  <li><a href="#los-sliders-no-funcionan-o-faltan-datos" id="toc-los-sliders-no-funcionan-o-faltan-datos" class="nav-link" data-scroll-target="#los-sliders-no-funcionan-o-faltan-datos">“Los sliders no funcionan o faltan datos”</a></li>
+  <li><a href="#el-html-es-muy-grande-12-mb" id="toc-el-html-es-muy-grande-12-mb" class="nav-link" data-scroll-target="#el-html-es-muy-grande-12-mb">“El HTML es muy grande (&gt;12 MB)”</a></li>
+  <li><a href="#los-gráficos-plotly-no-se-cargan" id="toc-los-gráficos-plotly-no-se-cargan" class="nav-link" data-scroll-target="#los-gráficos-plotly-no-se-cargan">“Los gráficos plotly no se cargan”</a></li>
+  </ul></li>
+  <li><a href="#urls-importantes" id="toc-urls-importantes" class="nav-link" data-scroll-target="#urls-importantes">URLs Importantes</a></li>
   </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Finanzas en R</h1>
-<p class="subtitle lead">Aplicaciones de OCR</p>
-</div>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
 
 
-<div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Authors</div>
-    <div class="quarto-title-meta-contents">
-             <p>SebastiÃ¡n EgaÃ±a SantibÃ¡Ã±ez <a href="mailto:segana@fen.uchile"><i class="fa-brands fa-inbox" aria-label="inbox"></i></a> </p>
-             <p>NicolÃ¡s Leiva DÃ­az <a href="mailto:nleivad@fen.uchile.cl"><i class="fa-brands fa-inbox" aria-label="inbox"></i></a> </p>
-          </div>
-  </div>
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<hr>
-<section id="enlaces-del-profesor" class="level1">
-<h1>Enlaces del profesor</h1>
-<p><a href="https://segana.netlify.app"><i class="fa-brands fa-link" aria-label="link"></i></a> https://segana.netlify.app</p>
-<p><a href="https://github.com/sebaegana"><i class="fa-brands fa-github" aria-label="github"></i></a> https://github.com/sebaegana</p>
-<p><a href="https://www.linkedin.com/in/sebastian-egana-santibanez/"><i class="fa-brands fa-linkedin" aria-label="linkedin"></i></a> https://www.linkedin.com/in/sebastian-egana-santibanez/</p>
+<section id="guía-de-deploy-a-netlify-actividad-02-reporte-interactivo" class="level1">
+<h1>Guía de Deploy a Netlify — Actividad 02 Reporte Interactivo</h1>
+<section id="opción-1-deploy-con-netlify-cli-recomendado" class="level2">
+<h2 class="anchored" data-anchor-id="opción-1-deploy-con-netlify-cli-recomendado">Opción 1: Deploy con netlify-cli (Recomendado)</h2>
+<section id="paso-1-instalar-netlify-cli" class="level3">
+<h3 class="anchored" data-anchor-id="paso-1-instalar-netlify-cli">Paso 1: Instalar netlify-cli</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">npm</span> install <span class="at">-g</span> netlify-cli</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="paso-2-autenticarse" class="level3">
+<h3 class="anchored" data-anchor-id="paso-2-autenticarse">Paso 2: Autenticarse</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="ex">netlify</span> login</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Se abrirá el navegador para que inicies sesión con tu cuenta Netlify. Aprueba el acceso.</p>
+</section>
+<section id="paso-3-deploy-stagingpreview" class="level3">
+<h3 class="anchored" data-anchor-id="paso-3-deploy-stagingpreview">Paso 3: Deploy (Staging/Preview)</h3>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> netlify_actividad02</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render <span class="at">--to</span> html  <span class="co"># Asegúrate de que _site/ está actualizado</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="ex">netlify</span> deploy <span class="at">--dir</span><span class="op">=</span>_site</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Netlify te pedirá que confirmes la carpeta de publicación (<code>_site</code>) y creará un <strong>URL de draft</strong> (ej: <code>https://xyz123--portafolios-fen.netlify.app</code>).</p>
+<p><strong>Verifica que todo funciona</strong>: - Abre la URL en tu navegador - Interactúa con los gráficos (hover en plotly) - Prueba los sliders de la calculadora OJS - Revisa la consola del navegador (F12) para errores</p>
+</section>
+<section id="paso-4-deploy-a-producción-prod" class="level3">
+<h3 class="anchored" data-anchor-id="paso-4-deploy-a-producción-prod">Paso 4: Deploy a Producción (–prod)</h3>
+<p>Una vez verificado:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">netlify</span> deploy <span class="at">--dir</span><span class="op">=</span>_site <span class="at">--prod</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Esto publica en la <strong>URL definitiva</strong> (ej: <code>https://portafolios-fen.netlify.app</code>).</p>
 <hr>
 </section>
-<section id="optical-character-recognition" class="level1">
-<h1>Optical Character Recognition</h1>
-<p>OCR significa Reconocimiento Ã“ptico de Caracteres (Optical Character Recognition, en inglÃ©s) y es una tecnologÃ­a que permite convertir texto contenido en imÃ¡genes o documentos escaneados en texto editable y procesable digitalmente. Es especialmente Ãºtil cuando se trabaja con PDFs escaneados o imÃ¡genes que contienen texto, como facturas, informes o formularios.</p>
-<p>A continuaciÃ³n veremos un ejemplo de aplicaciÃ³n de dicha tecnologÃ­a.</p>
-<section id="librerãas-a-utilizar" class="level2">
-<h2 class="anchored" data-anchor-id="librerãas-a-utilizar">LibrerÃ­as a utilizar:</h2>
-<section id="librarypdftools" class="level3">
-<h3 class="anchored" data-anchor-id="librarypdftools">library(pdftools)</h3>
-<p>Esta librerÃ­a permite leer y manipular archivos PDF. Tiene funciones como:</p>
+</section>
+<section id="opción-2-deploy-manual-drag-and-drop" class="level2">
+<h2 class="anchored" data-anchor-id="opción-2-deploy-manual-drag-and-drop">Opción 2: Deploy Manual (Drag and Drop)</h2>
+<ol type="1">
+<li>Ve a <a href="https://app.netlify.com/drop">app.netlify.com/drop</a></li>
+<li>Inicia sesión con tu cuenta Netlify (o crea una)</li>
+<li>Arrastra la carpeta <code>_site/</code> a la zona de drop</li>
+<li>Netlify subirá y publicará automáticamente</li>
+<li>Obtendrás una URL pública (ej: <code>https://random-name-12345.netlify.app</code>)</li>
+</ol>
+<p><strong>Ventaja</strong>: No necesitas instalar nada (solo navegador).<br>
+<strong>Desventaja</strong>: Cada upload es un sitio nuevo (sin actualización automática).</p>
+<hr>
+</section>
+<section id="configuración-del-dominio-personalizado" class="level2">
+<h2 class="anchored" data-anchor-id="configuración-del-dominio-personalizado">Configuración del Dominio Personalizado</h2>
+<p>Si tienes un dominio personalizado (ej: <code>portafolios.fen.uchile.cl</code>):</p>
+<ol type="1">
+<li>En <a href="https://app.netlify.com">app.netlify.com</a>, abre tu sitio</li>
+<li><strong>Site settings</strong> → <strong>Domain management</strong></li>
+<li>Agrega tu dominio personalizado</li>
+<li>Sigue las instrucciones de DNS (apunta tu dominio a Netlify)</li>
+</ol>
+<hr>
+</section>
+<section id="actualización-futura" class="level2">
+<h2 class="anchored" data-anchor-id="actualización-futura">Actualización Futura</h2>
+<p>Si realizas cambios al reporte:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1. Edita index.qmd o R/portafolio.R</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># 2. Renderiza localmente</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> render <span class="at">--to</span> html</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># 3. Deploy a producción (--prod para actualizar el sitio existente)</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="ex">netlify</span> deploy <span class="at">--dir</span><span class="op">=</span>_site <span class="at">--prod</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<hr>
+</section>
+<section id="troubleshooting" class="level2">
+<h2 class="anchored" data-anchor-id="troubleshooting">Troubleshooting</h2>
+<section id="netlify-deploy-falla-permiso-denegado" class="level3">
+<h3 class="anchored" data-anchor-id="netlify-deploy-falla-permiso-denegado">“netlify deploy falla: permiso denegado”</h3>
 <ul>
-<li><p>pdf_text(): extrae texto de PDFs que ya contienen texto digital.</p></li>
-<li><p>pdf_render_page(): convierte una pÃ¡gina del PDF en una imagen (Ãºtil cuando el PDF es escaneado y no tiene texto digital).</p></li>
+<li>Asegúrate de haber hecho <code>netlify login</code> exitosamente</li>
+<li>Inicia sesión nuevamente: <code>netlify logout &amp;&amp; netlify login</code></li>
 </ul>
 </section>
-<section id="librarytesseract" class="level3">
-<h3 class="anchored" data-anchor-id="librarytesseract">library(tesseract)</h3>
-<p>Tesseract es un motor OCR de cÃ³digo abierto muy potente. En R, esta librerÃ­a permite:</p>
+<section id="los-sliders-no-funcionan-o-faltan-datos" class="level3">
+<h3 class="anchored" data-anchor-id="los-sliders-no-funcionan-o-faltan-datos">“Los sliders no funcionan o faltan datos”</h3>
 <ul>
-<li><p>Aplicar OCR a imÃ¡genes para extraer el texto contenido.</p></li>
-<li><p>Reconocer mÃºltiples idiomas (por defecto, el inglÃ©s, pero puedes instalar otros).</p></li>
+<li>Abre la consola (F12) y busca errores de JavaScript</li>
+<li>Verifica que <code>data/portafolio_retornos.csv</code> existe en <code>_site/</code></li>
+<li>Verifica que <code>data/resultados.json</code> existe en <code>_site/</code></li>
 </ul>
 </section>
-<section id="librarystringr" class="level3">
-<h3 class="anchored" data-anchor-id="librarystringr">library(stringr)</h3>
-<p>Esta librerÃ­a es parte del tidyverse y proporciona funciones para manipular y limpiar cadenas de texto, por ejemplo:</p>
+<section id="el-html-es-muy-grande-12-mb" class="level3">
+<h3 class="anchored" data-anchor-id="el-html-es-muy-grande-12-mb">“El HTML es muy grande (&gt;12 MB)”</h3>
 <ul>
-<li><p>str_detect(), str_replace(), str_extract(), str_sub() y muchas otras.</p></li>
-<li><p>Muy Ãºtil para procesar el texto extraÃ­do con pdftools o tesseract, limpiarlo y extraer informaciÃ³n relevante.</p></li>
+<li>Es normal con <code>embed-resources: true</code> (todos los recursos incrustados)</li>
+<li>Netlify permite archivos hasta 50 MB sin problema</li>
 </ul>
 </section>
-</section>
-<section id="material" class="level2">
-<h2 class="anchored" data-anchor-id="material">Material</h2>
+<section id="los-gráficos-plotly-no-se-cargan" class="level3">
+<h3 class="anchored" data-anchor-id="los-gráficos-plotly-no-se-cargan">“Los gráficos plotly no se cargan”</h3>
 <ul>
-<li><a href="data/usbp_stats_fy2017_sector_profile.pdf">Reporte</a></li>
+<li>Verifica que <code>embed-resources: true</code> está en <code>_quarto.yml</code></li>
+<li>Recarga la página (Ctrl+Shift+R para borrar caché)</li>
 </ul>
+<hr>
 </section>
 </section>
-<section id="cã³digos-a-utilizar" class="level1">
-<h1>CÃ³digos a utilizar</h1>
-<section id="caso-01" class="level2">
-<h2 class="anchored" data-anchor-id="caso-01">Caso 01</h2>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pdftools)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Using poppler version 22.04.0</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>border_patrol <span class="ot">&lt;-</span> <span class="fu">pdf_text</span>(<span class="st">"usbp_stats_fy2017_sector_profile.pdf"</span>)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(border_patrol)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(border_patrol)</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>border_patrol[<span class="dv">1</span>]</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">strsplit</span>(<span class="st">"criminology"</span>, <span class="at">split =</span> <span class="st">"n"</span>)</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>sector_profile <span class="ot">&lt;-</span> border_patrol[<span class="dv">1</span>]</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>sector_profile <span class="ot">&lt;-</span> <span class="fu">strsplit</span>(sector_profile, <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>sector_profile <span class="ot">&lt;-</span> sector_profile[[<span class="dv">1</span>]]</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(sector_profile)</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>sector_profile <span class="ot">&lt;-</span> <span class="fu">trimws</span>(sector_profile)</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>sector_profile</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span>(<span class="st">"Miami"</span>, sector_profile)</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="fu">grep</span>(<span class="st">"Nationwide Total"</span>, sector_profile)</span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>sector_profile <span class="ot">&lt;-</span> sector_profile[<span class="fu">grep</span>(<span class="st">"Miami"</span>, sector_profile)<span class="sc">:</span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>                                   <span class="fu">grep</span>(<span class="st">"Nationwide Total"</span>, sector_profile)]</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(sector_profile)</span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(stringr)</span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>sector_profile <span class="ot">&lt;-</span> <span class="fu">str_split_fixed</span>(sector_profile, <span class="st">" {2,}"</span>, <span class="dv">10</span>)</span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(sector_profile)</span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>sector_profile <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(sector_profile)</span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(sector_profile) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"sector"</span>,</span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"agent_staffing"</span>,</span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"apprehensions"</span>,</span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"other_than_mexican_apprehensions"</span>, </span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"marijuana_pounds"</span>,</span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"cocaine_pounds"</span>,</span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"accepted_prosecutions"</span>,</span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"assaults"</span>,</span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"rescues"</span>,</span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>                           <span class="st">"deaths"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</section>
-<section id="caso-02" class="level2">
-<h2 class="anchored" data-anchor-id="caso-02">Caso 02</h2>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tesseract)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>eng <span class="ot">&lt;-</span> <span class="fu">tesseract</span>(<span class="st">"eng"</span>)</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>text <span class="ot">&lt;-</span> tesseract<span class="sc">::</span><span class="fu">ocr</span>(<span class="st">"http://jeroen.github.io/images/testocr.png"</span>, <span class="at">engine =</span> eng)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(text)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>pngfile <span class="ot">&lt;-</span> pdftools<span class="sc">::</span><span class="fu">pdf_convert</span>(<span class="st">'https://jeroen.github.io/images/ocrscan.pdf'</span>, <span class="at">dpi =</span> <span class="dv">600</span>)</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>text <span class="ot">&lt;-</span> tesseract<span class="sc">::</span><span class="fu">ocr</span>(pngfile)</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(text)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
+<section id="urls-importantes" class="level2">
+<h2 class="anchored" data-anchor-id="urls-importantes">URLs Importantes</h2>
+<ul>
+<li><strong>Quarto Docs</strong>: https://quarto.org/docs/websites/</li>
+<li><strong>Netlify Docs</strong>: https://docs.netlify.com/</li>
+<li><strong>netlify-cli</strong>: https://cli.netlify.com/</li>
+<li><strong>Observable JS en Quarto</strong>: https://quarto.org/docs/interactive/ojs/</li>
+</ul>
+<hr>
+<p><em>Última actualización: 2026-10-04</em></p>
 
 
 </section>
