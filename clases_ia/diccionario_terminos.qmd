@@ -1,5 +1,4 @@
 ---
-listing_title: "07 - Guía 01 - Diccionario de Términos Técnicos"
 title: |
   Diccionario de Términos Técnicos
 subtitle: "Referencia completa de conceptos de finanzas, programación, análisis de datos y herramientas"
