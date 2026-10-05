@@ -16,6 +16,8 @@ website:
         file: clases_ia/index.qmd
       - text: "Recursos"
         href: recursos.qmd
+      - text: "📖 Diccionario"
+        href: clases_ia/diccionario_terminos.qmd
       - text: "Contacto"
         href: contacto.qmd
 
@@ -26,5 +28,3 @@ format:
 
 execute:
   freeze: auto
-
-
