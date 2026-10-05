@@ -1,0 +1,8 @@
+[build]
+publish = "_site"
+# Deploy manual: no build command (files already rendered locally)
+
+[[redirects]]
+from = "/*"
+to = "/index.html"
+status = 200
