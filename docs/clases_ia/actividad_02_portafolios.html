@@ -344,7 +344,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Fecha de publicación</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">29 de septiembre de 2026</p>
+      <p class="date">5 de octubre de 2026</p>
     </div>
   </div>
   
@@ -368,6 +368,13 @@ window.Quarto = {
     <strong>📊 Datos para la Actividad:</strong>
     <ul style="margin: 8px 0; padding-left: 20px;">
       <li><a href="data/portafolio_retornos.csv" style="color: #0d6efd; text-decoration: underline;">Descargar portafolio_retornos.csv</a> (retornos mensuales log 2012-2021, 5 activos)</li>
+    </ul>
+  </div>
+
+  <div style="margin-top: 15px; padding: 12px; background: #e8f5e9; border-left: 4px solid #4caf50; border-radius: 4px;">
+    <strong>🚀 Reporte Interactivo en Netlify:</strong>
+    <ul style="margin: 8px 0; padding-left: 20px;">
+      <li>📊 <a href="https://portafolios-fen.netlify.app" style="color: #4caf50; font-weight: bold; text-decoration: underline;" target="_blank">Ver Reporte Completo (Markowitz + Simulación + Calculadora Interactiva)</a> — Análisis en tiempo real con gráficos interactivos y calculadora de portafolios personalizados.</li>
     </ul>
   </div>
 </div>
@@ -1361,10 +1368,10 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="los-sliders-observable-no-cargan-datos">“Los sliders Observable no cargan datos”</h3>
 <p><strong>Causa común</strong>: El archivo CSV no está en la ruta correcta.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15" data-startfrom="977" data-source-offset="-16"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 976;"><span id="cb15-977"><a href="#cb15-977" aria-hidden="true" tabindex="-1"></a>datos <span class="op">=</span> <span class="fu">FileAttachment</span>(<span class="st">"portafolio_retornos.csv"</span>)<span class="op">.</span><span class="fu">csv</span>()</span>
-<span id="cb15-978"><a href="#cb15-978" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-979"><a href="#cb15-979" aria-hidden="true" tabindex="-1"></a><span class="co">// ✅ Correcto (asume que quarto render está en la raíz)</span></span>
-<span id="cb15-980"><a href="#cb15-980" aria-hidden="true" tabindex="-1"></a>datos <span class="op">=</span> <span class="fu">FileAttachment</span>(<span class="st">"data/portafolio_retornos.csv"</span>)<span class="op">.</span><span class="fu">csv</span>()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15" data-startfrom="984" data-source-offset="-16"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 983;"><span id="cb15-984"><a href="#cb15-984" aria-hidden="true" tabindex="-1"></a>datos <span class="op">=</span> <span class="fu">FileAttachment</span>(<span class="st">"portafolio_retornos.csv"</span>)<span class="op">.</span><span class="fu">csv</span>()</span>
+<span id="cb15-985"><a href="#cb15-985" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-986"><a href="#cb15-986" aria-hidden="true" tabindex="-1"></a><span class="co">// ✅ Correcto (asume que quarto render está en la raíz)</span></span>
+<span id="cb15-987"><a href="#cb15-987" aria-hidden="true" tabindex="-1"></a>datos <span class="op">=</span> <span class="fu">FileAttachment</span>(<span class="st">"data/portafolio_retornos.csv"</span>)<span class="op">.</span><span class="fu">csv</span>()</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-1-1" data-nodetype="declaration">
